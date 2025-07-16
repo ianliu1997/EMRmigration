@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Appointment" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Appointment" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" />
+  <xs:complexType name="clsGetAppointmentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppType" type="xs:long" />
+      <xs:element minOccurs="0" name="AppintmentStatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="AppoinTypeID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AppointmentDetailsList" nillable="true" type="tns:ArrayOfclsAppointmentVO" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InputFilterExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InputFilterWhereClause" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InputMaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="InputPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InputSearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InputSortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InputStartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDocAttached" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MrNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutputTotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="SortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialRegistrationId" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnRegistered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitMark" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetAppointmentBizActionVO" nillable="true" type="tns:clsGetAppointmentBizActionVO" />
+  <xs:complexType name="ArrayOfclsAppointmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsAppointmentVO" nillable="true" type="tns:clsAppointmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsAppointmentVO" nillable="true" type="tns:ArrayOfclsAppointmentVO" />
+  <xs:complexType name="clsAppointmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AppCancelReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AppointmentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AppointmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="AppointmentReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AppointmentReasonId" type="xs:long" />
+      <xs:element minOccurs="0" name="AppointmentSourceId" type="xs:long" />
+      <xs:element minOccurs="0" name="AppointmentStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="AppointmentStatusNew" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BalanceAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BloodId" type="xs:long" />
+      <xs:element minOccurs="0" name="Cancelschedule" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateOfBirthFromAge" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartmentId" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorId" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FutureAppointmentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FutureAppointmentFromTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderId" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsAcknowledged" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAge" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDocAttached" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsReschedule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatusId" type="xs:long" />
+      <xs:element minOccurs="0" name="MarkVisitStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileCountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedByName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MrNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationalityId" type="xs:long" />
+      <xs:element minOccurs="0" name="ParentAppointmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ParentAppointmentUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PastAppointmentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PastAppointmentFromTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientName2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="RegRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReminderCount" type="xs:long" />
+      <xs:element minOccurs="0" name="Reschedule" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResiNoCountryCode" type="xs:long" />
+      <xs:element minOccurs="0" name="ResiSTDCode" type="xs:long" />
+      <xs:element minOccurs="0" name="ResidenceNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Schedule1_EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule1_StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule2_EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule2_StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialRegistration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialRegistrationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ToTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnRegistered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitId" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitMark" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VisitType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_AppCancelReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_IsEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="_MrNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="createdByName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAppointmentVO" nillable="true" type="tns:clsAppointmentVO" />
+  <xs:complexType name="clsAddCancelAppReasonBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetails" nillable="true" type="tns:clsAppointmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddCancelAppReasonBizActionVO" nillable="true" type="tns:clsAddCancelAppReasonBizActionVO" />
+  <xs:complexType name="clsGetDoctorTimeBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetailsList" nillable="true" type="tns:ArrayOfclsAppointmentVO" />
+      <xs:element minOccurs="0" name="DoctorId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="InputSearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorTimeBizActionVO" nillable="true" type="tns:clsGetDoctorTimeBizActionVO" />
+  <xs:complexType name="clsGetFutureAppointmentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentList" nillable="true" type="tns:ArrayOfclsAppointmentVO" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpouseID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetFutureAppointmentBizActionVO" nillable="true" type="tns:clsGetFutureAppointmentBizActionVO" />
+  <xs:complexType name="clsCheckMarkVisitBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsAppointmentVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitMark" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckMarkVisitBizActionVO" nillable="true" type="tns:clsCheckMarkVisitBizActionVO" />
+  <xs:complexType name="clsCheckAppointmentTimeBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsAppointmentVO" />
+      <xs:element minOccurs="0" name="DoctorId" type="xs:long" />
+      <xs:element minOccurs="0" name="FromTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ToTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckAppointmentTimeBizActionVO" nillable="true" type="tns:clsCheckAppointmentTimeBizActionVO" />
+  <xs:complexType name="clsAddAppointmentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetails" nillable="true" type="tns:clsAppointmentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddAppointmentBizActionVO" nillable="true" type="tns:clsAddAppointmentBizActionVO" />
+  <xs:complexType name="clsCheckPatientDuplicacyAppointmentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetails" nillable="true" type="tns:clsAppointmentVO" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="PatientDetails" nillable="true" type="q1:clsPatientVO" />
+      <xs:element minOccurs="0" name="PatientEditMode" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="PatientList" nillable="true" type="q2:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="ResultStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckPatientDuplicacyAppointmentBizActionVO" nillable="true" type="tns:clsCheckPatientDuplicacyAppointmentBizActionVO" />
+  <xs:complexType name="clsGetAppointmentByDoctorAndAppointmentDateBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AppointmentDetailsList" nillable="true" type="tns:ArrayOfclsAppointmentVO" />
+      <xs:element minOccurs="0" name="DepartmentId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitId" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetAppointmentByDoctorAndAppointmentDateBizActionVO" nillable="true" type="tns:clsGetAppointmentByDoctorAndAppointmentDateBizActionVO" />
+  <xs:complexType name="clsGetAppointmentByIdBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetails" nillable="true" type="tns:clsAppointmentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetAppointmentByIdBizActionVO" nillable="true" type="tns:clsGetAppointmentByIdBizActionVO" />
+  <xs:complexType name="clsGetPastAppointmentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentList" nillable="true" type="tns:ArrayOfclsAppointmentVO" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpouseID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPastAppointmentBizActionVO" nillable="true" type="tns:clsGetPastAppointmentBizActionVO" />
+  <xs:complexType name="clsGetPendingAppointmentBizActioVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPendingAppointmentBizActioVO" nillable="true" type="tns:clsGetPendingAppointmentBizActioVO" />
+  <xs:complexType name="clsClosePendingAppointmentVO">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="clsClosePendingAppointmentVO" nillable="true" type="tns:clsClosePendingAppointmentVO" />
+  <xs:complexType name="clsCancelAppointmentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetails" nillable="true" type="tns:clsAppointmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCancelAppointmentBizActionVO" nillable="true" type="tns:clsCancelAppointmentBizActionVO" />
+  <xs:complexType name="clsGetAppointmentByMrNoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetails" nillable="true" type="tns:clsAppointmentVO" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetAppointmentByMrNoBizActionVO" nillable="true" type="tns:clsGetAppointmentByMrNoBizActionVO" />
+  <xs:complexType name="clsCheckMRnoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsAppointmentVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckMRnoBizActionVO" nillable="true" type="tns:clsCheckMRnoBizActionVO" />
+  <xs:complexType name="clsAddMarkVisitInAppointmenBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDetails" nillable="true" type="tns:clsAppointmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddMarkVisitInAppointmenBizActionVO" nillable="true" type="tns:clsAddMarkVisitInAppointmenBizActionVO" />
+</xs:schema>

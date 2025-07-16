@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.RSIJ" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.RSIJ" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd54" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.QueueManagement" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:complexType name="clsGetRSIJMasterListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeColumn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescriptionColumn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDate" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q1:ArrayOfMasterListItem" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterTable" type="q2:MasterTableNameList" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="Parent" nillable="true" type="q3:KeyValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRSIJMasterListBizActionVO" nillable="true" type="tns:clsGetRSIJMasterListBizActionVO" />
+  <xs:complexType name="clsGetRSIJDoctorDepartmentDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllRecord" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartmentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentId" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="FromBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromRoster" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForReferral" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsServiceWiseDoctorList" type="xs:boolean" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q4:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:long" />
+      <xs:element minOccurs="0" name="SpecialCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="_IsForReferral" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRSIJDoctorDepartmentDetailsBizActionVO" nillable="true" type="tns:clsGetRSIJDoctorDepartmentDetailsBizActionVO" />
+  <xs:complexType name="clsGetRSIJQueueListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentVisit" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DeptCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="NoReg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.QueueManagement" minOccurs="0" name="QueueList" nillable="true" type="q5:ArrayOfclsQueueVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecializationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRSIJQueueListBizActionVO" nillable="true" type="tns:clsGetRSIJQueueListBizActionVO" />
+  <xs:complexType name="clsGetRSIJDiagnosisMasterBizactionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Diagnosis" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisDetails" nillable="true" type="q6:ArrayOfclsEMRDiagnosisVO" />
+      <xs:element minOccurs="0" name="IsICD9" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRSIJDiagnosisMasterBizactionVO" nillable="true" type="tns:clsGetRSIJDiagnosisMasterBizactionVO" />
+  <xs:complexType name="clsGetRSIJItemListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompdName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFromCurrentMed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInsuraceDrug" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsQtyShow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemDetails" nillable="true" type="tns:clsRSIJItemMasterVO" />
+      <xs:element minOccurs="0" name="ItemList" nillable="true" type="tns:ArrayOfclsRSIJItemMasterVO" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MoleculeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRowCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRSIJItemListBizActionVO" nillable="true" type="tns:clsGetRSIJItemListBizActionVO" />
+  <xs:complexType name="clsRSIJItemMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DrugCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DrugName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoleculeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoleculeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Selected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StockQty" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsRSIJItemMasterVO" nillable="true" type="tns:clsRSIJItemMasterVO" />
+  <xs:complexType name="ArrayOfclsRSIJItemMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsRSIJItemMasterVO" nillable="true" type="tns:clsRSIJItemMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsRSIJItemMasterVO" nillable="true" type="tns:ArrayOfclsRSIJItemMasterVO" />
+  <xs:complexType name="clsGetRSIJLaboratoryServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q7:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="ModalityID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceDepartment" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceDetails" nillable="true" type="q8:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ServiceType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecializationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecializationID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubSpecializationID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRSIJLaboratoryServiceBizActionVO" nillable="true" type="tns:clsGetRSIJLaboratoryServiceBizActionVO" />
+  <xs:complexType name="clsGetRSIJDoctorScheduleTimeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DayID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="DoctorScheduleDetailsList" nillable="true" type="q9:ArrayOfclsDoctorScheduleDetailsVO" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecializationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRSIJDoctorScheduleTimeVO" nillable="true" type="tns:clsGetRSIJDoctorScheduleTimeVO" />
+  <xs:complexType name="clsDMSViewerVisitAdmissionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FolderID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ImgName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImgPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoOfFiles" type="xs:long" />
+      <xs:element minOccurs="0" name="OPD_IPD_External" type="xs:long" />
+      <xs:element minOccurs="0" name="ParentID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientVisitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDMSViewerVisitAdmissionVO" nillable="true" type="tns:clsDMSViewerVisitAdmissionVO" />
+  <xs:complexType name="ClsGetVisitAdmissionBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DMSViewerVisitAdmissionList" nillable="true" type="tns:ArrayOfclsDMSViewerVisitAdmissionVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClsGetVisitAdmissionBizActionVO" nillable="true" type="tns:ClsGetVisitAdmissionBizActionVO" />
+  <xs:complexType name="ArrayOfclsDMSViewerVisitAdmissionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsDMSViewerVisitAdmissionVO" nillable="true" type="tns:clsDMSViewerVisitAdmissionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsDMSViewerVisitAdmissionVO" nillable="true" type="tns:ArrayOfclsDMSViewerVisitAdmissionVO" />
+  <xs:complexType name="ClsGetImageBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImageByte" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ImagePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClsGetImageBizActionVO" nillable="true" type="tns:ClsGetImageBizActionVO" />
+</xs:schema>

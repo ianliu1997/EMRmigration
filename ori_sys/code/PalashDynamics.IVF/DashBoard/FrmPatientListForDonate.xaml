@@ -1,0 +1,265 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.FrmPatientListForDonate"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+          xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"  
+                      xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+             xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+             xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+                       xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+             xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+                      xmlns:inputs="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"     
+           Width="1000" Height="auto" 
+           Title="Couple Search" Loaded="ChildWindow_Loaded">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="White">
+
+
+        <my:DockPanel LastChildFill="True" Margin="4">
+            <Grid Height="Auto" Width="Auto" my:DockPanel.Dock="top" Visibility="Collapsed">
+                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Height="Auto" Width="Auto" Grid.Row="2">
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SavePAnel" Orientation="Horizontal"  Margin="0,0,0,0">
+
+                                    <ToggleButton  x:Name="cmdOK"  Grid.Row="4" Content="OK" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Style="{StaticResource ToggleButtonStyle}" Click="cmdOK_Click" TabIndex="8"/>
+                                    <!--<ToggleButton x:Name="CmdClose"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdClose_Click" TabIndex="9" />-->
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Width="Auto"  Margin="0" Grid.Row="0" DataContext="{Binding BizActionObject}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition  Width="Auto"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition  Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="chkPatientName"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"  Margin="4" Text="First Name" HorizontalAlignment="Right"></TextBlock>
+                            <TextBox TabIndex="0" x:Name="txtFirstName" Text="{Binding FirstName,Mode=TwoWay}"  Grid.Row="1"  Grid.Column="1" Margin="4" LostFocus="txtFirstName_LostFocus" MaxLength="50" KeyDown="txtFirstName_KeyDown" />
+
+                            <TextBlock Grid.Column="2" Grid.Row="1"  Margin="4" Text="Middle Name" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Collapsed"></TextBlock>
+                            <TextBox TabIndex="1" x:Name="txtMiddleName" Text="{Binding MiddleName,Mode=TwoWay}"  Grid.Row="1"  Grid.Column="3" Margin="4" LostFocus="txtMiddleName_LostFocus"  MaxLength="50"  KeyDown="txtFirstName_KeyDown" Visibility="Collapsed"/>
+
+                            <TextBlock Grid.Column="2" Grid.Row="1"  Margin="4" Text="Surname" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                            <TextBox TabIndex="2" x:Name="txtLastName" Text="{Binding LastName,Mode=TwoWay}"  Grid.Row="1"  Grid.Column="3" Margin="4" LostFocus="txtLastName_LostFocus" MaxLength="50"  KeyDown="txtFirstName_KeyDown"/>
+
+                            <TextBlock Grid.Column="0" Grid.Row="2"  Margin="4" Text="Family Name" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Collapsed"></TextBlock>
+                            <TextBox TabIndex="3" x:Name="txtFamilyName" Text="{Binding FamilyName,Mode=TwoWay}"  Grid.Row="2"  Grid.Column="1" Margin="4"  LostFocus="txtFamilyName_LostFocus" MaxLength="50"  KeyDown="txtFirstName_KeyDown" Visibility="Collapsed"/>
+
+                            <TextBlock x:Name="chkMrno"  VerticalAlignment="Center" Grid.Column="4" Grid.Row="1"  Margin="4" Text="MR. No." HorizontalAlignment="Right"></TextBlock>
+                            <TextBox TabIndex="4" x:Name="txtMrno" Text="{Binding MRNo,Mode=TwoWay}"  Grid.Row="1"   Grid.Column="5"   Margin="4"  MaxLength="30" KeyDown="txtFirstName_KeyDown" />
+
+                            <TextBlock VerticalAlignment="Center" Grid.Column="4" Grid.Row="2"  Margin="4" Text="OPD No." HorizontalAlignment="Right" Visibility="Collapsed"></TextBlock>
+                            <TextBox TabIndex="5" x:Name="txtOPDNo" Text="{Binding OPDNo,Mode=TwoWay}"  Grid.Row="2"   Grid.Column="5"   Margin="4" MaxLength="30"  KeyDown="txtFirstName_KeyDown" Visibility="Collapsed"/>
+
+
+
+                            <TextBlock Grid.Column="2" Grid.Row="3" Text="Contact No"  Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                            <TextBox Grid.Column="3" TabIndex="8" Grid.Row="3" x:Name="txtContactNo"  Margin="4" Text="{Binding ContactNo, Mode=TwoWay}" MaxLength="50"  KeyDown="txtFirstName_KeyDown" Visibility="Collapsed"></TextBox>
+
+                            <TextBlock Text="Universal ID"  Grid.Row="3" Grid.Column="4"  Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                            <TextBox Grid.Column="5" TabIndex="9" Grid.Row="3" x:Name="txtCivilID"  Margin="4" Text="{Binding CivilID, Mode=TwoWay}"  MaxLength="50"  KeyDown="txtFirstName_KeyDown" Visibility="Collapsed"></TextBox>
+
+
+                            <StackPanel Grid.Row="1" Grid.Column="6" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="6"  my:DockPanel.Dock="Top" x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="2"  >
+                                <ToggleButton TabIndex="20" x:Name="SearchButton"   Content="Search" MinWidth="45"  Background="#000000" Margin="2,0,0,0" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="PatientSearchButton_Click" Width="70" HorizontalAlignment="Right" />
+                            </StackPanel>
+                        </Grid >
+
+                        <Grid Height="200" Width="Auto" Grid.Row="1">
+                            <my:DockPanel LastChildFill="True">
+                                <data:DataPager TabIndex="20" x:Name="DataPager" my:DockPanel.Dock="Bottom" Grid.Row="1" PageSize="{Binding PageSize}" DisplayMode="FirstLastPreviousNext" IsEnabled="True" IsTotalItemCountFixed="True" Source="{Binding DataList}"  />
+                                <data:DataGrid Height="Auto" Width="Auto" Grid.Row="0" ItemsSource="{Binding DataList}"  x:Name="dataGrid2"  AutoGenerateColumns="False" SelectionChanged="dataGrid2_SelectionChanged">
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="MR No." Binding="{Binding MRNo}" />
+                                        <data:DataGridTemplateColumn IsReadOnly="True" Header="Patient Name" Width="150" SortMemberPath="FirstName">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding FirstName}" Margin="4,0,4,0"></TextBlock>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding MiddleName}" Margin="0,0,4,0"></TextBlock>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="DOB" Width="100"  Binding="{Binding DateOfBirth,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"/>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Registration Date" Binding="{Binding RegistrationDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"/>
+                                        <!--<data:DataGridTextColumn IsReadOnly="True" Header="Address" Width="170" Binding="{Binding Address}"/>-->
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Mobile No." Width="100" Binding="{Binding ContactNO1}"/>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Gender" Width="100" Binding="{Binding Gender}"/>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Marital Status" Width="100" Binding="{Binding MaritalStatus}"/>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Universal ID" Width="100" Binding="{Binding UniversalID}"/>
+
+
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </my:DockPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Height="Auto" Width="Auto" my:DockPanel.Dock="Top">
+                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                            <ContentControl x:Name="ConTitle" VerticalAlignment="Top" Grid.ColumnSpan="4" FontSize="12" Content="Oocyte Details" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch"/>
+                        </Border>
+                        <Grid Width="Auto"  Margin="0" Grid.Row="1" DataContext="{Binding BizActionObject}" Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="SelectedPatientName"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"  Margin="4" Text="Patient Name" HorizontalAlignment="Right"></TextBlock>
+                            <TextBox TabIndex="0" x:Name="txtSelectedPatientName" Text="{Binding PatientName,Mode=TwoWay}"  Grid.Row="0"  Grid.Column="1" Margin="4"  MaxLength="50" IsEnabled="False" />
+                            <TextBlock x:Name="chkSelectedMrNO"  VerticalAlignment="Center" Grid.Column="2" Grid.Row="0"  Margin="4" Text="MR. No." HorizontalAlignment="Right"></TextBlock>
+                            <TextBox TabIndex="4" x:Name="txtSelectedMrNO" Text="{Binding MRNo,Mode=TwoWay}"  Grid.Row="0"   Grid.Column="3"   Margin="4"  MaxLength="30" IsEnabled="False" />
+
+
+                        </Grid>
+                        <Grid Height="Auto" Width="Auto" Grid.Row="3" my:DockPanel.Dock="Bottom">
+                            <StackPanel Grid.Row="3" x:Name="FooterOocyte" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SavePAnelOocyte" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton  x:Name="cmdSaveOocyte"  Grid.Row="4" Content="Save" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Style="{StaticResource ToggleButtonStyle}" Click="cmdSaveOocyte_Click" TabIndex="8"/>
+                                    <ToggleButton x:Name="CmdClose"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdClose_Click" TabIndex="9" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+
+                        <!--oocyte data grid-->
+                        <Grid Height="200" Width="Auto" Grid.Row="2" x:Name="OocyteGrid" Visibility="Collapsed">
+                            <my:DockPanel LastChildFill="True">
+                                <data:DataPager TabIndex="20"   x:Name="OocyteDataPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNext" IsEnabled="True" IsTotalItemCountFixed="True" Source="{Binding }" AutoEllipsis="False"/>
+                                <data:DataGrid Height="Auto" Width="Auto" Grid.Row="0" ItemsSource="{Binding EmbryoList}"  x:Name="OocyteDataGrid"  AutoGenerateColumns="False" SelectionChanged="dataGrid2_SelectionChanged" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Oocyte No." Binding="{Binding EmbNumber}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Date" Binding="{Binding VitrificationDate}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="MR. No." Binding="{Binding MRNo}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Name" Width="150" Binding="{Binding PatientName}"/>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Tank" Binding="{Binding Tank}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Cane" Binding="{Binding Can}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Canister No." Binding="{Binding Conistor}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Straw" Binding="{Binding Straw}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Shape" Binding="{Binding GobletShape}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Color" Binding="{Binding ColorCode}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Size" Binding="{Binding GobletSize}" />
+                                        <!--<data:DataGridTextColumn IsReadOnly="True" Header="Cell Stage" Binding="{Binding CellStage}" />-->
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Grade" Binding="{Binding Grade}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Plan Day" Binding="{Binding TransferDay}" />
+                                        <data:DataGridTemplateColumn Header="Discard" >
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsDiscard,Mode=TwoWay}" Click="CheckBox_Click" Margin="6" ></CheckBox>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <inputs:AutoCompleteComboBox  Margin="4" ItemsSource="{Binding PlanList}"   SelectedItem="{Binding SelectedPlanId,Mode=TwoWay}"  SelectedValue="{Binding SelectedPlanId.ID}" VerticalAlignment="Top" Text="" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </my:DockPanel>
+                        </Grid>
+
+
+                        <!--Embryo data Grid-->
+                        <Grid Height="200" Width="Auto" Grid.Row="2" x:Name="EmbGrid" Visibility="Collapsed">
+                            <my:DockPanel LastChildFill="True">
+                                <data:DataPager TabIndex="20" x:Name="EmbryoDataPager" controlsToolkit:DockPanel.Dock="Bottom"  DisplayMode="FirstLastPreviousNext" IsEnabled="True" IsTotalItemCountFixed="True" Source="{Binding }" AutoEllipsis="False"/>
+                                <data:DataGrid Height="Auto" Width="Auto" Grid.Row="0" ItemsSource="{Binding EmbryoList}"  x:Name="EmbryoDataGrid"  AutoGenerateColumns="False" SelectionChanged="dataGrid2_SelectionChanged" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Emb No." Binding="{Binding EmbNumber}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Date" Binding="{Binding VitrificationDate}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="MR. No." Binding="{Binding MRNo}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Name" Width="150" Binding="{Binding PatientName}"/>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Tank" Binding="{Binding Tank}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Cane" Binding="{Binding Can}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Canister No." Binding="{Binding Conistor}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Straw" Binding="{Binding Straw}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Shape" Binding="{Binding GobletShape}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Color" Binding="{Binding ColorCode}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Size" Binding="{Binding GobletSize}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Cell Stage" Binding="{Binding CellStage}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Grade" Binding="{Binding Grade}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Plan Day" Binding="{Binding TransferDay}" />
+                                        <data:DataGridTemplateColumn Header="Discard" >
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsDiscard,Mode=TwoWay}" Click="CheckBoxEmb_Click" Margin="6"></CheckBox>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTemplateColumn Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <inputs:AutoCompleteComboBox  Margin="4" ItemsSource="{Binding PlanList}"   SelectedItem="{Binding SelectedPlanId,Mode=TwoWay}"  SelectedValue="{Binding SelectedPlanId.ID}" VerticalAlignment="Top" Text="" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </my:DockPanel>
+                        </Grid>
+                        
+                    </Grid>
+                </Border>
+            </Grid>
+        </my:DockPanel>
+    </Grid>
+
+</controls:ChildWindow>

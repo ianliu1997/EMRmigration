@@ -1,0 +1,138 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.CRM.LoyaltyProgramNewTariff"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    Width="700" Height="500"  
+    Title="New Tariff"  Loaded="LoyaltyProgramViewTariff_Loaded"  Background="White"> 
+     
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="2" Background="White">
+        <Grid>
+
+            <controlsToolkit:DockPanel   Name="docMain" LastChildFill="True" controlsToolkit:DockPanel.Dock= "Top" >
+                
+                <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" >
+                    <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                        <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                            <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                <ToggleButton  x:Name="cmdSave"  Grid.Row="4" Content="Save" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="cmdSave_Click" TabIndex="9"/>
+                                <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}" Click="cmdClose_Click" TabIndex="10"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </controlsToolkit:DockPanel>
+                </controlsToolkit:DockPanel>
+                
+                <controlsToolkit:DockPanel x:Name="docTop" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4" Background="Transparent" >
+                        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                            <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock= "Top" >
+                                <Grid x:Name="LayoutRoot1"  Margin="0" Background="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                      
+                                    </Grid.RowDefinitions>
+                                    <TextBlock  VerticalAlignment="Center" Text="Tariff Code" Margin="4" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBox x:Name="txtTariffCode" Text="{Binding Code, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" TabIndex="0" Height="25" ></TextBox>
+
+                                    <TextBlock  VerticalAlignment="Center" Text="Tariff Name" Margin="4" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBox x:Name="txtTariffName" Text="{Binding Description, Mode=TwoWay}" Grid.Row="0" Grid.Column="3" Margin="4" HorizontalAlignment="Stretch" TabIndex="1" Height="25" ></TextBox>
+
+
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                            <controlsToolkit:DockPanel x:Name="DocBottom" controlsToolkit:DockPanel.Dock="Bottom">
+                                <Grid x:Name="LayoutRoot3"  Margin="0" Background="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition  Width="Auto" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto"/>
+                                    
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                     <RowDefinition Height="Auto"/>
+                                     <RowDefinition Height="Auto"/>
+                                      
+                                    </Grid.RowDefinitions>
+                                    <TextBlock  VerticalAlignment="Center" Text="No.of Visits" Margin="4" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <RadioButton x:Name="cmdAll" IsChecked="{Binding AllVisit, Mode=TwoWay}" Content="All" Grid.Row="0" Grid.Column="1"  Margin="4"  TabIndex="3" ></RadioButton>
+                                        <RadioButton x:Name="cmdSpecify" IsChecked="{Binding Specify, Mode=TwoWay}" Content="Specify" Grid.Row="0" Grid.Column="2"  Margin="4" Click="cmdSpecify_Click" Unchecked="cmdSpecify_Unchecked"  TabIndex="4"></RadioButton>
+                                    </StackPanel>
+
+                                    <TextBox x:Name="txtSpecify" Text="{Binding NoOfVisit, Mode=TwoWay}" IsReadOnly="True" Grid.Row="0" Grid.Column="2"  Margin="4" HorizontalAlignment="Stretch" TabIndex="5" ></TextBox>
+
+                                    <CheckBox x:Name="chkDate" IsChecked="{Binding CheckDate, Mode=TwoWay}"  Content="Check Date" Grid.Row="1" Grid.Column="0"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Right" TabIndex="6" IsEnabled="False"></CheckBox>
+                                    
+                                    <TextBlock  VerticalAlignment="Center" Text="Effective Date" Margin="4" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                                    <controls:DatePicker SelectedDate="{Binding EffectiveDate,Mode=TwoWay}"  x:Name="dtpEffectiveDate" Margin="4" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" TabIndex="7" IsEnabled="False" />
+                                    
+                                    <TextBlock  VerticalAlignment="Center" Text="Expiry Date" Margin="4" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right"></TextBlock>
+                                    <controls:DatePicker SelectedDate="{Binding ExpiryDate,Mode=TwoWay}"  x:Name="dtpExpiryDate" Margin="4" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" TabIndex="8" IsEnabled="False"/>
+
+                                </Grid>
+
+                            </controlsToolkit:DockPanel>
+                            <controlsToolkit:DockPanel   Name="doc4"  Margin="2">
+                                <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="List of Service" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="Auto"></RowDefinition>
+                                        <RowDefinition  ></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <CheckBox x:Name="chkSelectAll" Margin="4"  Grid.Row="0" Content="Select All" HorizontalAlignment="Left" IsChecked="{Binding Path=SelectPatientCategory,Mode=TwoWay}" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Unchecked"/>
+
+                                    <data:DataGrid x:Name="dgServiceList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0" HorizontalAlignment="Stretch" TabIndex="2" Grid.Row="1">
+                                        <data:DataGrid.Columns>
+                                            <data:DataGridTemplateColumn Header="Select">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox x:Name="chkService"  IsChecked="{Binding SelectService, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Click="chkService_Click"></CheckBox>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTextColumn Binding="{Binding ServiceName}"  Header="Service Name" ></data:DataGridTextColumn>
+                                            <data:DataGridTextColumn Binding="{Binding Rate}"  Header="Rate" ></data:DataGridTextColumn>
+                                        </data:DataGrid.Columns>
+                                    </data:DataGrid>
+                                </Grid>
+
+
+                            </controlsToolkit:DockPanel>
+                        
+                        </controlsToolkit:DockPanel>
+                    </Border>
+
+                </controlsToolkit:DockPanel>
+
+            </controlsToolkit:DockPanel>
+
+        </Grid>
+
+    </Grid>
+</controls:ChildWindow>

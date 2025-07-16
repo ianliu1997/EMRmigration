@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="DataDrivenApplication.PrintPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    >
+
+    <Grid x:Name="documentRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>            
+            <RowDefinition />            
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="HeaderStackPanel" Orientation="Horizontal" Margin="10,10,10,10" >
+            <TextBlock x:Name="txtPatientName" Foreground="Blue" FontSize="20" Width="Auto"  Margin="10,0,20,0"/>
+            <TextBlock x:Name="txtTemplate" Foreground="Blue"  FontSize="20" Width="Auto"  Margin="200,0,20,0"/>            
+        </StackPanel>        
+        <Grid Grid.Row="1" x:Name="PageBody" Margin="50,0,50,0"> 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>            
+        </Grid>        
+    </Grid>
+</UserControl>

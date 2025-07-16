@@ -1,0 +1,49 @@
+﻿<controls:ChildWindow x:Class="EMR.FrmHistorySelection"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"                      
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+           xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+           Width="450" Height="170" HasCloseButton="False">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2" Background="White" Height="130">
+        <toolkit:DockPanel LastChildFill="True">
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Left"  >
+                        <ToggleButton Content="{Binding btnprinthistory,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdAssign" Click="cmdAssign_Click"  Width="auto" Margin="5,0,10,0"></ToggleButton>
+                        <ToggleButton Content="{Binding btnCancel,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click_1"  Width="auto" Margin="5,0,10,0"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <Grid Height="auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <RadioButton x:Name="History" Tag="1" Content="Print summary" Grid.Column="0" Grid.Row="0" Margin="4,4,10,4" ></RadioButton>
+                    <RadioButton x:Name="nmHistory" Tag="2" Content="History" Grid.Column="0" Grid.Row="1" Margin="4,4,10,4"></RadioButton>
+                    <RadioButton x:Name="Couple" Tag="3" Content="Couple History" Grid.Column="0" Grid.Row="2" Margin="4,4,10,4" Visibility="Collapsed"></RadioButton>
+
+                    <RadioButton x:Name="Hystroscopy" Tag="1" Content="Hystroscopy" Grid.Column="1" Grid.Row="0" Margin="4"  ></RadioButton>
+                    <RadioButton x:Name="Laproscopy" Tag="1" Content="Laproscopy" Grid.Column="1" Grid.Row="1" Margin="4" ></RadioButton>
+                </Grid>
+            </Border>
+        </toolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

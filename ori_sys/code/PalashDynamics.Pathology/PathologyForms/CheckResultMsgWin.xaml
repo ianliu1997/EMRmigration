@@ -1,0 +1,97 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Pathology.PathologyForms.CheckResultMsgWin"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+           xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+           xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"              
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"                                 
+           Width="Auto" Height="Auto"             
+           Title="Check Status Window" Loaded="ChildWindow_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+
+            <controlsToolkit:DockPanel   Name="docMain" LastChildFill="True" controlsToolkit:DockPanel.Dock= "Top" >
+
+                <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" >
+                    <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+
+                    </controlsToolkit:DockPanel>
+                </controlsToolkit:DockPanel>
+
+                <controlsToolkit:DockPanel x:Name="docTop" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                    <Border BorderThickness="1" CornerRadius="3,3,0,0" Margin="4" Background="Transparent" >
+                        <controlsToolkit:DockPanel toolkit:DockPanel.Dock="Top">
+
+                            <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock= "Top" >
+                                <Grp:GroupBox x:Name="grpBatchDetails" IsTabStop="False" Header="User Information" Grid.Row="0" Grid.Column="0" Margin="4" >
+                                    <Grid x:Name="LayoutRoot1"  Margin="0" Background="White">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="User Name :" Margin="4" Grid.Row="0" Grid.Column="0" />
+                                        <TextBlock x:Name="lblUserName" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="4" Grid.Row="0" />
+                                    </Grid>
+                                </Grp:GroupBox>
+                            </controlsToolkit:DockPanel>
+                            <controlsToolkit:DockPanel x:Name="docHeader2" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <controlsToolkit:DockPanel   Name="doc4"  Margin="2" controlsToolkit:DockPanel.Dock= "Left" Grid.Column="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Grid.Row="0" controlsToolkit:DockPanel.Dock="Top" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="Message For Check Results" Margin="-1" HorizontalAlignment="Stretch" />
+                                            </Border>
+                                            <TextBox Height="150" Width="300" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" AcceptsReturn="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                                     TextWrapping="Wrap" HorizontalAlignment="Right" FontSize="11" FontWeight="Normal" Grid.Column="1" Grid.Row="4" x:Name="txtCheckResultMsg" Text=""></TextBox>
+                                        </Grid>
+                                    </controlsToolkit:DockPanel>
+                                    <controlsToolkit:DockPanel   Name="doc5"  Margin="2" controlsToolkit:DockPanel.Dock="Right" Grid.Column="1">
+                                        <Border  controlsToolkit:DockPanel.Dock="Top" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                        </Border>
+                                    </controlsToolkit:DockPanel>
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                        </controlsToolkit:DockPanel>
+                    </Border>
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+        </Grid>
+        <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+            <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                <ToggleButton  x:Name="cmdAdd"  Grid.Row="4" Content="Submit" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="Submit_Click" TabIndex="7" />
+                <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}" Click="CancelButton_Click" TabIndex="8"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</controls:ChildWindow>

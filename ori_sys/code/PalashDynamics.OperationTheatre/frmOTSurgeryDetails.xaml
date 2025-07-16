@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="PalashDynamics.OperationTheatre.frmOTSurgeryDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization" 
+             xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="auto" Width="auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <controlsToolkit:DockPanel Grid.Column="0" controlsToolkit:DockPanel.Dock="Left" HorizontalAlignment="Left">
+                        <ToggleButton  Margin="4" Content="{Binding btnNewProcedure,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdNewProcedure" Click="cmdNewProcedure_Click" Height="20" Width="108"></ToggleButton>
+                    </controlsToolkit:DockPanel>
+                    <controlsToolkit:DockPanel Grid.Column="2" controlsToolkit:DockPanel.Dock="Right" HorizontalAlignment="Right">
+                        <ToggleButton  Margin="4" Content="{Binding btnModify,Source={StaticResource locResource}}"  Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" IsEnabled="False" Click="cmdModify_Click"></ToggleButton>
+                        <ToggleButton   Margin="4" Content="{Binding btnSave,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" ></ToggleButton>
+                        <!--<ToggleButton  Margin="4" Content="{Binding btnCancel,Source={StaticResource locResource}}"  Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" ></ToggleButton>-->
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+                <!--<StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel HorizontalAlignment="Right" Orientation="Vertical">
+                        <ToggleButton   Margin="4" Content="{Binding btnNew,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdProcedure"  ></ToggleButton>
+                        <HyperlinkButton  Content="{Binding hlGetProcedureDetails,Source={StaticResource locResource}}" Margin="4" HorizontalAlignment="Left"  x:Name="hlProcedure" Click="hlProcedure_Click" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton   Margin="4" Content="{Binding btnSave,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" ></ToggleButton>
+                        <ToggleButton  Margin="4" Content="{Binding btnCancel,Source={StaticResource locResource}}"  Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" ></ToggleButton>
+                    </StackPanel>
+                </StackPanel>-->
+            </Border>
+
+            <Grid Background="White" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+
+                <data:DataGrid  x:Name="grdSurgery" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False"  Grid.Row="0" Grid.ColumnSpan="4" >
+                    <data:DataGrid.Columns>
+                        <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblSurgeryCode, Source={StaticResource locResource}}"  Binding="{Binding ProcCode}" Width="Auto" Visibility="Collapsed"/>
+                        <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblSurgeryDesc,Source={StaticResource locResource}}"  Binding="{Binding ProcDesc}" Width="Auto"/>
+                        <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblIsEmergency,Source={StaticResource locResource}}" IsReadOnly="False" MinWidth="150">
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="chkIsEmergency" Margin="4"  VerticalAlignment="Center" IsChecked="{Binding IsEmergency, Mode=TwoWay}"/>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblIsHighRisk,Source={StaticResource locResource}}" IsReadOnly="False" MinWidth="150">
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="chkIsHighRisk"  Margin="4" VerticalAlignment="Center" IsChecked="{Binding IsHighRisk, Mode=TwoWay}"/>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblQuantity,Source={StaticResource locResource}}" IsReadOnly="False" MinWidth="100" Visibility="Collapsed">
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Path=Quantity, Mode=TwoWay,StringFormat=0.00}" Margin="4" MaxLength="2" ></TextBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn Header=" ">
+                            <data:DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate>
+                                    <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteSurgeryItem" Click="cmdDeleteSurgeryItem_Click" ToolTipService.ToolTip="{Binding totipDelete,Source={StaticResource locResource}}" ></HyperlinkButton>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+                    </data:DataGrid.Columns>
+                </data:DataGrid>
+            </Grid>
+        </controlsToolkit:DockPanel>
+
+    </Grid>
+
+</UserControl>

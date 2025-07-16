@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="DataDrivenApplication.PatientFeedback"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:Common="clr-namespace:DataDrivenApplication"
+    xmlns:Data="clr-namespace:System.Windows;assembly=System.Windows.Controls"
+    xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"             
+    >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White"  Margin="10">
+        <ContentControl x:Name="Feedback" Template="{StaticResource FilledContentControlTemplate}"></ContentControl>
+    </Grid>
+</UserControl>

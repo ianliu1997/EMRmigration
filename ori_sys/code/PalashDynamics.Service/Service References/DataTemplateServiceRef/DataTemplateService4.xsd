@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.Web.EMR" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.Web.EMR" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="EMRTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Template" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemplateId" type="xs:long" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EMRTemplate" nillable="true" type="tns:EMRTemplate" />
+  <xs:complexType name="ArrayOfEMRTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EMRTemplate" nillable="true" type="tns:EMRTemplate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEMRTemplate" nillable="true" type="tns:ArrayOfEMRTemplate" />
+  <xs:complexType name="ArrayOfIntraTemplateRelation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IntraTemplateRelation" nillable="true" type="tns:IntraTemplateRelation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIntraTemplateRelation" nillable="true" type="tns:ArrayOfIntraTemplateRelation" />
+  <xs:complexType name="IntraTemplateRelation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationId" type="xs:long" />
+      <xs:element minOccurs="0" name="SourceFieldId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceSectionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TargetFieldId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TargetSectionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemplateId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IntraTemplateRelation" nillable="true" type="tns:IntraTemplateRelation" />
+  <xs:complexType name="PatientEMRData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientId" type="xs:long" />
+      <xs:element minOccurs="0" name="SavedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Template" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemplateId" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitId" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientEMRData" nillable="true" type="tns:PatientEMRData" />
+  <xs:complexType name="Variance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClinicId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DoctorId" type="xs:long" />
+      <xs:element minOccurs="0" name="ListVariance1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListVariance2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListVariance3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListVariance4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListVariance5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListVariance6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListVariance7" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientId" type="xs:long" />
+      <xs:element minOccurs="0" name="Variance1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Variance2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Variance3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Variance4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Variance5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Variance6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Variance7" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VarianceId" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitId" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Variance" nillable="true" type="tns:Variance" />
+  <xs:complexType name="ArrayOfVariance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Variance" nillable="true" type="tns:Variance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVariance" nillable="true" type="tns:ArrayOfVariance" />
+  <xs:complexType name="ArrayOfPatientEMRData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PatientEMRData" nillable="true" type="tns:PatientEMRData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPatientEMRData" nillable="true" type="tns:ArrayOfPatientEMRData" />
+</xs:schema>

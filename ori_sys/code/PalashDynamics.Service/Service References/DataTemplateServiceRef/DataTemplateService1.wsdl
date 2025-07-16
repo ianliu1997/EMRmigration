@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="/Imports">
+      <xsd:import schemaLocation="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc?xsd=xsd0" />
+      <xsd:import schemaLocation="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" />
+      <xsd:import schemaLocation="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.Web.EMR" />
+      <xsd:import schemaLocation="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DataTemplateService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="DoWork" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SaveTemplate_InputMessage">
+    <wsdl:part name="parameters" element="SaveTemplate" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SaveTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="SaveTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SaveTemplate_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q1:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UpdateTemplate_InputMessage">
+    <wsdl:part name="parameters" element="UpdateTemplate" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UpdateTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UpdateTemplate_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q2:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteTemplate_InputMessage">
+    <wsdl:part name="parameters" element="DeleteTemplate" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteTemplate_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q3:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetTemplatesDetailsByTemplateTitle_InputMessage">
+    <wsdl:part name="parameters" element="GetTemplatesDetailsByTemplateTitle" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetTemplatesDetailsByTemplateTitle_OutputMessage">
+    <wsdl:part name="parameters" element="GetTemplatesDetailsByTemplateTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetTemplatesDetailsByTemplateTitle_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q4:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetTemplatesList_InputMessage">
+    <wsdl:part name="parameters" element="GetTemplatesList" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetTemplatesList_OutputMessage">
+    <wsdl:part name="parameters" element="GetTemplatesListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetTemplatesList_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q5:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetRelationList_InputMessage">
+    <wsdl:part name="parameters" element="GetRelationList" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetRelationList_OutputMessage">
+    <wsdl:part name="parameters" element="GetRelationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetRelationList_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q6:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SavePatientEMR_InputMessage">
+    <wsdl:part name="parameters" element="SavePatientEMR" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SavePatientEMR_OutputMessage">
+    <wsdl:part name="parameters" element="SavePatientEMRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SavePatientEMR_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q7:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SavePatientEMR1_InputMessage">
+    <wsdl:part name="parameters" element="SavePatientEMR1" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SavePatientEMR1_OutputMessage">
+    <wsdl:part name="parameters" element="SavePatientEMR1Response" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SavePatientEMR1_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q8:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UpdatePatientEMR_InputMessage">
+    <wsdl:part name="parameters" element="UpdatePatientEMR" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UpdatePatientEMR_OutputMessage">
+    <wsdl:part name="parameters" element="UpdatePatientEMRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UpdatePatientEMR_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q9:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetPatientEMRByPatientIdAndTemplateId_InputMessage">
+    <wsdl:part name="parameters" element="GetPatientEMRByPatientIdAndTemplateId" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetPatientEMRByPatientIdAndTemplateId_OutputMessage">
+    <wsdl:part name="parameters" element="GetPatientEMRByPatientIdAndTemplateIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetPatientEMRByPatientIdAndTemplateId_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q10:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetFileList_InputMessage">
+    <wsdl:part name="parameters" element="GetFileList" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetFileList_OutputMessage">
+    <wsdl:part name="parameters" element="GetFileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetFileList_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q11:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetFilePath_InputMessage">
+    <wsdl:part name="parameters" element="GetFilePath" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetFilePath_OutputMessage">
+    <wsdl:part name="parameters" element="GetFilePathResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetFilePath_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q12:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadFile_InputMessage">
+    <wsdl:part name="parameters" element="UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q13:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeletePathReportFile_InputMessage">
+    <wsdl:part name="parameters" element="DeletePathReportFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeletePathReportFile_OutputMessage">
+    <wsdl:part name="parameters" element="DeletePathReportFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeletePathReportFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q14:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForPathology_InputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForPathology" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForPathology_OutputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForPathologyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForPathology_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q15:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_AttachmentFile_InputMessage">
+    <wsdl:part name="parameters" element="AttachmentFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_AttachmentFile_OutputMessage">
+    <wsdl:part name="parameters" element="AttachmentFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_AttachmentFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q16:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteAttachmentFile_InputMessage">
+    <wsdl:part name="parameters" element="DeleteAttachmentFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteAttachmentFile_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteAttachmentFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteAttachmentFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q17:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_ActivationFile_InputMessage">
+    <wsdl:part name="parameters" element="ActivationFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_ActivationFile_OutputMessage">
+    <wsdl:part name="parameters" element="ActivationFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_ActivationFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q18:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetApplicationPath_InputMessage">
+    <wsdl:part name="parameters" element="GetApplicationPath" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetApplicationPath_OutputMessage">
+    <wsdl:part name="parameters" element="GetApplicationPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetApplicationPath_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q19:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetActivationFile_InputMessage">
+    <wsdl:part name="parameters" element="GetActivationFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetActivationFile_OutputMessage">
+    <wsdl:part name="parameters" element="GetActivationFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetActivationFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q20:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFile_InputMessage">
+    <wsdl:part name="parameters" element="UploadReportFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFile_OutputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q21:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForRadiology_InputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForRadiology" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForRadiology_OutputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForRadiologyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForRadiology_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q22:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForDischarge_InputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForDischarge" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForDischarge_OutputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForDischargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForDischarge_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q23:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForConsent_InputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForConsent" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForConsent_OutputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForConsentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForConsent_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q24:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForMLCase_InputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForMLCase" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForMLCase_OutputMessage">
+    <wsdl:part name="parameters" element="UploadReportFileForMLCaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadReportFileForMLCase_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q25:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GlobalUploadFile_InputMessage">
+    <wsdl:part name="parameters" element="GlobalUploadFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GlobalUploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="GlobalUploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GlobalUploadFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q26:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GlobalDeleteFile_InputMessage">
+    <wsdl:part name="parameters" element="GlobalDeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GlobalDeleteFile_OutputMessage">
+    <wsdl:part name="parameters" element="GlobalDeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GlobalDeleteFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q27:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadETemplateFile_InputMessage">
+    <wsdl:part name="parameters" element="UploadETemplateFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadETemplateFile_OutputMessage">
+    <wsdl:part name="parameters" element="UploadETemplateFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_UploadETemplateFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q28:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteReportFile_InputMessage">
+    <wsdl:part name="parameters" element="DeleteReportFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteReportFile_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteReportFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteReportFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q29:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteMISReportFile_InputMessage">
+    <wsdl:part name="parameters" element="DeleteMISReportFile" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteMISReportFile_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteMISReportFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_DeleteMISReportFile_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q30:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SaveVariance_InputMessage">
+    <wsdl:part name="parameters" element="SaveVariance" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SaveVariance_OutputMessage">
+    <wsdl:part name="parameters" element="SaveVarianceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_SaveVariance_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q31:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetVarinceList_InputMessage">
+    <wsdl:part name="parameters" element="GetVarinceList" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetVarinceList_OutputMessage">
+    <wsdl:part name="parameters" element="GetVarinceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetVarinceList_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q32:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetPatientEMRList_InputMessage">
+    <wsdl:part name="parameters" element="GetPatientEMRList" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetPatientEMRList_OutputMessage">
+    <wsdl:part name="parameters" element="GetPatientEMRListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_GetPatientEMRList_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q33:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_OpenCreatedRadReport_InputMessage">
+    <wsdl:part name="parameters" element="OpenCreatedRadReport" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_OpenCreatedRadReport_OutputMessage">
+    <wsdl:part name="parameters" element="OpenCreatedRadReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataTemplateService_OpenCreatedRadReport_ConcurrencyExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/WcfExceptionExample.Web.DataContracts" name="detail" element="q34:ConcurrencyException" />
+  </wsdl:message>
+  <wsdl:portType name="DataTemplateService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/DoWork" message="DataTemplateService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/DoWorkResponse" message="DataTemplateService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTemplate">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/SaveTemplate" message="DataTemplateService_SaveTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/SaveTemplateResponse" message="DataTemplateService_SaveTemplate_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/SaveTemplateConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_SaveTemplate_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTemplate">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UpdateTemplate" message="DataTemplateService_UpdateTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UpdateTemplateResponse" message="DataTemplateService_UpdateTemplate_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UpdateTemplateConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UpdateTemplate_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTemplate">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/DeleteTemplate" message="DataTemplateService_DeleteTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/DeleteTemplateResponse" message="DataTemplateService_DeleteTemplate_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/DeleteTemplateConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_DeleteTemplate_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplatesDetailsByTemplateTitle">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetTemplatesDetailsByTemplateTitle" message="DataTemplateService_GetTemplatesDetailsByTemplateTitle_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetTemplatesDetailsByTemplateTitleResponse" message="DataTemplateService_GetTemplatesDetailsByTemplateTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetTemplatesDetailsByTemplateTitleConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetTemplatesDetailsByTemplateTitle_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplatesList">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetTemplatesList" message="DataTemplateService_GetTemplatesList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetTemplatesListResponse" message="DataTemplateService_GetTemplatesList_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetTemplatesListConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetTemplatesList_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationList">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetRelationList" message="DataTemplateService_GetRelationList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetRelationListResponse" message="DataTemplateService_GetRelationList_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetRelationListConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetRelationList_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePatientEMR">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/SavePatientEMR" message="DataTemplateService_SavePatientEMR_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/SavePatientEMRResponse" message="DataTemplateService_SavePatientEMR_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/SavePatientEMRConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_SavePatientEMR_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePatientEMR1">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/SavePatientEMR1" message="DataTemplateService_SavePatientEMR1_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/SavePatientEMR1Response" message="DataTemplateService_SavePatientEMR1_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/SavePatientEMR1ConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_SavePatientEMR1_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePatientEMR">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UpdatePatientEMR" message="DataTemplateService_UpdatePatientEMR_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UpdatePatientEMRResponse" message="DataTemplateService_UpdatePatientEMR_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UpdatePatientEMRConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UpdatePatientEMR_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientEMRByPatientIdAndTemplateId">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetPatientEMRByPatientIdAndTemplateId" message="DataTemplateService_GetPatientEMRByPatientIdAndTemplateId_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetPatientEMRByPatientIdAndTemplateIdResponse" message="DataTemplateService_GetPatientEMRByPatientIdAndTemplateId_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetPatientEMRByPatientIdAndTemplateIdConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetPatientEMRByPatientIdAndTemplateId_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileList">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetFileList" message="DataTemplateService_GetFileList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetFileListResponse" message="DataTemplateService_GetFileList_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetFileListConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetFileList_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilePath">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetFilePath" message="DataTemplateService_GetFilePath_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetFilePathResponse" message="DataTemplateService_GetFilePath_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetFilePathConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetFilePath_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadFile" message="DataTemplateService_UploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadFileResponse" message="DataTemplateService_UploadFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePathReportFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/DeletePathReportFile" message="DataTemplateService_DeletePathReportFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/DeletePathReportFileResponse" message="DataTemplateService_DeletePathReportFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/DeletePathReportFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_DeletePathReportFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForPathology">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadReportFileForPathology" message="DataTemplateService_UploadReportFileForPathology_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadReportFileForPathologyResponse" message="DataTemplateService_UploadReportFileForPathology_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadReportFileForPathologyConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadReportFileForPathology_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachmentFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/AttachmentFile" message="DataTemplateService_AttachmentFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/AttachmentFileResponse" message="DataTemplateService_AttachmentFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/AttachmentFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_AttachmentFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAttachmentFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/DeleteAttachmentFile" message="DataTemplateService_DeleteAttachmentFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/DeleteAttachmentFileResponse" message="DataTemplateService_DeleteAttachmentFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/DeleteAttachmentFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_DeleteAttachmentFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivationFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/ActivationFile" message="DataTemplateService_ActivationFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/ActivationFileResponse" message="DataTemplateService_ActivationFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/ActivationFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_ActivationFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationPath">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetApplicationPath" message="DataTemplateService_GetApplicationPath_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetApplicationPathResponse" message="DataTemplateService_GetApplicationPath_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetApplicationPathConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetApplicationPath_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetActivationFile" message="DataTemplateService_GetActivationFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetActivationFileResponse" message="DataTemplateService_GetActivationFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetActivationFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetActivationFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadReportFile" message="DataTemplateService_UploadReportFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadReportFileResponse" message="DataTemplateService_UploadReportFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadReportFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadReportFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForRadiology">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadReportFileForRadiology" message="DataTemplateService_UploadReportFileForRadiology_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadReportFileForRadiologyResponse" message="DataTemplateService_UploadReportFileForRadiology_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadReportFileForRadiologyConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadReportFileForRadiology_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForDischarge">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadReportFileForDischarge" message="DataTemplateService_UploadReportFileForDischarge_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadReportFileForDischargeResponse" message="DataTemplateService_UploadReportFileForDischarge_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadReportFileForDischargeConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadReportFileForDischarge_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForConsent">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadReportFileForConsent" message="DataTemplateService_UploadReportFileForConsent_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadReportFileForConsentResponse" message="DataTemplateService_UploadReportFileForConsent_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadReportFileForConsentConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadReportFileForConsent_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForMLCase">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadReportFileForMLCase" message="DataTemplateService_UploadReportFileForMLCase_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadReportFileForMLCaseResponse" message="DataTemplateService_UploadReportFileForMLCase_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadReportFileForMLCaseConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadReportFileForMLCase_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GlobalUploadFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GlobalUploadFile" message="DataTemplateService_GlobalUploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GlobalUploadFileResponse" message="DataTemplateService_GlobalUploadFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GlobalUploadFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GlobalUploadFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GlobalDeleteFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GlobalDeleteFile" message="DataTemplateService_GlobalDeleteFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GlobalDeleteFileResponse" message="DataTemplateService_GlobalDeleteFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GlobalDeleteFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GlobalDeleteFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadETemplateFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/UploadETemplateFile" message="DataTemplateService_UploadETemplateFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/UploadETemplateFileResponse" message="DataTemplateService_UploadETemplateFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/UploadETemplateFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_UploadETemplateFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReportFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/DeleteReportFile" message="DataTemplateService_DeleteReportFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/DeleteReportFileResponse" message="DataTemplateService_DeleteReportFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/DeleteReportFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_DeleteReportFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMISReportFile">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/DeleteMISReportFile" message="DataTemplateService_DeleteMISReportFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/DeleteMISReportFileResponse" message="DataTemplateService_DeleteMISReportFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/DeleteMISReportFileConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_DeleteMISReportFile_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveVariance">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/SaveVariance" message="DataTemplateService_SaveVariance_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/SaveVarianceResponse" message="DataTemplateService_SaveVariance_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/SaveVarianceConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_SaveVariance_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVarinceList">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetVarinceList" message="DataTemplateService_GetVarinceList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetVarinceListResponse" message="DataTemplateService_GetVarinceList_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetVarinceListConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetVarinceList_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientEMRList">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/GetPatientEMRList" message="DataTemplateService_GetPatientEMRList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/GetPatientEMRListResponse" message="DataTemplateService_GetPatientEMRList_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/GetPatientEMRListConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_GetPatientEMRList_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenCreatedRadReport">
+      <wsdl:input wsaw:Action="urn:DataTemplateService/OpenCreatedRadReport" message="DataTemplateService_OpenCreatedRadReport_InputMessage" />
+      <wsdl:output wsaw:Action="urn:DataTemplateService/OpenCreatedRadReportResponse" message="DataTemplateService_OpenCreatedRadReport_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:DataTemplateService/OpenCreatedRadReportConcurrencyExceptionFault" name="ConcurrencyExceptionFault" message="DataTemplateService_OpenCreatedRadReport_ConcurrencyExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

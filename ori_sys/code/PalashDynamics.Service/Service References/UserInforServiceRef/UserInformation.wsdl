@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetClientUserName">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClientUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientUserNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientMachineName">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClientMachineNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientMachineNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCoordinates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCoordinatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCoordinatesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetClientUserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientUserName" />
+  </wsdl:message>
+  <wsdl:message name="GetClientUserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientMachineNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientMachineName" />
+  </wsdl:message>
+  <wsdl:message name="GetClientMachineNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientMachineNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordinatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCoordinates" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordinatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCoordinatesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserInformationSoap">
+    <wsdl:operation name="GetClientUserName">
+      <wsdl:input message="tns:GetClientUserNameSoapIn" />
+      <wsdl:output message="tns:GetClientUserNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientMachineName">
+      <wsdl:input message="tns:GetClientMachineNameSoapIn" />
+      <wsdl:output message="tns:GetClientMachineNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordinates">
+      <wsdl:input message="tns:GetCoordinatesSoapIn" />
+      <wsdl:output message="tns:GetCoordinatesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserInformationSoap" type="tns:UserInformationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClientUserName">
+      <soap:operation soapAction="http://tempuri.org/GetClientUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientMachineName">
+      <soap:operation soapAction="http://tempuri.org/GetClientMachineName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordinates">
+      <soap:operation soapAction="http://tempuri.org/GetCoordinates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserInformationSoap12" type="tns:UserInformationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClientUserName">
+      <soap12:operation soapAction="http://tempuri.org/GetClientUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientMachineName">
+      <soap12:operation soapAction="http://tempuri.org/GetClientMachineName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordinates">
+      <soap12:operation soapAction="http://tempuri.org/GetCoordinates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserInformation">
+    <wsdl:port name="UserInformationSoap" binding="tns:UserInformationSoap">
+      <soap:address location="http://localhost/WyZax.WebServer/UserInformation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserInformationSoap12" binding="tns:UserInformationSoap12">
+      <soap12:address location="http://localhost/WyZax.WebServer/UserInformation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

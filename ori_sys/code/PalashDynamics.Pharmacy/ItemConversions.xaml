@@ -1,0 +1,138 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Pharmacy.ItemConversions"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+           xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+           xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           Width="600" Height="600" Loaded="ChildWindow_Loaded"
+           Title="Conversions">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <toolkit:DockPanel x:Name="MainDock3" LastChildFill="True" toolkit:DockPanel.Dock="Top" Margin="4" Grid.Row="0">
+                <TextBlock x:Name="itemName" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </toolkit:DockPanel>
+            <toolkit:DockPanel x:Name="MainDock" LastChildFill="True" toolkit:DockPanel.Dock="Top" Margin="4" Grid.Row="1">
+
+                <Grp:GroupBox x:Name="grpSelectedConversions" Margin="4,0,4,4" Header="Selected UOM">
+                    <Grid x:Name="grdAddBaseConversions">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Purchase UOM" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" ></TextBlock>
+                        <inputcombo:AutoCompleteComboBox IsEnabled="False" x:Name="cmbPurchaseUOM" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                        <TextBlock Text="Stock UOM" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2"></TextBlock>
+                        <inputcombo:AutoCompleteComboBox IsEnabled="False" x:Name="cmbstockUOM" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox>
+
+                        <TextBlock Text="Sale UOM" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" ></TextBlock>
+                        <inputcombo:AutoCompleteComboBox IsEnabled="False" x:Name="cmbSaleUOM" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="1" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                        <TextBlock Text="Base UOM" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"></TextBlock>
+                        <inputcombo:AutoCompleteComboBox IsEnabled="False" x:Name="cmbBaseUOM" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="1" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                    </Grid>
+                </Grp:GroupBox>
+            </toolkit:DockPanel>
+
+            <toolkit:DockPanel x:Name="MainDock1" LastChildFill="True" toolkit:DockPanel.Dock="Top" Grid.Row="2">
+                <Grp:GroupBox x:Name="grpConversionList" Margin="4" Header="List of Conversions">
+                    <data:DataGrid  x:Name="dgConversionList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Margin="4" HorizontalAlignment="Stretch"  HorizontalScrollBarVisibility="Visible" >
+                        <data:DataGrid.Columns>
+                            <data:DataGridTextColumn Binding="{Binding FromUOM}" Width="Auto" Header="From UOM" IsReadOnly="True"></data:DataGridTextColumn>
+                            <data:DataGridTextColumn  Binding="{Binding ToUOM}" Width="Auto" Header="To UOM" IsReadOnly="True"></data:DataGridTextColumn>
+                            <data:DataGridTemplateColumn Header="Conversion Factor" IsReadOnly="False" Width="Auto" Visibility="Collapsed">
+                                <data:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding ConversionFactor,StringFormat=0.00, Mode=TwoWay}" IsEnabled="False" Tag="{Binding }" MaxWidth="100" MaxLength="13"  Margin="4" ></TextBox>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+                            <data:DataGridTextColumn IsReadOnly="True" Binding="{Binding ConversionFactor, StringFormat=0.00 }" Header="Conversion Factor">
+                                <data:DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Right"/>
+                                    </Style>
+                                </data:DataGridTextColumn.ElementStyle>
+                            </data:DataGridTextColumn>
+
+                            <!--Added by Ashish Z.Restriction on User for Delete or Modify the UOM on ItemMaster Screen. (as disscussion with Nilesh sir, Paras sir, Mangesh on dated 05Dec2016)-->
+                            <data:DataGridTemplateColumn Header="Edit" Visibility="Collapsed">
+                                <data:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <HyperlinkButton VerticalAlignment="Center"  Content="Edit"  Padding="5,0,5,0"  x:Name="hlkEditRecord" Click="hlkEditRecord_Click"></HyperlinkButton>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+                            <data:DataGridTemplateColumn Header="Delete" Visibility="Collapsed">
+                                <data:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <HyperlinkButton VerticalAlignment="Center" Foreground="Red" HorizontalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click="hlkDelete_Click"  x:Name="hlkDelete" ToolTipService.ToolTip="Delete Selected Record"></HyperlinkButton>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+                           <!--END-->
+
+                        </data:DataGrid.Columns>
+
+                    </data:DataGrid>
+                </Grp:GroupBox>
+            </toolkit:DockPanel>
+
+            <toolkit:DockPanel x:Name="MainDock2" LastChildFill="True" toolkit:DockPanel.Dock="Bottom" Grid.Row="3" Margin="4">
+                <Grp:GroupBox x:Name="grpAddBaseConversions" Header="Add UOM" Margin="4">
+                    <Grid x:Name="grdConversions">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="From UOM" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></TextBlock>
+                        <inputcombo:AutoCompleteComboBox x:Name="cmbFromUOM" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch" SelectionChanged="cmbFromUOM_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+                        <TextBlock Text="To UOM" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2"></TextBlock>
+                        <inputcombo:AutoCompleteComboBox x:Name="cmbToUOM" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                        <TextBlock Text="Conversion Factor" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"></TextBlock>
+                        <TextBox x:Name="txtConversionFactor" Text="{Binding Percentage,StringFormat=0.00, Mode=TwoWay}"  MaxLength="13" Grid.Row="1"  Margin="4" Grid.Column="1"  KeyDown="txtConversionFactor_KeyDown"  TextChanged="txtConversionFactor_TextChanged"></TextBox>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right">
+                                <ToggleButton x:Name="cmdAddConversionFactor" Content="Save" Height="20" Background="#000000" Margin="4" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdAddConversionFactor_Click" />
+                                <ToggleButton x:Name="cmdClose"  Content="Close"  Height="20" Background="#000000" Margin="4" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdClose_Click" />
+                        </StackPanel>
+                    </Grid>
+                </Grp:GroupBox>
+            </toolkit:DockPanel>
+
+        </Grid>
+    </Border>
+</controls:ChildWindow>

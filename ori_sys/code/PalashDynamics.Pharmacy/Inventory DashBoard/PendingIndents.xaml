@@ -1,0 +1,238 @@
+﻿<UserControl x:Class="PalashDynamics.Pharmacy.Inventory_DashBoard.PendingIndents"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"                  
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+                 xmlns:my1="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+                 xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+                 xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  
+                 xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"          
+                 xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+                 xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"          
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                 xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"
+                 xmlns:ChartToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+                 xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+                 xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+                 Height="Auto" Width="Auto" Loaded="UserControl_Loaded_1">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <Converter:DateTimeToAgePart x:Key="DateTimeToAgePart"></Converter:DateTimeToAgePart>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+            <Converter:PieColorConverter x:Key="PieColorConverter"></Converter:PieColorConverter>
+            <Color x:Key="MyColor">AliceBlue</Color>
+            <Style x:Key="RoundButton" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse  Stroke="#FF000000" StrokeThickness="0" Canvas.Left="141" Canvas.Top="61">
+                                    <Ellipse.Fill>
+                                        <SolidColorBrush Color="Transparent" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" x:Name="contentPresenter" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <toolkit:DockPanel x:Name="MainDockPanel" LastChildFill="True" >
+
+<toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton x:Name="cmdIndent" Visibility="Collapsed" Content="Raise Indent" Width="90" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" ></ToggleButton>
+                        <ToggleButton x:Name="cmdPR" Visibility="Collapsed" Content="Raise PR"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" ></ToggleButton>
+                        <ToggleButton x:Name="cmdPO" Visibility="Collapsed" Content="Raise PO" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  ></ToggleButton>
+                        <ToggleButton x:Name="cmdMultipleIndentClose" Content="Close Selected Indent(s)" Background="#000000"  Margin="5,0,0,0"  HorizontalAlignment="Left" Width="180" Style="{StaticResource ToggleButtonStyle}" Click="cmdMultipleIndentCloseButton_Click" Visibility="Collapsed"></ToggleButton>                        
+                        <ToggleButton x:Name="cmdPrint" Content="Print" Background="#000000"  Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdPrint_Click" ></ToggleButton>
+                        <ToggleButton Content="Cancel" x:Name="cmdCancel" Visibility="Collapsed" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" ></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </toolkit:DockPanel>
+
+            <data:DataPager x:Name="dgDataPager" toolkit:DockPanel.Dock="Bottom"
+                                                DisplayMode="FirstLastPreviousNext" IsEnabled="True" 
+                                                Source="{Binding}" 
+                                                AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+
+
+            <Grid Width="Auto"  Margin="0" controlsToolkit:DockPanel.Dock="Top" DataContext="{Binding BizActionObject}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Grp:GroupBox Header="Indent Date" Margin="2" Grid.Row="0" Grid.Column="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Text="From Date" Margin="2" Grid.Row="0" Grid.Column="0" ></TextBlock>
+                        <!--<controls:DatePicker x:Name="dpIssueFromDate" Margin="2" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch" ></controls:DatePicker>-->
+                        <controls:DatePicker SelectedDate="{Binding FromDate,Mode=TwoWay}"  x:Name="dtpFromDate" Margin="2" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                        <TextBlock Text="To Date" Margin="2" Grid.Row="1" Grid.Column="0" ></TextBlock>
+                        <!--<controls:DatePicker x:Name="dpIssueToDate" Margin="2" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Stretch" ></controls:DatePicker>-->
+
+                        <controls:DatePicker  Margin="2" Grid.Row="1" Grid.Column="1" SelectedDate="{Binding ToDate,Mode=TwoWay}"  x:Name="dtpToDate"  HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Grid>
+
+                </Grp:GroupBox>
+                
+
+                <Grp:GroupBox Header="Store" Margin="2" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="From Store" Margin="2" ></TextBlock>
+                        <!--<inputcombo:AutoCompleteComboBox  SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="StoreId" Margin="2"  Grid.Row="0" Grid.Column="1 "   x:Name="cmbIssueFromStoreSrch"  ></inputcombo:AutoCompleteComboBox>-->
+                        <inputcombo:AutoCompleteComboBox  x:Name="cmbFromStoreName" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center"  Margin="2"  Grid.Row="0" Grid.Column="1" KeyUp="cmbFromStoreName_KeyUp"></inputcombo:AutoCompleteComboBox>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="To Store" Margin="2" ></TextBlock>
+                        <!--<inputcombo:AutoCompleteComboBox SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="StoreId" Margin="2"  Grid.Row="1" Grid.Column="1 "   x:Name="cmbIssueToStoreSrch" ></inputcombo:AutoCompleteComboBox>-->
+                        <inputcombo:AutoCompleteComboBox  x:Name="cmbToStoreName" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center"  Margin="2"  Grid.Row="1" Grid.Column="1"  TabIndex="0" KeyUp="cmbToStoreName_KeyUp"></inputcombo:AutoCompleteComboBox>
+                    </Grid>
+
+                </Grp:GroupBox>
+
+
+               
+                <!--<Grp:GroupBox Header="Status" Margin="2" Grid.Row="0" Grid.Column="0" Width="Auto">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton IsChecked="True" x:Name="rdbAll" Content="All" Margin="2" Grid.Row="0" Grid.Column="0"></RadioButton>
+                        <RadioButton x:Name="rdbPending" Content="Pending" Margin="2" Grid.Row="1" Grid.Column="0"></RadioButton>
+                        <RadioButton x:Name="rdbCompleted" Content="Completed" Margin="2" Grid.Row="2" Grid.Column="0"></RadioButton>
+                        <RadioButton x:Name="rdbApproved" Content="Approved" Margin="2" Grid.Row="0" Grid.Column="1"></RadioButton>
+                        <RadioButton x:Name="rdbForwarded" Content="Forwarded" Margin="2" Grid.Row="1" Grid.Column="1"></RadioButton>
+                    </Grid>
+                </Grp:GroupBox>-->
+
+                
+
+                <Grp:GroupBox Header="Indent No" Margin="2" Grid.Row="0" Grid.Column="4" Width="Auto">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Indent No" Margin="4" VerticalAlignment="Center"></TextBlock>
+                        <TextBox x:Name="txtIndentNumber" VerticalAlignment="Center" IsEnabled="True"  Margin="4"   Grid.Row="0" Grid.Column="1" KeyUp="txtIndentNumber_KeyUp"></TextBox>
+
+
+                    </Grid>
+                </Grp:GroupBox>
+
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="5" Margin="4"   Orientation="Horizontal">
+                    
+                    <Button  x:Name="SearchButton" Margin="4" ToolTipService.ToolTip="Search Store Indents" Click="SearchButton_Click">
+                        <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4" Width="20" ></Image>
+                    </Button>
+                </StackPanel>
+            </Grid >
+
+            
+                <Grid Width="Auto"  Margin="0" controlsToolkit:DockPanel.Dock="Top" DataContext="{Binding BizActionObject}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="0" Margin="4"   Orientation="Horizontal" >
+
+                    <RadioButton IsChecked="True" x:Name="rdbSingleIndentClose" Content="Single Selection" Margin="2" Grid.Row="0" Grid.Column="0" Click="SingleIndentCloseSelection_Click"></RadioButton>
+                    <RadioButton x:Name="rdbMultipleIndentClose" Content="Multiple Selection" Margin="2" Grid.Row="1" Grid.Column="1"  IsChecked="{Binding CheckedAllTariffs,Mode=TwoWay}" Click="MultipleIndentCloseSelection_Click"></RadioButton>
+                </StackPanel>
+
+            </Grid>
+            
+                <data:DataGrid Name="dgPendingIndentList" Margin="2" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" ItemsSource="{Binding}" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" CanUserSortColumns="True" IsReadOnly="True" TabIndex="14" DataContext="{Binding}">
+                <data:DataGrid.Columns>
+                    <data:DataGridTemplateColumn Header="Close Indent">
+                    <data:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                                <CheckBox x:Name="chkItem"  TabIndex="12" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto"  IsChecked="{Binding IndentCloseStatus, Mode=TwoWay}" Click="chkCloseIndent_Click" ></CheckBox>
+                        </DataTemplate>
+                    </data:DataGridTemplateColumn.CellTemplate>
+                </data:DataGridTemplateColumn>
+                    <data:DataGridTextColumn  Binding="{Binding IndentNumber}"  Header="Indent No" />
+                    <data:DataGridTextColumn  Binding="{Binding Date,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Width="100" Header="Date" />
+                    <data:DataGridTextColumn  Binding="{Binding DueDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Width="100" Header="Delivery Date"/>
+                    <data:DataGridTextColumn  Binding="{Binding FromStoreName}"  Header="From Store"/>
+                    <data:DataGridTextColumn  Binding="{Binding ToStoreName}"  Header="To Store" />
+                    <data:DataGridTextColumn  Binding="{Binding IndentStatusName}"  IsReadOnly="True" Header="Status" />
+                    <data:DataGridTextColumn  Binding="{Binding IndentBaseItemQty}"  IsReadOnly="True"  Header="Indent Base Item Qty." />
+                    <data:DataGridTextColumn  Binding="{Binding IssueBaseItemQty}"  IsReadOnly="True" Header="Issue Base Item Qty." />
+                    <data:DataGridTextColumn  Binding="{Binding ReceivedBaseItemQty}"  IsReadOnly="True" Header="Received Base Item Qty." />
+                </data:DataGrid.Columns>
+            </data:DataGrid>
+            <!--</controlsToolkit:DockPanel>-->
+        </toolkit:DockPanel>
+        
+    </Grid>
+</UserControl>

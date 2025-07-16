@@ -1,0 +1,343 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.CRM.PatientListWindow"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+      xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"         
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                          xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    Width="Auto" Height="Auto" 
+    Title="PatientListWindow" Loaded="PatientList_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+   
+
+    <toolkit:DockPanel Height="Auto" Width="Auto" LastChildFill="True" >
+
+        <StackPanel   Orientation="Horizontal" HorizontalAlignment="Right"  toolkit:DockPanel.Dock="Bottom">
+            <ToggleButton  Margin="4"  Content="New" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdAdd" ></ToggleButton>
+            <ToggleButton   Margin="4" Content="Save" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave"></ToggleButton>
+            <ToggleButton   Margin="4"  Content="Modify" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" ></ToggleButton>
+            <ToggleButton  Margin="4" Content="Cancel" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" ></ToggleButton>
+        </StackPanel>
+
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+            <Grid Background="White"  HorizontalAlignment="Stretch" >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--<toolkit:DockPanel LastChildFill="True"  Height="Auto" Width="Auto">-->
+                <!--<sdk:DataPager x:Name="dataGrid2Pager"   
+                    NumericButtonCount="10" AutoEllipsis="False" 
+                    PageSize="{Binding PageSize}"
+                    DisplayMode="FirstLastPreviousNext"
+                    IsEnabled="True"
+                    IsTotalItemCountFixed="True"
+                    Source="{Binding DataList}"  
+                    toolkit:DockPanel.Dock="Bottom"/>-->
+
+                <Grid x:Name="FrontPanel" Visibility="Visible" toolkit:DockPanel.Dock="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Text="Supplier List" toolkit:DockPanel.Dock="Top"></TextBlock>
+                    <sdk:DataGrid  x:Name="grdSupplier" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="460">
+                        <sdk:DataGrid.Columns>
+                            <sdk:DataGridTemplateColumn Header="View">
+                                <sdk:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <HyperlinkButton x:Name="cmdView" Margin="4" Content="View" Cursor="Hand"></HyperlinkButton>
+                                    </DataTemplate>
+                                </sdk:DataGridTemplateColumn.CellTemplate>
+                            </sdk:DataGridTemplateColumn>
+                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Code" Binding="{Binding Code}" Width="100" />
+                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="Name"  Binding="{Binding SupplierName}" Width="200"/>
+                            <sdk:DataGridTemplateColumn Header="Status">
+                                <sdk:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=Status}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                                    </DataTemplate>
+                                </sdk:DataGridTemplateColumn.CellTemplate>
+                            </sdk:DataGridTemplateColumn>
+                        </sdk:DataGrid.Columns>
+                    </sdk:DataGrid>
+                </Grid>
+
+
+
+
+
+
+                <Grid  Visibility="Collapsed" x:Name="BackPanel"  Background="White"  Grid.Column="0" Grid.Row="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox:GroupBox Grid.ColumnSpan="4" Width="Auto" Header="Supplier Information" Grid.RowSpan="6">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Code" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="0" x:Name="txtCode" Margin="4" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Name" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="1" x:Name="txtName" Margin="4" MaxLength="150"></TextBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Address Line1" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="2" x:Name="txtAddressLine1" Margin="4" MaxLength="150" ></TextBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="3" Text="Address Line2" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="3" x:Name="txtAddressLine2" Margin="4" MaxLength="150"></TextBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="4" Text="AddressLine3" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="4" x:Name="txtAddressLine3" Margin="4" MaxLength="150"></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="0" Text="Country" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="3" Grid.Row="0" x:Name="txtCountry" Margin="4" MaxLength="50" ></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="1" Text="State" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="3" Grid.Row="1" x:Name="txtState" Margin="4" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="2" Text="City" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="3" Grid.Row="2" x:Name="txtCity" Margin="4" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="3" Text="Pincode" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="3" Grid.Row="3" x:Name="txtPincode" Margin="4" MaxLength="50"></TextBox>
+
+
+                        </Grid>
+                    </GroupBox:GroupBox>
+
+
+
+                    <GroupBox:GroupBox Grid.Row="7" Grid.ColumnSpan="4" Width="Auto" Header="Reg. Off. Address" Grid.RowSpan="6">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <GroupBox:GroupBox Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" Header="Contact Person1" Grid.RowSpan="4">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+
+
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" Margin="4"></TextBlock>
+                                    <TextBox Grid.Column="1" Grid.Row="0"  x:Name="txtContactperson1Name" Margin="4" MaxLength="50"></TextBox>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Mobile No" Margin="4"></TextBlock>
+                                    <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtContactperson1MobileNo" Margin="4" MaxLength="50"></TextBox>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Email" Margin="4"></TextBlock>
+                                    <TextBox Grid.Column="1" Grid.Row="2"  x:Name="txtContactperson1Email" Margin="4" MaxLength="50"></TextBox>
+
+                                </Grid>
+
+                            </GroupBox:GroupBox>
+
+                            <GroupBox:GroupBox Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="3" Header="Contact Person2" Grid.RowSpan="4" Width="Auto">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+
+
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" Margin="4"></TextBlock>
+                                    <TextBox Grid.Column="1" Grid.Row="0"  x:Name="txtContactperson2Name" Margin="4" MaxLength="50"></TextBox>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Mobile No" Margin="4"></TextBlock>
+                                    <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtContactperson2MobileNo" Margin="4" MaxLength="50"></TextBox>
+
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Email" Margin="4"></TextBlock>
+                                    <TextBox Grid.Column="1" Grid.Row="2"  x:Name="txtContactperson2Email" Margin="4" MaxLength="50"></TextBox>
+
+                                </Grid>
+
+
+
+                            </GroupBox:GroupBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="4" Text="Phone No" Margin="4"></TextBlock>
+                            <TextBox Grid.Column="1" Grid.Row="4"  x:Name="txtPhoneNo" Margin="4" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="5" Text="Fax" Margin="4" HorizontalAlignment="Center"></TextBlock>
+                            <TextBox Grid.Column="3" Grid.Row="5"  x:Name="txtFax" Margin="4" MaxLength="50" Width="150" HorizontalAlignment="Right"></TextBox>
+
+
+
+                        </Grid>
+                    </GroupBox:GroupBox>
+
+                    <GroupBox:GroupBox Grid.ColumnSpan="4" Width="Auto" Header="Payment Details" Grid.RowSpan="6" Grid.Row="14">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Mode of Payment" Margin="4"></TextBlock>
+                            <ComboBox Grid.Column="1" Grid.Row="0" x:Name="cmbModeofPayment" Margin="4" SelectedValuePath="ID" SelectedValue="ID" ></ComboBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Terms of Payment" Margin="4"></TextBlock>
+                            <ComboBox Grid.Column="1" Grid.Row="1" x:Name="cmbTermsofPayment" Margin="4" SelectedValuePath="ID" SelectedValue="ID"></ComboBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="0" Text="Tax Nature" Margin="4"></TextBlock>
+                            <ComboBox Grid.Column="3" Grid.Row="0"  x:Name="cmbTaxNature" Margin="4" SelectedValuePath="ID" SelectedValue="ID"></ComboBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="1" Text="Currency" Margin="4"></TextBlock>
+                            <ComboBox Grid.Column="3" Grid.Row="1" x:Name="cmbCurrency" Margin="4" SelectedValuePath="ID" SelectedValue="ID"></ComboBox>
+
+
+                        </Grid>
+                    </GroupBox:GroupBox>
+
+
+                    <GroupBox:GroupBox Grid.ColumnSpan="4" Margin="0,0,0,10" Width="Auto" Header="Tax Details" Grid.RowSpan="3" Grid.Row="20" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="MST Number" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="0" x:Name="txtMSTNumber" Margin="4" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="1" Text="CST Number" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="1" x:Name="txtCSTNumber" Margin="4" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="0" Grid.Row="2" Text="VAT Number" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="1" Grid.Row="2" x:Name="txtVATNumber" Margin="4" TextWrapping="Wrap" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="0" Text="Drug Licence Number" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="3" Grid.Row="0" x:Name="txtDrugLicenceNumber" Margin="4" TextWrapping="Wrap" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="1" Text="Service Tax Number" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="3" Grid.Row="1" x:Name="txtServiceTaxNumber" Margin="4" TextWrapping="Wrap" MaxLength="50"></TextBox>
+
+                            <TextBlock Grid.Column="2" Grid.Row="2" Text="PAN Number" Margin="4"></TextBlock>
+                            <TextBox  Grid.Column="3" Grid.Row="2" x:Name="txtPANNumber" Margin="4" MaxLength="50"></TextBox>
+
+
+
+                        </Grid>
+                    </GroupBox:GroupBox>
+                </Grid>
+
+            </Grid>
+        </ScrollViewer>
+        <!--</toolkit:DockPanel>-->
+
+
+
+
+
+    </toolkit:DockPanel>
+
+</controls:ChildWindow>

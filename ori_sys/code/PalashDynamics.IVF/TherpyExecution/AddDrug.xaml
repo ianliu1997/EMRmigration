@@ -1,0 +1,76 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.TherpyExecution.AddDrug"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+            xmlns:controlsToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+            xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"  
+            xmlns:data="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"       
+            xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+            xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+            xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"       
+           Title="Add Drug" Width="800">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    
+    <Grid x:Name="LayoutRoot" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Drug" Margin="4"></TextBlock>
+            <input:AutoCompleteComboBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
+                x:Name="CmbDrug" Grid.ColumnSpan="7"
+                SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"
+                IsTextCompletionEnabled="False"
+                MinimumPrefixLength="0"
+                MinimumPopulateDelay="200"
+                
+                />
+                
+
+                <TextBlock  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Start Date" Margin="4"></TextBlock>
+                <controls:DatePicker  Grid.Row="1" Grid.Column="1"  SelectedDate="{Binding StartDate,Mode=TwoWay}"  VerticalAlignment="Center"  Margin="4"  x:Name="dtthreapystartdate"></controls:DatePicker>
+
+                <TextBlock   HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Text="For Days" Margin="4"></TextBlock>
+                <TextBox VerticalAlignment="Center" x:Name="txtForDays" Grid.Row="1" Grid.Column="3" Margin="4" Text="{Binding ForDays,Mode=TwoWay}" TextChanged="txtForDays_TextChanged" KeyDown="txtForDays_KeyDown"></TextBox>
+
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="4" Text="Dosage" Margin="4"></TextBlock>
+            <TextBox VerticalAlignment="Center" x:Name="txtDosage" Grid.Row="1" Grid.Column="5" Margin="4" Text="{Binding Dosage,Mode=TwoWay}" MaxLength="7" TextChanged="txtForDays_TextChanged" KeyDown="txtForDays_KeyDown" ></TextBox>
+
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="6" Text="Time" Margin="4"></TextBlock>
+                <inputToolkit:TimePicker  x:Name="txtTime" VerticalAlignment="Center" Grid.Row="1" Grid.Column="7" Margin="4" Value="{Binding Time,Mode=TwoWay}"></inputToolkit:TimePicker>
+
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Text="Notes" Margin="4"></TextBlock>
+                <TextBox x:Name="txtDrugNotes" Height="60"  Grid.ColumnSpan="7"  VerticalScrollBarVisibility="Visible" AcceptsReturn="True" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Margin="4" Text="{Binding DrugNotes,Mode=TwoWay}"></TextBox>
+            </Grid>
+        <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" />
+
+    </Grid>
+    
+</controls:ChildWindow>

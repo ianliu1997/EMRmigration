@@ -1,0 +1,660 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.frmPackageDefineRuleMaster"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:controlsToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"             
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"  
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:dgAdapter="clr-namespace:PalashDynamics.DataGridSelectionAdapter"
+    xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    Height="500" Width="1000" Loaded="UserControl_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel LastChildFill="True">
+
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton x:Name="cmdSave" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  TabIndex="19" Click="cmdSave_Click"></ToggleButton>
+                        <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   Click="cmdCancel_Click"  TabIndex="20"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid x:Name="PageContainer">
+
+                <controlsToolkit:DockPanel LastChildFill="True">
+
+                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top"  >
+
+                        <Border Grid.Row="0" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent" Margin="4">
+                            <ContentControl x:Name="lblServiceName" VerticalAlignment="Center" FontSize="11" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                        </Border>
+
+                    </controlsToolkit:DockPanel>
+
+                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top"  >
+
+                        <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" controlsToolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                            <GroupBox:GroupBox x:Name="grpMasterDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch">
+                                <Grid>
+
+                                    <Grid.Resources>
+
+                                        <Style x:Key="DataGridAutoCompleteTemplate" TargetType="CustomCombo:AutoCompleteComboBox">
+                                            <Setter Property="Background" Value="#FF1F3B53"/>
+                                            <Setter Property="IsTabStop" Value="False" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                                                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                                                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                                                        <GradientStop Color="#FF617584" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="input:AutoCompleteBox">
+                                                        <Grid Margin="{TemplateBinding Padding}">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="PopupStates">
+                                                                    <VisualStateGroup.Transitions>
+                                                                        <VisualTransition GeneratedDuration="0:0:0.2" To="PopupOpened" />
+                                                                        <VisualTransition GeneratedDuration="0:0:0.5" To="PopupClosed" />
+                                                                    </VisualStateGroup.Transitions>
+                                                                    <VisualState x:Name="PopupOpened">
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="1.0" />
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                    <VisualState x:Name="PopupClosed">
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="0.0" />
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <TextBox IsTabStop="True" x:Name="Text" Style="{TemplateBinding TextBoxStyle}" Margin="0" />
+                                                            <ToggleButton x:Name="DropDownToggle" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource ComboToggleButton}" Margin="0" HorizontalContentAlignment="Center" Background="{TemplateBinding Background}" BorderThickness="0" Height="16" Width="16">
+                                                                <ToggleButton.Content>
+                                                                    <Path x:Name="BtnArrow" Height="4" Width="8" Stretch="Uniform" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z " Margin="0,0,6,0" HorizontalAlignment="Right">
+                                                                        <Path.Fill>
+                                                                            <SolidColorBrush x:Name="BtnArrowColor" Color="#FF333333"/>
+                                                                        </Path.Fill>
+                                                                    </Path>
+                                                                </ToggleButton.Content>
+                                                            </ToggleButton>
+                                                            <Popup x:Name="Popup">
+                                                                <Border x:Name="PopupBorder" HorizontalAlignment="Stretch" Opacity="0.0" BorderThickness="0" CornerRadius="3">
+                                                                    <Border.RenderTransform>
+                                                                        <TranslateTransform X="2" Y="2" />
+                                                                    </Border.RenderTransform>
+                                                                    <Border.Background>
+                                                                        <SolidColorBrush Color="#11000000" />
+                                                                    </Border.Background>
+                                                                    <Border HorizontalAlignment="Stretch" BorderThickness="0" CornerRadius="3">
+                                                                        <Border.Background>
+                                                                            <SolidColorBrush Color="#11000000" />
+                                                                        </Border.Background>
+                                                                        <Border.RenderTransform>
+                                                                            <TransformGroup>
+                                                                                <ScaleTransform />
+                                                                                <SkewTransform />
+                                                                                <RotateTransform />
+                                                                                <TranslateTransform X="-1" Y="-1" />
+                                                                            </TransformGroup>
+                                                                        </Border.RenderTransform>
+                                                                        <Border HorizontalAlignment="Stretch" Opacity="1.0" Padding="1" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
+                                                                            <Border.RenderTransform>
+                                                                                <TransformGroup>
+                                                                                    <ScaleTransform />
+                                                                                    <SkewTransform />
+                                                                                    <RotateTransform />
+                                                                                    <TranslateTransform X="-2" Y="-2" />
+                                                                                </TransformGroup>
+                                                                            </Border.RenderTransform>
+                                                                            <Border.Background>
+                                                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                                    <GradientStop Color="#FFDDDDDD" Offset="0"/>
+                                                                                    <GradientStop Color="#AADDDDDD" Offset="1"/>
+                                                                                </LinearGradientBrush>
+                                                                            </Border.Background>
+                                                                            <!--<dgAdapter:DataGridSelectionAdapter Width="auto" x:Name="SelectionAdapter"  AutoGenerateColumns="False" IsReadOnly="True">
+                                                                                        <dgAdapter:DataGridSelectionAdapter.Columns>
+                                                                                            <data:DataGridTemplateColumn>
+                                                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                                                    <DataTemplate >
+                                                                                                        <CheckBox x:Name="chkMultipleServices" IsChecked="{Binding Status, Mode=TwoWay}"></CheckBox>
+                                                                                                    </DataTemplate>
+                                                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                                                            </data:DataGridTemplateColumn>
+                                                                                            <data:DataGridTextColumn IsReadOnly="True" Header="Service Name" Width="Auto"  Binding="{Binding Description, Mode=TwoWay}" />
+                                                                                        </dgAdapter:DataGridSelectionAdapter.Columns>
+                                                                                    </dgAdapter:DataGridSelectionAdapter>-->
+                                                                        </Border>
+                                                                    </Border>
+                                                                </Border>
+                                                            </Popup>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+
+                                        <Style x:Key="DataGridAutoCompleteTemplate1" TargetType="CustomCombo:AutoCompleteComboBox">
+                                            <Setter Property="Background" Value="#FF1F3B53"/>
+                                            <Setter Property="IsTabStop" Value="False" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                                                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                                                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                                                        <GradientStop Color="#FF617584" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="input:AutoCompleteBox">
+                                                        <Grid Margin="{TemplateBinding Padding}">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="PopupStates">
+                                                                    <VisualStateGroup.Transitions>
+                                                                        <VisualTransition GeneratedDuration="0:0:0.2" To="PopupOpened" />
+                                                                        <VisualTransition GeneratedDuration="0:0:0.5" To="PopupClosed" />
+                                                                    </VisualStateGroup.Transitions>
+                                                                    <VisualState x:Name="PopupOpened">
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="1.0" />
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                    <VisualState x:Name="PopupClosed">
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="0.0" />
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <TextBox IsTabStop="True" x:Name="Text" Style="{TemplateBinding TextBoxStyle}" Margin="0" />
+                                                            <ToggleButton x:Name="DropDownToggle" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource ComboToggleButton}" Margin="0" HorizontalContentAlignment="Center" Background="{TemplateBinding Background}" BorderThickness="0" Height="16" Width="16">
+
+                                                                <ToggleButton.Content>
+                                                                    <Path x:Name="BtnArrow" Height="4" Width="8" Stretch="Uniform" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z " Margin="0,0,6,0" HorizontalAlignment="Right">
+                                                                        <Path.Fill>
+                                                                            <SolidColorBrush x:Name="BtnArrowColor" Color="#FF333333"/>
+                                                                        </Path.Fill>
+                                                                    </Path>
+                                                                </ToggleButton.Content>
+                                                            </ToggleButton>
+                                                            <Popup x:Name="Popup">
+                                                                <Border x:Name="PopupBorder" HorizontalAlignment="Stretch" Opacity="0.0" BorderThickness="0" CornerRadius="3">
+                                                                    <Border.RenderTransform>
+                                                                        <TranslateTransform X="2" Y="2" />
+                                                                    </Border.RenderTransform>
+                                                                    <Border.Background>
+                                                                        <SolidColorBrush Color="#11000000" />
+                                                                    </Border.Background>
+                                                                    <Border HorizontalAlignment="Stretch" BorderThickness="0" CornerRadius="3">
+                                                                        <Border.Background>
+                                                                            <SolidColorBrush Color="#11000000" />
+                                                                        </Border.Background>
+                                                                        <Border.RenderTransform>
+                                                                            <TransformGroup>
+                                                                                <ScaleTransform />
+                                                                                <SkewTransform />
+                                                                                <RotateTransform />
+                                                                                <TranslateTransform X="-1" Y="-1" />
+                                                                            </TransformGroup>
+                                                                        </Border.RenderTransform>
+                                                                        <Border HorizontalAlignment="Stretch" Opacity="1.0" Padding="1" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
+                                                                            <Border.RenderTransform>
+                                                                                <TransformGroup>
+                                                                                    <ScaleTransform />
+                                                                                    <SkewTransform />
+                                                                                    <RotateTransform />
+                                                                                    <TranslateTransform X="-2" Y="-2" />
+                                                                                </TransformGroup>
+                                                                            </Border.RenderTransform>
+                                                                            <Border.Background>
+                                                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                                    <GradientStop Color="#FFDDDDDD" Offset="0"/>
+                                                                                    <GradientStop Color="#AADDDDDD" Offset="1"/>
+                                                                                </LinearGradientBrush>
+                                                                            </Border.Background>
+                                                                            <dgAdapter:DataGridSelectionAdapter  x:Name="SelectionAdapter" AutoGenerateColumns="False" IsReadOnly="True">
+                                                                                <dgAdapter:DataGridSelectionAdapter.Columns>
+                                                                                    <data:DataGridTemplateColumn>
+                                                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                                                            <DataTemplate >
+                                                                                                <CheckBox x:Name="chkTerms" IsChecked="{Binding Status, Mode=TwoWay}" ></CheckBox>
+                                                                                            </DataTemplate>
+                                                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                                                    </data:DataGridTemplateColumn>
+                                                                                    <data:DataGridTextColumn IsReadOnly="True" Header="" Binding="{Binding Description, Mode=TwoWay}" />
+
+                                                                                </dgAdapter:DataGridSelectionAdapter.Columns>
+                                                                            </dgAdapter:DataGridSelectionAdapter>
+                                                                        </Border>
+                                                                    </Border>
+                                                                </Border>
+                                                            </Popup>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                        <Style x:Key="DataGridAutoCompleteTemplate2" TargetType="CustomCombo:AutoCompleteComboBox">
+                                            <Setter Property="Background" Value="#FF1F3B53"/>
+                                            <Setter Property="IsTabStop" Value="False" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                                                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                                                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                                                        <GradientStop Color="#FF617584" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="input:AutoCompleteBox">
+                                                        <Grid Margin="{TemplateBinding Padding}">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="PopupStates">
+                                                                    <VisualStateGroup.Transitions>
+                                                                        <VisualTransition GeneratedDuration="0:0:0.2" To="PopupOpened" />
+                                                                        <VisualTransition GeneratedDuration="0:0:0.5" To="PopupClosed" />
+                                                                    </VisualStateGroup.Transitions>
+                                                                    <VisualState x:Name="PopupOpened">
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="1.0" />
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                    <VisualState x:Name="PopupClosed">
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="0.0" />
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <TextBox IsTabStop="True" x:Name="Text" Style="{TemplateBinding TextBoxStyle}" Margin="0" />
+                                                            <ToggleButton x:Name="DropDownToggle" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource ComboToggleButton}" Margin="0" HorizontalContentAlignment="Center"  Background="{TemplateBinding Background}"  BorderThickness="0"  Height="16" Width="16">
+                                                                <ToggleButton.Content>
+                                                                    <Path x:Name="BtnArrow" Height="4" Width="8" Stretch="Uniform" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z " Margin="0,0,6,0" HorizontalAlignment="Right">
+                                                                        <Path.Fill>
+                                                                            <SolidColorBrush x:Name="BtnArrowColor" Color="#FF333333"/>
+                                                                        </Path.Fill>
+                                                                    </Path>
+                                                                </ToggleButton.Content>
+                                                            </ToggleButton>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Grid.Resources>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <!--<ColumnDefinition Width="*"></ColumnDefinition>-->
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding ItemTextValue}" Width="110" Grid.Column="2" Grid.Row="0" />                                    
+                                    <CheckBox x:Name="chkAdjustableHead"  Content="Adjustable Head" TabIndex="0" Grid.Column="0" Grid.Row="0"  Margin="4"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Left" Checked="chkAdjustableHead_Checked" Unchecked="chkAdjustableHead_Unchecked" Visibility="Visible"></CheckBox>
+
+                                    <StackPanel x:Name="stkAdjustableHead" Orientation="Horizontal" Grid.ColumnSpan="4" Margin="4" Grid.Row="0" Grid.Column="1" Visibility="Collapsed" >
+                                        <RadioButton x:Name="rdbClinicalHead" Content="Clinical" Margin="4" IsChecked="True" ></RadioButton>
+                                        <RadioButton x:Name="rdbPharmacyHead"  Content="Pharmacy" Margin="4" ></RadioButton>
+                                    </StackPanel>
+                                    
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="0"  Margin="4" Text="Procedure" />
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbProcedure" Grid.Row="2" Width="Auto" Grid.Column="1" VerticalAlignment="Center"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" TabIndex="4" SelectionChanged="cmbProcedure_SelectionChanged" />
+
+                                    <CheckBox x:Name="chkIsConsumables"  Content="Is Consumables" TabIndex="0" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2"  Margin="4"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Left"  Visibility="Visible"></CheckBox>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="3"  Grid.Column="0"  Margin="4" Text="Gender" />
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbGender" Grid.Row="3" Width="Auto" Grid.Column="1" VerticalAlignment="Center"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" TabIndex="4" SelectionChanged="cmbGender_SelectionChanged"/>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="3"  Grid.Column="4"  Margin="4" Text="Discount (%)" />
+                                    <TextBox x:Name="txtDiscount" TextAlignment="Right"  Text="{Binding Discount,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="5" Width="Auto" Margin="4" TextChanged="txtDiscount_TextChanged" KeyDown="txtDiscount_KeyDown" LostFocus="txtDiscount_LostFocus"></TextBox>
+
+                                    <CheckBox x:Name="chkDiscountOnQuantity"  Content="Discount On Quantity"  IsChecked="{Binding IsDiscountOnQuantity,Mode=TwoWay}"  TabIndex="0" Grid.Column="6" Grid.Row="3"  Margin="4" HorizontalAlignment="Stretch" ></CheckBox>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="3"  Grid.Column="2"  Margin="4" Text="Age Limit" />
+                                    <TextBox x:Name="txtAgeLimit" TextAlignment="Right"  Text="{Binding AgeLimit,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="3" Width="Auto" MaxLength="3" Margin="4" TextChanged="txtAgeLimit_TextChanged" KeyDown="txtAgeLimit_KeyDown"></TextBox>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="4"  Grid.Column="4"  Margin="4" Text="Quantity" />
+                                    <TextBox x:Name="txtQuantity" TextAlignment="Right"  Text="{Binding Quantity,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="4" Grid.Column="5" Width="Auto" Margin="4" TextChanged="txtDiscount_TextChanged" KeyDown="txtDiscount_KeyDown" LostFocus="txtQuantity_LostFocus"></TextBox>
+
+                                    <CheckBox x:Name="chkUnlimitedQuantity"  Content="Unlimited Quantity"  IsChecked="{Binding IdUnlimitedQuantity,Mode=TwoWay}"  TabIndex="0" Grid.Column="6" Grid.Row="4"  Margin="4" Click="chkUnlimitedQuantity_Click" Checked="chkUnlimitedQuantity_Click" HorizontalAlignment="Stretch" ></CheckBox>
+
+                                    <CheckBox x:Name="chkAllRelations"  Content="Select All Relations"    TabIndex="0" Grid.Column="1" Grid.Row="4"  Margin="4"  HorizontalAlignment="Stretch" Checked="chkAllRelations_Checked" Unchecked="chkAllRelations_Checked" HorizontalContentAlignment="Left" Visibility="Visible"></CheckBox>
+
+                                    <TextBlock x:Name="txtPackageRelations" Margin="0,4,4,4" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2" Text="Applicable Relations "></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Height="25" Margin="4" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="1" Background="Red"  MinimumPrefixLength="0" MinimumPopulateDelay="200" x:Name="cmbPackageRelations" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID" ItemsSource="{Binding}" DataContext="{Binding}" HorizontalAlignment="Stretch"  Style="{StaticResource DataGridAutoCompleteTemplate1}" SelectionChanged="cmbPackageRelations_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+                                    <!--<CustomCombo:AutoCompleteComboBox Name="cmbPackageRelations" Height="25" Margin="4" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID" ItemsSource="{Binding}" DataContext="{Binding}"  Loaded="cmbPackageRelations_Loaded" >
+                                        <CustomCombo:AutoCompleteComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <CheckBox Content="{Binding}" IsChecked="{Binding isChecked,Mode=TwoWay}"  Click="CheckBox_Click"  />
+                                            </DataTemplate>
+                                        </CustomCombo:AutoCompleteComboBox.ItemTemplate>
+                                    </CustomCombo:AutoCompleteComboBox>-->
+                                    <!--<TextBlock Text="{Binding ItemTextValue}" Width="110" />-->
+                                    <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="2"  Margin="4" Text="Rate" />
+                                    <TextBox x:Name="txtRate" TextAlignment="Right"  Text="{Binding Rate,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Width="Auto" Margin="4" TextChanged="txtDiscount_TextChanged" KeyDown="txtDiscount_KeyDown" ></TextBox>-->  <!--IsEnabled="False"-->
+
+                                    
+                                    
+                                    <!--For Set All Relation Combo box is not applied for Billing Level So  it's commented -->
+
+                                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4" Margin="4" Grid.Row="5" Grid.Column="1"  >
+                                        <RadioButton x:Name="rdbFixed" Content="Fixed" Margin="4" IsChecked="True" Checked="rdbFixed_Checked" Click="rdbFixed_Click"></RadioButton>
+                                        <RadioButton x:Name="rdbPercentage"  Content="Percentage" Margin="4" Checked="rdbPercentage_Checked" Click="rdbPercentage_Click" ></RadioButton>
+                                        <RadioButton x:Name="rdbDoctorShare"  Content="Same As Doctor Share" Margin="4" Grid.Row="5"  Grid.Column="2" Click="rdbDoctorShare_Click"></RadioButton>
+                                    </StackPanel>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="6"  Grid.Column="0"  Margin="4" Text="Rate/Limit" Name="RateLimitTB" />
+                                    <TextBox x:Name="txtRate" TextAlignment="Right"  Text="{Binding Rate,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" Width="Auto" Margin="4" TextChanged="txtDiscount_TextChanged" KeyDown="txtDiscount_KeyDown" MaxLength="9"></TextBox>
+                                    <TextBox x:Name="txtRatePercentage" TextAlignment="Right"  Text="{Binding RatePercentage,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1" Width="Auto" Margin="4" TextChanged="txtRatePercentage_TextChanged" KeyDown="txtRatePercentage_KeyDown" MaxLength="5" ></TextBox>
+
+                                    <CheckBox x:Name="chkIncludeAdjustableHead"  Content="Include In Adjustable Head" TabIndex="0" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="6"  Margin="4"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Left"  Visibility="Visible"></CheckBox>
+
+                                    <!--<StackPanel Orientation="Horizontal"  Margin="4" Grid.Row="5" Grid.Column="2"  >
+                                        <RadioButton x:Name="rdbDoctorShare"  Content="Same As Doctor Share" Margin="4" Grid.Row="5"  Grid.Column="2"></RadioButton>
+                                    </StackPanel>-->
+                                   
+                                    
+                                    
+                                    <!--IsEnabled="False"-->
+                                    <!--<TextBlock x:Name="txtPackageRelations" Margin="0,4,4,4" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Applicable Relations : "></TextBlock>
+                                    <TextBlock x:Name="txtPackageRelations" Margin="0,4,4,4" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Applicable Relations : "></TextBlock>-->
+                                    
+                                </Grid>
+                            </GroupBox:GroupBox>
+                        </Border>
+
+                    </controlsToolkit:DockPanel>
+
+                    <!--Followup Data Grid -->
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <!--<RowDefinition></RowDefinition>-->
+                            <!--<RowDefinition></RowDefinition>-->
+                        </Grid.RowDefinitions>
+
+                        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top" Grid.Row="0" >
+                            <GroupBox:GroupBox x:Name="Followup" Header="Followup Calender"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch">
+                                <Grid x:Name="PackageGrid">
+
+                                    <controlsToolkit:DockPanel LastChildFill="True" controlsToolkit:DockPanel.Dock="Bottom" Height="Auto" Grid.Row="1" >
+                                        <Border Grid.Row="0" controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent" Margin="4">
+                                            <CheckBox x:Name="chkFollowupNotRequired"  Content="Followup Not Required"  IsChecked="{Binding IsFollowupNotRequired,Mode=TwoWay}"  TabIndex="0" Margin="4" HorizontalAlignment="Stretch" ></CheckBox>
+                                        </Border>
+                                        
+                                            <ScrollViewer Grid.Row="1" Background="Transparent" VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+
+                                                <data:DataGrid  Margin="1" x:Name="dgCalender"  AutoGenerateColumns="False" ItemsSource="{Binding}"  CanUserSortColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LoadingRow="dgCalender_LoadingRow">
+                                                    <data:DataGrid.Columns>
+                                                        <!--LoadingRow="dgCalender_LoadingRow" CellEditEnded="dgCalender_CellEditEnded_1"-->
+                                                        <!--<data:DataGridTemplateColumn Visibility="Visible" Header="1">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox VerticalAlignment="Center"  IsChecked="True" HorizontalAlignment="Center" ></CheckBox>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTemplateColumn Visibility="Visible" Header="2">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox VerticalAlignment="Center"  IsChecked="True"  HorizontalAlignment="Center" ></CheckBox>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTemplateColumn Visibility="Visible" Header="3">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox VerticalAlignment="Center" IsChecked="True" HorizontalAlignment="Center" ></CheckBox>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTemplateColumn Visibility="Visible" Header="4">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox VerticalAlignment="Center"   IsChecked="True" HorizontalAlignment="Center" ></CheckBox>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>-->
+
+
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+
+                                            </ScrollViewer>
+
+                                    </controlsToolkit:DockPanel>
+                                </Grid>
+                            </GroupBox:GroupBox>
+                        </controlsToolkit:DockPanel>
+
+                        <!--Conditional AND/OR-->
+                        
+                        <!--LastChildFill="True"-->
+                        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom"  Grid.Row="1"  Visibility="Collapsed">
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" controlsToolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                <GroupBox:GroupBox x:Name="conditionalANDOR" Header="Conditional AND/OR"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch">
+                                    <Grid x:Name="conditionalANDORGrid">
+                                        <controlsToolkit:DockPanel LastChildFill="True" controlsToolkit:DockPanel.Dock="Bottom" Height="Auto" >
+                                            <ScrollViewer Grid.Row="1" Background="Transparent" VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+
+                                                <data:DataGrid  Margin="1" x:Name="dgANDORGrid"  AutoGenerateColumns="False" ItemsSource="{Binding}"  CanUserSortColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                    <data:DataGrid.Columns>
+
+                                                        <data:DataGridTemplateColumn Header="Condition" >
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbCondition" Width="200"  SelectedValue="{Binding SelectedCondition.ID}" SelectedItem="{Binding SelectedCondition,Mode=TwoWay}" ItemsSource="{Binding ConditionList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="cmbCondition_SelectionChanged" >
+                                                                    </inputcombo:AutoCompleteComboBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+
+
+
+                                                        <data:DataGridTemplateColumn Header="Service" >
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbService" Width="250"  SelectedValue="{Binding SelectedService.ID}" SelectedItem="{Binding SelectedService,Mode=TwoWay}" ItemsSource="{Binding ServiceList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                                    </inputcombo:AutoCompleteComboBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Header="Quantity" >
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock  VerticalAlignment="Center"  Text="{Binding Quantity,Mode=TwoWay,StringFormat=0.00}" TextAlignment="Right"  ></TextBlock>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate >
+                                                                <DataTemplate>
+                                                                    <TextBox  VerticalAlignment="Center"  Text="{Binding Quantity,Mode=TwoWay,StringFormat=0.00}" GotFocus="TextBox_GotFocus"  TextAlignment="Right"  KeyDown="txtDiscount_KeyDown" TextChanged="txtDiscount_TextChanged" MaxLength="15" ></TextBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <!--<data:DataGridTemplateColumn Header="Quantity" >
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBox  VerticalAlignment="Center"  Text="{Binding Quantity,Mode=TwoWay}" GotFocus="TextBox_GotFocus" TextChanged="textQuantity_TextChanged" KeyDown="textQuantity_KeyDown" MaxLength="15" ></TextBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>-->
+
+                                                        <!--<data:DataGridTextColumn    Binding="{Binding Quantity, StringFormat=0.00, Mode=TwoWay}" Header="Quantity" >
+                                                            <data:DataGridTextColumn.ElementStyle>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="TextAlignment" Value="Right" />
+                                                                </Style>
+                                                            </data:DataGridTextColumn.ElementStyle>
+                                                        </data:DataGridTextColumn>-->
+
+                                                        <!--<data:DataGridTemplateColumn Header="Discount (%)" >
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock  VerticalAlignment="Center"  Text="{Binding Discount,Mode=TwoWay,StringFormat=0.00}" TextAlignment="Right"  ></TextBlock>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBox  VerticalAlignment="Center"  Text="{Binding Discount,Mode=TwoWay,StringFormat=0.00}" TextAlignment="Right" TextChanged="txtDiscount_TextChanged" KeyDown="txtDiscount_KeyDown" MaxLength="15" ></TextBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>-->
+
+                                                        <data:DataGridTextColumn Binding="{Binding Discount,StringFormat=0.00,Mode=TwoWay}" Header="Discount (%)"  >
+                                                            <data:DataGridTextColumn.ElementStyle>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                                </Style>
+                                                            </data:DataGridTextColumn.ElementStyle>
+                                                        </data:DataGridTextColumn>
+                                                        
+
+                                                        <data:DataGridTemplateColumn Visibility="Collapsed" >
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center"  HorizontalAlignment="Center" Content="Add"   Padding="5,0,5,0" IsTabStop="False"   x:Name="cmdAddService" ToolTipService.ToolTip="Add" Click="cmdAddService_Click"></HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Visibility="Visible">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center"  HorizontalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False"   x:Name="cmdDeleteService" ToolTipService.ToolTip="Delete" Click="cmdDeleteService_Click"></HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+
+
+                                            </ScrollViewer>
+                                        </controlsToolkit:DockPanel>
+                                    </Grid>
+                                </GroupBox:GroupBox>
+                            </Border>
+                        </controlsToolkit:DockPanel>
+
+                        <!--Conditional AND-->
+
+                        <!--<controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom"  Grid.Row="2">
+                                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" controlsToolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                    <GroupBox:GroupBox x:Name="conditionalAND" Header="Conditional AND"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch">
+                                        <Grid x:Name="conditionalANDGrid">
+                                            <controlsToolkit:DockPanel LastChildFill="True" controlsToolkit:DockPanel.Dock="Bottom" Height="Auto" >
+                                                <ScrollViewer Grid.Row="1" Background="Transparent" VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+
+                                                    <data:DataGrid  Margin="1" x:Name="ANDGrid"  AutoGenerateColumns="False" ItemsSource="{Binding}"  CanUserSortColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LoadingRow="dgCalender_LoadingRow" CellEditEnded="dgCalender_CellEditEnded_1">
+                                                        <data:DataGrid.Columns>
+
+                                                        <data:DataGridTemplateColumn Header="Service" >
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbORService"  Width="200" SelectedValue="{Binding SelectedService1.ID}" SelectedItem="{Binding SelectedService1,Mode=TwoWay}" ItemsSource="{Binding Serviceobj}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                                    </inputcombo:AutoCompleteComboBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+
+                                                        <data:DataGridTemplateColumn Header="Quantity" >
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBox  VerticalAlignment="Center"  Text="{Binding Quantity,Mode=TwoWay}" TextChanged="textQuantity_TextChanged" KeyDown="textQuantity_KeyDown" MaxLength="15" ></TextBox>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+
+                                                            <data:DataGridTemplateColumn Header="Discount (%)" >
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBox  VerticalAlignment="Center"  Text="{Binding Discount,Mode=TwoWay}" TextChanged="textDiscount_TextChanged" KeyDown="textDiscount_KeyDown" MaxLength="15" ></TextBox>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+
+
+                                                            <data:DataGridTemplateColumn Visibility="Visible" >
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center"  HorizontalAlignment="Center" Content="Add"   Padding="5,0,5,0" IsTabStop="False"   x:Name="cmdAddService" ToolTipService.ToolTip="Add" Click="cmdAddORService_Click"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTemplateColumn Visibility="Visible" >
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton VerticalAlignment="Center"  HorizontalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False"   x:Name="cmdDeleteService" ToolTipService.ToolTip="Delete" Click="cmdDeleteService_Click"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                        </data:DataGrid.Columns>
+                                                    </data:DataGrid>
+
+                                                </ScrollViewer>
+                                            </controlsToolkit:DockPanel>
+                                        </Grid>
+                                    </GroupBox:GroupBox>
+                                </Border>
+                            </controlsToolkit:DockPanel>-->
+
+                    </Grid>
+                </controlsToolkit:DockPanel>
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.MISConfiguration" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.MISConfiguration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="clsGetMISReportDetailsBiZActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MISID" type="xs:long" />
+      <xs:element minOccurs="0" name="MISReportDetails" nillable="true" type="tns:ArrayOfclsMISReportVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMISReportDetailsBiZActionVO" nillable="true" type="tns:clsGetMISReportDetailsBiZActionVO" />
+  <xs:complexType name="ArrayOfclsMISReportVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsMISReportVO" nillable="true" type="tns:clsMISReportVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsMISReportVO" nillable="true" type="tns:ArrayOfclsMISReportVO" />
+  <xs:complexType name="clsMISReportVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MISID" type="xs:long" />
+      <xs:element minOccurs="0" name="MISReportFormat" type="xs:long" />
+      <xs:element minOccurs="0" name="ReportName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffID" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="Sys_MISReportId" type="xs:long" />
+      <xs:element minOccurs="0" name="rptFileName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsMISReportVO" nillable="true" type="tns:clsMISReportVO" />
+  <xs:complexType name="clsAddUpdateMISConfigurationBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddMISConfig" nillable="true" type="tns:clsMISConfigurationVO" />
+      <xs:element minOccurs="0" name="GetConfigReport" nillable="true" type="tns:clsGetMISReportTypeVO" />
+      <xs:element minOccurs="0" name="GetConfigStaff" nillable="true" type="tns:clsGetMISStaffVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsUpdateStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateMISConfigurationBizActionVO" nillable="true" type="tns:clsAddUpdateMISConfigurationBizActionVO" />
+  <xs:complexType name="clsMISConfigurationVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClinicCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClinicId" type="xs:long" />
+      <xs:element minOccurs="0" name="ClinicName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConfigDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MISReportFormatId" type="xs:long" />
+      <xs:element minOccurs="0" name="MISTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="MISTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportList" nillable="true" type="tns:ArrayOfclsGetMISReportTypeVO" />
+      <xs:element minOccurs="0" name="ScheduleDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ScheduleEndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ScheduleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ScheduleOn" type="xs:long" />
+      <xs:element minOccurs="0" name="ScheduleStartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ScheduleTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StaffDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffList" nillable="true" type="tns:ArrayOfclsGetMISStaffVO" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsMISConfigurationVO" nillable="true" type="tns:clsMISConfigurationVO" />
+  <xs:complexType name="ArrayOfclsGetMISReportTypeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsGetMISReportTypeVO" nillable="true" type="tns:clsGetMISReportTypeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsGetMISReportTypeVO" nillable="true" type="tns:ArrayOfclsGetMISReportTypeVO" />
+  <xs:complexType name="clsGetMISReportTypeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="MISTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="rptFileName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMISReportTypeVO" nillable="true" type="tns:clsGetMISReportTypeVO" />
+  <xs:complexType name="ArrayOfclsGetMISStaffVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsGetMISStaffVO" nillable="true" type="tns:clsGetMISStaffVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsGetMISStaffVO" nillable="true" type="tns:ArrayOfclsGetMISStaffVO" />
+  <xs:complexType name="clsGetMISStaffVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectStaffTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMISStaffVO" nillable="true" type="tns:clsGetMISStaffVO" />
+  <xs:complexType name="clsGetMISReportTypeBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GetMIsReport" nillable="true" type="tns:ArrayOfclsGetMISReportTypeVO" />
+      <xs:element minOccurs="0" name="MISTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMISReportTypeBizActionVO" nillable="true" type="tns:clsGetMISReportTypeBizActionVO" />
+  <xs:complexType name="clsgetMISconfigListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FilterbyClinic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilterbyMISType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GetMISConfig" nillable="true" type="tns:ArrayOfclsMISConfigurationVO" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsgetMISconfigListBizActionVO" nillable="true" type="tns:clsgetMISconfigListBizActionVO" />
+  <xs:complexType name="ArrayOfclsMISConfigurationVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsMISConfigurationVO" nillable="true" type="tns:clsMISConfigurationVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsMISConfigurationVO" nillable="true" type="tns:ArrayOfclsMISConfigurationVO" />
+  <xs:complexType name="clsConfig_MISStaffVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Config_MISId" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsConfig_MISStaffVO" nillable="true" type="tns:clsConfig_MISStaffVO" />
+  <xs:complexType name="clsConfig_MISReportDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Config_MISID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Sys_MISReportID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsConfig_MISReportDetailsVO" nillable="true" type="tns:clsConfig_MISReportDetailsVO" />
+  <xs:complexType name="clsAddConfigBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddMISConfig" nillable="true" type="tns:clsMISConfigurationVO" />
+      <xs:element minOccurs="0" name="GetConfigReport" nillable="true" type="tns:clsConfig_MISReportDetailsVO" />
+      <xs:element minOccurs="0" name="GetConfigStaff" nillable="true" type="tns:clsConfig_MISStaffVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddConfigBizActionVO" nillable="true" type="tns:clsAddConfigBizActionVO" />
+  <xs:complexType name="clsAddConfig_MISReportBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddMISConfig" nillable="true" type="tns:clsMISConfigurationVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddConfig_MISReportBizActionVO" nillable="true" type="tns:clsAddConfig_MISReportBizActionVO" />
+  <xs:complexType name="clsGetMISStaffBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GetStaffInfo" nillable="true" type="tns:ArrayOfclsGetMISStaffVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMISStaffBizActionVO" nillable="true" type="tns:clsGetMISStaffBizActionVO" />
+  <xs:complexType name="clsAddConfig_MISStaffBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddMISConfig" nillable="true" type="tns:clsMISConfigurationVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddConfig_MISStaffBizActionVO" nillable="true" type="tns:clsAddConfig_MISStaffBizActionVO" />
+  <xs:complexType name="clsGetMISEmailDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConfigReportDetails" nillable="true" type="tns:ArrayOfclsGetMISReportTypeVO" />
+      <xs:element minOccurs="0" name="ConfigStaffDetails" nillable="true" type="tns:ArrayOfclsGetMISStaffVO" />
+      <xs:element minOccurs="0" name="MISConfigDetails" nillable="true" type="tns:ArrayOfclsMISConfigurationVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMISEmailDetailsBizActionVO" nillable="true" type="tns:clsGetMISEmailDetailsBizActionVO" />
+  <xs:complexType name="GetMISDetailsFromCriteriaBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MISConfigDetails" nillable="true" type="tns:ArrayOfclsMISConfigurationVO" />
+      <xs:element minOccurs="0" name="ScheduleTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetMISDetailsFromCriteriaBizActionVO" nillable="true" type="tns:GetMISDetailsFromCriteriaBizActionVO" />
+  <xs:complexType name="clsGetMISConfigBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GetConfigReport" nillable="true" type="tns:ArrayOfclsGetMISReportTypeVO" />
+      <xs:element minOccurs="0" name="GetConfigStaff" nillable="true" type="tns:ArrayOfclsGetMISStaffVO" />
+      <xs:element minOccurs="0" name="GetMISConfig" nillable="true" type="tns:clsMISConfigurationVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMISConfigBizActionVO" nillable="true" type="tns:clsGetMISConfigBizActionVO" />
+</xs:schema>

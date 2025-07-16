@@ -1,0 +1,101 @@
+﻿<controls:ChildWindow x:Class="DataDrivenApplication.PositionEditor"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:local="clr-namespace:DataDrivenApplication" Style="{StaticResource ChildWindowDefault}"
+           Width="600" Height="500" xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+           xmlns:Common="clr-namespace:DataDrivenApplication" 
+           Title="PositionEditor">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <local:Window x:Name="Window"  OnCloseButtonClick="Window_OnCloseButtonClick" Margin="5">
+        <Grid Margin="-5" >
+            <Border x:Name="Container" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,8,0,0" >
+                <Grid x:Name="LayoutRoot" Margin="0,1,0,1">
+                    <StackPanel  Orientation="Horizontal" x:Name="ItemListToolbar" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0">
+                        <Button x:Name="DeleteItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="CancelButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                                <TextBlock Text="Cancel" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="AddItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,0,0" Padding="10,3,10,3" TabIndex="1" Click="AddItemButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Common:XamlCheckmark Width="13" Height="13" Margin="0,0,5,0" RenderTransformOrigin="0.5,0.5">
+                                </Common:XamlCheckmark>
+                                <TextBlock Text="Save" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+
+                    <Border  BorderThickness="1,1,1,1" Margin="0,27,0,0" BorderBrush="{StaticResource BorderDefault}" CornerRadius="5,5,5,5" Background="{StaticResource BackgroundDefault}">
+                        <Grid Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>                              
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Type of Element whose Position you Want to change  :" TextWrapping="Wrap" Margin="2"/>
+                            <ComboBox x:Name="ControlType" Grid.Column="1" Grid.Row="0" Style="{StaticResource ComboBoxDefault}" SelectionChanged="ControlType_SelectionChanged" Margin="2"/>
+
+                            <Grid x:Name="SectionOptions" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"  Text="Select Section :" TextWrapping="Wrap" Margin="2"/>
+                                <ComboBox x:Name="cmbSectionList" Grid.Column="1" Grid.Row="0" Style="{StaticResource ComboBoxDefault}" DisplayMemberPath="Title" Margin="2" SelectionChanged="cmbSectionList_SelectionChanged"/>
+                            </Grid>
+                            
+                            <Grid x:Name="CommonOptions" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Visibility="Collapsed" x:Name="tblSectionList" Text="Section List" />
+                                <TextBlock Visibility="Collapsed" x:Name="tblFieldList" Text="Field List" />
+                                <ListBox x:Name="lstElement" Grid.Row="1" Height="325" Width="400" DisplayMemberPath="Title" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"  SelectionMode="Single" ></ListBox>
+                                <StackPanel Grid.Column="1" Grid.RowSpan="2" Orientation="Vertical" VerticalAlignment="Center">
+                                    <Button x:Name="btnUp" Content="Move Up" Margin="5" Click="btnUp_Click"></Button>
+                                    <Button x:Name="btnDown" Content="Move Down" Margin="5" Click="btnDown_Click"></Button>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+
+
+            <Border HorizontalAlignment="Left" Margin="8,0,0,0" x:Name="ContainerTitle" VerticalAlignment="Top" Background="{StaticResource BackgroundDefault}" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="0.994"/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="3.627" Y="0.063"/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <TextBlock x:Name="FormTitle" Text="Position Editor" FontFamily="Portable User Interface" Margin="10,1,10,1" Foreground="{StaticResource Heading}" FontWeight="Bold"/>
+            </Border>
+        </Grid>
+    </local:Window>
+</controls:ChildWindow>

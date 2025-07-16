@@ -1,0 +1,52 @@
+﻿<controls:ChildWindow x:Class="EMR.PatientVisitSummary"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+Width="850" Height="400" 
+xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+xmlns:Common="clr-namespace:EMR"
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls" 
+xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"  
+xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit" 
+xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization">
+    
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <data:DataGrid  Grid.Row="0" x:Name="dgComplaintSummary" Margin="2,2,2,0" ItemsSource="{Binding}"  AutoGenerateColumns="False" IsReadOnly="True" >
+            <data:DataGrid.Columns>
+            
+                <data:DataGridTextColumn Binding="{Binding VisitDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblVisitDate, Source={StaticResource locResource}}" />
+                <data:DataGridTextColumn Binding="{Binding VisitCenter}" Visibility="Collapsed" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblClinic, Source={StaticResource locResource}}" />
+                <data:DataGridTextColumn Binding="{Binding OPDNO}"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblOPDNo, Source={StaticResource locResource}}" />
+                <data:DataGridTextColumn Binding="{Binding Doctor}"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDoctor, Source={StaticResource locResource}}" />
+                <data:DataGridTextColumn Binding="{Binding VisitType}" Visibility="Collapsed"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblVisitType, Source={StaticResource locResource}}" />
+            </data:DataGrid.Columns>
+        </data:DataGrid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btnPrintSummary" IsEnabled="True" Grid.Row="1" Content="{Binding btnPrintSummary, Source={StaticResource locResource}}" MinWidth="110" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdPrintSummary_Click"  />
+            <ToggleButton x:Name="btnHistory" IsEnabled="True" Grid.Row="1" Content="History"  MinWidth="110" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="btnHistory_Click"     />
+            <ToggleButton x:Name="btnPrintPrescription" IsEnabled="True" Grid.Row="2" Content="{Binding btnPrintPrescription, Source={StaticResource locResource}}" MinWidth="120" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed"   Click="cmdPrintPrescription_Click"   />
+            <ToggleButton x:Name="btnPathology" IsEnabled="True" Grid.Row="1" Content="{Binding btnPathology, Source={StaticResource locResource}}" MinWidth="100" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdPathology_Click"  />
+            <ToggleButton x:Name="btnRadiology" IsEnabled="True" Grid.Row="2" Content="{Binding btnRadiology, Source={StaticResource locResource}}" MinWidth="120" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdRadiology_Click"  />
+            <!--<ToggleButton x:Name="btnDiagnostic" IsEnabled="True" Grid.Row="1" Content="{Binding btnDiagnostic, Source={StaticResource locResource}}" MinWidth="100" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdDiagnostics_Click"  />-->
+            <ToggleButton x:Name="btnPrintReferral" IsEnabled="True" Grid.Row="2" Content="{Binding btnPrintReferral, Source={StaticResource locResource}}" MinWidth="120" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Click="cmdReferral_Click" Visibility="Collapsed"  />
+            <ToggleButton x:Name="btnCloseEMR"  Grid.Row="2" Content="{Binding btnClose, Source={StaticResource locResource}}" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="CancelButton_Click"  />
+        </StackPanel>
+    </Grid>
+</controls:ChildWindow>

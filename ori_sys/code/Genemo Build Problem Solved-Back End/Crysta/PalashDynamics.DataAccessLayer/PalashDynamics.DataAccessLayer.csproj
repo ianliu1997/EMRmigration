@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03BE1018-E811-44E1-934C-0D4C32324176}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.DataAccessLayer</RootNamespace>
+    <AssemblyName>PalashDynamics.DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/PalashDynamics.DataAccessLayer/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="com.seedhealthcare.hms.ConfigurationManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportComponents\com.seedhealthcare.hms.ConfigurationManager\bin\Debug\com.seedhealthcare.hms.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="com.seedhealthcare.hms.CustomExceptions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Data Layer Access Reflector\Common Dll\com.seedhealthcare.hms.CustomExceptions.dll</HintPath>
+    </Reference>
+    <Reference Include="com.seedhealthcare.hms.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Data Layer Access Reflector\Common Dll\com.seedhealthcare.hms.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportComponents\com.seedhealthcare.hms.ConfigurationManager\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportComponents\com.seedhealthcare.hms.ConfigurationManager\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PalashDynamics.ValueObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Data Layer Access Reflector\Common Dll\PalashDynamics.ValueObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\Agency\clsBaseAgencyMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseDepartmentScheduleDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseDischargeTemplateMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseDoctorScheduleDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseIPDConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseMasterEntryDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseMISConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseOtConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBasePackageServiceNewDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBasePassConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBasePatientConsentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBasePatientSourceMasterMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseRegistrationChargesMasterMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseServiceMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseStaffMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseUnitMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Administration\clsBaseUserRightsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\ANC\clsBaseANCDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Billing\clsBaseApprovalDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Billing\clsBaseBillDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Billing\clsBaseChargeDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Billing\clsBaseExpensesDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Billing\clsBasePaymentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Billing\clsBaseTariffMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\ClientDetails\clsBaseClientDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\clsBasePackageDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\clsBaseReceivedItemAgainstReturnDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\clsBaseReceivedItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\clsBaseTariffDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\CompoundDrug\clsBaseCompoundDrugDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\CRM\clsBaseCampMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\CRM\clsBaseCampServiceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\CRM\clsBaseLoyaltyProgramDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\DashboardMIS\clsBaseDashboardMisDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\DoctorProcedureLinkBaseDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseCAGRNDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseExpiryItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseGRNDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseGRNReturnDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseIndentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseIssueItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseItemConversionsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseItemMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseItemReorderQuantityDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseItemSalesDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseItemStockDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseMaterialConsumptionDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseOpeningBalanceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseReturnItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Inventory\clsBaseWOGRNDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseAutoChargesDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseBedDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseBedReleaseCheckListDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseBedStatusDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseDischargeSummaryDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseIPDAdmissionDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseIPDDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseIPDIntakeOutputChartDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseIPDVitalSDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBasePatientVitalsMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseReservationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsBaseUnReservationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IPD\clsPatientReminderLogDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFEmbryoTransferDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFLabDayDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFLabDaysSummaryDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFPlanTherapyDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseDonorDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_LabDaysDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_OPUDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_PGDDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_PlanTherapyDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_IUIDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_SemenDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_VitrificationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFROSEstimationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFSpermDefectTestDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\cls_BaseIVFDashboard_SurrogateDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\cls_NewBaseSpremFreezingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\IVFPlanTherapy\DashBoard\cls_NewBaseSpremThawingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Masters\clsBaseCounterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Masters\clsBaseLocationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Masters\clsBaseVisitTypeDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\NursingStation\clsBaseDrugAdministrationChartDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\OpeartionTheatre\clsBaseOTDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Patient\clsBaseHSGDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Patient\clsBaseTESEDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\Quotation\clsBaseQuotationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\RateContract\clsBaseRateContractDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\RSIJ\clsBaseRSIJMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\BaseDataAccessLayer\TokenDisplay\clsBaseTokenDisplayDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseAdvanceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseAppConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseAppointmentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseCompanyPaymentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseDoctorDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseDrugDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseEMRDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseMenuDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseOrderBookingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBasePackageServiceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBasePatientDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBasePatientEMRDataDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBasePatientKinDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBasePatientSposorDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBasePatientVisitDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseQueueDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseRadiologyDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseRefundDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseUserManagementDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseVarianceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\clsBaseVisitDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\DALExtension.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\DALHelper.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\DemoImage.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\newSecurity.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\Security.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Administration\clsDischargeTemplateMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Administration\clsMasterEntryDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Administration\clsUserRightsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\ANC\clsANCDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Billing\clsApprovalDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsAdvanceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsAgencyMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsAppConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsAppointmentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsBillDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsCampMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsCampServiceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsChargeDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsClientDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsCompanyDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsDepartmentScheduleDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsDoctorDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsDoctorScheduleDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsDrugAdministrationChartDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsDrugDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsEMRDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsExpensesDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsExpiryItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsGRNDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsGRNReturnDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIndentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIPDConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIPDIntakeOutputChartDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIPDVitalSDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIssueItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsItemConversionsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsItemSalesDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsItemStockDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIVFDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIVFEmbryoTransferDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIVFLabDayDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIVFLabDaysSummaryDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsIVFPlanTherapyDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsLocationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsLoyaltyProgramDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsMaterialConsumptionDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsMenuDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsMISConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsOrderBookingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsOtConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsOTDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPackageDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPackageServiceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPackageServiceNewDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPassConfigDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPatientConsentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPatientDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPatientEMRDataDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPatientKinDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPatientSourceMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPatientSposorDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPatientVisitDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsPaymentDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsQueueDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsRadiologyDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsReceivedItemAgainstReturnDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsReceivedItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsRefundDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsRegistrationChargesMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsReturnItemDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsServiceMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsStaffMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsTariffDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsTariffMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsTESE_DAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsUnitMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsUserManagementDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsVarianceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsVisitDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\clsVisitTypeDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\CompoundDrug\clsCompoundDrugDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\DashboardMIS\clsDashboardMisDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\DoctorProcedureLinkDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsBasePurchaseOrderDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsBaseWorkOrderDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsCAGRNDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsItemMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsItemReorderQuantityDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsOpeningBalanceDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsPurchaseOrderDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsQuotationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsWOGRNDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Inventory\clsWorkOrderDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsAutoChargesDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsBedDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsBedReleaseCheckListDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsBedReservationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsBedStatusDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsBedUnReservationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsDischargeSummaryDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsIPDAdmissionDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsIPDDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IPD\clsPatientVitalsMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_ThawingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsDonorDetailsDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_LabDaysDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_OPUDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_PGDDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_PlanTherapyDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_IUIDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_SemenDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_ThawingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_VitrificationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFROSEstimationDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFSpermDefectTestDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\cls_IVFDashboard_SurrogateDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\cls_NewSpremFreezingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\IVFPlanTherapy\DashBoard\cls_NewSpremThawingDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Masters\clsCounterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\Patient\clsHSGDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\RateContract\clsRateContractDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\RSIJ\clsRSIJMasterDAL.cs" />
+    <Compile Include="PalashDynamics\DataAccessLayer\SqlServerStoredProc\TokenDisplay\clsTokenDisplayDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mssccprj.scc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PalashDynamics.DataAccessLayer.csproj.vspscc" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

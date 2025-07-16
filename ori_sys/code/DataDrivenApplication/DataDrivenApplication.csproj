@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4C15416-161D-4A6F-9BF9-BC19CBB3CB50}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataDrivenApplication</RootNamespace>
+    <AssemblyName>DataDrivenApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>DataDrivenApplication.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>DataDrivenApplication.App</SilverlightAppEntry>
+    <TestPageFileName>TestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>http://localhost/DataDrivenApplication/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blacklight.Silverlight.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Library\Blacklight.Silverlight.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Groupbox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PalashDynamics.Collections.PagedSortableCollectionView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\DataDrivenApplication\Bin\Debug\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculator.cs" />
+    <Compile Include="CaseReferralChildWindow.xaml.cs">
+      <DependentUpon>CaseReferralChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CaseReferralSheet.xaml.cs">
+      <DependentUpon>CaseReferralSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow1.xaml.cs">
+      <DependentUpon>ChildWindow1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow2.xaml.cs">
+      <DependentUpon>ChildWindow2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DeletionWindow.xaml.cs">
+      <DependentUpon>DeletionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DrugOtherDetails.xaml.cs">
+      <DependentUpon>DrugOtherDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditableImage.cs" />
+    <Compile Include="FormDesigner.xaml.cs">
+      <DependentUpon>FormDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\clsAddUpdateIVFSpermDefectTestBizActionVO.cs" />
+    <Compile Include="Forms\EMRWindow.xaml.cs">
+      <DependentUpon>EMRWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAttention.xaml.cs">
+      <DependentUpon>frmAttention.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChildWinEMR.xaml.cs">
+      <DependentUpon>frmChildWinEMR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNewChildWinEMR.xaml.cs">
+      <DependentUpon>frmNewChildWinEMR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmROS.xaml.cs">
+      <DependentUpon>frmROS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSDDT.xaml.cs">
+      <DependentUpon>frmSDDT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PagedSortableCollectionView.cs" />
+    <Compile Include="Forms\PatientDashBoard.xaml.cs">
+      <DependentUpon>PatientDashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientEMR.xaml.cs">
+      <DependentUpon>PatientEMR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientEMRNew.xaml.cs">
+      <DependentUpon>PatientEMRNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRChildWindow.xaml.cs">
+      <DependentUpon>frmEMRChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImageWindow.xaml.cs">
+      <DependentUpon>ImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InvestigationRepetorControl.cs" />
+    <Compile Include="ManagePatientCaseRecord.xaml.cs">
+      <DependentUpon>ManagePatientCaseRecord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientCaseRecord.xaml.cs">
+      <DependentUpon>PatientCaseRecord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientFeedback.xaml.cs">
+      <DependentUpon>PatientFeedback.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PNGEncoder.cs" />
+    <Compile Include="PositionEditor.xaml.cs">
+      <DependentUpon>PositionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintPage.xaml.cs">
+      <DependentUpon>PrintPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintVarianceMonitoring.xaml.cs">
+      <DependentUpon>PrintVarianceMonitoring.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelationEditor.xaml.cs">
+      <DependentUpon>RelationEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSelector.xaml.cs">
+      <DependentUpon>PatientSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataStructures.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FieldEditor.xaml.cs">
+      <DependentUpon>FieldEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditor.xaml.cs">
+      <DependentUpon>FormEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterLists.cs" />
+    <Compile Include="MedicatioRepeterControl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaziStartPage.xaml.cs">
+      <DependentUpon>RaziStartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RepetorTable.xaml.cs">
+      <DependentUpon>RepetorTable.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SectionEditor.xaml.cs">
+      <DependentUpon>SectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SilverlightControl1.xaml.cs">
+      <DependentUpon>SilverlightControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateAssignment.xaml.cs">
+      <DependentUpon>TemplateAssignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateDesigner.xaml.cs">
+      <DependentUpon>TemplateDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateList.xaml.cs">
+      <DependentUpon>TemplateList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateLoad.xaml.cs">
+      <DependentUpon>TemplateLoad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window.cs" />
+    <Compile Include="XamlCheckmark.xaml.cs">
+      <DependentUpon>XamlCheckmark.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XamlCross.xaml.cs">
+      <DependentUpon>XamlCross.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XamlPencil.xaml.cs">
+      <DependentUpon>XamlPencil.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="CaseReferralChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CaseReferralSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChildWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeletionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DrugOtherDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\EMRWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\frmAttention.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\frmChildWinEMR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\frmNewChildWinEMR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\frmROS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\frmSDDT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PatientDashBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\PatientEMR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PatientEMRNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManagePatientCaseRecord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientCaseRecord.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientFeedback.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PositionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintVarianceMonitoring.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RelationEditor.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientSelector.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FieldEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RaziStartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RepetorTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SectionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SilverlightControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="style1.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateAssignment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TemplateLoad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic1.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XamlCheckmark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XamlCross.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XamlPencil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <Resource Include="Icons\Family History.png" />
+    <Resource Include="Icons\Past History.png" />
+    <Resource Include="Icons\Personal History.png" />
+    <Resource Include="Icons\History.png" />
+    <Resource Include="Images\female.jpg" />
+    <Resource Include="Images\male.jpg" />
+    <None Include="PalashDynamics.ValueObjects.clsUserVO.datasource" />
+    <None Include="Properties\AppManifest.xml" />
+    <Resource Include="Images\print.png" />
+    <Resource Include="Images\xmag.png" />
+    <Resource Include="Images\Search_b.JPG" />
+    <Resource Include="Images\razi logo.png" />
+    <Resource Include="Images\BlankImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo_razi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\OutOfBrowserSettings.xml" />
+    <Resource Include="Images\medium.PNG" />
+    <Resource Include="Images\logo_shs.png" />
+    <Resource Include="Images\New.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamic.Localization\PalashDynamic.Localization.csproj">
+      <Project>{C79BA59E-5157-40A1-BC4A-6335984B92FD}</Project>
+      <Name>PalashDynamic.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SearchResultLists\PalashDynamics.SearchResultLists.csproj">
+      <Project>{1222821C-4F56-416A-8F9D-A861422ABC29}</Project>
+      <Name>PalashDynamics.SearchResultLists</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

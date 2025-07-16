@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.DepartmentScheduleMaster" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.DepartmentScheduleMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:complexType name="clsDepartmentScheduleVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentScheduleDetailsList" nillable="true" type="tns:ArrayOfclsDepartmentScheduleDetailsVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDepartmentScheduleVO" nillable="true" type="tns:clsDepartmentScheduleVO" />
+  <xs:complexType name="ArrayOfclsDepartmentScheduleDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsDepartmentScheduleDetailsVO" nillable="true" type="tns:clsDepartmentScheduleDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsDepartmentScheduleDetailsVO" nillable="true" type="tns:ArrayOfclsDepartmentScheduleDetailsVO" />
+  <xs:complexType name="clsDepartmentScheduleDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplyToAllDay" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Day" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DayID" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentScheduleID" type="xs:long" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Schedule" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ScheduleID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDepartmentScheduleDetailsVO" nillable="true" type="tns:clsDepartmentScheduleDetailsVO" />
+  <xs:complexType name="clsAddDepartmentScheduleMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentScheduleDetails" nillable="true" type="tns:clsDepartmentScheduleVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddDepartmentScheduleMasterBizActionVO" nillable="true" type="tns:clsAddDepartmentScheduleMasterBizActionVO" />
+  <xs:complexType name="clsGetDepartmentScheduleMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DayID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsDepartmentScheduleVO" />
+      <xs:element minOccurs="0" name="Schedule1_EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule1_StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule2_EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule2_StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDepartmentScheduleMasterBizActionVO" nillable="true" type="tns:clsGetDepartmentScheduleMasterBizActionVO" />
+  <xs:complexType name="clsGetDepartmentScheduleMasterListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentScheduleList" nillable="true" type="tns:ArrayOfclsDepartmentScheduleVO" />
+      <xs:element minOccurs="0" name="DoctorModalityID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="InputSearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDepartment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDepartmentSchedule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDoctor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModality" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNursing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOTSchedule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="checkDepartmentSchedule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDepartmentScheduleMasterListBizActionVO" nillable="true" type="tns:clsGetDepartmentScheduleMasterListBizActionVO" />
+  <xs:complexType name="ArrayOfclsDepartmentScheduleVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsDepartmentScheduleVO" nillable="true" type="tns:clsDepartmentScheduleVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsDepartmentScheduleVO" nillable="true" type="tns:ArrayOfclsDepartmentScheduleVO" />
+  <xs:complexType name="clsCheckTimeForScheduleExistanceDepartmentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DayID" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:ArrayOfclsDepartmentScheduleDetailsVO" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsSchedulePresent" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Schedule1_EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule1_StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule2_EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule2_StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckTimeForScheduleExistanceDepartmentBizActionVO" nillable="true" type="tns:clsCheckTimeForScheduleExistanceDepartmentBizActionVO" />
+  <xs:complexType name="clsGetDepartmentScheduleTimeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DayID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentId" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentScheduleDetailsList" nillable="true" type="tns:ArrayOfclsDepartmentScheduleDetailsVO" />
+      <xs:element minOccurs="0" name="InputSearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDepartmentScheduleTimeVO" nillable="true" type="tns:clsGetDepartmentScheduleTimeVO" />
+  <xs:complexType name="clsGetDepartmentScheduleListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentScheduleID" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentScheduleList" nillable="true" type="tns:ArrayOfclsDepartmentScheduleDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDepartmentScheduleListBizActionVO" nillable="true" type="tns:clsGetDepartmentScheduleListBizActionVO" />
+  <xs:complexType name="clsGetDepartmentDepartmentDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentId" type="xs:long" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q1:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDepartmentDepartmentDetailsBizActionVO" nillable="true" type="tns:clsGetDepartmentDepartmentDetailsBizActionVO" />
+</xs:schema>

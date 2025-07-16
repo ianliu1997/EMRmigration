@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" />
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:complexType name="clsGetPatientSponsorBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GetLatest" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="PatientSponsorDetails" nillable="true" type="q1:clsPatientSponsorVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientSponsorBizActionVO" nillable="true" type="tns:clsGetPatientSponsorBizActionVO" />
+  <xs:complexType name="clsGetPatientSponsorGroupListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="DetailsList" nillable="true" type="q2:ArrayOfclsPatientSponsorGroupDetailsVO" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientSponsorGroupListBizActionVO" nillable="true" type="tns:clsGetPatientSponsorGroupListBizActionVO" />
+  <xs:complexType name="clsGetPatientSponsorServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="DetailsList" nillable="true" type="q3:ArrayOfclsPatientSponsorServiceDetailsVO" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientSponsorServiceListBizActionVO" nillable="true" type="tns:clsGetPatientSponsorServiceListBizActionVO" />
+  <xs:complexType name="clsGetPatientSponsorCardListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="DetailsList" nillable="true" type="q4:ArrayOfclsPatientSponsorCardDetailsVO" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientSponsorCardListBizActionVO" nillable="true" type="tns:clsGetPatientSponsorCardListBizActionVO" />
+  <xs:complexType name="clsGetPatientSponsorListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="PatientSponsorDetails" nillable="true" type="q5:ArrayOfclsPatientSponsorVO" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientSponsorListBizActionVO" nillable="true" type="tns:clsGetPatientSponsorListBizActionVO" />
+  <xs:complexType name="clsGetVisitListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckPCR" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="VisitList" nillable="true" type="q6:ArrayOfclsVisitVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetVisitListBizActionVO" nillable="true" type="tns:clsGetVisitListBizActionVO" />
+  <xs:complexType name="clsGetPatientEMRVisitListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="VisitList" nillable="true" type="q7:ArrayOfclsVisitVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientEMRVisitListBizActionVO" nillable="true" type="tns:clsGetPatientEMRVisitListBizActionVO" />
+  <xs:complexType name="clsGetVisitBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="Details" nillable="true" type="q8:clsVisitVO" />
+      <xs:element minOccurs="0" name="ForHO" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetLatestVisit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetVisitBizActionVO" nillable="true" type="tns:clsGetVisitBizActionVO" />
+  <xs:complexType name="clsAddVisitBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="VisitDetails" nillable="true" type="q9:clsVisitVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddVisitBizActionVO" nillable="true" type="tns:clsAddVisitBizActionVO" />
+  <xs:complexType name="clsUpdateCurrentVisitStatusBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="CurrentVisitStatus" type="q10:VisitCurrentStatus" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateCurrentVisitStatusBizActionVO" nillable="true" type="tns:clsUpdateCurrentVisitStatusBizActionVO" />
+  <xs:complexType name="clsGetSecondLastVisitBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="Details" nillable="true" type="q11:clsVisitVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetSecondLastVisitBizActionVO" nillable="true" type="tns:clsGetSecondLastVisitBizActionVO" />
+  <xs:complexType name="clsAddPatientSponsorBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="PatientSponsorDetails" nillable="true" type="q12:clsPatientSponsorVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientSponsorBizActionVO" nillable="true" type="tns:clsAddPatientSponsorBizActionVO" />
+  <xs:complexType name="clsDeletePatientSponsorBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeletePatientSponsorBizActionVO" nillable="true" type="tns:clsDeletePatientSponsorBizActionVO" />
+  <xs:complexType name="clsAddPatientKinDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="KinDetails" nillable="true" type="q13:clsPatientKinDetailsVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientKinDetailsBizActionVO" nillable="true" type="tns:clsAddPatientKinDetailsBizActionVO" />
+</xs:schema>

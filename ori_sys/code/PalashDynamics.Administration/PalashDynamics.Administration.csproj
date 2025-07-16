@@ -1,0 +1,1597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="5.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5BBF7708-7343-4373-88B8-60F339BA97D0}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.Administration</RootNamespace>
+    <AssemblyName>PalashDynamics.Administration</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.Administration.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.Administration.App</SilverlightAppEntry>
+    <TestPageFileName>TestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/PalashDynamics.Administration/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blacklight.Silverlight.Controls">
+      <HintPath>..\Library\Blacklight.Silverlight.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Automation">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Carousel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Carousel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart.Editor">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart.Extended">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart3D">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart3D.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Data">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Excel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Filters">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Filters.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Ria">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Ria.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Summaries">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Summaries.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DateTimeEditors">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DateTimeEditors.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Docking">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Excel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Extended">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Extended.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Extended.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.FlexGrid.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.FlexGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.FlexGridFilter.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.FlexGridFilter.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Gauge">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Gauge.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Imaging">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Legacy">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Maps">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.MediaPlayer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.MediaPlayer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Olap.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Olap.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.OrgChart">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.OrgChart.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.OutlookBar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.OutlookBar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Pdf">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.PdfViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.PdfViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.ReportViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.ReportViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.LegacyHtmlFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.LegacyHtmlFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.PdfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.PdfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.RtfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.RtfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.Toolbar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Schedule">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.SpellChecker">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.BureauBlack">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.BureauBlack.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Cosmopolitan">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Cosmopolitan.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ExpressionDark">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ExpressionDark.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ExpressionLight">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ExpressionLight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Office2007">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Office2010">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Office2010.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.RainierOrange">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.RainierOrange.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ShinyBlue">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ShinyBlue.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.WhistlerBlue">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.WhistlerBlue.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.TileView">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.TileView.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Toolbar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Uploader">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Uploader.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Zip">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client, Version=2.4.0.851, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86" />
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit, Version=2.4.0.851, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86" />
+    <Reference Include="Groupbox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Liquid, Version=5.2.7.15946, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL" />
+    <Reference Include="Liquid.Popup, Version=5.2.7.13878, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL" />
+    <Reference Include="Liquid.RichText, Version=5.2.7.15116, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Composite, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Microsoft.Practices.Composite.dll</HintPath>
+    </Reference>
+    <Reference Include="PalashDynamic.Localization">
+      <HintPath>..\PalashDynamic.Localization\Bin\Debug\PalashDynamic.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="PalashDynamics.Pathology">
+      <HintPath>..\..\..\Bagul_IVF_NewNashik\PalashDynamics.Administration\Bin\Debug\PalashDynamics.Pathology.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\PalashDynamics.Administration\Bin\Debug\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\PalashDynamics.Administration\Bin\Debug\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\EMR\frmCPOELabServicesSelection.xaml.cs">
+      <Link>PatientWindow\frmCPOELabServicesSelection.xaml.cs</Link>
+      <DependentUpon>frmCPOELabServicesSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\frmCPOEOtherSelectionList.xaml.cs">
+      <Link>PatientWindow\frmCPOEOtherSelectionList.xaml.cs</Link>
+      <DependentUpon>frmCPOEOtherSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\frmCPOEServiceSelectionList.xaml.cs">
+      <Link>PatientWindow\frmCPOEServiceSelectionList.xaml.cs</Link>
+      <DependentUpon>frmCPOEServiceSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\frmEMRMedDrugSelectionList.xaml.cs">
+      <Link>PatientWindow\frmEMRMedDrugSelectionList.xaml.cs</Link>
+      <DependentUpon>frmEMRMedDrugSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\PhotoWindow.xaml.cs">
+      <Link>PatientWindow\PhotoWindow.xaml.cs</Link>
+      <DependentUpon>PhotoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.CRM\ServiceDetails.xaml.cs">
+      <Link>ServiceDetails.xaml.cs</Link>
+      <DependentUpon>ServiceDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\DataGridSelectionAdapter.cs">
+      <Link>DataGridSelectionAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemList.xaml.cs">
+      <Link>Item Search\ItemList.xaml.cs</Link>
+      <DependentUpon>ItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemListNew.xaml.cs">
+      <Link>Item Search\ItemListNew.xaml.cs</Link>
+      <DependentUpon>ItemListNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemSearchViewModel.cs">
+      <Link>Item Search\ItemSearchViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ViewModelBase.cs">
+      <Link>Item Search\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="AddRoleModule.cs" />
+    <Compile Include="AddUserModule.cs" />
+    <Compile Include="AdmissionTypeServiceLinkChildWindow.xaml.cs">
+      <DependentUpon>AdmissionTypeServiceLinkChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Agency\frmAgencyClinicLinking.xaml.cs">
+      <DependentUpon>frmAgencyClinicLinking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Agency\frmAgencyConfiguration.xaml.cs">
+      <DependentUpon>frmAgencyConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Agency\frmAgencyMaster.xaml.cs">
+      <DependentUpon>frmAgencyMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Agency\frmAgencyServiceLinking.xaml.cs">
+      <DependentUpon>frmAgencyServiceLinking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AgentMaster.xaml.cs">
+      <DependentUpon>AgentMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyAllClassRate.xaml.cs">
+      <DependentUpon>ApplyAllClassRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyStores.xaml.cs">
+      <DependentUpon>ApplyStores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssignPackageConsent.xaml.cs">
+      <DependentUpon>AssignPackageConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssignTariffPopUp.xaml.cs">
+      <DependentUpon>AssignTariffPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankBranchMaster.xaml.cs">
+      <DependentUpon>BankBranchMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword\frmChangePassword.xaml.cs">
+      <DependentUpon>frmChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword\frmFirstChangePassword.xaml.cs">
+      <DependentUpon>frmFirstChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CheckIsSubPathoTest.xaml.cs">
+      <DependentUpon>CheckIsSubPathoTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildDoctorPayment.xaml.cs">
+      <DependentUpon>ChildDoctorPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyAssociateMaster.xaml.cs">
+      <DependentUpon>CompanyAssociateMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyMaster.xaml.cs">
+      <DependentUpon>CompanyMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsentMaster.xaml.cs">
+      <DependentUpon>ConsentMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DefineMachine.xaml.cs">
+      <DependentUpon>DefineMachine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DefinePathologist.xaml.cs">
+      <DependentUpon>DefinePathologist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DefineRadiologist.xaml.cs">
+      <DependentUpon>DefineRadiologist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DefineServicesForPatho.xaml.cs">
+      <DependentUpon>DefineServicesForPatho.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentMaster.xaml.cs">
+      <DependentUpon>DepartmentMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorMaster.xaml.cs">
+      <DependentUpon>DoctorMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorPaymentModeWindow.xaml.cs">
+      <DependentUpon>DoctorPaymentModeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorRosterMaster.xaml.cs">
+      <DependentUpon>DoctorRosterMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorSchedule.xaml.cs">
+      <DependentUpon>DoctorSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorScheduleMaster.xaml.cs">
+      <DependentUpon>DoctorScheduleMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorScheduleRoster.xaml.cs">
+      <DependentUpon>DoctorScheduleRoster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmailTemplate.xaml.cs">
+      <DependentUpon>EmailTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddRole.xaml.cs">
+      <DependentUpon>frmAddRole.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddSOPFile.xaml.cs">
+      <DependentUpon>frmAddSOPFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddUser.xaml.cs">
+      <DependentUpon>frmAddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdmissionTypeMaster.xaml.cs">
+      <DependentUpon>frmAdmissionTypeMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAlertsand Notifications.xaml.cs">
+      <DependentUpon>frmAlertsand Notifications.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmANCConfiguration.xaml.cs">
+      <DependentUpon>frmANCConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmApplicationConfiguration.xaml.cs">
+      <DependentUpon>frmApplicationConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmApplicatonConfigEmailCCinCCTo.xaml.xaml.cs">
+      <DependentUpon>frmApplicatonConfigEmailCCinCCTo.xaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApplyLevel.xaml.cs">
+      <DependentUpon>FrmApplyLevel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssignServiceTariff.xaml.cs">
+      <DependentUpon>frmAssignServiceTariff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAutoCharges.xaml.cs">
+      <DependentUpon>frmAutoCharges.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBedCategory.xaml.cs">
+      <DependentUpon>frmBedCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBedMaster.xaml.cs">
+      <DependentUpon>frmBedMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBedReleseCheckList.xaml.cs">
+      <DependentUpon>frmBedReleseCheckList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBillingConfiguration.xaml.cs">
+      <DependentUpon>frmBillingConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBlockMaster.xaml.cs">
+      <DependentUpon>frmBlockMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBulkRateChange.xaml.cs">
+      <DependentUpon>frmBulkRateChange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCashCounterMaster.xaml.cs">
+      <DependentUpon>frmCashCounterMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmChildDoctorPayment.xaml.cs">
+      <DependentUpon>frmChildDoctorPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCityMaster.xaml.cs">
+      <DependentUpon>frmCityMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCleavageGradeMaster.xaml.cs">
+      <DependentUpon>FrmCleavageGradeMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmClinicConfiguration.xaml.cs">
+      <DependentUpon>frmClinicConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCountryMaster.xaml.cs">
+      <DependentUpon>frmCountryMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDietNutritionConfiguration.xaml.cs">
+      <DependentUpon>frmDietNutritionConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDietPlanMaster.xaml.cs">
+      <DependentUpon>frmDietPlanMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDischargeTemplate.xaml.cs">
+      <DependentUpon>frmDischargeTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctorPaymentBillWiseBetweenRangeChildWindow.xaml.cs">
+      <DependentUpon>frmDoctorPaymentBillWiseBetweenRangeChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctorServiceRateCategory.xaml.cs">
+      <DependentUpon>frmDoctorServiceRateCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctorServiceRateWiseLinkChildWindow.xaml.cs">
+      <DependentUpon>frmDoctorServiceRateWiseLinkChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctorShareRange.xaml.cs">
+      <DependentUpon>frmDoctorShareRange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmE2LevelOfDayMaster.xaml.cs">
+      <DependentUpon>FrmE2LevelOfDayMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmailTemplate.xaml.cs">
+      <DependentUpon>frmEmailTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRFieldValues.xaml.cs">
+      <DependentUpon>frmEMRFieldValues.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRMasters.xaml.cs">
+      <DependentUpon>frmEMRMasters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmExpences.xaml.cs">
+      <DependentUpon>frmExpences.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFloorMaster.xaml.cs">
+      <DependentUpon>frmFloorMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFoodItemList.xaml.cs">
+      <DependentUpon>frmFoodItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFoodItemMaster.xaml.cs">
+      <DependentUpon>frmFoodItemMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventoryConfiguration.xaml.cs">
+      <DependentUpon>frmInventoryConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDAdmissionConfiguration.xaml.cs">
+      <DependentUpon>frmIPDAdmissionConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDConfiguration.xaml.cs">
+      <DependentUpon>frmIPDConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIVFConfiguration.xaml.cs">
+      <DependentUpon>frmIVFConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmmachineparameterlink.xaml.cs">
+      <DependentUpon>frmmachineparameterlink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMachineParameterMaster.xaml.cs">
+      <DependentUpon>FrmMachineParameterMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMISConfiguration.xaml.cs">
+      <DependentUpon>frmMISConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewDoctorPayment.xaml.cs">
+      <DependentUpon>frmNewDoctorPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTConfiguration.xaml.cs">
+      <DependentUpon>frmOTConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPackageDefinationMaster.xaml.cs">
+      <DependentUpon>frmPackageDefinationMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPackageDefineRuleMaster.xaml.cs">
+      <DependentUpon>frmPackageDefineRuleMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPackageMainMaster.xaml.cs">
+      <DependentUpon>frmPackageMainMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPackageRateClinicWise.xaml.cs">
+      <DependentUpon>frmPackageRateClinicWise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPackageRelation.xaml.cs">
+      <DependentUpon>frmPackageRelation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPackageServices.xaml.cs">
+      <DependentUpon>frmPackageServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPathologyConfiguration.xaml.cs">
+      <DependentUpon>frmPathologyConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPathologyParameterMaster.xaml.cs">
+      <DependentUpon>frmPathologyParameterMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPathologyTemplateMaster.xaml.cs">
+      <DependentUpon>frmPathologyTemplateMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientConfiguration.xaml.cs">
+      <DependentUpon>frmPatientConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientVitalSMaster.xaml.cs">
+      <DependentUpon>frmPatientVitalSMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcedureCheckList.xaml.cs">
+      <DependentUpon>frmProcedureCheckList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcedureSubCategoryMaster.xaml.cs">
+      <DependentUpon>frmProcedureSubCategoryMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProfileMaster.xaml.cs">
+      <DependentUpon>frmProfileMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRadiologyConfiguration.xaml.cs">
+      <DependentUpon>frmRadiologyConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegionMaster.xaml.cs">
+      <DependentUpon>frmRegionMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRoomMaster.xaml.cs">
+      <DependentUpon>frmRoomMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmServiceMasterNew.xaml.cs">
+      <DependentUpon>frmServiceMasterNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmServiceTaxLinking.xaml.cs">
+      <DependentUpon>frmServiceTaxLinking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSMSTemplate.xaml.cs">
+      <DependentUpon>frmSMSTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmStateMaster.xaml.cs">
+      <DependentUpon>frmStateMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSurrogateAgencyMaster.xaml.cs">
+      <DependentUpon>FrmSurrogateAgencyMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTallyInterface.xaml.cs">
+      <DependentUpon>frmTallyInterface.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTallyInterfaceNew.xaml.cs">
+      <DependentUpon>frmTallyInterfaceNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTariffCopyUtility.xaml.cs">
+      <DependentUpon>frmTariffCopyUtility.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserEMRTemplates.xaml.cs">
+      <DependentUpon>frmUserEMRTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserRights.xaml.cs">
+      <DependentUpon>frmUserRights.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewEMRFormTemplate.xaml.cs">
+      <DependentUpon>frmViewEMRFormTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaiverSetting.xaml.cs">
+      <DependentUpon>frmWaiverSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmWardMaster.xaml.cs">
+      <DependentUpon>frmWardMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InstructionMaster.xaml.cs">
+      <DependentUpon>InstructionMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InvestigationRepetorControl.cs" />
+    <Compile Include="ItemGroupMaster.xaml.cs">
+      <DependentUpon>ItemGroupMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemListWithCategory.xaml.cs">
+      <DependentUpon>ItemListWithCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MedicatioRepeterControl.cs" />
+    <Compile Include="NewChildDoctorShareMaster.xaml.cs">
+      <DependentUpon>NewChildDoctorShareMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewDoctorShareMasterList.xaml.cs">
+      <DependentUpon>NewDoctorShareMasterList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OTTable.xaml.cs">
+      <DependentUpon>OTTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PackageConfiguration.xaml.cs">
+      <DependentUpon>PackageConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PackageServices.xaml.cs">
+      <DependentUpon>PackageServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordConfiguration.xaml.cs">
+      <DependentUpon>PasswordConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyProfileMaster.xaml.cs">
+      <DependentUpon>PathologyProfileMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathoSubTestMaster.xaml.cs">
+      <DependentUpon>PathoSubTestMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathoTestMaster.xaml.cs">
+      <DependentUpon>PathoTestMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientConsentMaster.xaml.cs">
+      <DependentUpon>PatientConsentMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientRegistrationCharges.xaml.cs">
+      <DependentUpon>PatientRegistrationCharges.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSourceCategoryMaster.xaml.cs">
+      <DependentUpon>PatientSourceCategoryMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSourceMaster.xaml.cs">
+      <DependentUpon>PatientSourceMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PayExpense.xaml.cs">
+      <DependentUpon>PayExpense.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PendingDoctorList.xaml.cs">
+      <DependentUpon>PendingDoctorList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PreViewEmailTemplate.xaml.cs">
+      <DependentUpon>PreViewEmailTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewSMSTemplate.xaml.cs">
+      <DependentUpon>PreviewSMSTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureMaster.xaml.cs">
+      <DependentUpon>ProcedureMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadiologyTemplateMaster.xaml.cs">
+      <DependentUpon>RadiologyTemplateMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RadiologyTestMaster.xaml.cs">
+      <DependentUpon>RadiologyTestMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReferalDoctorSearchChildWindow.xaml.cs">
+      <DependentUpon>ReferalDoctorSearchChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResultList.xaml.cs">
+      <DependentUpon>SearchResultList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service.xaml.cs">
+      <DependentUpon>Service.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceSearchAddToTariff.xaml.cs">
+      <DependentUpon>ServiceSearchAddToTariff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShareRangeChildWindow.xaml.cs">
+      <DependentUpon>ShareRangeChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SmsTemplate.xaml.cs">
+      <DependentUpon>SmsTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpecializationMaster.xaml.cs">
+      <DependentUpon>SpecializationMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpecializationSubSpecializationWiseDoctorShareChildWindow.xaml.cs">
+      <DependentUpon>SpecializationSubSpecializationWiseDoctorShareChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffMaster.xaml.cs">
+      <DependentUpon>StaffMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubSpecialization.xaml.cs">
+      <DependentUpon>SubSpecialization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration.xaml.cs">
+      <DependentUpon>SystemConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TariffMaster.xaml.cs">
+      <DependentUpon>TariffMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TariffServiceMaster.xaml.cs">
+      <DependentUpon>TariffServiceMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Template\CaseReferralSheet.xaml.cs">
+      <DependentUpon>CaseReferralSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Class1.cs" />
+    <Compile Include="Template\MasterLists.cs" />
+    <Compile Include="Template\MedicatioRepeterControl.cs" />
+    <Compile Include="Template\PatientCaseRecord.xaml.cs">
+      <DependentUpon>PatientCaseRecord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Template\RepetorTable.xaml.cs">
+      <DependentUpon>RepetorTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Template\TemplateOperation.cs" />
+    <Compile Include="UnitMaster.xaml.cs">
+      <DependentUpon>UnitMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCategoryLink.xaml.cs">
+      <DependentUpon>UserCategoryLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPathologyTemplate.xaml.cs">
+      <DependentUpon>ViewPathologyTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewRadiologyTemplate.xaml.cs">
+      <DependentUpon>ViewRadiologyTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VisitTypeMaster.xaml.cs">
+      <DependentUpon>VisitTypeMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="..\EMR\frmCPOELabServicesSelection.xaml">
+      <Link>PatientWindow\frmCPOELabServicesSelection.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\frmCPOEOtherSelectionList.xaml">
+      <Link>PatientWindow\frmCPOEOtherSelectionList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\frmCPOEServiceSelectionList.xaml">
+      <Link>PatientWindow\frmCPOEServiceSelectionList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\frmEMRMedDrugSelectionList.xaml">
+      <Link>PatientWindow\frmEMRMedDrugSelectionList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\PhotoWindow.xaml">
+      <Link>PatientWindow\PhotoWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.CRM\ServiceDetails.xaml">
+      <Link>ServiceDetails.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemList.xaml">
+      <Link>Item Search\ItemList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemListNew.xaml">
+      <Link>Item Search\ItemListNew.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdmissionTypeServiceLinkChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Agency\frmAgencyClinicLinking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Agency\frmAgencyConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Agency\frmAgencyMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Agency\frmAgencyServiceLinking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AgentMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ApplyAllClassRate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ApplyStores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssignPackageConsent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssignTariffPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BankBranchMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChangePassword\frmChangePassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChangePassword\frmFirstChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CheckIsSubPathoTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildDoctorPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompanyAssociateMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompanyMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConsentMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DefineMachine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DefinePathologist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DefineRadiologist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DefineServicesForPatho.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DepartmentMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorPaymentModeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorRosterMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorScheduleMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorScheduleRoster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmailTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmAddRole.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAddSOPFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmAddUser.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAdmissionTypeMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmAlertsand Notifications.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmANCConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmApplicationConfiguration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmApplicatonConfigEmailCCinCCTo.xaml.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmApplyLevel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmAssignServiceTariff.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAutoCharges.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmBedCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmBedMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmBedReleseCheckList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmBillingConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmBlockMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmBulkRateChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCashCounterMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmChildDoctorPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCityMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmCleavageGradeMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmClinicConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCountryMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDietNutritionConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDietPlanMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDischargeTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDoctorPaymentBillWiseBetweenRangeChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDoctorServiceRateCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDoctorServiceRateWiseLinkChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDoctorShareRange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmE2LevelOfDayMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEmailTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRFieldValues.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRMasters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmExpences.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmFloorMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmFoodItemList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmFoodItemMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmInventoryConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDAdmissionConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIVFConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmmachineparameterlink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmMachineParameterMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmMISConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmNewDoctorPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmOTConfiguration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPackageDefinationMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPackageDefineRuleMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPackageMainMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPackageRateClinicWise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPackageRelation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPackageServices.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPathologyConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPathologyParameterMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPathologyTemplateMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPatientConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPatientVitalSMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmProcedureCheckList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmProcedureSubCategoryMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmProfileMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmRadiologyConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmRegionMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmRoomMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmServiceMasterNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmServiceTaxLinking.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSMSTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmStateMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmSurrogateAgencyMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmTallyInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmTallyInterfaceNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmTariffCopyUtility.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmUserEMRTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmUserRights.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmViewEMRFormTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmWaiverSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmWardMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InstructionMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemGroupMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemListWithCategory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewChildDoctorShareMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewDoctorShareMasterList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OTTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PackageConfiguration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PackageServices.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PasswordConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyProfileMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathoSubTestMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PathoTestMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientConsentMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientRegistrationCharges.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientSourceCategoryMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientSourceMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PayExpense.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PendingDoctorList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PreViewEmailTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PreviewSMSTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProcedureMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RadiologyTemplateMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RadiologyTestMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReferalDoctorSearchChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchResultList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Service.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceSearchAddToTariff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShareRangeChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SmsTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpecializationMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpecializationSubSpecializationWiseDoctorShareChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubSpecialization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemConfiguration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TariffMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TariffServiceMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Template\CaseReferralSheet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Template\PatientCaseRecord.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Template\RepetorTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UnitMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCategoryLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewPathologyTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewRadiologyTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VisitTypeMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\DataSources\PalashDynamics.ValueObjects.clsUserVO.datasource" />
+    <Resource Include="Icons\Od_appd.png" />
+    <Resource Include="Icons\Search_b.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataDrivenApplication\DataDrivenApplication.csproj">
+      <Project>{D4C15416-161D-4A6F-9BF9-BC19CBB3CB50}</Project>
+      <Name>DataDrivenApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SearchResultLists\PalashDynamics.SearchResultLists.csproj">
+      <Project>{1222821C-4F56-416A-8F9D-A861422ABC29}</Project>
+      <Name>PalashDynamics.SearchResultLists</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.WaterMarkTextBox\PalashDynamics.WaterMarkTextBox.csproj">
+      <Project>{1B114BF8-F1E2-4EC6-AAA2-A69E4FFE24D7}</Project>
+      <Name>PalashDynamics.WaterMarkTextBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RichTextEditor\RichTextEditor.csproj">
+      <Project>{C7A2FD85-3455-4CC4-8DF4-960707AB3EBA}</Project>
+      <Name>RichTextEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ANC\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

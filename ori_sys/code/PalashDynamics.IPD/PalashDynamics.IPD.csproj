@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B67F97EC-FAC0-4ACC-B9B6-7DB7FD0CB487}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.IPD</RootNamespace>
+    <AssemblyName>PalashDynamics.IPD</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.IPD.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.IPD.App</SilverlightAppEntry>
+    <TestPageFileName>PalashDynamics.IPDTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.Silverlight, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Pdf, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.PdfViewer, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.PdfViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.PdfFilter, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.PdfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.RtfFilter, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.RtfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.Toolbar, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.SpellChecker, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Toolbar, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Zip, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Groupbox">
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Liquid, Version=5.2.7.15946, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL" />
+    <Reference Include="Liquid.Popup, Version=5.2.7.13878, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL" />
+    <Reference Include="Liquid.RichText, Version=5.2.7.15116, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit.Internals, Version=4.0.5.0, Culture=neutral, PublicKeyToken=2c5c654d367bf4a7, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\DataDrivenApplication\Forms\frmAttention.xaml.cs">
+      <Link>frmAttention.xaml.cs</Link>
+      <DependentUpon>frmAttention.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\CalculateBillAmounttobeRecieveandRefund .xaml.cs">
+      <Link>CalculateBillAmounttobeRecieveandRefund .xaml.cs</Link>
+      <DependentUpon>CalculateBillAmounttobeRecieveandRefund .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\frmReceiptList.xaml.cs">
+      <Link>frmReceiptList.xaml.cs</Link>
+      <DependentUpon>frmReceiptList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\PackageServiceSearchForPackage.xaml.cs">
+      <Link>PackageServiceSearchForPackage.xaml.cs</Link>
+      <DependentUpon>PackageServiceSearchForPackage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\PaymentWindow.xaml.cs">
+      <Link>PaymentWindow.xaml.cs</Link>
+      <DependentUpon>PaymentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\PhotoWindow.xaml.cs">
+      <Link>PhotoWindow.xaml.cs</Link>
+      <DependentUpon>PhotoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\ServiceSearchForPackage.xaml.cs">
+      <Link>ServiceSearchForPackage.xaml.cs</Link>
+      <DependentUpon>ServiceSearchForPackage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\frmServiceTaxTransactionDetails.xaml.cs">
+      <Link>frmServiceTaxTransactionDetails.xaml.cs</Link>
+      <DependentUpon>frmServiceTaxTransactionDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\ItemList\DrugsForPatientPrescription.xaml.cs">
+      <Link>DrugsForPatientPrescription.xaml.cs</Link>
+      <DependentUpon>DrugsForPatientPrescription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\ItemList\PrescriptionServicesForPatient.xaml.cs">
+      <Link>PrescriptionServicesForPatient.xaml.cs</Link>
+      <DependentUpon>PrescriptionServicesForPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdmissionDetailsWin.xaml.cs">
+      <DependentUpon>AdmissionDetailsWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BedTransfer.xaml.cs">
+      <DependentUpon>BedTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildPhonedetails.xaml.cs">
+      <DependentUpon>ChildPhonedetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildReminderLog.xaml.cs">
+      <DependentUpon>ChildReminderLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="clsGetPatientsDischargeSummaryInfoInHTMLBizActionVO.cs" />
+    <Compile Include="Discharge.xaml.cs">
+      <DependentUpon>Discharge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DischargeCancel.xaml.cs">
+      <DependentUpon>DischargeCancel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DischargeSummary.xaml.cs">
+      <DependentUpon>DischargeSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdmissionList.xaml.cs">
+      <DependentUpon>frmAdmissionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdviseDischarge.xaml.cs">
+      <DependentUpon>frmAdviseDischarge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBedDetails.xaml.cs">
+      <DependentUpon>FrmBedDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBedReservation.xaml.cs">
+      <DependentUpon>frmBedReservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBedStatus.xaml.cs">
+      <DependentUpon>frmBedStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBedTransfer.xaml.cs">
+      <DependentUpon>frmBedTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBedUnreservation.xaml.cs">
+      <DependentUpon>frmBedUnreservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangeAdmissionType.xaml.cs">
+      <DependentUpon>frmChangeAdmissionType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangeReferEntity.xaml.cs">
+      <DependentUpon>frmChangeReferEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsent.xaml.cs">
+      <DependentUpon>FrmConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCurrentBedStatus.xaml.cs">
+      <DependentUpon>frmCurrentBedStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDischargeApprovalDepartment.xaml.cs">
+      <DependentUpon>frmDischargeApprovalDepartment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDischargeSummary.xaml.cs">
+      <DependentUpon>frmDischargeSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDrugAdministrationChart.xaml.cs">
+      <DependentUpon>frmDrugAdministrationChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIntakeOutputChart.xaml.cs">
+      <DependentUpon>frmIntakeOutputChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDBills.xaml.cs">
+      <DependentUpon>frmIPDBills.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDBillSearch.xaml.cs">
+      <DependentUpon>frmIPDBillSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDRefundReceiptList.xaml.cs">
+      <DependentUpon>frmIPDRefundReceiptList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmListAllBedTransfer.xaml.cs">
+      <DependentUpon>frmListAllBedTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicoLegalCaseWindow.xaml.cs">
+      <DependentUpon>frmMedicoLegalCaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientDischarge.xaml.cs">
+      <DependentUpon>frmPatientDischarge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPharmacyBill.xaml.cs">
+      <DependentUpon>frmPharmacyBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintConsent.xaml.cs">
+      <DependentUpon>frmPrintConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmMultipleBedAllocation.xaml.cs">
+      <DependentUpon>frmMultipleBedAllocation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintDischargeSummary.xaml.cs">
+      <DependentUpon>frmPrintDischargeSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmReceiptListForIPD.xaml.cs">
+      <DependentUpon>frmReceiptListForIPD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchBed.xaml.cs">
+      <DependentUpon>frmSearchBed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUnderMaintance.xaml.cs">
+      <DependentUpon>frmUnderMaintance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InitiateForm.cs" />
+    <Compile Include="IPDAdmission.xaml.cs">
+      <DependentUpon>IPDAdmission.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IPDAdmissionNew.xaml.cs">
+      <DependentUpon>IPDAdmissionNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IPDCalculateBillAmounttobeRecieveandRefund .xaml.cs">
+      <DependentUpon>IPDCalculateBillAmounttobeRecieveandRefund .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IPDPatientSearch.xaml.cs">
+      <DependentUpon>IPDPatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IPDPaymentWindow.xaml.cs">
+      <DependentUpon>IPDPaymentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IPDRefundServices.xaml.cs">
+      <DependentUpon>IPDRefundServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IPDRefundServicesPaymentDetails.xaml.cs">
+      <DependentUpon>IPDRefundServicesPaymentDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IPDServiceSearch.xaml.cs">
+      <DependentUpon>IPDServiceSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVFDischargeDetails.xaml.cs">
+      <DependentUpon>IVFDischargeDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAgainstMaterialConsumptionDetails.xaml.cs">
+      <DependentUpon>PatientAgainstMaterialConsumptionDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientList\PatientSearch.xaml.cs">
+      <DependentUpon>PatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWardDetails.xaml.cs">
+      <DependentUpon>PatientWardDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrimarySymptomsSearchWindowForIPD.xaml.cs">
+      <DependentUpon>PrimarySymptomsSearchWindowForIPD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SponsorWindow.xaml.cs">
+      <DependentUpon>SponsorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SponsorWindowIPD.xaml.cs">
+      <DependentUpon>SponsorWindowIPD.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="..\DataDrivenApplication\Forms\frmAttention.xaml">
+      <Link>frmAttention.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\CalculateBillAmounttobeRecieveandRefund .xaml">
+      <Link>CalculateBillAmounttobeRecieveandRefund .xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\frmReceiptList.xaml">
+      <Link>frmReceiptList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\PackageServiceSearchForPackage.xaml">
+      <Link>PackageServiceSearchForPackage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\PaymentWindow.xaml">
+      <Link>PaymentWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\PhotoWindow.xaml">
+      <Link>PhotoWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\ServiceSearchForPackage.xaml">
+      <Link>ServiceSearchForPackage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\frmServiceTaxTransactionDetails.xaml">
+      <Link>frmServiceTaxTransactionDetails.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\ItemList\DrugsForPatientPrescription.xaml">
+      <Link>DrugsForPatientPrescription.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\ItemList\PrescriptionServicesForPatient.xaml">
+      <Link>PrescriptionServicesForPatient.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdmissionDetailsWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BedTransfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildPhonedetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChildReminderLog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Discharge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DischargeCancel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DischargeSummary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAdmissionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAdviseDischarge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmBedDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmBedReservation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmBedStatus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmBedTransfer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmBedUnreservation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmChangeAdmissionType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmChangeReferEntity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmConsent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCurrentBedStatus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDischargeApprovalDepartment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDischargeSummary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDrugAdministrationChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIntakeOutputChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDBills.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDBillSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDRefundReceiptList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmListAllBedTransfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmMedicoLegalCaseWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPatientDischarge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPharmacyBill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPrintConsent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmMultipleBedAllocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPrintDischargeSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmReceiptListForIPD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmSearchBed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmUnderMaintance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IPDAdmission.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IPDAdmissionNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IPDCalculateBillAmounttobeRecieveandRefund .xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IPDPatientSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IPDPaymentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IPDRefundServices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IPDRefundServicesPaymentDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IPDServiceSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVFDischargeDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientAgainstMaterialConsumptionDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientList\PatientSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientWardDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrimarySymptomsSearchWindowForIPD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SponsorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SponsorWindowIPD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <Resource Include="Icons\bedmaintenance.jpg" />
+    <Resource Include="Icons\discharge.jpg" />
+    <Resource Include="Icons\Occupied.jpg" />
+    <Resource Include="Icons\RelativeBed.jpg" />
+    <Resource Include="Icons\released.jpg" />
+    <Resource Include="Icons\Reserved.jpg" />
+    <Resource Include="Icons\female.jpg" />
+    <Resource Include="Icons\male.jpg" />
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OPDModule\OPDModule.csproj">
+      <Project>{4993806D-1D67-490B-BDD0-D71A25E03245}</Project>
+      <Name>OPDModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamic.Localization\PalashDynamic.Localization.csproj">
+      <Project>{C79BA59E-5157-40A1-BC4A-6335984B92FD}</Project>
+      <Name>PalashDynamic.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.WaterMarkTextBox\PalashDynamics.WaterMarkTextBox.csproj">
+      <Project>{1B114BF8-F1E2-4EC6-AAA2-A69E4FFE24D7}</Project>
+      <Name>PalashDynamics.WaterMarkTextBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="PalashDynamics.MIS.Sales.SalesReport"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+             mc:Ignorable="d" Unloaded="UserControl_Unloaded">
+
+
+    <Border HorizontalAlignment="Stretch" BorderThickness="2" Margin="8,8,8,8" CornerRadius="0,0,3,3" Background="Transparent">
+        <toolkit:DockPanel LastChildFill="True" >
+            <toolkit:DockPanel  x:Name="Links">
+                <Grid toolkit:DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <HyperlinkButton Grid.Row="0" Grid.Column="0" Content="DAILY SALES REPORT" Margin="2"  x:Name="hlDailySalesReport" Click="hlDailySalesReport_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="1" Grid.Column="0" Content="WEEKLY SALES REPORT" Margin="2"  x:Name="hlWeeklySalesReport" Click="hlWeeklySalesReport_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="2" Content="CLINIC WISE FOR THE SELECTED DURATION" Margin="2,2,2,0"  x:Name="hlClinicWisefortheselectedduration" Click="hlClinicWisefortheselectedduration_Click" Height="16" VerticalAlignment="Top" Visibility="Collapsed" />
+                    <HyperlinkButton Grid.Row="3" Grid.Column="0" Content="CLINIC WISE REVENUE STREAM" Margin="2"  x:Name="hlRevenueStreamClinicwise" Click="hlRevenueStreamClinicwise_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="4" Grid.Column="0" Content="DAILY COLLECTION REPORT" Margin="2"  x:Name="hlDoctorWiseCollectonReport" Click="hlDailyCollectionReport_Click"  />
+                    <HyperlinkButton Grid.Row="5" Grid.Column="0" Content="CASH COLLECTION REPORT" Margin="2"  x:Name="hlCashCollectonReport" Click="hlCashCollectionReport_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="3" Grid.Column="0" Content="SERVICE WISE DAILY COLLECTION REPORT" Margin="2"  x:Name="hlServiceWiseCollectonReport" Click="hlServiceWiseCollectonReport_Click" Visibility="Collapsed" />
+                    <HyperlinkButton Grid.Row="7" Grid.Column="0" Content="MONTHLY  REVENUE REPORT" Margin="2"  x:Name="hlMonthlyRevenueReport" Click="hlMonthlyRevenueReport_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="8" Grid.Column="0" Content="PATIENT-WISE PROCEDURE REPORT" Margin="2"  x:Name="hlPatientwisProcedureReport" Click="hlPatientwisProcedureReport_Click" Visibility="Collapsed" />
+                    <HyperlinkButton Grid.Row="9" Grid.Column="0" Content="PATIENT ADVANCE CONSUMED REPORT" Margin="2"  x:Name="hlPatientadvanceconsumedReport" Click="hlPatientadvanceconsumedReport_Click" Visibility="Collapsed" />
+                    <HyperlinkButton Grid.Row="10" Grid.Column="0" Content="GYNAE  REVENUE REPORT" Margin="2"  x:Name="hlGyanueRevenueReport" Click="hlGyanueRevenueReport_Click" Visibility="Collapsed" />
+                    <HyperlinkButton Grid.Row="11" Grid.Column="0" Content="PATIENT WISE DOCTOR AND PROCEDURE DETAILS REPORT" Margin="2"  x:Name="hlPatientDetailsReport" Click="hlPatientDetailsReport_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="12" Grid.Column="0" Content="DOCTOR WISE PATIENT AND PROCEDURE DETAILS REPORT" Margin="2"  x:Name="hlDoctorDetailsReport" Click="hlDoctorDetailsReport_Click" Visibility="Collapsed" />
+                    <HyperlinkButton Grid.Row="13" Grid.Column="0"  Content="DAILY REVENUE REPORT" Margin="2"  x:Name="hlDoctorBasedConsultationBillingReport" Click="hlDoctorBasedConsultationBillingReport_Click" Visibility="Visible" />
+                    <HyperlinkButton Grid.Row="10"  Grid.Column="0" Content="DAILY COLLECTION SUMMARY" x:Name="hlDAILYCOLLECTIONSUMMARY" Margin="2" Click="hlDAILYCOLLECTIONSUMMARY_Click" Visibility="Collapsed"/>
+                    <HyperlinkButton  Grid.Row="6"  Grid.Column="0" Content="DAILY SETTLEMENT REPORT" x:Name="hlDAILYCOLLECTIONREPORTDues" Margin="2" Click="hlDAILYCOLLECTIONREPORTDues_Click" Visibility="Collapsed"/>
+                    <HyperlinkButton Grid.Row="7" Grid.Column="0"  Content="DAILY OUTSTANDING REPORT" Margin="2"  x:Name="hlBalanceAmountReport" Click="hlBalanceAmountReport_Click" />
+                    <HyperlinkButton Grid.Row="11"  Grid.Column="0" Content="DISCOUNT REGISTER REPORT" x:Name="hlDISCOUNTREGISTERDAILY" Margin="2" Click="hlDISCOUNTREGISTERDAILY_Click" />
+                    <HyperlinkButton Grid.Row="14" Grid.Column="0"  Content="REFUND REPORT" Margin="2" Visibility="Visible"  x:Name="hlRefundReport" Click="hlRefundReport_Click"/>
+                    <HyperlinkButton Grid.Row="15" Grid.Column="0"  Content="PATIENT ADVANCE REPORT" Margin="2" Visibility="Visible"  x:Name="hlPatientAdvanceReport" Click="hlPatientAdvanceReport_Click"/>
+                    <HyperlinkButton Grid.Row="16" Grid.Column="0"  Content="SERVICEWISE BILLING REPORT" Margin="2" Visibility="Visible"  x:Name="hlServiceWiseBillingReport" Click="hlServiceWiseBillingReport_Click"/>
+                    <HyperlinkButton Grid.Row="17" Grid.Column="0"  Content="PACKAGE SERVICE CONSUMPTION REPORT" Margin="2" Visibility="Visible"  x:Name="hlPackageServiceWiseBillingReport" Click="hlPackageServiceWiseBillingReport_Click"/>
+                    <HyperlinkButton Grid.Row="18" Grid.Column="0"  Content="PACKAGE SERVICE CONSUMPTION STATUS REPORT" Margin="2" Visibility="Visible"  x:Name="hlPackageServiceSttusReport" Click="hlPackageServiceSttusReport_Click"/>
+                    <HyperlinkButton Grid.Row="19" Grid.Column="0"  Content="COMPANY PAYMENT AND TDS REPORT" Margin="2" Visibility="Visible"  x:Name="hmbcompanytds" Click="hmbcompanytds_Click"/>
+                    <HyperlinkButton Grid.Row="21" Grid.Column="0"  Content="COLLECTION REPORT" Margin="2" Visibility="Visible"  x:Name="collectionReport" Click="collectionReport_Click"/>
+
+                    <HyperlinkButton Grid.Row="22" Grid.Column="0"  Content="REVENUE TRANDE REPORT" Margin="2" Visibility="Visible"  x:Name="revenuetrandeReport" Click="revenuetrandeReport_Click"/>
+
+                    <HyperlinkButton Grid.Row="20" Grid.Column="0" Content="DOCTORWISE REVENUE REPORT" Margin="2"  x:Name="hlDoctorwiseRev"  Visibility="Collapsed" Click="hlDoctorwiseRev_Click" />
+
+                    <HyperlinkButton Grid.Row="23" Grid.Column="0"  Content="LEDGER DETAILS REPORT" Margin="2" Visibility="Visible"  x:Name="ledgerDetailReport" Click="ledgerDetailReport_Click"/>
+
+                    <HyperlinkButton Grid.Row="24" Grid.Column="0"  Content="REVENUE HEADER REPORT" Margin="2" Visibility="Visible"  x:Name="revenueHeaderReport" Click="revenueHeaderReport_Click"/>
+
+                    <HyperlinkButton Grid.Row="25" Grid.Column="0"  Content="REVENUE DETAILS REPORT" Margin="2" Visibility="Visible"  x:Name="revenueDetailsReport" Click="revenueDetailsReport_Click"/>
+                    <HyperlinkButton Grid.Row="26" Grid.Column="0"  Content="PACKAGE BOOKING REPORT"  Margin="2" Visibility="Visible"  x:Name="packageBookingReport" Click="packageBookingReport_Click"/>
+                    
+                </Grid >
+            </toolkit:DockPanel>
+            <toolkit:DockPanel Visibility="Collapsed" x:Name="content_control">
+                <ContentControl x:Name="content"  ></ContentControl>
+            </toolkit:DockPanel>
+        </toolkit:DockPanel>
+    </Border>
+        
+
+</UserControl>

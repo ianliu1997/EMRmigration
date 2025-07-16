@@ -1,0 +1,240 @@
+﻿<UserControl x:Class="EMR.frmEMRMedication" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input" 
+            xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+             xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+             xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:camelcase1  x:Key="camelcase1"></Converter:camelcase1>
+        </ResourceDictionary>
+       
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                <ContentControl VerticalAlignment="Center" FontSize="12" Content="{Binding lblCurrentPrescriptions,Source={StaticResource locResource}}" x:Name="lblCurrentMedication" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+            </Border>
+            <data:DataGrid Grid.Row="2" x:Name="dgDrugList" Margin="2" AutoGenerateColumns="False" ItemsSource="{Binding}" HorizontalAlignment="Stretch" TabIndex="6" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" toolkit:DockPanel.Dock="Top"   VerticalAlignment="Stretch" >
+                <data:DataGrid.Columns>
+                    <data:DataGridTextColumn Binding="{Binding DrugName,Converter={StaticResource camelcase1}}" IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDrug, Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+                    
+                    <!--<data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblQuantity,Source={StaticResource locResource}}"  >
+                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox  VerticalAlignment="Center" Text="{Binding Quantity,Mode=TwoWay}" MaxLength="6" TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown" ></TextBox>
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                    </data:DataGridTemplateColumn>-->
+
+                    <!--<data:DataGridTextColumn  Binding="{Binding Quantity}" Header="Quantity" IsReadOnly="True" />-->
+                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblQuantity,Source={StaticResource locResource}}"  >
+                        <data:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox  VerticalAlignment="Center"  Text="{Binding Quantity,Mode=TwoWay}" TextChanged="QuantityTextBox_TextChanged" KeyDown="TextBox_KeyDown" LostFocus="TextBox_LostFocus" MaxLength="5"></TextBox>
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellTemplate>
+                    </data:DataGridTemplateColumn>
+
+                    <data:DataGridTextColumn  Binding="{Binding UOM}" Header="UOM" IsReadOnly="True" />
+                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblRoute,Source={StaticResource locResource}}"  >
+                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <inputcombo:AutoCompleteComboBox x:Name="cmbRoute" SelectedValue="{Binding SelectedRoute.ID}" SelectedItem="{Binding SelectedRoute,Mode=TwoWay}" ItemsSource="{Binding RouteName}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                </inputcombo:AutoCompleteComboBox>
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                    </data:DataGridTemplateColumn>
+                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblFrequency,Source={StaticResource locResource}}" >
+                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <inputcombo:AutoCompleteComboBox x:Name="cmbFrequency"   SelectedValue="{Binding SelectedFrequency.ID}" SelectedItem="{Binding SelectedFrequency,Mode=TwoWay}" ItemsSource="{Binding FrequencyName}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ></inputcombo:AutoCompleteComboBox> <!--SelectionChanged="cmbFrequency_SelectionChanged"-->
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                    </data:DataGridTemplateColumn>
+
+                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblInstruction,Source={StaticResource locResource}}"  >
+                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <inputcombo:AutoCompleteComboBox x:Name="cmbInstruction"   SelectedValue="{Binding SelectedInstruction.ID}" SelectedItem="{Binding SelectedInstruction,Mode=TwoWay}" ItemsSource="{Binding InstructionName}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox>
+                                <!--<TextBox  VerticalAlignment="Center"  Text="{Binding NewInstruction,Mode=TwoWay}" MaxLength="150" KeyDown="TextBox_KeyDown" ></TextBox>-->  
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                    </data:DataGridTemplateColumn>
+                    
+                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDays,Source={StaticResource locResource}}"  >
+                        <data:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox  VerticalAlignment="Center"  Text="{Binding Days,Mode=TwoWay}" TextChanged="DaysTextBox_TextChanged" KeyDown="TextBox_KeyDown"  MaxLength="5"></TextBox> <!--LostFocus="TextBox_LostFocus"-->
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellTemplate>
+                    </data:DataGridTemplateColumn>
+
+                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblCmt,Source={StaticResource locResource}}"  >
+                        <data:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox  VerticalAlignment="Center" Text="{Binding Comment,Mode=TwoWay}"  KeyDown="TextBox_KeyDown"  MaxLength="100" ></TextBox> <!--LostFocus="TextBox_LostFocus"-->
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellTemplate>
+                    </data:DataGridTemplateColumn>
+
+                    <data:DataGridTemplateColumn>
+                        <data:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDelete" ToolTipService.ToolTip="Delete" Click="cmdDeleteDrug_Click"></HyperlinkButton>
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellTemplate>
+                    </data:DataGridTemplateColumn>
+
+                    <data:DataGridTemplateColumn Header="ART" Visibility="Collapsed">
+                        <data:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                <CheckBox x:Name="chkArtEnabled" Margin="4" Padding="5,0,5,0" VerticalAlignment="Center" IsChecked="{Binding ArtEnabled, Mode=TwoWay}" IsEnabled="False"></CheckBox>
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellTemplate>
+                    </data:DataGridTemplateColumn>
+
+                    <data:DataGridTemplateColumn Header="Drug Source" Visibility="Collapsed" >
+                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <inputcombo:AutoCompleteComboBox x:Name="cmbDrugSource" SelectedValue="{Binding SelectedDrugSource.ID}" SelectedItem="{Binding SelectedDrugSource,Mode=TwoWay}" ItemsSource="{Binding DrugSourceList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                </inputcombo:AutoCompleteComboBox>
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                    </data:DataGridTemplateColumn>
+                </data:DataGrid.Columns>
+            </data:DataGrid>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,2,0,2">
+                <ToggleButton   Margin="5,0,10,0" Content="{Binding btnFormularyDrug,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdDrug" Click="lnkAddDrugList_Click"  Width="auto" ></ToggleButton>
+                <ToggleButton  Margin="5,0,10,0" Content="{Binding btnAddOtherDrug,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdOtherDrug" Visibility="Visible"   Width="auto" Click="cmdOtherDrug_Click" ></ToggleButton> <!--Click="lnkAddOtherDrugList_Click"-->
+                <ToggleButton  Margin="5,0,0,0" Content="{Binding btnAddDrugFromCurrentMedication ,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCurrentMedication" Click="cmdCurrentMedication_Click" Width="auto" Visibility="Visible"></ToggleButton>
+            </StackPanel>
+            <Border VerticalAlignment="Bottom" Grid.Row="3"  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal" x:Name="spSpecDoctor" Visibility="Collapsed">
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4,0,4,0" Text="{Binding lblSpecialization, Source={StaticResource locResource}}"  Grid.Row="0" Grid.Column="4"/>
+                        <inputcombo:AutoCompleteComboBox  x:Name="cmbSpecialization" Margin="4,0,4,0" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedValuePath="Code" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" MinWidth="70" ></inputcombo:AutoCompleteComboBox>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4,0,4,0" Text="{Binding lblDoctor, Source={StaticResource locResource}}"  Grid.Row="0" Grid.Column="4"/>
+                        <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctor" Margin="4,0,4,0" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedValuePath="Code" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" TabIndex="2" MinWidth="70" ></inputcombo:AutoCompleteComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton   Margin="5,0,10,0" Content="{Binding btnSave,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click"  Width="auto"></ToggleButton>
+                        <ToggleButton  Margin="5,0,5,0" Content="{Binding btnCancel,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" Width="auto"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <toolkit:DockPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+            <data:DataPager x:Name="pgrPrevPrescriptions" AutoEllipsis="False" PageSize="{Binding PageSize}" DisplayMode="FirstLastPreviousNext" IsEnabled="True" IsTotalItemCountFixed="True" toolkit:DockPanel.Dock="Bottom"/>
+            <Border toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ContentControl VerticalAlignment="Center" Grid.Row="0" FontSize="12" Content="{Binding lblPreviousPrescriptions,Source={StaticResource locResource}}" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                    <!--<TextBlock Grid.Row="1" Text="{Binding lblStore,Source={StaticResource locResource}}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0"  Margin="4"></TextBlock>-->
+                    <CheckBox x:Name="chkAllStores" Grid.Row="1" Margin="10,0,0,0" Content="Select All" IsChecked="{Binding CheckedAllTariffs,Mode=TwoWay}" Click="chkAllStores_Click" ></CheckBox>
+                </Grid>
+            </Border>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <data:DataGrid  x:Name="dgPreviousPrescriptions"  AutoGenerateColumns="False" ItemsSource="{Binding}" HorizontalAlignment="Stretch" TabIndex="6" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" toolkit:DockPanel.Dock="Top">
+                    <data:DataGrid.Columns>
+                        <data:DataGridTemplateColumn>
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="chkMultipleDiagnosis"  IsChecked="{Binding PrvStatus, Mode=TwoWay}"  Click="chkMultipleDiagnosis_Click" VerticalAlignment="Center" ></CheckBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+                        <data:DataGridTextColumn Binding="{Binding DrugName}" IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDrug,Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Quantity}" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblQuantity,Source={StaticResource locResource}}" IsReadOnly="True" />
+                        <data:DataGridTextColumn  Binding="{Binding UOM}" Header="UOM" IsReadOnly="True" />
+
+                        <data:DataGridTemplateColumn Header="Route" >
+                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbRoute" IsEnabled="False"   SelectedValue="{Binding SelectedRoute.ID}" SelectedItem="{Binding SelectedRoute,Mode=TwoWay}" ItemsSource="{Binding RouteName}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                    </inputcombo:AutoCompleteComboBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn Header="Frequency" >
+                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbFrequency" IsEnabled="False"   SelectedValue="{Binding SelectedFrequency.ID}" SelectedItem="{Binding SelectedFrequency,Mode=TwoWay}" ItemsSource="{Binding FrequencyName}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox> <!--SelectionChanged="cmbFrequency_SelectionChanged"-->
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <!--<data:DataGridTemplateColumn Header="Instruction" >
+                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbInstruction" IsEnabled="False"   SelectedValue="{Binding SelectedInstruction.ID}" SelectedItem="{Binding SelectedInstruction,Mode=TwoWay}" ItemsSource="{Binding InstructionName}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                    </inputcombo:AutoCompleteComboBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                        </data:DataGridTemplateColumn>-->
+                        <data:DataGridTextColumn Binding="{Binding Instruction}" IsReadOnly="True"  Header="Instruction" ></data:DataGridTextColumn>
+
+                        <data:DataGridTemplateColumn Header="Days" >
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox  VerticalAlignment="Center" IsEnabled="False"  Text="{Binding Days,Mode=TwoWay}"  LostFocus="TextBox_LostFocus" MaxLength="3"></TextBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblCmt,Source={StaticResource locResource}}"  >
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox  VerticalAlignment="Center" Text="{Binding Comment,Mode=TwoWay}"  KeyDown="TextBox_KeyDown" LostFocus="TextBox_LostFocus" MaxLength="100" IsEnabled="False"></TextBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn Header="ART" >
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate >
+                                    <CheckBox x:Name="chkPArtEnabled" Margin="4" Padding="5,0,5,0" VerticalAlignment="Center" IsChecked="{Binding ArtEnabled, Mode=TwoWay}" IsEnabled="False"></CheckBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn Header="Drug Source"  >
+                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbPDrugSource" SelectedValue="{Binding SelectedDrugSource.ID}" SelectedItem="{Binding SelectedDrugSource,Mode=TwoWay}" ItemsSource="{Binding DrugSourceList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="False">
+                                    </inputcombo:AutoCompleteComboBox>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                        </data:DataGridTemplateColumn>
+
+
+                    </data:DataGrid.Columns>
+                </data:DataGrid>
+            </ScrollViewer>
+
+        </toolkit:DockPanel>
+
+    </Grid>
+
+</UserControl>

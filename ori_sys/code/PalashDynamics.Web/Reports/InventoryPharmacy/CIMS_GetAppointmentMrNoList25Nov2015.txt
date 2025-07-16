@@ -1,0 +1,311 @@
+USE [Palash_IVF]
+GO
+/****** Object:  StoredProcedure [dbo].[CIMS_GetAppointmentMrNoList]    Script Date: 11/25/2015 10:25:16 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER Procedure [dbo].[CIMS_GetAppointmentMrNoList]
+(
+@ToDate datetime =null,
+@FromDate datetime =null,
+@UnitID bigint,
+@DepartmentID bigint=null,
+@DoctorID bigint=null,
+@Status bit=1,
+@UnRegistered  bit=0,
+@AppType bigint=0,
+@PatientUnitID bigint=0,
+@AppointStatus int=0,
+@FirstName nvarchar(MAX)=null,
+@MiddleName nvarchar(MAX)=null,
+@LastName nvarchar(MAX)=null,
+@MRNo nvarchar(50)=null,
+@GenderId bigint=0,
+@VisitMark bit=0,
+@SpecialRegistrationId bigint=0,
+@IdColumnName nvarchar(50)='ID',
+@PagingEnabled	bit=false,
+@startRowIndex	int =0,
+@maximumRows	int=20,
+@sortExpression	nvarchar(50)= '',
+@ContactNo nvarchar(30)=null,
+@TotalRows	bigint  OUTPUT,
+
+@TariffID bigint=0
+
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	DECLARE @LinkServer nvarchar(100)
+	DECLARE @LinkServerAlias nvarchar(100)
+	DECLARE @LinkServerDBName nvarchar(50)
+
+		-- Issue query
+	DECLARE @sql nvarchar(MAX)
+	DECLARE @FilterWhereClause  nvarchar(max) 
+	SET @FilterWhereClause = ''
+	DECLARE @WhereClause  nvarchar(3000) 
+	SET @TotalRows = 0
+	-- Since @startRowIndex is zero-based in the data Web control, but one-based w/ROW_NUMBER(), increment
+	SET @startRowIndex = @startRowIndex + 1
+
+IF ((@FromDate Is Not Null) AND (@ToDate Is Not Null))
+	Begin
+		IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0)
+			SET @FilterWhereClause = @FilterWhereClause + ' AND '		
+			SET @FilterWhereClause = @FilterWhereClause + ' ((Convert(DateTime,CONVERT(VARCHAR(10), AppointmentDate, 120)))>=(Convert(DateTime,CONVERT(VARCHAR(10),  @FromDate, 120))) and(Convert(DateTime,CONVERT(VARCHAR(10), AppointmentDate, 120)))<=(Convert(DateTime,CONVERT(VARCHAR(10), @ToDate, 120))))'
+	END
+
+
+IF ((@UnitId is not null) AND(@UnitId >0))
+	BEGIN
+	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+			SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' ( AP.APUnitID = @UnitID) ' 
+	END
+
+IF ((@AppointStatus is not null) AND(@AppointStatus >0))
+	BEGIN
+	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+			SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' (ASID = @AppointStatus) ' 
+	END
+
+--IF((@ContactNo is not null) AND (@ContactNo >0))
+--BEGIN
+--	IF((@FilterWhereClause is not null) AND LEN(@FilterWhereClause)>0)
+--		SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+--		SET @FilterWhereClause = @FilterWhereClause + ' ((Contact1 like %+substring(@ContactNo,2,len(@ContactNo))+%) OR (Contact2 like %+substring(@ContactnNo,2,len(@ContactNo))+%)) ' 
+
+--END
+
+IF((@ContactNo is not null) AND (len(@ContactNo) >0))
+BEGIN
+set @ContactNo='%'+substring(@ContactNo,2,len(@ContactNo))+'%'
+	IF((@FilterWhereClause is not null) AND LEN(@FilterWhereClause)>0)
+		SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+		SET @FilterWhereClause = @FilterWhereClause + ' ((Contact1 like @ContactNo) OR (Contact2 like @ContactNo)) ' 
+
+END
+
+IF ((@TariffID is not null) AND(@TariffID >0))
+	BEGIN
+	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+			SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' (T_PatientSponsorDetails.TariffID = @TariffID) ' 
+	END
+	
+IF ((@PatientUnitID is not null) AND(@PatientUnitID >0))
+	BEGIN
+	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+			SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' (PatientUnitID = @PatientUnitID) ' 
+	END
+
+
+IF ((@DepartmentId is not null) AND (@DepartmentId >0))
+		BEGIN
+  IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+				SET @FilterWhereClause = @FilterWhereClause+' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' (DepartmentID = @DepartmentID) ' 
+		END
+
+
+		IF ((@SpecialRegistrationId is not null) AND (@SpecialRegistrationId >0))
+		BEGIN
+  IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+				SET @FilterWhereClause = @FilterWhereClause+' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' (SpecialRegistrationID = @SpecialRegistrationId) ' 
+		END
+		
+
+
+	IF ((@DoctorId is not null) And (@DoctorId >0))
+		BEGIN
+		  IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+						SET @FilterWhereClause = @FilterWhereClause+' AND ' 
+					SET @FilterWhereClause = @FilterWhereClause + ' (M_DoctorMaster.ID = @DoctorID) ' 
+		END
+		
+--IF ((@AppType is not null))
+--	BEGIN
+--	IF ((@FilterWhereClause is not null)  AND LEN(@FilterWhereClause) > 0) 
+--			SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+--		if (@AppType = 0)
+--			SET @FilterWhereClause = @FilterWhereClause + ' (AppTypeID IN (1,2)) ' 
+--		else
+		
+--			SET @FilterWhereClause = @FilterWhereClause + ' (AppTypeID = @AppType) ' 
+--	END
+	
+	
+	
+	
+	
+	-------------------------------------------
+	
+	--IF ((@GenderID Is Not Null) and (@GenderID > 0))
+	--	Begin
+	--	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0)
+	--			SET @FilterWhereClause = @FilterWhereClause + ' AND '
+
+	--			SET @FilterWhereClause = @FilterWhereClause + '  T_Registration.GenderID =@GenderID'
+	--	End
+		
+		IF (@FirstName Is Not Null and @FirstName<> ' ')
+		Begin
+		set @FirstName='%'+@FirstName+'%'
+			IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0)
+				SET @FilterWhereClause = @FilterWhereClause + ' AND '
+
+				SET @FilterWhereClause = @FilterWhereClause + ' dbo.DecodeUTF8EncodedString(Ap.FirstName) like @FirstName '
+		End
+		
+		IF (@LastName Is Not Null and @LastName <> ' ')
+		Begin
+		set @LastName='%'+@LastName+'%'
+			IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0)
+				SET @FilterWhereClause = @FilterWhereClause + ' AND '
+
+				SET @FilterWhereClause = @FilterWhereClause + 'dbo.DecodeUTF8EncodedString(Ap.LastName) like @LastName '
+		End
+
+		IF (@MiddleName Is Not Null and @MiddleName >0)
+		Begin
+		set @LastName='%'+@LastName+'%'
+			IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0)
+				SET @FilterWhereClause = @FilterWhereClause + ' AND '
+
+				SET @FilterWhereClause = @FilterWhereClause + 'dbo.DecodeUTF8EncodedString(Ap.MiddleName) like @MiddleName '
+		End
+	
+		IF ((@VisitMark is not null) AND(@VisitMark >=0))
+	BEGIN
+	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+			SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' (VisitMark = @VisitMark) ' 
+	END
+
+
+
+		
+		IF (@MRNO Is Not Null and @MRNo <>' ')
+		Begin
+		set @MRNO='%'+@MRNO+'%'
+			IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0)
+				SET @FilterWhereClause = @FilterWhereClause + ' AND '
+
+				SET @FilterWhereClause = @FilterWhereClause + ' MRNO like @MRNO '
+		End
+		
+	
+
+	--if(@AppType=2 OR @AppType=0)
+	--begin
+	--	SET @FilterWhereClause = @FilterWhereClause+' AND ' 
+	--	SET @FilterWhereClause = @FilterWhereClause + '  (DoctorID = 0) ' 
+	--end
+	--if(@AppType=1 OR @AppType=0)		
+	--BEGIN
+	--	if(@DoctorID >0)
+	--	begin
+	--	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+	--	SET @FilterWhereClause = @FilterWhereClause+' AND ' 
+	--	SET @FilterWhereClause = @FilterWhereClause + '  (DoctorID = @DoctorID ) '
+	--	END
+		
+	--	if(@DoctorID = 0 and @DoctorID is not null)
+	--	begin
+	--	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+	--	SET @FilterWhereClause = @FilterWhereClause+' AND ' 
+	--	SET @FilterWhereClause = @FilterWhereClause + '  (DoctorId>0) ' 
+	--	END
+	--END
+		
+		
+	--IF(LEN(@FilterWhereClause)= 0 OR (@FilterWhereClause is null))
+	--	  SET @FilterWhereClause =@FilterWhereClause +'Status=' + CONVERT(nvarchar(10),@Status)
+
+	--else
+	--	SET @FilterWhereClause = @FilterWhereClause +' AND Status=' + CONVERT(nvarchar(10),@Status)
+  if (@AppointStatus = 0 )
+   begin
+   IF ((@Status is not null) AND(@Status >0))
+	BEGIN
+	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0) 
+			SET @FilterWhereClause = @FilterWhereClause+ ' AND ' 
+			SET @FilterWhereClause = @FilterWhereClause + ' (AP.Status = @Status ) ' 
+	END
+    end
+		
+		
+IF(@UnRegistered= 1 )
+	Begin
+		 IF(@FilterWhereClause is null OR LEN(@FilterWhereClause)= 0) 
+				SET @FilterWhereClause=@FilterWhereClause+'AND'
+				--SET @FilterWhereClause =' Where PatientID=0'  --+CONVERT(nvarchar(10), @tempPatientId)
+		else
+			SET @FilterWhereClause = @FilterWhereClause + ' AND PatientID=0' --+ CONVERT(nvarchar(10),@tempPatientId)
+	End
+
+
+
+		
+
+	IF ((@FilterWhereClause is not null) AND LEN(@FilterWhereClause) > 0)
+		SET @FilterWhereClause = ' WHERE ' + @FilterWhereClause 
+
+	IF (LEN(@sortExpression) = 0 OR (@sortExpression is null))
+		SET @sortExpression = @IdColumnName 
+	
+	
+	if(@PagingEnabled = 'True')
+		SET @WhereClause =  ' Where RowNum >= ' + CONVERT(nvarchar(10), @startRowIndex) + 
+										' AND RowNum <=((' + CONVERT(nvarchar(10), @startRowIndex) + ' + ' 
+		
+										+ CONVERT(nvarchar(10), @maximumRows) + ') - 1)'
+	else
+		SET @WhereClause = ''
+
+Print @WhereClause
+print @FilterWhereClause
+print @sortExpression
+
+
+	
+DECLARE @Server nvarchar(100);
+SELECT @Server = Cast(SERVERPROPERTY('SERVERNAME') as  nvarchar(100))
+IF (@LinkServer = @Server or @LinkServer is null)
+		Begin
+	
+ 
+    SET @sql=N'Declare @List TABLE (RowNum BIGINT, '+@IdColumnName+' BIGINT,FromTime DateTime,ToTime DateTime,DoctorName nvarchar(300),FirstName nvarchar(MAX),MiddleName nvarchar(300),LastName nvarchar(MAX),Description nvarchar(160),Name nvarchar(150),UnitID bigint,DepartmentID bigint,DoctorID bigint,AppointmentDate Datetime,MRNo nvarchar(20),RegRemark nvarchar(150),PatientID bigint,FamilyName nvarchar(150),BloodGroupID bigint,MaritalStatusID bigint,FaxNo nvarchar(100),EmailId nvarchar(MAx),AppointmentReasonID bigint,Remark nvarchar(MAx),Status bit,VisitID bigint,GenderID bigint,DOB Datetime,Contact1 nvarchar(160),Contact2 nvarchar(160),VisitMark bit,PatientUnitID bigint,AppointmentReason nvarchar(100),AddedDateTime Datetime,AppTypeId BigInt,UserName nvarchar(150),TariffID bigint,L3name nvarchar(300),ASID int,AppCancelReason nvarchar(MAX),ReSchedulingReason nvarchar(MAX),FollowUpID bigint,FollowUpUnitID bigint, MobileCountryCode varchar(5), ResiNoCountryCode bigint, ResiSTDCode bigint, SpecialRegistrationID bigint, SpecialRegistration nvarchar(100)); 
+	Insert Into @List SELECT ROW_NUMBER() OVER (Order By ' + @sortExpression + ') AS RowNum , [' + @IdColumnName + '],FromTime ,ToTime ,[DoctorName] ,[FirstName],[MiddleName],[LastName],[Description] ,[Name],[UnitID],[DepartmentID],[DoctorID],[AppointmentDate],[MRNo],[RegRemark],[PatientID],[FamilyName],[BloodGroupID],[MaritalStatusID],[FaxNo],[EmailId],[AppointmentReasonID],[Remark],[Status],[VisitID],[GenderID],[DOB],[Contact1],[Contact2],[VisitMark],[PatientUnitID],[AppointmentReason],[AddedDateTime],AppTypeId,[UserName],[TariffID],[L3name],ASID,AppCancelReason,ReSchedulingReason,FollowUpID ,FollowUpUnitID, MobileCountryCode, ResiNoCountryCode, ResiSTDCode, SpecialRegistrationID, SpecialRegistration FROM 
+
+	(SELECT M_DoctorMaster.FirstName + '' '' + M_DoctorMaster.MiddleName + '' '' + M_DoctorMaster.LastName AS DoctorName,isnull(M_DoctorMaster.ID,0) AS DoctorId,T_Registration.MRNo,T_Registration.Remark as RegRemark, (CASE When T_UserDetails.IsEmployee = 1 then
+	 (SELECT FirstName + '' '' + ISNULL(MiddleName,'' '') + '' '' + LastName from M_StaffMaster where M_StaffMaster.ID = T_UserDetails.EmployeeID) 
+	 WHEN T_UserDetails.IsDoctor = 1 then (SELECT FirstName + '' ''+ ISNULL(MiddleName, '' '')+ '' '' + LastName from M_DoctorMaster where M_DoctorMaster.ID = T_UserDetails.DoctorID) End) as Username,
+	 T_PatientSponsorDetails.TariffID as TariffID,M_TariffMaster.Description as L3name,AP.*, AP.APUnitID as UnitID,0 as FollowUpID ,0 as FollowUpUnitID  
+
+	FROM   M_DoctorMaster RIGHT OUTER JOIN M_DepartmentMaster 
+	RIGHT OUTER JOIN VIEW_AppointmentDetails as AP 
+	LEFT OUTER JOIN M_AppointmentReasonMaster ON AP.AppointmentReasonID = M_AppointmentReasonMaster.ID ON  M_DepartmentMaster.ID = AP.DepartmentID ON M_DoctorMaster.ID = AP.DOCID
+	 LEFT OUTER JOIN T_Registration ON AP.PatientID = T_Registration.ID and AP.PatientUnitID=T_Registration.UnitID left join T_UserDetails on  T_UserDetails.id=AP.Addedby 
+	 left outer join T_PatientSponsorDetails on T_PatientSponsorDetails.PatientID=T_Registration.ID and T_PatientSponsorDetails.PatientUnitID= T_Registration.UnitID and T_PatientSponsorDetails.ID = (select MAX(ID) from T_PatientSponsorDetails where T_PatientSponsorDetails.PatientId=T_Registration.ID and T_PatientSponsorDetails.PatientUnitID=T_Registration.UnitID) left outer join M_TariffMaster on M_TariffMaster.ID=T_PatientSponsorDetails.TariffID' + @FilterWhereClause + ' ) As MasterList
+	  SELECT * FROM @List ' + @WhereClause + ' Order By ' + @sortExpression  + ' SELECT @TotalRows = Count(*) FROM @List'
+
+
+print LEN(@sql)
+Print @sql
+EXEC sp_executesql @sql , N'@FromDate datetime,@ToDate datetime,@UnitID bigint,@DepartmentID bigint,@DoctorID bigint,@PatientUnitID bigint,@AppType bigint,@LastName nvarchar(MAX),@FirstName nvarchar(MAX),@MRNo nvarchar(50),@TariffID bigint,@AppointStatus int,@VisitMark bit,@Status bit,@ContactNo nvarchar(30),@SpecialRegistrationId bigint,@TotalRows INT OUTPUT',@FromDate,@ToDate,@UnitID,@DepartmentID,@DoctorID,@PatientUnitID,@AppType,@LastName,@FirstName,@MRNo,@TariffID,@AppointStatus,@VisitMark,@Status,@ContactNo,@SpecialRegistrationId,@TotalRows OUTPUT
+
+
+End
+
+
+
+		
+End

@@ -1,0 +1,111 @@
+﻿<controls:ChildWindow x:Class="OPDModule.Forms.frmPatientScanDocument"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+                      xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+        xmlns:data="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"       
+     xmlns:controlsToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+            xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+                      Width="700" Height="400"
+         xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+  Loaded="ChildWindow_Loaded" >
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    
+        <Grid  Background="White" >
+            <controlsToolkit:DockPanel LastChildFill="True">
+                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+          
+                      
+                           
+
+                        </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Identity" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                    <CustomCombo:AutoCompleteComboBox TabIndex="12" Grid.Row="0" Grid.Column="1" Margin="4"   x:Name="cmbIdentity" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"></CustomCombo:AutoCompleteComboBox>
+
+
+
+                    <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Identity Number"  Margin="4" Grid.Column="2" Grid.Row="0"></TextBlock>
+                    <TextBox x:Name="txtIdentityNumber"   Grid.Column="3" Grid.Row="0"  VerticalAlignment="Center" Margin="4" MaxLength="16"></TextBox>
+                    <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Right" Text="Description"  Margin="4"></TextBlock>
+                    <TextBox x:Name="txtDescription" Grid.Row="1"  Grid.Column="1" MaxLength="1000"   VerticalAlignment="Center" Margin="4"></TextBox>
+                        <TextBlock Grid.Column="2" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Attachment"  Margin="4"></TextBlock>
+                  
+                    <TextBox x:Name="txtFileName" IsReadOnly="True" Grid.Row="1" Grid.Column="3"   VerticalAlignment="Center" Margin="4"></TextBox>
+                    <StackPanel Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <ToggleButton x:Name="CmdBrowse"  Content="Browse" Background="#000000" Margin="4"  Style="{StaticResource ToggleButtonStyle}" Click="cmdAttachedDoc_Click"></ToggleButton>
+                            <ToggleButton x:Name="CmdAddDocument"  Content="Add" Background="#000000" Margin="4"  Style="{StaticResource ToggleButtonStyle}" Click="CmdAddDocument_Click"></ToggleButton>
+                            <!--<ToggleButton x:Name="cmdSave"  Content="Save" Background="#000000" Margin="4" Style="{StaticResource ToggleButtonStyle}" Click="cmdSave_Click"></ToggleButton>-->
+                        </StackPanel>
+                    <StackPanel Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <ToggleButton x:Name="CmdSave" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2"  HorizontalAlignment="Right" Content="Save" Background="#000000" Margin="4"  Style="{StaticResource ToggleButtonStyle}" Click="CmdSave_Click"></ToggleButton>
+                        <ToggleButton x:Name="CmdCancel" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2"  HorizontalAlignment="Right" Content="Cancel" Background="#000000" Margin="4"  Style="{StaticResource ToggleButtonStyle}" Click="CmdCancel_Click"></ToggleButton>
+                    </StackPanel>
+                </Grid>
+            
+            </controlsToolkit:DockPanel>
+                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <controlsToolkit:DockPanel LastChildFill="True">
+                            <data:DataPager x:Name="DocumentGridPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNextNumeric"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True" />
+                            <data:DataGrid IsReadOnly="True" SelectionMode="Single" x:Name="dgDocumentGrid" ItemsSource="{Binding}"  AutoGenerateColumns="False" >
+                                <data:DataGrid.Columns>
+
+                                <data:DataGridTextColumn Width="150" Binding="{Binding Identity}" Header="Identity" />
+                                <data:DataGridTextColumn Width="150" Binding="{Binding IdentityNumber}" Header="Identity Number" />
+                                    <data:DataGridTextColumn  Width="200" Binding="{Binding Description}" Header="Description" />
+                                
+                                <data:DataGridTemplateColumn Header="Attachment">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <HyperlinkButton Width="200" x:Name="hpyrlinkFileView" Content="{Binding AttachedFileName}" Click="hpyrlinkFileView_Click" ></HyperlinkButton>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTemplateColumn >
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                <HyperlinkButton Width="200" x:Name="View" Content="View" Click="View_Click" >
+                                                </HyperlinkButton>
+                                            </Grid>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </controlsToolkit:DockPanel>
+                    </Grid>
+                </controlsToolkit:DockPanel>
+
+            </controlsToolkit:DockPanel>
+        </Grid>
+   
+</controls:ChildWindow>

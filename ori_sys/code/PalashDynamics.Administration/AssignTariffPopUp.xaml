@@ -1,0 +1,63 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.AssignTariffPopUp"
+        xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+        xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+        xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+        xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+        xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"     
+        Width="450" Height="Auto"
+        Title="">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+            <local:IDToDescriptionConvertor  x:Key="IDToDescription" ></local:IDToDescriptionConvertor>
+        </ResourceDictionary>
+
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Height="Auto">
+        <toolkit:DockPanel x:Name="MainDock" LastChildFill="True" toolkit:DockPanel.Dock="Top">
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Top" LastChildFill="True">
+                    <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" Margin="4">
+                        <StackPanel x:Name="FooterBackPanel" Orientation="Horizontal"  Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                            <StackPanel x:Name="SaveCommandPanelBackPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                <ToggleButton x:Name="OKButton" Click="OKButton_Click"  Content="OK"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                                <ToggleButton x:Name="CancelButton" Click="CancelButton_Click"  Content="Cancel"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   />
+                            </StackPanel>
+                        </StackPanel>
+                    </toolkit:DockPanel>
+                <Grp:GroupBox Header="">
+                    <toolkit:DockPanel toolkit:DockPanel.Dock="Top" >
+                        <Grp:GroupBox Header="Select The Operation You Want" >
+                            <Grid toolkit:DockPanel.Dock="Top">
+                            <Grid.RowDefinitions>                                
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="05"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                                <RadioButton x:Name="rdbNew" Content="Link With Tariff / Package" Margin="65,0,2,1" IsChecked="True"  HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1"></RadioButton>
+                                <RadioButton x:Name="rdbModify" Content="Change Rate Of Existing Tariff / Package" Margin="65,0,2,1" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1"></RadioButton>
+                                <RadioButton x:Name="rdbRemove" Content="Remove Linking Of Existing Tariff / Package" Margin="65,0,2,1" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="1" Visibility="Collapsed"></RadioButton>
+
+                        </Grid>
+                        </Grp:GroupBox>
+                    </toolkit:DockPanel>
+                </Grp:GroupBox>
+
+            </toolkit:DockPanel>
+        </toolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

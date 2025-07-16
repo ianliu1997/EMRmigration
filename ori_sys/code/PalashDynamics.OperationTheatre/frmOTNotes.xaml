@@ -1,0 +1,359 @@
+﻿<UserControl x:Class="PalashDynamics.OperationTheatre.frmOTNotes"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dgAdapter="clr-namespace:PalashDynamics.DataGridSelectionAdapter;assembly=PalashDynamics.Administration"
+    mc:Ignorable="d" Height="auto" Width="auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton   Margin="4" Content="{Binding btnModify,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" IsEnabled="False" Click="cmdModify_Click"></ToggleButton>
+                        <ToggleButton   Margin="4" Content="{Binding btnSave,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" ></ToggleButton>
+                        <!--<ToggleButton  Margin="4" Content="{Binding btnCancel,Source={StaticResource locResource}}"  Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" ></ToggleButton>-->
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid>
+                <Grid.Resources>
+
+                    <Style x:Key="DataGridAutoCompleteTemplate1" TargetType="inputcombo:AutoCompleteComboBox">
+                        <Setter Property="Background" Value="#FF1F3B53"/>
+                        <Setter Property="IsTabStop" Value="False" />
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="BorderBrush">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                                    <GradientStop Color="#FF617584" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="inputcombo:AutoCompleteComboBox">
+                                    <Grid Margin="{TemplateBinding Padding}">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="PopupStates">
+                                                <VisualStateGroup.Transitions>
+                                                    <VisualTransition GeneratedDuration="0:0:0.2" To="PopupOpened" />
+                                                    <VisualTransition GeneratedDuration="0:0:0.5" To="PopupClosed" />
+                                                </VisualStateGroup.Transitions>
+                                                <VisualState x:Name="PopupOpened">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="1.0" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="PopupClosed">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="0.0" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <TextBox IsTabStop="True" x:Name="Text" Style="{TemplateBinding TextBoxStyle}" Margin="0" />
+                                        <ToggleButton x:Name="DropDownToggle" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource ComboToggleButton}" Margin="0" HorizontalContentAlignment="Center" Background="{TemplateBinding Background}" BorderThickness="0" Height="16" Width="16">
+                                            <ToggleButton.Content>
+                                                <Path x:Name="BtnArrow" Height="4" Width="8" Stretch="Uniform" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z " Margin="0,0,6,0" HorizontalAlignment="Right">
+                                                    <Path.Fill>
+                                                        <SolidColorBrush x:Name="BtnArrowColor" Color="#FF333333"/>
+                                                    </Path.Fill>
+                                                </Path>
+                                            </ToggleButton.Content>
+                                        </ToggleButton>
+                                        <Popup x:Name="Popup">
+                                            <Border x:Name="PopupBorder" HorizontalAlignment="Stretch" Opacity="0.0" BorderThickness="0" CornerRadius="3">
+                                                <Border.RenderTransform>
+                                                    <TranslateTransform X="2" Y="2" />
+                                                </Border.RenderTransform>
+                                                <Border.Background>
+                                                    <SolidColorBrush Color="#11000000" />
+                                                </Border.Background>
+                                                <Border HorizontalAlignment="Stretch" BorderThickness="0" CornerRadius="3">
+                                                    <Border.Background>
+                                                        <SolidColorBrush Color="#11000000" />
+                                                    </Border.Background>
+                                                    <Border.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform />
+                                                            <SkewTransform />
+                                                            <RotateTransform />
+                                                            <TranslateTransform X="-1" Y="-1" />
+                                                        </TransformGroup>
+                                                    </Border.RenderTransform>
+                                                    <Border HorizontalAlignment="Stretch" Opacity="1.0" Padding="1" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
+                                                        <Border.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform />
+                                                                <SkewTransform />
+                                                                <RotateTransform />
+                                                                <TranslateTransform X="-2" Y="-2" />
+                                                            </TransformGroup>
+                                                        </Border.RenderTransform>
+                                                        <Border.Background>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFDDDDDD" Offset="0"/>
+                                                                <GradientStop Color="#AADDDDDD" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <dgAdapter:DataGridSelectionAdapter Width="auto" x:Name="SelectionAdapter" AutoGenerateColumns="False" IsReadOnly="True">
+                                                            <dgAdapter:DataGridSelectionAdapter.Columns>
+                                                                <data:DataGridTemplateColumn>
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate >
+                                                                            <CheckBox x:Name="chkMultipleSurNotes" Margin="4,4,0,0" Click="chkMultipleSurNotes_Click" IsChecked="{Binding Status, Mode=TwoWay}"></CheckBox>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+                                                                <data:DataGridTextColumn IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="Instructions for Surgery"  Width="Auto"  Binding="{Binding Description, Mode=TwoWay}" />
+                                                            </dgAdapter:DataGridSelectionAdapter.Columns>
+                                                        </dgAdapter:DataGridSelectionAdapter>
+                                                    </Border>
+                                                </Border>
+                                            </Border>
+                                        </Popup>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <Style x:Key="DataGridAutoCompleteTemplate2" TargetType="inputcombo:AutoCompleteComboBox">
+                        <Setter Property="Background" Value="#FF1F3B53"/>
+                        <Setter Property="IsTabStop" Value="False" />
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="BorderBrush">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                                    <GradientStop Color="#FF617584" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="inputcombo:AutoCompleteComboBox">
+                                    <Grid Margin="{TemplateBinding Padding}">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="PopupStates">
+                                                <VisualStateGroup.Transitions>
+                                                    <VisualTransition GeneratedDuration="0:0:0.2" To="PopupOpened" />
+                                                    <VisualTransition GeneratedDuration="0:0:0.5" To="PopupClosed" />
+                                                </VisualStateGroup.Transitions>
+                                                <VisualState x:Name="PopupOpened">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="1.0" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="PopupClosed">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="0.0" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <TextBox IsTabStop="True" x:Name="Text" Style="{TemplateBinding TextBoxStyle}" Margin="0" />
+                                        <ToggleButton x:Name="DropDownToggle" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource ComboToggleButton}" Margin="0" HorizontalContentAlignment="Center" Background="{TemplateBinding Background}" BorderThickness="0" Height="16" Width="16">
+                                            <ToggleButton.Content>
+                                                <Path x:Name="BtnArrow" Height="4" Width="8" Stretch="Uniform" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z " Margin="0,0,6,0" HorizontalAlignment="Right">
+                                                    <Path.Fill>
+                                                        <SolidColorBrush x:Name="BtnArrowColor" Color="#FF333333"/>
+                                                    </Path.Fill>
+                                                </Path>
+                                            </ToggleButton.Content>
+                                        </ToggleButton>
+                                        <Popup x:Name="Popup">
+                                            <Border x:Name="PopupBorder" HorizontalAlignment="Stretch" Opacity="0.0" BorderThickness="0" CornerRadius="3">
+                                                <Border.RenderTransform>
+                                                    <TranslateTransform X="2" Y="2" />
+                                                </Border.RenderTransform>
+                                                <Border.Background>
+                                                    <SolidColorBrush Color="#11000000" />
+                                                </Border.Background>
+                                                <Border HorizontalAlignment="Stretch" BorderThickness="0" CornerRadius="3">
+                                                    <Border.Background>
+                                                        <SolidColorBrush Color="#11000000" />
+                                                    </Border.Background>
+                                                    <Border.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform />
+                                                            <SkewTransform />
+                                                            <RotateTransform />
+                                                            <TranslateTransform X="-1" Y="-1" />
+                                                        </TransformGroup>
+                                                    </Border.RenderTransform>
+                                                    <Border HorizontalAlignment="Stretch" Opacity="1.0" Padding="1" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
+                                                        <Border.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform />
+                                                                <SkewTransform />
+                                                                <RotateTransform />
+                                                                <TranslateTransform X="-2" Y="-2" />
+                                                            </TransformGroup>
+                                                        </Border.RenderTransform>
+                                                        <Border.Background>
+                                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                                <GradientStop Color="#FFDDDDDD" Offset="0"/>
+                                                                <GradientStop Color="#AADDDDDD" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <dgAdapter:DataGridSelectionAdapter Width="auto" x:Name="SelectionAdapter" AutoGenerateColumns="False" IsReadOnly="True">
+                                                            <dgAdapter:DataGridSelectionAdapter.Columns>
+                                                                <data:DataGridTemplateColumn>
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate >
+                                                                            <CheckBox x:Name="chkMultipleAnesthesiaNotes" Margin="4,4,0,0" Click="chkMultipleSurNotes_Click" IsChecked="{Binding Status, Mode=TwoWay}"></CheckBox>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+                                                                <data:DataGridTextColumn IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="Instructions for Anesthesia"  Width="Auto"  Binding="{Binding Description, Mode=TwoWay}" />
+                                                            </dgAdapter:DataGridSelectionAdapter.Columns>
+                                                        </dgAdapter:DataGridSelectionAdapter>
+                                                    </Border>
+                                                </Border>
+                                            </Border>
+                                        </Popup>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+
+                </Grid.Resources>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Grid.Row="0" Grid.Column="0" Text="{Binding lblDetails,Source={StaticResource locResource}}" Margin="4"></TextBlock>
+                <inputcombo:AutoCompleteComboBox  Grid.Row="0" Grid.Column="1" Margin="4" MaxWidth="200" MinWidth="200" x:Name="CmbDetails"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID" HorizontalAlignment="Left" SelectionChanged="cmbDetail_SelectionChanged"></inputcombo:AutoCompleteComboBox >
+
+                <!--<TextBlock  Grid.Row="0" Grid.Column="0" Text="{Binding lblDetails,Source={StaticResource locResource}}" Margin="4"></TextBlock>
+                <inputcombo:AutoCompleteComboBox  Grid.Row="0" Grid.Column="1" Margin="4" x:Name="CmbDetails"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Left" ></inputcombo:AutoCompleteComboBox >-->
+                <controls:TabControl Padding="0" Grid.Row="1" BorderBrush="{StaticResource TabControlDarkerBorder}" Grid.Column="0" Grid.ColumnSpan="2" x:Name="OTDocpanel" Margin="4" SelectionChanged="TabControl_SelectionChanged" >
+                    <controls:TabItem x:Name="SurgeryNotes" Style="{StaticResource TabItemStyle}" VerticalAlignment="Stretch" Padding="0" Margin="0" Header="Surgery"> <!--{Binding tbhSurgeryNotes,Source={StaticResource locResource}}-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" ></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <!--<TextBlock   Grid.Column="0" Text="{Binding tbhSurgeryNotes,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>-->
+                            <inputcombo:AutoCompleteComboBox   Grid.Column="1" Margin="4" x:Name="CmbSurgeryNotes" SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID" Style="{StaticResource DataGridAutoCompleteTemplate1}"  HorizontalAlignment="Stretch" >
+                            </inputcombo:AutoCompleteComboBox >
+                            
+                            <!--<TextBox x:Name="txtSurgeryNotes" AllowDrop="True" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" VerticalAlignment="Stretch" Text="{Binding SurgeryNotes,Mode=TwoWay}" Margin="4"   HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" TextWrapping="Wrap"></TextBox>-->
+
+                            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <data:DataGrid HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="4" Width="Auto" Grid.ColumnSpan="4" x:Name="dgSurgeryNotes" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True"  TabIndex="2"  CanUserSortColumns="True"  >
+                                    <data:DataGrid.RowGroupHeaderStyles>
+                                        <Style TargetType="data:DataGridRowGroupHeader">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="data:DataGridRowGroupHeader">
+                                                        <StackPanel Orientation="Horizontal" Background="LightGray" >
+                                                            <TextBlock Text="{Binding Name}" Margin="4" FontWeight="Bold" x:Name="lblPriority" />
+                                                             </StackPanel>                                                        
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#44225566" />
+                                            <Setter Property="Height" Value="30" />
+                                        </Style>
+                                    </data:DataGrid.RowGroupHeaderStyles>
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblInstructions,Source={StaticResource locResource}}" Binding="{Binding Instruction}" CanUserResize="False"></data:DataGridTextColumn>
+                                        <data:DataGridTemplateColumn Header=" ">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteSurgeryNotes" Click="cmdDeleteSurgeryNotes_Click"  ToolTipService.ToolTip="{Binding totipDelete,Source={StaticResource locResource}}" ></HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </controlsToolkit:DockPanel>
+                        </Grid>                      
+                        
+                    </controls:TabItem>
+
+                    <controls:TabItem x:Name="AnesthesiaNotes" VerticalAlignment="Stretch" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Anesthesia" ><!--{Binding tbhAnesthesiaNotes,Source={StaticResource locResource}}-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <!--<TextBlock   Grid.Column="0" Text="{Binding tbhAnesthesiaNotes,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>-->
+                            <inputcombo:AutoCompleteComboBox   Grid.Row="0" Grid.Column="1" Margin="4" x:Name="CmbAnethesiaNotes"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch" Style="{StaticResource DataGridAutoCompleteTemplate2}"></inputcombo:AutoCompleteComboBox >
+                            <!--<TextBox x:Name="txtAnesthesiaNotes" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AnesthesiaNotes,Mode=TwoWay}" Margin="4"   HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" VerticalAlignment="Stretch" TextWrapping="Wrap"></TextBox>-->
+                            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <data:DataGrid HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="4" Width="Auto" Grid.ColumnSpan="4" x:Name="dgAnesthesiaNotes" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True"   CanUserSortColumns="True"  >
+                                    <data:DataGrid.RowGroupHeaderStyles>
+                                        <Style TargetType="data:DataGridRowGroupHeader">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="data:DataGridRowGroupHeader">
+                                                        <StackPanel Orientation="Horizontal" Background="LightGray" >
+                                                            <TextBlock Text="{Binding Name}" Margin="4" FontWeight="Bold" x:Name="lblPriority" />
+                                                        </StackPanel>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#44225566" />
+                                            <Setter Property="Height" Value="30" />
+                                        </Style>
+                                    </data:DataGrid.RowGroupHeaderStyles>
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblInstructions,Source={StaticResource locResource}}" Binding="{Binding Instruction}" CanUserResize="False"></data:DataGridTextColumn>
+                                        <data:DataGridTemplateColumn Header="">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteAnesthesiaNotes" Click="cmdDeleteAnesthesiaNotes_Click" ToolTipService.ToolTip="{Binding totipDelete,Source={StaticResource locResource}}" ></HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </controlsToolkit:DockPanel>
+                        </Grid>
+                    </controls:TabItem>
+                </controls:TabControl>
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,188 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.PackageServices"
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    Width="600" Height="500"  
+    Title="Service Details"  Loaded="ServiceDetails_Loaded" Background="White"  >
+
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="2" Background="White">
+        <Grid>
+
+            <controlsToolkit:DockPanel   Name="docMain" LastChildFill="True" controlsToolkit:DockPanel.Dock= "Top" >
+
+
+                <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" >
+                    <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                        <StackPanel Grid.Row="3" x:Name="Footer1" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent">
+                            <RadioButton x:Name="CmdAddFreeService" Content="Free Service" Margin="5,0,0,0" IsChecked="True" TabIndex="5"></RadioButton>
+                            <RadioButton x:Name="CmdconcessionService" Content="Concession Service" Margin="5,0,0,0" TabIndex="6" ></RadioButton>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                            <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                <ToggleButton  x:Name="cmdAdd"  Grid.Row="4" Content="Add" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="cmdAdd_Click" TabIndex="7"/>
+                                <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}" Click="cmdClose_Click" TabIndex="8"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </controlsToolkit:DockPanel>
+                </controlsToolkit:DockPanel>
+
+                <controlsToolkit:DockPanel x:Name="docTop" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4" Background="Transparent" >
+                        <controlsToolkit:DockPanel toolkit:DockPanel.Dock="Top">
+
+                            <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock= "Top" >
+                                <Grid x:Name="LayoutRoot1"  Margin="0" Background="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="4">
+                                        <RadioButton x:Name="rdbSpecilization" Content="Specialization" Margin="4" Click="rdbSpecilization_Click" Checked="rdbSpecilization_Checked" Visibility="Collapsed"></RadioButton>
+                                        <RadioButton x:Name="rdbService"  Content="Service" Margin="4" IsChecked="True" Click="rdbService_Click" Checked="rdbService_Checked"></RadioButton>
+                                    </StackPanel>
+                                    <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Camp" Margin="4,10,4,4" Grid.Row="0" Grid.Column="0" />
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbCamp" Grid.Column="1"  Margin="4,10,4,4" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>-->
+                                    <TextBlock  VerticalAlignment="Center" Text="Service Name" Margin="4" Grid.Row="2" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBox IsReadOnly="True" x:Name="txtServiceName" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="4" HorizontalAlignment="Stretch" TabIndex="0"></TextBox>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Specialization" Margin="4" Grid.Row="1" Grid.Column="0" />
+                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbSpecialization"  SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Grid.Column="1"  Margin="4" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" SelectionChanged="cmbSpecialization_SelectionChanged" TabIndex="1"/>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Sub Specialization" Grid.Column="2" Margin="4" Grid.Row="1" />
+                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbSubSpecialization"  SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Grid.Column="3"  Margin="4" Grid.Row="1"  HorizontalAlignment="Stretch" TabIndex="2" Height="25"/>
+
+
+                                    <Button x:Name="cmdSearch" Click="cmdSearch_Click" Margin="4" ToolTipService.ToolTip="Search Service"  Grid.Column="4"  Grid.Row="2" TabIndex="3">
+                                        <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="20" ></Image>
+                                    </Button>
+                                    <CheckBox x:Name="chkAll" Content="Select All" Margin="4" Grid.Column="0" Grid.Row="3"  Height="25" Visibility="Visible" Checked="chkAll_Checked"  Unchecked="chkAll_Checked"/>
+
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+
+                            <controlsToolkit:DockPanel x:Name="docBoth" controlsToolkit:DockPanel.Dock= "Bottom" >
+
+                                <Grid x:Name="LayoutRoot3"  Margin="0" Background="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+
+                                    </Grid.RowDefinitions>
+
+
+                                    <controlsToolkit:DockPanel Grid.Row="0" controlsToolkit:DockPanel.Dock="Bottom"  Visibility="Collapsed" Name="DocService"  Margin="2">
+                                        <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                            <ContentControl VerticalAlignment="Center" FontSize="12" Content="List of Service" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                        </Border>
+
+                                        <data:DataPager x:Name="dataGrid2Pager" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+
+                                        <ScrollViewer Grid.Row="1" Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+
+                                            <data:DataGrid x:Name="dgServiceList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0" HorizontalAlignment="Stretch" TabIndex="4">
+                                                <data:DataGrid.Columns>
+                                                    <data:DataGridTemplateColumn Header="Select">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox x:Name="chkService" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Click="chkService_Click"></CheckBox>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding ServiceName}"  Header="Service Name" ></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding SpecializationString}"  Header="Specialization" ></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding Rate}"   Header="Rate" ></data:DataGridTextColumn>
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+                                        
+                                        </ScrollViewer>
+
+                                    </controlsToolkit:DockPanel>
+
+                                    <controlsToolkit:DockPanel Grid.Row="0" controlsToolkit:DockPanel.Dock="Bottom" Visibility="Collapsed"   Name="DocSpecilization"  Margin="2">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+
+                                            <Border Grid.Row="0"  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                <ContentControl  VerticalAlignment="Center" FontSize="12" Content="List of Specialization" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                            </Border>
+
+                                            <CheckBox x:Name="chkSelectAllSpecialization" Grid.Row="1" Grid.Column="4"  Content="Select All Items" VerticalAlignment="Center" Margin="4" Click="chkSelectAllSpecialization_Click" Visibility="Collapsed" HorizontalAlignment="Right" FlowDirection="RightToLeft"></CheckBox>
+
+                                            <data:DataPager Grid.Row="2" x:Name="dataGrid3Pager" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"   />
+
+                                            <ScrollViewer Grid.Row="2" Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+                                                
+                                                <!--Grid.Row="2"-->
+                                                <data:DataGrid x:Name="dgSpecilization" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0" HorizontalAlignment="Stretch" TabIndex="4">
+                                                    <data:DataGrid.Columns>
+                                                        <data:DataGridTemplateColumn Header="Select">                                                            
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <CheckBox x:Name="chkSpecialization" IsChecked="{Binding isChecked,Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Click="chkSpecialization_Click"></CheckBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding Description}"  Header="Specialization" ></data:DataGridTextColumn>
+
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+
+                                            </ScrollViewer>
+                                            
+                                        </Grid>
+                                    </controlsToolkit:DockPanel>
+
+                                </Grid>
+
+                            </controlsToolkit:DockPanel>
+
+                        </controlsToolkit:DockPanel>
+                    </Border>
+
+                </controlsToolkit:DockPanel>
+
+            </controlsToolkit:DockPanel>
+
+        </Grid>
+
+    </Grid>
+</controls:ChildWindow>

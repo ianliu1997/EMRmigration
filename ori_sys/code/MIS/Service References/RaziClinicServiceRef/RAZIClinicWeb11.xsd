@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.PurchaseOrder" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.PurchaseOrder" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="clsGetPurchaseOrderDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MinRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsPurchaseOrderDetailVO" />
+      <xs:element minOccurs="0" name="SearchID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPurchaseOrderDetailsBizActionVO" nillable="true" type="tns:clsGetPurchaseOrderDetailsBizActionVO" />
+  <xs:complexType name="clsPurchaseOrderVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DeliveryDuration" type="xs:long" />
+      <xs:element minOccurs="0" name="EnquiryID" type="xs:long" />
+      <xs:element minOccurs="0" name="Freezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Guarantee_Warrantee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IndentID" type="xs:long" />
+      <xs:element minOccurs="0" name="IndentNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IndentUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsEnabledFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfclsPurchaseOrderDetailVO" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PONO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentMode" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentModeID" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentTerms" type="xs:long" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="StoreName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalDiscount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalNet" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalVAT" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPurchaseOrderVO" nillable="true" type="tns:clsPurchaseOrderVO" />
+  <xs:complexType name="ArrayOfclsPurchaseOrderDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPurchaseOrderDetailVO" nillable="true" type="tns:clsPurchaseOrderDetailVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPurchaseOrderDetailVO" nillable="true" type="tns:ArrayOfclsPurchaseOrderDetailVO" />
+  <xs:complexType name="clsPurchaseOrderDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BatchesRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DiscPercent" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DiscountAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DiscountPercent" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ItemCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="POID" type="xs:long" />
+      <xs:element minOccurs="0" name="PUM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PendingQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PoItemsID" type="xs:long" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Rate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SelectItem" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Specification" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VATAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VATPer" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VATPercent" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPurchaseOrderDetailVO" nillable="true" type="tns:clsPurchaseOrderDetailVO" />
+  <xs:complexType name="clsGetPurchaseOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Freezed" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PONO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="SearchStoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchSupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="flagPOFromGRN" type="xs:boolean" />
+      <xs:element minOccurs="0" name="searchFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="searchToDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPurchaseOrderBizActionVO" nillable="true" type="tns:clsGetPurchaseOrderBizActionVO" />
+  <xs:complexType name="ArrayOfclsPurchaseOrderVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPurchaseOrderVO" nillable="true" type="tns:clsPurchaseOrderVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPurchaseOrderVO" nillable="true" type="tns:ArrayOfclsPurchaseOrderVO" />
+  <xs:complexType name="clsFreezPurchaseOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsPurchaseOrderDetailVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFreezPurchaseOrderBizActionVO" nillable="true" type="tns:clsFreezPurchaseOrderBizActionVO" />
+  <xs:complexType name="clsGetPendingPurchaseOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoOfRecordShow" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="OutputTotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="StartIndex" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPendingPurchaseOrderBizActionVO" nillable="true" type="tns:clsGetPendingPurchaseOrderBizActionVO" />
+  <xs:complexType name="clsAddPurchaseOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsPurchaseOrderDetailVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPurchaseOrderBizActionVO" nillable="true" type="tns:clsAddPurchaseOrderBizActionVO" />
+  <xs:complexType name="clsCancelPurchaseOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsPurchaseOrderVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCancelPurchaseOrderBizActionVO" nillable="true" type="tns:clsCancelPurchaseOrderBizActionVO" />
+</xs:schema>

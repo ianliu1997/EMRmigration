@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.frmPatientVitalSMaster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"
+    Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <toolkit:DockPanel LastChildFill="True">
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton  Margin="4"  Content="New" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdNew" Click="cmdNew_Click"></ToggleButton>
+                        <ToggleButton   Margin="4" Content="Save" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click"></ToggleButton>
+                        <ToggleButton   Margin="4"  Content="Modify" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" Click="cmdModify_Click"></ToggleButton>
+                        <ToggleButton  Margin="4" Content="Cancel" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid>
+
+
+                <Grid x:Name="NewIncomeCategoryLayoutRoot" Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock  VerticalAlignment="Center" Text="Code" Margin="4" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                    <TextBox x:Name="txtSubCode" Text="{Binding Code, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" MaxLength="10" TabIndex="0" Height="25" KeyDown="txtSubCode_KeyDown" LostFocus="txtSubCode_LostFocus" ></TextBox>
+
+                    <TextBlock  VerticalAlignment="Center" Text="Description" Margin="4" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                    <TextBox x:Name="txtSubDescription" Text="{Binding Description, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" MaxLength="50" TabIndex="1" Height="25" LostFocus="txtSubDescription_LostFocus" KeyDown="txtSubDescription_KeyDown" ></TextBox>
+
+                    <TextBlock  VerticalAlignment="Center" Text="Default Value" Margin="4" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                    <TextBox x:Name="txtDefaultValue" Text="{Binding DefaultValue, Mode=TwoWay}" KeyDown="textBox_KeyDown" TextChanged="textBox_TextChanged" Grid.Row="2" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" MaxLength="10" TabIndex="1" Height="25" ></TextBox>
+
+                    <TextBlock  VerticalAlignment="Center" Text="Min Value" Margin="4" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                    <TextBox x:Name="txtMinValue" Text="{Binding MinValue, Mode=TwoWay}" KeyDown="textBox_KeyDown" TextChanged="txtMinValue_TextChanged" Grid.Row="3" Grid.Column="1" Margin="4" MaxLength="10" HorizontalAlignment="Stretch" TabIndex="1" Height="25" ></TextBox>
+
+                    <TextBlock  VerticalAlignment="Center" Text="Max Value" Margin="4" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                    <TextBox x:Name="txtMaxValue" Text="{Binding MaxValue, Mode=TwoWay}" KeyDown="textBox_KeyDown" TextChanged="txtMaxValue_TextChanged" Grid.Row="4" Grid.Column="1" MaxLength="10" Margin="4" HorizontalAlignment="Stretch" TabIndex="1" Height="25" ></TextBox>
+
+                    <TextBlock  VerticalAlignment="Center" Text="Unit" Margin="4" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right"></TextBlock>
+                    <TextBox x:Name="txtUnit" Text="{Binding Unit, Mode=TwoWay}" Grid.Row="5" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" TabIndex="1" MaxLength="30" Height="25" ></TextBox>
+                </Grid>
+                <Grid x:Name="IncomCategoryListLayoutRoot" Background="White">
+                    <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                        <toolkit:DockPanel x:Name="InstructionList">
+
+                            <toolkit:DockPanel x:Name="DockTop" toolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                <Grid x:Name="LayoutRoot2" Background="White" Margin="4" HorizontalAlignment="Stretch"  >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </toolkit:DockPanel>
+
+                            <toolkit:DockPanel LastChildFill="True" toolkit:DockPanel.Dock="Top">
+                                <Grid toolkit:DockPanel.Dock="Top">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto" MinWidth="150" MaxWidth="150"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock x:Name="txtSearchCriteria" Grid.Column="0" Text="Description" Margin="4,10,4,4" Width="75"/>
+                                    <TextBox Grid.Column="1" x:Name="txtSearch" Margin="4" Width="200" MaxLength="50" KeyDown="txtSearch_KeyDown"></TextBox>
+
+                                    <Button Grid.Column="2" x:Name="cmdSearch" ToolTipService.ToolTip="Search Code/Description" HorizontalAlignment="Left" Click="cmdSearch_Click">
+                                        <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,0" Width="20" ></Image>
+                                    </Button>
+                                </Grid>
+
+                                <StackPanel toolkit:DockPanel.Dock="Top" Margin="0,4,0,0">
+                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="List of Patient Vitals" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch" />
+                                    </Border>
+                                </StackPanel>
+                            </toolkit:DockPanel>
+
+                            <toolkit:DockPanel LastChildFill="True">
+                                <sdk:DataPager x:Name="dataGrid2Pager" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+                                <sdk:DataGrid  x:Name="grdVitalsMaster" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" >
+                                    <sdk:DataGrid.Columns>
+                                        <sdk:DataGridTemplateColumn Header="View">
+                                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <HyperlinkButton Margin="4" x:Name="cmdView" Content="View" Cursor="Hand"  Click="cmdView_Click"></HyperlinkButton>
+                                                </DataTemplate>
+                                            </sdk:DataGridTemplateColumn.CellTemplate>
+                                        </sdk:DataGridTemplateColumn>
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="Code" Binding="{Binding Code}" Width="100" />
+                                        <sdk:DataGridTextColumn IsReadOnly="True"  Header="Description"  Binding="{Binding Description}" Width="100"/>
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="Default Value" Binding="{Binding DefaultValue }" Width="100"/>
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="Min Value" Binding="{Binding MinValue }" Width="100"/>
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="Max Value" Binding="{Binding MaxValue }" Width="100"/>
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="Unit" Binding="{Binding Unit }" Width="100"/>
+                                        <sdk:DataGridTemplateColumn Header="Status">
+                                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox Margin="4" x:Name="chkStatus"  IsChecked="{Binding Status, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="True" Checked="StatusCheckBox_Checked" Unchecked="StatusCheckBox_UnChecked"  ></CheckBox>
+
+                                                </DataTemplate>
+                                            </sdk:DataGridTemplateColumn.CellTemplate>
+                                        </sdk:DataGridTemplateColumn>
+
+                                    </sdk:DataGrid.Columns>
+                                </sdk:DataGrid>
+                            </toolkit:DockPanel>
+
+                        </toolkit:DockPanel>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </toolkit:DockPanel>
+    </Grid>
+</UserControl>
+
+

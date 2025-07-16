@@ -1,0 +1,764 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.BarCodeDoctor"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"                      
+           Width="794"
+           Title="Barcode" Loaded="ChildWindow_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+            <DataTemplate x:Key="tmpForBedStatus">
+            </DataTemplate>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Margin="8" Height="1030">
+            <StackPanel x:Name="PrintBarcodeArea"  >
+                <Grid Margin="15,55,10,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="246"></ColumnDefinition>
+                        <ColumnDefinition Width="246"></ColumnDefinition>
+                        <ColumnDefinition Width="246"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                        <RowDefinition  Height="108"></RowDefinition>
+                    </Grid.RowDefinitions>       
+
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="27,5,0,0" Visibility="Visible">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText"      FontWeight="Normal"  Grid.Row="0" Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText"    FontWeight="Normal"  Grid.Row="2" Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText"    FontWeight="Normal"  Grid.Row="3" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas"  Width="auto" Height="10" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left"></Canvas>
+                        </Grid>
+                    </StackPanel >
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="38,5,0,0 " Visibility="Visible">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto"></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText1"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText1"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText1"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText1"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText1"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText1"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas1" Width="auto" Height="10" Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="2"  Margin="48,5,0,0" Visibility="Visible">                     
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto"></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText2"   FontWeight="Normal"  Grid.Row="0" Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText2"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText2"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Right"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText2"    FontWeight="Normal"  Grid.Row="2" Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText2"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText2"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas2" Width="auto" Height="10" Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="27,6,0,0" Visibility="Visible">                       
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto"></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText3"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText3"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText3"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText3"    FontWeight="Normal"  Grid.Row="2" Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText3"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText3"    FontWeight="Normal"  Grid.Row="3" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas3" Width="auto" Height="10" Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="38,6,0,0" Visibility="Visible">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText4"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText4"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText4"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText4"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText4"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText4"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas4" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="2" Margin="48,6,0,0" Visibility="Visible">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText5"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText5"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText5"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText5"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText5"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText5"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas5" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="27,7,0,0" Visibility="Visible">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText6"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText6"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText6"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText6"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText6"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText6"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas6" Grid.Row="4" Width="auto" Height="10" Grid.Column="0" HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Grid.Column="1" Margin="38,7,0,0" Visibility="Visible">                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText7"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText7"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText7"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText7"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText7"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText7"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas7" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Grid.Column="2" Margin="48,7,0,0" Visibility="Visible">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText8"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText8"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText8"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText8"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText8"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText8"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas8" Grid.Row="4" Width="auto" Height="10" Grid.Column="0" HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="3" Grid.Column="0" Margin="27,10,0,0" Visibility="Visible">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText9"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText9"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText9"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText9"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText9"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText9"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas9" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Grid.Column="1" Margin="38,10,0,0"  Visibility="Visible">                     
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText10"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText10"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText10"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText10"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText10"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText10"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas10" Grid.Row="4" Width="auto" Height="10" Grid.Column="0" HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Grid.Column="2" Margin="48,10,0,0" Visibility="Visible">                   
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText11"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText11"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText11"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText11"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText11"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText11"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas11" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="4" Grid.Column="0" Margin="27,14,0,0" >                     
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText12"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText12"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText12"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText12"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText12"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText12"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas12" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Grid.Column="1" Margin="38,14,0,0">                   
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText13"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText13"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText13"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText13"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText13"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText13"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas13" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Grid.Column="2" Margin="48,14,0,0">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText14"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText14"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText14"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText14"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText14"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText14"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas14" Grid.Row="4" Width="auto" Height="10" Grid.Column="0" HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="5" Grid.Column="0" Margin="27,15,0,0" >                    
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText15"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText15"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText15"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText15"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText15"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText15"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas15" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="5" Grid.Column="1" Margin="38,15,0,0">                       
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText16"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText16"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText16"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText16"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText16"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText16"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas16" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="5" Grid.Column="2" Margin="48,15,0,0">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText17"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText17"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText17"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText17"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText17"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText17"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas17" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="6" Grid.Column="0" Margin="27,18,0,0" >                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText18"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText18"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText18"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText18"    FontWeight="Normal"  Grid.Row="2" Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText18"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText18"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas18" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="6" Grid.Column="1" Margin="38,18,0,0">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText19"      FontWeight="Normal"  Grid.Row="0" Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText19"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText19"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText19"    FontWeight="Normal"  Grid.Row="2" Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText19"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText19"    FontWeight="Normal"  Grid.Row="3" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas19" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="6" Grid.Column="2" Margin="48,18,0,0">                     
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText20"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText20"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText20"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText20"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText20"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText20"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas20" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="7" Grid.Column="0" Margin="27,27,0,0">                     
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText21"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText21"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText21"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText21"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText21"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText21"    FontWeight="Normal"  Grid.Row="3" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas21" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="7" Grid.Column="1" Margin="38,27,0,0" >                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText22"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText22"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText22"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText22"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText22"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText22"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas22" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="7" Grid.Column="2" Margin="48,27,0,0">                      
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText23"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText23"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText23"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText23"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText23"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText23"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas23" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="8" Grid.Column="0" Margin="27,29,0,0">                       
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText24"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText24"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText24"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText24"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText24"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText24"    FontWeight="Normal"  Grid.Row="3" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas24" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="8" Grid.Column="1" Margin="38,29,0,0">                     
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText25"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText25"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText25"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText25"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText25"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText25"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas25" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="8" Grid.Column="2" Margin="48,29,0,0">                       
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <!--<ColumnDefinition Width="auto" ></ColumnDefinition>-->
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="MyMRNOText26"      FontWeight="Normal"  Grid.Row="0"  Grid.Column="0"  TextAlignment="left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFemalNmText26"   FontWeight="Normal"  Grid.Row="1" Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyFAgeText26"      FontWeight="Normal"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyMaleNmText26"    FontWeight="Normal"  Grid.Row="2"  Grid.Column="0" TextAlignment="left" FontSize="10"/>
+                            <TextBlock x:Name="MyMAgeText26"      FontWeight="Normal"  Grid.Row="2" Grid.Column="1" TextAlignment="Left"  FontSize="10"/>
+                            <TextBlock x:Name="MyDoctorText26"    FontWeight="Normal"  Grid.Row="3"  Grid.Column="0" TextAlignment="Left"  FontSize="10"/>
+                            <Canvas x:Name="MyCanvas26" Grid.Row="4" Width="auto" Height="10" Grid.Column="0"  HorizontalAlignment="Left"></Canvas>
+
+                        </Grid>
+                    </StackPanel>
+
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="8">
+            <ToggleButton x:Name="OKButton" Content="Print" Click="OKButton_Click" Width="75" Height="23" Background="#000000" Style="{StaticResource ToggleButtonStyle}" HorizontalAlignment="Right" Margin="4" />
+            <ToggleButton x:Name="CancelButton"  Click="CancelButton_Click" Content="{Binding btnCancel,Source={StaticResource locResource}}"  Background="#000000" Style="{StaticResource ToggleButtonStyle}" Width="75" Height="23" HorizontalAlignment="Right" Margin="4" />
+        </StackPanel>
+    </Grid>
+</controls:ChildWindow>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Log" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Log" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfLogInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogInfo" nillable="true" type="tns:LogInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLogInfo" nillable="true" type="tns:ArrayOfLogInfo" />
+  <xs:complexType name="LogInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MethodName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+      <xs:element minOccurs="0" name="guid" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogInfo" nillable="true" type="tns:LogInfo" />
+  <xs:complexType name="LogInfoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LogInformation" nillable="true" type="tns:LogInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogInfoBizActionVO" nillable="true" type="tns:LogInfoBizActionVO" />
+</xs:schema>

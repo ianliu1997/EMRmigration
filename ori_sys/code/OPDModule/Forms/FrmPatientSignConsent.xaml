@@ -1,0 +1,152 @@
+﻿<controls:ChildWindow x:Class="OPDModule.Forms.FrmPatientSignConsent"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+            xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+            xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"  
+            xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+            xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+            xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+            xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+            xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+            xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"  
+           
+            Width="850" Height="550" 
+           Title="FrmPatientSignConsent" Loaded="ChildWindow_Loaded">
+
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="White">
+        
+        <my:DockPanel LastChildFill="True" Margin="4">          
+           
+        <Grid controlsToolkit:DockPanel.Dock="Top" Visibility="Visible" Height="AUTO" Width="auto" x:Name="BackPanel" Grid.Row="1">
+            <controlsToolkit:DockPanel x:Name="Layoutback"  LastChildFill="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <controlsToolkit:DockPanel  controlsToolkit:DockPanel.Dock="Bottom" LastChildFill="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition  Height="Auto" ></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <controlsToolkit:DockPanel  Grid.Row="2" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                              
+                                <TextBlock Text="Consent Received Date :" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Grid.Row="1"/>
+                                <controls:DatePicker x:Name="RptRcdDate" Grid.Column="1" Margin="5" TabIndex="5" Grid.Row="1"></controls:DatePicker>
+
+                                <TextBlock Text="Consent Received Time :" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Grid.Row="1"/>
+                                <inputToolkit:TimePicker x:Name="RptRcdTime" Grid.Column="3" Margin="5" TabIndex="6" Grid.Row="1"></inputToolkit:TimePicker>
+
+                                <TextBlock Grid.Row="2" Text="Consent Name :" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                                <TextBox x:Name="txtDocumentName" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5"  TabIndex="7"></TextBox>
+
+                                <TextBlock Grid.Row="3" Text="Scan Consent :" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                                <TextBox x:Name="TxtReportPath" Text="{Binding SourceURL,Mode=TwoWay}"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5"  IsReadOnly="True" ></TextBox>
+
+                                <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal">
+                                    <ToggleButton  x:Name="BtnBrowse" Content="Browse" Background="#000000" Margin="5" HorizontalAlignment="Left"  Style="{StaticResource ToggleButtonStyle}" Click="BtnBrowse_Click" TabIndex="8"/>
+                                   </StackPanel>
+                                
+                                <TextBlock Grid.Row="4" Text="Remarks :" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4"/>
+                                <TextBox x:Name="TxtRemarks" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" TextWrapping="Wrap" TabIndex="9" VerticalScrollBarVisibility="Visible"  HorizontalScrollBarVisibility="Visible" Height="50" AcceptsReturn="True" />
+                            </Grid>
+                        </controlsToolkit:DockPanel>
+
+
+                        <controlsToolkit:DockPanel LastChildFill="True" Grid.Row="3" controlsToolkit:DockPanel.Dock="Bottom">
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   Height="30"  BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                                <StackPanel Grid.Row="3"  x:Name="Footer_Stack" Orientation="Horizontal" VerticalAlignment="Center"  Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                    <StackPanel  controlsToolkit:DockPanel.Dock="Bottom" Grid.Row="5" Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0" >
+                                        <ToggleButton Grid.Row="5" Grid.Column="5"  x:Name="BtnAdd" Content="Add" Background="#000000" Margin="5,0,0,0"  HorizontalAlignment="Right"  Style="{StaticResource ToggleButtonStyle}" Click="BtnAdd_Click" TabIndex="10"/>
+                                        <ToggleButton Grid.Row="5" Grid.Column="5"  x:Name="BtnCancel" Content="Cancel" Background="#000000" Margin="5,0,0,0"  HorizontalAlignment="Right"  Style="{StaticResource ToggleButtonStyle}" Click="CancelButton_Click" TabIndex="10"/>
+
+                                        </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </controlsToolkit:DockPanel>
+
+
+                        <controlsToolkit:DockPanel Grid.Row="1" LastChildFill="True" Width="Auto" Height="Auto">
+                            <data:DataPager TabIndex="14" x:Name="dgDataPager_back" my:DockPanel.Dock="Bottom"   PageSize="{Binding }"
+                                            DisplayMode="FirstLastPreviousNext"   IsEnabled="True"  IsTotalItemCountFixed="True"  Source="{Binding }"  />
+
+                            <data:DataGrid x:Name="dgReport_back" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch"  TabIndex="12" Height="200" HorizontalScrollBarVisibility="Visible">
+                                <data:DataGrid.Columns>
+                                   
+                                    <data:DataGridTextColumn Binding="{Binding ID}"  Header="ID" Visibility="Collapsed" ></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding UnitID}"  Header="UnitID" Visibility="Collapsed"></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding ConsentID}"  Header="ConsentID" Visibility="Collapsed"></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding ConsentUnitID}"  Header="ConsentunitID" Visibility="Collapsed"></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding PatientID}"  Header="PatientID" Visibility="Collapsed"></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding PatientUnitID}"  Header="PatientUnitID" Visibility="Collapsed"></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding ReferredBy}"  Header="Referby" Visibility="Collapsed"></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding Date,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  Header="Consent Received Date" ></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding Time,Converter={StaticResource DateConverter},ConverterParameter='hh:mm tt'}"  Header="Consent Received Time" ></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding DocumentName}" Header="Consent Name" Visibility="Visible"/>
+                                    <data:DataGridTextColumn Binding="{Binding SourceURL}" Header="SourceURL" Visibility="Collapsed"/>
+                                    
+                                    <data:DataGridTemplateColumn Header="Attachment" Visibility="Visible">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton VerticalAlignment="Center" HorizontalAlignment="Center" Content="{Binding DocumentName}" x:Name="ViewImage" Click="ViewImage_Click" Width="Auto"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+
+
+
+                                    <data:DataGridTextColumn Binding="{Binding Remarks}"  Header="Remarks" ></data:DataGridTextColumn>
+
+                                    <data:DataGridTemplateColumn>
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton   VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteAttachment" Click="cmdDeleteAttachment_Click"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+
+
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+
+                        </controlsToolkit:DockPanel>
+
+                    </Grid>
+
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+
+
+
+        </Grid>
+</my:DockPanel>
+
+    </Grid>
+</controls:ChildWindow>

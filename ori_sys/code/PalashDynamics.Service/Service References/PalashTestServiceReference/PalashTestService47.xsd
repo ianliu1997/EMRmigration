@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.RateContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.RateContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:complexType name="clsRateContractMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ContractValue" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsFreeze" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RateContractID" type="xs:long" />
+      <xs:element minOccurs="0" name="RateContractUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupplierId" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsRateContractMasterVO" nillable="true" type="tns:clsRateContractMasterVO" />
+  <xs:complexType name="clsRateContractItemDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="Condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="DiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="DiscountPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="IsAllowMultiple" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRP" type="xs:double" />
+      <xs:element minOccurs="0" name="MaxQuantity" type="xs:double" />
+      <xs:element minOccurs="0" name="MinQuantity" type="xs:double" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PendingQuantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="RateContractID" type="xs:long" />
+      <xs:element minOccurs="0" name="RateContractUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UnlimitedQuantity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsRateContractItemDetailsVO" nillable="true" type="tns:clsRateContractItemDetailsVO" />
+  <xs:complexType name="clsGetRateContractAgainstSupplierAndItemBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemIDs" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="POBestPriceList" nillable="true" type="q1:ArrayOfclsRateContractDetailsVO" />
+      <xs:element minOccurs="0" name="RateContractItemDetailsList" nillable="true" type="tns:ArrayOfclsRateContractItemDetailsVO" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="RateContractListNew" nillable="true" type="q2:ArrayOfclsRateContractDetailsVO" />
+      <xs:element minOccurs="0" name="RateContractMasterList" nillable="true" type="tns:ArrayOfclsRateContractMasterVO" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="RateContractNew" nillable="true" type="q3:ArrayOfclsRateContractVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRateContractAgainstSupplierAndItemBizActionVO" nillable="true" type="tns:clsGetRateContractAgainstSupplierAndItemBizActionVO" />
+  <xs:complexType name="ArrayOfclsRateContractItemDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsRateContractItemDetailsVO" nillable="true" type="tns:clsRateContractItemDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsRateContractItemDetailsVO" nillable="true" type="tns:ArrayOfclsRateContractItemDetailsVO" />
+  <xs:complexType name="ArrayOfclsRateContractMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsRateContractMasterVO" nillable="true" type="tns:clsRateContractMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsRateContractMasterVO" nillable="true" type="tns:ArrayOfclsRateContractMasterVO" />
+</xs:schema>

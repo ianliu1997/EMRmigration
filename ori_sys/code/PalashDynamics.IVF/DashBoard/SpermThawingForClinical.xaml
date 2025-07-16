@@ -1,0 +1,392 @@
+﻿<UserControl x:Class="PalashDynamics.IVF.DashBoard.SpermThawingForClinical"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+            xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+            xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"    
+            xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+              xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+             Loaded="UserControl_Loaded"
+            xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+         xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+            xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+               
+  >
+
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+          
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+            <SolidColorBrush x:Key="Heading" Color="#FF0F3C64"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                <Grid x:Name="CoupleInfo" Visibility="Visible">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" Grid.Row="0" Grid.Column="0" Margin="2">
+                        <controlsToolkit:DockPanel LastChildFill="True">
+                            <controlsToolkit:DockPanel LastChildFill="True" controlsToolkit:DockPanel.Dock="Left" VerticalAlignment="Top" >
+                                <Image Grid.RowSpan="3" Width="50" Source="Icons/female.jpg" Margin="2" x:Name="imgP1" Visibility="Collapsed" ></Image>
+                                <Image Height="250" Width="250" x:Name="imgPhoto13" MaxHeight="100" MaxWidth="100" Visibility="Collapsed"></Image>
+                            </controlsToolkit:DockPanel>
+                            <controlsToolkit:DockPanel LastChildFill="True">
+                                <Grid x:Name="Female" DataContext="{Binding FemalePatient}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"   Grid.Row="0" Grid.Column="0" Text="Name : "  Margin="4"></TextBlock>
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7">
+                                        <TextBlock  VerticalAlignment="Center" Text="{Binding FirstName}" Margin="4"></TextBlock>
+                                        <TextBlock  VerticalAlignment="Center" Text="{Binding MiddleName}" Margin="4"></TextBlock>
+                                        <TextBlock  VerticalAlignment="Center" Text="{Binding LastName}" Margin="4"></TextBlock>
+                                        <TextBlock  VerticalAlignment="Center" Text="(" Margin="4" ></TextBlock>
+                                        <TextBlock  VerticalAlignment="Center" Text="{Binding MRNo}" Margin="4" ></TextBlock>
+                                        <TextBlock  VerticalAlignment="Center" Text=")" Margin="4" ></TextBlock>
+                                    </StackPanel>
+
+
+
+                                    <TextBlock  VerticalAlignment="Center" TextAlignment="Left"   Text="DOB : "  Margin="4" Grid.Row="1" Grid.Column="0" FontWeight="Bold" ></TextBlock>
+                                    <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"  Margin="4" Text="{Binding DateOfBirth,Converter={StaticResource DateConverter},ConverterParameter='dd/MMM/yyyy'}"></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" Text="Age(Yrs) : "  Grid.Row="1" Grid.Column="4" FontWeight="Bold"></TextBlock>
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock  VerticalAlignment="Center" Grid.Column="0" Text="{Binding DateOfBirth,Converter={StaticResource DateTimeToAgePart},ConverterParameter='YY'}"  Margin="4"></TextBlock>
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="1" Text="(" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="2" Text="years" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="3" Text=")" Margin="0" ></TextBlock>-->
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock  VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  Text="Weight(Kgs) : " Margin="4"></TextBlock>
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="{Binding Weight}" Margin="4"></TextBlock>
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="1" Text="(" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="2" Text="Kg" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="3" Text=")" Margin="0" ></TextBlock>-->
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock  VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"  Grid.Column="2" Grid.Row="2"  Text="Height(cms) : " Margin="4"></TextBlock>
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="3" Grid.Row="2" >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock VerticalAlignment="Center"  Grid.Column="0" TextAlignment="Left" Text="{Binding Height}" Margin="4"></TextBlock>
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="1" Text="(" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="2" Text="Cm" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="3" Text=")" Margin="0" ></TextBlock>-->
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock  VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"   Grid.Column="4" Grid.Row="2"  Text="BMI : " Margin="4"></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="5" Grid.Row="2"   Text="{Binding BMI}" Margin="4" x:Name="txtFBMI"></TextBlock>
+
+                                    <TextBlock VerticalAlignment="Center" Foreground="Red" FontWeight="Bold" TextAlignment="Left"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3"  Text="Attention : " Margin="4"></TextBlock>
+                                    <TextBlock Foreground="Red" Name="FemaleAlert" VerticalAlignment="Center" TextAlignment="Left" Text="{Binding Alerts}" Margin="4" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"  Height="14"></TextBlock>
+
+
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                        </controlsToolkit:DockPanel>
+                    </Border>
+
+                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" Grid.Row="0" Grid.Column="1"  Margin="2">
+                        <controlsToolkit:DockPanel LastChildFill="True">
+                            <controlsToolkit:DockPanel LastChildFill="True" controlsToolkit:DockPanel.Dock="Left" VerticalAlignment="Top" >
+                                <Image Grid.RowSpan="3" Width="50" Source="Icons/male.jpg" Margin="2" x:Name="imgP2" Visibility="Collapsed"></Image>
+                                <Image x:Name="imgPhoto12" Height="250" Width="250" MaxHeight="100" MaxWidth="100" Visibility="Collapsed"></Image>
+                            </controlsToolkit:DockPanel>
+                            <controlsToolkit:DockPanel LastChildFill="True">
+                                <Grid x:Name="Male" DataContext="{Binding MalePatient}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"  Grid.Row="0" Grid.Column="0" Text="Name : "  Margin="4"></TextBlock>
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7">
+                                        <TextBlock  Text="{Binding FirstName}" Margin="4"></TextBlock>
+                                        <TextBlock  Text="{Binding MiddleName}" Margin="4"></TextBlock>
+                                        <TextBlock  Text="{Binding LastName}" Margin="4"></TextBlock>
+                                        <TextBlock  Text="(" Margin="4" ></TextBlock>
+                                        <TextBlock  Text="{Binding MRNo}" Margin="4" ></TextBlock>
+                                        <TextBlock  Text=")" Margin="4" ></TextBlock>
+                                    </StackPanel>
+
+
+                                    <TextBlock VerticalAlignment="Center" TextAlignment="Left"   Text="DOB : " Margin="4" Grid.Row="1" Grid.Column="0" FontWeight="Bold" ></TextBlock>
+                                    <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"  Margin="4" Text="{Binding DateOfBirth,Converter={StaticResource DateConverter},ConverterParameter='dd/MMM/yyyy'}"></TextBlock>
+                                    <TextBlock  VerticalAlignment="Center" Text="Age(Yrs) : " Margin="4" Grid.Row="1" Grid.Column="4" FontWeight="Bold"></TextBlock>
+
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="1" Grid.Column="5" >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"   Margin="4" Text="{Binding DateOfBirth,Converter={StaticResource DateTimeToAgePart},ConverterParameter='YY'}"></TextBlock>
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="1" Text="(" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="2" Text="years" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="3" Text=")" Margin="0" ></TextBlock>-->
+                                        </Grid>
+                                    </StackPanel>
+
+
+
+                                    <TextBlock  VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  Text="Weight(Kgs) : " Margin="4"></TextBlock>
+
+
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="{Binding Weight}" Margin="4"></TextBlock>
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="1" Text="(" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="2" Text="Kg" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="3" Text=")" Margin="0" ></TextBlock>-->
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock  VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"  Grid.Column="2" Grid.Row="2"  Text="Height(cms) : " Margin="4"></TextBlock>
+
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="3" Grid.Row="2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock VerticalAlignment="Center" Grid.Column="0" TextAlignment="Left" Text="{Binding Height}" Margin="4"></TextBlock>
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="1" Text="(" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="2" Text="Cm" Margin="0" ></TextBlock>-->
+                                            <!--<TextBlock  VerticalAlignment="Center" Grid.Column="3" Text=")" Margin="0" ></TextBlock>-->
+                                        </Grid>
+                                    </StackPanel>
+
+
+                                    <TextBlock  VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Left"   Grid.Column="4" Grid.Row="2"  Text="BMI : " Margin="4"></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="5" Grid.Row="2"   Text="{Binding BMI}" Margin="4" x:Name="txtMBMI"></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" Foreground="Red"  FontWeight="Bold" TextAlignment="Left"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3"  Text="Attention : " Margin="4"></TextBlock>
+                                    <TextBlock Foreground="Red" Name="MaleAlert" VerticalAlignment="Center" TextAlignment="Left" Text="{Binding Alerts}" Margin="4" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="6" Height="14" TextTrimming="None"></TextBlock>
+
+                                </Grid>
+
+                            </controlsToolkit:DockPanel>
+                        </controlsToolkit:DockPanel>
+                    </Border>
+                </Grid>
+            </controlsToolkit:DockPanel>
+
+            <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom">
+                <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                    <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <ToggleButton x:Name="CmdSave"  Grid.Row="4" Content="Save" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  TabIndex="13" Click="CmdSave_Click"/>
+                            <ToggleButton x:Name="CmdClose"  Grid.Row="4" Content="Close" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" TabIndex="14" Click="CmdClose_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+            <Grid x:Name="PageContainer" >
+
+
+
+                <controlsToolkit:DockPanel x:Name="docList">
+
+                    <Border Grid.Row="0" controlsToolkit:DockPanel.Dock="Top"  BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="2,2,2,2" Background="Transparent">
+                        <controlsToolkit:DockPanel LastChildFill="True">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <controlsToolkit:DockPanel  controlsToolkit:DockPanel.Dock="Top" Grid.Row="1">
+                                    <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="0,4,0,0" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                        <ContentControl  VerticalAlignment="Center" FontSize="12" Content="Thawing Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+
+                                    <controlsToolkit:DockPanel LastChildFill="True"  controlsToolkit:DockPanel.Dock="Bottom">
+                                        <data:DataPager x:Name="ThawingDetilsGridPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNextNumeric"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True" />
+                                        <data:DataGrid  SelectionMode="Single" x:Name="dgThawingDetilsGrid" Height="200" ItemsSource="{Binding}" LoadingRow="dgThawingDetilsGrid_LoadingRow" IsReadOnly="False"  AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" SelectionChanged="dgThawingDetilsGrid_SelectionChanged">
+                                            <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn Width="80" Binding="{Binding ID ,Mode=TwoWay}" Header="Thawing ID" Visibility="Collapsed" IsReadOnly="True"/>
+                                                <data:DataGridTextColumn Width="80" Binding="{Binding SpremNostr,Mode=TwoWay}" Header="Collection No" IsReadOnly="True" Visibility="Collapsed"/>
+                                                <data:DataGridTextColumn Width="80" Binding="{Binding CycleCode,Mode=TwoWay}" Header="CycleCode" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Width="80" Binding="{Binding SpremNo,Mode=TwoWay}" Header="Collection No." IsReadOnly="True" />
+                                                <data:DataGridTextColumn  Width="80" Binding="{Binding Volume,Mode=TwoWay}" Header="Volume (ml)"  IsReadOnly="True" />
+                                                <data:DataGridTextColumn Width="80" Binding="{Binding TotalSpearmCount,Mode=TwoWay}" Header="Count (Million)" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Width="80" Binding="{Binding Motility,Mode=TwoWay}" Header="Motility (%)" />
+
+                                                <data:DataGridTemplateColumn Header="Thawing Date" >
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <controls:DatePicker SelectedDate="{Binding ThawingDate,Mode=TwoWay}"  Margin="4"  x:Name="dtDate" IsEnabled="{Binding IsEnabled}" ></controls:DatePicker>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+
+                                                <data:DataGridTemplateColumn Header="Thawing Time">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <inputToolkit:TimePicker Value="{Binding ThawingTime,Mode=TwoWay}"  Margin="4" x:Name="dtTime" IsEnabled="{Binding IsEnabled}"  ></inputToolkit:TimePicker>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+
+                                                <data:DataGridTemplateColumn Header="Plan" Visibility="Collapsed">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbPlanForSperms" ItemsSource="{Binding PlanIdList}" SelectedItem="{Binding SelectedPlanId,Mode=TwoWay}" IsEnabled="{Binding IsEnabled}"   SelectedValue="{Binding SelectedPlanId.ID}"  Text=""  SelectionChanged="cmbPlanForSperms_SelectionChanged"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+
+                                                <data:DataGridTemplateColumn Header="Lab Incharge">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbLabIncharge" ItemsSource="{Binding InchargeIdList}" SelectedItem="{Binding SelectedIncharge,Mode=TwoWay}" IsEnabled="{Binding IsEnabled}"  SelectedValue="{Binding SelectedIncharge.ID}"  Text=""  SelectionChanged="cmbLabIncharge1_SelectionChanged"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn Header="Comments">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <TextBox Width="100" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsEnabled="{Binding IsEnabled}"  VerticalAlignment="Center"  Height="28"  Text="{Binding Comments,Mode=TwoWay}" ></TextBox>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+
+                                                <data:DataGridTemplateColumn Header="Freeze">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsFreezed,Mode=TwoWay}" IsEnabled="{Binding IsEnabled}"  Content="Freeze"></CheckBox>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                            </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </controlsToolkit:DockPanel>
+                                </controlsToolkit:DockPanel>
+                                <controlsToolkit:DockPanel  LastChildFill="True" controlsToolkit:DockPanel.Dock="Bottom" Grid.Row="0">
+                                    <controlsToolkit:DockPanel   controlsToolkit:DockPanel.Dock="Top">
+                                        <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="0,4,0,0" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                            <ContentControl VerticalAlignment="Center" FontSize="12" Content="Sperm Freezing Summary" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                        </Border>
+                                        <controlsToolkit:DockPanel   controlsToolkit:DockPanel.Dock="Bottom">
+                                            <data:DataPager x:Name="VitrificationDetilsGridPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNextNumeric"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True" />
+                                            <data:DataGrid  SelectionMode="Single" x:Name="dgVitrificationDetilsGrid" Height="200" ItemsSource="{Binding}"  AutoGenerateColumns="False" IsReadOnly="True"  VerticalScrollBarVisibility="Visible">
+                                                <data:DataGrid.Columns>
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding SpremNostr}" Header="Collection No"/>
+                                                    <data:DataGridTextColumn Header="Vitrification Date" Binding="{Binding VitrificationDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  />
+                                                    <data:DataGridTextColumn Header="Vitrification Time" Binding="{Binding VitrificationDate,Converter={StaticResource DateConverter},ConverterParameter='hh:mm tt'}"  />
+
+                                                    <data:DataGridTextColumn  Width="80" Binding="{Binding Volume, Mode=TwoWay}" Header="Volume (ml)"/>
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding SpermCount, Mode=TwoWay}" Header="Count (Million)" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding Motility, Mode=TwoWay}" Header="Motility (%)" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding GobletColor, Mode=TwoWay}" Header="Color Code" />
+                                                    <data:DataGridTextColumn Width="100" Binding="{Binding Straw, Mode=TwoWay}" Header="Straw"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding GolbletShape, Mode=TwoWay}" Header="Goblet Shape"/>
+                                                    <data:DataGridTextColumn Width="100" Binding="{Binding GobletSize, Mode=TwoWay}" Header="Goblet Size"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding Cane, Mode=TwoWay}" Header="Cane"/>
+                                                    <data:DataGridTextColumn Width="100" Binding="{Binding Canister, Mode=TwoWay}" Header="Canister"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding Tank, Mode=TwoWay}" Header="Tank"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding Comments, Mode=TwoWay}" Header="Comments"/>
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+
+                                        </controlsToolkit:DockPanel>
+                                    </controlsToolkit:DockPanel>
+                                   
+                                </controlsToolkit:DockPanel>
+                            </Grid>
+                        </controlsToolkit:DockPanel>
+                    </Border>
+                </controlsToolkit:DockPanel>
+            </Grid>
+        </controlsToolkit:DockPanel>
+
+
+    </Grid>
+</UserControl>

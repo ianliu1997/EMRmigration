@@ -1,0 +1,256 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmMaleExamination_Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+        xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+        xmlns:controlsToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+        xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"  
+        xmlns:data="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"       
+        xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"                 
+        xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"           
+        xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+        xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+        xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+       Width="1000" Height="600" Loaded="ChildWindow_Loaded" Title="Male Examination ">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White" Margin="2">
+        <controlsToolkit:DockPanel LastChildFill="True" >
+
+            <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom">
+                <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                    <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <ToggleButton x:Name="cmdNew" Content="New"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed" Click="cmdNew_Click" TabIndex="3" ></ToggleButton>
+                            <ToggleButton x:Name="CmdSave"  Grid.Row="4" Content="Save" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed" Click="CmdSave_Click" TabIndex="13" />
+                            <ToggleButton x:Name="CmdClose"  Grid.Row="4" Content="Close" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdClose_Click" TabIndex="14" />
+                            <ToggleButton x:Name="cmdPrint"  Grid.Row="4" Content="Print" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed" Click="cmdPrint_Click" TabIndex="14" />
+                        </StackPanel>
+                    </StackPanel>
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+
+            <Grid x:Name="PageContainer" >
+
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <controlsToolkit:DockPanel x:Name="docList">
+                        <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Examination Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                            </Border>
+                        </StackPanel>
+                        <data:DataGrid x:Name="dgComplaintSummary" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="2" HorizontalAlignment="Stretch" CanUserSortColumns="False" Visibility="Visible">
+
+                            <data:DataGrid.Columns>
+                                <data:DataGridTextColumn Binding="{Binding VisitID}"  Header="ID" Visibility="Collapsed"/>
+                                <data:DataGridTextColumn Binding="{Binding histoyFlag}"  Header="ID" Visibility="Collapsed"/>
+                                <data:DataGridTextColumn Binding="{Binding IsOPDIPDFlag}"  Header="ID" Visibility="Collapsed"/>
+                                <data:DataGridTextColumn Binding="{Binding TakenBy}"  Header="ID" Visibility="Collapsed"/>
+                                <data:DataGridTemplateColumn>
+                                    <data:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <HyperlinkButton VerticalAlignment="Center"  Content="View"  Padding="5,0,5,0"   x:Name="hlbViewExamination" Click="hlbViewExaminationNew_Click" ></HyperlinkButton>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>
+                                <data:DataGridTextColumn Binding="{Binding ArtDashboardDate}" Header="Date" />
+                                <data:DataGridTextColumn Binding="{Binding LoginNm}"  Header="TakenBy" Visibility="Collapsed"/>
+                                <data:DataGridTextColumn Binding="{Binding Value}"  Header="Procedure Name"   Visibility="Collapsed"  />
+                                <data:DataGridTemplateColumn Visibility="Collapsed">
+                                    <data:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <HyperlinkButton Background="White" ToolTipService.ToolTip="Print Details" VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="HyperlinkButton_Click">
+                                                <Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/Print_32.png"/>
+                                            </HyperlinkButton>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>
+                            </data:DataGrid.Columns>
+                        </data:DataGrid>
+                        <!--Place here data pager and data grid-->
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+                <data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}"  AutoEllipsis="False" IsTotalItemCountFixed="False"   Visibility="Collapsed"/>
+                <data:DataGrid x:Name="dgExamination" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="2" HorizontalAlignment="Stretch" CanUserSortColumns="False" Visibility="Collapsed">
+                    <data:DataGrid.Columns>
+                        <data:DataGridTemplateColumn>
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <HyperlinkButton VerticalAlignment="Center"  Content="View"  Padding="5,0,5,0"   x:Name="hlbViewExamination" Click="hlbViewExamination_Click" ></HyperlinkButton>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+                        <data:DataGridTextColumn Binding="{Binding Date,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="Date"/>
+                        <data:DataGridTextColumn Binding="{Binding Height}" Header="Height"/>
+                        <data:DataGridTextColumn Binding="{Binding Weight}" Header="Weight"/>
+                        <data:DataGridTextColumn Binding="{Binding BMI,StringFormat=0.00,Mode=OneWay}" Header="BMI"/>
+                        <!--<data:DataGridTextColumn Binding="{Binding Alterts}" Header="Alerts"/>-->
+                        <data:DataGridTemplateColumn >
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <HyperlinkButton ToolTipService.ToolTip="Print Details" VerticalAlignment="Center" Padding="2" IsTabStop="False" Click="HyperlinkButton_Click">
+                                        <Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/Print_32.png"/>
+                                    </HyperlinkButton>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+                    </data:DataGrid.Columns>
+                </data:DataGrid>
+
+                <Grid  Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1">
+                    <controlsToolkit:DockPanel LastChildFill="True" >
+                        <controlsToolkit:DockPanel LastChildFill="True">
+                            <ScrollViewer Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+                                <controlsToolkit:DockPanel x:Name="docContents"  LastChildFill="True" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Right">
+                                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" Margin="4" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch">
+                                            <ContentControl Template="{StaticResource FilledContentControlTemplate}"  Background="Aqua"  x:Name="EMR_RightCorner" ScrollViewer.VerticalScrollBarVisibility="Visible"   ScrollViewer.HorizontalScrollBarVisibility="Auto"  />
+                                        </Border>
+                                    </controlsToolkit:DockPanel>
+                                   
+
+                                </controlsToolkit:DockPanel>
+
+                            </ScrollViewer>
+
+                        </controlsToolkit:DockPanel>
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+                <Grid Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition  Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <controlsToolkit:DockPanel x:Name="docTop" controlsToolkit:DockPanel.Dock="Top" Grid.Row="0" >
+                        <Grp:GroupBox x:Name="GeneralExamination" IsTabStop="False" Header="General Examination"  Margin="4" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Weight (kg)" Grid.Row="0" Grid.Column="0" Margin="4"></TextBlock>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="4" Text="{Binding Weight, Mode=TwoWay}" x:Name="txtWeight" TextAlignment="Right" HorizontalAlignment="Stretch" TabIndex="0" LostFocus="txtWeight_LostFocus"  TextChanged="txtWeight_TextChanged" KeyDown="txtWeight_KeyDown"></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Height (cm)" Grid.Row="0" Grid.Column="2" Margin="4"></TextBlock>
+                                <TextBox Grid.Row="0" Grid.Column="3" Margin="4" Text="{Binding Height, Mode=TwoWay}" x:Name="txtHeight" TextAlignment="Right" HorizontalAlignment="Stretch" TabIndex="1" LostFocus="txtWeight_LostFocus"  TextChanged="txtHeight_TextChanged" KeyDown="txtHeight_KeyDown"></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="BMI" Grid.Row="0" Grid.Column="4" Margin="4"></TextBlock>
+                                <TextBox Grid.Row="0" Grid.Column="5" Margin="4" Text="{Binding BMI,StringFormat=0.00, Mode=TwoWay}" x:Name="txtPatientBMI" TextAlignment="Right" HorizontalAlignment="Stretch" ></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="BP(Systolic)" Grid.Row="1" Grid.Column="0" Margin="4"  ></TextBlock>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="4" Text="{Binding BpInMm, Mode=TwoWay}" x:Name="txtBPSystolic" TextAlignment="Right" HorizontalAlignment="Stretch" TabIndex="2"  TextChanged="txtBPsystolic_TextChanged" KeyDown="txtBPsystolic_KeyDown" ></TextBox>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="BP(Diastolic)" Grid.Row="1" Grid.Column="2" Margin="4" ></TextBlock>
+                                <TextBox Grid.Row="1" Grid.Column="3" Margin="4" Text="{Binding BpInHg, Mode=TwoWay}" x:Name="txtBPdystolic" TextAlignment="Right" HorizontalAlignment="Stretch" TabIndex="2" TextChanged="txtBPdystolic_TextChanged" KeyDown="txtBPdystolic_KeyDown" ></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pulse (per min)" Grid.Row="1" Grid.Column="4" Margin="4" ></TextBlock>
+                                <TextBox Grid.Row="1" Grid.Column="5" Margin="4" Text="{Binding Pulse, Mode=TwoWay}" x:Name="txtPulse" TextAlignment="Right" HorizontalAlignment="Stretch" TabIndex="3" TextChanged="txtPulse_TextChanged" KeyDown="txtPulse_KeyDown" ></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Built" Grid.Row="2" Grid.Column="0" Margin="4" ></TextBlock>
+                                <CustomCombo:AutoCompleteComboBox x:Name="cmbBuilt"  Grid.Row="2"  Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" TabIndex="3" SelectedValuePath="ID"  Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Margin="4"/>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Gynaecomastia" Grid.Row="3" Grid.Column="0" Margin="4" ></TextBlock>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="4" Text="{Binding Gynaecomastia, Mode=TwoWay}" x:Name="txtGynaecomastia" Grid.ColumnSpan="5"  VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Height="50" AcceptsReturn="True" HorizontalAlignment="Stretch" TabIndex="11" MaxLength="255" ></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Secondary Sex Characters" Grid.Row="4" Grid.Column="0" Margin="4" ></TextBlock>
+                                <TextBox Grid.Row="4" Grid.Column="1" Margin="4" Text="{Binding SecondarySexCharacters, Mode=TwoWay}" x:Name="txtSecondarySexCharacters"  Grid.ColumnSpan="5"  HorizontalAlignment="Stretch"   VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Height="50" AcceptsReturn="True" TabIndex="12" MaxLength="255" ></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="HIV +Ve" Grid.Row="2" Grid.Column="4" Margin="4" ></TextBlock>
+                                <CheckBox Grid.Row="2" Grid.Column="5" x:Name="chkHIV" IsChecked="{Binding HIVPositive,Mode=TwoWay}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Stretch" TabIndex="13"></CheckBox>
+
+                            </Grid>
+                        </Grp:GroupBox>
+                    </controlsToolkit:DockPanel>
+
+                    <controlsToolkit:DockPanel x:Name="docMiddle" controlsToolkit:DockPanel.Dock="Bottom" Grid.Row="1" >
+                        <Grp:GroupBox x:Name="PhysicalExamination" IsTabStop="False" Header="Physical Examination"  Margin="4" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Eye Color" Grid.Row="0" Grid.Column="0" Margin="4" ></TextBlock>
+                                <!--<TextBox Grid.Row="0" Grid.Column="1" Margin="4" Text="{Binding EyeColor, Mode=TwoWay}" x:Name="txtEyeColor"  HorizontalAlignment="Stretch" TabIndex="14" MaxLength="255"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"></TextBox>-->
+                                <CustomCombo:AutoCompleteComboBox Grid.Row="0" Grid.Column="1" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" x:Name="cmbEyeColor"  HorizontalAlignment="Stretch" TabIndex="14"  />
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Hair Color" Grid.Row="0" Grid.Column="2" Margin="4" ></TextBlock>
+                                <!--<TextBox Grid.Row="0" Grid.Column="3" Margin="4" Text="{Binding HairColor, Mode=TwoWay}" x:Name="txtHairColor"  HorizontalAlignment="Stretch"  MaxLength="255" TabIndex="15" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"></TextBox>-->
+                                <CustomCombo:AutoCompleteComboBox Grid.Row="0" Grid.Column="3" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID" x:Name="cmbHairColor"  HorizontalAlignment="Stretch" TabIndex="15"  />
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Skin Color" Grid.Row="1" Grid.Column="0" Margin="4" ></TextBlock>
+                                <!--<TextBox Grid.Row="1" Grid.Column="1" Margin="4" Text="{Binding SkinColor, Mode=TwoWay}" x:Name="txtSkinColor"  HorizontalAlignment="Stretch" MaxLength="255" TabIndex="16" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"></TextBox>-->
+                                <CustomCombo:AutoCompleteComboBox Grid.Row="1" Grid.Column="1" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID" x:Name="cmbSkinColor"  HorizontalAlignment="Stretch" TabIndex="15"  />
+
+                                <!--<TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Built" Grid.Row="1" Grid.Column="2" Margin="4" ></TextBlock>
+                                                <TextBox Grid.Row="1" Grid.Column="3" Margin="4" Text="{Binding PhysicalBuilt, Mode=TwoWay}" x:Name="txtPhysicalBuilt"  HorizontalAlignment="Stretch" MaxLength="255" TabIndex="17" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"></TextBox>-->
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="External Genital Exam" Grid.Row="1" Grid.Column="2" Margin="4" ></TextBlock>
+                                <TextBox Grid.Row="1" Grid.Column="3" Margin="4" Text="{Binding ExternalGenitalExam, Mode=TwoWay}"  x:Name="txtGeneralGenitalExam" MaxLength="255" HorizontalAlignment="Stretch" TabIndex="18" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"></TextBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Comments" Grid.Row="2" Grid.Column="0" Margin="4" ></TextBlock>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="4" Text="{Binding Comments, Mode=TwoWay}" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="3" TextWrapping="Wrap"  x:Name="txtComments"  HorizontalAlignment="Stretch" TabIndex="19" ></TextBox>
+                            </Grid>
+                        </Grp:GroupBox>
+                    </controlsToolkit:DockPanel>
+
+                    <controlsToolkit:DockPanel x:Name="docBottom" controlsToolkit:DockPanel.Dock="Bottom" Grid.Row="2"   >
+
+                        <Grp:GroupBox x:Name="Alerts" IsTabStop="False" Header="Alerts"  Margin="4" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Attention" Grid.Row="0" Grid.Column="0" Margin="4"  ></TextBlock>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="4" Text="{Binding Alterts, Mode=TwoWay}" x:Name="txtAlerts"  HorizontalAlignment="Stretch" TabIndex="20" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Height="50"></TextBox>
+
+                            </Grid>
+                        </Grp:GroupBox>
+                    </controlsToolkit:DockPanel>
+
+                </Grid>
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+
+</controls:ChildWindow>

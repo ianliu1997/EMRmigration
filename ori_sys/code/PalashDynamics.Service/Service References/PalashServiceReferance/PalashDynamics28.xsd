@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.DoctorMaster" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.DoctorMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:complexType name="clsGetDoctorBankInfoByIdVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BankId" type="xs:long" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorBankDetailList" nillable="true" type="q1:ArrayOfclsDoctorBankInfoVO" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorBankDetail" nillable="true" type="q2:clsDoctorBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorBankInfoByIdVO" nillable="true" type="tns:clsGetDoctorBankInfoByIdVO" />
+  <xs:complexType name="clsBankVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SpecializationDis" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsBankVO" nillable="true" type="tns:clsBankVO" />
+  <xs:complexType name="clsUpdateDoctorBankInfoVO">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="PatientServiceList" nillable="true" type="q3:ArrayOfclsDoctorBankInfoVO" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorBankDetail" nillable="true" type="q4:clsDoctorBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateDoctorBankInfoVO" nillable="true" type="tns:clsUpdateDoctorBankInfoVO" />
+  <xs:complexType name="clsGetBankDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetBankDetailsVO" nillable="true" type="tns:clsGetBankDetailsVO" />
+  <xs:complexType name="clsAddDoctorWaiverDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorWaiverDetails" nillable="true" type="q5:clsDoctorWaiverDetailVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddDoctorWaiverDetailsBizActionVO" nillable="true" type="tns:clsAddDoctorWaiverDetailsBizActionVO" />
+  <xs:complexType name="clsGetRefernceDoctorBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="ComboList" nillable="true" type="q6:ArrayOfclsComboMasterBizActionVO" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="IsDecode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromVisit" type="xs:boolean" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q7:ArrayOfMasterListItem" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterTable" type="q8:MasterTableNameList" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="_SuccessStatus" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRefernceDoctorBizActionVO" nillable="true" type="tns:clsGetRefernceDoctorBizActionVO" />
+  <xs:complexType name="clsUpdateDoctorShareServiceBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objServiceDetail" nillable="true" type="q9:clsDoctorShareServicesDetailsVO" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objServiceList" nillable="true" type="q10:ArrayOfclsDoctorShareServicesDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateDoctorShareServiceBizActionVO" nillable="true" type="tns:clsUpdateDoctorShareServiceBizActionVO" />
+  <xs:complexType name="clsUpdateDoctorAddressInfoVO">
+    <xs:sequence>
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="PatientServiceList" nillable="true" type="q11:ArrayOfclsDoctorAddressInfoVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorAddressDetail" nillable="true" type="q12:clsDoctorAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateDoctorAddressInfoVO" nillable="true" type="tns:clsUpdateDoctorAddressInfoVO" />
+  <xs:complexType name="clsGetDoctorServiceLinkingByCategoryBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsForClinic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetails" nillable="true" type="q13:clsServiceMasterVO" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetailsList" nillable="true" type="q14:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorServiceLinkingByCategoryBizActionVO" nillable="true" type="tns:clsGetDoctorServiceLinkingByCategoryBizActionVO" />
+  <xs:complexType name="clsAddUpdateDoctorServiceLinkingByCategoryBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryID" type="xs:long" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="DeletedServiceList" nillable="true" type="q15:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetails" nillable="true" type="q16:clsServiceMasterVO" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetailsList" nillable="true" type="q17:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateDoctorServiceLinkingByCategoryBizActionVO" nillable="true" type="tns:clsAddUpdateDoctorServiceLinkingByCategoryBizActionVO" />
+  <xs:complexType name="clsGetDoctorServiceLinkingByCategoryAndServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsForClinic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetails" nillable="true" type="q18:clsServiceMasterVO" />
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetailsList" nillable="true" type="q19:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorServiceLinkingByCategoryAndServiceBizActionVO" nillable="true" type="tns:clsGetDoctorServiceLinkingByCategoryAndServiceBizActionVO" />
+  <xs:complexType name="clsUpdateDoctorWaiverDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorWaiverDetail" nillable="true" type="q20:clsDoctorWaiverDetailVO" />
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorWaiverDetailList" nillable="true" type="q21:ArrayOfclsDoctorWaiverDetailVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateDoctorWaiverDetailsBizActionVO" nillable="true" type="tns:clsUpdateDoctorWaiverDetailsBizActionVO" />
+  <xs:complexType name="clsGetDoctorWaiverDetailListByIDBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorWaiverDetails" nillable="true" type="q22:clsDoctorWaiverDetailVO" />
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorWaiverDetailsList" nillable="true" type="q23:ArrayOfclsDoctorWaiverDetailVO" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorWaiverDetailListByIDBizActionVO" nillable="true" type="tns:clsGetDoctorWaiverDetailListByIDBizActionVO" />
+  <xs:complexType name="clsGetDoctorTariffServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartmentId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="TeriffServiceDetail" nillable="true" type="q24:clsDoctorWaiverDetailVO" />
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="TeriffServiceDetailList" nillable="true" type="q25:ArrayOfclsDoctorWaiverDetailVO" />
+      <xs:element minOccurs="0" name="UnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="_SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorTariffServiceListBizActionVO" nillable="true" type="tns:clsGetDoctorTariffServiceListBizActionVO" />
+  <xs:complexType name="clsDeleteDoctorDepartmentDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="Details" nillable="true" type="q26:clsDoctorVO" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeleteDoctorDepartmentDetailsBizActionVO" nillable="true" type="tns:clsDeleteDoctorDepartmentDetailsBizActionVO" />
+  <xs:complexType name="clsAddDoctorAddressInfoBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="PatientServiceList" nillable="true" type="q27:ArrayOfclsDoctorAddressInfoVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorBankDetail" nillable="true" type="q28:clsDoctorAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddDoctorAddressInfoBizActionVO" nillable="true" type="tns:clsAddDoctorAddressInfoBizActionVO" />
+  <xs:complexType name="clsGetClassificationListForDoctorMasterBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorDetails" nillable="true" type="q29:ArrayOfclsDoctorVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetClassificationListForDoctorMasterBizActionVO" nillable="true" type="tns:clsGetClassificationListForDoctorMasterBizActionVO" />
+  <xs:complexType name="clsGetDoctorBankInfoBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorBankDetailList" nillable="true" type="q30:ArrayOfclsDoctorBankInfoVO" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorBankDetail" nillable="true" type="q31:clsDoctorBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorBankInfoBizActionVO" nillable="true" type="tns:clsGetDoctorBankInfoBizActionVO" />
+  <xs:complexType name="clsGetDoctorAddressInfoByIdVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressTypeId" type="xs:long" />
+      <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorAddressDetailList" nillable="true" type="q32:ArrayOfclsDoctorAddressInfoVO" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorAddressDetail" nillable="true" type="q33:clsDoctorAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorAddressInfoByIdVO" nillable="true" type="tns:clsGetDoctorAddressInfoByIdVO" />
+  <xs:complexType name="clsGetDoctorAddressInfoBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DoctorAddressDetailList" nillable="true" type="q34:ArrayOfclsDoctorAddressInfoVO" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="objDoctorAddressDetail" nillable="true" type="q35:clsDoctorAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorAddressInfoBizActionVO" nillable="true" type="tns:clsGetDoctorAddressInfoBizActionVO" />
+</xs:schema>

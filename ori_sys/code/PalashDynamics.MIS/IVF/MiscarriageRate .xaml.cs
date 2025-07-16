@@ -1,0 +1,157 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using PalashDynamics.Service.PalashTestServiceReference;
+using PalashDynamics.ValueObjects.Master;
+using PalashDynamics.ValueObjects;
+using CIMS;
+using System.Reflection;
+using System.Windows.Browser;
+
+namespace PalashDynamics.MIS.IVF
+{
+    public partial class MiscarriageRate : UserControl
+    {
+        public MiscarriageRate()
+        {
+            InitializeComponent();
+        }
+         public string msgTitle;
+        Nullable<DateTime> dtpF = null;
+        Nullable<DateTime> dtpT = null;
+        Nullable<DateTime> dtpP = null;
+        clsUserVO User = ((IApplicationConfiguration)App.Current).CurrentUser;       
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            dtpFromDate.SelectedDate = DateTime.Now.Date;
+            dtpToDate.SelectedDate = DateTime.Now.Date;
+            FillClinic();
+        }
+
+        private void dtpFromDate_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdPrint_Click(object sender, RoutedEventArgs e)
+        {
+            Nullable<DateTime> dtpF = null;
+            Nullable<DateTime> dtpT = null;
+            Nullable<DateTime> dtpP = null;
+            string msgTitle = "PALASH";
+            bool chkToDate = true;
+            if (dtpFromDate.SelectedDate != null)
+            {
+                dtpF = dtpFromDate.SelectedDate.Value.Date.Date;
+            }
+            if (dtpToDate.SelectedDate != null)
+            {
+                dtpT = dtpToDate.SelectedDate.Value.Date.Date;
+                if (dtpF.Value > dtpT.Value)
+                {
+                    dtpToDate.SelectedDate = dtpFromDate.SelectedDate;
+                    dtpT = dtpF;
+                    chkToDate = false;
+                }
+                else
+                {  
+                    //dtpP = dtpT;
+                    //dtpT = dtpT.Value.AddDays(1);                
+
+                    dtpP = dtpT;
+                    dtpT = dtpP;
+                    dtpToDate.Focus();
+                }
+            }
+            if (dtpT != null)
+            {
+                if (dtpF != null)
+                {
+                    dtpF = dtpFromDate.SelectedDate.Value.Date.Date;
+                }
+            }
+            long clinic = ((MasterListItem)cmbClinic.SelectedItem).ID;
+
+            long ReportID = 2;                           // Hard Code For  LiveBirthRate
+            if (chkToDate == true)
+            {
+                bool? IsGraph = chkGraph.IsChecked;
+                string URL;
+                if (dtpF != null && dtpT != null && dtpP != null)
+                {
+                    URL = "../Reports/IVF/GoodGradeEmbryoANDMiscarriageRate.aspx?FromDate=" + dtpF.Value.ToString("dd/MMM/yyyy") + "&ToDate=" + dtpT.Value.ToString("dd/MMM/yyyy") + "&ToDatePrint=" + dtpP.Value.ToString("dd/MMM/yyyy") + "&clinic=" + clinic + "&ReportID=" + ReportID + "&IsGraph=" + IsGraph; 
+                    HtmlPage.Window.Navigate(new Uri(Application.Current.Host.Source, URL), "_blank");
+                }
+                else
+                {
+                    URL = "../Reports/IVF/GoodGradeEmbryoANDMiscarriageRate.aspx?clinic=" + clinic + "&ReportID=" + ReportID;
+                    HtmlPage.Window.Navigate(new Uri(Application.Current.Host.Source, URL), "_blank");
+                }
+            }
+            else
+            {
+                string msgText = "Incorrect Date Range. From Date Cannot Be Greater Than To Date.";
+                MessageBoxControl.MessageBoxChildWindow msgWindow = new MessageBoxControl.MessageBoxChildWindow(msgTitle, msgText, MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Warning);
+                msgWindow.Show();
+            }
+        }
+
+        private void cmdCancel_Click(object sender, RoutedEventArgs e)
+        {
+            UIElement myData = Assembly.GetExecutingAssembly().CreateInstance("PalashDynamics.MIS.IVF.IVFReport") as UIElement;
+            ((IApplicationConfiguration)App.Current).OpenMainContent(myData);
+        }
+        private void FillClinic()
+        {
+            try
+            {
+                clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+                BizAction.MasterTable = MasterTableNameList.M_UnitMaster;
+                BizAction.MasterList = new List<MasterListItem>();
+
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+
+                client.ProcessCompleted += (s, arg) =>
+                {
+                    if (arg.Error == null && arg.Result != null)
+                    {
+                        List<MasterListItem> objList = new List<MasterListItem>();
+                        objList.Add(new MasterListItem(0, "-- Select --"));
+                        objList.AddRange(((clsGetMasterListBizActionVO)arg.Result).MasterList);
+
+                        cmbClinic.ItemsSource = null;
+                        cmbClinic.ItemsSource = objList;
+                        if (!((IApplicationConfiguration)App.Current).ApplicationConfigurations.IsHO)
+                        {
+                            var res = from r in objList
+                                      where r.ID == User.UserLoginInfo.UnitId
+                                      select r;
+                            cmbClinic.SelectedItem = ((MasterListItem)res.First());
+                            cmbClinic.IsEnabled = false;
+                        }
+                        else
+                            cmbClinic.SelectedItem = objList[0];
+                    }
+
+                };
+                client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+                client.CloseAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.DoctorMaster" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.DoctorMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" />
+  <xs:complexType name="clsDeleteDoctorDepartmentDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="Details" nillable="true" type="q1:clsDoctorVO" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeleteDoctorDepartmentDetailsBizActionVO" nillable="true" type="tns:clsDeleteDoctorDepartmentDetailsBizActionVO" />
+</xs:schema>

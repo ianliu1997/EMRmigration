@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Billing" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Billing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd40" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Log" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd41" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd39" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Pathology" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Radiology" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd55" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.CompanyPayment" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Appointment" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" />
+  <xs:complexType name="clsAddExpensesBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsExpensesVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="myTransaction" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddExpensesBizActionVO" nillable="true" type="tns:clsAddExpensesBizActionVO" />
+  <xs:complexType name="clsExpensesVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="BalanceAmountSelf" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Expense" type="xs:long" />
+      <xs:element minOccurs="0" name="ExpenseDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExpenseDetails" nillable="true" type="tns:ArrayOfclsExpensesDetailsVO" />
+      <xs:element minOccurs="0" name="ExpenseName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSettled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Reasonofcancellation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VoStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VoucherNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="voucherCreatedby" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsExpensesVO" nillable="true" type="tns:clsExpensesVO" />
+  <xs:complexType name="ArrayOfclsExpensesDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsExpensesDetailsVO" nillable="true" type="tns:clsExpensesDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsExpensesDetailsVO" nillable="true" type="tns:ArrayOfclsExpensesDetailsVO" />
+  <xs:complexType name="clsExpensesDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChequeNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ExpenseID" type="xs:long" />
+      <xs:element minOccurs="0" name="ExpenseUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PaymentMode" type="xs:long" />
+      <xs:element minOccurs="0" name="Payto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReasonOfCancellation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TransferToAccountNo" type="xs:long" />
+      <xs:element minOccurs="0" name="TransferToBank" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsExpensesDetailsVO" nillable="true" type="tns:clsExpensesDetailsVO" />
+  <xs:complexType name="clsGetExpensesListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:ArrayOfclsExpensesVO" />
+      <xs:element minOccurs="0" name="Expense" type="xs:long" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VoStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Vouchercreatedby" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Voucherno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetExpensesListBizActionVO" nillable="true" type="tns:clsGetExpensesListBizActionVO" />
+  <xs:complexType name="ArrayOfclsExpensesVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsExpensesVO" nillable="true" type="tns:clsExpensesVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsExpensesVO" nillable="true" type="tns:ArrayOfclsExpensesVO" />
+  <xs:complexType name="clsTariffMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AllVisit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BulkRateChangeID" type="xs:long" />
+      <xs:element minOccurs="0" name="BulkRateChangeUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CheckDate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EffectiveDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromEffectiveDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsApplicable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreeze" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSetRateForAll" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoOfVisit" type="xs:int" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowID" type="xs:long" />
+      <xs:element minOccurs="0" name="SelectTariff" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterList" nillable="true" type="q1:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ServiceSpecializationMasterList" nillable="true" type="tns:ArrayOfclsTariffMasterBizActionVO" />
+      <xs:element minOccurs="0" name="Specialization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Specify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StrGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StrSubGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToEffectiveDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strAddedBy" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsTariffMasterBizActionVO" nillable="true" type="tns:clsTariffMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsTariffMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsTariffMasterBizActionVO" nillable="true" type="tns:clsTariffMasterBizActionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsTariffMasterBizActionVO" nillable="true" type="tns:ArrayOfclsTariffMasterBizActionVO" />
+  <xs:complexType name="clsAccountsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillsLedgerAccountList" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="ConsumptionLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="DoctorLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="DoctorPaymentLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="ExportDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IPDAdvanceLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="IPDAdvanceRefundLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="IPDCompanyBillAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="IPDCompanyReceiptBillAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="IPDReceiptLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="IPDRefundBillLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="IPDSelfBillAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="IPDSelfCreditForTallyInterface" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="ItemSaleLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="ItemSaleReturnLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="MiscExpenseLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="MiscIncomeLedger" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDAdvanceLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDAdvanceRefundLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDBillsLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDCompanyCreditBillAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDCompanyReceiptBillAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDReceiptLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDRefundBillLedgerAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDRefundOfBillLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDSelfBillLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="OPDSelfCreditBillAccount" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="PurchaseCashLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="PurchaseCreditLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="PurchaseLedger" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="PurchaseReturnCashLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="PurchaseReturnCreditLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="PurchaseReturnLedger" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="RefDoctorLedger" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="RefDoctorPaymentLedger" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="SaleCompanyReceiptLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="SaleCredit" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="SaleIncome" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="SaleReturn" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="SaleSelfReceiptLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="ScrapLedgers" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+      <xs:element minOccurs="0" name="StoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalConsumptionCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalConsumptionDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalItemSaleCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalItemSaleDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalItemSaleReturnCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalItemSaleReturnDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalOPDSelfBillCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalOPDSelfBillDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalOPDSelfRefundBillCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalOPDSelfRefundBillDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseCashCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseCashDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseCreditCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseCreditDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseReturnCashCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseReturnCashDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseReturnCreditCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPurchaseReturnCreditDR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalScrapCR" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalScrapDR" type="xs:double" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAccountsVO" nillable="true" type="tns:clsAccountsVO" />
+  <xs:complexType name="ArrayOfclsLedgerVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsLedgerVO" nillable="true" type="tns:clsLedgerVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsLedgerVO" nillable="true" type="tns:ArrayOfclsLedgerVO" />
+  <xs:complexType name="clsLedgerVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdvanceTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="BalanceAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CR" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Clinic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyLedger" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyLedgerID" type="xs:long" />
+      <xs:element minOccurs="0" name="ConcessionAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="DR" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="EntryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GPVoucherType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GRNNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GRNReturnNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsCredit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LedgerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mrno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Narration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NetAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="NewReferance" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderByID" type="xs:long" />
+      <xs:element minOccurs="0" name="Particular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pat_Comp_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="PayModeID" type="xs:long" />
+      <xs:element minOccurs="0" name="PostingDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PurchaseInvoiceNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowID" type="xs:long" />
+      <xs:element minOccurs="0" name="SettledBillAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Sponsor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubLedgerId" type="xs:long" />
+      <xs:element minOccurs="0" name="SupplierLedger" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierLedgerID" type="xs:long" />
+      <xs:element minOccurs="0" name="TempCR" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TempNarration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TransactionDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TransactionGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" type="xs:long" />
+      <xs:element minOccurs="0" name="TransactionNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VatAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="VendorId" type="xs:long" />
+      <xs:element minOccurs="0" name="VoucherDetailId" type="xs:long" />
+      <xs:element minOccurs="0" name="VoucherDetailUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="VoucherId" type="xs:long" />
+      <xs:element minOccurs="0" name="VoucherMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VoucherType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VoucherUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="_Mrno" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsLedgerVO" nillable="true" type="tns:clsLedgerVO" />
+  <xs:complexType name="clsGetTotalBillAccountsLedgersVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsAccountsVO" />
+      <xs:element minOccurs="0" name="ENVELOPEList" nillable="true" type="tns:ArrayOfENVELOPE" />
+      <xs:element minOccurs="0" name="IsDeleteFiles" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGenrateXML" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="strGenrateXMLName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetTotalBillAccountsLedgersVO" nillable="true" type="tns:clsGetTotalBillAccountsLedgersVO" />
+  <xs:complexType name="ArrayOfENVELOPE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ENVELOPE" nillable="true" type="tns:ENVELOPE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfENVELOPE" nillable="true" type="tns:ArrayOfENVELOPE" />
+  <xs:complexType name="ENVELOPE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Body" nillable="true" type="tns:BODY" />
+      <xs:element minOccurs="0" name="Header" nillable="true" type="tns:HEADER" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ENVELOPE" nillable="true" type="tns:ENVELOPE" />
+  <xs:complexType name="BODY">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DATA" nillable="true" type="tns:ArrayOfDATA" />
+      <xs:element minOccurs="0" name="DESC" nillable="true" type="tns:Desc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BODY" nillable="true" type="tns:BODY" />
+  <xs:complexType name="ArrayOfDATA">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DATA" nillable="true" type="tns:DATA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDATA" nillable="true" type="tns:ArrayOfDATA" />
+  <xs:complexType name="DATA">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TALLYMESSAGE" nillable="true" type="tns:TALLYMESSAGE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DATA" nillable="true" type="tns:DATA" />
+  <xs:complexType name="TALLYMESSAGE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Voucher" nillable="true" type="tns:VOUCHER" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TALLYMESSAGE" nillable="true" type="tns:TALLYMESSAGE" />
+  <xs:complexType name="VOUCHER">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACTION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALLEDGERENTRIES_LIST" nillable="true" type="tns:ArrayOfALLEDGERENTRIES" />
+      <xs:element minOccurs="0" name="DATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EFFECTIVEDATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NARRATION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VCHTYPE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VOUCHERTYPENAME" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VOUCHER" nillable="true" type="tns:VOUCHER" />
+  <xs:complexType name="ArrayOfALLEDGERENTRIES">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ALLEDGERENTRIES" nillable="true" type="tns:ALLEDGERENTRIES" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfALLEDGERENTRIES" nillable="true" type="tns:ArrayOfALLEDGERENTRIES" />
+  <xs:complexType name="ALLEDGERENTRIES">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AMOUNT" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BILLALLOCATIONS" nillable="true" type="tns:BILLALLOCATIONS" />
+      <xs:element minOccurs="0" name="CategoryAllocations" nillable="true" type="tns:ArrayOfCategoryAllocations" />
+      <xs:element minOccurs="0" name="ISDEEMEDPOSITIVE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LEDGERNAME" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ALLEDGERENTRIES" nillable="true" type="tns:ALLEDGERENTRIES" />
+  <xs:complexType name="BILLALLOCATIONS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AMOUNT" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BILLTYPE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NAME" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BILLALLOCATIONS" nillable="true" type="tns:BILLALLOCATIONS" />
+  <xs:complexType name="ArrayOfCategoryAllocations">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryAllocations" nillable="true" type="tns:CategoryAllocations" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategoryAllocations" nillable="true" type="tns:ArrayOfCategoryAllocations" />
+  <xs:complexType name="CategoryAllocations">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CostCentreAllocations" nillable="true" type="tns:ArrayOfCostCentreAllocations" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryAllocations" nillable="true" type="tns:CategoryAllocations" />
+  <xs:complexType name="ArrayOfCostCentreAllocations">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CostCentreAllocations" nillable="true" type="tns:CostCentreAllocations" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCostCentreAllocations" nillable="true" type="tns:ArrayOfCostCentreAllocations" />
+  <xs:complexType name="CostCentreAllocations">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AMOUNT" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CostCentreAllocations" nillable="true" type="tns:CostCentreAllocations" />
+  <xs:complexType name="Desc">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Desc" nillable="true" type="tns:Desc" />
+  <xs:complexType name="HEADER">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TALLYREQUEST" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TYPE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VERSION" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HEADER" nillable="true" type="tns:HEADER" />
+  <xs:complexType name="clsAddVoucherHeaderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsAccountsVO" />
+      <xs:element minOccurs="0" name="ENVELOPEList" nillable="true" type="tns:ArrayOfENVELOPE" />
+      <xs:element minOccurs="0" name="IsGenrateXML" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddVoucherHeaderBizActionVO" nillable="true" type="tns:clsAddVoucherHeaderBizActionVO" />
+  <xs:complexType name="clsAddDoctorProcedureLinkBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LinkDetails" nillable="true" type="tns:clsDoctorProcedureLinkVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddDoctorProcedureLinkBizActionVO" nillable="true" type="tns:clsAddDoctorProcedureLinkBizActionVO" />
+  <xs:complexType name="clsDoctorProcedureLinkVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BillID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Doctor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Nurse" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NurseID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Procedure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcedureID" type="xs:long" />
+      <xs:element minOccurs="0" name="Specilazation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecilazationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDoctorProcedureLinkVO" nillable="true" type="tns:clsDoctorProcedureLinkVO" />
+  <xs:complexType name="clsGetDoctorProcedureLinkBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LinkDetails" nillable="true" type="tns:clsDoctorProcedureLinkVO" />
+      <xs:element minOccurs="0" name="LinkDetailsList" nillable="true" type="tns:ArrayOfclsDoctorProcedureLinkVO" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDoctorProcedureLinkBizActionVO" nillable="true" type="tns:clsGetDoctorProcedureLinkBizActionVO" />
+  <xs:complexType name="ArrayOfclsDoctorProcedureLinkVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsDoctorProcedureLinkVO" nillable="true" type="tns:clsDoctorProcedureLinkVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsDoctorProcedureLinkVO" nillable="true" type="tns:ArrayOfclsDoctorProcedureLinkVO" />
+  <xs:complexType name="clsDeleteDoctorProcedureLinkBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LinkDetails" nillable="true" type="tns:clsDoctorProcedureLinkVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeleteDoctorProcedureLinkBizActionVO" nillable="true" type="tns:clsDeleteDoctorProcedureLinkBizActionVO" />
+  <xs:complexType name="clsAddBillBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BalancePackageAdvance" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeletedRadSerDetailsList" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsBillVO" />
+      <xs:element minOccurs="0" name="InvestigationDetailsID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCouterSalesPackage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForPackageAdvanceCheck" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromCounterSale" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromIPDCancel" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromPathologyLab" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromSaveAndPackageBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPackageBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPackagePharmacyConsumption" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Log" minOccurs="0" name="LogInfoList" nillable="true" type="q2:ArrayOfLogInfo" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PharmacyConsumptionAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PrescriptionDetailsDrugID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrescriptionDetailsID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceConsumptionAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatusForCSConsumtion" type="xs:int" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="obPathoPatientVODetails" nillable="true" type="q3:clsAddPatientForPathologyBizActionVO" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="obPathoPatientVisitVODetails" nillable="true" type="q4:clsAddVisitBizActionVO" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration" minOccurs="0" name="objPackageAdvanceVODetails" nillable="true" type="q5:clsAddAdvanceBizActionVO" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="objPatientPackInfoVODetails" nillable="true" type="q6:clsGetPatientPackageInfoListBizActionVO" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="objPatientVODetails" nillable="true" type="q7:clsAddPatientBizActionVO" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="objVisitVODetails" nillable="true" type="q8:clsAddVisitBizActionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddBillBizActionVO" nillable="true" type="tns:clsAddBillBizActionVO" />
+  <xs:complexType name="ArrayOfclsChargeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsChargeVO" nillable="true" type="tns:clsChargeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsChargeVO" nillable="true" type="tns:ArrayOfclsChargeVO" />
+  <xs:complexType name="clsChargeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualRate" type="xs:double" />
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdjustableHeadType" type="xs:int" />
+      <xs:element minOccurs="0" name="ApprovalHistoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalHistoryUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalRefundReasonID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApprovalRequestDetailsID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalRequestDetailsUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalRequestID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalRequestRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApprovalRequestUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ApprovalUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovedRequestID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovedRequestUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="AuthorizationNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BalanceAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="BillID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CancellationRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancelledBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="CancelledDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChargeDetails" nillable="true" type="tns:clsChargeDetailsVO" />
+      <xs:element minOccurs="0" name="ChargeIDPackage" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeTaxDetailsList" nillable="true" type="tns:ArrayOfclsChargeTaxDetailsVO" />
+      <xs:element minOccurs="0" name="ChargeTaxDetailsVO" nillable="true" type="tns:clsChargeTaxDetailsVO" />
+      <xs:element minOccurs="0" name="ChildPackageService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ChkID" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ClassId" type="xs:long" />
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompDisc" type="xs:double" />
+      <xs:element minOccurs="0" name="CompRate" type="xs:double" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="CompanyRate" type="xs:double" />
+      <xs:element minOccurs="0" name="Concession" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="ConditionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConditionTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="CostingDivisionID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Deductable" type="xs:double" />
+      <xs:element minOccurs="0" name="DeductionAmt" type="xs:double" />
+      <xs:element minOccurs="0" name="DeductionPerc" type="xs:double" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="DiscountAmt" type="xs:double" />
+      <xs:element minOccurs="0" name="DiscountPerc" type="xs:double" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Doctor" nillable="true" type="q9:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="DoctorId" type="xs:long" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="DoctorList" nillable="true" type="q10:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="DoctorShareAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Emergency" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FirstApprovalChecked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FirstApprovalEnable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GrossDiscountPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossDiscountReasonID" type="xs:long" />
+      <xs:element minOccurs="0" name="HospShareAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="InitialRate" type="xs:double" />
+      <xs:element minOccurs="0" name="InvestigationDetailsID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsAdjustableHead" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAgainstBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAutoCharge" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBillOptionEnable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBilled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCancelled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsChargeApproved" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsConsiderAdjustable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsConsumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDefaultService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEditTax" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEnable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFirstApproval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromApprovedRequest" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInGroupSpecialization" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPackageConsumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPackaged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPrescribedService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRateEditableDisable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsRateEditableEnable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsRefund" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsReportCollected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsResultEntry" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSameDate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSampleCollected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSecondApproval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSelfAmountTextBlockVisible" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSelfAmountTextBoxVisible" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSelfCompany" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSendForApproval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsServiceAsHealthPlan" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsServiceAsPackage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsServiceOptionEnable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSetForApproval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTemp" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsUpdate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Isupload" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LevelID" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxRate" type="xs:double" />
+      <xs:element minOccurs="0" name="MinRate" type="xs:double" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="NetAmt" type="xs:double" />
+      <xs:element minOccurs="0" name="NewPackageService" type="xs:short" />
+      <xs:element minOccurs="0" name="NonSelfAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="NonSelfBalance" type="xs:double" />
+      <xs:element minOccurs="0" name="OPDConsumption" type="xs:double" />
+      <xs:element minOccurs="0" name="OpdExcludeServiceConsumption" type="xs:double" />
+      <xs:element minOccurs="0" name="Opd_Ipd" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="POBDID" type="xs:long" />
+      <xs:element minOccurs="0" name="POBID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageBillID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageBillUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageConcession" type="xs:double" />
+      <xs:element minOccurs="0" name="PackageConcessionPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackagePaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ParentID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDeductible" type="xs:double" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientSourceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrescriptionDetailsID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProcedureServiceId" type="xs:long" />
+      <xs:element minOccurs="0" name="ProcessID" type="xs:long" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="ROBDID" type="xs:long" />
+      <xs:element minOccurs="0" name="ROBID" type="xs:long" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="RateEditable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RefundAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="RefundID" type="xs:long" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="RefundReason" nillable="true" type="q11:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="RefundReasonID" type="xs:long" />
+      <xs:element minOccurs="0" name="RefundedAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="RequestRefundReasonID" type="xs:long" />
+      <xs:element minOccurs="0" name="RowID" type="xs:int" />
+      <xs:element minOccurs="0" name="SecondApprovalChecked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SecondApprovalEnable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectCharge" type="xs:boolean" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="SelectedApprovalRefundReason" nillable="true" type="q12:MasterListItem" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="SelectedDoctor" nillable="true" type="q13:MasterListItem" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="SelectedRefundReason" nillable="true" type="q14:MasterListItem" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="SelectedRequestRefundReason" nillable="true" type="q15:MasterListItem" />
+      <xs:element minOccurs="0" name="SelfAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="SelfBalance" type="xs:double" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceComponentRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ServiceDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServicePaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceSpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceSubSpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceTaxPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="SettleNetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="SponsorType" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StaffDiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffDiscountPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffFree" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffParentDiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffParentDiscountPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubChargesList" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="SumOfExludedServices" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TariffId" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffServiceId" type="xs:long" />
+      <xs:element minOccurs="0" name="TaxAmount" type="xs:double" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" minOccurs="0" name="TaxMasterList" nillable="true" type="q16:ArrayOfclsTaxBuilderVO" />
+      <xs:element minOccurs="0" name="TaxType" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalConcession" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalConcessionPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalNetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalRefundAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalServicePaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalServiceTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+      <xs:element minOccurs="0" name="isPackageService" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChargeVO" nillable="true" type="tns:clsChargeVO" />
+  <xs:complexType name="clsChargeDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BalanceAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ChargeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ChkID" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Concession" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="ServicePaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceTaxPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffDiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffDiscountPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffFree" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffParentDiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffParentDiscountPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalConcession" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalServicePaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChargeDetailsVO" nillable="true" type="tns:clsChargeDetailsVO" />
+  <xs:complexType name="ArrayOfclsChargeTaxDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsChargeTaxDetailsVO" nillable="true" type="tns:clsChargeTaxDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsChargeTaxDetailsVO" nillable="true" type="tns:ArrayOfclsChargeTaxDetailsVO" />
+  <xs:complexType name="clsChargeTaxDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BalanceAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ChargeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ClassId" type="xs:long" />
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Concession" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsTaxLimitApplicable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Percentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceTaxPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffDiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffDiscountPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffFree" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffParentDiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="StaffParentDiscountPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffId" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxID" type="xs:long" />
+      <xs:element minOccurs="0" name="TaxLimit" type="xs:decimal" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="TaxLinkingDetailsList" nillable="true" type="q17:ArrayOfclsServiceTaxVO" />
+      <xs:element minOccurs="0" name="TaxName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxType" type="xs:int" />
+      <xs:element minOccurs="0" name="TaxTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalConcession" type="xs:double" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChargeTaxDetailsVO" nillable="true" type="tns:clsChargeTaxDetailsVO" />
+  <xs:complexType name="clsBillVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionType" type="xs:long" />
+      <xs:element minOccurs="0" name="AdvanceID" type="xs:long" />
+      <xs:element minOccurs="0" name="AdvanceUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="AgainstDonor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ApprovalRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApprovalRequestID" type="xs:long" />
+      <xs:element minOccurs="0" name="ApprovalRequestUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="AuthorityPerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BalanceAdvance" type="xs:double" />
+      <xs:element minOccurs="0" name="BalanceAmountNonSelf" type="xs:double" />
+      <xs:element minOccurs="0" name="BalanceAmountSelf" type="xs:double" />
+      <xs:element minOccurs="0" name="Bank" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillCancellationRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillDetails" nillable="true" type="tns:clsBillDetailsVO" />
+      <xs:element minOccurs="0" name="BillID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillNo" nillable="true" type="xs:string" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="BillPaymentType" type="q18:BillPaymentTypes" />
+      <xs:element minOccurs="0" name="BillRemark" nillable="true" type="xs:string" />
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="BillType" type="q19:BillTypes" />
+      <xs:element minOccurs="0" name="CalculatedNetBillAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="CampId" type="xs:long" />
+      <xs:element minOccurs="0" name="CancellationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CancellationReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancellationTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CashCounterId" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeDetails" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="ChargeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ClaimNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyId" type="xs:long" />
+      <xs:element minOccurs="0" name="ComputerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConcessionAuthorizedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="ConcessionReasonId" type="xs:long" />
+      <xs:element minOccurs="0" name="ConcessionRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CostingDivisionID" type="xs:long" />
+      <xs:element minOccurs="0" name="CrAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Date1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeleteChargeDetails" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="DeletedChargeDetails" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="DoctorID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Expirydate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="FollowUpDetails" nillable="true" type="q20:ArrayOfclsPatientFollowUpVO" />
+      <xs:element minOccurs="0" name="GrossDiscountPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossDiscountReasonID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISDischarged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ISForMaterialConsumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InterORFinal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAdjustableBillDone" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAllBillSettle" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsApproved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCancelled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCashTariff" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsComanyBillCancelled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDraftBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFree" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInvoiceGenerated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPackageConsumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPackageServiceInclude" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPrinted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRefunded" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRequestSend" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSettled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LevelDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LevelID" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkPatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkPatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NetBillAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="NonSelfAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OTBillClearanceID" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_No" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="PacBilledCount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackageAdvance" type="xs:double" />
+      <xs:element minOccurs="0" name="PackageBillID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageConcessionAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageSettleRate" type="xs:double" />
+      <xs:element minOccurs="0" name="PaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ParentID" type="xs:long" />
+      <xs:element minOccurs="0" name="PathoSpecilizationID" type="xs:long" />
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Pathology" minOccurs="0" name="PathoWorkOrder" nillable="true" type="q21:clsPathOrderBookingVO" />
+      <xs:element minOccurs="0" name="PatientAdvance" type="xs:double" />
+      <xs:element minOccurs="0" name="PatientCategoryId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientSourceId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentDetailID" type="xs:long" />
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration" minOccurs="0" name="PaymentDetails" nillable="true" type="q22:clsPaymentVO" />
+      <xs:element minOccurs="0" name="PaymentID" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentModeDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentModeId" type="xs:long" />
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="PharmacyItems" nillable="true" type="q23:clsItemSalesVO" />
+      <xs:element minOccurs="0" name="RadioSpecilizationID" type="xs:long" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Radiology" minOccurs="0" name="RadiologyWorkOrder" nillable="true" type="q24:clsRadOrderBookingVO" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="SelectCharge" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelfAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="SemenfreezingCount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeniorCitizenCon" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SponserType" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StaffFree" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TariffId" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="TestCharges" type="xs:double" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalAdvance" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalBillAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalConcessionAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalDiscountAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalRefund" type="xs:double" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="_BillID" type="xs:long" />
+      <xs:element minOccurs="0" name="_ConcessionReasonId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsBillVO" nillable="true" type="tns:clsBillVO" />
+  <xs:complexType name="clsBillDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BalanceAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="BillId" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeId" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SponsorType" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsBillDetailsVO" nillable="true" type="tns:clsBillDetailsVO" />
+  <xs:complexType name="clsGetPackageTariffBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="isPackageTariff" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageTariffBizActionVO" nillable="true" type="tns:clsGetPackageTariffBizActionVO" />
+  <xs:complexType name="clsGetPackageDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="AvailedServiceList" nillable="true" type="q25:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageIDList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="PendingServiceList" nillable="true" type="q26:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Specialization" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubSpecialization" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageDetailsBizActionVO" nillable="true" type="tns:clsGetPackageDetailsBizActionVO" />
+  <xs:complexType name="clsPackageServiceMasterVO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" base="q27:clsServiceMasterVO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UsedDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="clsPackageServiceMasterVO" nillable="true" type="tns:clsPackageServiceMasterVO" />
+  <xs:complexType name="clsVisitConsultationChargesVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillDetails" nillable="true" type="tns:clsBillVO" />
+      <xs:element minOccurs="0" name="ChargesDetails" nillable="true" type="tns:clsChargeVO" />
+      <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPackageSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTaxAmountTextBoxEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PackageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowID" type="xs:long" />
+      <xs:element minOccurs="0" name="SubChargesList" nillable="true" type="tns:ArrayOfclsChargeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsVisitConsultationChargesVO" nillable="true" type="tns:clsVisitConsultationChargesVO" />
+  <xs:complexType name="clsPreviousPatientBillsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillStatus" type="xs:short" />
+      <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="BillType" nillable="true" type="q28:BillTypes" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromRefund" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreeze" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPharmacyQueue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoUse" type="xs:long" />
+      <xs:element minOccurs="0" name="OPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:int" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPreviousPatientBillsBizActionVO" nillable="true" type="tns:clsPreviousPatientBillsBizActionVO" />
+  <xs:complexType name="ArrayOfclsBillVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsBillVO" nillable="true" type="tns:clsBillVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsBillVO" nillable="true" type="tns:ArrayOfclsBillVO" />
+  <xs:complexType name="clsAddTariffMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffDetails" nillable="true" type="tns:clsTariffMasterBizActionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddTariffMasterBizActionVO" nillable="true" type="tns:clsAddTariffMasterBizActionVO" />
+  <xs:complexType name="clsGetServiceByTariffIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffDetails" nillable="true" type="tns:clsTariffMasterBizActionVO" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetServiceByTariffIDBizActionVO" nillable="true" type="tns:clsGetServiceByTariffIDBizActionVO" />
+  <xs:complexType name="clsGetServiceForIssueBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="ServiceList" nillable="true" type="q29:ArrayOfclsPatientServiceDetails" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetServiceForIssueBizActionVO" nillable="true" type="tns:clsGetServiceForIssueBizActionVO" />
+  <xs:complexType name="clsGetTariffListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffList" nillable="true" type="tns:ArrayOfclsTariffMasterBizActionVO" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetTariffListBizActionVO" nillable="true" type="tns:clsGetTariffListBizActionVO" />
+  <xs:complexType name="clsGetSpecializationsByTariffIdBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsFromTariffCopyUtility" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="SpecializationList" nillable="true" type="q30:ArrayOfclsSubSpecializationVO" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffList" nillable="true" type="tns:ArrayOfclsTariffMasterBizActionVO" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetSpecializationsByTariffIdBizActionVO" nillable="true" type="tns:clsGetSpecializationsByTariffIdBizActionVO" />
+  <xs:complexType name="clsApplyPackageDiscountRateOnServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MemberRelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ipLoginUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ipPatientDateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ipPatientGenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="ipPatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="ipPatientUnitID" type="xs:long" />
+      <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ipServiceList" nillable="true" type="q31:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ipVisitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objApplyPackageDiscountRate" nillable="true" type="tns:ArrayOfclsApplyPackageDiscountRateOnServiceVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsApplyPackageDiscountRateOnServiceBizActionVO" nillable="true" type="tns:clsApplyPackageDiscountRateOnServiceBizActionVO" />
+  <xs:complexType name="ArrayOfclsApplyPackageDiscountRateOnServiceVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsApplyPackageDiscountRateOnServiceVO" nillable="true" type="tns:clsApplyPackageDiscountRateOnServiceVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsApplyPackageDiscountRateOnServiceVO" nillable="true" type="tns:ArrayOfclsApplyPackageDiscountRateOnServiceVO" />
+  <xs:complexType name="clsApplyPackageDiscountRateOnServiceVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualQuantity" type="xs:long" />
+      <xs:element minOccurs="0" name="ConcessionPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="DiscountedPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="DiscountedRate" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossDiscountID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsAgeApplicable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsApplyOn_Rate_Percentage" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDiscountOnQuantity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsServiceItemStockAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProcessID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceID_AsPackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceMemberRelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="UsedQuantity" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsApplyPackageDiscountRateOnServiceVO" nillable="true" type="tns:clsApplyPackageDiscountRateOnServiceVO" />
+  <xs:complexType name="clsGetCompanyCreditDtlsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsCompanyCreditDetailsVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCompanyCreditDtlsBizActionVO" nillable="true" type="tns:clsGetCompanyCreditDtlsBizActionVO" />
+  <xs:complexType name="clsCompanyCreditDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Balance" type="xs:double" />
+      <xs:element minOccurs="0" name="CreditLimit" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Refund" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalAdvance" type="xs:double" />
+      <xs:element minOccurs="0" name="Used" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCompanyCreditDetailsVO" nillable="true" type="tns:clsCompanyCreditDetailsVO" />
+  <xs:complexType name="clsUpdatePaymentDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bank" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaidAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PaymentDetailId" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentId" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentModeID" type="xs:long" />
+      <xs:element minOccurs="0" name="PendingBillList" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdatePaymentDetailsBizActionVO" nillable="true" type="tns:clsUpdatePaymentDetailsBizActionVO" />
+  <xs:complexType name="clsMaintainPaymentModeLogBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaymentDetailId" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsMaintainPaymentModeLogBizActionVO" nillable="true" type="tns:clsMaintainPaymentModeLogBizActionVO" />
+  <xs:complexType name="clsGetFreezedBillListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bank" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillStatus" type="xs:short" />
+      <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="BillType" nillable="true" type="q32:BillTypes" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CostingDivisionID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromRefund" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFreeze" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDBillList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRefunded" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:int" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentDetailId" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentId" type="xs:long" />
+      <xs:element minOccurs="0" name="PendingBillList" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetFreezedBillListBizActionVO" nillable="true" type="tns:clsGetFreezedBillListBizActionVO" />
+  <xs:complexType name="clsGetFreezedBillSearchListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillStatus" type="xs:short" />
+      <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="BillType" nillable="true" type="q33:BillTypes" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CostingDivisionID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromRefund" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFreeze" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDBillList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPaymentModeChange" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRefunded" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:int" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PendingBillList" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetFreezedBillSearchListBizActionVO" nillable="true" type="tns:clsGetFreezedBillSearchListBizActionVO" />
+  <xs:complexType name="clsGetBillSearchListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillStatus" type="xs:short" />
+      <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="BillType" nillable="true" type="q34:BillTypes" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CostingDivisionID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromRefund" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsConsumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreeze" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromApprovalRequestWindow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDBillList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRefunded" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRequest" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:int" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PendingBillList" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="RequestTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UserLevelID" type="xs:long" />
+      <xs:element minOccurs="0" name="UserRightsTypeID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetBillSearchListBizActionVO" nillable="true" type="tns:clsGetBillSearchListBizActionVO" />
+  <xs:complexType name="clsGetBillClearanceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillClearanceID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillClearanceUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillStatus" type="xs:short" />
+      <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="BillType" nillable="true" type="q35:BillTypes" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CostingDivisionID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromRefund" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBillClearanceList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsConsumption" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreeze" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromApprovalRequestWindow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDBillList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRefunded" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRequest" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSaveBillClearance" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OTBillClearanceID" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:int" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="RequestTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ScheduleID" type="xs:long" />
+      <xs:element minOccurs="0" name="ScheduleUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UserLevelID" type="xs:long" />
+      <xs:element minOccurs="0" name="UserRightsTypeID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetBillClearanceBizActionVO" nillable="true" type="tns:clsGetBillClearanceBizActionVO" />
+  <xs:complexType name="clsUpdateBillPaymentDtlsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChargeDetails" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.CompanyPayment" minOccurs="0" name="CompanyPaymentDetailsInfo" nillable="true" type="q36:clsCompanyPaymentDetailsVO" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsBillVO" />
+      <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.CompanyPayment" minOccurs="0" name="Details1" nillable="true" type="q37:clsCompanyPaymentDetailsVO" />
+      <xs:element minOccurs="0" name="FromCompanyPayment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objChargeDetails" nillable="true" type="tns:ArrayOfclsChargeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateBillPaymentDtlsBizActionVO" nillable="true" type="tns:clsUpdateBillPaymentDtlsBizActionVO" />
+  <xs:complexType name="clsGetBillSearch_IVF_List_DashBoardBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillType" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetBillSearch_IVF_List_DashBoardBizActionVO" nillable="true" type="tns:clsGetBillSearch_IVF_List_DashBoardBizActionVO" />
+  <xs:complexType name="clsGetBillSearch_USG_List_DashBoardBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillType" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsBillVO" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetBillSearch_USG_List_DashBoardBizActionVO" nillable="true" type="tns:clsGetBillSearch_USG_List_DashBoardBizActionVO" />
+  <xs:complexType name="clsFillGrossDiscountReasonBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q38:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFillGrossDiscountReasonBizActionVO" nillable="true" type="tns:clsFillGrossDiscountReasonBizActionVO" />
+  <xs:complexType name="clsApplyPackageDiscountRateToItems">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ipLoginUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ipPatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="ipPatientUnitID" type="xs:long" />
+      <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ipServiceList" nillable="true" type="q39:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ipVisitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objApplyItemPackageDiscountRate" nillable="true" type="tns:ArrayOfclsApplyPackageDiscountRateOnItemVO" />
+      <xs:element minOccurs="0" name="objApplyItemPackageDiscountRateDetails" nillable="true" type="tns:clsApplyPackageDiscountRateOnItemVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsApplyPackageDiscountRateToItems" nillable="true" type="tns:clsApplyPackageDiscountRateToItems" />
+  <xs:complexType name="ArrayOfclsApplyPackageDiscountRateOnItemVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsApplyPackageDiscountRateOnItemVO" nillable="true" type="tns:clsApplyPackageDiscountRateOnItemVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsApplyPackageDiscountRateOnItemVO" nillable="true" type="tns:ArrayOfclsApplyPackageDiscountRateOnItemVO" />
+  <xs:complexType name="clsApplyPackageDiscountRateOnItemVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicableToAll" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ApplicableToAllDiscount" type="xs:double" />
+      <xs:element minOccurs="0" name="Budget" type="xs:float" />
+      <xs:element minOccurs="0" name="CalculatedBudget" type="xs:float" />
+      <xs:element minOccurs="0" name="CalculatedTotalBudget" type="xs:float" />
+      <xs:element minOccurs="0" name="CategoryId" type="xs:long" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="Discount" type="xs:float" />
+      <xs:element minOccurs="0" name="DiscountedPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="DiscountedRate" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossDiscountID" type="xs:long" />
+      <xs:element minOccurs="0" name="GroupId" type="xs:long" />
+      <xs:element minOccurs="0" name="IsApplyOn_Rate_Percentage" type="xs:int" />
+      <xs:element minOccurs="0" name="IsCategory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsServiceItemStockAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemIDs" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageBillID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageBillUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCatagoryL1" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCatagoryL2" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCatagoryL3" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PatientGenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalBudget" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsApplyPackageDiscountRateOnItemVO" nillable="true" type="tns:clsApplyPackageDiscountRateOnItemVO" />
+  <xs:complexType name="clsDailyCollectionReportVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Collection" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="PaymentModeID" type="q40:MaterPayModeList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDailyCollectionReportVO" nillable="true" type="tns:clsDailyCollectionReportVO" />
+  <xs:complexType name="clsDailySalesReportVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Collection" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Specialization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDailySalesReportVO" nillable="true" type="tns:clsDailySalesReportVO" />
+  <xs:complexType name="clsGetDailyCollectionListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Appointment" minOccurs="0" name="AppointmentList" nillable="true" type="q41:ArrayOfclsAppointmentVO" />
+      <xs:element minOccurs="0" name="ClosingPharmacy" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CollectionDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DailySales" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromCashClosing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ISAppointmentList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsDailyCollectionReportVO" />
+      <xs:element minOccurs="0" name="SalesList" nillable="true" type="tns:ArrayOfclsDailySalesReportVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" minOccurs="0" name="VisitList" nillable="true" type="q42:ArrayOfclsVisitVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDailyCollectionListBizActionVO" nillable="true" type="tns:clsGetDailyCollectionListBizActionVO" />
+  <xs:complexType name="ArrayOfclsDailyCollectionReportVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsDailyCollectionReportVO" nillable="true" type="tns:clsDailyCollectionReportVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsDailyCollectionReportVO" nillable="true" type="tns:ArrayOfclsDailyCollectionReportVO" />
+  <xs:complexType name="ArrayOfclsDailySalesReportVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsDailySalesReportVO" nillable="true" type="tns:clsDailySalesReportVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsDailySalesReportVO" nillable="true" type="tns:ArrayOfclsDailySalesReportVO" />
+  <xs:complexType name="clsChargesUpdatationVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConcessionAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="DoctorShareAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="HospShareAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="NonSelfAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="NonSelfBalance" type="xs:double" />
+      <xs:element minOccurs="0" name="SelfAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="SelfBalance" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChargesUpdatationVO" nillable="true" type="tns:clsChargesUpdatationVO" />
+  <xs:complexType name="clsAddChargeBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChargesList" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="ChargesUpdationDetails" nillable="true" type="tns:clsChargesUpdatationVO" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsChargeVO" />
+      <xs:element minOccurs="0" name="FromVisit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCallFromConcessionManager" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPathWorkOrder" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPathologyWorkOrder" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRadWorkOrder" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRadiologyWorkOrder" type="xs:boolean" />
+      <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Pathology" minOccurs="0" name="PathoWorkOrder" nillable="true" type="q43:clsPathOrderBookingVO" />
+      <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Radiology" minOccurs="0" name="RadiologyWorkOrder" nillable="true" type="q44:clsRadOrderBookingVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddChargeBizActionVO" nillable="true" type="tns:clsAddChargeBizActionVO" />
+  <xs:complexType name="clsGetChargeListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration" minOccurs="0" name="BillDetails" nillable="true" type="q45:ArrayOfclsGetPatientPastVisitBizActionVO" />
+      <xs:element minOccurs="0" name="BillID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillingClass" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeVO" nillable="true" type="tns:clsChargeVO" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="CostingDivisionID" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsBillFreeze" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBilled" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCancel" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForBedTransfer" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForIPDBill" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForTaxationDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromApprovalRequestWindow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromPatientID" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGetPendingCharges" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGetUpdatedCharegs" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDCharegs" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDPreviousAutoCharegs" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="Opd_Ipd" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="RequestTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelfCompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetChargeListBizActionVO" nillable="true" type="tns:clsGetChargeListBizActionVO" />
+  <xs:complexType name="clsAddRefundServiceChargeBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChargeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeList" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="IsUpdate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddRefundServiceChargeBizActionVO" nillable="true" type="tns:clsAddRefundServiceChargeBizActionVO" />
+  <xs:complexType name="SponsorCompanyDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SponsorCompanyDetails" nillable="true" type="tns:SponsorCompanyDetails" />
+  <xs:complexType name="clsGetChargeAgainstBillListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsBilled" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDefaultService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisitService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetChargeAgainstBillListBizActionVO" nillable="true" type="tns:clsGetChargeAgainstBillListBizActionVO" />
+  <xs:complexType name="GetCancellationAndConcessionApprovalBizactionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApprovalChargeList" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element minOccurs="0" name="ChargeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ChargeList" nillable="true" type="tns:ArrayOfclsChargeVO" />
+      <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration" minOccurs="0" name="Details" nillable="true" type="q46:clsRefundVO" />
+      <xs:element minOccurs="0" name="FirstApprovalDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstApprovalOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstApprovalyBy" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFirstApproval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForApproval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSecondApproval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSetApprovalReq" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RefundID" type="xs:long" />
+      <xs:element minOccurs="0" name="RequestedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="RequestedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RequestedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondApprovalDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SecondApprovalOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondApprovalyBy" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCancellationAndConcessionApprovalBizactionVO" nillable="true" type="tns:GetCancellationAndConcessionApprovalBizactionVO" />
+</xs:schema>

@@ -1,0 +1,92 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.frmPackageRateClinicWise"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+            xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                      xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+                         
+            Width="800" Height="600"  
+                       xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+           HasCloseButton="False" Margin="0" Padding="0" Loaded="ChildWindow_Loaded">
+    <!--ServiceDetails_Loaded-->
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2" Background="White">
+        <Grid>
+
+            <controlsToolkit:DockPanel LastChildFill="True">
+                <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                    <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+
+                        <StackPanel Grid.Row="3" x:Name="Footer1" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                            <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+
+
+                                <ToggleButton x:Name="cmdSave"  Content="Save"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSave_Click" TabIndex="24"></ToggleButton>
+
+                                <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}" Click="cmdClose_Click" TabIndex="8"/>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+
+
+                <Grid x:Name="PageContainer" >
+
+                    <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+
+                        <controlsToolkit:DockPanel x:Name="docList">
+
+                            <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="Clinic List"  Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                </Border>
+                            </StackPanel>
+
+
+                            <CheckBox Margin="4"  x:Name="chkAllClinic" controlsToolkit:DockPanel.Dock="Top" Content="Select All" Click="CheckBox_Click"></CheckBox>
+                            <data:DataGrid x:Name="dgClinic" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="2" HorizontalAlignment="Stretch" TabIndex="4">
+                                <data:DataGrid.Columns>
+                                    <data:DataGridTemplateColumn>
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding Status,Mode=TwoWay}" Click="SingleCheckBox_Click"  Padding="5,0,5,0"  ></CheckBox>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTextColumn Binding="{Binding UnitName}" Header="Clinic" />
+                                    <data:DataGridTextColumn Binding="{Binding TariffName}" Header="TariffName" Width="Auto"/>                                    
+                                    <data:DataGridTemplateColumn  Header="Rate" Visibility="Visible" Width="150" >
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox IsEnabled="{Binding IsRateEnabled}" x:Name="txtRate" TextChanged="txtRate_Changed" TextAlignment="Right" Text="{Binding Rate,Mode=OneWay,StringFormat=0.00}" KeyDown="txtRate_KeyDown"></TextBox>                                                  
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+
+                        </controlsToolkit:DockPanel>
+
+
+                    </Grid>
+
+
+                </Grid>
+            </controlsToolkit:DockPanel>
+        </Grid>
+    </Grid>
+
+</controls:ChildWindow>

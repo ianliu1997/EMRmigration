@@ -1,0 +1,229 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.SemenDetails_DashBoard"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"   
+            xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+                       xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+                      Title="Semen Details" Loaded="ChildWindow_Loaded" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="600" Width="1000">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="Black">
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ScrollViewer VerticalScrollBarVisibility="Visible">
+                <Grid x:Name="DisplayArea">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border BorderBrush="PaleGreen" Grid.Row="0" BorderThickness="0" Background="Transparent">
+                        <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                                <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                    <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                        <ToggleButton x:Name="cmdSave"  Grid.Row="4" Content="Save" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  TabIndex="6" Click="cmdSave_Click"/>
+                                        <ToggleButton x:Name="cmdCancel"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click" TabIndex="6"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Width="Auto">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Source Of Needle" Margin="2" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbSrcNeedle" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="0" Grid.Column="1" TabIndex="4" Visibility="Collapsed"></inputcombo:AutoCompleteComboBox>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Text="Company" Margin="2" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <TextBox x:Name="txtComany" Text="{Binding MasterListItem, Mode=OneWay}" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="0" Grid.Column="3" TabIndex="5" Visibility="Collapsed"></TextBox>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Source Of Oocyte" Margin="2" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbSrcOocyte" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="1" Grid.Column="1"  TabIndex="6" SelectionChanged="cmbSrcOocyte_SelectionChanged" Visibility="Collapsed"></inputcombo:AutoCompleteComboBox>
+                                        <StackPanel Margin="0" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="Auto" Orientation="Horizontal" Visibility="Collapsed">
+                                            <Button x:Name="btnSearchOocyteDonor" Margin="2" Content="Search Oocyte Donor" Click="btnSearchOocyteDonor_Click"></Button>
+                                            <TextBlock Text="Donor Code" Margin="2" VerticalAlignment="Center" ></TextBlock>
+                                            <TextBox Text="{Binding OoctyDonorMrNo,Mode=TwoWay}"  x:Name="txtOocyteDonorCode" MinWidth="120"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False"/>
+                                            <ToggleButton x:Name="cmdAspiration"  Grid.Row="4" Width="90" Content="Aspiration" Background="#000000" Margin="4" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdAspiration_Click"/>
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Source Of Semen" Margin="2" ></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbSrcSemen" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="2" Grid.Column="1" TabIndex="7"  SelectionChanged="cmbSrcSemen_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+
+                                        <Button x:Name="btnSearchSemenDonor" Margin="2" Content="Search Semen Donor" Click="btnSearchSemenDonor_Click"  Grid.Row="2" Grid.Column="2"></Button>
+                                        <StackPanel Margin="0" Grid.Row="2" Grid.Column="3" Width="Auto" Orientation="Horizontal">
+                                            <TextBlock Text="Donor Code" Margin="2" VerticalAlignment="Center"  ></TextBlock>
+                                            <TextBox Text="{Binding SemenDonorMrNo,Mode=TwoWay}"  x:Name="txtSemenDonorCode" MinWidth="120"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False" />
+                                        </StackPanel>
+                                        <ToggleButton x:Name="cmdSpermiogram"  Grid.Row="2" Grid.Column="4" Width="90" Content="Spermiogram" Background="#000000" Margin="4" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdSpermiogram_Click"/>
+                                        <StackPanel Margin="0" Grid.Row="2" Grid.Column="5" Width="Auto" Orientation="Horizontal">
+                                            <TextBlock Text="Sample Code" Margin="2" VerticalAlignment="Center"  ></TextBlock>
+                                            <TextBox Text="{Binding SemenSampleCode,Mode=TwoWay}"  x:Name="txtSemenSampleCode" MinWidth="120"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False" />
+                                        </StackPanel>
+
+                                        <ToggleButton x:Name="cmdSpermiogramSelf"  Grid.Row="3" Grid.Column="0" Width="90" Content="Spermiogram" Background="#000000" Margin="4" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdSpermiogramSelf_Click"/>
+                                        <StackPanel Margin="0" Grid.Row="3" Grid.Column="1" Width="Auto" Orientation="Horizontal">
+                                            <TextBlock Text="Sample Code" Margin="2" VerticalAlignment="Center"  ></TextBlock>
+                                            <TextBox Text="{Binding SemenSampleCodeSelf,Mode=TwoWay}"  x:Name="txtSemenSampleCodeSelf" MinWidth="120"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False" />
+                                        </StackPanel>
+
+                                        <!--<StackPanel Margin="0" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Width="Auto" Orientation="Horizontal">
+                                        <Button x:Name="btnSearchSemenDonor" Margin="2" Content="Search Semen Donor" Click="btnSearchSemenDonor_Click"></Button>
+                                        <TextBlock Text="Donor Code" Margin="2" VerticalAlignment="Center" ></TextBlock>
+                                            <TextBox Text="{Binding SemenDonorMrNo,Mode=TwoWay}"  x:Name="txtSemenDonorCode" MinWidth="120"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False" />
+                                            <ToggleButton x:Name="cmdSpermiogram"  Grid.Row="4" Width="90" Content="Spermiogram" Background="#000000" Margin="4" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   Click="cmdSpermiogram_Click"/>
+                                        </StackPanel>-->
+                                    </Grid>
+                                    <controlsToolkit:DockPanel LastChildFill="True" Margin="2" Grid.Row="1">
+                                        <TextBlock x:Name="lblError" HorizontalAlignment="Center" Foreground="Red" VerticalAlignment="Center" Text=""  Margin="4" controlsToolkit:DockPanel.Dock="Top"/>
+                                        <Grid >
+                                            <Grid.RowDefinitions >
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text=" Method Of Sperm preparation" Margin="4" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                <inputcombo:AutoCompleteComboBox  x:Name="cmbMethodOfSpermpreparation" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center"  Margin="4"  Grid.Column="1" ></inputcombo:AutoCompleteComboBox>
+                                            </Grid>
+
+                                            <Grp:GroupBox Header="Pre Wash Details" Margin="4" Grid.Row="1" Grid.Column="0" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Text="Test Parameter" FontWeight="Bold" Margin="4" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Self" Margin="4" FontWeight="Bold" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Donor" Margin="4" FontWeight="Bold" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Units" Margin="4" FontWeight="Bold" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+                                                    <TextBlock Text="Volume" Margin="4" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Concentration " Margin="4" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Motility " Margin="4" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="WBC " Margin="4" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+
+                                                    <TextBlock Text="ml" Margin="4" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Million/ml" Margin="4" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="%" Margin="4" Grid.Row="3" Grid.Column="5" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="%" Margin="4" Grid.Row="4" Grid.Column="6" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+
+                                                    <TextBox x:Name="txtpreVolumeself" IsEnabled="False" Text="{Binding PreSelfVolume,Mode=TwoWay}"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpreVoncentrself" IsEnabled="False" Text="{Binding PreSelfConcentration,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpreMotilityself" IsEnabled="False" Text="{Binding PreSelfMotality,Mode=TwoWay}"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpreWBCself" IsEnabled="False" Text="{Binding PreSelfWBC,Mode=TwoWay}"   TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+
+                                                    <TextBox x:Name="txtpreVolumedonor" IsEnabled="False"  Text="{Binding PreDonorVolume,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpreVoncentrdonor" IsEnabled="False"  Text="{Binding PreDonorConcentration,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpreMotilitydonor" IsEnabled="False"  Text="{Binding PreDonorMotality,Mode=TwoWay}"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpreWBCdonor" IsEnabled="False"  Text="{Binding PreDonorWBC,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+
+                                                </Grid>
+                                            </Grp:GroupBox>
+
+                                            <Grp:GroupBox Header="Post Wash Details" Margin="4" Grid.Row="2" Grid.Column="0" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Text="Test Parameter" FontWeight="Bold" Margin="4" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Self" Margin="4" FontWeight="Bold" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Donor" Margin="4" FontWeight="Bold" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Units" Margin="4" FontWeight="Bold" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+                                                    <TextBlock Text="Volume" Margin="4" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Concentration " Margin="4" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Motility " Margin="4" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="WBC " Margin="4" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+
+
+                                                    <TextBlock Text="ml" Margin="4" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="Million/ml" Margin="4" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="%" Margin="4" Grid.Row="3" Grid.Column="5" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="%" Margin="4" Grid.Row="4" Grid.Column="6" VerticalAlignment="Center"  HorizontalAlignment="Center"></TextBlock>
+
+                                                    <TextBox x:Name="txtpostVolumeself" IsEnabled="False"  Text="{Binding PostSelfVolume,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpostConcentrationself" IsEnabled="False"  Text="{Binding PostSelfConcentration,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpostMotalityself" IsEnabled="False"  Text="{Binding PostSelfMotality,Mode=TwoWay}"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpostWBCself" IsEnabled="False"  Text="{Binding PostSelfWBC,Mode=TwoWay}"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+
+                                                    <TextBox x:Name="txtpostVolumedonor" IsEnabled="False"  Text="{Binding PostDonorVolume,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpostConcentrationdonor" IsEnabled="False"  Text="{Binding PostDonorConcentration,Mode=TwoWay}" TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown"  Margin="4"  Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpostMotalitydonor" IsEnabled="False"  Text="{Binding PostDonorMotality,Mode=TwoWay}"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                                                    <TextBox x:Name="txtpostWBCdonor" IsEnabled="False"  Text="{Binding PostDonorWBC,Mode=TwoWay}"  TextChanged="txtTexBox_TextChanged" KeyDown="TexBox_KeyDown" Margin="4"  Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+
+                                                </Grid>
+                                            </Grp:GroupBox>
+                                        </Grid>
+                                    </controlsToolkit:DockPanel>
+                                </Grid>
+                            </Border>
+
+                        </controlsToolkit:DockPanel>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</controls:ChildWindow>

@@ -1,0 +1,175 @@
+﻿<controls:ChildWindow 
+x:Class="PalashDynamics.Pharmacy.IndentSearchDuplicate"
+xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"  
+xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"  
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+ xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"     
+Width="1000" Height="700" 
+    
+xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+    xmlns:dgAdapter="clr-namespace:PalashDynamics.DataGridSelectionAdapter"
+Title="Indent Search">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="Root">
+        <!--Auto combo grid view-->
+        <my:DockPanel LastChildFill="True" Margin="4">
+
+            <Grid Width="Auto"  Margin="0" my:DockPanel.Dock="Top" DataContext="{Binding BizActionObject}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBlock VerticalAlignment="Center" Grid.Column="2" Grid.Row="0"  Margin="4" Text="From Store" HorizontalAlignment="Right"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox  SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="StoreId" Grid.Row="0" Grid.Column="3" Margin="4"     x:Name="cmbFromIndentStore" ></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" Grid.Column="4" Grid.Row="0"  Margin="4" Text="To Store" HorizontalAlignment="Right"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="SupplierId" Grid.Row="0" Grid.Column="5" Margin="4"     x:Name="cmbToIndentStore" ></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" Grid.Column="2" Grid.Row="1"  Margin="4" Text="To Date" HorizontalAlignment="Right"></TextBlock>
+                <sdk:DatePicker x:Name="dtpToDate" Grid.Row="1" Grid.Column="3" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" SelectedDate="{Binding Date, Mode=TwoWay}" ></sdk:DatePicker>
+
+                <TextBlock VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"  Margin="4" Text="From Date" HorizontalAlignment="Right"></TextBlock>
+                <sdk:DatePicker x:Name="dtpFromDate" Grid.Row="1" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" SelectedDate="{Binding Date, Mode=TwoWay}" ></sdk:DatePicker>
+
+
+                <TextBlock VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"  Margin="4" Text="Indent No :" HorizontalAlignment="Right"></TextBlock>
+                <TextBox x:Name="txtIndentNo" Grid.Column="1" Grid.Row="0"  Margin="4"></TextBox>
+                <ToggleButton x:Name="cmdSearch"  Grid.Row="1" Grid.Column="5" Content="Search" MinWidth="50"  Background="#000000" Margin="4" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSearch_Click" />
+
+            </Grid >
+
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="0" CornerRadius="3,3,3,3" Background="Transparent">
+
+                <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                        <ToggleButton TabIndex="8" x:Name="OkButton"  Grid.Row="4" Content="Ok" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="OKButton_Click" />
+                        <ToggleButton TabIndex="9" x:Name="cmdCancelButton"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CancelButton_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+
+            <Grid my:DockPanel.Dock="Top">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grp:GroupBox x:Name="gbIndentItem"  Height="200" Width="490" Header="Indent Items" Margin="2" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                            <RadioButton x:Name="chkSupplier" Content="Supplier" IsChecked="True" Margin="4" HorizontalAlignment="Left"></RadioButton>
+                            <RadioButton x:Name="chkIndent" Content="Indent"  Margin="4" HorizontalAlignment="right"></RadioButton>
+                        </StackPanel>
+
+                        <data:DataGrid TabIndex="6"  Grid.Row="1"  Height="Auto" Width="Auto"  ItemsSource="{Binding}" IsReadOnly="True" x:Name="dgSelectedIndentItemList"  AutoGenerateColumns="False" SelectionChanged="dgSelectedIndentItemList_SelectionChanged" CanUserSortColumns="False" VerticalScrollBarVisibility="Auto"  >
+                        <data:DataGrid.Columns>
+                            <data:DataGridTemplateColumn Header="Select">
+                                <data:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox  x:Name="chkItemSelect" HorizontalAlignment="Center"   VerticalAlignment="Center" IsChecked="{Binding IsChecked,Mode=TwoWay}" Click="chkItemSelect_Click" ></CheckBox>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+                            <data:DataGridTextColumn Visibility="Collapsed"  IsReadOnly="True" Header="ItemID" Width="120"  Binding="{Binding ItemId}" />
+                            <data:DataGridTextColumn IsReadOnly="True" Header="Item Code" Width="120"  Binding="{Binding ItemCode}" />
+                            <data:DataGridTextColumn IsReadOnly="True" Header="Item Name" Width="120"  Binding="{Binding ItemName}"/>
+                            <data:DataGridTextColumn IsReadOnly="True" Header="Supplier" Width="120"  Binding="{Binding Supplier}"/>
+                            <data:DataGridTextColumn IsReadOnly="True" Header="Indent Quantity" Width="120"  Binding="{Binding IndentQty}">
+                                <data:DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Right"/>
+                                    </Style>
+                                </data:DataGridTextColumn.ElementStyle>
+                            </data:DataGridTextColumn>
+                            <data:DataGridTextColumn IsReadOnly="True" Header="Pending Quantity" Binding="{Binding BalanceQty}">
+                                <data:DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Right"/>
+                                    </Style>
+                                </data:DataGridTextColumn.ElementStyle>
+                            </data:DataGridTextColumn>
+                            <data:DataGridTextColumn Visibility="Collapsed"    Binding="{Binding UOM}"/>
+                        </data:DataGrid.Columns>
+                    </data:DataGrid>
+                    </Grid>
+                </Grp:GroupBox>
+
+                <Grp:GroupBox x:Name="gbIndentList"  Height="200" Width="480" Header="Indent List" Margin="2" my:DockPanel.Dock="Top" Grid.Column="0">
+
+                    <my:DockPanel LastChildFill="True"  >
+                        <data:DataPager TabIndex="20" x:Name="dgDataPager" my:DockPanel.Dock="Bottom"
+                                        PageSize="{Binding }"
+                                        DisplayMode="FirstLastPreviousNext"
+                                        IsEnabled="True"
+                                        IsTotalItemCountFixed="True"
+                                        Source="{Binding }"  />
+                        <data:DataGrid x:Name="dgIndentList"  ScrollViewer.HorizontalScrollBarVisibility="auto" IsReadOnly="True" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="auto"  AutoGenerateColumns="False" AlternatingRowBackground="Silver" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Margin="4" SelectionChanged="dgIndentList_SelectionChanged">
+                            <data:DataGrid.Columns>
+                                <data:DataGridTextColumn  Header="Indent Number" Binding="{Binding IndentNumber}" />
+                                <data:DataGridTextColumn  Header="Indent Date" Binding="{Binding Date, Mode=OneWay, Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" />
+                                <data:DataGridTextColumn  Header="Due Date" Binding="{Binding DueDate,Mode=OneWay, Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"/>
+                                <data:DataGridTextColumn  Header="Indent Created By" Binding="{Binding IndentCreatedByName }"/>
+                                <data:DataGridTextColumn  Header="Authorized By" Binding="{Binding AuthorizedByName}"/>
+                                <data:DataGridTextColumn  Header="Authorization Date" Binding="{Binding Date,Mode=OneWay, Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"/>
+                                <data:DataGridTextColumn  Header="Unit Name" Binding="{Binding UnitName }"/>
+                            </data:DataGrid.Columns>
+                        </data:DataGrid>
+                    </my:DockPanel>
+                </Grp:GroupBox>
+            </Grid>
+            <my:DockPanel  my:DockPanel.Dock="Bottom" >
+                <Grp:GroupBox x:Name="gbSelectedItem" Header="Selected Item" Margin="2" Grid.Column="1"  my:DockPanel.Dock="Bottom" >
+                    <my:DockPanel>
+                        <data:DataGrid  x:Name="dgSelectedItemList" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="auto" ScrollViewer.VerticalScrollBarVisibility="auto" AutoGenerateColumns="False"  AlternatingRowBackground="Silver" VerticalAlignment="Stretch"  Margin="4"     >
+                            <data:DataGrid.Columns>
+                                <data:DataGridTemplateColumn Header="Select">
+                                    <data:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox HorizontalAlignment="Center" x:Name="chkSelectedItem" VerticalAlignment="Center" IsChecked="{Binding IsChecked,Mode=TwoWay}" Unchecked="chkSelectedItem_UnCheck"></CheckBox>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>
+                                <data:DataGridTextColumn IsReadOnly="True"  Header="Item Code"  Binding="{Binding ItemCode}"></data:DataGridTextColumn>
+                                <data:DataGridTextColumn  IsReadOnly="True"  Header="Item Name"  Binding="{Binding ItemName}"></data:DataGridTextColumn>
+                                <data:DataGridTextColumn IsReadOnly="True"  Header="Indent Quantity"  Binding="{Binding IndentQty}"></data:DataGridTextColumn>
+                                <data:DataGridTextColumn IsReadOnly="True" Header="Pending Quantity"  Binding="{Binding BalanceQty}"></data:DataGridTextColumn>
+                                <data:DataGridTextColumn IsReadOnly="True" Header="MRP"  Binding="{Binding MRP}"></data:DataGridTextColumn>
+                                <data:DataGridTextColumn  IsReadOnly="True" Header="Cost Price"  Binding="{Binding PurchaseRate}"></data:DataGridTextColumn>
+                                <data:DataGridTextColumn IsReadOnly="True" Header="Supplier" Width="120"  Binding="{Binding Supplier}"/>
+                            </data:DataGrid.Columns>
+                        </data:DataGrid>
+                    </my:DockPanel>
+                </Grp:GroupBox>
+            </my:DockPanel>
+        </my:DockPanel>
+    </Grid>
+</controls:ChildWindow>

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="PalashDynamics.MIS.Clinical.ClinicalReport"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit">
+
+    <Border HorizontalAlignment="Stretch" BorderThickness="2" Margin="8,8,8,8" CornerRadius="0,0,3,3" Background="Transparent">
+        <Grid x:Name="LayoutRoot" Background="White">
+            <controlsToolkit:DockPanel LastChildFill="True" >
+
+                <controlsToolkit:DockPanel LastChildFill="True" x:Name="dpClinical" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <HyperlinkButton Grid.Row="0" Grid.Column="0" Content="SERVICE BASED CASH COLLECTION CLINIC WISE" Margin="2" Click="HyperlinkButton_Click"  />
+                        <HyperlinkButton Grid.Row="1" Grid.Column="0" Content="PATIENT COUNT BASED ON PRIMARY SYMPTOMS CLINIC WISE" Margin="2" Click="HyperlinkButton_Click_1"  Visibility="Collapsed"/>
+                        <HyperlinkButton Grid.Row="2" Grid.Column="0" Content="PATIENT COUNT BASED ON DIAGNOSIS CLINIC WISE" Margin="2" Click="HyperlinkButton_Click_2"   Visibility="Collapsed"/>
+                    </Grid>
+
+                </controlsToolkit:DockPanel>
+
+
+            </controlsToolkit:DockPanel>
+        </Grid>
+    </Border>
+        
+</UserControl>

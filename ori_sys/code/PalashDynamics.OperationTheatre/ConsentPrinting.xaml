@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="PalashDynamics.OperationTheatre.ConsentPrinting"
+     xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"             
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" Loaded="UserControl_Loaded"
+
+Height="350" Width="450">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Border BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+            <toolkit:DockPanel LastChildFill="True">
+                <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                    <ContentControl VerticalAlignment="Top" Grid.ColumnSpan="4" FontSize="12" Content="Consent Printing" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch"/>
+                </Border>
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" Margin="4">
+                    <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+
+                            <ToggleButton x:Name="cmdPrint" Content="Print"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  Click="cmdPrint_Click"  ></ToggleButton>
+
+                            <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Checked="cmdCancel_Checked"></ToggleButton>
+                        </StackPanel>
+                    </StackPanel>
+                </toolkit:DockPanel>
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Top" Margin="4">
+                    <Grp:GroupBox Header="Search Consent" Margin="4">
+                        <Grid x:Name="LayoutRoot" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock  Text="Select Consnet" VerticalAlignment="Top"  Margin="4" HorizontalAlignment="left" Grid.Column="0" Grid.Row="0" ></TextBlock>
+                            <!--<CheckBox  x:Name="chkAll" Grid.Row="1" Content ="select All" Grid.Column="0" Checked="chkAll_Checked" Unchecked="chkAll_Unchecked" />-->
+                            <sdk:DataGrid x:Name="dgConsent" ItemsSource="{Binding}" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False"     Grid.Row="2" Grid.Column="0" Width="auto"   Margin="4" Height="auto">
+                                <sdk:DataGrid.Columns>
+                                    <!--<sdk:DataGridTemplateColumn>
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate >
+                                                <CheckBox x:Name="chkConsent" IsChecked="{Binding Status, Mode=TwoWay}"  Unchecked="chkConsent_Unchecked" Checked="chkConsent_Checked"  ></CheckBox>
+
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>-->
+                                    <sdk:DataGridTextColumn Binding="{Binding Description, Mode=OneWay}" Header="Consent" IsReadOnly="True"/>
+                                    <sdk:DataGridTemplateColumn Header="Print">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton Margin="4" x:Name="cmdView" Content="View and print" Click="cmdView_Click" Cursor="Hand"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                </sdk:DataGrid.Columns>
+                            </sdk:DataGrid>
+                        </Grid>
+                    </Grp:GroupBox>
+                </toolkit:DockPanel>
+
+            </toolkit:DockPanel>
+        </Border>
+        
+    </Grid>
+</UserControl>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UserRights" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UserRights" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:complexType name="clsGetUserRightsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q1:ArrayOfclsUserVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="objListUserRights" nillable="true" type="tns:ArrayOfclsUserRightsVO" />
+      <xs:element minOccurs="0" name="objUserRight" nillable="true" type="tns:clsUserRightsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUserRightsBizActionVO" nillable="true" type="tns:clsGetUserRightsBizActionVO" />
+  <xs:complexType name="clsUserRightsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AuthLevelForConcenssionIPD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthLevelForConcenssionOPD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthLevelForRefundIPD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthLevelForRefundOPD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="FrequencyPerMonth" type="xs:long" />
+      <xs:element minOccurs="0" name="IpdAuthLvl" type="xs:long" />
+      <xs:element minOccurs="0" name="IpdBillAuthLvlID" type="xs:long" />
+      <xs:element minOccurs="0" name="IpdBillingAmmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IpdBillingPercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IpdSettleAmmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IpdSettlePercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IsCentarlPurchase" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCrossAppointment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDirectPurchase" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEditAfterFinalized" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIpd" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOpd" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Isfinalized" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxPurchaseAmtPerTrans" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OPDAuthLvtForConcessionID" type="xs:long" />
+      <xs:element minOccurs="0" name="OpdAuthLvl" type="xs:long" />
+      <xs:element minOccurs="0" name="OpdBillAuthLvlID" type="xs:long" />
+      <xs:element minOccurs="0" name="OpdBillingAmmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OpdBillingPercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OpdSettleAmmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OpdSettlePercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="POApprovalLvl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="POApprovalLvlID" type="xs:long" />
+      <xs:element minOccurs="0" name="ResultStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserGRNCountForMonth" type="xs:long" />
+      <xs:element minOccurs="0" name="UserID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserRightsVO" nillable="true" type="tns:clsUserRightsVO" />
+  <xs:complexType name="ArrayOfclsUserRightsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsUserRightsVO" nillable="true" type="tns:clsUserRightsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsUserRightsVO" nillable="true" type="tns:ArrayOfclsUserRightsVO" />
+  <xs:complexType name="clsGetUserGRNCountWithRightsAndFrequencyBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q2:ArrayOfclsUserVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="objListUserRights" nillable="true" type="tns:ArrayOfclsUserRightsVO" />
+      <xs:element minOccurs="0" name="objUserRight" nillable="true" type="tns:clsUserRightsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUserGRNCountWithRightsAndFrequencyBizActionVO" nillable="true" type="tns:clsGetUserGRNCountWithRightsAndFrequencyBizActionVO" />
+  <xs:complexType name="clsSetCreditLimitBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="objListUserRights" nillable="true" type="tns:ArrayOfclsUserRightsVO" />
+      <xs:element minOccurs="0" name="objUserRight" nillable="true" type="tns:clsUserRightsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsSetCreditLimitBizActionVO" nillable="true" type="tns:clsSetCreditLimitBizActionVO" />
+</xs:schema>

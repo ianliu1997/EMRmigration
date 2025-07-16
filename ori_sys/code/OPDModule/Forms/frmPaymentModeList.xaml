@@ -1,0 +1,254 @@
+﻿<controls:ChildWindow x:Class="OPDModule.Forms.frmPaymentModeList"
+              xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+              xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+              xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+              xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"            
+               xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+              xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization" 
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                   
+            
+              xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+             
+                
+              xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+                Width="700" Height="510"
+              Title="Payement Mode List" Loaded="ChildWindow_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+               
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+         
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    
+    
+
+    <!--<Grid x:Name="LayoutRoot" Margin="2" Background="White">
+
+
+        <controlsToolkit:DockPanel Name="docMain" LastChildFill="True" controlsToolkit:DockPanel.Dock= "Top" >
+
+
+            <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" >
+                <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                    <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <ToggleButton  x:Name="cmdModify"  Grid.Row="4" Content="Modify" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="cmdModify_Click"/>
+                            <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}" Click="cmdClose_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+
+            <Grid>
+
+            <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock= "Top" >
+                <controls:TabControl Grid.Row="0" Padding="0"  x:Name="tabControl2" Margin="4,-4,4,4" SelectionChanged="tabControl1_SelectionChanged" >
+                    <controls:TabItem  x:Name="tabPast" Style="{StaticResource TabItemStyle}" Padding="0" Margin="0" Header="Payment Mode">
+                        <Border   BorderBrush="#FF788678"   BorderThickness="1" CornerRadius="3,3,3,3" Margin="4">
+                            <Grid x:Name="LayOutRoot2" Background="White">
+                                <data:DataGrid   x:Name="dgPaymentModeList" Margin="2,2,2,86"  AutoGenerateColumns="False"  ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="307">
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn Binding="{Binding PatientName}"  Header="Patient Name" />
+                                        <data:DataGridTextColumn Binding="{Binding BillNo}" Header="Bill No"/>
+                                        <data:DataGridTextColumn Binding="{Binding Date}" Header="Date"/>
+                                        <data:DataGridTextColumn Binding="{Binding Doctor}" Header="Amount" />
+                                        <data:DataGridTextColumn Binding="{Binding Department}" Header="Paymode Mode"></data:DataGridTextColumn>
+                                        <data:DataGridTemplateColumn>
+                                        <data:DataGridTemplateColumn.CellTemplate>
+
+                                            <DataTemplate>
+                                                   <HyperlinkButton VerticalAlignment="Center"  Content="Edit"  Padding="5,0,5,0" x:Name="hlbEdit" IsEnabled="True"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+
+                                        </data:DataGridTemplateColumn>
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+
+                                <Grid  controlsToolkit:DockPanel.Dock="Bottom" Height="36" Margin="0,313,0,46">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="48*" />
+                                    </Grid.RowDefinitions>
+                                    <input:AutoCompleteComboBox x:Name="cmbPayMode" SelectedValuePath="ID" SelectionChanged="cmbPayMode_SelectionChanged"  Margin="2,4,0,4" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                                    <TextBox x:Name="TxtpaidAmt"   Grid.Row="0" Grid.Column="1" Margin="1,4,0,4" TextAlignment="Right" HorizontalAlignment="Stretch" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" />
+                                    <TextBox x:Name="txtNumber"  Grid.Row="0" Grid.Column="2" Margin="1,4,1,4" TextAlignment="Right" HorizontalAlignment="Stretch" MaxLength="50" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" LostFocus="txtNumber_LostFocus"/>
+                                    <input:AutoCompleteComboBox x:Name="cmbBank"  SelectedValuePath="ID" Margin="0,4,0,4"  Grid.Row="0" Grid.Column="3"  />
+                                    <controls:DatePicker x:Name="dtpDate" Grid.Row="0" Grid.Column="4" Margin="5" />
+                                    <Image  Grid.Column="5" Source="/PalashDynamics;component/Icons/calculator-icon1.png"  Height="30"  Width="30" MouseLeftButtonDown="Image_MouseLeftButtonDown" ></Image>
+
+
+                                    
+
+                                    
+                                    
+                                  
+
+                                </Grid>
+                                
+                               
+                            </Grid>
+
+                            
+                        </Border>
+                    </controls:TabItem>
+                   
+                   
+                </controls:TabControl>
+
+
+            </controlsToolkit:DockPanel>
+            </Grid>
+
+
+        </controlsToolkit:DockPanel>
+
+
+
+    </Grid>-->
+    <Grid Height="523">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controlsToolkit:DockPanel LastChildFill="True" Margin="1" Grid.Row="0">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" controlsToolkit:DockPanel.Dock="Top"  Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                <controlsToolkit:DockPanel LastChildFill="True" >
+                    <Grid controlsToolkit:DockPanel.Dock="Bottom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  />
+                            <ColumnDefinition   />
+                            <ColumnDefinition   />
+                            <ColumnDefinition  />
+                            <ColumnDefinition   />
+                            <ColumnDefinition  Width="Auto" />
+                            <ColumnDefinition  />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            
+                        </Grid.RowDefinitions>
+                        <!--<sdk:AutoCompleteBox Margin="1,4,0,4"  Grid.Row="0" Grid.Column="0" />-->
+                        <input:AutoCompleteComboBox x:Name="cmbPayMode" SelectedValuePath="ID" SelectionChanged="cmbPayMode_SelectionChanged"  Margin="2,5,0,5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="0"  />
+                        <TextBox x:Name="TxtpaidAmt"  Margin="1,4,0,4" TextAlignment="Right" HorizontalAlignment="Stretch" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" Grid.Column="1" LostFocus="txtNumber_LostFocus" />
+                        <TextBox x:Name="txtNumber" Grid.Column="2" Margin="1,4" TextAlignment="Right" HorizontalAlignment="Stretch" MaxLength="50" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" LostFocus="txtNumber_LostFocus" />
+                        <!--<sdk:AutoCompleteBox Margin="1,4,0,4"   Grid.Row="0" Grid.Column="3" />-->
+                        <input:AutoCompleteComboBox x:Name="cmbBank"  SelectionChanged="cmbBank_SelectionChanged" SelectedValuePath="ID" Margin="0,4" Grid.Column="3" />
+                        <controls:DatePicker x:Name="dtpDate" Grid.Column="4" Margin="5"  />
+
+                        <Image  Grid.Column="5" Source="/PalashDynamics;component/Icons/calculator-icon1.png"  Height="30"  Width="30" MouseLeftButtonDown="Image_MouseLeftButtonDown" Margin="4" ></Image>
+
+                        <!--<Button x:Name="cmdAddPayment" Content="Add"  Height="25" Margin="2,4,4,4" Grid.Row="0" Grid.Column="5" MaxWidth="80" MinWidth="80"  HorizontalAlignment="Right" Click="cmdAddPayment_Click"></Button>-->
+                        <ToggleButton x:Name="cmdAddPayment"  Content="Add"    Background="#000000"  Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed" Margin="4" Grid.Column="6" Width="Auto"   HorizontalAlignment="Stretch"  Click="cmdAddPayment_Click"   />
+                    </Grid>
+
+                    <!--<HyperlinkButton x:Name="cmdAddPaymentDtl" controlsToolkit:DockPanel.Dock="Bottom" Grid.ColumnSpan="4" FontSize="12" Content="Add Payment Detail" VerticalAlignment="Center" Margin="0,2,0,0"  Foreground="DarkBlue" Click="cmdAddPaymentDtl_Click"></HyperlinkButton>-->
+                    
+                        <data:DataGrid   x:Name="dgPaymentModeList" Margin="2"  AutoGenerateColumns="False" controlsToolkit:DockPanel.Dock="Top"  ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="307">
+                            <data:DataGrid.Columns>
+                                <!--<data:DataGridTextColumn Binding="{Binding PatientName}"  Header="Patient Name" />-->
+                                <data:DataGridTextColumn Binding="{Binding BillNo}" Header="Bill No"/>
+                                <!--<data:DataGridTextColumn Binding="{Binding Date}" Header="Date"/>-->
+                            <data:DataGridTextColumn Binding="{Binding NetBillAmount}" Header="Net Amount" />
+                            <data:DataGridTextColumn Binding="{Binding PaidAmount}" Header="Paid Amount" />
+                            <data:DataGridTextColumn Binding="{Binding PaymentMode}" Header="Paymode Mode"></data:DataGridTextColumn>
+                            <data:DataGridTextColumn Binding="{Binding Bank}" Header="Bank" />
+                            <data:DataGridTextColumn Binding="{Binding Number}" Header="Number" />
+                            <data:DataGridTextColumn Binding="{Binding Date1}" Header="Date" />
+
+                            <data:DataGridTemplateColumn>
+                                    <data:DataGridTemplateColumn.CellTemplate>
+
+                                        <DataTemplate>
+                                            <HyperlinkButton VerticalAlignment="Center"  Content="Edit"  Padding="5,0,5,0" x:Name="hlbEdit" IsEnabled="True" Click="cmbEdit_Click"></HyperlinkButton>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+
+                                </data:DataGridTemplateColumn>
+                            </data:DataGrid.Columns>
+                        </data:DataGrid>
+                   
+                </controlsToolkit:DockPanel>
+            </Border>
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="2" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="103*"/>
+                        <ColumnDefinition Width="661*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid  Name="creditlayout" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Credit Authorized By" Grid.Row="0" Grid.Column="0" Margin="4" />
+                        <input:AutoCompleteComboBox x:Name="cmbCreditAuthBy"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Grid.Row="0" Grid.Column="1"   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Cheque Authorized By" Grid.Row="0" Margin="4" Grid.Column="2" Visibility="Collapsed"/>
+                        <input:AutoCompleteComboBox x:Name="cmbCheckAuthBy"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="3" Margin="4,6,4,2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Visibility="Collapsed" />
+
+                        <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Company Advance Authorized By"  Grid.Column="4" Grid.Row="0" Margin="4"/>
+                        <input:AutoCompleteComboBox x:Name="cmbCompanyAdvAuthBy"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="5" Margin="4,6,4,4"  VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Concession Authorized By"  Grid.Row="0" Grid.Column="2" Margin="4"/>
+                        <input:AutoCompleteComboBox x:Name="cmbConcessionAuthBy" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="3" Margin="4,6,4,4"  VerticalAlignment="Center" HorizontalAlignment="Stretch" IsEnabled="False" />
+                    </Grid>
+
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Payee(Narration)" Grid.Row="1" Margin="0,8,555,24" Grid.ColumnSpan="2" Width="113" Height="16" />
+                    <TextBox x:Name="txtNarration" AcceptsReturn="True" Height="40" VerticalScrollBarVisibility="Visible" Text="" Grid.Row="1" Grid.Column="1"  Margin="32,4,4,4" MaxLength="255" TextWrapping="Wrap" Width="547" IsEnabled="False" />
+
+                </Grid>
+            </Border>
+            
+        </controlsToolkit:DockPanel>
+
+       
+        <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" Visibility="Collapsed" >
+        <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top" Visibility="Collapsed" >
+                <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0"></StackPanel>
+            </StackPanel>
+
+        </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+        <ToggleButton x:Name="cmdModify" Grid.Row="1" Content="Modify" MinWidth="50" Background="#000000" Margin="514,10,0,0" Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="cmdModify_Click" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" />
+        <ToggleButton x:Name="cmdClose" Grid.Row="1" Content="Cancel" MinWidth="50" Background="#000000" Margin="595,10,12,52" HorizontalAlignment="Stretch" Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="cmdClose_Click" />
+        <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Received Amount" Grid.Row="1" Margin="0,15,577,52" />
+        <TextBox TextAlignment="Right" x:Name="txtReceivedAmt" VerticalAlignment="Center" Grid.Row="1" Margin="110,11,462,48" TextChanged="txtNumber_TextChanged" KeyDown="txtNumber_KeyDown" LostFocus="txtReceivedAmt_LostFocus" Text="{Binding StringFormat='N'}" />
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Amount to be Return" Grid.Row="1" Margin="0,15,316,52" />
+        <TextBox x:Name="txtAmtToBeReturn" VerticalAlignment="Center" Grid.Row="1" Margin="373,11,192,48" IsReadOnly="True" TextAlignment="Right" Text="{Binding StringFormat='N'}" />-->
+    </Grid>
+
+</controls:ChildWindow>

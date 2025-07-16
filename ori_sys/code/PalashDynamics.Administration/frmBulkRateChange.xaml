@@ -1,0 +1,479 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.frmBulkRateChange"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" 
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  
+    xmlns:sdk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  
+    xmlns:sdk1="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"         
+    mc:Ignorable="d" Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid >
+
+
+        <toolkit:DockPanel LastChildFill="True">
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" x:Name="Footer1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent">
+                        <TextBlock x:Name="lblAllRate" FontSize="12" Foreground="red" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel x:Name="Footer" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,3,5,3" Background="Transparent">
+                        <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                            <ToggleButton  Margin="4"  Content="New" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdNew" Click="cmdNew_Click"></ToggleButton>
+                            <ToggleButton   Margin="4" Content="Save" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" Visibility="Visible"></ToggleButton>
+                            <ToggleButton   Margin="4"  Content="Modify" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" Click="cmdModify_Click" Visibility="Visible"></ToggleButton>
+                            <ToggleButton  Margin="4" Content="Cancel" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click"></ToggleButton>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Grid x:Name="PageContainer" >
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                        <toolkit:DockPanel x:Name="docList">
+
+                            <toolkit:DockPanel toolkit:DockPanel.Dock="Top" Margin="4,1,4,1">
+                                
+                                    <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                    <Grp:GroupBox  Header="Search Criteria" Margin="4" >
+                                        <Grid toolkit:DockPanel.Dock="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="From Effective Date" Margin="-1,4,1,4" VerticalAlignment="Center"/>
+                                            <controls:DatePicker x:Name="dtpFromDate" Margin="2,4,4,4" ToolTipService.ToolTip="From Effective Date" KeyDown="EnterKeySearch_KeyDown" Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+                                            <TextBlock Grid.Column="2" Text="To Effective Date" Margin="4,4,1,4" VerticalAlignment="Center"/>
+                                            <controls:DatePicker x:Name="dtpToDate" Margin="2,4,4,4" Grid.Column="3" KeyDown="EnterKeySearch_KeyDown" ToolTipService.ToolTip="To Effective Date" HorizontalAlignment="Stretch"/>
+
+                                            <TextBlock Grid.Column="4" Text="Tariff Name" Margin="4,4,1,4" VerticalAlignment="Center"/>
+                                            <TextBox Grid.Column="5" x:Name="txtSearchTariff" Margin="2,4,4,4" KeyDown="EnterKeySearch_KeyDown" ToolTipService.ToolTip="Tariff Name" MaxLength="200"></TextBox>
+                                            
+                                            <Button Grid.Column="6" x:Name="cmdSearch" Click="cmdSearch_Click" ToolTipService.ToolTip="Search Record">
+                                                <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4" Width="20" ></Image>
+                                            </Button>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                </Border>
+                                
+                            </toolkit:DockPanel>
+                            <toolkit:DockPanel LastChildFill="True">
+                                <StackPanel toolkit:DockPanel.Dock="Top" Margin="4,1,4,0">
+                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Tariff Details" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch" />
+                                    </Border>
+                                </StackPanel>
+                                <data:DataPager x:Name="DataPagerFrontPannelList" toolkit:DockPanel.Dock="Bottom" Margin="4,-0,4,0" 
+                                                      Source="{Binding}" NumericButtonCount="2" AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+                                <!--<sdk:DataPager x:Name="dataGrid2Pager" toolkit:DockPanel.Dock="Bottom" Margin="4,0,4,0"
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />-->
+                                <sdk:DataGrid  x:Name="dgFrontPannelList" Margin="4,0,4,0" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                                    <sdk:DataGrid.Columns>
+                                        <sdk:DataGridTemplateColumn Header="View">
+                                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <HyperlinkButton Margin="4" x:Name="cmdView" Content="View" Click="cmdView_Click" Cursor="Hand"></HyperlinkButton>
+                                                </DataTemplate>
+                                            </sdk:DataGridTemplateColumn.CellTemplate>
+                                        </sdk:DataGridTemplateColumn>
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="ID"  Binding="{Binding ID}"/>
+
+
+
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="EffectiveDate" Binding="{Binding EffectiveDate,Mode=OneWay,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"/>
+                                        
+                                        <data:DataGridTemplateColumn Header="Tariff Name" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBox x:Name="txtTariffName" Background="White" IsReadOnly="True" Text="{Binding TariffName, Mode=OneWay}"></TextBox>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="Tariff Name"  Binding="{Binding TariffName}"/>
+                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="AddedBy"  Binding="{Binding strAddedBy}"/>
+                                        <sdk:DataGridTemplateColumn Header="Freeze">
+                                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox HorizontalAlignment="Center" IsEnabled="False" Margin="4" IsChecked="{Binding Path=IsFreeze}" ></CheckBox>
+                                                </DataTemplate>
+                                            </sdk:DataGridTemplateColumn.CellTemplate>
+                                        </sdk:DataGridTemplateColumn>
+
+                                    </sdk:DataGrid.Columns>
+                                </sdk:DataGrid>
+                            </toolkit:DockPanel>
+                        </toolkit:DockPanel>
+                    </Border>
+                </Grid>
+
+                <Grid x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <sdk1:TabControl x:Name="tabConfig"  Margin="4" Grid.ColumnSpan="2">
+                        <sdk1:TabItem x:Name="tabTariff"  Header="Tariff" Style="{StaticResource TabItemStyle}">
+                            <controlsToolkit:DockPanel   Name="doc4"  Margin="4" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grp:GroupBox Header="Tariff Selection" Margin="4">
+                                    <Grid Name="grdX" Margin="-1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border  Grid.Column="0" Grid.Row="0" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                            <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" Grid.Column="0" Margin="2" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Border  Grid.Row="0" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                        <ContentControl VerticalAlignment="Center" Content="List of Tariff" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                    <layoutToolkit:Accordion Grid.Row="1" x:Name="acc" SelectionMode="ZeroOrOne" HorizontalAlignment="Stretch">
+                                                        <layoutToolkit:AccordionItem x:Name="accTariff" Header="Advance Filter" IsSelected="True" Background="AliceBlue" Foreground="DarkBlue" HorizontalAlignment="Stretch">
+                                                            <Grid Margin="2" HorizontalAlignment="Stretch">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="auto" ></RowDefinition>
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock  Grid.Column="0" Grid.Row="0" Text="Tariff Name : " Margin="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                                                <input:AutoCompleteBox Visibility="Visible" TabIndex="15" Margin="1" Grid.Column="1" Grid.Row="0" Text="{Binding Country, Mode=TwoWay}" Height="25" Width="350" x:Name="txtTariffCode" HorizontalAlignment="Stretch" KeyUp="txtTariffCode_KeyDown"></input:AutoCompleteBox>
+
+                                                                <Button x:Name="cmdSearchTariff" Click="cmdSearchTariff_Click" Margin="4" ToolTipService.ToolTip="Search Tariff Name"  Grid.Row="0" Grid.Column="3">
+                                                                    <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="18" ></Image>
+                                                                </Button>
+
+                                                            </Grid>
+                                                        </layoutToolkit:AccordionItem>
+                                                    </layoutToolkit:Accordion>
+                                                    <sdk:DataGrid Grid.Row="2" x:Name="dgTariff" VerticalAlignment="Stretch"  ItemsSource="{Binding}" AutoGenerateColumns="False"  VerticalScrollBarVisibility="Visible" >
+                                                        <sdk:DataGrid.Columns>
+                                                            <sdk:DataGridTemplateColumn Header="Select">
+                                                                <sdk:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <CheckBox x:Name="chkTariff" IsChecked="{Binding SelectTariff, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding IsSelectedService, Mode=TwoWay}" Click="CheckBox_Checked"></CheckBox>
+                                                                    </DataTemplate>
+                                                                </sdk:DataGridTemplateColumn.CellTemplate>
+                                                            </sdk:DataGridTemplateColumn>
+                                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Tariff Name" Binding="{Binding Description}" />
+                                                        </sdk:DataGrid.Columns>
+                                                    </sdk:DataGrid>
+                                                    <data:DataPager Grid.Row="3" x:Name="DataPagerTariff" toolkit:DockPanel.Dock="Bottom" 
+                                                      Source="{Binding}" NumericButtonCount="2" AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+                                                    <!--<data:DataPager x:Name="DataPagerTariff" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" />-->
+                                                </Grid>
+                                            </toolkit:DockPanel>
+                                        </Border>
+                                        <Border Grid.Column="1" Grid.Row="0" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                            <toolkit:DockPanel toolkit:DockPanel.Dock="top" Grid.Column="1" Margin="2">
+                                                <Border Grid.Column="1" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                    <ContentControl VerticalAlignment="Center" Content="List of Selected Tariff" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch" />
+                                                </Border>
+
+                                                <!--<data:DataPager x:Name="DataPagerDocCategoryBP" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" />-->
+                                                <sdk:DataGrid  x:Name="dgSelectedTariff" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False"  VerticalScrollBarVisibility="Visible" >
+                                                    <sdk:DataGrid.Columns>
+                                                        <sdk:DataGridTemplateColumn Header="Select" Visibility="Collapsed">
+                                                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <CheckBox x:Name="chkTariff" IsChecked="{Binding SelectTariff, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding IsSelectedDoctor, Mode=TwoWay}" Click="CheckBox_Checked"></CheckBox>
+                                                                </DataTemplate>
+                                                            </sdk:DataGridTemplateColumn.CellTemplate>
+                                                        </sdk:DataGridTemplateColumn>
+                                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="Tariff Name" Binding="{Binding Description}" />
+                                                        <data:DataGridTemplateColumn Header="Delete">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center" Foreground="Red" HorizontalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click="cmdDeleteService_Click"  x:Name="cmdDeleteService" ToolTipService.ToolTip="Delete Selected Tariff"></HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+                                                    </sdk:DataGrid.Columns>
+                                                </sdk:DataGrid>
+                                            </toolkit:DockPanel>
+                                        </Border>
+
+                                        <!--<Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition ></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" x:Name="lblRemark" Text="Remark" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="4" ></TextBlock>
+                                            <TextBox TabIndex="0"  Grid.Row="0" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="625" TextWrapping="Wrap" Height="40" x:Name="txtRemark"  AcceptsReturn="True" Grid.Column="1"  Margin="4" MaxLength="500"/>
+                                            <CheckBox x:Name="chkIsApplicable" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4" Grid.Column="2" Grid.Row="0" IsChecked="True" IsEnabled="False" Content="Effective Date" Click="chkIsApplicable_Click" ></CheckBox>
+                                            <controls:DatePicker Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Left"  SelectedDateChanged="dpEffectiveDate_SelectedDateChanged" TabIndex="1" SelectedDate="{Binding EffectiveDate,Mode=TwoWay}" x:Name="dpEffectiveDate" Margin="4" Grid.Column="3" Grid.Row="0"/>
+                                            <CheckBox x:Name="chkFreeze" Margin="4" Grid.Column="4" Grid.Row="0" Content="Is Freeze" Background="Red" Foreground="Red" TabIndex="2" HorizontalAlignment="Right" VerticalAlignment="Center"></CheckBox>
+                                        </Grid>-->
+                                    </Grid>
+                                </Grp:GroupBox>
+                            </controlsToolkit:DockPanel>
+                        </sdk1:TabItem>
+                        <sdk1:TabItem x:Name="tabSpecialization" Header="Specialization" Style="{StaticResource TabItemStyle}">
+                            <controlsToolkit:DockPanel Name="doc5" Margin="4" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grp:GroupBox  Header="Specialization Selection" Margin="4,0,4,0">
+                                    <Grid Name="grdX1" Height="auto">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grp:GroupBox  Header="Rate Selection" Margin="4" Grid.ColumnSpan="2">
+                                            <Grid Grid.Column="1" VerticalAlignment="Top" x:Name="grdSelectRate">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <inputcombo:AutoCompleteComboBox Visibility="Collapsed" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right" TabIndex="0" Width="90" x:Name="cmbAmtOrPct" Grid.Column="5" SelectionChanged="cmbAmtOrPct_SelectionChanged"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"></inputcombo:AutoCompleteComboBox>
+                                                <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center" Margin="4">
+                                                    <RadioButton x:Name="rdbRateInAmount" Grid.Column="0" Content="Rate Amount Wise" Click="rdbRateInAmount_Click"></RadioButton>
+                                                    <RadioButton x:Name="rdbRateInPercent" Grid.Column="1" Content="Rate Percentage Wise" Click="rdbRateInPercent_Click"></RadioButton>
+                                                </StackPanel>
+                                                <TextBox x:Name="txtAmountToAllSubSp" VerticalAlignment="Center" Margin="4" Width="90" Grid.Column="1" MaxLength="15"  TabIndex="0" KeyDown="txtAmountToAllSubSp_KeyDown"  TextChanged="txtAmountToAllSubSp_TextChanged"></TextBox>
+                                                <TextBlock Text="Operation Type" Margin="4" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Center"></TextBlock>
+                                                <inputcombo:AutoCompleteComboBox VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left" TabIndex="1" Width="90" x:Name="cmbOperationType" Grid.Column="3" SelectionChanged="cmbOperationType_SelectionChanged"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"></inputcombo:AutoCompleteComboBox>
+                                                <ToggleButton  Margin="4" Grid.Column="4" Width="200" Height="25"  TabIndex="2" Content="Apply To All SubSpecialization" Style="{StaticResource ToggleButtonStyle}" x:Name="chkApplyToSubSp" Click="chkApplyToSubSp_Click"></ToggleButton>
+                                            </Grid>
+                                        </Grp:GroupBox>
+
+                                        <Border  Grid.Column="0" Grid.Row="1" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                            <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" Grid.Column="0" Margin="2" >
+                                                <Border  Grid.Column="0" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                    <ContentControl VerticalAlignment="Center" Content="List of Specialization" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                </Border>
+                                                <data:DataPager x:Name="DataPagerSpecialization" toolkit:DockPanel.Dock="Bottom" 
+                                                      Source="{Binding}" NumericButtonCount="2" AutoEllipsis="False" IsTotalItemCountFixed="True"   />
+                                                <sdk:DataGrid  x:Name="dgSpecialization" VerticalAlignment="Stretch" SelectionChanged="dgSpecialization_SelectionChanged" ItemsSource="{Binding}" AutoGenerateColumns="False"  VerticalScrollBarVisibility="Visible" >
+                                                    <sdk:DataGrid.Columns>
+                                                        <sdk:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Header="Specialization" Binding="{Binding StrGroup}" />
+
+                                                        <sdk:DataGridTemplateColumn Header="Select">
+                                                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <CheckBox x:Name="chkSpecSubSpecialization" IsChecked="{Binding SelectSubSpecialization, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" Click="chkSpecSubSpecialization_Click"></CheckBox>
+                                                                </DataTemplate>
+                                                            </sdk:DataGridTemplateColumn.CellTemplate>
+                                                        </sdk:DataGridTemplateColumn>
+
+                                                        <sdk:DataGridTextColumn IsReadOnly="True" Header="SubSpecialization" Binding="{Binding SubSpecializationName}" />
+                                                    </sdk:DataGrid.Columns>
+                                                </sdk:DataGrid>
+                                            </toolkit:DockPanel>
+                                        </Border>
+                                        <Border Grid.Column="1" Grid.Row="1" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                            <toolkit:DockPanel toolkit:DockPanel.Dock="top" Grid.Column="1" Margin="2">
+                                                <Border Grid.Column="1" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                    <ContentControl VerticalAlignment="Center" Content="List of SubSpecialization" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch" />
+                                                </Border>
+                                                <ScrollViewer Grid.Row="1" Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+                                                    <sdk:DataGrid  x:Name="dgSubSpecialization" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserSortColumns="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                                        <data:DataGrid.Columns>
+                                                            <data:DataGridTemplateColumn Header="Select" Visibility="Collapsed">
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <CheckBox x:Name="chkSubSpecialization" IsChecked="{Binding Status,Mode=TwoWay}" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="Auto" Click="chkSubSpecialization_Click"></CheckBox>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTextColumn IsReadOnly="True" Binding="{Binding SubSpecializationName}"  Header="SubSpecialization" ></data:DataGridTextColumn>
+
+                                                            <data:DataGridTemplateColumn Header="Amount/Percent">
+                                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                                    <DataTemplate >
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <RadioButton Margin="2" Content="Amt" x:Name="RdoAmt"  IsChecked="{Binding IsAmountRate,Mode=TwoWay}" ></RadioButton>
+                                                                            <RadioButton Margin="2" Content="Pct" x:Name="RdoPer"  IsChecked="{Binding IsPercentageRate,Mode=TwoWay}" ></RadioButton>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <!--<data:DataGridTemplateColumn Header="Amount/Percent" Width="100" >
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbAmtOrPct" IsEnabled="True" SelectedValue="{Binding SelectedAmtOrPct.ID,Mode=TwoWay}" SelectedItem="{Binding SelectedAmtOrPct,Mode=TwoWay}" ItemsSource="{Binding AmtOrPctList,Mode=TwoWay}" SelectedValuePath="ID" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                                    </inputcombo:AutoCompleteComboBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>-->
+
+
+                                                            <!--<data:DataGridTemplateColumn Header="Rate">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBox x:Name="txtRate" Width="80" TextAlignment="Right" LostFocus="txtRate_LostFocus" TextChanged="txtRate_TextChanged"  KeyDown="txtRate_KeyDown" Text="{Binding SharePercentage, Mode=TwoWay}" MaxLength="15"></TextBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>-->
+
+                                                            <data:DataGridTextColumn Width="100" Binding="{Binding SharePercentage, StringFormat=0.00, Mode=TwoWay}"  Header="Rate" >
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                            </data:DataGridTextColumn>
+
+                                                            <!--<data:DataGridTemplateColumn Header="Percent/Amount">
+                                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                                <DataTemplate>
+                                                                    <TextBlock Text="{Binding fdfd , Mode=TwoWay }" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbRateIn" IsEnabled="True" SelectedValue="{Binding gfg, Mode=TwoWay}" SelectedItem="{Binding SelectedDoctor,Mode=TwoWay}" ItemsSource="{Binding Doctor, Mode=TwoWay}" SelectedValuePath="ID" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                                    </inputcombo:AutoCompleteComboBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>-->
+
+                                                            <data:DataGridTemplateColumn Header="Operation Type">
+                                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                                    <DataTemplate >
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <RadioButton Margin="2" Content="Add" x:Name="RdoAdd"  IsChecked="{Binding IsAddition,  Mode=TwoWay}" ></RadioButton>
+                                                                            <RadioButton Margin="2" Content="Subtarct" x:Name="RdoRemove"  IsChecked="{Binding IsSubtaction,Mode=TwoWay}" ></RadioButton>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <!--<data:DataGridTemplateColumn Header="Operation Type" Width="100" >
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbRateIn" IsEnabled="True" SelectedValue="{Binding SelectedOpType.ID,Mode=TwoWay}" SelectedItem="{Binding SelectedOpType,Mode=TwoWay}" ItemsSource="{Binding OpTpe,Mode=TwoWay}" SelectedValuePath="ID" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                                    </inputcombo:AutoCompleteComboBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>-->
+
+                                                            <!--<data:DataGridTemplateColumn Header="Operation Type">
+                                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                                <DataTemplate>
+                                                                    <TextBlock Text="{Binding stOperationType.Description , Mode=TwoWay }" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                <DataTemplate>
+                                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbRateIn" SelectedValue="{Binding SelectedOpType.ID, Mode=TwoWay}" SelectedItem="{Binding SelectedOpType,Mode=TwoWay}" ItemsSource="{Binding OpTpe, Mode=TwoWay}" SelectedValuePath="ID" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                                    </inputcombo:AutoCompleteComboBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        </data:DataGridTemplateColumn>-->
+
+                                                            <data:DataGridTemplateColumn Header="Delete">
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton VerticalAlignment="Center" Foreground="Red" HorizontalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click="cmdDeleteSubSpecialization_Click"  x:Name="cmdDeleteSubSpecialization" ToolTipService.ToolTip="Delete Selected SuSpecialization"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                        </data:DataGrid.Columns>
+                                                    </sdk:DataGrid>
+                                                </ScrollViewer>
+                                            </toolkit:DockPanel>
+                                        </Border>
+                                    </Grid>
+                                </Grp:GroupBox>
+                            </controlsToolkit:DockPanel>
+                        </sdk1:TabItem>
+                    </sdk1:TabControl>
+
+                    <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto" ></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="lblRemark" Text="Remark" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="4" ></TextBlock>
+                        <TextBox TabIndex="0"  Grid.Row="0" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="625" TextWrapping="Wrap" Height="40" x:Name="txtRemark"  AcceptsReturn="True" Grid.Column="1"  Margin="4" MaxLength="500"/>
+                        <CheckBox x:Name="chkIsApplicable" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4" Grid.Column="2" Grid.Row="0" IsChecked="True" IsEnabled="False" Content="Effective Date" Click="chkIsApplicable_Click" ></CheckBox>
+                        <controls:DatePicker Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Left"  SelectedDateChanged="dpEffectiveDate_SelectedDateChanged" TabIndex="1" SelectedDate="{Binding EffectiveDate,Mode=TwoWay}" x:Name="dpEffectiveDate" Margin="4" Grid.Column="3" Grid.Row="0"/>
+                        <CheckBox x:Name="chkFreeze" Margin="4" Grid.Column="4" Grid.Row="0" Content="Is Freeze" Background="Red" Foreground="Red" TabIndex="2" HorizontalAlignment="Right" VerticalAlignment="Center"></CheckBox>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </toolkit:DockPanel>
+    </Grid>
+</UserControl>

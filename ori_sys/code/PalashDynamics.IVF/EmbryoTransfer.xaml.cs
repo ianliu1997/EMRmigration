@@ -1,0 +1,1288 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using PalashDynamics.ValueObjects.Patient;
+using System.Windows.Controls.Primitives;
+using PalashDynamics.ValueObjects.Master;
+using PalashDynamics.ValueObjects;
+using PalashDynamics.Service.PalashTestServiceReference;
+using PalashDynamics.ValueObjects.IVFPlanTherapy;
+using PalashDynamics.UserControls;
+using PalashDynamics.Controls;
+using System.IO;
+using PalashDynamics.Service.DataTemplateHttpsServiceRef;
+using System.Windows.Browser;
+using MessageBoxControl;
+using System.Collections.ObjectModel;
+using PalashDynamics.Animations;
+using PalashDynamics.IVF.PatientList;
+using CIMS;
+using System.Windows.Media.Imaging;
+using DataDrivenApplication.Forms;
+namespace PalashDynamics.IVF
+{
+    public partial class EmbryoTransfer : UserControl,IInitiateCIMS
+    {
+
+        #region Variable
+        WaitIndicator wait = new WaitIndicator();
+        public bool IsPatientExist;
+        System.Collections.ObjectModel.ObservableCollection<string> AttachedFileNameList = new System.Collections.ObjectModel.ObservableCollection<string>();
+        ListBox lstFUBox;
+   
+        #endregion
+
+        #region Properties
+        public bool IsExpendedWindow { get; set; }
+        public string Impression { get; set; }
+        public Boolean IsEdit { get; set; }
+        public Int64 ID { get; set; }
+        public Int64 UnitID { get; set; }
+
+        private ObservableCollection<ETDetailsVO> _ETDetails = new ObservableCollection<ETDetailsVO>();
+        public ObservableCollection<ETDetailsVO> ETDetails
+        {
+            get { return _ETDetails; }
+            set { _ETDetails = value; }
+        }
+
+
+        private List<FileUpload> _FileUpLoadList = new List<FileUpload>();
+        public List<FileUpload> FileUpLoadList
+        {
+            get
+            {
+                return _FileUpLoadList;
+            }
+            set
+            {
+                _FileUpLoadList = value;
+            }
+        }
+        private clsCoupleVO _CoupleDetails = new clsCoupleVO();
+        public clsCoupleVO CoupleDetails
+        {
+            get
+            {
+                return _CoupleDetails;
+            }
+            set
+            {
+                _CoupleDetails = value;
+            }
+        }
+       
+        private List<MasterListItem> _Grade = new List<MasterListItem>();
+        public List<MasterListItem> Grade
+        {
+            get
+            {
+                return _Grade;
+            }
+            set
+            {
+                _Grade = value;
+            }
+        }
+
+      
+       
+        private List<MasterListItem> _CellStage = new List<MasterListItem>();
+        public List<MasterListItem> CellStage
+        {
+            get
+            {
+                return _CellStage;
+            }
+            set
+            {
+                _CellStage = value;
+            }
+        }
+
+
+        #endregion  
+
+        #region Validation
+        public Boolean Validation()
+        {
+            if (dtETDate.SelectedDate == null)
+            {
+                dtETDate.SetValidation("Please Select ET Date");
+                dtETDate.RaiseValidationError();
+                dtETDate.Focus();
+                return false;
+            }
+            else if (txtTime.Value == null)
+            {
+                dtETDate.ClearValidationError();
+                txtTime.SetValidation("Please Select ET Time");
+                txtTime.RaiseValidationError();
+                txtTime.Focus();
+                return false;
+            }
+            else if (cmbEmbryologist.SelectedItem ==null || ((MasterListItem)cmbEmbryologist.SelectedItem).ID==0)
+            {
+                dtETDate.ClearValidationError();
+                txtTime.ClearValidationError();
+                cmbEmbryologist.TextBox.SetValidation("Please Select Embryologist");
+                cmbEmbryologist.TextBox.RaiseValidationError();
+                cmbEmbryologist.Focus();
+                return false;
+            }
+            else if (cmbAssistantEmbryologist.SelectedItem == null || ((MasterListItem)cmbAssistantEmbryologist.SelectedItem).ID == 0)
+            {
+                dtETDate.ClearValidationError();
+                txtTime.ClearValidationError();
+                cmbEmbryologist.TextBox.ClearValidationError();
+                cmbAssistantEmbryologist.TextBox.SetValidation("Please Select Assistant Embryologist");
+                cmbAssistantEmbryologist.TextBox.RaiseValidationError();
+                cmbAssistantEmbryologist.Focus();
+                return false;
+            }
+
+            //else if (cmbAnesthetist.SelectedItem == null || ((MasterListItem)cmbAnesthetist.SelectedItem).ID == 0)
+            //{
+            //    dtETDate.ClearValidationError();
+            //    txtTime.ClearValidationError();
+            //    cmbEmbryologist.TextBox.ClearValidationError();
+            //    cmbAssistantEmbryologist.TextBox.ClearValidationError();
+            //    cmbAnesthetist.TextBox.SetValidation("Please Select Anesthetist");
+            //    cmbAnesthetist.TextBox.RaiseValidationError();
+            //    cmbAnesthetist.Focus();
+            //    return false;
+            //}
+            //else if (cmbAssistantAnesthetist.SelectedItem == null || ((MasterListItem)cmbAssistantAnesthetist.SelectedItem).ID == 0)
+            //{
+            //    dtETDate.ClearValidationError();
+            //    txtTime.ClearValidationError();
+            //    cmbEmbryologist.TextBox.ClearValidationError();
+            //    cmbAssistantEmbryologist.TextBox.ClearValidationError();
+            //    cmbAnesthetist.TextBox.ClearValidationError();
+            //    cmbAssistantAnesthetist.TextBox.SetValidation("Please Select Assistant Anesthetist");
+            //    cmbAssistantAnesthetist.TextBox.RaiseValidationError();
+            //    cmbAssistantAnesthetist.Focus();
+            //    return false;
+            //}
+         
+
+            else if (ETDetails.Count <= 0)
+            {
+                dtETDate.ClearValidationError();
+                txtTime.ClearValidationError();
+                cmbEmbryologist.TextBox.ClearValidationError();
+                cmbAssistantEmbryologist.TextBox.ClearValidationError();
+                //cmbAnesthetist.TextBox.ClearValidationError();
+                //cmbAssistantAnesthetist.TextBox.ClearValidationError();
+
+                MessageBoxControl.MessageBoxChildWindow msgW1 =
+                               new MessageBoxControl.MessageBoxChildWindow("Palash", "ET Details Data Grid Cannot Be Empty", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Error);
+                msgW1.Show();
+                return false;
+            }
+            else if (cmbCatheterType.SelectedItem==null || ((MasterListItem)cmbCatheterType.SelectedItem).ID==0)
+            {
+                dtETDate.ClearValidationError();
+                txtTime.ClearValidationError();
+                cmbEmbryologist.TextBox.ClearValidationError();
+                cmbAssistantEmbryologist.TextBox.ClearValidationError();
+                //cmbAnesthetist.TextBox.ClearValidationError();
+                //cmbAssistantAnesthetist.TextBox.ClearValidationError();
+                cmbCatheterType.TextBox.SetValidation("Please Select Catheter Type");
+                cmbCatheterType.TextBox.RaiseValidationError();
+                cmbCatheterType.Focus();
+                
+                return false;
+            }
+            else if ((ChkIsDiificulty.IsChecked == true) && (cmbDifficultyType.SelectedItem == null || ((MasterListItem)cmbDifficultyType.SelectedItem).ID == 0))
+            {
+                dtETDate.ClearValidationError();
+                txtTime.ClearValidationError();
+                cmbEmbryologist.TextBox.ClearValidationError();
+                cmbAssistantEmbryologist.TextBox.ClearValidationError();
+                //cmbAnesthetist.TextBox.ClearValidationError();
+                //cmbAssistantAnesthetist.TextBox.ClearValidationError();
+                cmbCatheterType.TextBox.ClearValidationError();
+                cmbDifficultyType.TextBox.SetValidation("Please Select Difficulty Type");
+                cmbDifficultyType.TextBox.RaiseValidationError();
+                cmbDifficultyType.Focus();
+
+                return false;
+            }
+            else
+            {
+                dtETDate.ClearValidationError();
+                txtTime.ClearValidationError();
+                cmbEmbryologist.TextBox.ClearValidationError();
+                cmbAssistantEmbryologist.TextBox.ClearValidationError();
+                //cmbAnesthetist.TextBox.ClearValidationError();
+                //cmbAssistantAnesthetist.TextBox.ClearValidationError();
+                cmbCatheterType.TextBox.ClearValidationError();
+                cmbCatheterType.ClearValidationError();
+                return true;
+            }
+
+        }
+        #endregion
+
+        #region Constructor
+        public EmbryoTransfer()
+        {
+            try
+            {
+                InitializeComponent();
+                this.Unloaded += new RoutedEventHandler(EmbryoTransfer_Unloaded);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        } 
+        #endregion
+
+        #region Unloaded Event
+
+        void EmbryoTransfer_Unloaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Uri address = new Uri(Application.Current.Host.Source, "../EMR/DataTemplateHttpsService.svc"); // this url will work both in dev and after deploy
+                DataTemplateHttpsServiceClient client = new DataTemplateHttpsServiceClient("BasicHttpBinding_DataTemplateHttpsService", address.AbsoluteUri);
+                client.GlobalDeleteFileCompleted += (s1, args1) =>
+                {
+                    if (args1.Error == null)
+                    {
+
+                    }
+                };
+                client.GlobalDeleteFileAsync("../UserUploadedFilesByTemplateTool", AttachedFileNameList);
+            }
+            catch (Exception Exception) { }
+        }
+
+        #endregion
+
+        #region Loaded Event
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!IsExpendedWindow)
+            {
+                try
+                {
+                    if (IsPatientExist == false)
+                    {
+                        ((IApplicationConfiguration)App.Current).SelectedPatient = new clsPatientGeneralVO();
+                        ((IApplicationConfiguration)App.Current).OpenMainContent("CIMS.Forms.PatientList");
+                    }
+                    else
+                    {
+                        fillDoctor();
+                        fillPattern();
+                        IsExpendedWindow = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+          
+           
+        }
+
+        #endregion
+
+        #region Check Patient Is Selected/Not
+        public void Initiate(string Mode)
+        {
+            switch (Mode.ToUpper())
+            {
+                case "NEW":
+
+                    if (((IApplicationConfiguration)App.Current).SelectedPatient == null)
+                    {
+                        //System.Windows.Browser.HtmlPage.Window.Alert("Please select the Patient.");
+                        MessageBoxControl.MessageBoxChildWindow msgW1 =
+                                  new MessageBoxControl.MessageBoxChildWindow("Palash", "Please select the Patient.", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                        msgW1.Show();
+                        IsPatientExist = false;
+                        return;
+                    }
+
+                    if (((IApplicationConfiguration)App.Current).SelectedPatient.PatientID == 0)
+                    {
+                        MessageBoxControl.MessageBoxChildWindow msgW1 =
+                               new MessageBoxControl.MessageBoxChildWindow("Palash", "Please select the Patient.", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                        msgW1.Show();
+                        IsPatientExist = false;
+                        return;
+                    }
+                    IsPatientExist = true;
+                     
+                    UserControl rootPage = Application.Current.RootVisual as UserControl;
+                    TextBlock mElement = (TextBlock)rootPage.FindName("SampleSubHeader");
+                    mElement.Text = " : " + ((clsPatientGeneralVO)((IApplicationConfiguration)App.Current).SelectedPatient).FirstName + " " + ((clsPatientGeneralVO)((IApplicationConfiguration)App.Current).SelectedPatient).MiddleName + " " + ((clsPatientGeneralVO)((IApplicationConfiguration)App.Current).SelectedPatient).LastName;
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+
+        #endregion
+
+        #region Fill ET Details
+
+        public void fillETDetails()
+        {
+            try
+            {
+
+                clsGetETDetailsBizActionVO BizAction = new clsGetETDetailsBizActionVO();
+                BizAction.ET = new ETVO();
+                BizAction.IsEdit = IsEdit;
+                BizAction.ID = ID;
+                BizAction.UnitID = UnitID;
+                BizAction.FromID = (int)IVFLabWorkForm.ET;
+                if (CoupleDetails != null)
+                {
+                    BizAction.CoupleID = CoupleDetails.CoupleId;
+                    BizAction.CoupleUintID = CoupleDetails.CoupleUnitId;
+                }
+
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+
+                client.ProcessCompleted += (s, arg) =>
+                {
+                    if (arg.Error == null && arg.Result != null)
+                    {
+                        if (IsEdit == true)
+                        {
+                            dtETDate.SelectedDate = ((clsGetETDetailsBizActionVO)arg.Result).ET.Date;
+                            txtTime.Value = ((clsGetETDetailsBizActionVO)arg.Result).ET.Date;
+                            cmbAnesthetist.SelectedValue=(long)((clsGetETDetailsBizActionVO)arg.Result).ET.AnasthesistID;
+                            cmbAssistantAnesthetist.SelectedValue=((clsGetETDetailsBizActionVO)arg.Result).ET.AssAnasthesistID;
+                            cmbEmbryologist.SelectedValue=((clsGetETDetailsBizActionVO)arg.Result).ET.EmbryologistID;
+                            cmbAssistantEmbryologist.SelectedValue = ((clsGetETDetailsBizActionVO)arg.Result).ET.AssEmbryologistID;
+
+                            /* Added By Sudhir on 14/09/2013 */
+                            txtThickNess.Text = ((clsGetETDetailsBizActionVO)arg.Result).ET.EndometriumThickness.ToString();
+                            cmbPattern.SelectedValue = ((clsGetETDetailsBizActionVO)arg.Result).ET.ETPattern;
+                            //txtClrDoppler.Text = ((clsGetETDetailsBizActionVO)arg.Result).ET.ColorDopper;
+
+                            //By Anjali
+                            chkUterinePI.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsUterinePI;
+                            chkUterineRI.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsUterineRI;
+                            chkUterineSD.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsUterineSD;
+                            chkEndometerialPI.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsEndometerialPI;
+                            chkEndometerialRI.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsEndometerialRI;
+                            chkEndometerialSD.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsEndometerialSD;
+
+                            cmbCatheterType.SelectedValue = ((clsGetETDetailsBizActionVO)arg.Result).ET.CatheterTypeID;
+                            cmbDifficultyType.SelectedValue = ((clsGetETDetailsBizActionVO)arg.Result).ET.DifficultyTypeID;
+                            ChkIsDiificulty.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.Difficulty;
+                            if (ChkIsDiificulty.IsChecked == true)
+                                cmbDifficultyType.Visibility = Visibility.Visible;
+                            chkTreatment.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsTreatmentUnderGA;
+                            chkIsFreezed.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.IsFreezed;
+                            chkTenaculumUsed.IsChecked = ((clsGetETDetailsBizActionVO)arg.Result).ET.TenaculumUsed;
+                            txtDistanceFromFundus.Text = Convert.ToString(((clsGetETDetailsBizActionVO)arg.Result).ET.DistanceFromFundus);
+                            if (chkIsFreezed.IsChecked == true)
+                            {
+                                CmdSave.IsEnabled = false;
+                            }
+                        }
+
+                        FileUpLoadList = ((clsGetETDetailsBizActionVO)arg.Result).ET.FUSetting;
+                        MasterListItem Gr = new MasterListItem();
+                        
+                        MasterListItem CS = new MasterListItem(); ;
+                        for (int i = 0; i < ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails.Count; i++)
+                        {
+                            if (!string.IsNullOrEmpty(((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].Grade))
+                            {
+                                if (Convert.ToInt64(((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].Grade) > 0)
+                                {
+                                    Gr = Grade.FirstOrDefault(p => p.ID == Convert.ToInt64(((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].Grade));
+                                }
+                                else
+                                {
+                                    Gr = Grade.FirstOrDefault(p => p.ID ==0);
+                                }
+                            }
+                            
+                            if (!string.IsNullOrEmpty(((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].FertilizationStage))
+                            {
+                                if (Convert.ToInt64(((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].FertilizationStage) > 0)
+                                {
+                                    CS = CellStage.FirstOrDefault(p => p.ID == Convert.ToInt64(((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].FertilizationStage));
+                                }
+                                else
+                                {
+                                    CS = CellStage.FirstOrDefault(p => p.ID == 0);
+                                }
+                            }
+
+                           if (Gr != null)
+                            {
+                                if (Gr.ID > 0)
+                                {
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].Grade = Gr.Description;
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].GradeID = Gr.ID;
+                                }
+                                else
+                                {
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].Grade = "";
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].GradeID = Gr.ID;
+                                }
+                            }
+                             if (CS != null)
+                            {
+                                if (CS.ID > 0)
+                                {
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].FertilizationStage = CS.Description;
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].FertilizationStageID = CS.ID;
+                                }
+                                else
+                                {
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].FertilizationStage = "";
+                                    ((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i].FertilizationStageID = CS.ID;
+                                }
+
+                            }
+
+                             ETDetails.Add(((clsGetETDetailsBizActionVO)arg.Result).ET.ETDetails[i]);
+                             
+                            wait.Close();
+                        }
+
+
+
+                        dgETDetilsGrid.ItemsSource = ETDetails;
+                        LoadFURepeaterControl();
+                        wait.Close();
+                    }
+                    wait.Close();
+                };
+                client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+                client.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                wait.Close();
+            }
+        }
+
+        #endregion
+
+        #region Fill Pattern
+
+        /*Added By Sudhir on 14/09/2013 As Mr. Bhushan told */
+        private void fillPattern()
+        {
+            clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+            BizAction.MasterTable = MasterTableNameList.M_IVF_ETPattern;
+            BizAction.Parent = new KeyValue();
+            BizAction.Parent.Key = "1";
+            BizAction.Parent.Value = "Status";
+            BizAction.MasterList = new List<MasterListItem>();
+            Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc");
+            PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+            client.ProcessCompleted += (s, args) =>
+            {
+
+                if (args.Error == null && args.Result != null)
+                {
+
+                    List<MasterListItem> objList = new List<MasterListItem>();
+
+                    objList.Add(new MasterListItem(0, "-- Select --"));
+                    objList.AddRange(((clsGetMasterListBizActionVO)args.Result).MasterList);
+
+                    cmbPattern.ItemsSource = null;
+                    cmbPattern.ItemsSource = objList;
+                    cmbPattern.SelectedValue = (long)0;
+                }
+            };
+
+            client.ProcessAsync(BizAction, new clsUserVO());
+            client.CloseAsync();
+        }
+        #endregion
+
+        #region Fill Master Items
+
+        private void fillDoctor()
+        {
+            try
+            {
+                wait.Show();
+                clsGetDoctorDepartmentDetailsBizActionVO BizAction = new clsGetDoctorDepartmentDetailsBizActionVO();
+                BizAction.MasterList = new List<MasterListItem>();
+                BizAction.UnitId = ((IApplicationConfiguration)App.Current).CurrentUser.UserLoginInfo.UnitId;
+
+                //BizAction.UnitId = 0;
+                BizAction.DepartmentId = 0;
+                BizAction.SpecializationID = 0;
+
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+
+                client.ProcessCompleted += (s, arg) =>
+                {
+                    if (arg.Error == null && arg.Result != null)
+                    {
+                        List<MasterListItem> objList = new List<MasterListItem>();
+                        objList.Add(new MasterListItem(0, "-- Select --"));
+                        objList.AddRange(((clsGetDoctorDepartmentDetailsBizActionVO)arg.Result).MasterList);
+
+                        cmbEmbryologist.ItemsSource = null;
+                        cmbEmbryologist.ItemsSource = objList;
+                        cmbEmbryologist.SelectedValue = (long)0;
+                        
+                        cmbAnesthetist.ItemsSource = null;
+                        cmbAnesthetist.ItemsSource = objList;
+                        cmbAnesthetist.SelectedValue = (long)0;
+                        
+                        cmbAssistantAnesthetist.ItemsSource = null;
+                        cmbAssistantAnesthetist.ItemsSource = objList;
+                        cmbAssistantAnesthetist.SelectedValue = (long)0;
+                        
+                        cmbAssistantEmbryologist.ItemsSource = null;
+                        cmbAssistantEmbryologist.ItemsSource = objList;
+                        cmbAssistantEmbryologist.SelectedValue = (long)0;
+                       
+                        if (this.DataContext != null)
+                        {
+                            cmbEmbryologist.SelectedValue = ((clsFemaleLabDay0VO)this.DataContext).EmbryologistID;
+                            cmbAnesthetist.SelectedValue = ((clsFemaleLabDay0VO)this.DataContext).AnesthetistID;
+                        }
+
+                        fillCatheterType();
+
+                    }
+                };
+                client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+                client.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+            }
+        } 
+       
+        private void fillCatheterType()
+        {
+            clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+            BizAction.MasterTable = MasterTableNameList.M_IVF_CatheterTypeMaster;
+            BizAction.Parent = new KeyValue();
+            BizAction.Parent.Key = "1";
+            BizAction.Parent.Value = "Status";
+            BizAction.MasterList = new List<MasterListItem>();
+            Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc");
+            PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+            client.ProcessCompleted += (s, args) =>
+            {
+                if (args.Error == null && args.Result != null)
+                {
+                    List<MasterListItem> objList = new List<MasterListItem>();
+
+                    objList.Add(new MasterListItem(0, "-- Select --"));
+                    objList.AddRange(((clsGetMasterListBizActionVO)args.Result).MasterList);
+
+                    cmbCatheterType.ItemsSource = null;
+                    cmbCatheterType.ItemsSource = objList;
+                    cmbCatheterType.SelectedValue =(long)0;
+
+                    if (this.DataContext != null)
+                    {
+                        cmbCatheterType.SelectedValue = ((clsEmbryoTransferVO)this.DataContext).CatheterTypeID;
+                    }
+                    fillDifficultyType();
+                }
+            };
+            client.ProcessAsync(BizAction, new clsUserVO());
+            client.CloseAsync();
+        }
+
+        private void fillDifficultyType()
+        {
+            clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+            BizAction.MasterTable = MasterTableNameList.M_IVF_DifficultyTypeMaster;
+            BizAction.Parent = new KeyValue();
+            BizAction.Parent.Key = "1";
+            BizAction.Parent.Value = "Status";
+            BizAction.MasterList = new List<MasterListItem>();
+            Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc");
+            PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+            client.ProcessCompleted += (s, args) =>
+            {
+                if (args.Error == null && args.Result != null)
+                {
+                    List<MasterListItem> objList = new List<MasterListItem>();
+
+                    objList.Add(new MasterListItem(0, "-- Select --"));
+                    objList.AddRange(((clsGetMasterListBizActionVO)args.Result).MasterList);
+
+                    cmbDifficultyType.ItemsSource = null;
+                    cmbDifficultyType.ItemsSource = objList;
+                    cmbDifficultyType.SelectedValue = (long)0;
+
+                    if (this.DataContext != null)
+                    {
+                        cmbDifficultyType.SelectedValue = ((clsEmbryoTransferVO)this.DataContext).DifficultyTypeID;
+                    }
+                    fillGrade();
+                }
+            };
+
+            client.ProcessAsync(BizAction, new clsUserVO());
+            client.CloseAsync();
+        }
+
+        private void fillGrade()
+        {
+            try
+            {
+                clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+                BizAction.MasterTable = MasterTableNameList.M_IVF_GradeMaster;
+                BizAction.Parent = new KeyValue();
+                BizAction.Parent.Key = "1";
+                BizAction.Parent.Value = "Status";
+                BizAction.MasterList = new List<MasterListItem>();
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc");
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+                client.ProcessCompleted += (s, args) =>
+                {
+                    if (args.Error == null && args.Result != null)
+                    {
+                        ((clsGetMasterListBizActionVO)args.Result).MasterList.Insert(0, new MasterListItem(0, "--Select--"));
+                        Grade = ((clsGetMasterListBizActionVO)args.Result).MasterList;
+                        
+                    }
+
+                    if (this.DataContext != null)
+                    {
+                        //cmbSrcTreatmentPlan.SelectedValue = ((clsVO)this.DataContext).;
+                    }
+                    FillCellStage();
+                };
+
+                client.ProcessAsync(BizAction, new clsUserVO());
+                client.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                wait.Close();
+            }
+        }
+
+        private void FillCellStage()
+        {
+            try
+            {
+                clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+                BizAction.MasterTable = MasterTableNameList.M_IVF_FertilizationStageMaster;
+                BizAction.Parent = new KeyValue();
+                BizAction.Parent.Key = "1";
+                BizAction.Parent.Value = "Status";
+                BizAction.MasterList = new List<MasterListItem>();
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc");
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+                client.ProcessCompleted += (s, args) =>
+                {
+                    if (args.Error == null && args.Result != null)
+                    {
+                        ((clsGetMasterListBizActionVO)args.Result).MasterList.Insert(0, new MasterListItem(0, "--Select--"));
+                        CellStage = ((clsGetMasterListBizActionVO)args.Result).MasterList;
+                        fillCoupleDetails();
+                    }
+
+
+
+                };
+
+                client.ProcessAsync(BizAction, new clsUserVO());
+                client.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                wait.Close();
+            }
+        }
+        #endregion
+
+        #region Save Event
+
+        private void CmdSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (Validation())
+            {
+                try
+                {
+                    string msgTitle = "Palash";
+                    string msgText = "Are You Sure You Want To Save ET Details?";
+                    MessageBoxControl.MessageBoxChildWindow msgWin =
+                        new MessageBoxControl.MessageBoxChildWindow(msgTitle, msgText, MessageBoxControl.MessageBoxButtons.YesNo, MessageBoxControl.MessageBoxIcon.Question);
+
+                    msgWin.OnMessageBoxClosed += (result) =>
+                    {
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            ImpressionWindow winImp = new ImpressionWindow();
+                            winImp.Day = true;
+                            winImp.Impression = Impression;
+                            winImp.OnSaveClick += new RoutedEventHandler(winImp_OnSaveClick);
+                            winImp.Show();
+                        }
+                    };
+                    msgWin.Show();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        private void SaveVitrification()
+        {
+            try
+            {
+
+                wait.Show();
+
+                clsAddUpdateETDetailsBizActionVO BizAction = new clsAddUpdateETDetailsBizActionVO();
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy                
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+                BizAction.ET = new ETVO();
+                BizAction.ET.Impression = Impression;
+                BizAction.ID = ID;
+                BizAction.UintID = UnitID;
+                BizAction.CoupleID = CoupleDetails.CoupleId;
+                BizAction.CoupleUintID = CoupleDetails.CoupleUnitId;
+
+                if (ChkIsDiificulty.IsChecked == true)
+                {
+                    BizAction.ET.Difficulty = true;
+                    BizAction.ET.DifficultyTypeID = ((MasterListItem)cmbDifficultyType.SelectedItem).ID;
+                }
+                else
+                {
+                    BizAction.ET.Difficulty = false;
+                }
+                BizAction.ET.Date = dtETDate.SelectedDate.Value;
+                BizAction.ET.Date = BizAction.ET.Date.Value.Add(txtTime.Value.Value.TimeOfDay);
+                BizAction.ET.IsFreezed = (bool)chkIsFreezed.IsChecked;
+                BizAction.ET.AnasthesistID = ((MasterListItem)cmbAnesthetist.SelectedItem).ID;
+                BizAction.ET.AssAnasthesistID = ((MasterListItem)cmbAssistantAnesthetist.SelectedItem).ID;
+                BizAction.ET.AssEmbryologistID = ((MasterListItem)cmbAssistantEmbryologist.SelectedItem).ID;
+                BizAction.ET.EmbryologistID = ((MasterListItem)cmbEmbryologist.SelectedItem).ID;
+
+                /* Added By Sudhir on 14/09/2013 */
+                BizAction.ET.ETPattern = ((MasterListItem)cmbPattern.SelectedItem).ID;
+                BizAction.ET.EndometriumThickness = Convert.ToInt64(txtThickNess.Text);
+                //BizAction.ET.ColorDopper = Convert.ToString(txtClrDoppler.Text);
+
+                //By Anjali
+                BizAction.ET.IsEndometerialPI = (bool)chkEndometerialPI.IsChecked;
+                BizAction.ET.IsEndometerialRI = (bool)chkEndometerialRI.IsChecked;
+                BizAction.ET.IsEndometerialSD = (bool)chkEndometerialSD.IsChecked;
+                BizAction.ET.IsUterinePI = (bool)chkUterinePI.IsChecked;
+                BizAction.ET.IsUterineRI = (bool)chkUterineRI.IsChecked;
+                BizAction.ET.IsUterineSD = (bool)chkUterineSD.IsChecked;
+
+
+                BizAction.ET.CatheterTypeID = ((MasterListItem)cmbCatheterType.SelectedItem).ID;
+                BizAction.ET.IsTreatmentUnderGA =(bool) chkTreatment.IsChecked;
+                BizAction.ET.TenaculumUsed = Convert.ToBoolean(chkTenaculumUsed.IsChecked);
+                BizAction.ET.DistanceFromFundus = txtDistanceFromFundus.Text;
+              
+                BizAction.ET.ETDetails = ((List<ETDetailsVO>)ETDetails.ToList());
+                BizAction.ET.FUSetting = FileUpLoadList;
+                #region Service Call (Check Validation)
+
+                client.ProcessCompleted += (s, args) =>
+                {
+                    if (args.Error == null && args.Result != null)
+                    {
+                        string txtmsg = "";
+                        if (IsEdit == true)
+                        {
+                            txtmsg = "ET Details Updated Successfully";
+                        }
+                        else
+                        {
+                            txtmsg = "ET Details Saved Successfully";
+                        }
+
+                        MessageBoxControl.MessageBoxChildWindow msgW1 =
+                                    new MessageBoxControl.MessageBoxChildWindow("Palash", txtmsg, MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                        msgW1.Show();
+                        LabDaysSummary LabSumm = new LabDaysSummary();
+                        LabSumm.IsPatientExist = true;
+                        ((IApplicationConfiguration)App.Current).OpenMainContent(LabSumm);
+                        wait.Close();
+
+                    }
+                    else
+                    {
+                        wait.Close();
+                    }
+                };
+                client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+                client.CloseAsync();
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                wait.Close();
+            }
+
+        }
+
+        void winImp_OnSaveClick(object sender, RoutedEventArgs e)
+        {
+            ImpressionWindow ObjImp = (ImpressionWindow)sender;
+            Impression = ObjImp.Impression;
+            SaveVitrification();
+        }
+
+        #endregion
+
+        #region Cancel Event
+
+        private void CmdCancel_Click(object sender, RoutedEventArgs e)
+        {
+            LabDaysSummary LabSumm = new LabDaysSummary();
+            LabSumm.IsPatientExist = true;
+            ((IApplicationConfiguration)App.Current).OpenMainContent(LabSumm);
+        }
+
+        #endregion
+
+        #region CheckBox Click
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (((CheckBox)sender).IsChecked == true)
+            {
+                cmbDifficultyType.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                cmbDifficultyType.Visibility=Visibility.Collapsed;
+            }
+        }
+        #endregion
+
+        #region Fill Couple Details
+
+        private void fillCoupleDetails()
+        {
+            if (((IApplicationConfiguration)App.Current).SelectedCoupleDetails.CoupleId == 0)
+            {
+                wait.Close();
+                MessageBoxControl.MessageBoxChildWindow msgW1 =
+                     new MessageBoxControl.MessageBoxChildWindow("Palash", "ET is Only For Couple", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                msgW1.Show();
+
+                ((IApplicationConfiguration)App.Current).OpenMainContent("CIMS.Forms.PatientList");
+                
+            }
+            else
+            {
+                 clsGetCoupleDetailsBizActionVO BizAction = new clsGetCoupleDetailsBizActionVO();
+                BizAction.PatientID = ((clsPatientGeneralVO)((IApplicationConfiguration)App.Current).SelectedPatient).PatientID;
+                BizAction.PatientUnitID = (((IApplicationConfiguration)App.Current).SelectedPatient).UnitId;
+                BizAction.CoupleDetails = new clsCoupleVO();
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy                
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+                client.ProcessCompleted += (s, args) =>
+                {
+                    if (args.Error == null && args.Result != null)
+                    {
+                        BizAction.CoupleDetails.MalePatient = ((clsGetCoupleDetailsBizActionVO)args.Result).CoupleDetails.MalePatient;
+                        BizAction.CoupleDetails.FemalePatient = ((clsGetCoupleDetailsBizActionVO)args.Result).CoupleDetails.FemalePatient;
+                        CoupleDetails.MalePatient = new clsPatientGeneralVO();
+                        CoupleDetails.FemalePatient = new clsPatientGeneralVO();
+                        CoupleDetails = ((clsGetCoupleDetailsBizActionVO)args.Result).CoupleDetails;
+                        if (CoupleDetails.CoupleId == 0)
+                        {
+                            MessageBoxControl.MessageBoxChildWindow msgW1 =
+                                 new MessageBoxControl.MessageBoxChildWindow("Palash", "Cannot Create Therapy, Therapy is Only For Couple", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                            msgW1.Show();
+                            ((IApplicationConfiguration)App.Current).OpenMainContent("CIMS.Forms.PatientList");
+                        }
+                        else
+                        {
+                            //getEMRDetails(BizAction.CoupleDetails.FemalePatient, "F");
+                            //getEMRDetails(BizAction.CoupleDetails.MalePatient, "M");
+                            GetHeightAndWeight(BizAction.CoupleDetails);
+
+                            //added by priti
+                            if (((clsGetCoupleDetailsBizActionVO)args.Result).CoupleDetails.FemalePatient.Photo != null)
+                            {
+                                WriteableBitmap bmp = new WriteableBitmap((int)imgPhoto13.Width, (int)imgPhoto13.Height);   // Fill WriteableBitmap from byte array (format ARGB)
+                                bmp.FromByteArray(((clsGetCoupleDetailsBizActionVO)args.Result).CoupleDetails.FemalePatient.Photo);
+                                imgPhoto13.Source = bmp;
+                                imgPhoto13.Visibility = System.Windows.Visibility.Visible;
+                            }
+                            else
+                            {
+                                imgP1.Visibility = System.Windows.Visibility.Visible;
+                            }
+                            if (((clsGetCoupleDetailsBizActionVO)args.Result).CoupleDetails.MalePatient.Photo != null)
+                            {
+                                WriteableBitmap bmp = new WriteableBitmap((int)imgPhoto12.Width, (int)imgPhoto12.Height);   // Fill WriteableBitmap from byte array (format ARGB)
+                                bmp.FromByteArray(((clsGetCoupleDetailsBizActionVO)args.Result).CoupleDetails.MalePatient.Photo);
+                                imgPhoto12.Source = bmp;
+                                imgPhoto12.Visibility = System.Windows.Visibility.Visible;
+                            }
+                            else
+                            {
+                                imgP2.Visibility = System.Windows.Visibility.Visible;
+                            }
+                              fillETDetails();
+                        }
+                    }
+                    wait.Close();
+                };
+                client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+                client.CloseAsync();
+            }           
+        }
+
+        private void GetHeightAndWeight(clsCoupleVO CoupleDetails)
+        {
+            clsGetGetCoupleHeightAndWeightBizActionVO BizAction = new clsGetGetCoupleHeightAndWeightBizActionVO();
+            BizAction.CoupleDetails = new clsCoupleVO();
+            BizAction.FemalePatientID = CoupleDetails.FemalePatient.PatientID;
+            BizAction.MalePatientID = CoupleDetails.MalePatient.PatientID;
+            Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy                
+            PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+            client.ProcessCompleted += (s, args) =>
+            {
+                if (args.Error == null && args.Result != null)
+                {
+                    if (((clsGetGetCoupleHeightAndWeightBizActionVO)args.Result).CoupleDetails != null)
+                        BizAction.CoupleDetails = ((clsGetGetCoupleHeightAndWeightBizActionVO)args.Result).CoupleDetails;
+                    if (BizAction.CoupleDetails != null)
+                    {
+                        clsPatientGeneralVO FemalePatientDetails = new clsPatientGeneralVO();
+                        FemalePatientDetails = CoupleDetails.FemalePatient;
+                        FemalePatientDetails.Height = BizAction.CoupleDetails.FemalePatient.Height;
+                        FemalePatientDetails.Weight = BizAction.CoupleDetails.FemalePatient.Weight;
+                        //FemalePatientDetails.BMI = BizAction.CoupleDetails.FemalePatient.BMI;
+                        FemalePatientDetails.BMI = Convert.ToDouble(String.Format("{0:0.00}", BizAction.CoupleDetails.FemalePatient.BMI));
+                        FemalePatientDetails.Alerts = BizAction.CoupleDetails.FemalePatient.Alerts;
+                        Female.DataContext = FemalePatientDetails;
+
+                        clsPatientGeneralVO MalePatientDetails = new clsPatientGeneralVO();
+                        MalePatientDetails = CoupleDetails.MalePatient;
+                        MalePatientDetails.Height = BizAction.CoupleDetails.MalePatient.Height;
+                        MalePatientDetails.Weight = BizAction.CoupleDetails.MalePatient.Weight;
+                        //MalePatientDetails.BMI = BizAction.CoupleDetails.MalePatient.BMI;
+                        MalePatientDetails.BMI = Convert.ToDouble(String.Format("{0:0.00}", BizAction.CoupleDetails.MalePatient.BMI));
+                        MalePatientDetails.Alerts = BizAction.CoupleDetails.MalePatient.Alerts;
+                        Male.DataContext = MalePatientDetails;
+                    }
+                }
+            };
+            client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+            client.CloseAsync();
+        }
+
+        #endregion
+
+        #region Get Patient EMR Details(Height and Weight)
+
+        private void getEMRDetails(clsPatientGeneralVO PatientDetails, string Gender)
+        {
+            clsGetEMRDetailsBizActionVO BizAction = new clsGetEMRDetailsBizActionVO();
+            BizAction.PatientID = PatientDetails.PatientID;
+            BizAction.PatientUnitID = (((IApplicationConfiguration)App.Current).SelectedPatient).UnitId;
+            BizAction.TemplateID = 8;//Using For Getting Height Wight Of Patient 
+            Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy                
+            PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+            Double height = 0;
+            Double weight = 0;
+
+            client.ProcessCompleted += (s, args) =>
+            {
+                if (args.Error == null && args.Result != null)
+                {
+                    BizAction.EMRDetailsList = ((clsGetEMRDetailsBizActionVO)args.Result).EMRDetailsList;
+
+                    if (BizAction.EMRDetailsList != null || BizAction.EMRDetailsList.Count > 0)
+                    {
+                        for (int i = 0; i < BizAction.EMRDetailsList.Count; i++)
+                        {
+                            if (BizAction.EMRDetailsList[i].ControlCaption.Equals("Height"))
+                            {
+                                if (!string.IsNullOrEmpty(BizAction.EMRDetailsList[i].Value))
+                                {
+                                    height = Convert.ToDouble(BizAction.EMRDetailsList[i].Value);
+                                    if (height != 0 && weight != 0)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                            if (BizAction.EMRDetailsList[i].ControlCaption.Equals("Weight"))
+                            {
+                                if (!string.IsNullOrEmpty(BizAction.EMRDetailsList[i].Value))
+                                {
+                                    weight = Convert.ToDouble(BizAction.EMRDetailsList[i].Value);
+                                    if (height != 0 && weight != 0)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (height != 0 && weight != 0)
+                        {
+                            if (Gender.Equals("F"))
+                            {
+                                PatientDetails.Height = height;
+                                PatientDetails.Weight = weight;
+                                PatientDetails.BMI = Math.Round(CalculateBMI(height, weight), 2);
+                                PatientDetails.BMI = Convert.ToDouble(String.Format("{0:0.00}", PatientDetails.BMI));
+                                Female.DataContext = PatientDetails;
+                            }
+                            else
+                            {
+                                PatientDetails.Height = height;
+                                PatientDetails.Weight = weight;
+                                PatientDetails.BMI = Math.Round(CalculateBMI(height, weight), 2);
+                                PatientDetails.BMI = Convert.ToDouble(String.Format("{0:0.00}", PatientDetails.BMI));
+                                Male.DataContext = PatientDetails;
+                            }
+                        }
+                        else
+                        {
+                            if (Gender.Equals("F"))
+                            {
+                                Female.DataContext = PatientDetails;
+                            }
+                            else
+                            {
+                                Male.DataContext = PatientDetails;
+                            }
+                        }
+                    }
+                }
+            };
+            client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+            client.CloseAsync();
+        }
+
+        #endregion
+
+        #region Calculate BMI
+        private double CalculateBMI(Double Height, Double Weight)
+        {
+            try
+            {
+                if (Weight == 0)
+                {
+                    return 0.0;
+                }
+                else if (Height == 0)
+                {
+                    return 0.0;
+                }
+                else
+                {
+                    double weight = Convert.ToDouble(Weight);
+                    double height = Convert.ToDouble(Height);
+                    double TotalBMI = weight / height;
+                    TotalBMI = TotalBMI / height;
+                    TotalBMI = TotalBMI * 10000;
+                    return TotalBMI;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0.0;
+            }
+        }
+        #endregion
+
+        #region Upload File
+        private void LoadFURepeaterControl()
+        {
+            lstFUBox = new ListBox();
+            if (FileUpLoadList == null || FileUpLoadList.Count == 0)
+            {
+                FileUpLoadList = new List<FileUpload>();
+                FileUpLoadList.Add(new FileUpload());
+            }
+            lstFUBox.DataContext = FileUpLoadList;
+            if (FileUpLoadList != null)
+            {
+                for (int i = 0; i < FileUpLoadList.Count; i++)
+                {
+                    FileUploadRepeterControlItem FUrci = new FileUploadRepeterControlItem();
+                    FUrci.OnAddRemoveClick += new RoutedEventHandler(FUrci_OnAddRemoveClick);
+                    FUrci.OnBrowseClick += new RoutedEventHandler(FUrci_OnBrowseClick);
+                    FUrci.OnViewClick += new RoutedEventHandler(FUrci_OnViewClick);
+
+                    FileUpLoadList[i].Index = i;
+                    FileUpLoadList[i].Command = ((i == FileUpLoadList.Count - 1) ? "Add" : "Remove");
+
+                    FUrci.DataContext = FileUpLoadList[i];
+                    lstFUBox.Items.Add(FUrci);
+                }
+            }
+            Grid.SetRow(lstFUBox, 0);
+            Grid.SetColumn(lstFUBox, 0);
+            GridUploadFile.Children.Add(lstFUBox);
+        }
+        void FUrci_OnViewClick(object sender, RoutedEventArgs e)
+        {
+            if (((ValueObjects.IVFPlanTherapy.FileUpload)((HyperlinkButton)sender).DataContext).FileName != null && ((ValueObjects.IVFPlanTherapy.FileUpload)((HyperlinkButton)sender).DataContext).FileName != "")
+            {
+                if (((ValueObjects.IVFPlanTherapy.FileUpload)((HyperlinkButton)sender).DataContext).Data != null)
+                {
+                    string FullFile = "ET" + ((ValueObjects.IVFPlanTherapy.FileUpload)((HyperlinkButton)sender).DataContext).Index + ((ValueObjects.IVFPlanTherapy.FileUpload)((HyperlinkButton)sender).DataContext).FileName;
+
+                    Uri address = new Uri(Application.Current.Host.Source, "../EMR/DataTemplateHttpsService.svc"); // this url will work both in dev and after deploy
+                    DataTemplateHttpsServiceClient client = new DataTemplateHttpsServiceClient("BasicHttpBinding_DataTemplateHttpsService", address.AbsoluteUri);
+                    client.GlobalUploadFileCompleted += (s, args) =>
+                    {
+                        if (args.Error == null)
+                        {
+                            HtmlPage.Window.Invoke("GlobalOpenFile", new string[] { "UserUploadedFilesByTemplateTool/" + FullFile });
+                            AttachedFileNameList.Add(FullFile);
+                        }
+                    };
+                    client.GlobalUploadFileAsync("../UserUploadedFilesByTemplateTool", FullFile, ((ValueObjects.IVFPlanTherapy.FileUpload)((HyperlinkButton)sender).DataContext).Data);
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBoxChildWindow mgbx = new MessageBoxChildWindow("Palash", "This File Is Not Uploaded. Please Upload The File Then Click On Preview", MessageBoxButtons.Ok, MessageBoxIcon.Information);
+                mgbx.Show();
+            }
+        }
+        void FUrci_OnBrowseClick(object sender, RoutedEventArgs e)
+        {
+
+            OpenFileDialog openDialog = new OpenFileDialog();
+            if (openDialog.ShowDialog() == true)
+            {
+                ((ValueObjects.IVFPlanTherapy.FileUpload)((Button)sender).DataContext).FileName = openDialog.File.Name;
+                ((TextBox)((Grid)((Button)sender).Parent).FindName("FileName")).Text = openDialog.File.Name;
+                try
+                {
+                    using (Stream stream = openDialog.File.OpenRead())
+                    {
+                        ((ValueObjects.IVFPlanTherapy.FileUpload)((Button)sender).DataContext).Data = new byte[stream.Length];
+                        stream.Read(((ValueObjects.IVFPlanTherapy.FileUpload)((Button)sender).DataContext).Data, 0, (int)stream.Length);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string msgText = "Error While Reading File.";
+
+                    MessageBoxControl.MessageBoxChildWindow msgWindow =
+                        new MessageBoxControl.MessageBoxChildWindow("Palsh", msgText, MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                    msgWindow.Show();
+                }
+            }
+        }
+
+        void FUrci_OnAddRemoveClick(object sender, RoutedEventArgs e)
+        {
+            if (((HyperlinkButton)sender).TargetName.ToString() == "Remove")
+            {
+                FileUpLoadList.RemoveAt(((ValueObjects.IVFPlanTherapy.FileUpload)((HyperlinkButton)sender).DataContext).Index);
+            }
+            if (((HyperlinkButton)sender).TargetName.ToString() == "Add")
+            {
+                if (FileUpLoadList.Where(Items => Items.FileName == null).Any() == true)
+                {
+                    MessageBoxControl.MessageBoxChildWindow msgW13 =
+                                                           new MessageBoxControl.MessageBoxChildWindow("Palash", "Please Select File.", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Error);
+
+                    msgW13.Show();
+
+
+                }
+                else
+                {
+                    FileUpLoadList.Add(new ValueObjects.IVFPlanTherapy.FileUpload());
+                }
+            }
+            lstFUBox.Items.Clear();
+            for (int i = 0; i < FileUpLoadList.Count; i++)
+            {
+                FileUploadRepeterControlItem FUrci = new FileUploadRepeterControlItem();
+                FUrci.OnAddRemoveClick += new RoutedEventHandler(FUrci_OnAddRemoveClick);
+                FUrci.OnBrowseClick += new RoutedEventHandler(FUrci_OnBrowseClick);
+                FUrci.OnViewClick += new RoutedEventHandler(FUrci_OnViewClick);
+
+
+                FileUpLoadList[i].Index = i;
+                FileUpLoadList[i].Command = ((i == FileUpLoadList.Count - 1) ? "Add" : "Remove");
+
+                FUrci.DataContext = FileUpLoadList[i];
+                lstFUBox.Items.Add(FUrci);
+            }
+        }
+        #endregion
+
+        #region Hyperlink Click Events
+
+        private void HyperlinkButton_Click_Male(object sender, RoutedEventArgs e)
+        {
+            if (MaleAlert.Text.Trim().Length > 0)
+            {
+                frmAttention PatientAlert = new frmAttention();
+                PatientAlert.AlertsExpanded = CoupleDetails.MalePatient.Alerts;
+                PatientAlert.Show();
+            }
+            else
+            {
+                MessageBoxControl.MessageBoxChildWindow msgW1 =
+                            new MessageBoxControl.MessageBoxChildWindow("", "Attention Not Entered.", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                msgW1.Show();
+
+            }
+        }
+
+        private void HyperlinkButton_Click_Female(object sender, RoutedEventArgs e)
+        {
+            if (FemaleAlert.Text.Trim().Length > 0)
+            {
+                frmAttention PatientAlert = new frmAttention();
+                PatientAlert.AlertsExpanded = CoupleDetails.FemalePatient.Alerts;
+                PatientAlert.Show();
+            }
+            else
+            {
+                MessageBoxControl.MessageBoxChildWindow msgW1 =
+                            new MessageBoxControl.MessageBoxChildWindow("", "Attention Not Entered.", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Information);
+                msgW1.Show();
+
+            }
+        }
+
+        #endregion
+    }
+}

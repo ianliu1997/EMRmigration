@@ -1,0 +1,50 @@
+﻿<UserControl xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" x:Class="PalashDynamics.MIS.Administration.AdministrationReports"
+     xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"             
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"               
+    mc:Ignorable="d">
+
+    <toolkit:DockPanel LastChildFill="True" >
+        <toolkit:DockPanel  x:Name="Links">
+            <Border HorizontalAlignment="Stretch" BorderThickness="2" Margin="8,8,8,8" CornerRadius="0,0,3,3" Background="Transparent">
+                <Grid toolkit:DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <HyperlinkButton Grid.Row="0" Grid.Column="0" Content="USER AUDIT TRAIL" Margin="2"  x:Name="hlUserAuditReport" Click="hlUserAuditReport_Click"/>
+                    <HyperlinkButton Grid.Row="1"  Grid.Column="0" Content="USER LIST" x:Name="hlUserListDetail" Margin="2" Click="hlUserListDetail_Click"/>
+                    <HyperlinkButton Grid.Row="2"  Grid.Column="0" Content="USER AUDIT TRAIL - USER ACTIVITY" x:Name="hlUserAuditUserActivity" Margin="2" Click="hlUserAuditUserActivity_Click"/>
+                    <!--<HyperlinkButton Grid.Row="2"  Grid.Column="0" Content="CLINIC WISE INVESTIGATION REPORT" x:Name="hlClinicwiseInvestigation" Margin="2" Click="hlClinicwiseInvestigation_Click"   />
+                    <HyperlinkButton Grid.Row="3"  Grid.Column="0" Content="PATIENT LIST" x:Name="hlSearchPatient" Margin="2" Click="hlSearchPatient_Click"/>
+                    <HyperlinkButton Grid.Row="4"  Grid.Column="0" Content="LOYALTY PROGRAM REPORT" x:Name="hlLoyaltyProgram" Margin="2" Click="hlLoyaltyProgram_Click"/>-->
+                    <HyperlinkButton Grid.Row="3"  Grid.Column="0" Content="DPR" x:Name="hlDPR" Margin="2" Visibility="Collapsed" Click="hlDPR_Click"/>
+                    <HyperlinkButton Grid.Row="4"  Grid.Column="0" Content="ADMISSION REPORT" x:Name="hlAdmission" Margin="2" Click="hlAdmission_Click"/>
+                    <HyperlinkButton Grid.Row="5"  Grid.Column="0" Content="DISCHARGE REPORT" x:Name="hlDischarge" Margin="2" Click="hlDischarge_Click"/>
+                    <HyperlinkButton Grid.Row="6"  Grid.Column="0" Content="TRANSFER REPORT" x:Name="hltransfer" Margin="2" Click="hltransfer_Click"/>
+
+
+                </Grid >
+            </Border>
+
+        </toolkit:DockPanel>
+        <toolkit:DockPanel Visibility="Collapsed" x:Name="content_control">
+            <ContentControl x:Name="content"  ></ContentControl>
+        </toolkit:DockPanel>
+
+    </toolkit:DockPanel>
+</UserControl>

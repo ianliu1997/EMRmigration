@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.DoctorSchedule"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+     Height="Auto" Width="Auto" Loaded="DoctorSchedule_Loaded" >
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Grid>
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton x:Name="cmdNew" Content="New"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdNew_Click"></ToggleButton>
+                        <ToggleButton x:Name="cmdSave" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdSave_Click" ></ToggleButton>
+                        <ToggleButton Content="Modify" x:Name="cmdModify" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdModify_Click" ></ToggleButton>
+                        <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdCancel_Click"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Grid x:Name="PageContainer">
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <toolkit:DockPanel x:Name="FrontPanelDock" LastChildFill="true" >
+                        <toolkit:DockPanel x:Name="DockContent" toolkit:DockPanel.Dock="Top" >
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent" >
+                                <toolkit:DockPanel x:Name="DockMain" toolkit:DockPanel.Dock="Top" LastChildFill="true">
+
+                                    <toolkit:DockPanel x:Name="DockTop" toolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                        <Grid x:Name="LayoutRoot1" Background="White" Margin="4" HorizontalAlignment="Stretch"  >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Clinic"  Grid.Row="0" Grid.Column="0"/>
+                                            <inputcombo:AutoCompleteComboBox  x:Name="cmbClinic"  Grid.Row="0" Grid.Column="1" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Width="200" SelectionChanged="cmbClinic_SelectionChanged" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID" TabIndex="0" ToolTipService.ToolTip="Please Select Clinic"></inputcombo:AutoCompleteComboBox>
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Department"  Grid.Row="0" Grid.Column="2"/>
+                                            <inputcombo:AutoCompleteComboBox  x:Name="cmbDepartment"  Grid.Row="0" Grid.Column="4" Margin="4" VerticalAlignment="Center"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Width="200" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="1"  SelectionChanged="cmbDepartment_SelectionChanged" ToolTipService.ToolTip="Please Select Department"></inputcombo:AutoCompleteComboBox>
+
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Doctor"  Grid.Row="0" Grid.Column="5"/>
+                                            <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctorSearch"  Grid.Row="0" Grid.Column="6" Margin="4" VerticalAlignment="Center"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Width="200" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="2" ToolTipService.ToolTip="Please Select Doctor" SelectionChanged="cmbDoctorSearch_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+
+                                            <Button x:Name="cmdSearch" Click="cmdSearch_Click" Margin="4" ToolTipService.ToolTip="Search Doctor Schedule"  Grid.Row="0" Grid.Column="7" TabIndex="3">
+                                                 <Image Source="/PalashDynamics;component/Icons/xmag.png" Margin="2" Width="20" ></Image>
+                                            </Button>
+
+                                        </Grid>
+                                    </toolkit:DockPanel>
+
+
+                                    <Border Grid.Row="0"  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="Doctor Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                    <!--<data:DataPager x:Name="DataPager" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />-->
+                                    <data:DataPager x:Name="DataPager" controlsToolkit:DockPanel.Dock="Bottom"
+                                                DisplayMode="FirstLastPreviousNext" IsEnabled="True" 
+                                                Source="{Binding}" 
+                                                AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+
+
+                                    <toolkit:DockPanel x:Name="DockMiddle" HorizontalAlignment="Stretch">
+                                        <data:DataGrid x:Name="dgDoctorList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="3">
+                                            <data:DataGrid.Columns >
+                                                <data:DataGridTemplateColumn Header="View">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <HyperlinkButton VerticalAlignment="Center"  Content="View"  Padding="5,0,5,0" Click="hlbViewSchedule_Click"  x:Name="hlbViewSchedule"></HyperlinkButton>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                                <data:DataGridTextColumn Binding="{Binding DoctorName}" Header="Doctor Name" />
+                                                <data:DataGridTextColumn Binding="{Binding DepartmentName}" Header="Department" />
+                                                <data:DataGridTextColumn Binding="{Binding UnitName}" Header="Clinic" />
+                                               </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </toolkit:DockPanel>
+                                </toolkit:DockPanel>
+                            </Border>
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+                </Grid>
+
+
+                <Grid  Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1">
+                    <toolkit:DockPanel  x:Name="BackPanelMainDock" LastChildFill="True" >
+                        <toolkit:DockPanel x:Name="DockContent1" toolkit:DockPanel.Dock="Top" >
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent" >
+                                <toolkit:DockPanel x:Name="DockMain1" toolkit:DockPanel.Dock="Top" LastChildFill="true">
+                                   
+                                        <controlsToolkit:DockPanel x:Name="DocMain1" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+
+                                            <controlsToolkit:DockPanel x:Name="docContet2" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+
+                                            <toolkit:DockPanel x:Name="DockTop1" toolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                                <Grid x:Name="LayoutRoot2" Background="White" Margin="4" HorizontalAlignment="Stretch"  >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Clinic"  Grid.Row="0" Grid.Column="0"  />
+                                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctorClinic"  Grid.Row="0" Grid.Column="1" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  SelectionChanged="cmbDoctorClinic_SelectionChanged" TabIndex="0" ToolTipService.ToolTip="Please Select Clinic"></inputcombo:AutoCompleteComboBox>
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Department"  Grid.Row="0" Grid.Column="2"/>
+                                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctorDepartment"  Grid.Row="0" Grid.Column="3" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  SelectionChanged="cmbDoctorDepartment_SelectionChanged" TabIndex="1" ToolTipService.ToolTip="Please Select Department"></inputcombo:AutoCompleteComboBox>
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Doctor"  Grid.Row="0" Grid.Column="4"/>
+                                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctor"  Grid.Row="0" Grid.Column="5" Margin="4" VerticalAlignment="Center"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="2" ToolTipService.ToolTip="Please Select Doctor"></inputcombo:AutoCompleteComboBox>
+                                                </Grid>
+                                            </toolkit:DockPanel>
+                                            <controlsToolkit:DockPanel x:Name="docContet3" controlsToolkit:DockPanel.Dock="Bottom">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                     
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"></RowDefinition>
+                                                            <RowDefinition Height="Auto"></RowDefinition>
+                                                            <RowDefinition Height="Auto"></RowDefinition>
+                                                  
+                                                        </Grid.RowDefinitions>
+
+                                                        <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Clinic"  Grid.Row="0" Grid.Column="0"  />
+                                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctorClinic"  Grid.Row="0" Grid.Column="1" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  SelectionChanged="cmbDoctorClinic_SelectionChanged" TabIndex="0"></inputcombo:AutoCompleteComboBox>
+                                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Department"  Grid.Row="0" Grid.Column="2"/>
+                                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctorDepartment"  Grid.Row="0" Grid.Column="3" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  SelectionChanged="cmbDoctorDepartment_SelectionChanged" TabIndex="1"></inputcombo:AutoCompleteComboBox>
+                                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Doctor"  Grid.Row="0" Grid.Column="4"/>
+                                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctor"  Grid.Row="0" Grid.Column="5" Margin="4" VerticalAlignment="Center"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="2"></inputcombo:AutoCompleteComboBox>-->
+
+                                                        <TextBlock Text="Day" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                                    <inputcombo:AutoCompleteComboBox  Margin="4"  Grid.Row="0" Grid.Column="1" x:Name="cmbDay"  ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   HorizontalAlignment="Stretch" VerticalAlignment="Center" TabIndex="8" ToolTipService.ToolTip="Please Select Day" ></inputcombo:AutoCompleteComboBox>
+
+                                                        <TextBlock Text="Schedule" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                                    <inputcombo:AutoCompleteComboBox  Margin="4"  Grid.Row="0" Grid.Column="3" x:Name="cmbSchedule"  ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   HorizontalAlignment="Stretch" VerticalAlignment="Center" TabIndex="8" ToolTipService.ToolTip="Please Select Schedule"></inputcombo:AutoCompleteComboBox>
+
+                                                        <TextBlock Text="Start Time" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                                    <inputToolkit:TimePicker x:Name="tpStartTime"  Grid.Row="1" Grid.Column="1" Margin="4"  HorizontalAlignment="Stretch" TabIndex="4" ToolTipService.ToolTip="Please Select Start Time" />
+
+                                                        <TextBlock Text="End Time" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                                    <inputToolkit:TimePicker x:Name="tpEndTime"  Grid.Row="1" Grid.Column="3" Margin="4"  HorizontalAlignment="Stretch" TabIndex="4" LostFocus="tpEndTime_LostFocus" ToolTipService.ToolTip="Please Select End Time" />
+
+                                                        <CheckBox x:Name="Applytoallday" Content="Apply to all day"  Grid.Row="2" Grid.Column="1" IsChecked="{Binding Applytoallday, Mode=TwoWay}" Margin="4" TabIndex="0" Visibility="Collapsed"></CheckBox>
+                                                        
+                                                        <StackPanel x:Name="Footer1" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent" Grid.Row="1" Grid.Column="4">
+                                                            <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                                                                <ToggleButton Content="Add" x:Name="cmdAdd" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   TabIndex="10" Click="cmdAdd_Click"></ToggleButton>
+                                                                <ToggleButton Content="Modify" x:Name="cmdEdit" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"    TabIndex="11" Click="cmdEdit_Click"></ToggleButton>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </controlsToolkit:DockPanel>
+
+                                                <controlsToolkit:DockPanel x:Name="docContet1" controlsToolkit:DockPanel.Dock="Top">
+
+
+                                                    <data:DataGrid x:Name="dgScheduleList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch"  TabIndex="12"  >
+                                                        <data:DataGrid.Columns>
+                                                        <!--<data:DataGridTextColumn Binding="{Binding UnitName}"  Header="Clinic" ></data:DataGridTextColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding DepartmentName}"  Header="Department" ></data:DataGridTextColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding DoctorName}"  Header="Doctor" ></data:DataGridTextColumn>-->
+                                                            <!--BY ROHINI-->
+                                                        <data:DataGridTextColumn Binding="{Binding ID}" Visibility="Collapsed" Header="ID" ></data:DataGridTextColumn>
+                                                            <!--//-->
+                                                        <data:DataGridTextColumn Binding="{Binding Day}"  Header="Day" ></data:DataGridTextColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding Schedule}"  Header="Schedule" ></data:DataGridTextColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding StartTime,Converter={StaticResource DateConverter},ConverterParameter='hh:mm tt'}" Header="Start Time" />
+                                                        <data:DataGridTextColumn Binding="{Binding EndTime,Converter={StaticResource DateConverter},ConverterParameter='hh:mm tt'}"  Header="End Time" ></data:DataGridTextColumn>                                                           
+
+                                                            <data:DataGridTemplateColumn>
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteSchedule" ToolTipService.ToolTip="Delete" Click="cmdDeleteSchedule_Click"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTemplateColumn>
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton Background="White"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="hlbEditDetails_Click"  x:Name="hlbEditDetails">
+                                                                            <Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/edit_new.png" />
+                                                                        </HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+
+                                                            </data:DataGridTemplateColumn>
+                                                        </data:DataGrid.Columns>
+                                                    </data:DataGrid>
+
+                                                </controlsToolkit:DockPanel>
+                                            </controlsToolkit:DockPanel>
+
+                                        </controlsToolkit:DockPanel>
+                               
+                                </toolkit:DockPanel>
+                            </Border>
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+                </Grid>
+            </Grid>
+        </controlsToolkit:DockPanel>
+
+    </Grid>
+</UserControl>

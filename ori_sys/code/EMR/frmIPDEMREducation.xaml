@@ -1,0 +1,178 @@
+﻿<UserControl x:Class="EMR.frmIPDEMREducation"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"            
+xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"   
+xmlns:local="clr-namespace:Silverdraw.Client"
+xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <LinearGradientBrush x:Key="GrayBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Gray" Offset="0.624"/>
+                <GradientStop Color="LightGray" Offset="0.948"/>
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="BlueBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF4444A1" Offset="0.78"/>
+                <GradientStop Color="#FF487381" Offset="0.168"/>
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot1" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Margin="0,0,10,0"  BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+            <controlsToolkit:DockPanel >
+                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom">
+                    <StackPanel VerticalAlignment="Center" Margin="0,3,5,3" Background="Transparent" HorizontalAlignment="Left">
+                        <ToggleButton  Margin="5,0,10,0" Content="{Binding btnEditImage, Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" Name="btnEditImage" Click="button1_Click"  Width="auto" HorizontalAlignment="Left"></ToggleButton>
+                    </StackPanel>
+                    <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,3,5,3" Background="Transparent" HorizontalAlignment="Right">
+                        <ToggleButton  Margin="5,0,10,0" Content="{Binding btnSave, Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click"  Width="auto" ></ToggleButton>
+                        <ToggleButton  Margin="5,0,0,0" Content="{Binding btnCancel, Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" Width="auto" ></ToggleButton>
+                    </StackPanel>
+
+                </controlsToolkit:DockPanel>
+                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                    <TextBlock Text="{Binding lblCaseSheet, Source={StaticResource locResource}}"  Margin="4,0,4,0" FontWeight="Bold"/>
+                    <ComboBox HorizontalAlignment="Stretch"  x:Name="cmbComplaint" TabIndex="1" DisplayMemberPath="Title" Margin="4,0,4,0" SelectionChanged="cmbComplaint_SelectionChanged" SelectedItem="{Binding clsEMRTemplateVO, Mode=OneWay}" SelectedValuePath="TemplateID"/>
+                </controlsToolkit:DockPanel>
+                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <controlsToolkit:DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" >
+                            <data:DataGrid x:Name="dgReport" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="dataGrid2_SelectionChanged" TabIndex="4" MinHeight="140" Height="140">
+                                <data:DataGrid.Columns>
+                                    <data:DataGridTextColumn Binding="{Binding DocumentName}" Header="Image" />
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </controlsToolkit:DockPanel>
+                        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Left" LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
+                            <data:DataGrid x:Name="dgReportDetail" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch" TabIndex="4" SelectionChanged="dgReportDetail_SelectionChanged" MinHeight="140" Height="140">
+                                <data:DataGrid.Columns>
+                                    <data:DataGridTextColumn Binding="{Binding SourceURL}" Header="Image Name" />
+                                    <data:DataGridTextColumn Binding="{Binding AddedDateTime,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="Date" />
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </controlsToolkit:DockPanel>
+                    </Grid>
+                </controlsToolkit:DockPanel>
+                <Border controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent" HorizontalAlignment="Stretch">
+                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="{Binding lblPreview, Source={StaticResource locResource}}" Margin="-1" Style="{StaticResource Header}"  />
+                </Border>
+                <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <controlsToolkit:DockPanel  controlsToolkit:DockPanel.Dock="Top" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image Margin="4" Source="/PalashDynamics;component/Icons/nopic.jpg" Height="Auto" Width="Auto"  x:Name="SignatuerImage" ></Image>
+                    </controlsToolkit:DockPanel>
+                </Border>
+
+            </controlsToolkit:DockPanel>
+        </Border>
+
+        <Border  Grid.Column="1" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+            <controlsToolkit:DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+                <Border controlsToolkit:DockPanel.Dock="Bottom" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" HorizontalAlignment="Stretch">
+                    <controlsToolkit:DockPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" controlsToolkit:DockPanel.Dock="Left">
+                            <CheckBox Content="" Height="16" HorizontalAlignment="Left" Margin="4" Name="chkRemark" VerticalAlignment="Center" Checked="chkRemark_Checked" Unchecked="chkRemark_Unchecked" />
+                            <TextBlock Text="{Binding lblRemark, Source={StaticResource locResource}}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBox HorizontalAlignment="Stretch" Margin="4" x:Name="txtRemark" Height="30" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  VerticalAlignment="Bottom" MaxLength="250" IsEnabled="False" />
+                    </controlsToolkit:DockPanel>
+                </Border>
+
+                <Border controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <controlsToolkit:DockPanel LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <Button Tag="Pencil" Margin="4" Click="ButtonTool_Click" Height="30" Width="30" ToolTipService.ToolTip="{Binding ttpPencil, Source={StaticResource locResource}}">
+                                <Image Source="Resources/pencil.jpg"/>
+                            </Button>
+
+                            <Button Tag="Pen" Margin="4" Height="30" Click="ButtonTool_Click" Width="30" ToolTipService.ToolTip="{Binding ttpPen, Source={StaticResource locResource}}">
+                                <Image Source="Resources/pen.jpg"/>
+                            </Button>
+
+                            <Button Tag="Brush" Margin="4" Height="30" Click="ButtonTool_Click" Width="30" ToolTipService.ToolTip="{Binding ttpBrush, Source={StaticResource locResource}}">
+                                <Image Source="Resources/brush.jpg"/>
+                            </Button>
+
+                            <Button Tag="EraseBrush" Margin="4" Height="30" Click="ButtonTool_Click" Width="30" ToolTipService.ToolTip="{Binding ttpEraser, Source={StaticResource locResource}}">
+                                <Image Source="Resources/erase.jpg"/>
+                            </Button>
+
+                            <Button Tag="Rectangle" Margin="4" Height="30" Click="ButtonTool_Click" Width="30" ToolTipService.ToolTip="{Binding ttpRectangle, Source={StaticResource locResource}}">
+                                <Image Source="Resources/rect.png"/>
+                            </Button>
+
+                            <Button Tag="Ellipse" Margin="4" Height="30" Click="ButtonTool_Click" Width="30" ToolTipService.ToolTip="{Binding ttpEllipse, Source={StaticResource locResource}}">
+                                <Image Source="Resources/circle.png"/>
+                            </Button>
+
+                            <Button x:Name="undoStrokeButton" Tag="UndoStock" Height="30" Width="30" Margin="0,0,0,0" Click="UndoButton_Click" ToolTipService.ToolTip="{Binding ttpUndoStroke, Source={StaticResource locResource}}" >
+                                <Image Height="30" Source="Resources/undo.png" Stretch="Fill" Width="30"/>
+                            </Button>
+
+                            <Button x:Name="clearStrokesButton" Height="30" Width="30" ToolTipService.ToolTip="{Binding ttpClearStrokes, Source={StaticResource locResource}}" Click="RedoButton_Click" Margin="0,0,0,0" >
+                                <Image Height="30" Source="Resources/redo.jpg" Stretch="Fill" Width="30"/>
+                            </Button>
+
+                        </StackPanel>
+
+                        <TextBox Height="26" x:Name="txtImage" Margin="5,0,0,0" HorizontalAlignment="Stretch" TextChanged="txtImage_TextChanged" LostFocus="txtImage_LostFocus" GotFocus="txtImage_GotFocus" Foreground="#5A000000" Text="{Binding lblAddTextOnImage, Source={StaticResource locResource}}"  Visibility="Collapsed"/>
+                    </controlsToolkit:DockPanel>
+                </Border>
+
+                <Border controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" Background="LightGray" MinHeight="20" >
+                        <Button Width="20" Height="20">
+                            <Canvas x:Name="cnLine"  Background="{Binding Path=StrokeColor, Mode=TwoWay}" MouseLeftButtonDown="ButtonColor_Click" Width="15"  Height="15" Visibility="Collapsed"/>
+                        </Button>
+                        <TextBlock Text="{Binding lblLineColor, Source={StaticResource locResource}}" Width="auto" Margin="3,3,5,0"/>
+                        <Button Width="20" Height="20">
+                            <Canvas x:Name="cnBack"  Background="{Binding Path=FillColor, Mode=TwoWay}" MouseLeftButtonDown="ButtonColor_Click" Width="15" Height="15"/>
+                        </Button>
+                        <TextBlock Text="{Binding lblBrushColor, Source={StaticResource locResource}}" Width="auto" Margin="3,3,30,0"/>
+                        <TextBlock Text="{Binding lblLineWidth, Source={StaticResource locResource}}" Width="auto" Margin="3,3,2,0" Visibility="Collapsed"/>
+                        <Slider Minimum="0" Maximum="100" Width="100" Value="{Binding Path=StrokeWidth, Mode=TwoWay}" Name="StorkeSlider" Visibility="Collapsed" />
+                    </StackPanel>
+                </Border>
+
+                <controlsToolkit:DockPanel x:Name="ColorPanel" controlsToolkit:DockPanel.Dock="Top"  Visibility="Collapsed" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                    <Button Content="[^] Choose the below color and click here to select" HorizontalContentAlignment="Left" x:Name="ButtonSelect" Click="ButtonSelect_Click" Height="30" controlsToolkit:DockPanel.Dock="Top"/>
+                    <local:ColorPicker Margin="3" x:Name="colorPicker" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                </controlsToolkit:DockPanel>
+                <controlsToolkit:DockPanel x:Name="DrawingCanvas2_1" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                    <!--<sdk:Label HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="CanvasImageLabel" VerticalAlignment="Top" controlsToolkit:DockPanel.Dock="Top">Label</sdk:Label>
+                    <Canvas x:Name="DrawingCanvas"  MouseLeftButtonDown="DrawingCanvas_MouseLeftButtonDown" MouseLeftButtonUp="DrawingCanvas_MouseLeftButtonUp" MouseMove="DrawingCanvas_MouseMove" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MinWidth="530" MinHeight="240">
+                    </Canvas>-->
+                    <Grid x:Name="DrawingCanvas2">
+
+                        <Canvas x:Name="DrawingCanvas"  MouseLeftButtonDown="DrawingCanvas_MouseLeftButtonDown"
+                    MouseLeftButtonUp="DrawingCanvas_MouseLeftButtonUp"
+                    MouseMove="DrawingCanvas_MouseMove">
+                        </Canvas>
+                        <sdk:Label HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="CanvasImageLabel" VerticalAlignment="Top" />
+                    </Grid>
+
+                </controlsToolkit:DockPanel>
+
+
+            </controlsToolkit:DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

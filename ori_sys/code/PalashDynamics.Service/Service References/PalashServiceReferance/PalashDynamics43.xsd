@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR.NewEMR" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR.NewEMR" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd35" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" />
+  <xs:complexType name="clsGetServicesBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="VisitServicesList" nillable="true" type="q1:ArrayOfclsServiceMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetServicesBizActionVO" nillable="true" type="tns:clsGetServicesBizActionVO" />
+  <xs:complexType name="clsGetEMRMenuBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="MenuDetails" nillable="true" type="q2:ArrayOfclsMenuVO" />
+      <xs:element minOccurs="0" name="UserID" type="xs:long" />
+      <xs:element minOccurs="0" name="UserRoleID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetEMRMenuBizActionVO" nillable="true" type="tns:clsGetEMRMenuBizActionVO" />
+  <xs:complexType name="clsAddUpdateDeleteVitalDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsUpdate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDiagnosisID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="PatientVitalDetails" nillable="true" type="q3:ArrayOfclsEMRVitalsVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TakenBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateDeleteVitalDetailsBizActionVO" nillable="true" type="tns:clsAddUpdateDeleteVitalDetailsBizActionVO" />
+  <xs:complexType name="clsGetVitalListDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="vitalListDetail" nillable="true" type="q4:ArrayOfclsEMRVitalsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetVitalListDetailsBizActionVO" nillable="true" type="tns:clsGetVitalListDetailsBizActionVO" />
+  <xs:complexType name="clsGetPatientVitalChartBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsFromDashBoard" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientVitalChart" nillable="true" type="tns:clsVitalChartVO" />
+      <xs:element minOccurs="0" name="PatientVitalChartlst" nillable="true" type="tns:ArrayOfclsVitalChartVO" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientVitalChartBizActionVO" nillable="true" type="tns:clsGetPatientVitalChartBizActionVO" />
+  <xs:complexType name="clsVitalChartVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BMI" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Datetime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DiastolicBP" type="xs:double" />
+      <xs:element minOccurs="0" name="DoctorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorSpeclization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FastingSugar" type="xs:double" />
+      <xs:element minOccurs="0" name="HC" type="xs:double" />
+      <xs:element minOccurs="0" name="HeadCircumference" type="xs:double" />
+      <xs:element minOccurs="0" name="Height" type="xs:double" />
+      <xs:element minOccurs="0" name="Hipgirth" type="xs:double" />
+      <xs:element minOccurs="0" name="NutritionStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="O2" type="xs:double" />
+      <xs:element minOccurs="0" name="Pulse" type="xs:double" />
+      <xs:element minOccurs="0" name="RBS" type="xs:double" />
+      <xs:element minOccurs="0" name="RR" type="xs:double" />
+      <xs:element minOccurs="0" name="RandomBloodSugar" type="xs:double" />
+      <xs:element minOccurs="0" name="SystolicBP" type="xs:double" />
+      <xs:element minOccurs="0" name="Temperature" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalCholesterol" type="xs:double" />
+      <xs:element minOccurs="0" name="Waistgirth" type="xs:double" />
+      <xs:element minOccurs="0" name="Weight" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsVitalChartVO" nillable="true" type="tns:clsVitalChartVO" />
+  <xs:complexType name="ArrayOfclsVitalChartVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsVitalChartVO" nillable="true" type="tns:clsVitalChartVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsVitalChartVO" nillable="true" type="tns:ArrayOfclsVitalChartVO" />
+  <xs:complexType name="clsAddUpdateDeleteDiagnosisDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisDetails" nillable="true" type="q5:ArrayOfclsEMRAddDiagnosisVO" />
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsICD10" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsUpdate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDiagnosisID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="objSurrogatedPatient" nillable="true" type="q6:ArrayOfclsPatientGeneralVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateDeleteDiagnosisDetailsBizActionVO" nillable="true" type="tns:clsAddUpdateDeleteDiagnosisDetailsBizActionVO" />
+  <xs:complexType name="clsGetPatientNewEMRDiaDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="PatientDiagnosisDetails" nillable="true" type="q7:ArrayOfclsEMRAddDiagnosisVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientNewEMRDiaDetailsBizActionVO" nillable="true" type="tns:clsGetPatientNewEMRDiaDetailsBizActionVO" />
+</xs:schema>

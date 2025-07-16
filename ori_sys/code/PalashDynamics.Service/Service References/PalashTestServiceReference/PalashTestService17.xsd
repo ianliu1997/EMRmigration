@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.IPD" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.IPD" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:complexType name="clsIPDBedReleaseCheckListVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="By" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GeneralError" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="IsMandantory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MandantoryStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MasterTableName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="On" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryKeyViolationError" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectBedReleseCheck" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="WindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDBedReleaseCheckListVO" nillable="true" type="tns:clsIPDBedReleaseCheckListVO" />
+  <xs:complexType name="clsIPDGetWardMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objWardMasterDetails" nillable="true" type="tns:ArrayOfclsIPDWardMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetWardMasterBizActionVO" nillable="true" type="tns:clsIPDGetWardMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDWardMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDWardMasterVO" nillable="true" type="tns:clsIPDWardMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDWardMasterVO" nillable="true" type="tns:ArrayOfclsIPDWardMasterVO" />
+  <xs:complexType name="clsIPDWardMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockID" type="xs:long" />
+      <xs:element minOccurs="0" name="BlockName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FloorID" type="xs:long" />
+      <xs:element minOccurs="0" name="FloorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDWardMasterVO" nillable="true" type="tns:clsIPDWardMasterVO" />
+  <xs:complexType name="clsIPDAddUpdateWardMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objWardMatserDetails" nillable="true" type="tns:ArrayOfclsIPDWardMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateWardMasterBizActionVO" nillable="true" type="tns:clsIPDAddUpdateWardMasterBizActionVO" />
+  <xs:complexType name="clsIPDUpdateWardMasterStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="WardStatus" nillable="true" type="tns:clsIPDWardMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDUpdateWardMasterStatusBizActionVO" nillable="true" type="tns:clsIPDUpdateWardMasterStatusBizActionVO" />
+  <xs:complexType name="clsIPDAdmissionTypeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockID" type="xs:long" />
+      <xs:element minOccurs="0" name="BlockName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAdmissionTypeVO" nillable="true" type="tns:clsIPDAdmissionTypeVO" />
+  <xs:complexType name="clsIPDAdmissionTypeServiceLinkVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Rate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="Specialization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecializationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubSpecialization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubSpecializationID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAdmissionTypeServiceLinkVO" nillable="true" type="tns:clsIPDAdmissionTypeServiceLinkVO" />
+  <xs:complexType name="clsIPDGetAdmissionTypeMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionTypeMasterDetails" nillable="true" type="tns:clsIPDAdmissionTypeVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchCategory" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objAdmissionTypeMasterDetails" nillable="true" type="tns:ArrayOfclsIPDAdmissionTypeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetAdmissionTypeMasterBizActionVO" nillable="true" type="tns:clsIPDGetAdmissionTypeMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDAdmissionTypeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDAdmissionTypeVO" nillable="true" type="tns:clsIPDAdmissionTypeVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDAdmissionTypeVO" nillable="true" type="tns:ArrayOfclsIPDAdmissionTypeVO" />
+  <xs:complexType name="clsIPDAddUpdateAdmissionTypeMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionTypeMasterDetails" nillable="true" type="tns:clsIPDAdmissionTypeVO" />
+      <xs:element minOccurs="0" name="IsStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateAdmissionTypeMasterBizActionVO" nillable="true" type="tns:clsIPDAddUpdateAdmissionTypeMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDBedMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDBedMasterVO" nillable="true" type="tns:clsIPDBedMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDBedMasterVO" nillable="true" type="tns:ArrayOfclsIPDBedMasterVO" />
+  <xs:complexType name="clsIPDBedMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionDate" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="AmmenityDetails" nillable="true" type="q1:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="BedCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="BedCategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BedID" type="xs:long" />
+      <xs:element minOccurs="0" name="BedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="BillingToBedCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Facilities" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsAmmenity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForReservation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNonCensus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MrNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Occupied" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientIPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="RoomID" type="xs:long" />
+      <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="WardID" type="xs:long" />
+      <xs:element minOccurs="0" name="WardName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDBedMasterVO" nillable="true" type="tns:clsIPDBedMasterVO" />
+  <xs:complexType name="clsIPDGetBedMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objBedMasterDetails" nillable="true" type="tns:ArrayOfclsIPDBedMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetBedMasterBizActionVO" nillable="true" type="tns:clsIPDGetBedMasterBizActionVO" />
+  <xs:complexType name="clsIPDAddUpdateBedMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objBedMatserDetails" nillable="true" type="tns:clsIPDBedMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateBedMasterBizActionVO" nillable="true" type="tns:clsIPDAddUpdateBedMasterBizActionVO" />
+  <xs:complexType name="clsIPDUpdateBedMasterStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BedStatus" nillable="true" type="tns:clsIPDBedMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDUpdateBedMasterStatusBizActionVO" nillable="true" type="tns:clsIPDUpdateBedMasterStatusBizActionVO" />
+  <xs:complexType name="clsGetIPDBedListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BedCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="BedDetails" nillable="true" type="tns:ArrayOfclsIPDBedMasterVO" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="Occupied" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RoomID" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="WardID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetIPDBedListBizActionVO" nillable="true" type="tns:clsGetIPDBedListBizActionVO" />
+  <xs:complexType name="clsAddUpdateBedReleaseCheckListDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemMatserDetails" nillable="true" type="tns:ArrayOfclsIPDBedReleaseCheckListVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateBedReleaseCheckListDetailsBizActionVO" nillable="true" type="tns:clsAddUpdateBedReleaseCheckListDetailsBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDBedReleaseCheckListVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDBedReleaseCheckListVO" nillable="true" type="tns:clsIPDBedReleaseCheckListVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDBedReleaseCheckListVO" nillable="true" type="tns:ArrayOfclsIPDBedReleaseCheckListVO" />
+  <xs:complexType name="clsGetBedReleaseCheckListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemMatserDetails" nillable="true" type="tns:ArrayOfclsIPDBedReleaseCheckListVO" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetBedReleaseCheckListBizActionVO" nillable="true" type="tns:clsGetBedReleaseCheckListBizActionVO" />
+  <xs:complexType name="clsGetBedReleseListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemMatserDetails" nillable="true" type="tns:ArrayOfclsIPDBedReleaseCheckListVO" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetBedReleseListBizActionVO" nillable="true" type="tns:clsGetBedReleseListBizActionVO" />
+  <xs:complexType name="clsIPDDietNutritionMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDDietNutritionMasterVO" nillable="true" type="tns:clsIPDDietNutritionMasterVO" />
+  <xs:complexType name="clsIPDDietPlanItemMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpectedCal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodItem" nillable="true" type="tns:clsIPDDietNutritionMasterVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemCalories" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemCh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemFat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemInst" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemQty" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Timing" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDDietPlanItemMasterVO" nillable="true" type="tns:clsIPDDietPlanItemMasterVO" />
+  <xs:complexType name="clsIPDDietPlanMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemList" nillable="true" type="tns:ArrayOfclsIPDDietPlanItemMasterVO" />
+      <xs:element minOccurs="0" name="PlanInst" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDDietPlanMasterVO" nillable="true" type="tns:clsIPDDietPlanMasterVO" />
+  <xs:complexType name="ArrayOfclsIPDDietPlanItemMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDDietPlanItemMasterVO" nillable="true" type="tns:clsIPDDietPlanItemMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDDietPlanItemMasterVO" nillable="true" type="tns:ArrayOfclsIPDDietPlanItemMasterVO" />
+  <xs:complexType name="clsIPDBedAmmenitiesMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDBedAmmenitiesMasterVO" nillable="true" type="tns:clsIPDBedAmmenitiesMasterVO" />
+  <xs:complexType name="clsIPDGetAdmissionTypeServiceLinkedListDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceList" nillable="true" type="q2:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetAdmissionTypeServiceLinkedListDetailsBizActionVO" nillable="true" type="tns:clsIPDGetAdmissionTypeServiceLinkedListDetailsBizActionVO" />
+  <xs:complexType name="clsIPDGetDietNutritionBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchCategory" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objDietMasterDetails" nillable="true" type="tns:ArrayOfclsIPDDietNutritionMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetDietNutritionBizActionVO" nillable="true" type="tns:clsIPDGetDietNutritionBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDDietNutritionMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDDietNutritionMasterVO" nillable="true" type="tns:clsIPDDietNutritionMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDDietNutritionMasterVO" nillable="true" type="tns:ArrayOfclsIPDDietNutritionMasterVO" />
+  <xs:complexType name="clsIPDAddUpdateDietNutritionBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objDietMatserDetails" nillable="true" type="tns:ArrayOfclsIPDDietNutritionMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateDietNutritionBizActionVO" nillable="true" type="tns:clsIPDAddUpdateDietNutritionBizActionVO" />
+  <xs:complexType name="clsIPDUpdateDietNutritionStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DietStatus" nillable="true" type="tns:clsIPDDietNutritionMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDUpdateDietNutritionStatusBizActionVO" nillable="true" type="tns:clsIPDUpdateDietNutritionStatusBizActionVO" />
+  <xs:complexType name="clsIPDGetDietPlanBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objDietPlanMasterDetails" nillable="true" type="tns:ArrayOfclsIPDDietPlanMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetDietPlanBizActionVO" nillable="true" type="tns:clsIPDGetDietPlanBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDDietPlanMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDDietPlanMasterVO" nillable="true" type="tns:clsIPDDietPlanMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDDietPlanMasterVO" nillable="true" type="tns:ArrayOfclsIPDDietPlanMasterVO" />
+  <xs:complexType name="clsIPDAddUpdateDietPlanBizactionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objDietMatserDetails" nillable="true" type="tns:clsIPDDietPlanMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateDietPlanBizactionVO" nillable="true" type="tns:clsIPDAddUpdateDietPlanBizactionVO" />
+  <xs:complexType name="clsIPDUpdateDietPlanStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DietStatus" nillable="true" type="tns:clsIPDDietPlanMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDUpdateDietPlanStatusBizActionVO" nillable="true" type="tns:clsIPDUpdateDietPlanStatusBizActionVO" />
+  <xs:complexType name="clsIPDGetBlockMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objBlockMasterDetails" nillable="true" type="tns:ArrayOfclsIPDBlockMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetBlockMasterBizActionVO" nillable="true" type="tns:clsIPDGetBlockMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDBlockMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDBlockMasterVO" nillable="true" type="tns:clsIPDBlockMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDBlockMasterVO" nillable="true" type="tns:ArrayOfclsIPDBlockMasterVO" />
+  <xs:complexType name="clsIPDBlockMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDBlockMasterVO" nillable="true" type="tns:clsIPDBlockMasterVO" />
+  <xs:complexType name="clsAddUpdateIPDBlockMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objBlockMatserDetails" nillable="true" type="tns:ArrayOfclsIPDBlockMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateIPDBlockMasterBizActionVO" nillable="true" type="tns:clsAddUpdateIPDBlockMasterBizActionVO" />
+  <xs:complexType name="clsIPDUpdateBlockMasterStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockStatus" nillable="true" type="tns:clsIPDBlockMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDUpdateBlockMasterStatusBizActionVO" nillable="true" type="tns:clsIPDUpdateBlockMasterStatusBizActionVO" />
+  <xs:complexType name="clsIPDGetAdmissionTypeDetailListForAdmissionTypeMasterByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorDetails" nillable="true" type="tns:clsIPDAdmissionTypeVO" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetAdmissionTypeDetailListForAdmissionTypeMasterByIDBizActionVO" nillable="true" type="tns:clsIPDGetAdmissionTypeDetailListForAdmissionTypeMasterByIDBizActionVO" />
+  <xs:complexType name="clsIPDAddAdmissionTypeServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoctorServiceDetails" nillable="true" type="tns:clsIPDAdmissionTypeServiceLinkVO" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="DoctorServiceList" nillable="true" type="q3:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="Modify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddAdmissionTypeServiceListBizActionVO" nillable="true" type="tns:clsIPDAddAdmissionTypeServiceListBizActionVO" />
+  <xs:complexType name="clsIPDAddUpdateAdmissionTypeServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoctorServiceDetails" nillable="true" type="tns:clsIPDAdmissionTypeServiceLinkVO" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="DoctorServiceList" nillable="true" type="q4:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="Modify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateAdmissionTypeServiceListBizActionVO" nillable="true" type="tns:clsIPDAddUpdateAdmissionTypeServiceListBizActionVO" />
+  <xs:complexType name="clsIPDGetAdmissionTypeServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="SelectedServiceList" nillable="true" type="q5:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceList" nillable="true" type="q6:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecializationID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubSpecializationID" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetAdmissionTypeServiceListBizActionVO" nillable="true" type="tns:clsIPDGetAdmissionTypeServiceListBizActionVO" />
+  <xs:complexType name="clsIPDFloorMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockID" type="xs:long" />
+      <xs:element minOccurs="0" name="BlockName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDFloorMasterVO" nillable="true" type="tns:clsIPDFloorMasterVO" />
+  <xs:complexType name="clsAddIPDAutoChargesServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChargesMasterList" nillable="true" type="tns:ArrayOfclsIPDAutoChargesVO" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddIPDAutoChargesServiceListBizActionVO" nillable="true" type="tns:clsAddIPDAutoChargesServiceListBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDAutoChargesVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDAutoChargesVO" nillable="true" type="tns:clsIPDAutoChargesVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDAutoChargesVO" nillable="true" type="tns:ArrayOfclsIPDAutoChargesVO" />
+  <xs:complexType name="clsIPDAutoChargesVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="By" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GeneralError" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="MasterTableName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="On" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryKeyViolationError" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="WindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAutoChargesVO" nillable="true" type="tns:clsIPDAutoChargesVO" />
+  <xs:complexType name="clsGetIPDAutoChargesServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GetChargesMasterList" nillable="true" type="tns:ArrayOfclsIPDAutoChargesVO" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetIPDAutoChargesServiceListBizActionVO" nillable="true" type="tns:clsGetIPDAutoChargesServiceListBizActionVO" />
+  <xs:complexType name="clsDeleteServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeleteDetails" nillable="true" type="tns:ArrayOfclsIPDAutoChargesVO" />
+      <xs:element minOccurs="0" name="DeleteServiceList" nillable="true" type="tns:ArrayOfclsIPDAutoChargesVO" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeleteServiceBizActionVO" nillable="true" type="tns:clsDeleteServiceBizActionVO" />
+  <xs:complexType name="clsIPDGetBedCensusAndNonCensusListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BedDetails" nillable="true" type="tns:clsIPDBedMasterVO" />
+      <xs:element minOccurs="0" name="BedID" type="xs:long" />
+      <xs:element minOccurs="0" name="BedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassID" type="xs:long" />
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsBedDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNonCensus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="WardID" type="xs:long" />
+      <xs:element minOccurs="0" name="WardName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="objBedMasterDetails" nillable="true" type="tns:ArrayOfclsIPDBedMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetBedCensusAndNonCensusListBizActionVO" nillable="true" type="tns:clsIPDGetBedCensusAndNonCensusListBizActionVO" />
+  <xs:complexType name="clsIPDGetFloorMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlooMasterDetails" nillable="true" type="tns:clsIPDFloorMasterVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchCategory" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objFloorMasterDetails" nillable="true" type="tns:ArrayOfclsIPDFloorMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetFloorMasterBizActionVO" nillable="true" type="tns:clsIPDGetFloorMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDFloorMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDFloorMasterVO" nillable="true" type="tns:clsIPDFloorMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDFloorMasterVO" nillable="true" type="tns:ArrayOfclsIPDFloorMasterVO" />
+  <xs:complexType name="clsIPDAddUpdateFloorMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlooMasterDetails" nillable="true" type="tns:clsIPDFloorMasterVO" />
+      <xs:element minOccurs="0" name="IsStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateFloorMasterBizActionVO" nillable="true" type="tns:clsIPDAddUpdateFloorMasterBizActionVO" />
+  <xs:complexType name="clsAddUpdateIPDPatientVitalsMasterBIzActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientVitalDetailList" nillable="true" type="tns:ArrayOfclsIPDPatientVitalsMasterVO" />
+      <xs:element minOccurs="0" name="PatientVitalDetails" nillable="true" type="tns:clsIPDPatientVitalsMasterVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateIPDPatientVitalsMasterBIzActionVO" nillable="true" type="tns:clsAddUpdateIPDPatientVitalsMasterBIzActionVO" />
+  <xs:complexType name="ArrayOfclsIPDPatientVitalsMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDPatientVitalsMasterVO" nillable="true" type="tns:clsIPDPatientVitalsMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDPatientVitalsMasterVO" nillable="true" type="tns:ArrayOfclsIPDPatientVitalsMasterVO" />
+  <xs:complexType name="clsIPDPatientVitalsMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DefaultValue" type="xs:double" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GeneralError" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MasterTableName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxValue" type="xs:double" />
+      <xs:element minOccurs="0" name="MinValue" type="xs:double" />
+      <xs:element minOccurs="0" name="PrimaryKeyViolationError" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="WindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDPatientVitalsMasterVO" nillable="true" type="tns:clsIPDPatientVitalsMasterVO" />
+  <xs:complexType name="clsGetIPDPatientVitalsMasterBIzActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="VitalDetailsList" nillable="true" type="tns:ArrayOfclsIPDPatientVitalsMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetIPDPatientVitalsMasterBIzActionVO" nillable="true" type="tns:clsGetIPDPatientVitalsMasterBIzActionVO" />
+  <xs:complexType name="clsUpdateStatusIPDPatientVitalsMasterBIzActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateDetailList" nillable="true" type="tns:ArrayOfclsIPDPatientVitalsMasterVO" />
+      <xs:element minOccurs="0" name="VitalDetails" nillable="true" type="tns:clsIPDPatientVitalsMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateStatusIPDPatientVitalsMasterBIzActionVO" nillable="true" type="tns:clsUpdateStatusIPDPatientVitalsMasterBIzActionVO" />
+  <xs:complexType name="clsIPDClassMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="AmmenityDetails" nillable="true" type="q7:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DepositIPD" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DepositOT" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDClassMasterVO" nillable="true" type="tns:clsIPDClassMasterVO" />
+  <xs:complexType name="clsClassDataGrid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ADJAmt" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ADJEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ADJPerc" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ADJPerc_Amt" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AdjType" type="xs:long" />
+      <xs:element minOccurs="0" name="DbGross" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeductEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeductibleAmt" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeductiblePerc" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DeductiblePerc_Amt" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Gross" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Rate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RowID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="chkADJ" type="xs:boolean" />
+      <xs:element minOccurs="0" name="clsIPDClassMasterList" nillable="true" type="tns:ArrayOfclsIPDClassMasterVO" />
+      <xs:element minOccurs="0" name="clsIPDClassMasterVO" nillable="true" type="tns:clsIPDClassMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsClassDataGrid" nillable="true" type="tns:clsClassDataGrid" />
+  <xs:complexType name="ArrayOfclsIPDClassMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDClassMasterVO" nillable="true" type="tns:clsIPDClassMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDClassMasterVO" nillable="true" type="tns:ArrayOfclsIPDClassMasterVO" />
+  <xs:complexType name="clsIPDGetClassMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objClassMasterDetails" nillable="true" type="tns:ArrayOfclsIPDClassMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetClassMasterBizActionVO" nillable="true" type="tns:clsIPDGetClassMasterBizActionVO" />
+  <xs:complexType name="clsIPDAddUpdateClassMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objClassMatserDetails" nillable="true" type="tns:ArrayOfclsIPDClassMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateClassMasterBizActionVO" nillable="true" type="tns:clsIPDAddUpdateClassMasterBizActionVO" />
+  <xs:complexType name="clsIPDUpdateClassMasterStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClassStatus" nillable="true" type="tns:clsIPDClassMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDUpdateClassMasterStatusBizActionVO" nillable="true" type="tns:clsIPDUpdateClassMasterStatusBizActionVO" />
+  <xs:complexType name="clsIPDRoomMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="AmmenityDetails" nillable="true" type="q8:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="CheckedAllAmmenities" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsAmmenity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDRoomMasterVO" nillable="true" type="tns:clsIPDRoomMasterVO" />
+  <xs:complexType name="clsIPDRoomAmmenitiesMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDRoomAmmenitiesMasterVO" nillable="true" type="tns:clsIPDRoomAmmenitiesMasterVO" />
+  <xs:complexType name="clsIPDGetRoomMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objRoomMasterAmmenities" nillable="true" type="tns:clsIPDRoomMasterVO" />
+      <xs:element minOccurs="0" name="objRoomMasterDetails" nillable="true" type="tns:ArrayOfclsIPDRoomMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDGetRoomMasterBizActionVO" nillable="true" type="tns:clsIPDGetRoomMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsIPDRoomMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsIPDRoomMasterVO" nillable="true" type="tns:clsIPDRoomMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsIPDRoomMasterVO" nillable="true" type="tns:ArrayOfclsIPDRoomMasterVO" />
+  <xs:complexType name="clsIPDAddUpdateRoomMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objRoomMatserDetails" nillable="true" type="tns:ArrayOfclsIPDRoomMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDAddUpdateRoomMasterBizActionVO" nillable="true" type="tns:clsIPDAddUpdateRoomMasterBizActionVO" />
+  <xs:complexType name="clsIPDUpdateRoomStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoomStatus" nillable="true" type="tns:clsIPDRoomMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsIPDUpdateRoomStatusBizActionVO" nillable="true" type="tns:clsIPDUpdateRoomStatusBizActionVO" />
+</xs:schema>

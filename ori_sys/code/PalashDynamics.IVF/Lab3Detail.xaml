@@ -1,0 +1,193 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.Lab3Detail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                  xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"   
+           Width="650" Height="400" Title="Details" Loaded="ChildWindow_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="Black">
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White">
+            <Grid x:Name="DisplayArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+
+                <Border BorderBrush="PaleGreen" Grid.Row="0" BorderThickness="0" Background="Transparent">
+
+                    <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton x:Name="cmdCalculate"  Grid.Row="4" Content="CalCulate" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCalculate_Click" TabIndex="5" />
+                                    <ToggleButton x:Name="cmdCancel"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click" TabIndex="6"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+
+                            <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                                <TextBlock x:Name="lblError" HorizontalAlignment="Center" Foreground="Red" VerticalAlignment="Center" Text=""  Margin="4" controlsToolkit:DockPanel.Dock="Top"/>
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <!--<ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>-->
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Zona Pellucida Thickness" Grid.Row="0" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton GroupName="First Group" x:Name="chkUniForm"  Content="Uniform" Margin="4" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton GroupName="First Group" x:Name="chkVariable"  Content="Variable" Margin="4" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Zona Pellucida Texture" Grid.Row="1" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton GroupName="Second Group" x:Name="chkNormalThickness" Content="Normal Thickness and texture" Margin="4" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton GroupName="Second Group" x:Name="chkVeryThick" Content="Very thick and abnormal shape" Margin="4" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Blastomere size" Grid.Row="2" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton  x:Name="chkEqual" Content="Equal" Margin="4"  Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton  x:Name="chkUnEqual" Content="Unequal" Margin="4"  Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Blastomere Shape" Grid.Row="3" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton x:Name="chkRegular"  Content="Regular" Margin="4"  Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton x:Name="chkIrRegular"  Content="Irregular" Margin="4" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Volume occupied by blastomeres" Grid.Row="4" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton  x:Name="chkFilledZona" Content="Blastomer filled zona" Margin="4" Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton  x:Name="chkSpaceZona" Content="Large space between cell and zona"  Margin="4" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Membrane" Grid.Row="5" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton  x:Name="chkSmooth"  Content="Smooth" Margin="4"  Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton x:Name="chkJagged"  Content="Jagged" Margin="4"  Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Cytoplasm" Grid.Row="6" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton  x:Name="chkClear" Content="Clear" Margin="4" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton  x:Name="chkGranular" Content="Granular" Margin="4" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton  x:Name="chkVacuoles"  Content="Vacuoles" Margin="4" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Fragmentation" Grid.Row="7" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton  x:Name="chk10" Content="Less than 10 %" Margin="4" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton  x:Name="chk10to30"  Content="10-30 %" Margin="4" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton x:Name="chk30"  Content="More than 30 %" Margin="4" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <TextBlock Text="Development Rate" Grid.Row="8" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton x:Name="chk6Cell" Content="6 Cell" Margin="4" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton x:Name="chk7Cell"  Content="7 Cell" Margin="4" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton x:Name="chk8Cell" Content="8 Cell" Margin="4" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton x:Name="chkMoreThan8Cell" Content="> Than 8 Cells" Margin="4" Grid.Row="6" Grid.Column="4" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                            <RadioButton  x:Name="chkLessThan6Cell" Content="&lt; Than 6 Cells" Margin="4" Grid.Row="6" Grid.Column="5" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                        </Grid>
+                                    </StackPanel>
+
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+</controls:ChildWindow>

@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{01039850-64B9-450A-B4CF-2CE907AB92E5}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.OperationTheatre</RootNamespace>
+    <AssemblyName>PalashDynamics.OperationTheatre</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.OperationTheatre.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.OperationTheatre.App</SilverlightAppEntry>
+    <TestPageFileName>PalashDynamics.OperationTheatreTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.Silverlight">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Automation">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Carousel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Carousel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart.Editor">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart.Extended">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart3D">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart3D.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Data">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Excel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Filters">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Filters.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Ria">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Ria.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Summaries">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Summaries.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DateTimeEditors">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DateTimeEditors.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Docking">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Excel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Extended">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Extended.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Extended.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.FlexGrid.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.FlexGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.FlexGridFilter.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.FlexGridFilter.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Gauge">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Gauge.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Imaging">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Legacy">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Maps">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.MediaPlayer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.MediaPlayer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Olap.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Olap.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.OrgChart">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.OrgChart.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.OutlookBar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.OutlookBar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Pdf">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.PdfViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.PdfViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.ReportViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.ReportViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.LegacyHtmlFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.LegacyHtmlFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.PdfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.PdfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.RtfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.RtfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.Toolbar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Schedule">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.SpellChecker">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.BureauBlack">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.BureauBlack.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Cosmopolitan">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Cosmopolitan.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ExpressionDark">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ExpressionDark.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ExpressionLight">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ExpressionLight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Office2007">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Office2010">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Office2010.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.RainierOrange">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.RainierOrange.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ShinyBlue">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ShinyBlue.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.WhistlerBlue">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.WhistlerBlue.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.TileView">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.TileView.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Toolbar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Uploader">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Uploader.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Zip">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="EMR">
+      <HintPath>Bin\Debug\EMR.dll</HintPath>
+    </Reference>
+    <Reference Include="Groupbox">
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="PalashDynamics.Animations.Swivel">
+      <HintPath>..\PalashDynamics.Animations.Swivel\Bin\Debug\PalashDynamics.Animations.Swivel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\EMR\frmCPOELabServicesSelection.xaml.cs">
+      <Link>Forms Links\frmCPOELabServicesSelection.xaml.cs</Link>
+      <DependentUpon>frmCPOELabServicesSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\frmCPOEOtherSelectionList.xaml.cs">
+      <Link>Forms Links\frmCPOEOtherSelectionList.xaml.cs</Link>
+      <DependentUpon>frmCPOEOtherSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\frmCPOEServiceSelectionList.xaml.cs">
+      <Link>Forms Links\frmCPOEServiceSelectionList.xaml.cs</Link>
+      <DependentUpon>frmCPOEServiceSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\frmEMRMedDrugSelectionList.xaml.cs">
+      <Link>Forms Links\frmEMRMedDrugSelectionList.xaml.cs</Link>
+      <DependentUpon>frmEMRMedDrugSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BillClearance.xaml.cs">
+      <DependentUpon>BillClearance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CancelOTBooking.xaml.cs">
+      <DependentUpon>CancelOTBooking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassForEMRTemplate.cs" />
+    <Compile Include="ConsentPrinting.xaml.cs">
+      <DependentUpon>ConsentPrinting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorSearch.xaml.cs">
+      <DependentUpon>DoctorSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCancelBooking.xaml.cs">
+      <DependentUpon>frmCancelBooking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocEmpDetails.xaml.cs">
+      <DependentUpon>frmDocEmpDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctorOrder.xaml.cs">
+      <DependentUpon>frmDoctorOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTDetails.xaml.cs">
+      <DependentUpon>frmOTDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTDetailsService.xaml.cs">
+      <DependentUpon>frmOTDetailsService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOtImageUpload.xaml.cs">
+      <DependentUpon>FrmOtImageUpload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTItemDetails.xaml.cs">
+      <DependentUpon>frmOTItemDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTNotes.xaml.cs">
+      <DependentUpon>frmOTNotes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOTOtherDetails.xaml.cs">
+      <DependentUpon>FrmOTOtherDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTScehduleMaster.xaml.cs">
+      <DependentUpon>frmOTScehduleMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTScheduling.xaml.cs">
+      <DependentUpon>frmOTScheduling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTSheetDetails.xaml.cs">
+      <DependentUpon>frmOTSheetDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOTSurgeryDetails.xaml.cs">
+      <DependentUpon>frmOTSurgeryDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientConsentDetails.xaml.cs">
+      <DependentUpon>frmPatientConsentDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientWiseChecklist.xaml.cs">
+      <DependentUpon>frmPatientWiseChecklist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPostInstructionDetails.xaml.cs">
+      <DependentUpon>frmPostInstructionDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintConsent.xaml.cs">
+      <DependentUpon>frmPrintConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcedureConsent.xaml.cs">
+      <DependentUpon>frmProcedureConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcedureSearch.xaml.cs">
+      <DependentUpon>frmProcedureSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdatePhoto.xaml.cs">
+      <DependentUpon>frmUpdatePhoto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewConsent.xaml.cs">
+      <DependentUpon>frmViewConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemList.xaml.cs">
+      <DependentUpon>ItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemListNew.xaml.cs">
+      <DependentUpon>ItemListNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemSearchViewModel.cs" />
+    <Compile Include="MasterLists.cs" />
+    <Compile Include="NotesSearch.xaml.cs">
+      <DependentUpon>NotesSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OTScehduleMaster.xaml.cs">
+      <DependentUpon>OTScehduleMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSearch.xaml.cs">
+      <DependentUpon>PatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSearchViewModel.cs" />
+    <Compile Include="PatientWiseChecklist.xaml.cs">
+      <DependentUpon>PatientWiseChecklist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProcedureSearch.xaml.cs">
+      <DependentUpon>ProcedureSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceSearch.xaml.cs">
+      <DependentUpon>ServiceSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffScheduling.xaml.cs">
+      <DependentUpon>StaffScheduling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaffSearch.xaml.cs">
+      <DependentUpon>StaffSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="WindowForOT.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\EMR\frmCPOELabServicesSelection.xaml">
+      <Link>Forms Links\frmCPOELabServicesSelection.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\frmCPOEOtherSelectionList.xaml">
+      <Link>Forms Links\frmCPOEOtherSelectionList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\frmCPOEServiceSelectionList.xaml">
+      <Link>Forms Links\frmCPOEServiceSelectionList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\frmEMRMedDrugSelectionList.xaml">
+      <Link>Forms Links\frmEMRMedDrugSelectionList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BillClearance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CancelOTBooking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConsentPrinting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCancelBooking.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDocEmpDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDoctorOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTDetailsService.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmOtImageUpload.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTItemDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTNotes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmOTOtherDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTScehduleMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTScheduling.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTSheetDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOTSurgeryDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPatientConsentDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPatientWiseChecklist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPostInstructionDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPrintConsent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmProcedureConsent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmProcedureSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmUpdatePhoto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmViewConsent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemSearch\ItemList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemSearch\ItemListNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotesSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OTScehduleMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientWiseChecklist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProcedureSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\Dictionary1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StaffScheduling.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamic.Localization\PalashDynamic.Localization.csproj">
+      <Project>{C79BA59E-5157-40A1-BC4A-6335984B92FD}</Project>
+      <Name>PalashDynamic.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Administration\PalashDynamics.Administration.csproj">
+      <Project>{5BBF7708-7343-4373-88B8-60F339BA97D0}</Project>
+      <Name>PalashDynamics.Administration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SearchResultLists\PalashDynamics.SearchResultLists.csproj">
+      <Project>{1222821C-4F56-416A-8F9D-A861422ABC29}</Project>
+      <Name>PalashDynamics.SearchResultLists</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

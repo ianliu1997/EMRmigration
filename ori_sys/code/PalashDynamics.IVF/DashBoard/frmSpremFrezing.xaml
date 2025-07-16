@@ -1,0 +1,390 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmSpremFrezing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+        xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+        xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+        xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"
+        xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+        xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+        xmlns:Grp ="clr-namespace:Groupbox;assembly=Groupbox"
+        xmlns:Common="clr-namespace:DataDrivenApplication"  
+        xmlns:liquid="clr-namespace:Liquid;assembly=Liquid"             
+        xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+        xmlns:data="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+        Loaded="ChildWindow_Loaded"
+        Title="Semen Freezing  :-(Name-)"         
+        Width="1000" Height="600" >
+    
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+            <SolidColorBrush x:Key="Heading" Color="#FF0F3C64"/>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    
+    <Grid Background="White">        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition  Height="Auto" />           
+        </Grid.RowDefinitions>
+        
+        <controlsToolkit:DockPanel x:Name="doctop" controlsToolkit:DockPanel.Dock="Top" Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="1" Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Margin="0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Width="Auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                
+                            </Grid.ColumnDefinitions>
+                            <Grp:GroupBox Header="DateTime" Margin="2" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Date" Margin="2" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                    <controls:DatePicker SelectedDate="{Binding Path=ProcDate,Mode=TwoWay}"  x:Name="PrcDate" Margin="2" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                                    <controls:DatePicker x:Name="SpremFreezDate" SelectedDate="{Binding ProcDate, Mode=TwoWay}" Margin="2" Grid.Row="0" TabIndex="1"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Time" Margin="2" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                    <inputToolkit:TimePicker x:Name="SpremFreezTime" TabIndex="2"   Value="{Binding ProcTime, Mode=TwoWay}" Margin="2" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                                </Grid>
+                            </Grp:GroupBox>
+                            <Grp:GroupBox Header="Doctor" Margin="2" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Doctor "  VerticalAlignment="Center" Margin="3"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctorName" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100"  Margin="2" TabIndex="3"    Grid.Row="0" Grid.Column="1" ></inputcombo:AutoCompleteComboBox>
+                                   
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Embryologist" Margin="3" VerticalAlignment="Center"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbEmbryologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="1" Grid.Column="1 "  TabIndex="4"></inputcombo:AutoCompleteComboBox>
+                                </Grid>
+                            </Grp:GroupBox>
+                           
+                        </Grid>
+
+                    </Grid>
+                </StackPanel>
+                <!-- Semen Details-->
+
+                <StackPanel Margin="1" Grid.Row="2">
+                    <Grp:GroupBox Header="Pre-FreezingDetails ">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Sperm Collection Method" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="3"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox  x:Name="cmbSpremCollecionMethod" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="0" Grid.Column="1"  TabIndex="5"></inputcombo:AutoCompleteComboBox>
+                            <TextBlock Text="Collection Problem (If any)" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="3"></TextBlock>
+                            <TextBox x:Name="txtcollectnprblm" Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2" Grid.Row="0" Grid.Column="3" TabIndex="6"   ></TextBox>
+                          
+                            <TextBlock Text="Volume" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" Margin="3"></TextBlock>
+                            <TextBox x:Name="txtvolume" TabIndex="7"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2,2,30,2" Grid.Row="0" Grid.Column="5" TextChanged="txtvolume_TextChanged" KeyDown="txtvolume_KeyDown" ></TextBox>
+                            <TextBlock Text="(ml)" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3"></TextBlock>
+
+                            <TextBlock Text="Abstinence" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="3"></TextBlock>
+                            <TextBox x:Name="txtAbstinence" TabIndex="8"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2" Grid.Row="1" Grid.Column="1" ></TextBox>
+
+                            <TextBlock Text="Total Sperm Count" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="3"></TextBlock>
+                            <TextBox x:Name="txtTotalSpremCount" TabIndex="9"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2,2,55,2"  Grid.Row="1" Grid.Column="3" TextChanged="txtTotalSpremCount_TextChanged" KeyDown="txtTotalSpremCount_KeyDown"></TextBox>
+                            <TextBlock Text="(Milllion)" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3"></TextBlock>
+
+                            <TextBlock Text="Motility" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Margin="3"></TextBlock>
+                            <TextBox x:Name="txtMotility" TabIndex="10"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2,2,30,2"  Grid.Row="1" Grid.Column="5" TextChanged="txtMotility_TextChanged" KeyDown="txtMotility_KeyDown"  ></TextBox>
+                            <TextBlock Text="(%)" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3"></TextBlock>
+
+                            <TextBlock Text="Viscosity" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="3"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox  TabIndex="11"   x:Name="cmbViscosity" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="3" Grid.Column="1"  ></inputcombo:AutoCompleteComboBox>
+
+                         
+                        </Grid>
+                    </Grp:GroupBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Margin="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                   
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <Grp:GroupBox Header=" Grade" Margin="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Grade A " HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"  Margin="3"></TextBlock>
+                                    <TextBox x:Name="txtGradeA" TabIndex="12"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2" Grid.Row="0" Grid.Column="1" KeyDown="txtGradeA_KeyDown" TextChanged="txtGradeA_TextChanged"></TextBox>
+                                    <TextBlock Text="( % )" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Margin="3"></TextBlock>
+
+                                    <TextBlock Text="Grade B " HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"  Margin="3"></TextBlock>
+                                    <TextBox x:Name="txtGradeB" TabIndex="13"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2" Grid.Row="1" Grid.Column="1" KeyDown="txtGradeB_KeyDown" TextChanged="txtGradeB_TextChanged" ></TextBox>
+                                    <TextBlock Text="( % )" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="3"></TextBlock>
+
+                                    <TextBlock Text="Grade C " HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  Margin="3"></TextBlock>
+                                    <TextBox x:Name="txtGradeC" TabIndex="14"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2" Grid.Row="2" Grid.Column="1" KeyDown="txtGradeC_KeyDown" TextChanged="txtGradeC_TextChanged" ></TextBox>
+                                    <TextBlock Text="( % )" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="3"></TextBlock>
+                                </Grid>
+                            </Grp:GroupBox>
+                        </StackPanel>
+                      
+                            <Grp:GroupBox Header=" Freezing Details" Margin="2" Grid.RowSpan="2" Grid.Column="1">
+                                <Grid HorizontalAlignment="Stretch"  Grid.RowSpan="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        
+                                    </Grid.ColumnDefinitions>
+
+                                <TextBlock Text=" Other Details " HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"  Margin="3"></TextBlock>
+                                <TextBox x:Name="txtOtherDetails" TabIndex="15"   Text="{Binding OocytePreparationMedia, Mode=TwoWay}" Grid.ColumnSpan="2" VerticalAlignment="Center" MinWidth="100" Margin="4" Grid.Row="0" Grid.Column="1" ></TextBox>
+
+                                <TextBlock Text="Comments" HorizontalAlignment="Right" Grid.Row="1"  Grid.Column="0" VerticalAlignment="Center"  Margin="3"></TextBlock>
+                                <TextBox x:Name="txtComments" TabIndex="16"  Text="{Binding OocytePreparationMedia, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Visible"  TextWrapping="Wrap" AcceptsReturn="True" Margin="4"  Grid.RowSpan="3" Grid.Row="1" Grid.Column="1" ></TextBox>
+                                  
+                                   </Grid>
+                            </Grp:GroupBox>
+                        
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Margin="1" Grid.Row="4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <controlsToolkit:DockPanel   controlsToolkit:DockPanel.Dock="Top" Grid.Row="0" VerticalAlignment="Stretch">
+                            <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="Sperm Freezing Details " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                            </Border>
+                            <controlsToolkit:DockPanel   controlsToolkit:DockPanel.Dock="Bottom">
+                                <data:DataPager x:Name="SpremFreezingGridPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNextNumeric"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True" />
+                                <data:DataGrid  SelectionMode="Single" x:Name="dgSpremFreezingDetailsGrid" ItemsSource="{Binding}"  AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch" Height="160" LoadingRow="dgSpremFreezingDetailsGrid_LoadingRow" >
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn Width="100" Binding="{Binding SpremNostr}" Header="Sperm No."/>
+                                        
+                                        <data:DataGridTemplateColumn Header="Color Code">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <Grid >
+                                                        <input:AutoCompleteComboBox TabIndex="17"   VerticalAlignment="Center" x:Name="cmbcolor" ItemsSource="{Binding ColorListVO}"   SelectedItem="{Binding selectedColorList,Mode=TwoWay}" SelectedValue="{Binding selectedColorList.ID}"  Text="" SelectionChanged="cmbGrade_SelectionChanged"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Straw">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbStraw" ItemsSource="{Binding StrawListVO}"   SelectedItem="{Binding selectedStrawListVO,Mode=TwoWay}"  SelectedValue="{Binding selectedStrawListVO.ID}"  Text="" SelectionChanged="cmbGrade_SelectionChanged"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Goblet Shape">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbGlobletShape" ItemsSource="{Binding GlobletShapeListVO}"   SelectedItem="{Binding selectedGlobletShapeListVO,Mode=TwoWay}"  SelectedValue="{Binding selectedGlobletShapeListVO.ID}"  Text="" SelectionChanged="cmbGrade_SelectionChanged"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Goblet Size">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbGlobletSize" ItemsSource="{Binding GlobletSizeListVO}"   SelectedItem="{Binding selectedGlobletSizeListVO,Mode=TwoWay}"  SelectedValue="{Binding selectedGlobletSizeListVO.ID}"  Text="" SelectionChanged="cmbGrade_SelectionChanged"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Cane">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbCane" ItemsSource="{Binding CanListVO}"   SelectedItem="{Binding selectedCanListVO,Mode=TwoWay}"  SelectedValue="{Binding selectedCanListVO.ID}"  Text="" SelectionChanged="cmbGrade_SelectionChanged"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Canister">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbCanister" ItemsSource="{Binding CanisterListVO}"   SelectedItem="{Binding selectedCanisterListVO,Mode=TwoWay}"  SelectedValue="{Binding selectedCanisterListVO.ID}"  Text="" SelectionChanged="cmbGrade_SelectionChanged"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Tank">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbTank" ItemsSource="{Binding TankListVO}"   SelectedItem="{Binding selectedTankListVO,Mode=TwoWay}"  SelectedValue="{Binding selectedTankListVO.ID}"  Text="" SelectionChanged="cmbGrade_SelectionChanged"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                 
+
+                                        <data:DataGridTemplateColumn Header="Comments">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <TextBox Width="100" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True" VerticalAlignment="Center"  Height="28"  Text="{Binding Comments,Mode=TwoWay}" ></TextBox>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        
+                                        <data:DataGridTemplateColumn Header="Thaw">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsThaw,Mode=TwoWay}" x:Name="ChkThaw" Content="Thaw" Click="CheckBox_Click"></CheckBox>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+
+                                        <data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <HyperlinkButton VerticalAlignment="Center" Padding="5,0,5,0" Margin="4"  IsTabStop="False" Click="btnAdd_Click" x:Name="btnAdd" HorizontalAlignment="Center" Content="Add" IsEnabled="{Binding IsAdd}"></HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                    <data:DataGridTemplateColumn>
+                                          <data:DataGridTemplateColumn.CellTemplate>
+                                               <DataTemplate>
+                                                    <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click ="cmdDelete_Click"  x:Name="cmdDelete" ToolTipService.ToolTip="Delete" IsEnabled="{Binding IsFreezReadOnly}"></HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </controlsToolkit:DockPanel>
+                        </controlsToolkit:DockPanel>                       
+                    </Grid>
+                </StackPanel>                
+            </Grid>
+        </controlsToolkit:DockPanel>
+        
+        
+        <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" Grid.Row="1" Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <StackPanel x:Name="FooterBackPanel" Orientation="Horizontal"    Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                        <ToggleButton TabIndex="18"   x:Name="cmdSave"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSave_Click" >
+                            <StackPanel Orientation="Horizontal" >
+                                <Common:XamlCheckmark Width="10" Height="10" Margin="0,0,5,0"/>
+                                <TextBlock Text="Save" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ToggleButton>
+                        <ToggleButton x:Name="CmdClose"  Grid.Row="4" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdClose_Click" TabIndex="19" >
+                            <StackPanel Orientation="Horizontal" >
+                                <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                                <TextBlock Text="Close" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

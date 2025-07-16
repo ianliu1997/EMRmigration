@@ -1,0 +1,157 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Pathology.PathologyForms.PrintPathoReportDelivery"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+           xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
+           Width="700" Height="500" 
+           Title="Print Report">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controlsToolkit:DockPanel x:Name="dpC1RTB" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" Margin ="4">
+            <c1:C1TabControl Grid.Row="0" Grid.Column="0"  SelectionChanged="OnSelectionChanged" TabStripPlacement="Bottom" Padding="0 0 0 2" c1:C1NagScreen.Nag="True">
+
+                <c1:C1TabItem Name="richTextBoxTab" c1:C1NagScreen.Nag="True">
+                    <Grid>
+                        <Grid.Resources>
+                            <DataTemplate x:Name="printTemplate">
+                                <Grid Height="{Binding ViewManager.PresenterInfo.Height}" Width="{Binding ViewManager.PresenterInfo.Width}">
+                                    <c1:C1RichTextPresenter Source="{Binding}" Margin="{Binding ViewManager.PresenterInfo.Padding}" c1:C1NagScreen.Nag="True" />
+                                </Grid>
+                            </DataTemplate>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <c1:C1RichTextBoxToolbar x:Name="richToolbar" RichTextBox="{Binding ElementName=richTextBox}" Margin="-1,-1,-1,0" c1:C1NagScreen.Nag="True" Visibility="Collapsed" />
+                        <c1:C1RichTextBox  x:Name="richTextBox" Grid.Row="1" BorderThickness="0" c1:C1NagScreen.Nag="True" Margin="0" ViewMode="Draft" VerticalContentAlignment="Top" IsTabStop="True">
+                            <c1:C1RichTextBox.PrintTemplate >
+                                <DataTemplate x:Name="HeaderTemplate">
+                                    <Grid Margin="4" x:Name="gp">
+                                        <Grid.Resources>
+                                            <c1:ZoomToScaleTransformConverter x:Key="zoomConverter" />
+                                        </Grid.Resources>
+                                        <!--<Border Background="#19000000" Margin="4,4,-4,-4" CornerRadius="2" />
+                                                                                            <Border Background="#19000000" Margin="3,3,-3,-3" CornerRadius="2" />
+                                                                                            <Border Background="#19000000" Margin="2,2,-2,-2" CornerRadius="2" />
+                                                                                            <Border Background="#19000000" Margin="1,1,-1,-1" CornerRadius="2" />
+                                                                                            <Border BorderThickness="1" BorderBrush="#FF858585" Background="{Binding ViewManager.PresenterInfo.Background}"/>-->
+
+
+                                        <c1:C1LayoutTransformer Margin="30,135,0,0"  LayoutTransform="{Binding ViewManager.PresenterInfo.Zoom, Converter={StaticResource zoomConverter}}" c1:C1NagScreen.Nag="True">
+                                            <!--<Grid Height="{Binding ViewManager.PresenterInfo.Height}" Width="{Binding ViewManager.PresenterInfo.Width}">-->
+                                            <!--<Grid Height="{Binding ViewManager.PresenterInfo.Height}" Width="{Binding ViewManager.PresenterInfo.Width}">-->
+                                            <Grid Height="Auto" Width="Auto">
+                                                <!--<c1:C1RichTextPresenter Source="{Binding}" Margin="{Binding ViewManager.PresenterInfo.Padding}"/>-->
+                                                <c1:C1RichTextPresenter Source="{Binding}" Margin="30,135,20,180" c1:C1NagScreen.Nag="True" />
+                                            </Grid>
+                                        </c1:C1LayoutTransformer>
+
+                                        <TextBlock Text="Header" Visibility="Collapsed" x:Name="header" Margin="10" HorizontalAlignment="Center" >
+
+                                        </TextBlock>
+                                        <!--<TextBox x:Name="header" Text="{Binding Path=PatientName,Mode=TwoWay}" Margin="10" HorizontalAlignment="Center" />-->
+                                        <!-- This is the added header and footer. The rest of the template was taken from the default C1RichTextBox control template. -->
+
+
+
+                                        <Grid x:Name="PatientDetails" Visibility="Visible">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="PATIENT NAME :"  Grid.Row="0" Grid.Column="0"  Margin="65,130,4,4" HorizontalAlignment="Left" FontWeight="Bold"  FontSize="12" />
+                                            <TextBlock Text="{Binding PatientName,Mode=TwoWay}"  Grid.Row="0" Grid.Column="1" Margin="30,130,4,4" HorizontalAlignment="Left"  FontSize="12" />
+                                            <TextBlock Text="AGE         :"  Grid.Row="0" Grid.Column="2" Margin="25,130,0,4" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" />
+                                            <TextBlock Text="{Binding AgeYear,Mode=TwoWay}" Grid.Row="0" Grid.Column="3" Margin="30,130,20,4" HorizontalAlignment="Left"  FontSize="12"/>
+                                            <TextBlock Text="GENDER :"  Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" Margin="70,130,0,4" FontWeight="Bold" FontSize="12" />
+                                            <TextBlock Text="{Binding Gender,Mode=TwoWay}" Grid.Row="0" Grid.Column="5" Margin="10,130,0,4" HorizontalAlignment="Left"  FontSize="12"/>
+                                            <TextBlock Text="MR No      :"  Grid.Row="1" Grid.Column="0" Margin="65,0,4,4" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" />
+                                            <TextBlock Text="{Binding MRNo,Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="30,0,4,4" HorizontalAlignment="Left"  FontSize="12" />
+                                            <TextBlock Text="BILL NO. :"  Grid.Row="1"  Margin="25,0,0,4" Grid.Column="2"  HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" />
+                                            <TextBlock Text="{Binding BillNo,Mode=TwoWay}" Grid.Row="1" Grid.Column="3" Margin="30,0,5,4" HorizontalAlignment="Left"  FontSize="12" />
+
+                                            <TextBlock Text="REP DATE :"  Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" Margin="65,0,0,4" FontWeight="Bold" FontSize="12" />
+                                            <TextBlock Text="{Binding ReportPrepairDate,Mode=TwoWay}" Grid.Row="1" Grid.Column="5" Margin="5,0,0,4" HorizontalAlignment="Left"  FontSize="12"/>
+
+                                            <TextBlock Text="REG DATE          :"  Grid.Row="2"  Margin="65,0,4,4" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" />
+                                            <TextBlock Text="{Binding OrderDate,Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="30,0,4,4" HorizontalAlignment="Left"  FontSize="12"/>
+
+                                            <TextBlock Text="REF BY    :"  Grid.Row="2"  Margin="25,0,0,4" Grid.Column="2"  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="12" />
+                                            <TextBlock Text="{Binding ReferredDoctor,Mode=TwoWay}" Grid.Row="2" Grid.Column="3" Margin="30,0,5,4" Grid.ColumnSpan="6" HorizontalAlignment="Left"  FontSize="12"/>
+                                            <Border Grid.Row="3" Margin="30,0,20,4"  Grid.ColumnSpan="7"  BorderBrush="Black"  BorderThickness="1" ></Border>
+
+                                            <TextBlock Text="{Binding TestNAme,Mode=TwoWay}" Grid.Row="4"  Margin="300,0,0,4"  Grid.ColumnSpan="7"  FontWeight="Bold" FontSize="18"/>
+                                            <Border  Margin="30,0,20,4" Grid.Row="5"  Grid.ColumnSpan="7"  BorderBrush="Black"  BorderThickness="1" ></Border>
+
+                                        </Grid>
+
+
+
+                                        <!--<TextBlock Text="Priyanka" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
+
+                                        </TextBlock>-->
+
+
+                                    </Grid>
+                                </DataTemplate>
+                            </c1:C1RichTextBox.PrintTemplate>
+                        </c1:C1RichTextBox>
+                    </Grid>
+                </c1:C1TabItem>
+
+                <c1:C1TabItem Header="Html" Name="htmlTab" c1:C1NagScreen.Nag="True" Visibility="Collapsed">
+                    <c1:C1RichTextBox x:Name="htmlBox" BorderThickness="0" c1:C1NagScreen.Nag="True" />
+                </c1:C1TabItem>
+
+                <c1:C1TabItem Header="Rtf" Name="rtfTab" c1:C1NagScreen.Nag="True" Visibility="Collapsed">
+                    <c1:C1RichTextBox x:Name="rtfBox" BorderThickness="0" c1:C1NagScreen.Nag="True" />
+                </c1:C1TabItem>
+            </c1:C1TabControl>
+        </controlsToolkit:DockPanel>
+
+        <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" Grid.Row="1">
+            <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                <StackPanel   x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                        <ToggleButton x:Name="SavePDF" Content="Send Email" Click="SavePDF_Click" Width="80" Visibility="Collapsed" Style="{StaticResource ToggleButtonStyle}" Height="23" HorizontalAlignment="Right"/>
+                        <ToggleButton x:Name="OKButton" Content="Print" Click="OKButton_Click" Width="75" Style="{StaticResource ToggleButtonStyle}" Height="23" HorizontalAlignment="Right"/>
+                        <ToggleButton x:Name="CancelButton" Content="Close" Grid.Row="1" Width="75" Height="23" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Click="CancelButton_Click" ></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+        <!--<Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />-->
+        <!--<Button x:Name="OKButton" Content="Print" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" />-->
+        <!--<ToggleButton x:Name="OKButton" Content="Print" Background="#000000"  Margin="0,12,79,4" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}"   Width="75" Height="23" Click="OKButton_Click" Grid.Row="1"></ToggleButton>
+        <ToggleButton x:Name="CancelButton" Content="Close" Grid.Row="1" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,4,4" Style="{StaticResource ToggleButtonStyle}" Click="CancelButton_Click" ></ToggleButton>-->
+    </Grid>
+</controls:ChildWindow>

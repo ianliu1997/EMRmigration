@@ -1,0 +1,1514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03EF3E6D-740E-427C-8C09-D9B7787D6EE1}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.IVF</RootNamespace>
+    <AssemblyName>PalashDynamics.IVF</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.IVF.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.IVF.App</SilverlightAppEntry>
+    <TestPageFileName>PalashDynamics.IVFTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blacklight.Silverlight.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Groupbox">
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Liquid, Version=5.2.7.15946, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Liquid.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="PalashDynamic.Localization">
+      <HintPath>..\PalashDynamic.Localization\Bin\Debug\PalashDynamic.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\DataDrivenApplication\Forms\EMRWindow.xaml.cs">
+      <Link>DashBoard\EMRWindow.xaml.cs</Link>
+      <DependentUpon>EMRWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\DataDrivenApplication\Forms\frmAttention.xaml.cs">
+      <Link>frmAttention.xaml.cs</Link>
+      <DependentUpon>frmAttention.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\DataDrivenApplication\XamlCheckmark.xaml.cs">
+      <Link>DashBoard\XamlCheckmark.xaml.cs</Link>
+      <DependentUpon>XamlCheckmark.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\DataDrivenApplication\XamlCross.xaml.cs">
+      <Link>DashBoard\XamlCross.xaml.cs</Link>
+      <DependentUpon>XamlCross.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\DataDrivenApplication\XamlPencil.xaml.cs">
+      <Link>DashBoard\XamlPencil.xaml.cs</Link>
+      <DependentUpon>XamlPencil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\App.xaml.cs">
+      <Link>Links\App.xaml.cs</Link>
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\EMR\frmDiagnosisSelection.xaml.cs">
+      <Link>Links\frmDiagnosisSelection.xaml.cs</Link>
+      <DependentUpon>frmDiagnosisSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\PhotoWindow.xaml.cs">
+      <Link>PhotoWindow.xaml.cs</Link>
+      <DependentUpon>PhotoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemList.xaml.cs">
+      <Link>ItemSearch\ItemList.xaml.cs</Link>
+      <DependentUpon>ItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemListNew.xaml.cs">
+      <Link>ItemSearch\ItemListNew.xaml.cs</Link>
+      <DependentUpon>ItemListNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemSearchViewModel.cs">
+      <Link>ItemSearch\ItemSearchViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ViewModelBase.cs">
+      <Link>ItemSearch\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ArtCycleSummary.xaml.cs">
+      <DependentUpon>ArtCycleSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeForm.xaml.cs">
+      <DependentUpon>BarcodeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Barcode\Barcode.cs" />
+    <Compile Include="Barcode\Code128.cs" />
+    <Compile Include="Barcode\Code39.cs" />
+    <Compile Include="DashBoard\AdditionalMeasure.xaml.cs">
+      <DependentUpon>AdditionalMeasure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\ARTDashboard.xaml.cs">
+      <DependentUpon>ARTDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\ARTFollicularMonitoring.xaml.cs">
+      <DependentUpon>ARTFollicularMonitoring.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\ClassForEMRTemplate.cs" />
+    <Compile Include="DashBoard\CryoBankForDashboard.xaml.cs">
+      <DependentUpon>CryoBankForDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\CryoPreservation.xaml.cs">
+      <DependentUpon>CryoPreservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmAddObservation.xaml.cs">
+      <DependentUpon>frmAddObservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmApplyBatchForDonor.xaml.cs">
+      <DependentUpon>frmApplyBatchForDonor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmARTGeneralDetails.xaml.cs">
+      <DependentUpon>frmARTGeneralDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmBirth.xaml.cs">
+      <DependentUpon>frmBirth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmBirthDetails.xaml.cs">
+      <DependentUpon>frmBirthDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmCoupleSearch.xaml.cs">
+      <DependentUpon>frmCoupleSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmCryoBankForThawing.xaml.cs">
+      <DependentUpon>frmCryoBankForThawing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmCryoEmbryoList.xaml.cs">
+      <DependentUpon>frmCryoEmbryoList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmCryoPreservation.xaml.cs">
+      <DependentUpon>frmCryoPreservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmCryoRenewal.xaml.cs">
+      <DependentUpon>FrmCryoRenewal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmCryoRenewalDate.xaml.cs">
+      <DependentUpon>FrmCryoRenewalDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmDocumentforDashTherapy.xaml.cs">
+      <DependentUpon>frmDocumentforDashTherapy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmDonorRegistration.xaml.cs">
+      <DependentUpon>frmDonorRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmDonorSearch.xaml.cs">
+      <DependentUpon>FrmDonorSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmEmbryoBank.xaml.cs">
+      <DependentUpon>frmEmbryoBank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmEmbryoBankNew.xaml.cs">
+      <DependentUpon>frmEmbryoBankNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmEMRIVFLinking.xaml.cs">
+      <DependentUpon>FrmEMRIVFLinking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmExecutionCalender.xaml.cs">
+      <DependentUpon>FrmExecutionCalender.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmFemaleConsent.xaml.cs">
+      <DependentUpon>frmFemaleConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmFemaleExamination.xaml.cs">
+      <DependentUpon>frmFemaleExamination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmFeMaleExamination_Dashboard.xaml.cs">
+      <DependentUpon>frmFeMaleExamination_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmFertCheck.xaml.cs">
+      <DependentUpon>frmFertCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmFollicularMonitoring.xaml.cs">
+      <DependentUpon>frmFollicularMonitoring.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmGetSemenBatchList.xaml.cs">
+      <DependentUpon>frmGetSemenBatchList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmGraphicalRepresentationofLabDays.xaml.cs">
+      <DependentUpon>frmGraphicalRepresentationofLabDays.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmGraphicalRepresentationofLabDaysNew.xaml.cs">
+      <DependentUpon>frmGraphicalRepresentationofLabDaysNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmGraphicalRepresentationofLabDaysWithoutIstambul.xaml.cs">
+      <DependentUpon>frmGraphicalRepresentationofLabDaysWithoutIstambul.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmHistory.xaml.cs">
+      <DependentUpon>frmHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmIUI.xaml.cs">
+      <DependentUpon>FrmIUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIUIComeSemenWash.xaml.cs">
+      <DependentUpon>frmIUIComeSemenWash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIUID.xaml.cs">
+      <DependentUpon>frmIUID.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFCPOELabServicesSelection.xaml.cs">
+      <DependentUpon>frmIVFCPOELabServicesSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFCPOEServiceSelectionList.xaml.cs">
+      <DependentUpon>frmIVFCPOEServiceSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFDashBoardCPOELabServicesSelection.xaml.cs">
+      <DependentUpon>frmIVFDashBoardCPOELabServicesSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmIVFDashBoardDiagnosisService.xaml.cs">
+      <DependentUpon>FrmIVFDashBoardDiagnosisService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFEMRInvestigation.xaml.cs">
+      <DependentUpon>frmIVFEMRInvestigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFEMRMedDrugSelectionList.xaml.cs">
+      <DependentUpon>frmIVFEMRMedDrugSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFEMRMedication.xaml.cs">
+      <DependentUpon>frmIVFEMRMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFEMRPhysicalExam.xaml.cs">
+      <DependentUpon>frmIVFEMRPhysicalExam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFEMRPrescribedMedication.xaml.cs">
+      <DependentUpon>frmIVFEMRPrescribedMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFEMRProcedure.xaml.cs">
+      <DependentUpon>frmIVFEMRProcedure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmIVFProcedureDiagnosisSelection.xaml.cs">
+      <DependentUpon>frmIVFProcedureDiagnosisSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabDay0.xaml.cs">
+      <DependentUpon>frmLabDay0.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabDay1.xaml.cs">
+      <DependentUpon>frmLabDay1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabDay2.xaml.cs">
+      <DependentUpon>frmLabDay2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabDay3.xaml.cs">
+      <DependentUpon>frmLabDay3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabDay4.xaml.cs">
+      <DependentUpon>frmLabDay4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabDay5.xaml.cs">
+      <DependentUpon>frmLabDay5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabDay6.xaml.cs">
+      <DependentUpon>frmLabDay6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabTestFemale.xaml.cs">
+      <DependentUpon>frmLabTestFemale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLabTestMale.xaml.cs">
+      <DependentUpon>frmLabTestMale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmLutualPhaseNew.xaml.cs">
+      <DependentUpon>frmLutualPhaseNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmMaleConsent.xaml.cs">
+      <DependentUpon>frmMaleConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmMaleExamination_Dashboard.xaml.cs">
+      <DependentUpon>frmMaleExamination_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmOnlyET.xaml.cs">
+      <DependentUpon>frmOnlyET.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmOPU.xaml.cs">
+      <DependentUpon>frmOPU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmPatientListForDashboard.xaml.cs">
+      <DependentUpon>FrmPatientListForDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmPatientListForDonate.xaml.cs">
+      <DependentUpon>FrmPatientListForDonate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmPatientSignConsent_IVFDashboard.xaml.cs">
+      <DependentUpon>FrmPatientSignConsent_IVFDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmPatientSpermDiscard.xaml.cs">
+      <DependentUpon>FrmPatientSpermDiscard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmPGD.xaml.cs">
+      <DependentUpon>frmPGD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmPGD_New.xaml.cs">
+      <DependentUpon>frmPGD_New.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmReceiveEmbryo.xaml.cs">
+      <DependentUpon>frmReceiveEmbryo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmReceiveOocyte.xaml.cs">
+      <DependentUpon>frmReceiveOocyte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmSemenFreezingforClinical.xaml.cs">
+      <DependentUpon>frmSemenFreezingforClinical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmSemenPreparation_Details.xaml.cs">
+      <DependentUpon>FrmSemenPreparation_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmSpermBank.xaml.cs">
+      <DependentUpon>frmSpermBank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmSpermiogram.xaml.cs">
+      <DependentUpon>frmSpermiogram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmSpremFrezing.xaml.cs">
+      <DependentUpon>frmSpremFrezing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmSpremThawing.xaml.cs">
+      <DependentUpon>frmSpremThawing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmSurgeryImages.xaml.cs">
+      <DependentUpon>frmSurgeryImages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\FrmSurrogateOutcome.xaml.cs">
+      <DependentUpon>FrmSurrogateOutcome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\frmTransfer.xaml.cs">
+      <DependentUpon>frmTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\IVFDashboardForSurrogacy.xaml.cs">
+      <DependentUpon>IVFDashboardForSurrogacy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\MediaDetails_New.xaml.cs">
+      <DependentUpon>MediaDetails_New.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\PatientARTAndLabDayDetails.xaml.cs">
+      <DependentUpon>PatientARTAndLabDayDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\PatientConsentPrint.xaml.cs">
+      <DependentUpon>PatientConsentPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\PtListDonateOnDay0EmbDashboard.xaml.cs">
+      <DependentUpon>PtListDonateOnDay0EmbDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\SemenDetails_DashBoard.xaml.cs">
+      <DependentUpon>SemenDetails_DashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\SemenExamination_Dashboard.xaml.cs">
+      <DependentUpon>SemenExamination_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\SemenWash_Dashboard.xaml.cs">
+      <DependentUpon>SemenWash_Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\SpermFreezingForDashboard.xaml.cs">
+      <DependentUpon>SpermFreezingForDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\SpermThawingForClinical.xaml.cs">
+      <DependentUpon>SpermThawingForClinical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\SpermThawingForDashboard.xaml.cs">
+      <DependentUpon>SpermThawingForDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\SpermThawingForPartnerIUI1.xaml.cs">
+      <DependentUpon>SpermThawingForPartnerIUI1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\TesaPesaTeseList.xaml.cs">
+      <DependentUpon>TesaPesaTeseList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridSelectionAdapter.cs" />
+    <Compile Include="EmbryoTransfer.xaml.cs">
+      <DependentUpon>EmbryoTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleHistory.xaml.cs">
+      <DependentUpon>FemaleHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleLabDay2.xaml.cs">
+      <DependentUpon>FemaleLabDay2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleLabDay3.xaml.cs">
+      <DependentUpon>FemaleLabDay3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleLabDay4.xaml.cs">
+      <DependentUpon>FemaleLabDay4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleLabDay5.xaml.cs">
+      <DependentUpon>FemaleLabDay5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleLabDay6.xaml.cs">
+      <DependentUpon>FemaleLabDay6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBillListPatientWise.xaml.cs">
+      <DependentUpon>frmBillListPatientWise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmClinicalSummary.xaml.cs">
+      <DependentUpon>frmClinicalSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCryoBankSummary.xaml.cs">
+      <DependentUpon>frmCryoBankSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctorProcedurelink.xaml.cs">
+      <DependentUpon>frmDoctorProcedurelink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmHSG.xaml.cs">
+      <DependentUpon>frmHSG.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIVFConsent.xaml.cs">
+      <DependentUpon>FrmIVFConsent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpermThawing.xaml.cs">
+      <DependentUpon>frmSpermThawing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralExaminationForFemale.xaml.cs">
+      <DependentUpon>GeneralExaminationForFemale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralExaminationForMalePatient.xaml.cs">
+      <DependentUpon>GeneralExaminationForMalePatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImpressionWindow.xaml.cs">
+      <DependentUpon>ImpressionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lab1Detail.xaml.cs">
+      <DependentUpon>Lab1Detail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleLabDay0.xaml.cs">
+      <DependentUpon>FemaleLabDay0.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FemaleLabDay1.xaml.cs">
+      <DependentUpon>FemaleLabDay1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lab2Detail.xaml.cs">
+      <DependentUpon>Lab2Detail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lab3Detail.xaml.cs">
+      <DependentUpon>Lab3Detail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lab4Detail.xaml.cs">
+      <DependentUpon>Lab4Detail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lab5Detail.xaml.cs">
+      <DependentUpon>Lab5Detail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LabDaysSummary.xaml.cs">
+      <DependentUpon>LabDaysSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaleHistory.xaml.cs">
+      <DependentUpon>MaleHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaDetails.xaml.cs">
+      <DependentUpon>MediaDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OnlyET.xaml.cs">
+      <DependentUpon>OnlyET.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OnlyVitrification.xaml.cs">
+      <DependentUpon>OnlyVitrification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientList\PatientSearch.xaml.cs">
+      <DependentUpon>PatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientList\PatientSearchViewModel.cs" />
+    <Compile Include="PreviousDayScoreList.xaml.cs">
+      <DependentUpon>PreviousDayScoreList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RepeterControl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SemenDetails.xaml.cs">
+      <DependentUpon>SemenDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpermThawingForDonorIUI.xaml.cs">
+      <DependentUpon>SpermThawingForDonorIUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TESE_Report.xaml.cs">
+      <DependentUpon>TESE_Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Thawing.xaml.cs">
+      <DependentUpon>Thawing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\AddDrug.xaml.cs">
+      <DependentUpon>AddDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\ChangePartner.xaml.cs">
+      <DependentUpon>ChangePartner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\DeleteDrug.xaml.cs">
+      <DependentUpon>DeleteDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\FollicularMonitoring.xaml.cs">
+      <DependentUpon>FollicularMonitoring.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\frmAddEvent.xaml.cs">
+      <DependentUpon>frmAddEvent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\IVFTherapyExecution.xaml.cs">
+      <DependentUpon>IVFTherapyExecution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\IVFTherapyExecutionForSurrogacy.xaml.cs">
+      <DependentUpon>IVFTherapyExecutionForSurrogacy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\IVFTherapyExecutionForSurrogate.xaml.cs">
+      <DependentUpon>IVFTherapyExecutionForSurrogate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\New_FollicularMonitoring.xaml.cs">
+      <DependentUpon>New_FollicularMonitoring.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TherpyExecution\RepeterControlSurrogacy.cs" />
+    <Compile Include="VisibilityConverter.cs" />
+    <Compile Include="Vitrification.xaml.cs">
+      <DependentUpon>Vitrification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <Resource Include="Icons\addCategories.gif" />
+    <Resource Include="Icons\addressbook.gif" />
+    <Resource Include="Icons\AddSymbol.jpg" />
+    <Resource Include="Icons\AdviceInvesticgation.jpg" />
+    <Content Include="Icons\alert.ico" />
+    <Content Include="Icons\appointment.ico" />
+    <Resource Include="Icons\Approve.png" />
+    <Content Include="Icons\Arrow_Down.ico" />
+    <Resource Include="Icons\attachment.gif" />
+    <Content Include="Icons\Baby.bmp" />
+    <Resource Include="Icons\calendar-date-icon.png" />
+    <Content Include="Icons\calendar.ico" />
+    <Resource Include="Icons\Cancel.png" />
+    <Resource Include="Icons\category.gif" />
+    <Content Include="Icons\chooseForm.ico" />
+    <Resource Include="Icons\Circle.jpg" />
+    <Content Include="Icons\clinical_chemestry.ico" />
+    <Content Include="Icons\Color_doppler.ico" />
+    <Content Include="Icons\connected.ico" />
+    <Content Include="Icons\contacts.ico" />
+    <Resource Include="Icons\Cost.gif" />
+    <Content Include="Icons\Couple.ico" />
+    <Resource Include="Icons\createrule.gif" />
+    <Content Include="Icons\cryo_preserve.ico" />
+    <Content Include="Icons\cryo_thaw.ico" />
+    <Resource Include="Icons\delete.gif" />
+    <Content Include="Icons\distributionList.ico" />
+    <Resource Include="Icons\docs.gif" />
+    <Content Include="Icons\documet.ico" />
+    <Resource Include="Icons\done.gif" />
+    <Resource Include="Icons\DownArrow1.jpg" />
+    <Content Include="Icons\drafts.bmp" />
+    <Resource Include="Icons\drug_icon_57x57.png" />
+    <Content Include="Icons\ecg.ico" />
+    <Content Include="Icons\Ed_alert.ico" />
+    <Content Include="Icons\Ed_appointment.ico" />
+    <Content Include="Icons\Ed_clinical_chemestry.ico" />
+    <Content Include="Icons\Ed_Color_doppler.ico" />
+    <Content Include="Icons\Ed_cryo_store.ico" />
+    <Content Include="Icons\Ed_documet.ico" />
+    <Content Include="Icons\Ed_ecg.ico" />
+    <Content Include="Icons\Ed_genetics.ico" />
+    <Content Include="Icons\Ed_histerscopy.ico" />
+    <Content Include="Icons\Ed_hormones.ico" />
+    <Content Include="Icons\Ed_hsg.ico" />
+    <Content Include="Icons\Ed_laparoscopy.ico" />
+    <Content Include="Icons\Ed_male_finding.ico" />
+    <Content Include="Icons\Ed_medi_docs.ico" />
+    <Content Include="Icons\Ed_medi_history.ico" />
+    <Content Include="Icons\Ed_microbiology.ico" />
+    <Content Include="Icons\Ed_note.ico" />
+    <Content Include="Icons\Ed_PAP_smear.ico" />
+    <Content Include="Icons\Ed_PS_PV.ico" />
+    <Content Include="Icons\Ed_serology.ico" />
+    <Content Include="Icons\Ed_spermiology.ico" />
+    <Content Include="Icons\Ed_ultrasound.ico" />
+    <Content Include="Icons\Ed_X_R_chest.ico" />
+    <Content Include="Icons\enquiry.ico" />
+    <Resource Include="Icons\Examiconfemale.png" />
+    <Resource Include="Icons\Examiconmale.png" />
+    <Content Include="Icons\examination.ico" />
+    <Resource Include="Icons\featured_event_icon.gif" />
+    <Resource Include="Icons\feet_bg.jpg" />
+    <Resource Include="Icons\FemaleHeader.jpg" />
+    <Resource Include="Icons\FieldQM.JPG" />
+    <Resource Include="Icons\finalize-icon.jpg" />
+    <Resource Include="Icons\flag.gif" />
+    <Resource Include="Icons\flagColumn.gif" />
+    <Content Include="Icons\folder.ico" />
+    <Resource Include="Icons\forward.gif" />
+    <Content Include="Icons\genetics.ico" />
+    <Resource Include="Icons\help.gif" />
+    <Content Include="Icons\histerscopy.ico" />
+    <Resource Include="Icons\home.gif" />
+    <Resource Include="Icons\histerscopy.png" />
+    <Resource Include="Icons\Historyiconfemale.png" />
+    <Resource Include="Icons\Historyiconmale.png" />
+    <Content Include="Icons\hormones.ico" />
+    <Content Include="Icons\hsg.ico" />
+    <Resource Include="Icons\hsg.png" />
+    <Content Include="Icons\inbox.bmp" />
+    <Resource Include="Icons\inbox.gif" />
+    <Content Include="Icons\infoPath.ico" />
+    <Resource Include="Icons\Inventory.gif" />
+    <Resource Include="Icons\IUI.png" />
+    <Content Include="Icons\IVF.ico" />
+    <Content Include="Icons\journalEntry.ico" />
+    <Content Include="Icons\junk.bmp" />
+    <Resource Include="Icons\LabDiagnosticButton.jpg" />
+    <Content Include="Icons\lab_diagnostic.ico" />
+    <Content Include="Icons\laparoscopy.ico" />
+    <Resource Include="Icons\Left_img.jpg" />
+    <Resource Include="Icons\login_MDI.jpg" />
+    <Resource Include="Icons\magnifier.gif" />
+    <Resource Include="Icons\Laproscopy.png" />
+    <Content Include="Icons\mail.ico" />
+    <Resource Include="Icons\mailType.gif" />
+    <Resource Include="Icons\MaleHeader.jpg" />
+    <Content Include="Icons\male_finding.ico" />
+    <Content Include="Icons\medi_docs.ico" />
+    <Content Include="Icons\medi_history.ico" />
+    <Content Include="Icons\meetingRequest.ico" />
+    <Content Include="Icons\message.ico" />
+    <Content Include="Icons\microbiology.ico" />
+    <Resource Include="Icons\moveto.gif" />
+    <Content Include="Icons\new_therapy.ico" />
+    <Resource Include="Icons\noflag.gif" />
+    <Content Include="Icons\note.ico" />
+    <Content Include="Icons\notes.ico" />
+    <Resource Include="Icons\occupational_therapy_icon.jpg" />
+    <Content Include="Icons\ODetails.ico" />
+    <Resource Include="Icons\onenote.gif" />
+    <Content Include="Icons\outbox.bmp" />
+    <Content Include="Icons\outlookToday.bmp" />
+    <Resource Include="Icons\Ovempickup.png" />
+    <Content Include="Icons\palashA.ico" />
+    <Content Include="Icons\PAP_smear.ico" />
+    <Content Include="Icons\Patient.ico" />
+    <Content Include="Icons\physician.ico" />
+    <Content Include="Icons\postInFolder.ico" />
+    <Resource Include="Icons\print.gif" />
+    <Content Include="Icons\print.ico" />
+    <Content Include="Icons\PS_PV.ico" />
+    <Resource Include="Icons\QueueManagement.jpg" />
+    <Resource Include="Icons\read.gif" />
+    <Content Include="Icons\recycle.bmp" />
+    <Resource Include="Icons\reply.gif" />
+    <Resource Include="Icons\replyall.gif" />
+    <Resource Include="Icons\replyed.gif" />
+    <Content Include="Icons\rss.bmp" />
+    <Content Include="Icons\saveAs.ico" />
+    <Content Include="Icons\search.bmp" />
+    <Resource Include="Icons\search.gif" />
+    <Content Include="Icons\search.ico" />
+    <Resource Include="Icons\sendreceive.gif" />
+    <Resource Include="Icons\Semenculture.png" />
+    <Resource Include="Icons\Semenexam.png" />
+    <Resource Include="Icons\Semenwash.png" />
+    <Content Include="Icons\sent.bmp" />
+    <Content Include="Icons\serology.ico" />
+    <Resource Include="Icons\shell_img.jpg" />
+    <Resource Include="Icons\spermiogramFreeze.gif" />
+    <Resource Include="Icons\sonography icon.png" />
+    <Content Include="Icons\spermiology.ico" />
+    <Content Include="Icons\taskRequest.ico" />
+    <Content Include="Icons\tasks.ico" />
+    <Resource Include="Icons\Tempate.jpg" />
+    <Resource Include="Icons\TESEprocedure.png" />
+    <Content Include="Icons\therapy_details.ico" />
+    <Resource Include="Icons\toolbarSeparator.gif" />
+    <Content Include="Icons\ultrasound.ico" />
+    <Resource Include="Icons\UltrsSoundBtn.jpg" />
+    <Resource Include="Icons\unread.gif" />
+    <Resource Include="Icons\View.jpg" />
+    <Resource Include="Icons\addButton.png" />
+    <Resource Include="CultureImages\Assisted_Hatching.png" />
+    <Resource Include="CultureImages\circle.jpg" />
+    <Resource Include="CultureImages\Cryopreservation.png" />
+    <Resource Include="CultureImages\Degenerate.jpg" />
+    <Resource Include="CultureImages\Discarded.jpg" />
+    <Resource Include="CultureImages\Discarded.png" />
+    <Resource Include="CultureImages\ETGrade1.png" />
+    <Resource Include="CultureImages\ETGrade2.png" />
+    <Resource Include="CultureImages\ETGrade3.png" />
+    <Resource Include="CultureImages\ETGrade4.png" />
+    <Resource Include="CultureImages\ForET.png" />
+    <Resource Include="CultureImages\Grade1.jpg" />
+    <Resource Include="CultureImages\Grade2.jpg" />
+    <Resource Include="CultureImages\Grade3.jpg" />
+    <Resource Include="CultureImages\Grade4.jpg" />
+    <Resource Include="CultureImages\Grade5.jpg" />
+    <Resource Include="CultureImages\Grade6.jpg" />
+    <Resource Include="CultureImages\GV.jpg" />
+    <Resource Include="CultureImages\ICSI.png" />
+    <Resource Include="CultureImages\IMSI.png" />
+    <Resource Include="CultureImages\InArrest.png" />
+    <Resource Include="CultureImages\IsCryoPreservation.png" />
+    <Resource Include="CultureImages\IsThawing.png" />
+    <Resource Include="CultureImages\ivf.png" />
+    <Resource Include="CultureImages\Lost.jpg" />
+    <Resource Include="CultureImages\MI.jpg" />
+    <Resource Include="CultureImages\MII.jpg" />
+    <Resource Include="CultureImages\Morula.jpg" />
+    <Resource Include="CultureImages\note.png" />
+    <Resource Include="CultureImages\pgd.png" />
+    <Resource Include="CultureImages\PN0.jpg" />
+    <Resource Include="CultureImages\PN1.jpg" />
+    <Resource Include="CultureImages\PN2.jpg" />
+    <Resource Include="CultureImages\PN3.jpg" />
+    <Resource Include="CultureImages\Pollar_body_diagnosis.png" />
+    <Resource Include="CultureImages\q_mark.jpg" />
+    <Resource Include="CultureImages\q_stop.jpg" />
+    <Resource Include="CultureImages\Survival.png" />
+    <Resource Include="CultureImages\Transparent.jpg" />
+    <Resource Include="Icons\index.jpg" />
+    <Resource Include="Icons\Search_b.JPG" />
+    <Resource Include="Icons\xmag.png" />
+    <Resource Include="Icons\attachment.JPG" />
+    <Resource Include="Icons\female.jpg" />
+    <Resource Include="Icons\male.jpg" />
+    <None Include="CultureImages\Morpheus_GraphicalRepresentation.xlsx" />
+    <Content Include="Icons\camera.png" />
+    <None Include="Icons\Thumbs.db" />
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\DataDrivenApplication\Forms\EMRWindow.xaml">
+      <Link>DashBoard\EMRWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\DataDrivenApplication\Forms\frmAttention.xaml">
+      <Link>frmAttention.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\DataDrivenApplication\XamlCheckmark.xaml">
+      <Link>DashBoard\XamlCheckmark.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\DataDrivenApplication\XamlCross.xaml">
+      <Link>DashBoard\XamlCross.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\DataDrivenApplication\XamlPencil.xaml">
+      <Link>DashBoard\XamlPencil.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\App.xaml">
+      <Link>Links\App.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\EMR\frmDiagnosisSelection.xaml">
+      <Link>Links\frmDiagnosisSelection.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\PhotoWindow.xaml">
+      <Link>PhotoWindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemList.xaml">
+      <Link>ItemSearch\ItemList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemListNew.xaml">
+      <Link>ItemSearch\ItemListNew.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ArtCycleSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BarcodeForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\AdditionalMeasure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\ARTDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\ARTFollicularMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\CryoBankForDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\CryoPreservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmAddObservation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmApplyBatchForDonor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmARTGeneralDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmBirth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmBirthDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmCoupleSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmCryoBankForThawing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmCryoEmbryoList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmCryoPreservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmCryoRenewal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmCryoRenewalDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmDocumentforDashTherapy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmDonorRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmDonorSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmEmbryoBank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmEmbryoBankNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmEMRIVFLinking.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\FrmExecutionCalender.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmFemaleConsent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmFemaleExamination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmFeMaleExamination_Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmFertCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmFollicularMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmGetSemenBatchList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmGraphicalRepresentationofLabDays.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmGraphicalRepresentationofLabDaysNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmGraphicalRepresentationofLabDaysWithoutIstambul.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmIUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmIUIComeSemenWash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmIUID.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmIVFCPOELabServicesSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFCPOEServiceSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFDashBoardCPOELabServicesSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\FrmIVFDashBoardDiagnosisService.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFEMRInvestigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFEMRMedDrugSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFEMRMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFEMRPhysicalExam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmIVFEMRPrescribedMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFEMRProcedure.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmIVFProcedureDiagnosisSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmLabDay0.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabDay1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabDay2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabDay3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabDay4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabDay5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabDay6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabTestFemale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLabTestMale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmLutualPhaseNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmMaleConsent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmMaleExamination_Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmOnlyET.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmOPU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\FrmPatientListForDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmPatientListForDonate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\FrmPatientSignConsent_IVFDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmPatientSpermDiscard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmPGD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmPGD_New.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmReceiveEmbryo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmReceiveOocyte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmSemenFreezingforClinical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmSemenPreparation_Details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmSpermBank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmSpermiogram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmSpremFrezing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmSpremThawing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\frmSurgeryImages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\FrmSurrogateOutcome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\frmTransfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\IVFDashboardForSurrogacy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\MediaDetails_New.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\PatientARTAndLabDayDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\PatientConsentPrint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\PtListDonateOnDay0EmbDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\Resources\Themes\Generic1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\SemenDetails_DashBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\SemenExamination_Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\SemenWash_Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\SpermFreezingForDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\SpermThawingForClinical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\SpermThawingForDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard\SpermThawingForPartnerIUI1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\TesaPesaTeseList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DashBoard\Themes\Generic1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EmbryoTransfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleLabDay2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleLabDay3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleLabDay4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleLabDay5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleLabDay6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmBillListPatientWise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmClinicalSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCryoBankSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDoctorProcedurelink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmHSG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmIVFConsent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSpermThawing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GeneralExaminationForFemale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GeneralExaminationForMalePatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ImpressionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lab1Detail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleLabDay0.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FemaleLabDay1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lab2Detail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lab3Detail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lab4Detail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lab5Detail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LabDaysSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MaleHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OnlyET.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OnlyVitrification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientList\PatientSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PreviousDayScoreList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\Generic1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SemenDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpermThawingForDonorIUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TESE_Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Thawing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TherpyExecution\AddDrug.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TherpyExecution\ChangePartner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TherpyExecution\DeleteDrug.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TherpyExecution\FollicularMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TherpyExecution\frmAddEvent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TherpyExecution\IVFTherapyExecution.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TherpyExecution\IVFTherapyExecutionForSurrogacy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TherpyExecution\IVFTherapyExecutionForSurrogate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TherpyExecution\New_FollicularMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vitrification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataDrivenApplication\DataDrivenApplication.csproj">
+      <Project>{D4C15416-161D-4A6F-9BF9-BC19CBB3CB50}</Project>
+      <Name>DataDrivenApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SearchResultLists\PalashDynamics.SearchResultLists.csproj">
+      <Project>{1222821C-4F56-416A-8F9D-A861422ABC29}</Project>
+      <Name>PalashDynamics.SearchResultLists</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.WaterMarkTextBox\PalashDynamics.WaterMarkTextBox.csproj">
+      <Project>{1B114BF8-F1E2-4EC6-AAA2-A69E4FFE24D7}</Project>
+      <Name>PalashDynamics.WaterMarkTextBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RichTextEditor\RichTextEditor.csproj">
+      <Project>{C7A2FD85-3455-4CC4-8DF4-960707AB3EBA}</Project>
+      <Name>RichTextEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

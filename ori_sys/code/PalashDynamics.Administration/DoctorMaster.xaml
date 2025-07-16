@@ -1,0 +1,610 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.DoctorMaster"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+    xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+    Height="Auto" Width="Auto" Loaded="DoctorMaster_Loaded">
+
+
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <Converter:ToggleBooleanValueConverter x:Key="VisiblilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid >
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton TabIndex="23" x:Name="AttachDoc"      Background="#000000" Margin="2,0,0,1" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="AttachDoc_Click"   ToolTipService.ToolTip="Attach Document"  >
+                            <ToggleButton.Content>
+                                <Image Source="/PalashDynamics;component/Icons/Attachment-white.png" Width="20" Margin="1"  ></Image>
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton x:Name="cmdDoctorServiceLinking"  Content="Doctor Service Linking" MinWidth="150"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdDoctorServiceLinking_Click" TabIndex="2"></ToggleButton>
+                        <ToggleButton x:Name="cmdNew"  Content="New"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdNew_Click" TabIndex="5"></ToggleButton>
+                        <ToggleButton x:Name="cmdSave"  Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdSave_Click" ></ToggleButton>
+                        <ToggleButton Content="Modify"  x:Name="cmdModify" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdModify_Click"  ></ToggleButton>
+                        <ToggleButton Content="Cancel"  x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdCancel_Click" ></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid x:Name="PageContainer" >
+
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+
+                    <controlsToolkit:DockPanel x:Name="docList">
+
+
+                        <controlsToolkit:DockPanel x:Name="DockTop" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                            <Grid x:Name="LayoutRoot2" Background="White" Margin="4" HorizontalAlignment="Stretch"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="First Name"  Grid.Row="0" Grid.Column="0"/>
+                                <TextBox x:Name="txtFirstName1" Grid.Row="0" Grid.Column="1" ToolTipService.ToolTip="Please Enter First Name" Margin="4" HorizontalAlignment="Stretch"  MaxLength="50" Height="25" TabIndex="0" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged"></TextBox>
+
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Last Name"  Grid.Row="0" Grid.Column="2"/>
+                                <TextBox x:Name="txtLastName2"  Grid.Row="0" Grid.Column="3" ToolTipService.ToolTip="Please Enter Last Name" Margin="4" HorizontalAlignment="Stretch"  MaxLength="50" Height="25" TabIndex="1" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged"></TextBox>
+
+                                <Button x:Name="cmdSearch" Click="cmdSearch_Click" Margin="4" ToolTipService.ToolTip="Search Doctor"  Grid.Row="0" Grid.Column="4" TabIndex="2">
+                                    <Image Source="/PalashDynamics;component/Icons/xmag.png" Margin="2" Width="20" ></Image>
+                                </Button>
+
+
+
+                            </Grid>
+                        </controlsToolkit:DockPanel>
+
+
+                        <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Doctor Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                            </Border>
+                        </StackPanel>
+
+                        <!--<data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNext" Source="{Binding}" IsEnabled="True"
+                                        AutoEllipsis="False" IsTotalItemCountFixed="False"/>-->
+
+                        <!--<data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom" Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True"   />-->
+                        <data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom"
+                                                DisplayMode="FirstLastPreviousNext" IsEnabled="True" 
+                                                Source="{Binding}" 
+                                                AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+                        <data:DataGrid x:Name="dgDoctorList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="2" HorizontalAlignment="Stretch" TabIndex="4">
+                            <data:DataGrid.Columns>
+                                <data:DataGridTemplateColumn Header="" IsReadOnly="True" >
+                                    <data:DataGridTemplateColumn.CellTemplate  >
+                                        <DataTemplate >
+                                            <Image ToolTipService.ToolTip="Document Attached" VerticalAlignment="Center" Width="30" Height="18" Margin="4"  Source="{Binding Path=AttachedImage}"    HorizontalAlignment="Center" Visibility="{Binding IsDocAttached, Converter={StaticResource VisiblilityConverter}}" >
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>
+                                <data:DataGridTemplateColumn Header="View">
+                                    <data:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <HyperlinkButton VerticalAlignment="Center"  Content="View"  Padding="5,0,5,0"   x:Name="hlbViewDoctorMaster" Click="hlbViewDoctorMaster_Click"></HyperlinkButton>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>
+                                <data:DataGridTextColumn Binding="{Binding DoctorName}" Header="Doctor Name" />
+                                <data:DataGridTextColumn Binding="{Binding DOB,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="Date Of Birth" />
+                                <data:DataGridTextColumn Binding="{Binding SpecializationDis}" Header="Specialization" />
+                                <data:DataGridTextColumn Binding="{Binding SubSpecializationDis}" Header="Sub Specialization" />
+                                <data:DataGridTextColumn Binding="{Binding DoctorTypeDis}" Header="Doctor Type" />
+                                <!--<data:DataGridTemplateColumn Header="Status">
+                                    <data:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=Status}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>-->
+
+
+
+                            </data:DataGrid.Columns>
+                        </data:DataGrid>
+
+                    </controlsToolkit:DockPanel>
+
+
+                </Grid>
+
+                <Grid Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Collapsed"  Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition ></RowDefinition>                       
+                        </Grid.RowDefinitions>
+                        <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top"  Grid.Row="0" Grid.Column="0" >
+                            <Border x:Name="borderimage1" BorderBrush="{StaticResource TabControlDarkerBorder}" Grid.Row="0"  Margin="2" controlsToolkit:DockPanel.Dock="Left" BorderThickness="1" CornerRadius="0" Background="Transparent" >
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition  Height="Auto"  />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}" Grid.Row="0"  Margin="2" controlsToolkit:DockPanel.Dock="Top" BorderThickness="1" CornerRadius="0" Background="Transparent" x:Name="borderwebcap" Visibility="Collapsed">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="White" Direction="0" ShadowDepth="0" BlurRadius="25"/>
+                                        </Border.Effect>
+                                        <Rectangle x:Name="WebcamCapture" Width="200" Height="100" Fill="White"/>
+                                    </Border>
+                                    <Border x:Name="borderimage" BorderBrush="{StaticResource TabControlDarkerBorder}" Grid.Row="0"  Margin="2" controlsToolkit:DockPanel.Dock="Top" BorderThickness="1" CornerRadius="0" Background="Transparent" >
+
+                                        <Image  Margin="4" Grid.Row="0" Source="/PalashDynamics;component/Icons/nopic.jpg" Width="200" Height="100"  x:Name="imgPhoto" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                                    </Border>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="1" HorizontalAlignment="Center">
+                                        <ToggleButton Content="..." Margin="2" x:Name="cmdBrowse" ToolTipService.ToolTip="Browse" Click="cmdBrowse_Click" Style="{StaticResource ToggleButtonStyle}"  Width="38" Height="Auto"  TabIndex="10" ></ToggleButton>
+                                        <ToggleButton  Width="auto" Margin="2" ToolTipService.ToolTip="Start Capture" x:Name="cmdStartCapture" Click="cmdStartCapture_Click" Style="{StaticResource ToggleButtonStyle}"  Grid.Row="3" TabIndex="11" >
+                                            <ToggleButton.Content>
+                                                <Image Source="/PalashDynamics;component/Icons/photocap-white.png" Width="38" Height="18"></Image>
+                                            </ToggleButton.Content>
+                                        </ToggleButton>
+
+                                        <ToggleButton Width="auto" ToolTipService.ToolTip="Take Snap" Margin="2" x:Name="cmdCaptureImage" Click="cmdCaptureImage_Click" Style="{StaticResource ToggleButtonStyle}" Grid.Row="3" TabIndex="8" Visibility="Collapsed" >
+                                            <ToggleButton.Content>
+                                                <Image Source="/PalashDynamics;component/Icons/photocap-white.png" Width="38" Height="18"></Image>
+                                            </ToggleButton.Content>
+                                        </ToggleButton>
+                                        <ToggleButton Content="Stop Capture" Margin="2" x:Name="cmdStopCapture" Click="cmdStopCapture_Click" Style="{StaticResource ToggleButtonStyle}"  Grid.Row="3" Visibility="Collapsed"></ToggleButton>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Border>
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Grid.Row="0"  Margin="2" controlsToolkit:DockPanel.Dock="Right" BorderThickness="1" CornerRadius="0" Background="Transparent">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                      
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!--<TextBox x:Name="txtPhoto"  Grid.Column="0" Grid.RowSpan="4"  Margin="4"  HorizontalAlignment="Stretch"  TabIndex="1"  KeyDown="TextName_KeyDown"  MaxLength="100"></TextBox>-->
+                                    <!--<Image x:Name="DoctorPhoto" Grid.RowSpan="3"   Stretch="UniformToFill"  Grid.Column="0" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></Image>-->
+                                    <!--<StackPanel x:Name="DoctorPhoto" Grid.RowSpan="2" Grid.Column="0"    Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></StackPanel>-->
+                                    <!--<Button x:Name="btnPhoto" Content="Attach Photo" Grid.Column="1"  Grid.Row="3" Click="btnPhoto_Click" Width="100"  HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" ></Button>-->
+
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0"  Margin="0,8,7,0" Text="First Name" />
+                                    <TextBox x:Name="txtFirstName" Text="{Binding FirstName, Mode=TwoWay}"  Grid.Row="0" Grid.Column="1"  Margin="4"  HorizontalAlignment="Stretch"  TabIndex="0" LostFocus="txtFirstName_LostFocus" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged" MaxLength="50"></TextBox>
+
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Specialization"  Grid.Row="0" Grid.Column="2" Margin="4" />
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbSpecialization" Grid.Row="0" Grid.Column="3"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" SelectionChanged="cmbSpecialization_SelectionChanged" LostFocus="cmbSpecialization_LostFocus" TabIndex="5"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Middle Name"  Grid.Row="1" Grid.Column="0" Margin="4" />
+                                    <TextBox x:Name="txtMiddleName" Text="{Binding MiddleName, Mode=TwoWay}"  Grid.Row="1" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"  MaxLength="50" TabIndex="1" LostFocus="txtMiddleName_LostFocus" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged"></TextBox>
+
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Sub Specialization"  Grid.Row="1" Grid.Column="2" Margin="4" />
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbSubSpecialization" Grid.Row="1" Grid.Column="3"   SelectedValuePath="ID"  Margin="4" TabIndex="6"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"/>
+
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Last Name"  Grid.Row="2" Grid.Column="0" Margin="4" />
+                                    <TextBox x:Name="txtLastName" Text="{Binding LastName, Mode=TwoWay}"  Grid.Row="2" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"  MaxLength="50" TabIndex="2" LostFocus="txtLastName_LostFocus" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged"></TextBox>
+
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Doctor Type"  Grid.Row="2" Grid.Column="2" Margin="4" />
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbDoctorType" Grid.Row="2" Grid.Column="3"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" TabIndex="7" SelectionChanged="cmbDoctorType_SelectionChanged" />
+
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Date Of Birth"  Grid.Row="3" Grid.Column="0" Margin="4" />
+                                    <controls:DatePicker x:Name="dtpDOB1"  Grid.Row="3" Grid.Column="1"  Margin="4" SelectedDate="{Binding DOB, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True }" Style="{StaticResource DatePickerStyle}"  TabIndex="3" LostFocus="dtpDOB1_LostFocus" />
+
+                                    <!--<TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Education"  Grid.Row="1" Grid.Column="2" Margin="4" />
+                                            <TextBox x:Name="txtEducation" Text="{Binding Education, Mode=TwoWay}"  Grid.Row="1" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"  MaxLength="100" TabIndex="5"  LostFocus="txtEducation_LostFocus" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged" ></TextBox>-->
+
+
+                                    <TextBlock   HorizontalAlignment="Right" ToolTipService.ToolTip="Once Doctor Category Saved, You Cannot Modify it" VerticalAlignment="Center" Text="Doctor Category" Grid.Row="3" Grid.Column="2"  Margin="4" />
+                                    <inputcombo:AutoCompleteComboBox ToolTipService.ToolTip="Once Doctor Category Saved, You Cannot Modify it" x:Name="cmbDoctorCategory" Grid.Row="3" Grid.Column="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  TabIndex="8"></inputcombo:AutoCompleteComboBox>
+
+
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Marketing Executives"  Grid.Row="4" Grid.Column="2" Margin="4" />
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbMarketingExecutives" Grid.Row="4" Grid.Column="3"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" TabIndex="9" BorderBrush="red" ></inputcombo:AutoCompleteComboBox>
+
+
+                                    <!--<TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Experience"  Grid.Row="3" Grid.Column="0" Margin="4" />
+                                            <TextBox x:Name="txtExperience" Text="{Binding Experience, Mode=TwoWay}" Height="50" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"  AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"  MaxLength="100" Margin="4" HorizontalAlignment="Stretch"  TabIndex="10" ></TextBox>-->
+                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Signature"  Grid.Row="6" Grid.Column="0" Margin="4" />
+                                    <Border Grid.Row="6" Grid.Column="1" Margin="4"  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <Image Grid.Row="6" Grid.Column="2" Margin="4" Source="/PalashDynamics;component/Icons/nopic.jpg" Height="70" Width="200"  x:Name="SignatuerImage" ></Image>
+                                    </Border>
+
+                                    <Grid   Grid.Column="2"  Grid.Row="6"  Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Gender" Grid.Row="0" Grid.Column="1" Margin="4" />                                      
+                                        <!--<Button x:Name="btnAddSignature" Content="..." Grid.Row="1" Click="btnAddSignature_Click" ToolTipService.ToolTip="Browse" Style="{StaticResource ToggleButtonStyle}"   HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="4" ></Button>-->
+
+                                        <ToggleButton Content="..." Margin="4"  Grid.Row="1" Click="btnAddSignature_Click" ToolTipService.ToolTip="Browse" Width="30" Style="{StaticResource ToggleButtonStyle}" TabIndex="4"   HorizontalAlignment="Left" VerticalAlignment="Center" ></ToggleButton>
+                                    </Grid>
+
+                                   
+                                    
+                                   
+                                    <Grid  Grid.Row="6" Grid.Column="3" Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbDoctorGender"   SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  TabIndex="9"></inputcombo:AutoCompleteComboBox>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </controlsToolkit:DockPanel>
+                        <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top"  Grid.Row="1" Grid.Column="0" >
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+
+                                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom">
+                                    <controls:TabControl Padding="0"  BorderBrush="{StaticResource TabControlDarkerBorder}"  x:Name="tbDoctorInformation" Margin="4,-4,4,4" >
+                                        <controls:TabItem x:Name="tbIGeneralInfo" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Personal Information" >
+                                            <controlsToolkit:DockPanel >
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"   Margin="0,8,7,0" Text="Marital Status" />
+                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbMaritalStatus" Grid.Row="0" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" TabIndex="12"></inputcombo:AutoCompleteComboBox>
+
+                                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Employee Number"  Grid.Row="0" Grid.Column="2" Margin="4" />
+                                                    <TextBox x:Name="txtEmployeeNumber" Text="{Binding EmployeeNumber, Mode=TwoWay}"   Grid.Row="0" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"  MaxLength="50" TabIndex="13"   KeyDown="TextName_KeyDown"  ></TextBox>
+
+
+                                                    <!--<TextBox x:Name="txtSignature"  Grid.Row="0" Grid.Column="4"  Margin="4"  VerticalAlignment="Stretch"  MaxLength="100" TabIndex="5" Grid.RowSpan="3"  LostFocus="txtEducation_LostFocus" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged" ></TextBox>-->
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"  Margin="0,8,7,0" Text="PF Number " />
+                                                    <TextBox x:Name="txtprovidentFound" Text="{Binding ProvidentFund, Mode=TwoWay}"  Grid.Row="1"   Grid.Column="1"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="14"  KeyDown="TextName_KeyDown"  MaxLength="50"></TextBox>
+
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"  Margin="0,8,7,0" Text="PAN Number" />
+                                                    <TextBox x:Name="txtPAN"   Grid.Row="1" Text="{Binding PermanentAccountNumber, Mode=TwoWay}"  Grid.Column="3"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="15"  KeyDown="txtIdentityNumber_KeyDown" TextChanged="txtIdentityNumber_TextChanged"  MaxLength="50"></TextBox>
+
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0"  Margin="0,8,7,0" Text="Date of Joining" />
+                                                    <!--<TextBox x:Name="txtDOJ" Grid.Row="2"   Grid.Column="1"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="5"  KeyDown="TextName_KeyDown"  MaxLength="100"></TextBox>-->
+                                                    <controls:DatePicker x:Name="dtpDOJ" Text="{Binding DateofJoining, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"  Margin="4"  SelectedDate="{Binding DateofJoining, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True }" Style="{StaticResource DatePickerStyle}"  TabIndex="16" LostFocus="dtpDOJ_LostFocus" />
+
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="2" Grid.Column="2"  Margin="0,8,7,0" Text="Access Card Number" />
+                                                    <TextBox x:Name="txtACN"  Text="{Binding AccessCardNumber, Mode=TwoWay}" Grid.Row="2"   Grid.Column="3"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="17"  KeyDown="TextName_KeyDown"  MaxLength="50"></TextBox>
+
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0"  Margin="0,8,7,0" Text="Registration Number" />
+                                                    <TextBox x:Name="txtRegistrationNumber" Text="{Binding RegistrationNumber, Mode=TwoWay}" Grid.Row="3"   Grid.Column="1"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="18"  KeyDown="TextName_KeyDown"  MaxLength="50"></TextBox>
+
+                                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="EmailID"  Grid.Row="3" Grid.Column="2" Margin="4" />
+                                                    <TextBox x:Name="txtEmailID" Text="{Binding EmailId, Mode=TwoWay}" Grid.Row="3" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch" MaxLength="50" TabIndex="19" LostFocus="txtEmailID_LostFocus" KeyDown="TextName_KeyDown" ></TextBox>
+
+                                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Experience"  Grid.Row="4" Grid.Column="0" Margin="4" />
+                                                    <TextBox x:Name="txtExperience" Text="{Binding Experience, Mode=TwoWay}"   Height="50" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5"  AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"  MaxLength="100" Margin="4" HorizontalAlignment="Stretch"  TabIndex="20" ></TextBox>
+
+                                                    <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Education"  Grid.Row="5" Grid.Column="0" Margin="4" />
+                                                    <TextBox x:Name="txtEducation" Text="{Binding Education, Mode=TwoWay}"  Height="50" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="5"  AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"  MaxLength="100" Margin="4" HorizontalAlignment="Stretch"  TabIndex="21" ></TextBox>
+                                                </Grid>
+                                            </controlsToolkit:DockPanel>
+                                        </controls:TabItem>
+                                  
+                                        <controls:TabItem x:Name="tbIDepartInfo" TabIndex="20" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Clinic - Department" >
+                                            <controlsToolkit:DockPanel ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                                                <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                                        <ContentControl VerticalAlignment="Center" FontSize="12"  Content="List Of Department" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                </StackPanel>
+
+                                                <data:DataGrid x:Name="dgDepartmentList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch" TabIndex="11">
+                                                    <data:DataGrid.Columns>
+                                                        <data:DataGridTemplateColumn Header="Select">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <CheckBox x:Name="chkDepartment"  IsChecked="{Binding Status, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Click="chkDepartment_Click"></CheckBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding DepartmentName,Mode=TwoWay}"  Header="Department Name" ></data:DataGridTextColumn>
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+                                            </controlsToolkit:DockPanel>
+                                        </controls:TabItem>
+
+
+                                        <controls:TabItem x:Name="tbIClassificationInfo" TabIndex="21" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Allocate Classification" >
+                                            <controlsToolkit:DockPanel ScrollViewer.VerticalScrollBarVisibility="Visible" >                                                
+                                                <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Classification" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                </StackPanel>
+
+                                                <data:DataGrid x:Name="dgClassificationList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch" TabIndex="11">
+                                                    <data:DataGrid.Columns>
+                                                        <data:DataGridTemplateColumn Header="Select">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <CheckBox x:Name="chkClassification"  IsChecked="{Binding IsAvailable, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Click="chkDepartment_Click"></CheckBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding UnitClassificationName}"  Header="Classification Name" ></data:DataGridTextColumn>
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+                                            </controlsToolkit:DockPanel>
+                                        </controls:TabItem>
+                                        <controls:TabItem x:Name="tbIBankInfo" TabIndex="22" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Bank Information" >
+
+                                            <controlsToolkit:DockPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                                <ScrollViewer Background="Transparent" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True" Margin="4">
+
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition />
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <StackPanel controlsToolkit:DockPanel.Dock="Top" Grid.Row="0" Grid.ColumnSpan="6">
+                                                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Doctor Bank Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                            </Border>
+                                                        </StackPanel>
+                                                        <Border controlsToolkit:DockPanel.Dock="Top" Grid.Row="3" Grid.ColumnSpan="6" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="-1,-1,-1,-1"  BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition ></ColumnDefinition>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition ></ColumnDefinition>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition ></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                </Grid.RowDefinitions>
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"   Margin="0,8,7,0" Text="Bank Name" />
+                                                                <inputcombo:AutoCompleteComboBox x:Name="cmbBankName" SelectionChanged="cmbBankName_SelectionChanged" Grid.Row="0" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"    TabIndex="1"></inputcombo:AutoCompleteComboBox>
+                                                                <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="Branch Name"  Grid.Row="0" Grid.Column="2" Margin="4" />
+                                                                <inputcombo:AutoCompleteComboBox x:Name="cmbBranchName" Grid.Row="0" Grid.Column="3"  SelectedValuePath="ID"  Margin="4"    TabIndex="2"></inputcombo:AutoCompleteComboBox>
+                                                                <TextBlock   HorizontalAlignment="Right"  VerticalAlignment="Center" Text="IFSC Code"  Grid.Row="0" Grid.Column="4" Margin="4" />
+                                                                <TextBox x:Name="txtIFSCCode"  Grid.Row="0"   Grid.Column="5"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="3"  LostFocus="txtIFSC_LostFocus" KeyDown="txtIFSC_KeyDown" TextChanged="txtIFSC_TextChanged" MaxLength="11"></TextBox>
+
+
+
+                                                                <!--<TextBox x:Name="txtSignature"  Grid.Row="0" Grid.Column="4"  Margin="4"  VerticalAlignment="Stretch"  MaxLength="100" TabIndex="5" Grid.RowSpan="3"  LostFocus="txtEducation_LostFocus" KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged" ></TextBox>-->
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"  Margin="0,8,7,0" Text="Account Number " />
+                                                                <TextBox x:Name="txtAccountNumber"  Grid.Row="1"   Grid.Column="1"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="3"  KeyDown="TextName_KeyDown"  MaxLength="20"></TextBox>
+
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"  Margin="0,8,7,0" Text="MICR Number" />
+                                                                <TextBox x:Name="txtMICRNumber"   Grid.Row="1"   Grid.Column="3"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="4"  KeyDown="TextName_KeyDown"  TextChanged="txtContact1_TextChanged" MaxLength="10"></TextBox>
+
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0"  Margin="0,8,7,0" Text="Account Type" />
+                                                                <!--<TextBox x:Name="txtAccountType" Text="{Binding AccessCardNumber, Mode=TwoWay}" Grid.Row="2"   Grid.Column="1"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="5"  KeyDown="TextName_KeyDown"  MaxLength="100"></TextBox>-->
+                                                                <Canvas Grid.Row="2" Grid.Column="1">
+                                                                    <RadioButton x:Name="RadioSaving" Canvas.Left="10" TabIndex="5" GroupName="group1" Content="Saving" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  />
+
+                                                                    <RadioButton x:Name="RadioCurrent" Canvas.Left="80" GroupName="group1" TabIndex="6" Content="Current" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"/>
+                                                                </Canvas>
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0"  Margin="0,8,7,0" Text="Address" />
+                                                                <TextBox x:Name="txtAddress"  Height="50" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"  AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"  MaxLength="150" Margin="4" HorizontalAlignment="Stretch"  TabIndex="7" ></TextBox>
+
+
+                                                                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="5" Margin="1" HorizontalAlignment="Right"  >
+
+
+                                                                    <ToggleButton x:Name="SaveBank" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdDoctorBankInfoSave_Click"   TabIndex="8"></ToggleButton>
+                                                                    <ToggleButton Content="Modify" x:Name="ModifyBank" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdDoctorBankInfoModify_Click"  TabIndex="9"></ToggleButton>
+
+                                                                </StackPanel>
+
+                                                            </Grid>
+                                                        </Border>
+
+                                                        <data:DataGrid x:Name="dgbankDetails" Grid.Row="1" Grid.ColumnSpan="6" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Height="100" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch"  TabIndex="11">
+                                                            <data:DataGrid.Columns>
+                                                                <data:DataGridTemplateColumn>
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+
+                                                                        <DataTemplate>
+                                                                            <HyperlinkButton VerticalAlignment="Center"  Content="View"  Padding="5,0,5,0"   x:Name="hlbViewDoctorMaster" Click="hlbViewDoctorBankInfo_Click"></HyperlinkButton>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding BankName}"  Header="Bank Name" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding BranchName}"  Header="Branch Name" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding DoctorName}"  Header="Doctor Name" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding MICRNumber}"  Header="MICR Number" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding AccountNumber}"  Header="Account Number" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding IFSCCode}"  Header="IFSC Code" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding AccountTypeName}"  Header="Account Type" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding BranchAddress}"  Header="Address" ></data:DataGridTextColumn>
+                                                                <!--<data:DataGridTextColumn Binding="{Binding UnitDepartName}"  Header="Bank Name" ></data:DataGridTextColumn>-->
+                                                            </data:DataGrid.Columns>
+                                                        </data:DataGrid>
+
+                                                        <data:DataPager x:Name="dgDataPager1"  Grid.Row="2" Grid.ColumnSpan="6" controlsToolkit:DockPanel.Dock="Bottom"
+                                        DisplayMode="FirstLastPreviousNext" Source="{Binding}" IsEnabled="True"
+                                        AutoEllipsis="False" IsTotalItemCountFixed="False"/>
+
+
+                                                    </Grid>
+                                                </ScrollViewer>
+                                            </controlsToolkit:DockPanel>
+
+                                        </controls:TabItem>
+                                        <controls:TabItem x:Name="tbIAddressInfo" TabIndex="23" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Address Information" >
+                                            <controlsToolkit:DockPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                                <ScrollViewer Background="Transparent" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True" Margin="4">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <StackPanel controlsToolkit:DockPanel.Dock="Top" Grid.Row="0" Grid.ColumnSpan="6">
+                                                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Doctor Address Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                            </Border>
+                                                        </StackPanel>
+
+                                                        <data:DataGrid x:Name="dgAddressDetails" Grid.Row="1" Grid.ColumnSpan="6" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Height="100" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch"  TabIndex="11">
+                                                            <data:DataGrid.Columns>
+                                                                <data:DataGridTemplateColumn>
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <HyperlinkButton VerticalAlignment="Center"  Content="View"  Padding="5,0,5,0"   x:Name="hlbViewDoctorMaster" Click="hlbViewDoctorAddressInfo_Click"></HyperlinkButton>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding AddressType}"  Header="Address Type" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding Name}"  Header="Name" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding Address}"  Header="Address" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding Contact1}"  Header="Contact" ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding Contact2}"  Header="Alternative Contact" ></data:DataGridTextColumn>
+                                                                <!--<data:DataGridTextColumn Binding="{Binding AccountTypeName}"  Header="Account Type" ></data:DataGridTextColumn>
+                                                            <data:DataGridTextColumn Binding="{Binding BranchAddress}"  Header="Address" ></data:DataGridTextColumn>-->
+                                                                <!--<data:DataGridTextColumn Binding="{Binding UnitDepartName}"  Header="Bank Name" ></data:DataGridTextColumn>-->
+                                                            </data:DataGrid.Columns>
+                                                        </data:DataGrid>
+
+                                                        <data:DataPager x:Name="dgDataPager2" controlsToolkit:DockPanel.Dock="Bottom" Grid.Row="2" Grid.ColumnSpan="6"  DisplayMode="FirstLastPreviousNext" Source="{Binding}" IsEnabled="True"
+                                        AutoEllipsis="False" IsTotalItemCountFixed="False"/>
+                                                        <Border controlsToolkit:DockPanel.Dock="Top" Grid.Row="3" Grid.ColumnSpan="6" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="-1,-1,-1,-1"  BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition ></ColumnDefinition>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition ></ColumnDefinition>
+                                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                    <ColumnDefinition ></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                </Grid.RowDefinitions>
+
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"   Margin="0,8,7,0" Text="Address Type" />
+                                                                <inputcombo:AutoCompleteComboBox x:Name="cmbAddressType" SelectionChanged="cmbBankName_SelectionChanged" Grid.Row="0" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"    TabIndex="1"></inputcombo:AutoCompleteComboBox>
+
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.Column="2"  Margin="0,8,7,0" Text="Name" />
+                                                                <TextBox x:Name="txtName"  Grid.Row="0"   Grid.Column="3"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="2"  KeyDown="TextName_KeyDown"  MaxLength="50"></TextBox>
+
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0"  Margin="0,8,7,0" Text="Address" />
+                                                                <TextBox x:Name="txtDoctorAddress"  Height="50" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"  AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"  MaxLength="100" Margin="4" HorizontalAlignment="Stretch"  TabIndex="5" ></TextBox>
+
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"  Margin="0,8,7,0" Text="Contact" />
+                                                                <TextBox x:Name="txtContact1"  Grid.Row="1"   Grid.Column="1"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="3"  KeyDown="TextName_KeyDown" TextChanged="txtContact1_TextChanged"  MaxLength="15"></TextBox>
+
+                                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2"  Margin="0,8,7,0" Text="Alternative Contact" />
+                                                                <TextBox x:Name="txtContact2"  Grid.Row="1"   Grid.Column="3"   Margin="4"  HorizontalAlignment="Stretch"  TabIndex="4"  KeyDown="TextName_KeyDown" TextChanged="txtContact1_TextChanged" MaxLength="15"></TextBox>
+
+                                                                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="5" Margin="1" HorizontalAlignment="Right"  >
+
+
+                                                                    <ToggleButton x:Name="SaveAddress" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdDoctorAddressInfoSave_Click"   TabIndex="6"></ToggleButton>
+                                                                    <ToggleButton Content="Modify" x:Name="ModifyAddress" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdDoctorAddressInfoModify_Click"  TabIndex="7"></ToggleButton>
+
+                                                                </StackPanel>
+
+                                                            </Grid>
+                                                        </Border>
+                                                    </Grid>
+                                                </ScrollViewer>
+                                            </controlsToolkit:DockPanel>
+                                        </controls:TabItem>
+                                    </controls:TabControl>
+
+
+
+
+                                </controlsToolkit:DockPanel>
+
+                            </Border>
+                        </controlsToolkit:DockPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>
+
+

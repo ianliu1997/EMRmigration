@@ -1,0 +1,63 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmFollicularMonitoring"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+            xmlns:controlsToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+            xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"  
+            xmlns:data="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"       
+            xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+            xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+            xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"         
+    Title="Follicular Monitoring" Width="850" Height="600" >
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom">
+                <ToggleButton x:Name="cmdPrintFM_0"  Content="Print FM" Background="#000000" Margin="4" Visibility="Visible"  HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Click="cmdPrintFM_Click"></ToggleButton>
+                <ToggleButton x:Name="cmdFollicularCancel"  Content="Cancel" Background="#000000" Margin="4" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Click="cmdOutComeCancel_Click"></ToggleButton>
+            </controlsToolkit:DockPanel>
+            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <controlsToolkit:DockPanel LastChildFill="True">
+                        <data:DataPager x:Name="dataGrid2Pager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNextNumeric"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True" />
+                        <data:DataGrid IsReadOnly="True" SelectionMode="Single" x:Name="dgFollicularMonitoring" ItemsSource="{Binding}"  AutoGenerateColumns="False">
+                            <data:DataGrid.Columns>
+                                <data:DataGridTemplateColumn>
+                                    <data:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="FollicularMonitoringView" Click="FollicularMonitoringView_Click" Content="View"></Button>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>
+                                <data:DataGridTextColumn Binding="{Binding Date,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="Date" />
+                                <data:DataGridTextColumn Binding="{Binding Physician}" Header="Physician Name" />
+                                <data:DataGridTemplateColumn  Header="Attachment">
+                                    <data:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <HyperlinkButton x:Name="FollicularMonitoringAttachemntView" Content="{Binding AttachmentPath}" Click="FollicularMonitoringAttachemntView_Click" ></HyperlinkButton>
+                                        </DataTemplate>
+                                    </data:DataGridTemplateColumn.CellTemplate>
+                                </data:DataGridTemplateColumn>
+                            </data:DataGrid.Columns>
+                        </data:DataGrid>
+                    </controlsToolkit:DockPanel>
+
+                </Grid>
+
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

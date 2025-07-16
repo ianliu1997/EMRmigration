@@ -1,0 +1,255 @@
+﻿<UserControl x:Class="EMR.frmIPDPatientEMRDashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+    xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="Root">
+        <Grid x:Name="LayoutRoot" Background="WhiteSmoke" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <blacklight:DragDockPanelHost x:Name="DragPanelContainer" >
+
+                <!--Second Dash Board for vitals-->
+                <blacklight:DragDockPanel x:Name="PatientVitals" Margin="5"  Style="{StaticResource DragDockPanelStyle}" Maximized="PatientVitals_Maximized" Minimized="DragDockPanel_Minimized">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock  FontSize="12" x:Name="lblPatientVital" Foreground="Black" Margin="5, 2, 0, 0" IsHitTestVisible="False" Text="{Binding lblVital, Source={StaticResource locResource}}"></TextBlock>
+                        <toolkit:DockPanel  Grid.Row="1">
+                            <data:DataPager x:Name="dpgrPatientVitals"  toolkit:DockPanel.Dock="Bottom" NumericButtonCount="10" AutoEllipsis="False" PageSize="{Binding PageSize}" DisplayMode="FirstLastPreviousNext"
+                              IsEnabled="True" IsTotalItemCountFixed="True" Source="{Binding List4}" />
+                            <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="1">
+                                    <data:DataGrid  x:Name="dgPatientVitals"  IsReadOnly="True"  SelectionMode="Single" ItemsSource="{Binding}"  AutoGenerateColumns="False" >
+                                        <data:DataGrid.Columns>
+                                            <data:DataGridTextColumn Binding="{Binding Date, StringFormat='\{0:t\}'}" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblVitalDate, Source={StaticResource locResource}}" Width="140" IsReadOnly="True"/>
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblBMI, Source={StaticResource locResource}}" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding BMI, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <!--<data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblNutritionStatus, Source={StaticResource locResource}}" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding NutritionStatus}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>-->
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblPulse, Source={StaticResource locResource}}" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Pulse, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblSystolicBP, Source={StaticResource locResource}}" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding SystolicBP, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiastolicBP, Source={StaticResource locResource}}" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding DiastolicBP, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblTemp, Source={StaticResource locResource}}" IsReadOnly="True">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Temperature, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn Header="Respiratory Rate" IsReadOnly="False" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding RR, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblHeight, Source={StaticResource locResource}}" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Height, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblWeight, Source={StaticResource locResource}}" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Weight, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblHeadCircumference,Source={StaticResource locResource}}" IsReadOnly="True" Visibility="Collapsed" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding HeadCircumference, StringFormat=0.00}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Right" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                        </data:DataGrid.Columns>
+                                    </data:DataGrid>
+                                </Grid>
+
+                            </Grid>
+                        </toolkit:DockPanel >
+                    </Grid>
+                </blacklight:DragDockPanel>
+
+                <!--Fourth Dash Board for Procedure-->
+                <blacklight:DragDockPanel x:Name="PatientProcedure" Margin="5" Style="{StaticResource DragDockPanelStyle}" Maximized="PatientDiagnosis_Maximized" Minimized="DragDockPanel_Minimized">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock  FontSize="12" x:Name="lblPatientDiagnosis" Foreground="Black" Margin="5, 2, 0, 0" IsHitTestVisible="False" Text="{Binding lblProcedure, Source={StaticResource locResource}}"></TextBlock>
+                        <toolkit:DockPanel  Grid.Row="1">
+
+                            <data:DataPager x:Name="pgrPatientDiagnosis"  toolkit:DockPanel.Dock="Bottom" NumericButtonCount="10" AutoEllipsis="False" PageSize="{Binding PageSize}" DisplayMode="FirstLastPreviousNext"
+                              IsEnabled="True" IsTotalItemCountFixed="True"  />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <data:DataGrid Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  x:Name="dgPatientDiagnosis" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Margin="0"  TabIndex="2"  CanUserSortColumns="True" >
+                                    <data:DataGrid.Columns >
+                                        <data:DataGridTemplateColumn  IsReadOnly="True">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate >
+                                                    <Image  Source="{Binding Path=Image}" Height="20" ></Image>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTextColumn Binding="{Binding Code}" IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblCode, Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding Diagnosis}" IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblProcedure, Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+                                        <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblMoreDetails, Source={StaticResource locResource}}" Visibility="Collapsed" >
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <HyperlinkButton Margin="4" x:Name="cmdView" Content="{Binding TemplateName}" Cursor="Hand"></HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Binding="{Binding ICDId}"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblICDId, Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+
+                                        <!--<data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiagnosisType, Source={StaticResource locResource}}" IsReadOnly="True">
+                                            <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <inputcombo:AutoCompleteComboBox x:Name="cmbDiagnosis"   SelectedValue="{Binding SelectedDiagnosisType.ID}" SelectedItem="{Binding SelectedDiagnosisType,Mode=TwoWay}" ItemsSource="{Binding DiagnosisTypeList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                    </inputcombo:AutoCompleteComboBox>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellEditingTemplate>
+                                        </data:DataGridTemplateColumn>-->
+
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+
+                            </Grid>
+                        </toolkit:DockPanel >
+                    </Grid>
+                </blacklight:DragDockPanel>
+
+                <!--Fifth Dash Board for Diagnosis-->
+                <blacklight:DragDockPanel x:Name="Diagnosis" Margin="5" Style="{StaticResource DragDockPanelStyle}" Maximized="PatientDiagnosis_Maximized" Minimized="DragDockPanel_Minimized">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock  FontSize="12" x:Name="lblPatDiagnosis" Foreground="Black" Margin="5, 2, 0, 0" IsHitTestVisible="False" Text="{Binding lblDiagnosis, Source={StaticResource locResource}}"></TextBlock>
+                        <toolkit:DockPanel  Grid.Row="1">
+
+                            <data:DataPager x:Name="pgrPatDiagnosis"  toolkit:DockPanel.Dock="Bottom" NumericButtonCount="10" AutoEllipsis="False" PageSize="{Binding PageSize}" DisplayMode="FirstLastPreviousNext"
+                              IsEnabled="True" IsTotalItemCountFixed="True"  />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+
+                                    <data:DataGrid Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  x:Name="dgPatDiagnosis" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Margin="0"  TabIndex="2"  CanUserSortColumns="True" >
+                                        <data:DataGrid.Columns >
+                                            <data:DataGridTemplateColumn  IsReadOnly="True">
+                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate >
+                                                        <Image  Source="{Binding Path=Image}" Height="20" ></Image>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <!--<data:DataGridTextColumn Binding="{Binding Code}" IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblCode, Source={StaticResource locResource}}"  ></data:DataGridTextColumn>-->
+                                            <data:DataGridTextColumn Binding="{Binding Diagnosis}" IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiagnosis, Source={StaticResource locResource}}"  ></data:DataGridTextColumn>
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblMoreDetails, Source={StaticResource locResource}}" Visibility="Collapsed" >
+                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <HyperlinkButton Margin="4" x:Name="cmdView" Content="{Binding TemplateName}" Cursor="Hand"></HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Binding="{Binding ICDId}"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblICDId, Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+
+                                            <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiagnosisType, Source={StaticResource locResource}}" IsReadOnly="True">
+                                                <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <inputcombo:AutoCompleteComboBox x:Name="cmbDiagnosis"   SelectedValue="{Binding SelectedDiagnosisType.ID}" SelectedItem="{Binding SelectedDiagnosisType,Mode=TwoWay}" ItemsSource="{Binding DiagnosisTypeList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                        </inputcombo:AutoCompleteComboBox>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellEditingTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                        </data:DataGrid.Columns>
+                                    </data:DataGrid>
+
+                                </ScrollViewer>
+
+                            </Grid>
+                        </toolkit:DockPanel >
+                    </Grid>
+                </blacklight:DragDockPanel>
+
+            </blacklight:DragDockPanelHost>
+        </Grid>
+    </Grid>
+</UserControl>

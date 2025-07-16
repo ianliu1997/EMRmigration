@@ -1,0 +1,270 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.frmPackageDefinationMaster"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:controlsToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"             
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"  
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    Height="600" Width="1000" Loaded="UserControl_Loaded" Closing="ChildWindow_Closing">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel LastChildFill="True">
+            
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                
+
+                <!--<StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <sdk:Label Height="28" Name="label1" Width="220" Content="All Controls Are Auto Saved"  />
+                </StackPanel>-->
+                
+                <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Stretch"  >
+                    <sdk:Label Height="28" Name="label1" Width="250" Content="All changes are Auto Saved on define rule" Foreground="Red"  />
+                        <ToggleButton x:Name="cmdSave" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  TabIndex="19" Click="cmdSave_Click" Visibility="Collapsed"></ToggleButton>
+                        <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   Click="cmdCancel_Click"  TabIndex="20" Visibility="Collapsed"></ToggleButton>
+                    </StackPanel>
+                    
+                
+            </Border>
+                             
+            <Grid x:Name="PageContainer" >             
+             
+                <Grid  Height="AUTO" Width="auto" x:Name="MainGrid" Visibility="Visible" Grid.Row="1">
+                    <controlsToolkit:DockPanel x:Name="Content" controlsToolkit:DockPanel.Dock="top" LastChildFill="true">
+
+                        <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch" LastChildFill="True">
+
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" controlsToolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                <GroupBox:GroupBox x:Name="grpMasterDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                          
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="0"  Grid.Column="0"  Margin="4" Text="Package Name" />
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbService" Grid.Row="0"  Grid.Column="1" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" TabIndex="4" SelectionChanged="cmbService_SelectionChanged"/>
+
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="0"  Grid.Column="2"  Margin="4" Text="Package Amount" />
+                                        <TextBox x:Name="txtAmount" TextAlignment="Right"  IsReadOnly="True"  Text="{Binding PackageAmount,Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" Margin="4"></TextBox>
+
+                                        <TextBlock   HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="0"  Grid.Column="4"  Margin="4" Text="Package Duration" />
+
+                                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="5" HorizontalAlignment="Stretch" Margin="2">
+                                            <TextBox x:Name="txtValidity" Width="50" MaxLength="3"  TextAlignment="Right"  HorizontalAlignment="Stretch" Text="{Binding Validity,Mode=TwoWay}" VerticalAlignment="Center"  Margin="4" TextChanged="TextBox_TextChanged"  KeyDown="TextNameV_KeyDown" LostFocus="txtValidity_LostFocus" TabIndex="0"></TextBox>
+                                            <inputcombo:AutoCompleteComboBox Width="100" x:Name="cmbValidity" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" TabIndex="1" />
+                                        </StackPanel>
+
+                                        <!--<CheckBox x:Name="chkFreezePackage" IsChecked="{Binding IsFreezed,Mode=TwoWay}" IsEnabled="False" Grid.Row="1" Grid.Column="5" Foreground="Red" Content="Freeze Package" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right" FlowDirection="RightToLeft"></CheckBox>-->
+                                        <StackPanel Margin="0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" >
+                                            <GroupBox:GroupBox Header="Distribution Details" x:Name="grpboxOocyteDetails" Visibility="Visible">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />                                                       
+                                                        <!--<ColumnDefinition  />-->
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition  />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <StackPanel Orientation="Horizontal" Margin="4" Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="1" HorizontalAlignment="Center">
+                                                    <RadioButton x:Name="rdbFixedNew" Content="Fixed" Margin="4" IsChecked="True" Checked="rdbFixed_Checked" Click="rdbFixed_Click" Grid.Column="1" ></RadioButton>
+                                                    <RadioButton x:Name="rdbPercentage"  Content="Percentage" Margin="4" Checked="rdbPercentage_Checked" Click="rdbPercentage_Click" Grid.Column="3" ></RadioButton>
+                                                    </StackPanel>
+
+                                                    <TextBlock   HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="0"  Margin="4" Text="Service Component" />
+                                                    <TextBox x:Name="txtServiceFixedRate" TextAlignment="Right"   Text="{Binding ServiceFixedRate,Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="4" MaxLength="9" TextChanged="txtDiscount_TextChanged" KeyDown="txtDiscount_KeyDown" LostFocus="txtServiceFixedRate_LostFocus" ></TextBox>
+                                                    <TextBox x:Name="txtPharmacyFixedRate" TextAlignment="Right"    Text="{Binding PharmacyFixedRate,Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Margin="4" MaxLength="9" TextChanged="txtDiscount_TextChanged" KeyDown="txtDiscount_KeyDown" LostFocus="txtPharmacyFixedRate_LostFocus" ></TextBox>
+                                                    
+
+                                                    <TextBlock   HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="2"  Margin="4" Text="Pharamacy Component" />
+                                                    <TextBox x:Name="txtServicePercentage" TextAlignment="Right"   Text="{Binding ServicePercentage,Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="4" MaxLength="5" TextChanged="txtServicePercentage_TextChanged" KeyDown="txtServicePercentage_KeyDown" LostFocus="txtServicePercentage_LostFocus" ></TextBox>
+                                                    <TextBox x:Name="txtPharmacyPercentage" TextAlignment="Right"    Text="{Binding PharmacyPercentage,Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" Margin="4" MaxLength="5" TextChanged="txtServicePercentage_TextChanged" KeyDown="txtServicePercentage_KeyDown" LostFocus="txtPharmacyPercentage_LostFocus"></TextBox>
+
+                                        <CheckBox x:Name="chkFreezePackage" IsChecked="{Binding IsFreezed,Mode=TwoWay}" IsEnabled="False" Grid.Row="1" Grid.Column="5" Foreground="Red" Content="Freeze Package" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right" FlowDirection="RightToLeft"></CheckBox>
+                                                </Grid>
+                                            </GroupBox:GroupBox>
+                                        </StackPanel>
+
+                                    </Grid>
+                                    
+                                    
+                                </GroupBox:GroupBox>
+
+                              
+                            </Border>
+                            
+                            <controlsToolkit:DockPanel  controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                <controls:TabControl Padding="0"  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4,4,4,4" x:Name="tabBillingSubInfo">
+
+                                    <controls:TabItem  x:Name="tabPackageServiceInfo" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Services" Visibility="Visible">
+
+                                        <controlsToolkit:DockPanel  controlsToolkit:DockPanel.Dock="Bottom"  >
+
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition ></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+
+                                                </Grid.RowDefinitions>
+
+                                                <Border Grid.Row="0" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent" Margin="4">
+                                                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Service" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                </Border>
+                                                
+                                                <ToggleButton x:Name="cmdService" Grid.Row="2" Grid.Column="2" Height="25" Width="150" Content="Add Services/Groups" Background="#000000" Margin="4" HorizontalAlignment="Left" Style="{StaticResource ToggleButtonStyle}"  TabIndex="19" Click="AddService_Click"></ToggleButton>
+
+                                                
+                                                
+                                                <ScrollViewer Grid.Row="1" Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" Height="Auto" Width="Auto" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+
+                                                    <Grid x:Name="ServiceGrid">
+
+                                                 </Grid>
+                                                </ScrollViewer>
+                                            </Grid>
+                                        </controlsToolkit:DockPanel>
+
+                                    </controls:TabItem>
+
+                                    <controls:TabItem  x:Name="tabPackagePharmacyItemInfo" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Pharmacy Items" Visibility="Visible">
+
+                                        <controlsToolkit:DockPanel  controlsToolkit:DockPanel.Dock="Bottom"  >
+
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition ></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="108*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="235*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Border Grid.Row="0" Grid.ColumnSpan="6" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent" Margin="4">
+                                                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Items" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                </Border>
+
+                                                <ToggleButton x:Name="cmdItems" Grid.Row="2" Grid.Column="0" Height="25" Width="100" Content="Add Items" Background="#000000" Margin="4" HorizontalAlignment="Left" Style="{StaticResource ToggleButtonStyle}"  TabIndex="19" Click="AddItems_Click"></ToggleButton>
+                                                <CheckBox x:Name="chkSelectAll" IsChecked="{Binding ApplicableToAll,Mode=TwoWay}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Content="Set All Items" VerticalAlignment="Center" Margin="4" Click="chkSelectAll_Click" Checked="chkSelectAll_Click" HorizontalAlignment="Right" FlowDirection="RightToLeft"></CheckBox>
+
+                                                <ToggleButton x:Name="cmdSavePharmacyItems" Grid.Row="2" Grid.Column="6" Height="25" Width="100" Content="Save Items" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}"  TabIndex="19" Click="cmdSavePharmacyItems_Click"></ToggleButton>
+                                                
+                                                <TextBlock x:Name="txtBlkDiscount" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="2"  Margin="4" Text="Discount %" />
+                                                <TextBox x:Name="txtDiscountOnAllItems" Text="{Binding ApplicableToAllDiscount,Mode=TwoWay}" TextChanged="txtDiscountOnAllItems_TextChanged" KeyDown="txtDiscountOnAllItems_KeyDown" LostFocus="txtDiscountOnAllItems_LostFocus_1"   Visibility="Collapsed" Width="50" Grid.Row="2" Grid.Column="3" TextAlignment="Right"  HorizontalAlignment="Left"  VerticalAlignment="Center"  Margin="4"  MaxLength="5"></TextBox>
+
+                                                <TextBlock  Text="Discount Applicable Till Budget Of" Name="DisAppTB" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="4"  Margin="4" />
+                                                <TextBox x:Name="txtTotalBudget" Text="{Binding TotalBudget,Mode=TwoWay}"  Visibility="Collapsed" TextChanged="txtTotalBudget_TextChanged" KeyDown="txtTotalBudget_KeyDown"   Width="150" Grid.Row="2" Grid.Column="5" TextAlignment="Right"  HorizontalAlignment="Left"  VerticalAlignment="Center"  Margin="4"  ></TextBox>
+
+
+
+                                                <!--LoadingRow="dgPharmaItems_LoadingRow"-->
+
+                                                <data:DataGrid Grid.Row="1" Grid.ColumnSpan="6" Margin="1" x:Name="dgPharmaItems" AutoGenerateColumns="False" ItemsSource="{Binding}"  CanUserSortColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                    <data:DataGrid.Columns>
+
+                                                        <data:DataGridTextColumn Binding="{Binding ItemCode,Mode=TwoWay}" Header="Item Code" IsReadOnly="True" Visibility="Collapsed" />
+                                                        <data:DataGridTextColumn Binding="{Binding ItemName,Mode=TwoWay}" Header="Item Name" IsReadOnly="True" />
+                                                        <data:DataGridTextColumn Binding="{Binding ItemGroupName,Mode=TwoWay}" Header="Item Group" IsReadOnly="True" Visibility="Collapsed" />
+                                                        <data:DataGridTextColumn Binding="{Binding ItemCategoryName,Mode=TwoWay}" Header="Item Category" IsReadOnly="True" Visibility="Collapsed" />
+
+                                                        <data:DataGridTextColumn Binding="{Binding Quantity,StringFormat=0.00,Mode=TwoWay}" Header="Quantity" Visibility="Collapsed" >
+                                                            <data:DataGridTextColumn.ElementStyle>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                                </Style>
+                                                            </data:DataGridTextColumn.ElementStyle>
+                                                        </data:DataGridTextColumn>
+                                                        
+                                                        <data:DataGridTextColumn Binding="{Binding Discount,StringFormat=0.00,Mode=TwoWay}" Header="Discount In %"  >
+                                                            <data:DataGridTextColumn.ElementStyle>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                                </Style>
+                                                            </data:DataGridTextColumn.ElementStyle>
+                                                        </data:DataGridTextColumn>
+
+                                                        <!--<data:DataGridTextColumn Binding="{Binding Budget,StringFormat=0.00,Mode=TwoWay}" Header="Budget" Visibility="Visible" >
+                                                            <data:DataGridTextColumn.ElementStyle>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                                </Style>
+                                                            </data:DataGridTextColumn.ElementStyle>
+                                                        </data:DataGridTextColumn>-->
+
+                                                        <data:DataGridTemplateColumn Header="Budget" Visibility="Collapsed">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBox x:Name="txtBudget"  TextChanged="txtBudget_TextChanged" KeyDown="txtBudget_KeyDown" TextAlignment="Right" Text="{Binding Budget, Mode=TwoWay,StringFormat=0.00}"></TextBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn>
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteItem"  ToolTipService.ToolTip="Delete" Click="cmdDeleteItem_Click"></HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+
+
+                                            </Grid>
+                                        </controlsToolkit:DockPanel>
+
+                                    </controls:TabItem>
+
+                                </controls:TabControl>
+                            </controlsToolkit:DockPanel>
+
+                        </controlsToolkit:DockPanel>
+
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

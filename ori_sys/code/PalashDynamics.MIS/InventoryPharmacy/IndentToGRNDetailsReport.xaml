@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="PalashDynamics.MIS.InventoryPharmacy.IndentToGRNDetailsReport"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"           
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+             xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+                 xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"     
+ xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" Loaded="UserControl_Loaded"
+   Height="250" Width="450">
+   
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <Converter:DateTimeToAgePart x:Key="DateTimeToAgePart"></Converter:DateTimeToAgePart>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+            <Converter:PieColorConverter x:Key="PieColorConverter"></Converter:PieColorConverter>
+            <Color x:Key="MyColor">AliceBlue</Color>
+            <Style x:Key="RoundButton" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse  Stroke="#FF000000" StrokeThickness="0" Canvas.Left="141" Canvas.Top="61">
+                                    <Ellipse.Fill>
+                                        <SolidColorBrush Color="Transparent" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" x:Name="contentPresenter" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+
+    <Grid>
+        <Border BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+            <toolkit:DockPanel LastChildFill="True">
+                <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                    <ContentControl VerticalAlignment="Top" Grid.ColumnSpan="4" FontSize="12" x:Name="contentName" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch"/>
+                </Border>
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" Margin="4">
+
+                    <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <CheckBox Margin="4" x:Name="chkExcel" Content="Export To Excel" Grid.ColumnSpan="2"></CheckBox>
+                        <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+
+                            <ToggleButton x:Name="cmdPrint" Content="Print"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  Click="cmdPrint_Click"  ></ToggleButton>
+
+                            <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Checked="cmdCancel_Checked"></ToggleButton>
+                        </StackPanel>
+                    </StackPanel>
+
+
+                </toolkit:DockPanel >
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Top" Margin="4">
+                    <Grp:GroupBox Header="Search Criteria" Margin="4">
+                        <Grid x:Name="LayoutRoot" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="Clinic" Text="Clinic" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="0"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox Grid.ColumnSpan="4"  x:Name="cmbClinic" SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Grid.Row="0" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch" TabIndex="1" SelectionChanged="cmbClinic_SelectionChanged"/>
+
+                            <TextBlock Visibility="Collapsed" x:Name="Store" Text="Store" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="0" ></TextBlock>
+                            <inputcombo:AutoCompleteComboBox Visibility="Collapsed" x:Name="cmbStore" SelectedValuePath="StoreId" SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" Grid.Row="0" Grid.Column="3" Margin="4" HorizontalAlignment="Stretch" TabIndex="2" SelectionChanged="cmbStore_SelectionChanged" />
+                            
+                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Width="auto" HorizontalAlignment="Stretch">
+                                <Grid x:Name="grdStackPanel" Background="White" HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <RadioButton IsChecked="True" x:Name="rdbIndent" Content="Indent Search" Margin="4" Grid.Row="0" Grid.Column="0"></RadioButton>
+                                    <RadioButton x:Name="rdbPR" Content="PR Search" Margin="4" Grid.Row="0" Grid.Column="1"></RadioButton>
+                                    <RadioButton x:Name="rdbPO" Content="PO Search" Margin="4" Grid.Row="0" Grid.Column="2"></RadioButton>
+                                    <RadioButton x:Name="rdbGRN" Content="GRN Search" Margin="4" Grid.Row="0" Grid.Column="3"></RadioButton>
+                                </Grid>
+                            </StackPanel>
+
+                            <TextBlock Text="From Date" Margin="4" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                            <controls:DatePicker SelectedDate="{Binding FromDate,Mode=TwoWay}" x:Name="dtpFromDate" Margin="4" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+                            <TextBlock Text="To Date" Margin="4" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                            <controls:DatePicker  Margin="4" Grid.Row="2" Grid.Column="3" SelectedDate="{Binding ToDate,Mode=TwoWay}"  x:Name="dtpToDate"  HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                            <TextBox x:Name="txtNumber" VerticalAlignment="Center" IsEnabled="True"  Margin="4"   Grid.Row="3" Grid.Column="1"></TextBox>
+
+                        </Grid>
+                    </Grp:GroupBox>
+                </toolkit:DockPanel>
+
+            </toolkit:DockPanel>
+
+        </Border>
+    </Grid>
+
+</UserControl>

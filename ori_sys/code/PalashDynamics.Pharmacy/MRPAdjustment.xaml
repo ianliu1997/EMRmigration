@@ -1,0 +1,262 @@
+﻿<UserControl xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    x:Class="PalashDynamics.Pharmacy.MRPAdjustment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+    xmlns:WMT="clr-namespace:PalashDynamics;assembly=PalashDynamics.WaterMarkTextBox" 
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+            xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+    mc:Ignorable="d" Height="Auto" Width="Auto" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Height="auto" Width="auto">
+        <toolkit:DockPanel x:Name="MainDockPanel" LastChildFill="True">
+            <toolkit:DockPanel x:Name="BottomDock" toolkit:DockPanel.Dock="Bottom" LastChildFill="True">
+                <StackPanel x:Name="Footer" Orientation="Horizontal"    Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                        <ToggleButton x:Name="CmdNew"  Content="New"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdNew_Click" />
+                        <ToggleButton x:Name="CmdApprove" Content="Approve"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdApprove_Click" />
+                        <ToggleButton x:Name="CmdSave"  Content="Send for Approval"  Width="125" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdSave_Click" />
+                        <ToggleButton x:Name="CmdCancel"  Content="Cancel"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click" />
+
+                    </StackPanel>
+                </StackPanel>
+            </toolkit:DockPanel>
+            <Grid x:Name="MainGrid">
+                <Grid x:Name="FrontPanel" Visibility="Visible" toolkit:DockPanel.Dock="Top" Height="AUTO"  Width="Auto">
+                    <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4,4,4,4" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                        <toolkit:DockPanel  LastChildFill="True" toolkit:DockPanel.Dock="Top">
+                            <toolkit:DockPanel  LastChildFill="True" toolkit:DockPanel.Dock="Top">
+                                <Grp:GroupBox Header="MRP Adjustment Search" Margin="4">
+                                    <Grid toolkit:DockPanel.Dock="Bottom">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="From Date" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                        <controls:DatePicker x:Name="dtpFromDate" Grid.Row="0" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center"></controls:DatePicker>
+
+                                        <TextBlock Text="To Date" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                        <controls:DatePicker x:Name="dtptoDate" Grid.Row="0" Grid.Column="3" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></controls:DatePicker>
+
+                                        <TextBlock Text="Store" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cboStoreforFrontPanel"   Grid.Row="0"  Grid.Column="5"  Margin="4" HorizontalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox>
+                                        <Button Grid.Column="6" x:Name="cmdSearch" Click="cmdSearch_Click" Margin="4" ToolTipService.ToolTip="Search Stock Adjustment">
+                                            <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Width="20" ></Image>
+                                        </Button>
+                                    </Grid>
+                                </Grp:GroupBox>
+                            </toolkit:DockPanel>
+
+                            <toolkit:DockPanel LastChildFill="True" x:Name="dpIssueList">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <toolkit:DockPanel Grid.Row="0"  LastChildFill="True" toolkit:DockPanel.Dock="Top">
+                                        <Border toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                            <ContentControl VerticalAlignment="Center"  FontSize="12" Content="List of MRP Adjustment" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                        </Border>
+                                        <sdk:DataPager x:Name="dataGrid1Pager" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+                                        <data:DataGrid Margin="4,4,4,4" toolkit:DockPanel.Dock="Top" IsReadOnly="True"  Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"   AutoGenerateColumns="false" x:Name="dgMRPAdjFrontMain" ItemsSource="{Binding}"  CanUserSortColumns="False" SelectionChanged="dgMRPAdjFrontMain_SelectionChanged">
+                                            <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn Binding="{Binding MRPAdjustmentNo}" Header="MRP Adjustment No" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding Date,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="Adjustment Date" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding StoreName}" Header="Store" IsReadOnly="True" />
+                                                <data:DataGridTemplateColumn Header="Approve" IsReadOnly="True">
+                                                    <data:DataGridTemplateColumn.CellTemplate >
+                                                        <DataTemplate >
+                                                            <CheckBox Margin="10,2,10,2" IsChecked="{Binding IsApprove,Mode=OneWay}" IsEnabled="False"  VerticalAlignment="Center" HorizontalAlignment="Center" ></CheckBox >
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn Header="Reject" IsReadOnly="True" Visibility="Collapsed">
+                                                    <data:DataGridTemplateColumn.CellTemplate >
+                                                        <DataTemplate >
+                                                            <CheckBox Margin="10,2,10,2" IsChecked="{Binding IsReject,Mode=OneWay}" IsEnabled="False"  VerticalAlignment="Center" HorizontalAlignment="Center" ></CheckBox >
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                                <data:DataGridTextColumn Binding="{Binding stApproveRejectBy}" Header="Approved By" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Visibility="Collapsed" Binding="{Binding ApproveRejectDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="Approve/Reject date" IsReadOnly="True" />
+
+                                            </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </toolkit:DockPanel>
+
+                                    <toolkit:DockPanel Grid.Row="1"  LastChildFill="True" toolkit:DockPanel.Dock="Bottom">
+                                        <Border toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                            <ContentControl VerticalAlignment="Center"  FontSize="12" Content="List of MRP Adjustment Item" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                        </Border>
+                                        <sdk:DataPager Visibility="Collapsed" x:Name="dataGrid2Pager" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+                                        <data:DataGrid Margin="4,4,4,4" toolkit:DockPanel.Dock="Top" IsReadOnly="True"  Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"   AutoGenerateColumns="false" x:Name="dgMRPAdjFront" ItemsSource="{Binding}"  CanUserSortColumns="False">
+                                            <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn Binding="{Binding ItemCode}" Header="Item Code" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding ItemName}" Header="Item Name" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding Store}" Header="Store" IsReadOnly="True" Visibility="Collapsed"/>
+                                                <data:DataGridTextColumn Binding="{Binding BatchCode}" Header="Batch Code" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding UpdatedBatchCode}" Header="Updated Batch Code" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding PurchaseRate}" Header="Unit Cost Price" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding UpdatedPurchaseRate,StringFormat=0.000}" Header="Updated Unit Cost Price" IsReadOnly="True">
+                                                    <data:DataGridTextColumn.EditingElementStyle>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="MaxLength" Value="10"></Setter>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.EditingElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Binding="{Binding MRP,StringFormat=0.000}" Header="Unit MRP" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding UpdatedMRP,StringFormat=0.000}" Header="Updated Unit MRP" IsReadOnly="True">
+                                                    <data:DataGridTextColumn.EditingElementStyle>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="MaxLength" Value="10"></Setter>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.EditingElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn Binding="{Binding ExpiryDateString}" Header="Expiry Date"  IsReadOnly="True"/>
+
+                                                <data:DataGridTemplateColumn Header="Updated Expiry Date" IsReadOnly="True">
+                                                    <data:DataGridTemplateColumn.CellTemplate >
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding UpdatedExpiryDate, Converter={StaticResource DateConverter},ConverterParameter={StaticResource ExpiryDateDisplayFormat}}" 
+                                                                        Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                    <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        <DataTemplate>
+                                                            <controls:DatePicker SelectedDate="{Binding UpdatedExpiryDate, Mode=TwoWay}"  />
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                </data:DataGridTemplateColumn>
+                                                <data:DataGridTextColumn Binding="{Binding stBatchUpdateStatus}" Header="Batch Update Status" IsReadOnly="True" />
+
+
+                                            </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </toolkit:DockPanel>
+                                </Grid>
+                            </toolkit:DockPanel>
+                        </toolkit:DockPanel>
+                    </Border>
+                </Grid>
+                <Grid x:Name="BackPanel" Visibility="Collapsed" toolkit:DockPanel.Dock="Top" >
+                    <toolkit:DockPanel  >
+                        <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                            <Grp:GroupBox Header="MRP Adjustment Details" Margin="4">
+                                <Grid x:Name="LayoutRoot" Background="White" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="txtblckStore" Grid.Row="0" Grid.Column="4" Text="Store" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboStore"   Grid.Row="0"  Grid.Column="5"  Margin="4" HorizontalAlignment="Stretch" SelectionChanged="cboStore_SelectionChanged" SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock x:Name="SANumber" Text="MRP Adjustment Number" Margin="4" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBox x:Name="txtSANumber" IsReadOnly="True" Grid.Column="1" Grid.Row="0" Margin="4" VerticalAlignment="Center"></TextBox>
+                                    <TextBlock Text="Date" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                    <controls:DatePicker x:Name="dtpDate" SelectedDate="{Binding AdjustmentDate,Mode=TwoWay}" IsEnabled="False" Grid.Row="0" Grid.Column="3" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center"></controls:DatePicker>
+                                    <ToggleButton x:Name="cmdItems" Click="cmdItems_Click"  Grid.Row="0" Grid.Column="6" HorizontalAlignment="Right"  Content="Get Items"   Background="#000000" Margin="4"  Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  ></ToggleButton>
+                                </Grid>
+                            </Grp:GroupBox>
+                        </toolkit:DockPanel>
+                        <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom"  >
+                            <data:DataGrid Margin="4,4,4,4" Visibility="Visible" ItemsSource="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"   AutoGenerateColumns="false" x:Name="dgMRPAdjustNew" CanUserSortColumns="False">
+                                <data:DataGrid.Columns>
+                                    <data:DataGridTextColumn Binding="{Binding ItemCode,Mode=TwoWay}" Header="Item Code" IsReadOnly="True" />
+                                    <data:DataGridTextColumn Binding="{Binding ItemName,Mode=TwoWay}" Header="Item Name" IsReadOnly="True"/>
+                                    <data:DataGridTextColumn Binding="{Binding BatchCode,Mode=TwoWay}" Header="Batch Code"  IsReadOnly="True"/>
+                                    <data:DataGridTemplateColumn Header="Unit Updated Batch Code">
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <TextBox x:Name="txtUpdatedBatchCode" TextAlignment="Right" IsEnabled="{Binding IsBatcheRequired}" Text="{Binding UpdatedBatchCode, Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxLength="100"/>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTextColumn Binding="{Binding PurchaseRate}" Header="Unit Cost Price"  IsReadOnly="True"/>
+                                    <data:DataGridTemplateColumn Header="Unit Updated Cost Price">
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <TextBox x:Name="txtUpdatedPurchaseRate" TextAlignment="Right" Text="{Binding UpdatedPurchaseRate, Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown" MaxLength="8"/>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTextColumn Binding="{Binding MRP}" Header="Unit MRP"  IsReadOnly="True"/>
+                                    <data:DataGridTemplateColumn Header="Unit Updated MRP">
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <TextBox x:Name="txtUpdatedMRP" TextAlignment="Right" Text="{Binding UpdatedMRP, Mode=TwoWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown" MaxLength="8"/>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+
+                                    <data:DataGridTextColumn Binding="{Binding ExpiryDateString}" Header="Expiry Date"  IsReadOnly="True"/>
+
+                                    <data:DataGridTemplateColumn Header="Updated Expiry Date">
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding UpdatedExpiryDate, Converter={StaticResource DateConverter},ConverterParameter={StaticResource ExpiryDateDisplayFormat}}" 
+                                                                        Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <controls:DatePicker SelectedDate="{Binding UpdatedExpiryDate, Mode=TwoWay}" IsEnabled="{Binding IsBatcheRequired}" />
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                                    </data:DataGridTemplateColumn>
+
+                                    <data:DataGridTemplateColumn Header="Remarks">
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <TextBox Text="{Binding Remarks,Mode=TwoWay}" MaxLength="50" Width="250"></TextBox>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTemplateColumn >
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <HyperlinkButton VerticalAlignment="Center" FontFamily=" Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click="Remove_Click" Margin="4" ToolTipService.ToolTip="Delete"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+                </Grid>
+            </Grid>
+        </toolkit:DockPanel>
+    </Grid>
+</UserControl>

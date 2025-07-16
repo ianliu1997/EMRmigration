@@ -1,0 +1,82 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.frmApplicatonConfigEmailCCinCCTo"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                      xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+                      xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+           Width="345" Height="498" 
+           Title="Add in CCTO" Loaded="ChildWindow_Loaded">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2" Width="324" Height="461">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="424*" />
+            <RowDefinition Height="37" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <ToggleButton x:Name="Add" Content="Add" Style="{StaticResource ToggleButtonStyle}"  Background="#000000"  Height="23" HorizontalAlignment="Right" Margin="0,2,112,0"  VerticalAlignment="Top" Width="75" Click="Add_Click" Grid.Row="1" />
+
+        <ToggleButton x:Name="CancelButton" Content="Cancel" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,2,12,12" Grid.Row="1" />
+        <TextBox x:Name="TxtbEmailCCTo"   Text="{Binding SendEmailId, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Width="251" Margin="67,395,0,6" HorizontalAlignment="Left"   MaxLength="50"    Height="23" />
+        <!--<TextBox x:Name="TxtbEmailCCTo"  Height="23" HorizontalAlignment="Left" Margin="73,382,0,0"  VerticalAlignment="Top" Width="251" />-->
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,399,0,0" Name="label1" VerticalAlignment="Top" Width="55" Content="Email ID" Grid.RowSpan="2" />
+
+        <sdk:DataGrid x:Name="dgEmailCCTo"   IsReadOnly="True" SelectionMode="Single"  ItemsSource="{Binding}"  AutoGenerateColumns="False" Margin="0,0,6,35">
+            <sdk:DataGrid.Columns>
+
+                <sdk:DataGridTextColumn Binding="{Binding CCToEmailID}" Header="Email ID" />
+
+                <sdk:DataGridTemplateColumn Header="Status">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=Status}"  Click="CheckBox_Checked"></CheckBox>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+
+                <sdk:DataGridTextColumn Binding ="{Binding ID}"  Visibility="Collapsed"  ></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding ="{Binding UnitID}"   Visibility="Collapsed"  ></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding ="{Binding ConfigAutoEmailID}"   Visibility="Collapsed" ></sdk:DataGridTextColumn>
+
+
+            </sdk:DataGrid.Columns>
+        </sdk:DataGrid>
+
+
+        <!--<sdk:DataGrid x:Name="dgEmailCCTo" AutoGenerateColumns="False"  ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4,4,4,74"  HorizontalAlignment="Stretch" >
+            <sdk:DataGrid.Columns>
+                <sdk:DataGridTextColumn Binding="{Binding CCToEmailID}"  Header="Email-Id" ></sdk:DataGridTextColumn>
+
+                <sdk:DataGridTextColumn Binding ="{Binding ID}"  Visibility="Collapsed"  ></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding ="{Binding UnitID}"   Visibility="Collapsed"  ></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding ="{Binding ConfigAutoEmailID}"   Visibility="Collapsed" ></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding ="{Binding Status}"   Visibility="Collapsed" ></sdk:DataGridTextColumn>
+                    
+                <sdk:DataGridTemplateColumn Header="Status">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                            <CheckBox  Grid.Row="2" Grid.Column="1"  Margin="4" IsChecked="{Binding Mode=TwoWay}" x:Name="chkIsStatus"></CheckBox>
+                      </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+                
+                <sdk:DataGridTextColumn Binding ="{Binding Status}"   Visibility="Collapsed" ></sdk:DataGridTextColumn>
+            </sdk:DataGrid.Columns>
+        </sdk:DataGrid>-->
+
+
+    </Grid>
+</controls:ChildWindow>

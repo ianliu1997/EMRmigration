@@ -1,0 +1,65 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Pathology.SampleCollectionTimeChildWindow"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+                      xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" Loaded="ChildWindow_Loaded"
+
+    Width="350" Height="250"    Title="Sample Collection Time" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit">
+
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Sample Collection Date :" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+            <TextBlock Grid.Row="1" Text="Sample Collection Time :" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+            <TextBlock x:Name="tblAgencyName" Grid.Row="2" Text="Sample Received Date :" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+            <TextBlock Grid.Row="3" Text="Sample Received Time :" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+            <controls:DatePicker Margin="0,0,31,2" Name="dtpSampColleDate" Grid.Column="1" />
+            <toolkit:TimePicker Margin="2,0,30,4" Name="dtpSampReceTime" Grid.Column="1" Grid.Row="3" />
+            <toolkit:TimePicker Margin="2,3,30,1" Name="dtpSampCollTime" Grid.Column="1" Grid.Row="1" />
+            <controls:DatePicker Margin="2,1,29,1" Name="dtpSampReceDate" Grid.Column="1" Grid.Row="2" />
+
+            <TextBlock Grid.Row="4" Text="Out Sourced :" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,5,5,5"/>
+            <CheckBox x:Name="chkIsOutSourced" Grid.Row="4" Grid.Column="1" Margin="0,0,31,2" HorizontalAlignment="Left" VerticalAlignment="Center" Click="chkIsOutSourced_Click"/>
+            <TextBlock x:Name="tblAgency" Visibility="Visible" Grid.Row="5" Text="Agency Name :" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,5,5,5"/>
+            <CustomCombo:AutoCompleteComboBox Visibility="Visible" x:Name="txtAgencyName" Grid.Row="5" Grid.Column="1" Margin="0,0,31,2" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"></CustomCombo:AutoCompleteComboBox>
+
+            <TextBlock Text="Sample Collection Center :" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Grid.Row="6" Grid.Column="0"/>
+            <TextBox x:Name="txtCollCenter" Grid.Row="6" Grid.Column="1" MaxLength="149" Margin="0,1,2,1"></TextBox>
+        </Grid>
+
+        <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+            <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                <ToggleButton  x:Name="cmdSave"  Grid.Row="4" Content="OK" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="cmdSave_Click"  TabIndex="24"/>
+                <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="Close" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}" Click="cmdClose_Click"  TabIndex="25"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</controls:ChildWindow>

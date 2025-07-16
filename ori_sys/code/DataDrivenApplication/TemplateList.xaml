@@ -1,0 +1,177 @@
+﻿<UserControl xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  x:Class="DataDrivenApplication.TemplateList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Common="clr-namespace:DataDrivenApplication"
+>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White"  Margin="10">
+        <Border x:Name="Container" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,8,0,0" >
+            <Grid Margin="5,15,5,5">
+                <data:DataGrid x:Name="dgTemplateList" Margin="0,10,0,0"  AutoGenerateColumns="False" ItemsSource="{Binding}" SelectionChanged="dgTemplateList_SelectionChanged" IsReadOnly="True">
+                    <data:DataGrid.Columns>
+                        <data:DataGridTemplateColumn>
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <HyperlinkButton VerticalAlignment="Center" Content="Preview" Padding="5,0,5,0" IsTabStop="False" Click="PreviewHyperlinkButton_Click"></HyperlinkButton>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Title}" Header="Title" />
+                        <data:DataGridTextColumn  Binding="{Binding Description}" Header="Description" />
+                    </data:DataGrid.Columns>
+                </data:DataGrid>
+                <data:DataGrid Visibility="Collapsed" x:Name="dgVarianceList" Margin="0,10,0,0"  AutoGenerateColumns="False" ItemsSource="{Binding}" SelectionChanged="dgVarianceList_SelectionChanged" >
+                    <data:DataGrid.Columns>
+                        <data:DataGridTemplateColumn>
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <HyperlinkButton VerticalAlignment="Center" Content="Preview" Padding="5,0,5,0" IsTabStop="False" Click="HyperlinkButton_Click_1"></HyperlinkButton>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Date}" Header="Date" Width="80">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding ClinicId}" Header="ClinicId" />
+                        <data:DataGridTextColumn  Binding="{Binding DoctorId}" Header="DoctorId" />
+                        <data:DataGridTextColumn  Binding="{Binding PatientId}" Header="PatientId" />
+                        <data:DataGridTextColumn  Binding="{Binding Variance1}" Header="Variance1" Width="90">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Variance2}" Header="Variance2" Width="90">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Variance3}" Header="Variance3" Width="90">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Variance4}" Header="Variance4" Width="90">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Variance5}" Header="Variance5" Width="90">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Variance6}" Header="Variance6" Width="90">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                        <data:DataGridTextColumn  Binding="{Binding Variance7}" Header="Variance7" Width="90">
+                            <data:DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </data:DataGridTextColumn.ElementStyle>
+                        </data:DataGridTextColumn>
+                    </data:DataGrid.Columns>
+                </data:DataGrid>
+                <StackPanel  Orientation="Horizontal" x:Name="ItemListToolbar" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,-15,0,0">
+                    <Button x:Name="AddItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="1" Click="AddItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Common:XamlCross Width="9" Height="9" Margin="0,0,5,0" RenderTransformOrigin="0.5,0.5">
+                                <Common:XamlCross.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="45"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Common:XamlCross.RenderTransform>
+                            </Common:XamlCross>
+                            <TextBlock x:Name="cmdAdd" Text="Add Template" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="DeleteItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="2" Click="DeleteItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="cmdDelete" Text="Delete Template" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="AssignImage" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="Image_Click">
+                        <!--<StackPanel Orientation="Horizontal">
+                            <Common:XamlCross Width="9" Height="9" Margin="0,0,5,0" RenderTransformOrigin="0.5,0.5">
+                                <Common:XamlCross.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="45"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Common:XamlCross.RenderTransform>
+                            </Common:XamlCross>
+                            <TextBlock x:Name="cmbImage" Text="Add Image" TextWrapping="Wrap"/>
+                        </StackPanel>-->
+                        <StackPanel Orientation="Horizontal">
+                            <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="cmbImage" Text="Add Image" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Visibility="Collapsed" x:Name="DemoItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="DemoItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdDemo" Text="Template Demo" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Visibility="Collapsed" x:Name="BackItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="BackItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdBack" Text="Back" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Visibility="Collapsed" x:Name="VarianceItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="VarianceItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdVariance" Text="Variance Monitoring" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Visibility="Collapsed" x:Name="PrintVarianceItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,0,0" Padding="10,3,10,3" TabIndex="3" Click="PrintVarianceItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdVariancePrint" Text="Print Variance" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+                   
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border HorizontalAlignment="Left" Margin="8,0,0,0" x:Name="ContainerTitle" VerticalAlignment="Top" Background="{StaticResource BackgroundDefault}" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="0.994"/>
+                    <SkewTransform AngleX="-20"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="3.627" Y="0.063"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <TextBlock x:Name="FormTitle" Text="Templates List" FontFamily="Portable User Interface" Margin="10,1,10,1" Foreground="{StaticResource Heading}" FontWeight="Bold"/>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,272 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.Agency.frmAgencyMaster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"   
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"  
+            
+    mc:Ignorable="d"
+    Loaded="frmAgencyMaster_Loaded"
+    Height="Auto" Width="Auto">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton x:Name="cmdNew"  Content="New"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdNew_Click" TabIndex="24"></ToggleButton>
+                        <ToggleButton x:Name="cmdSave"  Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdSave_Click" TabIndex="25"></ToggleButton>
+                        <ToggleButton Content="Modify"  x:Name="cmdModify" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdModify_Click" TabIndex="26"></ToggleButton>
+                        <ToggleButton Content="Cancel"  x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdCancel_Click" TabIndex="27"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Grid x:Name="PageContainer" >
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <controlsToolkit:DockPanel x:Name="docList">
+                        <controlsToolkit:DockPanel x:Name="DockTop" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                            <Grid x:Name="LayoutRoot2" Background="White" Margin="4" HorizontalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" MinWidth="150" MaxWidth="150" ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="Description"  Grid.Row="0" Grid.Column="0"/>
+                                <TextBox x:Name="txtAgencyName" Width="200" Grid.Row="0" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch"  MaxLength="50" Height="25" TabIndex="1" KeyUp="txtAgencyName_KeyUp" KeyDown="txtAgencyName_KeyDown"></TextBox>
+                                <Button x:Name="cmdSearch" Click="cmdSearch_Click"  Margin="4" ToolTipService.ToolTip="Search Code/Description"  Grid.Row="0" Grid.Column="2" TabIndex="3">
+                                    <Image Source="/PalashDynamics;component/Icons/xmag.png" Margin="2" Width="20" ></Image>
+                                </Button>
+                            </Grid>
+                        </controlsToolkit:DockPanel>
+
+                        <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="List of Agencies" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                            </Border>
+                        </StackPanel>
+                        <data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNext" Source="{Binding}" IsEnabled="True"
+                                      NumericButtonCount="10"  AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+
+                        <ScrollViewer Background="Transparent" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True" Margin="4">
+                            <data:DataGrid  x:Name="dgAgencyList" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserSortColumns="False"  >
+                                <data:DataGrid.Columns>
+                                    <data:DataGridTemplateColumn Header="View">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton Margin="4" x:Name="cmdView" Content="View" Click="cmdView_Click" Cursor="Hand"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTextColumn IsReadOnly="True" Header="Code" Binding="{Binding Code}" />
+                                    <data:DataGridTextColumn IsReadOnly="True"  Header="Description"  Binding="{Binding Description}" />
+                                    <data:DataGridTemplateColumn Header="Status">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox x:Name="chkStatus" HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=Status}" Click="chkStatus_Click"></CheckBox>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </ScrollViewer>
+                    </controlsToolkit:DockPanel>
+                </Grid>
+                <!--<ScrollViewer Background="Transparent" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >-->
+                    <Grid  Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1">
+
+                        <controlsToolkit:DockPanel x:Name="Content" controlsToolkit:DockPanel.Dock="top" LastChildFill="true"  >
+                            <!--<Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">-->
+                            <ScrollViewer Background="Transparent" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition ></RowDefinition>                                  
+                                </Grid.RowDefinitions>                             
+                                <controlsToolkit:DockPanel Grid.Row="0"  controlsToolkit:DockPanel.Dock="Top" LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                        <Grp:GroupBox  Header="Agency Master Details" Margin="4" controlsToolkit:DockPanel.Dock="Top" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch">
+
+                                            <!--<ScrollViewer Background="Transparent" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >-->
+                                                <Grid x:Name="grdBackPanel">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <TextBlock  Grid.Row="0" Grid.Column="0" Text="Code" Margin="4"></TextBlock>
+                                                    <TextBox  Grid.Row="0" Grid.Column="1" x:Name="txtCode" Text="{Binding Code,Mode=TwoWay}" Margin="4"  MaxLength="10"></TextBox>
+
+                                                    <TextBlock  Grid.Row="0" Grid.Column="2" Text="Description" Margin="4"></TextBlock>
+                                                    <TextBox  Grid.Row="0" Grid.Column="3" x:Name="txtName" Margin="4" Text="{Binding Description,Mode=TwoWay}"  MaxLength="50"></TextBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Country" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                    <!--<TextBox  Grid.Column="1" Grid.Row="1" x:Name="txtCountry" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtCountry_LostFocus"></TextBox>-->
+                                                    <inputcombo:AutoCompleteComboBox Margin="4" Grid.Row="1" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValue="ID" SelectedValuePath="ID" x:Name="txtCountry" SelectionChanged="txtCountry_SelectionChanged"   TabIndex="15" ></inputcombo:AutoCompleteComboBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="1" Text="State" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                    <!--<TextBox  Grid.Column="3" Grid.Row="1" x:Name="txtState" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtState_LostFocus"></TextBox>-->
+                                                    <inputcombo:AutoCompleteComboBox Margin="4" Grid.Row="1" Grid.Column="3" Text="{Binding StateId, Mode=TwoWay}"  x:Name="txtState" SelectedValue="ID" SelectedValuePath="ID" SelectionChanged="txtState_SelectionChanged" TabIndex="16"></inputcombo:AutoCompleteComboBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="City" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                    <!--<TextBox  Grid.Column="1" Grid.Row="2" x:Name="txtCity" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtCity_LostFocus"></TextBox>-->
+                                                    <inputcombo:AutoCompleteComboBox Margin="4" Grid.Row="2" Grid.Column="1" Text="{Binding CityId, Mode=TwoWay}"  x:Name="txtCity" SelectedValue="ID" SelectedValuePath="ID" SelectionChanged="txtCity_SelectionChanged" TabIndex="19"></inputcombo:AutoCompleteComboBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="2" Text="Pincode" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBox  Grid.Column="3" Grid.Row="2" x:Name="txtPincode" Text="{Binding Pincode, Mode=TwoWay}" Margin="4" MaxLength="10" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtAgeTo_TextChanged" KeyDown="txtAgeTo_KeyDown" ></TextBox>
+                                                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Address Line1" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Text="{Binding Address1, Mode=TwoWay}"  TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  x:Name="txtAddressLine1" Margin="4" MaxLength="150" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtAddressLine1_LostFocus" ></TextBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Address Line2" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"  Text="{Binding Address2, Mode=TwoWay}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  x:Name="txtAddressLine2" Margin="4" MaxLength="150" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtAddressLine2_LostFocus"></TextBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="5" Text="Address Line3" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"  Text="{Binding Address3, Mode=TwoWay}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  x:Name="txtAddressLine3" Margin="4" MaxLength="150" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtAddressLine3_LostFocus"></TextBox>
+
+
+                                                </Grid>
+                                            <!--</ScrollViewer>-->
+                                        </Grp:GroupBox>
+                                    </controlsToolkit:DockPanel>
+                                    <controlsToolkit:DockPanel x:Name="docHeader1" controlsToolkit:DockPanel.Dock="Top" Height="Auto" HorizontalAlignment="Stretch">
+                                        <Grp:GroupBox  Header="Specialization Details" Height="200" Margin="4" controlsToolkit:DockPanel.Dock="Top" Width="Auto"  Grid.Row="0" HorizontalAlignment="Stretch">
+
+                                            <data:DataGrid  x:Name="dgSpecialization" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="4" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalAlignment="Stretch" >
+                                                <data:DataGrid.Columns >
+                                                    <data:DataGridTemplateColumn IsReadOnly="True" Header="Select">
+                                                        <data:DataGridTemplateColumn.CellTemplate >
+                                                            <DataTemplate >
+                                                                <CheckBox Margin="4"  x:Name="chkSpecialization"  Click="chkSpecialization_Click"  IsChecked="{Binding Status,Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" ></CheckBox >
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding Description,Mode=TwoWay}"  Header="Specialization" IsReadOnly="True" />
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+                                        </Grp:GroupBox>
+                                    </controlsToolkit:DockPanel>
+                                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom" LastChildFill="True" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                        <Grp:GroupBox Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6" Margin="4" Header="Contact Details" >
+                                            <!--<ScrollViewer Background="Transparent" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >-->
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition  ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grp:GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Contact Person1" HorizontalAlignment="Stretch" >
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+
+
+                                                            </Grid.RowDefinitions>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="0"  x:Name="txtContactperson1Name" Text="{Binding ContactPerson1Name, Mode=TwoWay}" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtContactperson1Name_TextChanged" LostFocus="txtContactperson1Name_LostFocus" KeyDown="txtContactperson1Name_KeyDown"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Mobile No" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtContactperson1MobileNo" Text="{Binding ContactPerson1MobileNo, Mode=TwoWay}" Margin="4"   VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtContactperson1MobileNo_TextChanged" KeyDown="txtContactperson1MobileNo_KeyDown" IsEnabled="True" MaxLength="50"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Email" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="2"  x:Name="txtContactperson1Email" Text="{Binding ContactPerson1Email, Mode=TwoWay}" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtContactperson1Email_LostFocus" ></TextBox>
+
+                                                        </Grid>
+
+                                                    </Grp:GroupBox>
+
+                                                    <Grp:GroupBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"  Header="Contact Person2" Margin="4">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                            </Grid.RowDefinitions>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="0"  x:Name="txtContactperson2Name" Text="{Binding ContactPerson2Name, Mode=TwoWay}" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtContactperson2Name_LostFocus" KeyDown="txtContactperson2Name_KeyDown"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Mobile No" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtContactperson2MobileNo" Text="{Binding ContactPerson2MobileNo, Mode=TwoWay}" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtContactperson2MobileNo_TextChanged" KeyDown="txtContactperson2MobileNo_KeyDown"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Email" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="2"  x:Name="txtContactperson2Email" Text="{Binding ContactPerson2Email, Mode=TwoWay}" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtContactperson2Email_LostFocus"></TextBox>
+
+                                                        </Grid>
+
+
+
+                                                    </Grp:GroupBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Phone No" Margin="4" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtPhoneNo" Text="{Binding PhoneNo, Mode=TwoWay}" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtPhoneNo_TextChanged" KeyDown="txtPhoneNo_KeyDown"></TextBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="2" Text="Fax" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox Grid.Column="3" Grid.Row="2"  x:Name="txtFax" Text="{Binding Fax, Mode=TwoWay}" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtAgeTo_TextChanged" KeyDown="txtAgeTo_KeyDown" ></TextBox>
+
+
+                                                </Grid>
+                                            <!--</ScrollViewer>-->
+                                        </Grp:GroupBox>
+
+                                    </controlsToolkit:DockPanel>
+
+
+                                </controlsToolkit:DockPanel>
+                            </Grid>
+                                </ScrollViewer>
+                        <!--</Border>-->
+
+                        </controlsToolkit:DockPanel>
+
+                    </Grid>
+                <!--</ScrollViewer>-->
+            </Grid>
+        </controlsToolkit:DockPanel>
+
+    </Grid>
+</UserControl>

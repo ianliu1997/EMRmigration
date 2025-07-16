@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{85A8DB2F-D545-4738-971C-32C1311FC730}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.Pathology</RootNamespace>
+    <AssemblyName>PalashDynamics.Pathology</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.Pathology.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.Pathology.App</SilverlightAppEntry>
+    <TestPageFileName>PalashDynamics.PathologyTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blacklight.Silverlight.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Library\Blacklight.Silverlight.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Pdf">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.PdfViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.PdfViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.ReportViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.ReportViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.PdfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.PdfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.RtfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.RtfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.Toolbar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Schedule">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.SpellChecker">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="Groupbox">
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="PalashDynamic.Localization">
+      <HintPath>..\PalashDynamic.Localization\Bin\Debug\PalashDynamic.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.DomainServices.Client, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel.DomainServices.Client.Web, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel.Web.Extensions, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\PalashDynamics.Pathology\Bin\Debug\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\PalashDynamics.Pathology\Bin\Debug\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\DataDrivenApplication\Forms\frmAttention.xaml.cs">
+      <Link>frmAttention.xaml.cs</Link>
+      <DependentUpon>frmAttention.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\DoctorMasterChildwindow.xaml.cs">
+      <Link>DoctorMasterChildwindow.xaml.cs</Link>
+      <DependentUpon>DoctorMasterChildwindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\DataGridSelectionAdapter.cs">
+      <Link>DataGridSelectionAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemList.xaml.cs">
+      <Link>ItemSearch\ItemList.xaml.cs</Link>
+      <DependentUpon>ItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemListNew.xaml.cs">
+      <Link>ItemSearch\ItemListNew.xaml.cs</Link>
+      <DependentUpon>ItemListNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemSearchViewModel.cs">
+      <Link>ItemSearch\ItemSearchViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Pharmacy\ViewModelBase.cs">
+      <Link>ItemSearch\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeForm.xaml.cs">
+      <DependentUpon>BarcodeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Barcode\Barcode.cs" />
+    <Compile Include="Barcode\Code39.cs" />
+    <Compile Include="components\ExtendedGridSplitter.cs" />
+    <Compile Include="ConditionalServiceSearchForPackageNew.xaml.cs">
+      <DependentUpon>ConditionalServiceSearchForPackageNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmANC_Examination.xaml.cs">
+      <DependentUpon>frmANC_Examination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmChdSendMail.xaml.cs">
+      <DependentUpon>frmChdSendMail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmExternalRegistration.xaml.cs">
+      <DependentUpon>FrmExternalRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmExternalRegistrationNew.xaml.cs">
+      <DependentUpon>FrmExternalRegistrationNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewANCExamination.xaml.cs">
+      <DependentUpon>frmNewANCExamination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatientSearch.xaml.cs">
+      <DependentUpon>FrmPatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestResultEntry.xaml.cs">
+      <DependentUpon>frmTestResultEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpValueDetails.xaml.cs">
+      <DependentUpon>HelpValueDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\AssignBatch.xaml.cs">
+      <DependentUpon>AssignBatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PackageServiceSearchForPackageNew.xaml.cs">
+      <DependentUpon>PackageServiceSearchForPackageNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\ChangeTestAgency.xaml.cs">
+      <DependentUpon>ChangeTestAgency.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\CheckResultMsgWin.xaml.cs">
+      <DependentUpon>CheckResultMsgWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\Code128.cs" />
+    <Compile Include="PathologyForms\DeltaCheck.xaml.cs">
+      <DependentUpon>DeltaCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\DoctorApprovalPathoResultEntry.xaml.cs">
+      <DependentUpon>DoctorApprovalPathoResultEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewBarcodeForm.xaml.cs">
+      <DependentUpon>NewBarcodeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewPathologyWorkOrderGeneration.xaml.cs">
+      <DependentUpon>NewPathologyWorkOrderGeneration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewPathoResultEntry.xaml.cs">
+      <DependentUpon>NewPathoResultEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewReportDelivery.xaml.cs">
+      <DependentUpon>NewReportDelivery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewSampleAcceptanceRejection.xaml.cs">
+      <DependentUpon>NewSampleAcceptanceRejection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewSampleAcceptanceRejection_new.xaml.cs">
+      <DependentUpon>NewSampleAcceptanceRejection_new.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewSampleCollection.xaml.cs">
+      <DependentUpon>NewSampleCollection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewSampleDispatch.xaml.cs">
+      <DependentUpon>NewSampleDispatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewSampleDispatch_New.xaml.cs">
+      <DependentUpon>NewSampleDispatch_New.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewSampleOutSourcing.xaml.cs">
+      <DependentUpon>NewSampleOutSourcing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewSampleReceive.xaml.cs">
+      <DependentUpon>NewSampleReceive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\NewUploadReport.xaml.cs">
+      <DependentUpon>NewUploadReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\Notes.xaml.cs">
+      <DependentUpon>Notes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\PasswordWindow.xaml.cs">
+      <DependentUpon>PasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\PreviousResults.xaml.cs">
+      <DependentUpon>PreviousResults.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\PrintBatchCode.xaml.cs">
+      <DependentUpon>PrintBatchCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\PrintPathoReportDelivery.xaml.cs">
+      <DependentUpon>PrintPathoReportDelivery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\ReflexTestingParameters.xaml.cs">
+      <DependentUpon>ReflexTestingParameters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\ResultEntryLog.xaml.cs">
+      <DependentUpon>ResultEntryLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\SampleCollectionTimeChildWindow.xaml.cs">
+      <DependentUpon>SampleCollectionTimeChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\TestDetailsChildWindow.xaml.cs">
+      <DependentUpon>TestDetailsChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyForms\TestMachinLinking.xaml.cs">
+      <DependentUpon>TestMachinLinking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyWorkOrderGeneration.xaml.cs">
+      <DependentUpon>PathologyWorkOrderGeneration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathoResultEntry.xaml.cs">
+      <DependentUpon>PathoResultEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentWindow.xaml.cs">
+      <DependentUpon>PaymentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDelivery.xaml.cs">
+      <DependentUpon>ReportDelivery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SampleCollection.xaml.cs">
+      <DependentUpon>SampleCollection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SampleCollectionChildWindow.xaml.cs">
+      <DependentUpon>SampleCollectionChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SampleCollectionTimeChildWindow.xaml.cs">
+      <DependentUpon>SampleCollectionTimeChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SendMailChildWindow.xaml.cs">
+      <DependentUpon>SendMailChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceSearch.xaml.cs">
+      <DependentUpon>ServiceSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceSerachNew.xaml.cs">
+      <DependentUpon>ServiceSerachNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UploadReportChildWindow.xaml.cs">
+      <DependentUpon>UploadReportChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UploadSampleReport.xaml.cs">
+      <DependentUpon>UploadSampleReport.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <Content Include="CIMS_GetAppointmentMrNoList25Nov2015.txt" />
+    <Resource Include="Icons\Isreflex.jpg" />
+    <Resource Include="Icons\error.png" />
+    <Resource Include="Icons\tick.png" />
+    <Resource Include="Icons\xmag.png" />
+    <Resource Include="Icons\Add-Male-User1.png" />
+    <Resource Include="Icons\attachment.JPG" />
+    <Resource Include="Icons\male.jpg" />
+    <Resource Include="Icons\female.jpg" />
+    <None Include="PalashDynamics.ValueObjects.clsUserVO2.datasource" />
+    <None Include="Properties\AppManifest.xml" />
+    <Resource Include="Icons\Search_b.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\DataDrivenApplication\Forms\frmAttention.xaml">
+      <Link>frmAttention.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\DoctorMasterChildwindow.xaml">
+      <Link>DoctorMasterChildwindow.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemList.xaml">
+      <Link>ItemSearch\ItemList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Pharmacy\ItemSearch\ItemListNew.xaml">
+      <Link>ItemSearch\ItemListNew.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BarcodeForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConditionalServiceSearchForPackageNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmANC_Examination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmChdSendMail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmExternalRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmExternalRegistrationNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmNewANCExamination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmPatientSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmTestResultEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HelpValueDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSearch\AssignBatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PackageServiceSearchForPackageNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\ChangeTestAgency.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\CheckResultMsgWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\DeltaCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\DoctorApprovalPathoResultEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewBarcodeForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewPathologyWorkOrderGeneration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewPathoResultEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewReportDelivery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewSampleAcceptanceRejection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewSampleAcceptanceRejection_new.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PathologyForms\NewSampleCollection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewSampleDispatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewSampleDispatch_New.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewSampleOutSourcing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewSampleReceive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\NewUploadReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\Notes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\PasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\PreviousResults.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\PrintBatchCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\PrintPathoReportDelivery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\ReflexTestingParameters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\ResultEntryLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\SampleCollectionTimeChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\TestDetailsChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyForms\TestMachinLinking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyWorkOrderGeneration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathoResultEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaymentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportDelivery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleCollection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleCollectionChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleCollectionTimeChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SendMailChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ServiceSerachNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UploadReportChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UploadSampleReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Administration\PalashDynamics.Administration.csproj">
+      <Project>{5BBF7708-7343-4373-88B8-60F339BA97D0}</Project>
+      <Name>PalashDynamics.Administration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SearchResultLists\PalashDynamics.SearchResultLists.csproj">
+      <Project>{1222821C-4F56-416A-8F9D-A861422ABC29}</Project>
+      <Name>PalashDynamics.SearchResultLists</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.WaterMarkTextBox\PalashDynamics.WaterMarkTextBox.csproj">
+      <Project>{1B114BF8-F1E2-4EC6-AAA2-A69E4FFE24D7}</Project>
+      <Name>PalashDynamics.WaterMarkTextBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

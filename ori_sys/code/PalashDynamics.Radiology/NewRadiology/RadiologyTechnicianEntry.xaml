@@ -1,0 +1,242 @@
+﻿<UserControl x:Class="PalashDynamics.Radiology.RadiologyTechnicianEntry"
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+    xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"   
+    xmlns:my="clr-namespace:PalashDynamics;assembly=PalashDynamics.WaterMarkTextBox"
+    xmlns:myRich="clr-namespace:Liquid;assembly=RichTextEditor"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    Height="Auto" Width="Auto" Loaded="ResultEntry_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:VisiblilityConverter x:Key="VisiblilityConverter"/>
+            <local:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White"  Margin="2">
+
+        <controlsToolkit:DockPanel LastChildFill="True">
+
+            <Grid x:Name="PageContainer" >
+
+
+                <Grid  Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Visible" Grid.Row="1">
+                    <controlsToolkit:DockPanel x:Name="Content" controlsToolkit:DockPanel.Dock="top" LastChildFill="true"  >
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+                            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                <controlsToolkit:DockPanel x:Name="docHeader1" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                    <Grid controlsToolkit:DockPanel.Dock="Bottom">
+
+                                        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom" LastChildFill="True" HorizontalAlignment="Stretch">
+                                            <Border controlsToolkit:DockPanel.Dock="Bottom"  Grid.Row="1"  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4"  BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+
+                                                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+
+                                                        <ToggleButton x:Name="cmdSave" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   TabIndex="12" Click="cmdSave_Click"></ToggleButton>
+
+                                                        <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdCancel_Click" TabIndex="13"></ToggleButton>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </controlsToolkit:DockPanel>
+                                    </Grid>
+
+
+                                    <Grid controlsToolkit:DockPanel.Dock="Top">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition ></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="Test Name" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbTestName"  ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,10,4,4" TabIndex="6" IsEnabled="False"></inputcombo:AutoCompleteComboBox>
+
+                                        <TextBlock Text="Film" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbFilm"  ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,10,4,4"  TabIndex="6" ></inputcombo:AutoCompleteComboBox>
+
+                                        <TextBlock Text="Referred By" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                        <input:AutoCompleteBox Grid.Row="1" Grid.Column="1"  x:Name="txtReferenceDoctor" Margin="4" Text="{Binding ReferredDoctor, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center"  TabIndex="10" GotFocus="txtReferenceDoctor_GotFocus" LostFocus="txtReferenceDoctor_LostFocus" TextChanged="txtReferenceDoctor_TextChanged" KeyDown="txtReferenceDoctor_KeyDown"   IsEnabled="False"/>
+
+                                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+                                            <CheckBox Content="Contrast Used (ml)" Grid.Column="0" Grid.Row="2" x:Name="chkContrast" IsChecked="{Binding Contrast,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" Click="ChkContrast_Click"></CheckBox>
+                                            <CheckBox Content="Film Wastage" Grid.Column="2" Grid.Row="2" x:Name="chkFilmWastage" IsChecked="{Binding FilmWastage,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" Click="chkFilmWastage_Click"></CheckBox>
+                                            <CheckBox Content="Sedation" Grid.Column="4" Grid.Row="2" x:Name="chkSedation" IsChecked="{Binding Sedation,Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4"></CheckBox>
+                                        </StackPanel>
+
+                                        <CheckBox x:Name="chkFinalize"  controlsToolkit:DockPanel.Dock="Top" Grid.Column="0" Content="Is Finalized" IsChecked="{Binding IsTechnicianEntryFinalized,Mode=TwoWay}"  Grid.Row="3" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Left" ></CheckBox>
+
+                                        <GroupBox:GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" IsTabStop="False" x:Name="grpItemInformation" Header="Item Details" Height="Auto"  Margin="4">
+
+                                            <controlsToolkit:DockPanel x:Name="DocMain2" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+
+                                                <controlsToolkit:DockPanel x:Name="docContet4" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                                    <controlsToolkit:DockPanel x:Name="docContet5" controlsToolkit:DockPanel.Dock="Top">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                <ColumnDefinition ></ColumnDefinition>
+                                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                <ColumnDefinition ></ColumnDefinition>
+                                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"></RowDefinition>
+
+                                                            </Grid.RowDefinitions>
+
+                                                            <TextBlock Text="Store" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                                            <inputcombo:AutoCompleteComboBox x:Name="cmbStore"  ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,10,4,4" TabIndex="6" IsEnabled="False"></inputcombo:AutoCompleteComboBox>
+
+
+                                                            <ToggleButton Content="Add Items" x:Name="cmdAddItem" Background="#000000" Margin="4,10,4,4" HorizontalAlignment="Left" Style="{StaticResource ToggleButtonStyle}" TabIndex="8"  Click="cmdAddItem_Click" Grid.Column="2" ToolTipService.ToolTip="Add Items"></ToggleButton>
+
+                                                        </Grid>
+                                                    </controlsToolkit:DockPanel>
+                                                </controlsToolkit:DockPanel>
+
+                                                <controlsToolkit:DockPanel x:Name="docContet6" controlsToolkit:DockPanel.Dock="Bottom">
+                                                    <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="-1,10,-1,-1" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="Item Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                    <data:DataGrid x:Name="dgItemDetailsList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Margin="0" HorizontalAlignment="Stretch"  TabIndex="12" CellEditEnded="dgItemDetailsList_CellEditEnded" SelectionChanged="dgItemDetailsList_SelectionChanged">
+                                                        <data:DataGrid.Columns>
+                                                            <!--<data:DataGridTemplateColumn Header="Item Category" >
+                                                                <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                                    <DataTemplate>
+                                                                        <inputcombo:AutoCompleteComboBox x:Name="cmbItemCategory"  SelectedValue="{Binding SelectedItemCategory.ID}" SelectedItem="{Binding SelectedItemCategory,Mode=TwoWay}" ItemsSource="{Binding ItemCategory}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                                        </inputcombo:AutoCompleteComboBox>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                            </data:DataGridTemplateColumn>-->
+                                                            <!--<data:DataGridTextColumn Binding="{Binding ItemCode}"  Header="Item Code"  IsReadOnly="True"></data:DataGridTextColumn>-->
+                                                            <data:DataGridTextColumn Binding="{Binding ItemCategoryString}"  Header="Item Category"   IsReadOnly="True"></data:DataGridTextColumn>
+                                                            <data:DataGridTextColumn Binding="{Binding ItemName}"  Header="Item Name"   IsReadOnly="True"></data:DataGridTextColumn>
+                                                            <data:DataGridTextColumn Binding="{Binding BatchCode}"  Header="Batch Code"  IsReadOnly="True"></data:DataGridTextColumn>
+
+                                                            <!--<data:DataGridTextColumn Binding="{Binding BalanceQuantity,StringFormat=0.00,Mode=OneWay}" Header="Bal. Qty"  IsReadOnly="True">
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                            </data:DataGridTextColumn>-->
+
+                                                            <data:DataGridTemplateColumn Header="Expiry Date" IsReadOnly="True">
+                                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                                    <DataTemplate>
+                                                                        <TextBlock  
+                                                                        Text="{Binding ExpiryDate, 
+                                                                        Converter={StaticResource DateConverter},ConverterParameter={StaticResource ExpiryDateDisplayFormat}}" 
+                                                                        Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTextColumn Binding="{Binding Quantity,StringFormat=0.00,Mode=OneWay}" Header="Ideal Qty"  IsReadOnly="True">
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                            </data:DataGridTextColumn>
+
+                                                            <data:DataGridTextColumn Binding="{Binding ActualQantity,StringFormat=0.00,Mode=TwoWay}"  Header="Actual Qty" Width="80" >
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment"  Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                                <data:DataGridTextColumn.EditingElementStyle>
+                                                                    <Style TargetType="TextBox">
+                                                                        <Setter Property="MaxLength" Value="8" >
+                                                                        </Setter>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.EditingElementStyle>
+                                                            </data:DataGridTextColumn>
+
+                                                            <data:DataGridTextColumn Binding="{Binding WastageQantity,StringFormat=0.00,Mode=TwoWay}" Header="Wastage Qty" Width="92">
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                                <data:DataGridTextColumn.EditingElementStyle>
+                                                                    <Style TargetType="TextBox">
+                                                                        <Setter Property="MaxLength" Value="8" >
+                                                                        </Setter>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.EditingElementStyle>
+                                                            </data:DataGridTextColumn>
+
+
+                                                            <data:DataGridTemplateColumn>
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton VerticalAlignment="Center" x:Name="AddBatch"  Content="Assign Batch"  Padding="5,0,5,0" Click="AddBatch_Click" Visibility="{Binding BatchesRequired, Converter={StaticResource VisiblilityConverter},ConverterParameter='BatchesRequired'}"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTemplateColumn>
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click="cmdDelete_Click"  x:Name="cmdDelete" ToolTipService.ToolTip="Delete"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTextColumn Binding="{Binding BalanceQuantity,StringFormat=0.00,Mode=OneWay}" Header="Bal. Qty"  IsReadOnly="True">
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                            </data:DataGridTextColumn>
+
+
+                                                        </data:DataGrid.Columns>
+                                                    </data:DataGrid>
+                                                </controlsToolkit:DockPanel>
+                                            </controlsToolkit:DockPanel>
+                                        </GroupBox:GroupBox>
+                                    </Grid>
+
+                                </controlsToolkit:DockPanel>
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+
+
+</UserControl>
+

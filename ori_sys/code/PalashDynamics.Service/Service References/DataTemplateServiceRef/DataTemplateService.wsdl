@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DataTemplateService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CustomBinding_DataTemplateService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="" location="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc?wsdl=wsdl0" />
+  <wsdl:types />
+  <wsdl:binding name="CustomBinding_DataTemplateService" type="DataTemplateService">
+    <wsp:PolicyReference URI="#CustomBinding_DataTemplateService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap12:operation soapAction="urn:DataTemplateService/DoWork" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTemplate">
+      <soap12:operation soapAction="urn:DataTemplateService/SaveTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTemplate">
+      <soap12:operation soapAction="urn:DataTemplateService/UpdateTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTemplate">
+      <soap12:operation soapAction="urn:DataTemplateService/DeleteTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplatesDetailsByTemplateTitle">
+      <soap12:operation soapAction="urn:DataTemplateService/GetTemplatesDetailsByTemplateTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplatesList">
+      <soap12:operation soapAction="urn:DataTemplateService/GetTemplatesList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelationList">
+      <soap12:operation soapAction="urn:DataTemplateService/GetRelationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SavePatientEMR">
+      <soap12:operation soapAction="urn:DataTemplateService/SavePatientEMR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SavePatientEMR1">
+      <soap12:operation soapAction="urn:DataTemplateService/SavePatientEMR1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePatientEMR">
+      <soap12:operation soapAction="urn:DataTemplateService/UpdatePatientEMR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientEMRByPatientIdAndTemplateId">
+      <soap12:operation soapAction="urn:DataTemplateService/GetPatientEMRByPatientIdAndTemplateId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileList">
+      <soap12:operation soapAction="urn:DataTemplateService/GetFileList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilePath">
+      <soap12:operation soapAction="urn:DataTemplateService/GetFilePath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePathReportFile">
+      <soap12:operation soapAction="urn:DataTemplateService/DeletePathReportFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForPathology">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadReportFileForPathology" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AttachmentFile">
+      <soap12:operation soapAction="urn:DataTemplateService/AttachmentFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAttachmentFile">
+      <soap12:operation soapAction="urn:DataTemplateService/DeleteAttachmentFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActivationFile">
+      <soap12:operation soapAction="urn:DataTemplateService/ActivationFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationPath">
+      <soap12:operation soapAction="urn:DataTemplateService/GetApplicationPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationFile">
+      <soap12:operation soapAction="urn:DataTemplateService/GetActivationFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFile">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadReportFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForRadiology">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadReportFileForRadiology" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForDischarge">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadReportFileForDischarge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForConsent">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadReportFileForConsent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadReportFileForMLCase">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadReportFileForMLCase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GlobalUploadFile">
+      <soap12:operation soapAction="urn:DataTemplateService/GlobalUploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GlobalDeleteFile">
+      <soap12:operation soapAction="urn:DataTemplateService/GlobalDeleteFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadETemplateFile">
+      <soap12:operation soapAction="urn:DataTemplateService/UploadETemplateFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReportFile">
+      <soap12:operation soapAction="urn:DataTemplateService/DeleteReportFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMISReportFile">
+      <soap12:operation soapAction="urn:DataTemplateService/DeleteMISReportFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveVariance">
+      <soap12:operation soapAction="urn:DataTemplateService/SaveVariance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVarinceList">
+      <soap12:operation soapAction="urn:DataTemplateService/GetVarinceList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientEMRList">
+      <soap12:operation soapAction="urn:DataTemplateService/GetPatientEMRList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="OpenCreatedRadReport">
+      <soap12:operation soapAction="urn:DataTemplateService/OpenCreatedRadReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ConcurrencyExceptionFault">
+        <soap12:fault use="literal" name="ConcurrencyExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataTemplateService">
+    <wsdl:port name="CustomBinding_DataTemplateService" binding="tns:CustomBinding_DataTemplateService">
+      <soap12:address location="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

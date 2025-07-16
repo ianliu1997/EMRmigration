@@ -1,0 +1,501 @@
+﻿<UserControl x:Class="PalashDynamics.IVF.DashBoard.frmIUIComeSemenWash"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+    xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"     
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+     xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+     xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+              xmlns:grb="clr-namespace:Groupbox;assembly=Groupbox" 
+               xmlns:Common="clr-namespace:DataDrivenApplication"  
+               xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+  Height="Auto" Width="Auto"
+ Loaded="UserControl_Loaded"  >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+            <local:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom" >
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                        <ToggleButton x:Name="cmdPrint"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed" Content="Print" Click="cmdPrint_Click" TabIndex="3" >
+
+                        </ToggleButton>
+                        <ToggleButton x:Name="cmdNew"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSave_Click" TabIndex="3">
+                            <StackPanel Orientation="Horizontal" >
+                                <Common:XamlCheckmark Width="10" Height="10" Margin="0,0,5,0"/>
+                                <TextBlock Text="Save" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ToggleButton>
+
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+                    <Grp:GroupBox IsTabStop="False" x:Name="gb1" Header="" Height="Auto" Grid.Row="0" Grid.Column="0" Margin="4" >
+                        <Grid Grid.Row="0" Margin="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                           
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="0" Text="IUI Date" Margin="4"></TextBlock>
+                            <controls:DatePicker  HorizontalAlignment="Stretch" SelectedDate="{Binding IUIDate,Mode=TwoWay}"  VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Margin="4"  x:Name="dtIUIDate" TabIndex="0"></controls:DatePicker>
+
+                            <TextBlock Text="IUI Time" Margin="2" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                            <inputToolkit:TimePicker x:Name="IUITime" Value="{Binding IUIDate, Mode=TwoWay}" Margin="2" Grid.Row="0"  Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"  TabIndex="1"/>
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Collection Date" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                            <controls:DatePicker HorizontalAlignment="Stretch" Margin="4" Name="dtCollection" SelectedDate="{Binding CollectionDate,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Collection Time" Margin="4" Grid.Row="1" Grid.Column="2"></TextBlock>
+                            <inputToolkit:TimePicker TabIndex="2" x:Name="CollectionTime" Value="{Binding CollectionDate, Mode=TwoWay}" Margin="2" Grid.Row="1"  Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Thaw Date" Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                            <controls:DatePicker HorizontalAlignment="Stretch" Margin="4" Name="dtThawDate" SelectedDate="{Binding ThawDate,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" IsEnabled="False" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Thaw Time" Margin="4" Grid.Row="2" Grid.Column="2"></TextBlock>
+                            <inputToolkit:TimePicker TabIndex="2" x:Name="ThawTime" Value="{Binding ThawDate, Mode=TwoWay}" Margin="2" Grid.Row="2"  Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsEnabled="False" />
+
+                            <Grid  Grid.Column="0" Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <HyperlinkButton Grid.Column="0" Grid.Row="0" ToolTipService.ToolTip="Select Sample" VerticalAlignment="Center" Padding="2" IsTabStop="False" Visibility="Visible" Content="Select Sample" x:Name="SelectSample" Click="SelectSample_Click" IsEnabled="False"></HyperlinkButton>
+                                
+
+                                <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Donor Code" Margin="4" Grid.Row="0" Grid.Column="1"></TextBlock>
+
+                            </Grid>
+
+                            <TextBox Margin="4"  Grid.Row="3" Grid.Column="1"  x:Name="txtDonorCode" Text="{Binding DonorCode,Mode=TwoWay}" VerticalAlignment="Center"  TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" IsEnabled="False"/>
+
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Sample ID" Margin="4" Grid.Row="3" Grid.Column="2"></TextBlock>
+                            <TextBox Margin="4"  Grid.Row="3" Grid.Column="3"  x:Name="txtSampleID" Text="{Binding SampleID,Mode=TwoWay}" VerticalAlignment="Center"  TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" IsEnabled="False" />
+
+                          
+                           
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Preparation Date" Margin="4" Grid.Row="4" Grid.Column="0"></TextBlock>
+                            <controls:DatePicker HorizontalAlignment="Stretch" Margin="4" Name="dtpreperation" SelectedDate="{Binding PreperationDate,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Preperation Time" Margin="4" Grid.Row="4" Grid.Column="2"></TextBlock>
+                            <inputToolkit:TimePicker TabIndex="2" x:Name="PreperationTime" Value="{Binding PreperationDate, Mode=TwoWay}" Margin="2" Grid.Row="4"  Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+
+
+
+
+
+
+                           
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Insemination Location" Margin="2" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox  x:Name="cmbnseminationLocation" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Visibility="Collapsed" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="3" Grid.Column="1"  TabIndex="4"></inputcombo:AutoCompleteComboBox>
+
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="Insemination Method" Margin="2" VerticalAlignment="Center" Visibility="Collapsed"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox  x:Name="cmbInseminationMethod" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Visibility="Collapsed" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="3" Grid.Column="3"  TabIndex="4"></inputcombo:AutoCompleteComboBox>
+
+                        </Grid>
+                    </Grp:GroupBox>
+
+                    <Grp:GroupBox IsTabStop="False"  x:Name="grpContactDetails" Header="Preliminary Detail" Height="Auto" Grid.Row="1" Grid.Column="0" Margin="4" >
+                        <Grid  Background="White"  Visibility="Visible" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Sperm Collection Method" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox Margin="4"  Grid.Row="0" Grid.Column="1"  x:Name="cmbCollection" SelectedValue="{Binding MethodOfCollection,Mode=TwoWay}" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" IsEnabled="False" ></inputcombo:AutoCompleteComboBox>
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Insemination Volume" Margin="4" Grid.Row="0" Grid.Column="2"></TextBlock>
+                            <TextBox Margin="4"  Grid.Row="0" Grid.Column="3"  x:Name="txtInseminated" Text="{Binding Inseminated,Mode=TwoWay}" VerticalAlignment="Center"  TextChanged="TxtPreAmount_TextChanged"  KeyDown="TxtPreAmount_KeyDown" MaxLength="4" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Inseminated By" Margin="2" VerticalAlignment="Center"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox  x:Name="cmbInseminatedBy" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100"  Margin="2"  Grid.Row="1" Grid.Column="1" TabIndex="2" ></inputcombo:AutoCompleteComboBox>
+
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Witnessed By " Margin="2" VerticalAlignment="Center"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox  x:Name="cmbWitnessedBy" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="1" Grid.Column="3"  TabIndex="3"></inputcombo:AutoCompleteComboBox>
+
+
+
+                            <!--<TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Sample ID " Margin="4" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" ></TextBlock>
+                            <HyperlinkButton HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"  x:Name="PrescriptionOvarian"  Content="Select Sample" Click="PrescriptionOvarian_Click" Padding="5,0,5,0" Visibility="Collapsed"></HyperlinkButton>
+                            <TextBox Margin="4"  Grid.Row="3" Grid.Column="2"  x:Name="txtSampleID" Text="{Binding SampleID,Mode=TwoWay}" VerticalAlignment="Center" IsEnabled="False" Visibility="Collapsed"/>-->
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Reciving Lab Time" Margin="4" Grid.Row="0" Grid.Column="2" Visibility="Collapsed"></TextBlock>
+                            <inputToolkit:TimePicker TabIndex="2" x:Name="SampRecTime" Value="{Binding TimeRecSampLab, Mode=TwoWay}" Margin="2" Grid.Row="0"  Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Visibility="Collapsed"/> 
+                            
+                            <StackPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" Visibility="Collapsed">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Sample Collected" Margin="4" ></TextBlock>
+                                <RadioButton Content="At Centre" Click="rbtCentre_Click"  Height="16" HorizontalAlignment="Left" Margin="4" Name="rbtCentre" VerticalAlignment="Top"  />
+                                <RadioButton Content="Brought from Outside" Click="rbtOutSideCentre_Click"  Height="16" HorizontalAlignment="Left" Margin="4" Name="rbtOutSideCentre" VerticalAlignment="Top" IsChecked="True"  />
+                            </StackPanel>
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Abstinence(days) " Margin="4" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" ></TextBlock>
+                            <inputcombo:AutoCompleteComboBox Margin="4"  Grid.Row="3" Grid.Column="1"  x:Name="cmbAbstience" SelectedValue="{Binding AbstinenceID,Mode=TwoWay}" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Visibility="Collapsed"></inputcombo:AutoCompleteComboBox>
+
+                            <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" Visibility="Collapsed">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Sample" Margin="4" ></TextBlock>
+                                <RadioButton Content="Frozen" Click="rbtYes_Click" Height="16" HorizontalAlignment="Left" Margin="4" Name="rbtYes" VerticalAlignment="Top" IsChecked="True"  />
+                                <RadioButton Content="Fresh" Click="rbtNo_Click"  Height="16" HorizontalAlignment="Left" Margin="4" Name="rbtNo" VerticalAlignment="Top"  />
+                            </StackPanel>
+                            
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Center" Text="No of Motile Sperm" Margin="4" Grid.Row="6" Grid.Column="0" Visibility="Collapsed"></TextBlock>
+                            <TextBox Margin="4"  Grid.Row="6" Grid.Column="1"  x:Name="txtMotile" Text="{Binding MotileSperm,Mode=TwoWay}" VerticalAlignment="Center"  TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" Visibility="Collapsed"/>
+
+                        </Grid >
+                    </Grp:GroupBox>
+
+                    <Grp:GroupBox IsTabStop="False" x:Name="grpIUID" Header="IUI(D)" Height="Auto" Grid.Row="2" Grid.Column="0" Margin="4" Visibility="Collapsed" >
+                        <Grid  Background="White"  Visibility="Visible" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Semen Bank" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                            <TextBox TabIndex="2" x:Name="txtSemenBankValue" Text="{Binding Lab, Mode=TwoWay}" IsEnabled="False" Margin="4"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+
+                            <!--<TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Donor Code" Margin="4" Grid.Row="1" Grid.Column="2"></TextBlock>
+                            <TextBox TabIndex="2" x:Name="txtDonorCode" Margin="4" Text="{Binding DonorCode,Mode=TwoWay}" IsEnabled="False" Grid.Row="1" Grid.Column="3"   VerticalAlignment="Center" />-->
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Batch Code" Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                            <TextBox TabIndex="2" x:Name="txtBatchCode" Margin="4" Text="{Binding BatchCode,Mode=TwoWay}" IsEnabled="False" Grid.Row="2" Grid.Column="1"   VerticalAlignment="Center" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Semen Bank Sample ID" Margin="4" Grid.Row="2" Grid.Column="2"></TextBlock>
+                            <TextBox TabIndex="2" x:Name="txtSemenBankSampleID" Text="{Binding SampleID, Mode=TwoWay}" Margin="2" Grid.Row="2"  Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                            <layoutToolkit:Accordion TabIndex="15" Grid.Row="3" Grid.ColumnSpan="5" x:Name="DonorDetailsACC" Margin="2" SelectionMode="ZeroOrOne" SelectionChanged="acc_SelectionChanged" HorizontalAlignment="Stretch">
+                                <layoutToolkit:AccordionItem x:Name="AccDonor"  Header="Donor Details" HorizontalContentAlignment="Stretch"  Foreground="DarkBlue" Selected="AccordionItem_Selected" HorizontalAlignment="Stretch">
+                                    <Grid  Background="White"  Visibility="Visible"  >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition ></ColumnDefinition>
+
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Hair Color" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                                        <TextBox HorizontalAlignment="Stretch" IsEnabled="False" Margin="4,4,4,0" x:Name="txthairColor" Text="{Binding Hair,Mode=TwoWay}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0"  />
+
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Eye Color" Margin="4" Grid.Column="2" Grid.Row="0"></TextBlock>
+                                        <TextBox HorizontalAlignment="Stretch" IsEnabled="False" Margin="4" x:Name="txtEyeColor" Text="{Binding Eye,Mode=TwoWay}" VerticalAlignment="Top" Grid.Column="3" Grid.Row="0" />
+
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Skin Color" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                                        <TextBox HorizontalAlignment="Stretch" IsEnabled="False" Margin="4,4,4,0" x:Name="txtSkinColor" Text="{Binding Skin,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"  />
+
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Bone Structure" Margin="4" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                        <TextBox HorizontalAlignment="Stretch" IsEnabled="False" Margin="4" x:Name="txtBoneStructure" Text="{Binding BoneStructure,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" />
+
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Height" Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                                        <TextBox HorizontalAlignment="Stretch" IsEnabled="False" Margin="4,4,4,0" x:Name="txtHeight" Text="{Binding Height,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" />
+
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Blood group of D" Margin="4" Grid.Row="2" Grid.Column="2"></TextBlock>
+                                        <TextBox HorizontalAlignment="Stretch" IsEnabled="False" Margin="4" x:Name="txtBloodgroupofD" Text="{Binding BloodGroup,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="2" Grid.Column="3" />
+
+                                    </Grid>
+                                </layoutToolkit:AccordionItem>
+                            </layoutToolkit:Accordion>
+                            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6">
+                                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <RadioButton Content="Existing"  Height="16" HorizontalAlignment="Left" Margin="4" Name="rbtExisting" VerticalAlignment="Top" Click="rbtExisting_Click"  />
+                                    <RadioButton Content="New"  Height="16" HorizontalAlignment="Left" Margin="4" Name="rbtNew" VerticalAlignment="Top"  Click="rbtNew_Click" />
+                                    <ToggleButton x:Name="cmdLinkDonor"  Background="#000000" Width="122" VerticalAlignment="Center" Content="Donor Information" Margin="5,0,0,0" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="4" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdLinkDonor_Click" />
+                                </StackPanel>
+
+                            </Border>
+                        </Grid >
+                    </Grp:GroupBox>
+
+                    <Grp:GroupBox IsTabStop="False" x:Name="grpPhysicalCharacteristics" Header="Physical Characteristics" Height="Auto" Grid.Row="3" Grid.Column="0" Margin="4" Visibility="Collapsed">
+                        <Grid  Background="White"  Visibility="Visible" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Volume" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                            <TextBox Margin="4"  Grid.Row="0" Grid.Column="1"  x:Name="txtVolume" Text="{Binding Quantity,Mode=TwoWay}" VerticalAlignment="Center"  TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="pH of Sample" Margin="4" Grid.Row="0" Grid.Column="2"></TextBlock>
+                            <TextBox Margin="4"  Grid.Row="0" Grid.Column="3"  x:Name="txtpH" Text="{Binding PH,Mode=TwoWay}" VerticalAlignment="Center" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Color" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                            <inputcombo:AutoCompleteComboBox HorizontalAlignment="Stretch" Margin="4" Name="cmbColor" SelectedValue="{Binding CollectionDate,Mode=TwoWay}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Liquefication Time (min)" Margin="4" Grid.Row="1" Grid.Column="2"></TextBlock>
+                            <TextBox Margin="4"  Grid.Row="1" Grid.Column="3"  x:Name="txtLiqueficationTime" Text="{Binding LiquificationTime,Mode=TwoWay}" VerticalAlignment="Center" />
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Viscosity" Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                                <RadioButton Content="Normal"  Height="16" Click="rbtNormal_Click" IsChecked="True" HorizontalAlignment="Left" Margin="4" Name="rbtNormal" VerticalAlignment="Top"  />
+                                <RadioButton Content="Viscous"  Height="16" Click="rbtViscous_Click" HorizontalAlignment="Left" Margin="4" Name="rbtViscous" VerticalAlignment="Top"  />
+                            </StackPanel>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Odour" Margin="4" Grid.Row="2" Grid.Column="2"></TextBlock>
+                            <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Horizontal">
+                                <RadioButton Content="Present"  Height="16" HorizontalAlignment="Left" Click="rbtPresent_Click" Margin="4" Name="rbtPresent" VerticalAlignment="Top"  />
+                                <RadioButton Content="Not Present"  Height="16" HorizontalAlignment="Left" IsChecked="True" Click="rbtNotPresent_Click" Margin="4" Name="rbtNotPresent" VerticalAlignment="Top"  />
+                            </StackPanel>
+
+
+                        </Grid >
+                    </Grp:GroupBox>
+
+                    <Grp:GroupBox IsTabStop="False" x:Name="grpClassification" Header="Sperm Preparation" Height="Auto" Grid.Row="4" Grid.Column="0" Margin="4" >
+                        <Grid  Background="White"  Visibility="Visible" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            
+                            
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Prewash" Margin="4" Grid.Row="0" Grid.Column="1"></TextBlock>
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Postwash" Margin="4" Grid.Row="0" Grid.Column="2"></TextBlock>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Volume (ml) " Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreAmount"  Text="{Binding PreAmount,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" TextAlignment="Right" TextChanged="TxtPreAmount_TextChanged"  KeyDown="TxtPreAmount_KeyDown" MaxLength="4" LostFocus="TxtPreAmount_LostFocus"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostAmount"  Text="{Binding PostAmount,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="2" TextAlignment="Right" TextChanged="TxtPreAmount_TextChanged"  KeyDown="TxtPreAmount_KeyDown" MaxLength="4" LostFocus="TxtPostAmount_LostFocus"/>
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Sperm Concentration (millions/ml)" Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreSpermCount" Text="{Binding PreSpermCount,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="2" Grid.Column="1"  TextAlignment="Right" TextChanged="TxtPreTotCount_TextChanged"  KeyDown="TxtPreTotCount_KeyDown" MaxLength="3" LostFocus="TxtPreAmount_LostFocus" />
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostSpermCount" Text="{Binding PostSpermCount,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="2" Grid.Column="2"  TextAlignment="Right" TextChanged="TxtPreTotCount_TextChanged"  KeyDown="TxtPreTotCount_KeyDown" MaxLength="3" LostFocus="TxtPostAmount_LostFocus"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Total Sperm Count (millions)" Margin="4" Grid.Row="3" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreTotCount" Text="{Binding PreTotalSpermCount,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="3" Grid.Column="1"  TextAlignment="Right" TextChanged="TxtPreTotCount_TextChanged"  KeyDown="TxtPreTotCount_KeyDown" MaxLength="3" IsEnabled="False"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostTotCount" Text="{Binding PostTotalSpermCount,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="3" Grid.Column="2"  TextAlignment="Right" TextChanged="TxtPreTotCount_TextChanged"  KeyDown="TxtPreTotCount_KeyDown" MaxLength="3" IsEnabled="False"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Progressive %" Margin="4" Grid.Row="4" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreProgMotility"  Text="{Binding PreProgMotility,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="4" Grid.Column="1" TextAlignment="Right" TextChanged="TxtPreProgMotility_TextChanged"  KeyDown="TxtPreProgMotility_KeyDown" MaxLength="2" IsEnabled="True" LostFocus="TxtPreProgMotility_LostFocus"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostProgMotility"  Text="{Binding PostProgMotility,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="4" Grid.Column="2" TextAlignment="Right" TextChanged="TxtPreProgMotility_TextChanged"  KeyDown="TxtPreProgMotility_KeyDown" MaxLength="2"  IsEnabled="True" LostFocus="TxtPostProgMotility_LostFocus"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Non Progressive %" Margin="4" Grid.Row="5" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreNonProgressive"  Text="{Binding PreNonProgressive,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="5" Grid.Column="1" TextAlignment="Right" TextChanged="TxtPreProgMotility_TextChanged"  KeyDown="TxtPreProgMotility_KeyDown" MaxLength="2" IsEnabled="True" LostFocus="TxtPreProgMotility_LostFocus"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostNonProgressive"  Text="{Binding PostNonProgressive,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="5" Grid.Column="2" TextAlignment="Right" TextChanged="TxtPreProgMotility_TextChanged"  KeyDown="TxtPreProgMotility_KeyDown" MaxLength="2"  IsEnabled="True" LostFocus="TxtPostProgMotility_LostFocus"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Immotile %" Margin="4" Grid.Row="6" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreNonMotile"  Text="{Binding PreNonMotile,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="6" Grid.Column="1" TextAlignment="Right"  MaxLength="2" IsEnabled="False"  />
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostNonMotile"  Text="{Binding PostNonMotile,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="6" Grid.Column="2" TextAlignment="Right"  MaxLength="2"  IsEnabled="False" />
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Motile Sperm Count (millions)" Margin="4" Grid.Row="7" Grid.Column="0" Visibility="Collapsed"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreMotileSpermCount"  Text="{Binding PreMotileSpermCount,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="7" Grid.Column="1" TextAlignment="Right" TextChanged="TxtPreTotCount_TextChanged"  KeyDown="TxtPreTotCount_KeyDown" MaxLength="3" IsEnabled="True" LostFocus="TxtPreAmount_LostFocus" Visibility="Collapsed"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostMotileSpermCount"  Text="{Binding PostMotileSpermCount,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="7" Grid.Column="2" TextAlignment="Right" TextChanged="TxtPreTotCount_TextChanged"  KeyDown="TxtPreTotCount_KeyDown" MaxLength="3"  IsEnabled="True" LostFocus="TxtPostAmount_LostFocus" Visibility="Collapsed"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Total Motility %" Margin="4" Grid.Row="8" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreTotalMotility"  Text="{Binding PreTotalMotility,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="8" Grid.Column="1" TextAlignment="Right" MaxLength="2" IsEnabled="False"  />
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostTotalMotility"  Text="{Binding PostTotalMotility,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="8" Grid.Column="2" TextAlignment="Right"  MaxLength="2"  IsEnabled="False" />
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Normal Forms %" Margin="4" Grid.Row="9" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreNormalForms"  Text="{Binding PreNormalForms,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="9" Grid.Column="1" TextAlignment="Right" TextChanged="TxtPreProgMotility_TextChanged"  KeyDown="TxtPreProgMotility_KeyDown" MaxLength="2" />
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostNormalForms"  Text="{Binding PostNormalForms,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="9" Grid.Column="2" TextAlignment="Right" TextChanged="TxtPreProgMotility_TextChanged"  KeyDown="TxtPreProgMotility_KeyDown" MaxLength="2" />
+
+                            <Grid Margin="4" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Remarks" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" TextAlignment="Left" x:Name="TxtRemark" Text="{Binding Comment,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1"   VerticalScrollBarVisibility="Visible"  TextWrapping="Wrap"/>
+                            </Grid>
+                            
+                            
+                            
+
+                          
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Grade I" Margin="4" Grid.Row="6" Grid.Column="0" Visibility="Collapsed"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreGradeI" Text="{Binding PreMotilityGradeI,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="6" Grid.Column="1" TextAlignment="Right" TextChanged="PreTotal_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostGradeI" Text="{Binding PostMotilityGradeI,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="6" Grid.Column="2" TextAlignment="Right" TextChanged="PostTotal_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed" />
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Grade II" Margin="4" Grid.Row="7" Grid.Column="0" Visibility="Collapsed"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreGradeII" Text="{Binding PreMotilityGradeII,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="7" Grid.Column="1" TextAlignment="Right" TextChanged="PreTotal_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostGradeII" Text="{Binding PostMotilityGradeII,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="7" Grid.Column="2" TextAlignment="Right" TextChanged="PostTotal_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Grade III" Margin="4" Grid.Row="8" Grid.Column="0" Visibility="Collapsed"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreGradeIII" Text="{Binding PreMotilityGradeIII,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="8" Grid.Column="1" TextAlignment="Right" TextChanged="PreTotal_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostGradeIII" Text="{Binding PostMotilityGradeIII,Mode=TwoWay}" VerticalAlignment="Center"   Grid.Row="8" Grid.Column="2" TextAlignment="Right" TextChanged="PostTotal_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Grade IV" Margin="4" Grid.Row="9" Grid.Column="0" Visibility="Collapsed"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreGradeIV"  Text="{Binding PreMotilityGradeIV,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="9" Grid.Column="1" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29"  IsEnabled="False" Visibility="Collapsed"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostGradeIV"  Text="{Binding PostMotilityGradeIV,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="9" Grid.Column="2" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29"  IsEnabled="False" Visibility="Collapsed"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Morphology" Margin="4" Grid.Row="10" Grid.Column="0" Visibility="Collapsed"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPreNormalMorphology"  Text="{Binding PreNormalMorphology,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="10" Grid.Column="1" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed"/>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPostNormalMorphology"  Text="{Binding PostNormalMorphology,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="10" Grid.Column="2" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" Visibility="Collapsed"/>
+
+                            
+                           
+
+
+
+                            <!--<TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pus Cells" Margin="4" Grid.Row="11" Grid.Column="0"></TextBlock>
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPrePusCells" Text="{Binding PusCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="11" Grid.Column="1" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" />
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPostPusCells" Text="{Binding PusCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="11" Grid.Column="2" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" />
+
+                                <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Red Blood Cell" Margin="4" Grid.Row="12" Grid.Column="0"></TextBlock>
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPreRoundCells" Text="{Binding RoundCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="12" Grid.Column="1"  TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29"/>
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPostRoundCells" Text="{Binding RoundCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="12" Grid.Column="2"  TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29"/>
+
+                                <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Epithelial Cells" Margin="4" Grid.Row="13" Grid.Column="0"></TextBlock>
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPreEpithelialCells" Text="{Binding EpithelialCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="13" Grid.Column="1" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" />
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPostEpithelialCells" Text="{Binding EpithelialCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="13" Grid.Column="2" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" />
+
+                                <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Any Other Cell" Margin="4" Grid.Row="14" Grid.Column="0"></TextBlock>
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPreAnyOtherCell" Text="{Binding EpithelialCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="14" Grid.Column="1" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" />
+                                <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtPostAnyOtherCell" Text="{Binding EpithelialCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="14" Grid.Column="2" TextAlignment="Right" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" MaxLength="29" />-->
+                        </Grid >
+                    </Grp:GroupBox>
+
+                    <Grp:GroupBox IsTabStop="False" x:Name="grpCellInfo" Header="Cell Information" Height="Auto" Grid.Row="5" Grid.ColumnSpan="2" Margin="4" Visibility="Collapsed">
+                        <Grid  Background="White"  Visibility="Visible" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <!--<RowDefinition Height="Auto"></RowDefinition>-->
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <!--<TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Remark" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                                    <TextBox  HorizontalAlignment="Stretch" Margin="4" Name="TxtRemark"  Text="{Binding Interpretations,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" MaxLength="1000" />-->
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pus Cells" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtPusCells" Text="{Binding PusCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1" TextAlignment="Left"  MaxLength="29" />
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="RBC" Margin="4" Grid.Row="0" Grid.Column="2"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtRoundCells" Text="{Binding RoundCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="3"  TextAlignment="Left"  MaxLength="29"/>
+
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Epithelial Cells" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtEpithelialCells" Text="{Binding EpithelialCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="1" TextAlignment="Left"  MaxLength="29" />
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Other Cells" Margin="4" Grid.Row="1" Grid.Column="2"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" x:Name="TxtOtherCells" Text="{Binding AnyOtherCells,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="1" Grid.Column="3"  TextAlignment="Left"  MaxLength="29"/>
+                        </Grid>
+                    </Grp:GroupBox>
+
+                    <!--<Grp:GroupBox IsTabStop="False" x:Name="gb2" Header="_" Height="Auto" Grid.Row="6" Grid.Column="0" Margin="4" >
+                        <Grid  Background="White"  Visibility="Visible" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto">
+                                </ColumnDefinition>
+                                <ColumnDefinition>
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Notes" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                            <TextBox  HorizontalAlignment="Stretch" Margin="4" TextAlignment="Left" x:Name="TxtRemark" Text="{Binding Comment,Mode=TwoWay}" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="1"   VerticalScrollBarVisibility="Visible"  TextWrapping="Wrap"/>
+                        </Grid>
+                    </Grp:GroupBox>-->
+                </Grid>
+
+            </Border>
+
+
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>

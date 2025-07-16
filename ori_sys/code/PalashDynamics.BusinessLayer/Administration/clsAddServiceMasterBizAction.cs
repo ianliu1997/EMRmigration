@@ -1,0 +1,200 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using PalashDynamics.DataAccessLayer;
+using com.seedhealthcare.hms.CustomExceptions;
+using com.seedhealthcare.hms.Web.ConfigurationManager;
+using System.Reflection;
+using PalashDynamics.ValueObjects;
+using com.seedhealthcare.hms.Web.Logging;
+using PalashDynamics.ValueObjects.Administration;
+using PalashDynamics.DataAccessLayer.BaseDataAccessLayer.Administration;
+namespace PalashDynamics.BusinessLayer.Administration
+{
+   internal class clsAddServiceMasterBizAction:BizAction
+    {
+
+        //This Region Contains Variables Which are Used At Form Level
+        #region Variables Declaration
+        //Declare the LogManager object
+        LogManager logManager = null;
+        //Declare the BaseRoleMasterDAL object
+        //Declare the Variable of UserId
+        long lngUserId = 0;
+        #endregion
+
+        private static clsAddServiceMasterBizAction _Instance = null;
+        /// <summary>
+        /// To create singleton instance of the class and  This will Give Unique Instance
+        /// </summary>
+        /// <returns></returns>
+
+        public static BizAction GetInstance()
+        {
+            if (_Instance == null)
+                _Instance = new clsAddServiceMasterBizAction();
+
+            return _Instance;
+        }
+
+
+        protected override ValueObjects.IValueObject ProcessRequest(ValueObjects.IValueObject valueObject, ValueObjects.clsUserVO objUserVO)
+        {
+
+            bool CurrentMethodExecutionStatus = true;
+            clsAddServiceMasterBizActionVO obj = null;
+            int ResultStatus = 0;
+
+            try
+            {
+                obj = (clsAddServiceMasterBizActionVO)valueObject;
+                //Typecast the "valueObject" to "clsInputOutputVO"
+                if (obj != null)
+                {
+                    clsBaseServiceMasterDAL objBaseDAL = clsBaseServiceMasterDAL.GetInstance();
+                    if (obj.UpdateServiceMasterStatus == true)
+                    {
+                        obj = (clsAddServiceMasterBizActionVO)objBaseDAL.UpdateServiceMasterStatus(obj, objUserVO);
+                    }
+                    else
+                    {
+                        obj = (clsAddServiceMasterBizActionVO)objBaseDAL.AddServiceMaster(obj, objUserVO);
+                    }
+                    
+
+
+                }
+
+            }
+            catch (HmsApplicationException HEx)
+            {
+                CurrentMethodExecutionStatus = false;
+            }
+            catch (Exception ex)
+            {
+                CurrentMethodExecutionStatus = false;
+                throw;
+            }
+            finally
+            {
+
+            }
+            return obj;
+        }
+    }
+
+   internal class clsGetTariffServiceClassBizAction : BizAction
+    {
+
+        //This Region Contains Variables Which are Used At Form Level
+        #region Variables Declaration
+        //Declare the LogManager object
+        LogManager logManager = null;
+        //Declare the BaseRoleMasterDAL object
+        //Declare the Variable of UserId
+        long lngUserId = 0;
+        #endregion
+
+        private static clsGetTariffServiceClassBizAction _Instance = null;
+        /// <summary>
+        /// To create singleton instance of the class and  This will Give Unique Instance
+        /// </summary>
+        /// <returns></returns>
+
+        public static BizAction GetInstance()
+        {
+            if (_Instance == null)
+                _Instance = new clsGetTariffServiceClassBizAction();
+
+            return _Instance;
+        }
+
+
+        protected override IValueObject ProcessRequest(IValueObject valueObject, clsUserVO objUserVO)
+        {
+
+            bool CurrentMethodExecutionStatus = true;
+            clsGetTariffServiceClassBizActionVO obj = null;
+            int ResultStatus = 0;
+
+            try
+            {
+                obj = (clsGetTariffServiceClassBizActionVO)valueObject;
+                //Typecast the "valueObject" to "clsInputOutputVO"
+                if (obj != null)
+                {
+                    clsBaseServiceMasterDAL objBaseDAL = clsBaseServiceMasterDAL.GetInstance();
+                    obj = (clsGetTariffServiceClassBizActionVO)objBaseDAL.GetServiceTariffClassList(obj, objUserVO);
+                   
+                }
+
+            }
+            catch (HmsApplicationException HEx)
+            {
+                CurrentMethodExecutionStatus = false;
+            }
+            catch (Exception ex)
+            {
+                CurrentMethodExecutionStatus = false;
+                throw;
+            }
+            finally
+            {
+
+            }
+            return obj;
+        }
+    }
+
+   public class clsGetMasterForServiceBizAction : BizAction
+   {
+
+       public static clsGetMasterForServiceBizAction _Instance = null;
+
+       public static BizAction GetInstance()
+       {
+           if (_Instance == null)
+               _Instance = new clsGetMasterForServiceBizAction();
+
+           return _Instance;
+       }
+
+
+       protected override ValueObjects.IValueObject ProcessRequest(ValueObjects.IValueObject valueObject, ValueObjects.clsUserVO objUserVO)
+       {
+           bool CurrentMethodExecutionStatus = true;
+           clsGetMasterForServiceBizActionVO obj = null;
+           int ResultStatus = 0;
+
+           try
+           {
+               obj = (clsGetMasterForServiceBizActionVO)valueObject;
+               //Typecast the "valueObject" to "clsInputOutputVO"
+               if (obj != null)
+               {
+                   clsBaseServiceMasterDAL objBaseDAL = clsBaseServiceMasterDAL.GetInstance();
+                   obj = (clsGetMasterForServiceBizActionVO)objBaseDAL.GetMasterListByTableName(valueObject, objUserVO);
+
+
+
+               }
+
+           }
+           catch (HmsApplicationException HEx)
+           {
+               CurrentMethodExecutionStatus = false;
+           }
+           catch (Exception ex)
+           {
+               CurrentMethodExecutionStatus = false;
+               throw;
+           }
+           finally
+           {
+
+           }
+           return obj;
+       }
+   }
+}

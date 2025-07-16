@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.Location" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.Location" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="clsGetAddressLocation6ListByZoneIdBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="ipZoneID" type="xs:long" />
+      <xs:element minOccurs="0" name="objAddressLocation6List" nillable="true" type="tns:ArrayOfclsAddressLocation6VO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetAddressLocation6ListByZoneIdBizActionVO" nillable="true" type="tns:clsGetAddressLocation6ListByZoneIdBizActionVO" />
+  <xs:complexType name="ArrayOfclsAddressLocation6VO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsAddressLocation6VO" nillable="true" type="tns:clsAddressLocation6VO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsAddressLocation6VO" nillable="true" type="tns:ArrayOfclsAddressLocation6VO" />
+  <xs:complexType name="clsAddressLocation6VO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLocation6Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PinCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddressLocation6VO" nillable="true" type="tns:clsAddressLocation6VO" />
+  <xs:complexType name="clsGetAreaListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaList" nillable="true" type="tns:ArrayOfclsAreaVO" />
+      <xs:element minOccurs="0" name="AreaName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetAreaListBizActionVO" nillable="true" type="tns:clsGetAreaListBizActionVO" />
+  <xs:complexType name="ArrayOfclsAreaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsAreaVO" nillable="true" type="tns:clsAreaVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsAreaVO" nillable="true" type="tns:ArrayOfclsAreaVO" />
+  <xs:complexType name="clsAreaVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AreaID" type="xs:long" />
+      <xs:element minOccurs="0" name="AreaName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsSelectedArea" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PinCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedArea" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectedService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAreaVO" nillable="true" type="tns:clsAreaVO" />
+  <xs:complexType name="clsCountryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryID" type="xs:long" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryStateID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCountryVO" nillable="true" type="tns:clsCountryVO" />
+  <xs:complexType name="clsGetStateListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DistrictList" nillable="true" type="tns:ArrayOfclsDistVO" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="StateID" type="xs:long" />
+      <xs:element minOccurs="0" name="StateList" nillable="true" type="tns:ArrayOfclsStateVO" />
+      <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStateListBizActionVO" nillable="true" type="tns:clsGetStateListBizActionVO" />
+  <xs:complexType name="ArrayOfclsDistVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsDistVO" nillable="true" type="tns:clsDistVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsDistVO" nillable="true" type="tns:ArrayOfclsDistVO" />
+  <xs:complexType name="clsDistVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="DistID" type="xs:long" />
+      <xs:element minOccurs="0" name="DistName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSelectedState" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectedService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectedState" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDistVO" nillable="true" type="tns:clsDistVO" />
+  <xs:complexType name="ArrayOfclsStateVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsStateVO" nillable="true" type="tns:clsStateVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsStateVO" nillable="true" type="tns:ArrayOfclsStateVO" />
+  <xs:complexType name="clsStateVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsSelectedState" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MasterZoneCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectedState" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StateDistID" type="xs:long" />
+      <xs:element minOccurs="0" name="StateID" type="xs:long" />
+      <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStateVO" nillable="true" type="tns:clsStateVO" />
+  <xs:complexType name="clsAddAreaBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaCityList" nillable="true" type="tns:ArrayOfclsCityVO" />
+      <xs:element minOccurs="0" name="AreaList" nillable="true" type="tns:ArrayOfclsAreaVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objAreaDetail" nillable="true" type="tns:clsAreaVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddAreaBizActionVO" nillable="true" type="tns:clsAddAreaBizActionVO" />
+  <xs:complexType name="ArrayOfclsCityVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsCityVO" nillable="true" type="tns:clsCityVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsCityVO" nillable="true" type="tns:ArrayOfclsCityVO" />
+  <xs:complexType name="clsCityVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityID" type="xs:long" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsSelectedArea" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectedArea" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectedService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCityVO" nillable="true" type="tns:clsCityVO" />
+  <xs:complexType name="clsUpdateDistMasterDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaList" nillable="true" type="tns:ArrayOfclsDistVO" />
+      <xs:element minOccurs="0" name="DistCityList" nillable="true" type="tns:ArrayOfclsCityVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objDistDetail" nillable="true" type="tns:clsDistVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateDistMasterDetailsBizActionVO" nillable="true" type="tns:clsUpdateDistMasterDetailsBizActionVO" />
+  <xs:complexType name="clsUpdateCountryMasterDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryList" nillable="true" type="tns:ArrayOfclsCountryVO" />
+      <xs:element minOccurs="0" name="CountryStateList" nillable="true" type="tns:ArrayOfclsStateVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objCountryDetail" nillable="true" type="tns:clsCountryVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateCountryMasterDetails" nillable="true" type="tns:clsUpdateCountryMasterDetails" />
+  <xs:complexType name="ArrayOfclsCountryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsCountryVO" nillable="true" type="tns:clsCountryVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsCountryVO" nillable="true" type="tns:ArrayOfclsCountryVO" />
+  <xs:complexType name="clsAddDistBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaList" nillable="true" type="tns:ArrayOfclsDistVO" />
+      <xs:element minOccurs="0" name="DistCityList" nillable="true" type="tns:ArrayOfclsCityVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objDistDetail" nillable="true" type="tns:clsDistVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddDistBizActionVO" nillable="true" type="tns:clsAddDistBizActionVO" />
+  <xs:complexType name="clsUpdateAreaMasterDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaList" nillable="true" type="tns:ArrayOfclsAreaVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objAreaDetail" nillable="true" type="tns:clsAreaVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateAreaMasterDetailsBizActionVO" nillable="true" type="tns:clsUpdateAreaMasterDetailsBizActionVO" />
+  <xs:complexType name="clsAddStateBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StateDistList" nillable="true" type="tns:ArrayOfclsDistVO" />
+      <xs:element minOccurs="0" name="StateList" nillable="true" type="tns:ArrayOfclsStateVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objStateDetail" nillable="true" type="tns:clsStateVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddStateBizActionVO" nillable="true" type="tns:clsAddStateBizActionVO" />
+  <xs:complexType name="clsAddAddressLocation6BizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objAddressLocation6Detail" nillable="true" type="tns:clsAddressLocation6VO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddAddressLocation6BizActionVO" nillable="true" type="tns:clsAddAddressLocation6BizActionVO" />
+  <xs:complexType name="clsGetCityListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreaList" nillable="true" type="tns:ArrayOfclsAreaVO" />
+      <xs:element minOccurs="0" name="CityID" type="xs:long" />
+      <xs:element minOccurs="0" name="CityList" nillable="true" type="tns:ArrayOfclsCityVO" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCityListBizActionVO" nillable="true" type="tns:clsGetCityListBizActionVO" />
+  <xs:complexType name="clsAddCountryBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryList" nillable="true" type="tns:ArrayOfclsCountryVO" />
+      <xs:element minOccurs="0" name="CountryStateList" nillable="true" type="tns:ArrayOfclsStateVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objCountryDetail" nillable="true" type="tns:clsCountryVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddCountryBizActionVO" nillable="true" type="tns:clsAddCountryBizActionVO" />
+  <xs:complexType name="clsGetDistListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityList" nillable="true" type="tns:ArrayOfclsCityVO" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistID" type="xs:long" />
+      <xs:element minOccurs="0" name="DistList" nillable="true" type="tns:ArrayOfclsDistVO" />
+      <xs:element minOccurs="0" name="DistName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDistListBizActionVO" nillable="true" type="tns:clsGetDistListBizActionVO" />
+  <xs:complexType name="clsUpdateStateMasterDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StateDistList" nillable="true" type="tns:ArrayOfclsDistVO" />
+      <xs:element minOccurs="0" name="StateList" nillable="true" type="tns:ArrayOfclsStateVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objStateDetail" nillable="true" type="tns:clsStateVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateStateMasterDetailsBizActionVO" nillable="true" type="tns:clsUpdateStateMasterDetailsBizActionVO" />
+  <xs:complexType name="clsUpdateAddressLocation6BizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objAddressLocation6Detail" nillable="true" type="tns:clsAddressLocation6VO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateAddressLocation6BizActionVO" nillable="true" type="tns:clsUpdateAddressLocation6BizActionVO" />
+  <xs:complexType name="clsAddCityBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityAreaList" nillable="true" type="tns:ArrayOfclsAreaVO" />
+      <xs:element minOccurs="0" name="CityList" nillable="true" type="tns:ArrayOfclsCityVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objCityDetail" nillable="true" type="tns:clsCityVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddCityBizActionVO" nillable="true" type="tns:clsAddCityBizActionVO" />
+  <xs:complexType name="clsUpdateCityMasterDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityAreaList" nillable="true" type="tns:ArrayOfclsAreaVO" />
+      <xs:element minOccurs="0" name="CityList" nillable="true" type="tns:ArrayOfclsCityVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objCityDetail" nillable="true" type="tns:clsCityVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateCityMasterDetailsBizActionVO" nillable="true" type="tns:clsUpdateCityMasterDetailsBizActionVO" />
+  <xs:complexType name="clsGetCountryListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryID" type="xs:long" />
+      <xs:element minOccurs="0" name="CountryList" nillable="true" type="tns:ArrayOfclsCountryVO" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="StateList" nillable="true" type="tns:ArrayOfclsStateVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCountryListBizActionVO" nillable="true" type="tns:clsGetCountryListBizActionVO" />
+  <xs:complexType name="clsGetAddressLocation6BizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressLocation6Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:long" />
+      <xs:element minOccurs="0" name="objAddressLocation6List" nillable="true" type="tns:ArrayOfclsAddressLocation6VO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetAddressLocation6BizActionVO" nillable="true" type="tns:clsGetAddressLocation6BizActionVO" />
+</xs:schema>

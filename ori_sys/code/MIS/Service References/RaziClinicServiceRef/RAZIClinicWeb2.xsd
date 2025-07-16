@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.User" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.User" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" />
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:complexType name="clsGetLoginNamePasswordBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DashBoardList" nillable="true" type="q1:ArrayOfclsDashBoardVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="LoginDetails" nillable="true" type="q2:clsUserVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoginNamePasswordBizActionVO" nillable="true" type="tns:clsGetLoginNamePasswordBizActionVO" />
+  <xs:complexType name="clsChangePasswordFirstTimeBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DashBoardList" nillable="true" type="q3:ArrayOfclsDashBoardVO" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q4:clsUserVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChangePasswordFirstTimeBizActionVO" nillable="true" type="tns:clsChangePasswordFirstTimeBizActionVO" />
+  <xs:complexType name="clsGetUserGeneralDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InputMaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="InputPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InputStartRowIndex" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUserGeneralDetailsBizActionVO" nillable="true" type="tns:clsGetUserGeneralDetailsBizActionVO" />
+  <xs:complexType name="clsUpdateDashboardBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="DashBoardList" nillable="true" type="q5:ArrayOfclsDashBoardVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateDashboardBizActionVO" nillable="true" type="tns:clsUpdateDashboardBizActionVO" />
+  <xs:complexType name="clsAddUserBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q6:clsUserVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUserBizActionVO" nillable="true" type="tns:clsAddUserBizActionVO" />
+  <xs:complexType name="clsSecretQtnBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q7:ArrayOfclsSecretQtnVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsSecretQtnBizActionVO" nillable="true" type="tns:clsSecretQtnBizActionVO" />
+  <xs:complexType name="clsUpdateUserLockedStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="UserLockedStatus" nillable="true" type="q8:clsUserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateUserLockedStatusBizActionVO" nillable="true" type="tns:clsUpdateUserLockedStatusBizActionVO" />
+  <xs:complexType name="clsUpdateAuditTrailBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="UserLog" nillable="true" type="q9:clsUserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateAuditTrailBizActionVO" nillable="true" type="tns:clsUpdateAuditTrailBizActionVO" />
+  <xs:complexType name="clsUpdateUserStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="UserStatus" nillable="true" type="q10:clsUserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateUserStatusBizActionVO" nillable="true" type="tns:clsUpdateUserStatusBizActionVO" />
+  <xs:complexType name="clsResetPasswordBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="RPassword" nillable="true" type="q11:clsUserVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsResetPasswordBizActionVO" nillable="true" type="tns:clsResetPasswordBizActionVO" />
+  <xs:complexType name="clsGetUnitStoreStatusBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="Details" nillable="true" type="q12:ArrayOfclsItemStoreVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUnitStoreStatusBizActionVO" nillable="true" type="tns:clsGetUnitStoreStatusBizActionVO" />
+  <xs:complexType name="clsGetUnitStoreBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="Details" nillable="true" type="q13:ArrayOfclsItemStoreVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUnitStoreBizActionVO" nillable="true" type="tns:clsGetUnitStoreBizActionVO" />
+  <xs:complexType name="clsGetUserListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q14:ArrayOfclsUserVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUserListBizActionVO" nillable="true" type="tns:clsGetUserListBizActionVO" />
+  <xs:complexType name="clsGetLoginNameBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="UserName" nillable="true" type="q15:clsUserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoginNameBizActionVO" nillable="true" type="tns:clsGetLoginNameBizActionVO" />
+  <xs:complexType name="clsGetExistingUserNameBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="UserName" nillable="true" type="q16:clsUserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetExistingUserNameBizActionVO" nillable="true" type="tns:clsGetExistingUserNameBizActionVO" />
+  <xs:complexType name="clsGetSecretQuestionBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q17:clsUserVO" />
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetSecretQuestionBizActionVO" nillable="true" type="tns:clsGetSecretQuestionBizActionVO" />
+  <xs:complexType name="clsGetUserBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q18:clsUserVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUserBizActionVO" nillable="true" type="tns:clsGetUserBizActionVO" />
+</xs:schema>

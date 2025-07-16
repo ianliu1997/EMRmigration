@@ -1,0 +1,2838 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd39" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UserRights" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.User" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd48" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PackageNew" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd35" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd28" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.OTConfiguration" />
+  <xs:simpleType name="PatientsKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPD" />
+      <xs:enumeration value="IPD" />
+      <xs:enumeration value="Registration" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PatientsKind" nillable="true" type="tns:PatientsKind" />
+  <xs:complexType name="clsGetRadologyPringHeaderFooterImageBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FooterImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="HeaderImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRadologyPringHeaderFooterImageBizActionVO" nillable="true" type="tns:clsGetRadologyPringHeaderFooterImageBizActionVO" />
+  <xs:complexType name="ArrayOfMasterListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MasterListItem" nillable="true" type="tns:MasterListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMasterListItem" nillable="true" type="tns:ArrayOfMasterListItem" />
+  <xs:complexType name="MasterListItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:NotificationModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApplicableToAll" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ApplicableToAllDiscount" type="xs:double" />
+          <xs:element minOccurs="0" name="ApplyTo" type="xs:long" />
+          <xs:element minOccurs="0" name="AvailableStock" type="xs:double" />
+          <xs:element minOccurs="0" name="BaseUOMID" type="xs:long" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Diffrence" type="xs:long" />
+          <xs:element minOccurs="0" name="FilterID" type="xs:long" />
+          <xs:element minOccurs="0" name="Flag" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FragmentationID" type="xs:long" />
+          <xs:element minOccurs="0" name="FromPackage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ID" type="xs:long" />
+          <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsEnable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsHrs" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsItemBlock" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MRP" type="xs:decimal" />
+          <xs:element minOccurs="0" name="MaxPoint" type="xs:long" />
+          <xs:element minOccurs="0" name="MinPoint" type="xs:long" />
+          <xs:element minOccurs="0" name="MrNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NonBatchItemBarcode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PackageInPackageItemList" nillable="true" type="tns:ArrayOfclsPackageServiceDetailsVO" />
+          <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+          <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+          <xs:element minOccurs="0" name="PharmacyFixedRate" type="xs:double" />
+          <xs:element minOccurs="0" name="Point" type="xs:long" />
+          <xs:element minOccurs="0" name="PrintDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PrintName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PurchaseRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Route" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Selected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SelectedID" type="xs:long" />
+          <xs:element minOccurs="0" name="SelectedID1" type="xs:long" />
+          <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+          <xs:element minOccurs="0" name="SponsorUnitID" type="xs:long" />
+          <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+          <xs:element minOccurs="0" name="StockQty" type="xs:double" />
+          <xs:element minOccurs="0" name="TemplateName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UOM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UOMID" type="xs:long" />
+          <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+          <xs:element minOccurs="0" name="Value" type="xs:double" />
+          <xs:element minOccurs="0" name="VatPer" type="xs:decimal" />
+          <xs:element minOccurs="0" name="_ApplicableToAll" type="xs:boolean" />
+          <xs:element minOccurs="0" name="column0" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="column1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="column2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="isChecked" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MasterListItem" nillable="true" type="tns:MasterListItem" />
+  <xs:complexType name="NotificationModel">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="NotificationModel" nillable="true" type="tns:NotificationModel" />
+  <xs:complexType name="ArrayOfclsPackageServiceDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageServiceDetailsVO" nillable="true" type="tns:clsPackageServiceDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageServiceDetailsVO" nillable="true" type="tns:ArrayOfclsPackageServiceDetailsVO" />
+  <xs:complexType name="clsPackageServiceDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdjustableHead" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AgeLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="ApplicableTo" type="xs:long" />
+      <xs:element minOccurs="0" name="ConcessionAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Delete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="DisplayQuantity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Doctor" nillable="true" type="tns:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FixedRate" type="xs:double" />
+      <xs:element minOccurs="0" name="FreeAtFollowUp" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromPackage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Infinite" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDiscountOnQuantity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDoctorSharePercentage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFixed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFollowupNotRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSpecilizationGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Month" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonthStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="RatePercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="SelectedDoctor" nillable="true" type="tns:MasterListItem" />
+      <xs:element minOccurs="0" name="SelectedGender" nillable="true" type="tns:MasterListItem" />
+      <xs:element minOccurs="0" name="ServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceSpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceSubSpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Validity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValidityUnit" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageServiceDetailsVO" nillable="true" type="tns:clsPackageServiceDetailsVO" />
+  <xs:simpleType name="BillPaymentTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="AgainstBill" />
+      <xs:enumeration value="AgainstServices" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BillPaymentTypes" nillable="true" type="tns:BillPaymentTypes" />
+  <xs:simpleType name="BillTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Clinical_Pharmacy" />
+      <xs:enumeration value="Clinical" />
+      <xs:enumeration value="Pharmacy" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BillTypes" nillable="true" type="tns:BillTypes" />
+  <xs:complexType name="clsGetPatientConsoleHeaderDeailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ISOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientConsoleHeaderVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientConsoleHeaderDeailsBizActionVO" nillable="true" type="tns:clsGetPatientConsoleHeaderDeailsBizActionVO" />
+  <xs:complexType name="clsPatientConsoleHeaderVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" name="AgeInYearMonthDays" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Allergies" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BMI" type="xs:double" />
+      <xs:element minOccurs="0" name="Bed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CurrDoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartmentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DischargeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocSpecCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocSpecName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Education" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:int" />
+      <xs:element minOccurs="0" name="Height" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IPDOPD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPDOPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISDischarged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ImageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAllergy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCompdPrescRight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCompdPrescWrong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDiagnosisRight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDiagnosisWrong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDiagnostickRight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDiagnostickWrong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDocumentRight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDocumentwrong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsLaboratoryRight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsLaboratoryWrong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsNonAllergy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsNonProcedure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPrescriptionRight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPrescriptionwrong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsProcedure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsRadiologyRight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsRadiologyWrong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MOB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPD_IPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OPD_IPD_ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Photo" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PreFix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegisteredClinic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Religion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoundID" type="xs:long" />
+      <xs:element minOccurs="0" name="RowNum" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Weight" type="xs:double" />
+      <xs:element minOccurs="0" name="currDocSpecCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="currDocSpecName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="currDoctorName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientConsoleHeaderVO" nillable="true" type="tns:clsPatientConsoleHeaderVO" />
+  <xs:complexType name="clsSavePhotoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="Photo" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsSavePhotoBizActionVO" nillable="true" type="tns:clsSavePhotoBizActionVO" />
+  <xs:complexType name="clsGetEMRAdmVisitListByPatientIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CallFrom" type="xs:int" />
+      <xs:element minOccurs="0" name="EMRList" nillable="true" type="tns:ArrayOfclsPatientConsoleHeaderVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ISOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEMRVisitAdmission" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForNursingConsol" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="OPD_IPD" type="xs:int" />
+      <xs:element minOccurs="0" name="OPD_IPD_ID" type="xs:long" />
+      <xs:element minOccurs="0" name="OPD_IPD_UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientConsoleHeaderVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetEMRAdmVisitListByPatientIDBizActionVO" nillable="true" type="tns:clsGetEMRAdmVisitListByPatientIDBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientConsoleHeaderVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientConsoleHeaderVO" nillable="true" type="tns:clsPatientConsoleHeaderVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientConsoleHeaderVO" nillable="true" type="tns:ArrayOfclsPatientConsoleHeaderVO" />
+  <xs:simpleType name="VisitCurrentStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Started" />
+      <xs:enumeration value="Consulation" />
+      <xs:enumeration value="Billing" />
+      <xs:enumeration value="Closed" />
+      <xs:enumeration value="ReOpen" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="VisitCurrentStatus" nillable="true" type="tns:VisitCurrentStatus" />
+  <xs:simpleType name="InventoryStockOperationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Addition" />
+      <xs:enumeration value="Subtraction" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryStockOperationType" nillable="true" type="tns:InventoryStockOperationType" />
+  <xs:simpleType name="InventoryTransactionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="OpeningBalance" />
+      <xs:enumeration value="Indent" />
+      <xs:enumeration value="Issue" />
+      <xs:enumeration value="ItemReturn" />
+      <xs:enumeration value="GoodsReceivedNote" />
+      <xs:enumeration value="GRNReturn" />
+      <xs:enumeration value="ItemsSale" />
+      <xs:enumeration value="ItemSaleReturn" />
+      <xs:enumeration value="ExpiryItemReturn" />
+      <xs:enumeration value="ReceiveIssue" />
+      <xs:enumeration value="ReceiveItemReturn" />
+      <xs:enumeration value="ReceivedItemAgainstIssue" />
+      <xs:enumeration value="ReceivedItemAgainstReturn" />
+      <xs:enumeration value="StockAdujustment" />
+      <xs:enumeration value="ScrapSale" />
+      <xs:enumeration value="MaterialConsumption" />
+      <xs:enumeration value="RadiologyTestConsumption" />
+      <xs:enumeration value="PathologyTestConsumption" />
+      <xs:enumeration value="OTDetails" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryTransactionType" nillable="true" type="tns:InventoryTransactionType" />
+  <xs:simpleType name="InventoryGRNType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Direct" />
+      <xs:enumeration value="AgainstPO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryGRNType" nillable="true" type="tns:InventoryGRNType" />
+  <xs:simpleType name="MaterPayModeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Cash">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cheque">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DD">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CreditCard">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DebitCard">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StaffFree">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CompanyAdvance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PatientAdvance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Credit">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NEFTRTGS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FinanceCharge">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MaterPayModeList" nillable="true" type="tns:MaterPayModeList" />
+  <xs:simpleType name="TariffOperationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="New" />
+      <xs:enumeration value="Modify" />
+      <xs:enumeration value="Remove" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TariffOperationType" nillable="true" type="tns:TariffOperationType" />
+  <xs:simpleType name="IVFLabDay">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Day0" />
+      <xs:enumeration value="Day1" />
+      <xs:enumeration value="Day2" />
+      <xs:enumeration value="Day3" />
+      <xs:enumeration value="Day4" />
+      <xs:enumeration value="Day5" />
+      <xs:enumeration value="Day6" />
+      <xs:enumeration value="EmbryoTransfer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IVFLabDay" nillable="true" type="tns:IVFLabDay" />
+  <xs:simpleType name="IVFLabWorkForm">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FemaleLabDay0" />
+      <xs:enumeration value="FemaleLabDay1" />
+      <xs:enumeration value="FemaleLabDay2" />
+      <xs:enumeration value="FemaleLabDay3" />
+      <xs:enumeration value="FemaleLabDay4" />
+      <xs:enumeration value="FemaleLabDay5" />
+      <xs:enumeration value="FemaleLabDay6" />
+      <xs:enumeration value="EmbryoTransfer" />
+      <xs:enumeration value="Vitrification" />
+      <xs:enumeration value="OnlyVitrification" />
+      <xs:enumeration value="Thawing" />
+      <xs:enumeration value="ET" />
+      <xs:enumeration value="OnlyET" />
+      <xs:enumeration value="MediaCosting" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IVFLabWorkForm" nillable="true" type="tns:IVFLabWorkForm" />
+  <xs:complexType name="clsCheckItemSupplierFromGRNBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="SupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="checkSupplier" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckItemSupplierFromGRNBizActionVO" nillable="true" type="tns:clsCheckItemSupplierFromGRNBizActionVO" />
+  <xs:complexType name="clsAddPatientConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentDetails" nillable="true" type="tns:clsPatientConsentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientConsentBizActionVO" nillable="true" type="tns:clsAddPatientConsentBizActionVO" />
+  <xs:complexType name="clsPatientConsentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedByFirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedByLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedByMiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedByUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConsentID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsConsentCheck" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDoc" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEmployee" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEnabledConsent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="RowId" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Template" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientConsentVO" nillable="true" type="tns:clsPatientConsentVO" />
+  <xs:complexType name="clsGetPatientConsentMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentMatserDetails" nillable="true" type="tns:ArrayOfclsPatientConsentVO" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Template" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientConsentMasterBizActionVO" nillable="true" type="tns:clsGetPatientConsentMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientConsentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientConsentVO" nillable="true" type="tns:clsPatientConsentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientConsentVO" nillable="true" type="tns:ArrayOfclsPatientConsentVO" />
+  <xs:complexType name="ArrayOfclsUserVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsUserVO" nillable="true" type="tns:clsUserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsUserVO" nillable="true" type="tns:ArrayOfclsUserVO" />
+  <xs:complexType name="clsUserVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsAuditTrail" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCSControlEnable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCounterLogin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEmailMandatory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="PassConfig" nillable="true" type="q1:clsPassConfigurationVO" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordDe" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UserRights" minOccurs="0" name="UserAditionalRights" nillable="true" type="q2:clsUserRightsVO" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.User" minOccurs="0" name="UserCategoryLinkList" nillable="true" type="q3:ArrayOfclsUserCategoryLinkVO" />
+      <xs:element minOccurs="0" name="UserGeneralDetailVO" nillable="true" type="tns:clsUserGeneralDetailVO" />
+      <xs:element minOccurs="0" name="UserLoginInfo" nillable="true" type="tns:clsUserLoginInfoVO" />
+      <xs:element minOccurs="0" name="UserNameNew" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserType" type="xs:long" />
+      <xs:element minOccurs="0" name="UserTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserUnitList" nillable="true" type="tns:ArrayOfclsUserUnitDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserVO" nillable="true" type="tns:clsUserVO" />
+  <xs:complexType name="clsUserGeneralDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorSpecCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorSpecialization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeID" type="xs:long" />
+      <xs:element minOccurs="0" name="EnablePasswordExpiration" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FirstPasswordChanged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDoctor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEmployee" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Locked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LokedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PasswordExpirationInterval" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="RoleDetails" nillable="true" type="q4:clsUserRoleVO" />
+      <xs:element minOccurs="0" name="SecretQtnValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecreteAns" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecreteQtn" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitDetails" nillable="true" type="tns:ArrayOfclsUserUnitDetailsVO" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserGeneralDetailVO" nillable="true" type="tns:clsUserGeneralDetailVO" />
+  <xs:complexType name="ArrayOfclsUserUnitDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsUserUnitDetailsVO" nillable="true" type="tns:clsUserUnitDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsUserUnitDetailsVO" nillable="true" type="tns:ArrayOfclsUserUnitDetailsVO" />
+  <xs:complexType name="clsUserUnitDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="StoreDetails" nillable="true" type="q5:ArrayOfclsItemStoreVO" />
+      <xs:element minOccurs="0" name="StoreEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="UserUnitStore" nillable="true" type="q6:ArrayOfclsStoreVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserUnitDetailsVO" nillable="true" type="tns:clsUserUnitDetailsVO" />
+  <xs:complexType name="clsUserLoginInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CashCounterID" type="xs:long" />
+      <xs:element minOccurs="0" name="CashCounterName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RetunUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WindowsUserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserLoginInfoVO" nillable="true" type="tns:clsUserLoginInfoVO" />
+  <xs:simpleType name="InventoryIndentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Indent" />
+      <xs:enumeration value="PurchaseRequisition" />
+      <xs:enumeration value="QuarantineExpired" />
+      <xs:enumeration value="QuarantineDOS" />
+      <xs:enumeration value="QuarantineGRNReturn" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryIndentType" nillable="true" type="tns:InventoryIndentType" />
+  <xs:simpleType name="InventoryIndentStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="New" />
+      <xs:enumeration value="Cancelled" />
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Completed" />
+      <xs:enumeration value="ForceFullyCompleted" />
+      <xs:enumeration value="Rejected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryIndentStatus" nillable="true" type="tns:InventoryIndentStatus" />
+  <xs:complexType name="clsPatientSignConsentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttachmentFileContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ConsentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ConsentUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="InvoiceNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferredBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Report" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="SourceURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientSignConsentVO" nillable="true" type="tns:clsPatientSignConsentVO" />
+  <xs:simpleType name="MasterTableNameList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="T_EmailTemplate" />
+      <xs:enumeration value="T_SMSTemplate" />
+      <xs:enumeration value="AppointmentTypeMaster" />
+      <xs:enumeration value="AreaMaster" />
+      <xs:enumeration value="M_BloodGroupMaster" />
+      <xs:enumeration value="M_BankMaster" />
+      <xs:enumeration value="M_BankBranchMaster" />
+      <xs:enumeration value="M_CabinMaster" />
+      <xs:enumeration value="M_CampMaster" />
+      <xs:enumeration value="CityMaster" />
+      <xs:enumeration value="M_CompanyAssociateMaster" />
+      <xs:enumeration value="M_CompanyMaster" />
+      <xs:enumeration value="CompanyTypeMaster" />
+      <xs:enumeration value="CountryMaster" />
+      <xs:enumeration value="M_DepartmentMaster" />
+      <xs:enumeration value="M_DepartmentUnitView" />
+      <xs:enumeration value="DependentTypeMaster" />
+      <xs:enumeration value="M_DesignationMaster" />
+      <xs:enumeration value="DoctorMaster" />
+      <xs:enumeration value="M_DoctorDepartmentView" />
+      <xs:enumeration value="M_GenderMaster" />
+      <xs:enumeration value="M_ApplicableToGenderMaster" />
+      <xs:enumeration value="M_ConditionsMaster" />
+      <xs:enumeration value="GroupMaster" />
+      <xs:enumeration value="IncomeCategoryMaster" />
+      <xs:enumeration value="LanguageMaster" />
+      <xs:enumeration value="M_LoyaltyProgramMaster" />
+      <xs:enumeration value="M_MaritalStatusMaster" />
+      <xs:enumeration value="M_DischargeType" />
+      <xs:enumeration value="M_DischargeDestination" />
+      <xs:enumeration value="M_DispensingType" />
+      <xs:enumeration value="M_DoctorTypeMaster" />
+      <xs:enumeration value="M_Molecule" />
+      <xs:enumeration value="M_ItemGroup" />
+      <xs:enumeration value="M_ItemCategory" />
+      <xs:enumeration value="M_StoreageType" />
+      <xs:enumeration value="M_Supplier" />
+      <xs:enumeration value="M_PreganancyClass" />
+      <xs:enumeration value="M_AppointmentReasonMaster" />
+      <xs:enumeration value="M_TherapeuticClass" />
+      <xs:enumeration value="M_TariffMaster" />
+      <xs:enumeration value="M_ItemCompany" />
+      <xs:enumeration value="M_Route" />
+      <xs:enumeration value="M_UnitOfMeasure" />
+      <xs:enumeration value="M_TaxMaster" />
+      <xs:enumeration value="NationalityMaster" />
+      <xs:enumeration value="M_OccupationMaster" />
+      <xs:enumeration value="RaceMaster" />
+      <xs:enumeration value="M_StaffMaster" />
+      <xs:enumeration value="M_AnesthesiaNotes" />
+      <xs:enumeration value="M_SurgeryNotes" />
+      <xs:enumeration value="M_CategoryL1Master" />
+      <xs:enumeration value="M_DoctorMaster" />
+      <xs:enumeration value="M_MachineParameterMaster" />
+      <xs:enumeration value="M_ReligionMaster" />
+      <xs:enumeration value="ServiceMaster" />
+      <xs:enumeration value="StateMaster" />
+      <xs:enumeration value="M_UnitMaster" />
+      <xs:enumeration value="M_UnitDepartmentDetails" />
+      <xs:enumeration value="M_VisitTypeMaster" />
+      <xs:enumeration value="M_PatientCategoryMaster" />
+      <xs:enumeration value="M_PatientSourceMaster" />
+      <xs:enumeration value="M_PathAgencyMaster" />
+      <xs:enumeration value="M_AdvanceAgainst" />
+      <xs:enumeration value="M_CodeType" />
+      <xs:enumeration value="M_Specialization" />
+      <xs:enumeration value="M_ClusterMaster" />
+      <xs:enumeration value="M_SubSpecialization" />
+      <xs:enumeration value="M_ScheduleMaster" />
+      <xs:enumeration value="M_TaxNature" />
+      <xs:enumeration value="M_TermsofPayment" />
+      <xs:enumeration value="M_ModeOfPayment" />
+      <xs:enumeration value="M_Currency" />
+      <xs:enumeration value="M_Store" />
+      <xs:enumeration value="M_CompanyTypeMaster" />
+      <xs:enumeration value="M_TermAndCondition" />
+      <xs:enumeration value="M_Delivery" />
+      <xs:enumeration value="M_Schedule" />
+      <xs:enumeration value="M_PrimarySymptoms" />
+      <xs:enumeration value="T_UserRoleMaster" />
+      <xs:enumeration value="M_ItemMaster" />
+      <xs:enumeration value="Secret_Qtn" />
+      <xs:enumeration value="M_EMRTemplateConfigurationMaster" />
+      <xs:enumeration value="M_ServiceMaster" />
+      <xs:enumeration value="M_RelationMaster" />
+      <xs:enumeration value="Sys_MISType" />
+      <xs:enumeration value="M_PatientConsentMaster" />
+      <xs:enumeration value="M_EMR_PCR_SectionMaster" />
+      <xs:enumeration value="M_EMR_PCR_FieldMaster" />
+      <xs:enumeration value="M_EMR_REFERRAL_SectionMaster" />
+      <xs:enumeration value="M_EMR_REFERRAL_FieldMaster" />
+      <xs:enumeration value="M_RadFilmSize" />
+      <xs:enumeration value="M_RadTemplateResult" />
+      <xs:enumeration value="M_RadTestCategory" />
+      <xs:enumeration value="M_RadTemplateMaster" />
+      <xs:enumeration value="M_PathoCategory" />
+      <xs:enumeration value="M_PathoParameterUnits" />
+      <xs:enumeration value="M_PathoSampleMaster" />
+      <xs:enumeration value="M_PathoParameterMaster" />
+      <xs:enumeration value="M_PathoParameterCategoryMaster" />
+      <xs:enumeration value="M_MachineMaster" />
+      <xs:enumeration value="M_PathoTestMaster" />
+      <xs:enumeration value="M_OTTheatreMaster" />
+      <xs:enumeration value="M_PreOperativeInstructionsMaster" />
+      <xs:enumeration value="M_ConsentMaster" />
+      <xs:enumeration value="M_ProcedureMaster" />
+      <xs:enumeration value="M_ProcedureTypeMaster" />
+      <xs:enumeration value="M_AnesthesiaTypeMaster" />
+      <xs:enumeration value="M_OTTableMaster" />
+      <xs:enumeration value="M_OperationResultMaster" />
+      <xs:enumeration value="M_OperationStatusMaster" />
+      <xs:enumeration value="M_IVF_BabyType" />
+      <xs:enumeration value="M_IVF_ETPattern" />
+      <xs:enumeration value="M_IVF_BabyFitness" />
+      <xs:enumeration value="M_TESETissueSide" />
+      <xs:enumeration value="M_ReferralTypeMaster" />
+      <xs:enumeration value="M_IVFMainIndication" />
+      <xs:enumeration value="M_IVFPlannedSpermCollection" />
+      <xs:enumeration value="M_IVFPlannedTreatment" />
+      <xs:enumeration value="M_IVFProtocolType" />
+      <xs:enumeration value="M_IVF_OveryDetails" />
+      <xs:enumeration value="M_ProcedurePerformed" />
+      <xs:enumeration value="M_Classification" />
+      <xs:enumeration value="M_IVF_Viscosity" />
+      <xs:enumeration value="M_IVF_TypeOfNeedle" />
+      <xs:enumeration value="M_IVF_Anesthesia" />
+      <xs:enumeration value="M_IVF_SpermSource" />
+      <xs:enumeration value="M_IVf_MainIndication" />
+      <xs:enumeration value="M_IVF_SourceNeedleMaster" />
+      <xs:enumeration value="M_IVF_SourceDenudingNeedleMaster" />
+      <xs:enumeration value="M_IVF_SourceOocyteMaster" />
+      <xs:enumeration value="M_IVF_SourceSemenMaster" />
+      <xs:enumeration value="M_IVF_CumulusMaster" />
+      <xs:enumeration value="M_IVF_DOSMaster" />
+      <xs:enumeration value="M_IVF_GradeMaster" />
+      <xs:enumeration value="M_IVF_MOIMaster" />
+      <xs:enumeration value="M_IVF_PICMaster" />
+      <xs:enumeration value="M_IVF_PlanMaster" />
+      <xs:enumeration value="M_IVF_MediaMaster" />
+      <xs:enumeration value="M_IVF_OPSTypeMaster" />
+      <xs:enumeration value="M_IVF_FertilizationStageMaster" />
+      <xs:enumeration value="M_IVF_MethodOfSpermPreparationMaster" />
+      <xs:enumeration value="M_IVF_CatheterTypeMaster" />
+      <xs:enumeration value="M_IVF_DifficultyTypeMaster" />
+      <xs:enumeration value="M_IVF_FragmentationMaster" />
+      <xs:enumeration value="M_IVF_BlastomereSymmetryMaster" />
+      <xs:enumeration value="M_IVF_TrophectodermMaster" />
+      <xs:enumeration value="M_IVF_BlastocytsGradeMaster" />
+      <xs:enumeration value="M_IVF_ExpansionMaster" />
+      <xs:enumeration value="M_IVF_ICMMaster" />
+      <xs:enumeration value="M_DoctorAddressMaster" />
+      <xs:enumeration value="M_IVFCanMaster" />
+      <xs:enumeration value="M_IVFTankMaster" />
+      <xs:enumeration value="M_IVFCanisterMaster" />
+      <xs:enumeration value="M_IVFStrawMaster" />
+      <xs:enumeration value="M_IVFGobletSizeMaster" />
+      <xs:enumeration value="M_IVFGobletShapeMaster" />
+      <xs:enumeration value="M_IVFGobletColor" />
+      <xs:enumeration value="M_IvfBuilt" />
+      <xs:enumeration value="M_HairColor" />
+      <xs:enumeration value="M_SkinColor" />
+      <xs:enumeration value="M_EyeColor" />
+      <xs:enumeration value="M_WardTypeMaster" />
+      <xs:enumeration value="M_WardMaster" />
+      <xs:enumeration value="M_FloorMaster" />
+      <xs:enumeration value="M_RoomMaster" />
+      <xs:enumeration value="M_ClassMaster" />
+      <xs:enumeration value="M_RoomAmmenitiesMaster" />
+      <xs:enumeration value="M_BedMaster" />
+      <xs:enumeration value="M_AdmissionType" />
+      <xs:enumeration value="M_BedAmmenitiesMaster" />
+      <xs:enumeration value="M_DietPlanMaster" />
+      <xs:enumeration value="M_FoodItemCategoryMaster" />
+      <xs:enumeration value="M_LaboratoryMaster" />
+      <xs:enumeration value="M_ResultTypeMaster" />
+      <xs:enumeration value="M_EMRFieldValues" />
+      <xs:enumeration value="M_PostThawingPlan" />
+      <xs:enumeration value="M_NoOfPlannedEmbroys" />
+      <xs:enumeration value="M_ANC_FHS" />
+      <xs:enumeration value="M_ANC_Investigation" />
+      <xs:enumeration value="M_ANC_PresentationPosition" />
+      <xs:enumeration value="M_ANC_Consult" />
+      <xs:enumeration value="M_ExpenseMaster" />
+      <xs:enumeration value="M_IVF_ClinicalSummary" />
+      <xs:enumeration value="Config_EmailSMSEventType" />
+      <xs:enumeration value="view_ListOfOPUNeedles" />
+      <xs:enumeration value="M_IVF_OocyteQualityMaster" />
+      <xs:enumeration value="M_IVF_ELevelOnDayMaster" />
+      <xs:enumeration value="M_IVF_InseminationLocationMaster" />
+      <xs:enumeration value="M_IVF_Incubator" />
+      <xs:enumeration value="M_IVF_Condition" />
+      <xs:enumeration value="M_IVF_Child" />
+      <xs:enumeration value="M_IVF_DealthPastPortMan" />
+      <xs:enumeration value="M_IVF_DeliveryMethod" />
+      <xs:enumeration value="M_IVF_DiedParinatallyOn" />
+      <xs:enumeration value="M_TreatmentForOocyteMaster" />
+      <xs:enumeration value="M_ANC_Hirsutism" />
+      <xs:enumeration value="M_ANC_Oedema" />
+      <xs:enumeration value="M_CountryMaster" />
+      <xs:enumeration value="M_StateMaster" />
+      <xs:enumeration value="M_CashCounterMaster" />
+      <xs:enumeration value="M_CityMaster" />
+      <xs:enumeration value="M_RegionMaster" />
+      <xs:enumeration value="M_RadModalityMaster" />
+      <xs:enumeration value="M_SurrogateAgencyMaster" />
+      <xs:enumeration value="M_ReasonForIssue" />
+      <xs:enumeration value="M_BlockMaster" />
+      <xs:enumeration value="M_RefEntityMaster" />
+      <xs:enumeration value="M_IdentityMaster" />
+      <xs:enumeration value="M_IPDConsentMaster" />
+      <xs:enumeration value="M_IVFPGDCultureType" />
+      <xs:enumeration value="M_IVFBiopsy" />
+      <xs:enumeration value="M_IVFPGDBindingTechnique" />
+      <xs:enumeration value="M_IVF_ChromosomeTestOrdered" />
+      <xs:enumeration value="M_IVF_Chromosome" />
+      <xs:enumeration value="M_IVFPGDSpecimanUsed" />
+      <xs:enumeration value="M_SemenColorMaster" />
+      <xs:enumeration value="M_Abstinence" />
+      <xs:enumeration value="M_ReportPrintFormat" />
+      <xs:enumeration value="M_ViscousRange" />
+      <xs:enumeration value="M_SemenRemarks" />
+      <xs:enumeration value="M_StrengthUnitMaster" />
+      <xs:enumeration value="M_ContainerMaster" />
+      <xs:enumeration value="M_ShelfMaster" />
+      <xs:enumeration value="M_RackMaster" />
+      <xs:enumeration value="M_SupplierCategory" />
+      <xs:enumeration value="M_DonorSource" />
+      <xs:enumeration value="M_IVF_InseminationmethodMaster" />
+      <xs:enumeration value="M_IVFCostingDivision" />
+      <xs:enumeration value="M_IVF_DiagnosisMaster" />
+      <xs:enumeration value="M_TubeMaster" />
+      <xs:enumeration value="M_PathoFastingStatus" />
+      <xs:enumeration value="LabInvestigationDepartment" />
+      <xs:enumeration value="DiagnostikBAGIAN" />
+      <xs:enumeration value="M_EMRInstructionMaster" />
+      <xs:enumeration value="GENERIK" />
+      <xs:enumeration value="M_EMRChiefComplaints" />
+      <xs:enumeration value="M_ReferenceType" />
+      <xs:enumeration value="M_ProcedureSubCategoryMaster" />
+      <xs:enumeration value="M_ProcedureCategoryMaster" />
+      <xs:enumeration value="M_ProcedureCheklistDetails" />
+      <xs:enumeration value="M_PostOperativeInstructionsMaster" />
+      <xs:enumeration value="M_IntraOperativeInstructionsMaster" />
+      <xs:enumeration value="M_DoctorNotes" />
+      <xs:enumeration value="BAGIAN_DOC" />
+      <xs:enumeration value="SPESIAL" />
+      <xs:enumeration value="SPESIAL_DOC" />
+      <xs:enumeration value="M_SpecialRegistrationMaster" />
+      <xs:enumeration value="BAGIAN" />
+      <xs:enumeration value="M_DiagnosisMaster" />
+      <xs:enumeration value="M_DoctorCategoryMaster" />
+      <xs:enumeration value="M_Preffixmaster" />
+      <xs:enumeration value="M_RequestApprovalMaster" />
+      <xs:enumeration value="M_NationalityMaster" />
+      <xs:enumeration value="M_PrefLanguageMaster" />
+      <xs:enumeration value="M_TreatRequiredMaster" />
+      <xs:enumeration value="M_EducationDetailsMaster" />
+      <xs:enumeration value="M_ServiceL1" />
+      <xs:enumeration value="M_ServiceL2" />
+      <xs:enumeration value="M_ServiceL3" />
+      <xs:enumeration value="M_ServiceL4" />
+      <xs:enumeration value="M_CostCenterCodes" />
+      <xs:enumeration value="M_ReasonMaster" />
+      <xs:enumeration value="M_StageofDevelopmentGrade" />
+      <xs:enumeration value="M_InnerCellMassGrade" />
+      <xs:enumeration value="M_TrophoectodermGrade" />
+      <xs:enumeration value="M_IVF_OutcomeResultMaster" />
+      <xs:enumeration value="M_IVF_OutcomePregnancyMaster" />
+      <xs:enumeration value="M_IVF_OutcomePregnancyAchievedMaster" />
+      <xs:enumeration value="M_IVF_PostThawingPlanMaster" />
+      <xs:enumeration value="M_IVf_MainSubIndication" />
+      <xs:enumeration value="M_IVf_BirthActivity" />
+      <xs:enumeration value="M_IVf_BirthPulse" />
+      <xs:enumeration value="M_IVf_BirthGrimace" />
+      <xs:enumeration value="M_IVf_BirthAppearance" />
+      <xs:enumeration value="M_IVf_BirthRespiration" />
+      <xs:enumeration value="M_IVf_BirthAPGARScore" />
+      <xs:enumeration value="M_IVf_BirthDeliveryType" />
+      <xs:enumeration value="M_IVF_NeedleMaster" />
+      <xs:enumeration value="M_IVF_TypeOfSperm" />
+      <xs:enumeration value="M_EMRTemplate" />
+      <xs:enumeration value="M_BdMaster" />
+      <xs:enumeration value="M_MenuMaster" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MasterTableNameList" nillable="true" type="tns:MasterTableNameList" />
+  <xs:simpleType name="IVFBloodLoss">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Heavy" />
+      <xs:enumeration value="Moderate" />
+      <xs:enumeration value="Scanty" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IVFBloodLoss" nillable="true" type="tns:IVFBloodLoss" />
+  <xs:simpleType name="IVFInfertilityTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Primary" />
+      <xs:enumeration value="Secondary" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IVFInfertilityTypes" nillable="true" type="tns:IVFInfertilityTypes" />
+  <xs:complexType name="clsSecretQtnVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsSecretQtnVO" nillable="true" type="tns:clsSecretQtnVO" />
+  <xs:complexType name="clsUserEMRTemplateDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:long" />
+      <xs:element minOccurs="0" name="TemplateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserEMRTemplateDetailsVO" nillable="true" type="tns:clsUserEMRTemplateDetailsVO" />
+  <xs:complexType name="clsPackageServiceVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplicableToAll" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ApplicableToAllDiscount" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsApproved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFixedRate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemDetails" nillable="true" type="tns:ArrayOfclsPackageItemMasterVO" />
+      <xs:element minOccurs="0" name="NoOfFollowUp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackageAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PackageDetails" nillable="true" type="tns:ArrayOfclsPackageServiceDetailsVO" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PackageNew" minOccurs="0" name="PackageServiceRelationDetails" nillable="true" type="q7:ArrayOfclsPackageServiceRelationsVO" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PackageNew" minOccurs="0" name="PackageServiceRelationDetailsDelete" nillable="true" type="q8:ArrayOfclsPackageServiceRelationsVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PharmacyFixedRate" type="xs:double" />
+      <xs:element minOccurs="0" name="PharmacyPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PackageNew" minOccurs="0" name="ServiceConditionDetails" nillable="true" type="q9:ArrayOfclsPackageServiceConditionsVO" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PackageNew" minOccurs="0" name="ServiceConditionDetailsDelete" nillable="true" type="q10:ArrayOfclsPackageServiceConditionsVO" />
+      <xs:element minOccurs="0" name="ServiceFixedRate" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServicePercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TotalBudget" type="xs:double" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Validity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValidityUnit" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageServiceVO" nillable="true" type="tns:clsPackageServiceVO" />
+  <xs:complexType name="ArrayOfclsPackageItemMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageItemMasterVO" nillable="true" type="tns:clsPackageItemMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageItemMasterVO" nillable="true" type="tns:ArrayOfclsPackageItemMasterVO" />
+  <xs:complexType name="clsPackageItemMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Budget" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsCategory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemCategory" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemCategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemGroup" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemGroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageItemMasterVO" nillable="true" type="tns:clsPackageItemMasterVO" />
+  <xs:complexType name="clsFollowUpServiceStatusVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualServiceConsumedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ColourCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpDateFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpID" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpPostPoneDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpPostPoneFromId" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpPostponeTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpRemarkExist" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpScheduleDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsClose" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFollowUpRemarkExist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPostpone" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSchedule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PreviousFollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ServerDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFollowUpServiceStatusVO" nillable="true" type="tns:clsFollowUpServiceStatusVO" />
+  <xs:complexType name="PackageMonths">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColourCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpDateFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpID" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpServiceDetails" nillable="true" type="tns:clsFollowUpServiceStatusVO" />
+      <xs:element minOccurs="0" name="FollowUpUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFollowUpRemarkExist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Month" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonthStatus" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PackageMonths" nillable="true" type="tns:PackageMonths" />
+  <xs:complexType name="PackageList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="Delete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="FollowUpID" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpServiceDetails" nillable="true" type="tns:ArrayOfclsFollowUpServiceStatusVO" />
+      <xs:element minOccurs="0" name="FollowUpServiceStatus" nillable="true" type="tns:clsFollowUpServiceStatusVO" />
+      <xs:element minOccurs="0" name="FollowUpUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="FreeAtFollowUp" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GenderList" nillable="true" type="tns:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="Infinite" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFollowUpRemarkExist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSpecilizationGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Months" nillable="true" type="tns:ArrayOfPackageMonths" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="SelectedGender" nillable="true" type="tns:MasterListItem" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PackageList" nillable="true" type="tns:PackageList" />
+  <xs:complexType name="ArrayOfclsFollowUpServiceStatusVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsFollowUpServiceStatusVO" nillable="true" type="tns:clsFollowUpServiceStatusVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsFollowUpServiceStatusVO" nillable="true" type="tns:ArrayOfclsFollowUpServiceStatusVO" />
+  <xs:complexType name="ArrayOfPackageMonths">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PackageMonths" nillable="true" type="tns:PackageMonths" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPackageMonths" nillable="true" type="tns:ArrayOfPackageMonths" />
+  <xs:complexType name="StringRow">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StringRow" nillable="true" type="tns:StringRow" />
+  <xs:complexType name="ColumnValueSelector">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ColumnValueSelector" nillable="true" type="tns:ColumnValueSelector" />
+  <xs:simpleType name="InventoryGoodReturnType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Direct" />
+      <xs:enumeration value="AgainstGRN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryGoodReturnType" nillable="true" type="tns:InventoryGoodReturnType" />
+  <xs:complexType name="clsItembatchSearchVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssignSupplier" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AvailableStock" type="xs:double" />
+      <xs:element minOccurs="0" name="AvailableStockInBase" type="xs:float" />
+      <xs:element minOccurs="0" name="BUOMID" type="xs:long" />
+      <xs:element minOccurs="0" name="BaseUM" type="xs:long" />
+      <xs:element minOccurs="0" name="BaseUMString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchID" type="xs:long" />
+      <xs:element minOccurs="0" name="BatchesRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryId" type="xs:long" />
+      <xs:element minOccurs="0" name="Containername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConversionFactor" type="xs:float" />
+      <xs:element minOccurs="0" name="CurrentStock" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DiscountOnSale" type="xs:double" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GroupId" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="InclusiveOfTax" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IssueItemVatApplicationOn" type="xs:int" />
+      <xs:element minOccurs="0" name="IssueItemVatPer" type="xs:decimal" />
+      <xs:element minOccurs="0" name="IssueItemVatType" type="xs:int" />
+      <xs:element minOccurs="0" name="IssueVatPer" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ItemCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemOtherTaxType" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemVatApplicationOn" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemVatPer" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ItemVatType" type="xs:int" />
+      <xs:element minOccurs="0" name="MRP" type="xs:double" />
+      <xs:element minOccurs="0" name="Manufacturer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherItemApplicationOn" type="xs:int" />
+      <xs:element minOccurs="0" name="PUM" type="xs:long" />
+      <xs:element minOccurs="0" name="PUOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreganancyClass" nillable="true" type="xs:string" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="PrescribeDrugs" nillable="true" type="q11:clsPatientPrescriptionDetailVO" />
+      <xs:element minOccurs="0" name="PurchaseRate" type="xs:double" />
+      <xs:element minOccurs="0" name="PurchaseToBaseCF" type="xs:float" />
+      <xs:element minOccurs="0" name="PurchaseToBaseCFForStkAdj" type="xs:float" />
+      <xs:element minOccurs="0" name="Rackname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Re_Order" type="xs:float" />
+      <xs:element minOccurs="0" name="SItemVatApplicationOn" type="xs:int" />
+      <xs:element minOccurs="0" name="SItemVatPer" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SItemVatType" type="xs:int" />
+      <xs:element minOccurs="0" name="SUM" type="xs:long" />
+      <xs:element minOccurs="0" name="SUOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SUOMID" type="xs:long" />
+      <xs:element minOccurs="0" name="SVatPer" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SellingCF" type="xs:float" />
+      <xs:element minOccurs="0" name="SellingUM" type="xs:long" />
+      <xs:element minOccurs="0" name="SellingUMString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shelfname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StockingCF" type="xs:float" />
+      <xs:element minOccurs="0" name="StockingToBaseCF" type="xs:float" />
+      <xs:element minOccurs="0" name="StockingToBaseCFForStkAdj" type="xs:float" />
+      <xs:element minOccurs="0" name="StoreID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalPerchaseTaxPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalSalesTaxPercent" type="xs:double" />
+      <xs:element minOccurs="0" name="VATAmt" type="xs:double" />
+      <xs:element minOccurs="0" name="VATPerc" type="xs:double" />
+      <xs:element minOccurs="0" name="VatPer" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsItembatchSearchVO" nillable="true" type="tns:clsItembatchSearchVO" />
+  <xs:complexType name="clsFemaleLabDay6VO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnesthetistID" type="xs:long" />
+      <xs:element minOccurs="0" name="AssAnesthetistID" type="xs:long" />
+      <xs:element minOccurs="0" name="AssEmbryologistID" type="xs:long" />
+      <xs:element minOccurs="0" name="CoupleID" type="xs:long" />
+      <xs:element minOccurs="0" name="CoupleUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmbryologistID" type="xs:long" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" minOccurs="0" name="FUSetting" nillable="true" type="q12:ArrayOfFileUpload" />
+      <xs:element minOccurs="0" name="FertilizationAssesmentDetails" nillable="true" type="tns:ArrayOfclsFemaleLabDay6FertilizationAssesmentVO" />
+      <xs:element minOccurs="0" name="FertilizationCheckTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ICSICompletionTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IVFCycleCount" type="xs:long" />
+      <xs:element minOccurs="0" name="InfectionObserved" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFreezed" type="xs:boolean" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" minOccurs="0" name="LabDaySummary" nillable="true" type="q13:clsLabDaysSummaryVO" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" minOccurs="0" name="SemenDetails" nillable="true" type="q14:clsFemaleSemenDetailsVO" />
+      <xs:element minOccurs="0" name="SourceNeedleID" type="xs:long" />
+      <xs:element minOccurs="0" name="SourceOfDenudingNeedle" type="xs:long" />
+      <xs:element minOccurs="0" name="SrcOfOocyteID" type="xs:long" />
+      <xs:element minOccurs="0" name="SrcOfSemenID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Synchronized" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ToNoOfDeGenerated" type="xs:int" />
+      <xs:element minOccurs="0" name="ToNoOfGV" type="xs:int" />
+      <xs:element minOccurs="0" name="ToNoOfLost" type="xs:int" />
+      <xs:element minOccurs="0" name="ToNoOfMI" type="xs:int" />
+      <xs:element minOccurs="0" name="ToNoOfMII" type="xs:int" />
+      <xs:element minOccurs="0" name="TotNoOf2PB" type="xs:int" />
+      <xs:element minOccurs="0" name="TotNoOf2PN" type="xs:int" />
+      <xs:element minOccurs="0" name="TotNoOf3PN" type="xs:int" />
+      <xs:element minOccurs="0" name="TotNoOfOocytes" type="xs:int" />
+      <xs:element minOccurs="0" name="TreatmentTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFemaleLabDay6VO" nillable="true" type="tns:clsFemaleLabDay6VO" />
+  <xs:complexType name="ArrayOfclsFemaleLabDay6FertilizationAssesmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsFemaleLabDay6FertilizationAssesmentVO" nillable="true" type="tns:clsFemaleLabDay6FertilizationAssesmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsFemaleLabDay6FertilizationAssesmentVO" nillable="true" type="tns:ArrayOfclsFemaleLabDay6FertilizationAssesmentVO" />
+  <xs:complexType name="clsFemaleLabDay6FertilizationAssesmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FerPlan" nillable="true" type="tns:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="FertilisationStage" type="xs:long" />
+      <xs:element minOccurs="0" name="FileContents" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Grade" nillable="true" type="tns:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" minOccurs="0" name="MediaDetails" nillable="true" type="q15:ArrayOfclsFemaleMediaDetailsVO" />
+      <xs:element minOccurs="0" name="OSCode" type="xs:long" />
+      <xs:element minOccurs="0" name="OoNo" type="xs:long" />
+      <xs:element minOccurs="0" name="OocyteDonorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Others" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PV" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Plan" nillable="true" type="tns:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="PlanTreatment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanTreatmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProceedDay7" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SSCode" type="xs:long" />
+      <xs:element minOccurs="0" name="Score" type="xs:long" />
+      <xs:element minOccurs="0" name="SelectedFePlan" nillable="true" type="tns:MasterListItem" />
+      <xs:element minOccurs="0" name="SelectedGrade" nillable="true" type="tns:MasterListItem" />
+      <xs:element minOccurs="0" name="SelectedPlan" nillable="true" type="tns:MasterListItem" />
+      <xs:element minOccurs="0" name="SemenDonorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialOccyteNo" type="xs:long" />
+      <xs:element minOccurs="0" name="SrcOfSemen" type="xs:long" />
+      <xs:element minOccurs="0" name="SrcOfSemenDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SrcOocyteDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SrcOocyteID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="XFactor" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFemaleLabDay6FertilizationAssesmentVO" nillable="true" type="tns:clsFemaleLabDay6FertilizationAssesmentVO" />
+  <xs:complexType name="clsAddPatientDietPlanBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DietPlan" nillable="true" type="tns:clsPatientDietPlanVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientDietPlanBizActionVO" nillable="true" type="tns:clsAddPatientDietPlanBizActionVO" />
+  <xs:complexType name="clsPatientDietPlanVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DietDetails" nillable="true" type="tns:ArrayOfclsPatientDietPlanDetailVO" />
+      <xs:element minOccurs="0" name="GeneralInformation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitDoctor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitDoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientDietPlanVO" nillable="true" type="tns:clsPatientDietPlanVO" />
+  <xs:complexType name="ArrayOfclsPatientDietPlanDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientDietPlanDetailVO" nillable="true" type="tns:clsPatientDietPlanDetailVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientDietPlanDetailVO" nillable="true" type="tns:ArrayOfclsPatientDietPlanDetailVO" />
+  <xs:complexType name="clsPatientDietPlanDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="DietPlanID" type="xs:long" />
+      <xs:element minOccurs="0" name="FoodCH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodCal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodExpectedCal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodFat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodInstruction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodItem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodItemCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodItemCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="FoodItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="FoodQty" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoodUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Timing" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientDietPlanDetailVO" nillable="true" type="tns:clsPatientDietPlanDetailVO" />
+  <xs:complexType name="clsGetPatientDietPlanBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DietList" nillable="true" type="tns:ArrayOfclsPatientDietPlanVO" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientDietPlanBizActionVO" nillable="true" type="tns:clsGetPatientDietPlanBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientDietPlanVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientDietPlanVO" nillable="true" type="tns:clsPatientDietPlanVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientDietPlanVO" nillable="true" type="tns:ArrayOfclsPatientDietPlanVO" />
+  <xs:complexType name="clsGetPatientDietPlanDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DietDetailsList" nillable="true" type="tns:ArrayOfclsPatientDietPlanDetailVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientDietPlanDetailsBizActionVO" nillable="true" type="tns:clsGetPatientDietPlanDetailsBizActionVO" />
+  <xs:complexType name="clsGeDietPlanMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DietDetailList" nillable="true" type="tns:ArrayOfclsPatientDietPlanDetailVO" />
+      <xs:element minOccurs="0" name="GeneralInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGeDietPlanMasterBizActionVO" nillable="true" type="tns:clsGeDietPlanMasterBizActionVO" />
+  <xs:complexType name="clsChangePasswordBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsUserVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChangePasswordBizActionVO" nillable="true" type="tns:clsChangePasswordBizActionVO" />
+  <xs:complexType name="clsAddPrintedPatientConscentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentDetails" nillable="true" type="tns:clsPatientConsentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPrintedPatientConscentBizActionVO" nillable="true" type="tns:clsAddPrintedPatientConscentBizActionVO" />
+  <xs:complexType name="clsGetPrintedPatientConscentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentDetails" nillable="true" type="tns:clsPatientConsentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPrintedPatientConscentBizActionVO" nillable="true" type="tns:clsGetPrintedPatientConscentBizActionVO" />
+  <xs:complexType name="clsGetPatientConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentMatserDetails" nillable="true" type="tns:ArrayOfclsPatientConsentVO" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Template" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientConsentBizActionVO" nillable="true" type="tns:clsGetPatientConsentBizActionVO" />
+  <xs:complexType name="clsADDPatientSignConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccesssignStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UploadDetails" nillable="true" type="tns:ArrayOfclsPatientSignConsentVO" />
+      <xs:element minOccurs="0" name="signConsentDetails" nillable="true" type="tns:clsPatientSignConsentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsADDPatientSignConsentBizActionVO" nillable="true" type="tns:clsADDPatientSignConsentBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientSignConsentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientSignConsentVO" nillable="true" type="tns:clsPatientSignConsentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientSignConsentVO" nillable="true" type="tns:ArrayOfclsPatientSignConsentVO" />
+  <xs:complexType name="clsGetPatientSignConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ConsentUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PlanTherapyID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SignPatientList" nillable="true" type="tns:ArrayOfclsPatientSignConsentVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientSignConsentBizActionVO" nillable="true" type="tns:clsGetPatientSignConsentBizActionVO" />
+  <xs:complexType name="clsDeletePatientSignConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeleteVO" nillable="true" type="tns:clsPatientSignConsentVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="SignPatientList" nillable="true" type="tns:ArrayOfclsPatientSignConsentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeletePatientSignConsentBizActionVO" nillable="true" type="tns:clsDeletePatientSignConsentBizActionVO" />
+  <xs:complexType name="clsGetIVFPackegeConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentMatserDetails" nillable="true" type="tns:ArrayOfclsPatientConsentVO" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyId" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Template" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetIVFPackegeConsentBizActionVO" nillable="true" type="tns:clsGetIVFPackegeConsentBizActionVO" />
+  <xs:complexType name="clsAddUpdateIVFPackegeConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentCheck" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ConsentMatserDetails" nillable="true" type="tns:ArrayOfclsPatientConsentVO" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyId" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Template" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateConsentCheckInPlanTherapy" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateIVFPackegeConsentBizActionVO" nillable="true" type="tns:clsAddUpdateIVFPackegeConsentBizActionVO" />
+  <xs:complexType name="clsGetIVFSavedPackegeConsentBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsentMatserDetails" nillable="true" type="tns:ArrayOfclsPatientConsentVO" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyId" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanTherapyUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Template" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetIVFSavedPackegeConsentBizActionVO" nillable="true" type="tns:clsGetIVFSavedPackegeConsentBizActionVO" />
+  <xs:complexType name="clsObservationCodeMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodeTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ResultStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsObservationCodeMasterVO" nillable="true" type="tns:clsObservationCodeMasterVO" />
+  <xs:complexType name="clsAddUpdateObservationCodeBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ObservationCodeMasterDetails" nillable="true" type="tns:clsObservationCodeMasterVO" />
+      <xs:element minOccurs="0" name="ResultStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateObservationCodeBizActionVO" nillable="true" type="tns:clsAddUpdateObservationCodeBizActionVO" />
+  <xs:complexType name="clsGetObservationCodeMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodeTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="ObservationCodeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ObservationCodeMasterDetails" nillable="true" type="tns:ArrayOfclsObservationCodeMasterVO" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ResultStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetObservationCodeMasterBizActionVO" nillable="true" type="tns:clsGetObservationCodeMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsObservationCodeMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsObservationCodeMasterVO" nillable="true" type="tns:clsObservationCodeMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsObservationCodeMasterVO" nillable="true" type="tns:ArrayOfclsObservationCodeMasterVO" />
+  <xs:complexType name="clsUpdateObservationCodeStatusBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ObservationCodeID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateObservationCodeStatusBizActionVO" nillable="true" type="tns:clsUpdateObservationCodeStatusBizActionVO" />
+  <xs:simpleType name="TaxApplicableOn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GrossAmt">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NetAmt">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TaxOnTax">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TaxApplicableOn" nillable="true" type="tns:TaxApplicableOn" />
+  <xs:simpleType name="FollowUpFrom">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Billing" />
+      <xs:enumeration value="EMR" />
+      <xs:enumeration value="Followup" />
+      <xs:enumeration value="Prospect" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FollowUpFrom" nillable="true" type="tns:FollowUpFrom" />
+  <xs:simpleType name="PurchaseFrequencyUnit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Days">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Week">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Month">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PurchaseFrequencyUnit" nillable="true" type="tns:PurchaseFrequencyUnit" />
+  <xs:simpleType name="Controls">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TextBox">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AutoCompleteComboBox">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TimePicker">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DatePicker">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WaterMarkTextbox">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Controls" nillable="true" type="tns:Controls" />
+  <xs:simpleType name="ReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPDReport">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IPDReport">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EMRReport">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MISReport">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AppointmentList">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportType" nillable="true" type="tns:ReportType" />
+  <xs:simpleType name="BindingControl">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DatePicker">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Time">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Text">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CheckBox">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Option">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BindingControl" nillable="true" type="tns:BindingControl" />
+  <xs:simpleType name="DischargeParameter">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Clinical_Findings" />
+      <xs:enumeration value="Diagnosis" />
+      <xs:enumeration value="Medication" />
+      <xs:enumeration value="Advise" />
+      <xs:enumeration value="Operating_Notes" />
+      <xs:enumeration value="Investigation" />
+      <xs:enumeration value="Note" />
+      <xs:enumeration value="FollowUp" />
+      <xs:enumeration value="Remark" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DischargeParameter" nillable="true" type="tns:DischargeParameter" />
+  <xs:simpleType name="TherapyGroupSurrogate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Event">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Drug">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EmbryoTransfer">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TherapyGroupSurrogate" nillable="true" type="tns:TherapyGroupSurrogate" />
+  <xs:simpleType name="Genders">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Male" />
+      <xs:enumeration value="Female" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Genders" nillable="true" type="tns:Genders" />
+  <xs:simpleType name="PatientTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPD" />
+      <xs:enumeration value="IPD" />
+      <xs:enumeration value="All" />
+      <xs:enumeration value="None" />
+      <xs:enumeration value="OPD_IPD" />
+      <xs:enumeration value="IPDAll" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PatientTypes" nillable="true" type="tns:PatientTypes" />
+  <xs:simpleType name="PrescriptionFrom">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Consultation" />
+      <xs:enumeration value="IPDEMR" />
+      <xs:enumeration value="OPDEMR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PrescriptionFrom" nillable="true" type="tns:PrescriptionFrom" />
+  <xs:simpleType name="MasterAddressType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ResidentalAddress">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PermanateAddress">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PolyClinic">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Nursing">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="clinic">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Hospital">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MasterAddressType" nillable="true" type="tns:MasterAddressType" />
+  <xs:simpleType name="PatientSourceTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Loyalty" />
+      <xs:enumeration value="Camp" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PatientSourceTypeType" nillable="true" type="tns:PatientSourceTypeType" />
+  <xs:simpleType name="AppointmentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Doctor" />
+      <xs:enumeration value="Department" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AppointmentType" nillable="true" type="tns:AppointmentType" />
+  <xs:simpleType name="BlockTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Rack" />
+      <xs:enumeration value="Shelf" />
+      <xs:enumeration value="Bin" />
+      <xs:enumeration value="Item" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BlockTypes" nillable="true" type="tns:BlockTypes" />
+  <xs:simpleType name="SourceOfSperm">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Donar">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Partner">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Crossover">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SourceOfSperm" nillable="true" type="tns:SourceOfSperm" />
+  <xs:simpleType name="FertCheck">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Yes">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="No">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FertCheck" nillable="true" type="tns:FertCheck" />
+  <xs:simpleType name="OocyteMaturity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GV">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MI">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MII">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OocyteMaturity" nillable="true" type="tns:OocyteMaturity" />
+  <xs:simpleType name="OocyteCytoplasmDysmorphisim">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Present">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Absent">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OocyteCytoplasmDysmorphisim" nillable="true" type="tns:OocyteCytoplasmDysmorphisim" />
+  <xs:simpleType name="OocyteCoronaCumulusComplex">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Normal">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Abnormal">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OocyteCoronaCumulusComplex" nillable="true" type="tns:OocyteCoronaCumulusComplex" />
+  <xs:simpleType name="PlanDesicion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Discard">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cryo">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Transfer">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Donate">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DonateCryo">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PlanDesicion" nillable="true" type="tns:PlanDesicion" />
+  <xs:simpleType name="DrugSource">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OvarianSuppression">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Stimulation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Trigger">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PrescribedDrugs">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LutealPhase">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DrugSource" nillable="true" type="tns:DrugSource" />
+  <xs:simpleType name="PriorityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Stat">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Regular">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TimeStamped">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PriorityType" nillable="true" type="tns:PriorityType" />
+  <xs:simpleType name="StaffType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Doctor">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Staff">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StaffType" nillable="true" type="tns:StaffType" />
+  <xs:simpleType name="ReportFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pdf">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Excel">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportFormat" nillable="true" type="tns:ReportFormat" />
+  <xs:simpleType name="ScheduleOn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Daily">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Weekly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Monthly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ScheduleOn" nillable="true" type="tns:ScheduleOn" />
+  <xs:simpleType name="ExternalStimulation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Yes">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="No">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ExternalStimulation" nillable="true" type="tns:ExternalStimulation" />
+  <xs:simpleType name="TherapyGroup">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Event">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Drug">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UltraSound">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OvumPickUp">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EmbryoTransfer">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AMH">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="E2">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Progesterone">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LH">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FSH">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Prolactin">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TSH">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Testesterone">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BHCG">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HIV">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HCV">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HbSAg">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TherapyGroup" nillable="true" type="tns:TherapyGroup" />
+  <xs:simpleType name="EMR_Template_Applicable_Criteria">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Both" />
+      <xs:enumeration value="Female" />
+      <xs:enumeration value="Male" />
+      <xs:enumeration value="NotApplicable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EMR_Template_Applicable_Criteria" nillable="true" type="tns:EMR_Template_Applicable_Criteria" />
+  <xs:simpleType name="TherapyTabs">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="General">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Execution">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FollicularMonitoring">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Documents">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LutealComments">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Outcome">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ANCVisit">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Deliverydetails">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TherapyTabs" nillable="true" type="tns:TherapyTabs" />
+  <xs:simpleType name="ModeofDelivery">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Find" />
+      <xs:enumeration value="LSIS" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ModeofDelivery" nillable="true" type="tns:ModeofDelivery" />
+  <xs:simpleType name="ANCTabs">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GeneralDetails">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="History">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Investigation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Examination">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Documents">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Suggestion">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ANCTabs" nillable="true" type="tns:ANCTabs" />
+  <xs:simpleType name="IVFDashBoardTab">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TabOverview">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TabIUI">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TableRepresentation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GraphicalRepresentation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SummedRepresentation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tabtransfer">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TabLutualPhase">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Taboutcome">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tabbirthdetails">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IVFDashBoardTab" nillable="true" type="tns:IVFDashBoardTab" />
+  <xs:simpleType name="LevelOfDifficulty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Difficult">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Easy">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LevelOfDifficulty" nillable="true" type="tns:LevelOfDifficulty" />
+  <xs:simpleType name="AmountOrPercentOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Amount" />
+      <xs:enumeration value="Percent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AmountOrPercentOperation" nillable="true" type="tns:AmountOrPercentOperation" />
+  <xs:simpleType name="InventoryTaxApplicaleOn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="PurchaseRate" />
+      <xs:enumeration value="MRP" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryTaxApplicaleOn" nillable="true" type="tns:InventoryTaxApplicaleOn" />
+  <xs:simpleType name="PatientRegistrationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPD" />
+      <xs:enumeration value="IPD" />
+      <xs:enumeration value="Pharmacy" />
+      <xs:enumeration value="Tablet" />
+      <xs:enumeration value="Mobile" />
+      <xs:enumeration value="Pathology" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PatientRegistrationType" nillable="true" type="tns:PatientRegistrationType" />
+  <xs:complexType name="clsGetLicenseDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DateToStatic" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="K1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="K2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" minOccurs="0" name="UnitDetails" nillable="true" type="q16:clsUnitMasterVO" />
+      <xs:element minOccurs="0" name="sDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLicenseDetailsBizActionVO" nillable="true" type="tns:clsGetLicenseDetailsBizActionVO" />
+  <xs:complexType name="clsAddLicenseToBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="K1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="K2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" minOccurs="0" name="UnitDetails" nillable="true" type="q17:clsUnitMasterVO" />
+      <xs:element minOccurs="0" name="sDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddLicenseToBizActionVO" nillable="true" type="tns:clsAddLicenseToBizActionVO" />
+  <xs:complexType name="clsUpdateLicenseToBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" minOccurs="0" name="UnitDetails" nillable="true" type="q18:clsUnitMasterVO" />
+      <xs:element minOccurs="0" name="sDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateLicenseToBizActionVO" nillable="true" type="tns:clsUpdateLicenseToBizActionVO" />
+  <xs:complexType name="clsdbDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsdbDetailsBizActionVO" nillable="true" type="tns:clsdbDetailsBizActionVO" />
+  <xs:complexType name="ArrayOfclsSecretQtnVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsSecretQtnVO" nillable="true" type="tns:clsSecretQtnVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsSecretQtnVO" nillable="true" type="tns:ArrayOfclsSecretQtnVO" />
+  <xs:complexType name="ArrayOfclsUserEMRTemplateDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsUserEMRTemplateDetailsVO" nillable="true" type="tns:clsUserEMRTemplateDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsUserEMRTemplateDetailsVO" nillable="true" type="tns:ArrayOfclsUserEMRTemplateDetailsVO" />
+  <xs:complexType name="clsPatientProcOTScheduleVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="OTID" nillable="true" type="xs:long" />
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.OTConfiguration" minOccurs="0" name="OTScheduleList" nillable="true" type="q19:ArrayOfclsPatientProcOTScheduleDetailsVO" />
+      <xs:element minOccurs="0" name="OTTableID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientProcedureScheduleID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientProcOTScheduleVO" nillable="true" type="tns:clsPatientProcOTScheduleVO" />
+  <xs:complexType name="clsGetPackageServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MasterList" nillable="true" type="tns:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageServiceBizActionVO" nillable="true" type="tns:clsGetPackageServiceBizActionVO" />
+  <xs:complexType name="clsAddPackageServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsPackageServiceVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPackageServiceBizActionVO" nillable="true" type="tns:clsAddPackageServiceBizActionVO" />
+  <xs:complexType name="clsGetPackageServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PackageList" nillable="true" type="tns:ArrayOfclsPackageServiceVO" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageServiceListBizActionVO" nillable="true" type="tns:clsGetPackageServiceListBizActionVO" />
+  <xs:complexType name="ArrayOfclsPackageServiceVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageServiceVO" nillable="true" type="tns:clsPackageServiceVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageServiceVO" nillable="true" type="tns:ArrayOfclsPackageServiceVO" />
+  <xs:complexType name="clsGetPackageServiceDetailsListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PackageDetailList" nillable="true" type="tns:ArrayOfclsPackageServiceDetailsVO" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageServiceDetailsListBizActionVO" nillable="true" type="tns:clsGetPackageServiceDetailsListBizActionVO" />
+  <xs:complexType name="clsGetPackageServiceFromServiceIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PackageDetailList" nillable="true" type="tns:ArrayOfclsPackageServiceDetailsVO" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageServiceFromServiceIDBizActionVO" nillable="true" type="tns:clsGetPackageServiceFromServiceIDBizActionVO" />
+  <xs:complexType name="clsGetPackageServiceForBillBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PackageDetailList" nillable="true" type="tns:ArrayOfclsPackageServiceDetailsVO" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TariffServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ViewPackge" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageServiceForBillBizActionVO" nillable="true" type="tns:clsGetPackageServiceForBillBizActionVO" />
+</xs:schema>

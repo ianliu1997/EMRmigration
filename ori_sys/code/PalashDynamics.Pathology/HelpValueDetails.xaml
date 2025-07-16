@@ -1,0 +1,85 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Pathology.HelpValueDetails"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"   
+                      xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           Width="400" Height="500" Title="Help Value Details" Loaded="ChildWindow_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="Black">
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White">
+            <Grid x:Name="DisplayArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+
+                <Border BorderBrush="PaleGreen" Grid.Row="0" BorderThickness="0" Background="Transparent">
+
+                    <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton x:Name="cmdSave"  Grid.Row="4" Content="Save" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  TabIndex="6" Click="cmdSave_Click"/>
+                                    <ToggleButton x:Name="cmdCancel"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click"  TabIndex="6"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+
+                            <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                                <TextBlock x:Name="lblError" HorizontalAlignment="Center" Foreground="Red" VerticalAlignment="Center" Text=""  Margin="4" controlsToolkit:DockPanel.Dock="Top"/>
+                                <Grid >
+                                    <!--<Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Help Value" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4" ></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbHelpValue"  Grid.Row="0" Grid.Column="1" ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" TabIndex="6"  ></inputcombo:AutoCompleteComboBox>-->
+
+                                    <data:DataGrid x:Name="dgHelpValueList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  TabIndex="12" CanUserSortColumns="False" >
+                                        <data:DataGrid.Columns>
+                                            <!--<data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+
+                                                    <DataTemplate>
+                                                        <CheckBox VerticalAlignment="Center"    Click="HelpValueDetails_Click"  Padding="5,0,5,0" ></CheckBox>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>-->
+                                            <data:DataGridTextColumn Binding="{Binding HelpValue}"  Header="Parameter"  IsReadOnly="True"></data:DataGridTextColumn>
+
+                                            <data:DataGridTemplateColumn Header="Is Default">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+
+                                                    <DataTemplate>
+                                                        <CheckBox VerticalAlignment="Center" x:Name="HelpValueDetails" IsEnabled="False"  IsChecked="{Binding HelpValueDefault,Mode=TwoWay}"></CheckBox>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                        </data:DataGrid.Columns>
+                                    </data:DataGrid>
+
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:ChildWindow>

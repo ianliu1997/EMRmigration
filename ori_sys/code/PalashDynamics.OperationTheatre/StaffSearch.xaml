@@ -1,0 +1,86 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.OperationTheatre.StaffSearch"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+   xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+   xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+   xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+   xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" 
+   xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+   Height="500" Width="800" Title="Staff Search" Loaded="ChildWindow_Loaded">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Background="White" Height="auto" Width="auto">
+        <controlsToolkit:DockPanel   Name="docMain" LastChildFill="True" controlsToolkit:DockPanel.Dock= "Top" >
+
+
+            <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" >
+                <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+
+                    <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <ToggleButton  x:Name="cmdOk"  Grid.Row="4" Content="{Binding btnOK,Source={StaticResource locResource}}" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible" Style="{StaticResource ToggleButtonStyle}"  TabIndex="7" Click="cmdOk_Click"/>
+                            <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="{Binding btnCancel,Source={StaticResource locResource}}" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}"  TabIndex="8" Click="cmdClose_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+
+            <controlsToolkit:DockPanel x:Name="docTop" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4" Background="Transparent" >
+                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                        <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock= "Top" >
+                            <Grid x:Name="LayoutRoot1"  Margin="0" Background="White">
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition  />
+
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding lblDesignation,Source={StaticResource locResource}}" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                <inputcombo:AutoCompleteComboBox  Grid.Column="1" Margin="4" x:Name="CmbDesignation"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch" SelectionChanged="CmbDesignation_SelectionChanged"></inputcombo:AutoCompleteComboBox >
+
+                                <!--<TextBlock Grid.Column="2" Text="Department" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"  />-->
+                                <!--<inputcombo:AutoCompleteComboBox  Grid.Column="3" Margin="4" x:Name="cmbDepartment"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox >-->
+
+                                <!--<TextBlock Grid.Column="4" Text="Doctor Type" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" />-->
+                                <!--<TextBox Grid.Column="5" Margin="4" x:Name="txtCheckList" MaxLength="20" VerticalAlignment="Center"  ></TextBox>-->
+                                <!--<inputcombo:AutoCompleteComboBox  Grid.Column="5" Margin="4" x:Name="cmbDoctorType"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox >-->
+
+                                <!--<ToggleButton  Grid.Column="6" x:Name="btnSearch"   Content="{Binding btnSearch,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center" Click="btnSearch_Click" Style="{StaticResource ToggleButtonStyle}" ></ToggleButton>-->
+
+                                <data:DataGrid AutoGenerateColumns="False" Margin="4" Name="dgStaffList" ItemsSource="{Binding}"  VerticalAlignment="Top" Grid.ColumnSpan="7" Grid.Row="1" >
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTemplateColumn Header="" IsReadOnly="True">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate >
+                                                    <CheckBox x:Name="chkStatus" Margin="10,2,10,2" IsChecked="{Binding Status,Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" Checked="chkStatus_Checked" Unchecked="chkStatus_Unchecked" Click="chkStatus_Click"></CheckBox>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTextColumn  Binding="{Binding StaffDesc}" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblStaffName,Source={StaticResource locResource}}" />
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </Grid>
+                        </controlsToolkit:DockPanel>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+
+    </Grid>
+</controls:ChildWindow>       

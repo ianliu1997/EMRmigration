@@ -1,0 +1,543 @@
+﻿<UserControl x:Class="PalashDynamics.IVF.DashBoard.frmGraphicalRepresentationofLabDaysWithoutIstambul"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"     
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+             xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" 
+              xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+               xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+             xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+             xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+   Loaded="UserControl_Loaded" >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+            <local:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel Margin="4"  LastChildFill="True" Grid.Row="1">
+            <controlsToolkit:DockPanel Margin="4" LastChildFill="true">
+
+
+                <controlsToolkit:DockPanel x:Name="Bottom" controlsToolkit:DockPanel.Dock="Bottom" Margin="5">
+                    <StackPanel x:Name="FooterBackPanel" Orientation="Horizontal"    Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanelBackPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <ToggleButton x:Name="Cmdsourcedetails" Visibility="Collapsed" Content="Oocyte Details" Width="100"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="Cmdsourcedetails_Click">
+                            </ToggleButton>
+                            <ToggleButton x:Name="Cmdmedia"  Content="Media Details" Width="100" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="Cmdmedia_Click" Visibility="Collapsed"/>
+                            <ToggleButton x:Name="cmdCryoPreservation" Width="125" Content="Cryo Preservation"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdCryoPreservation_Click" Visibility="Collapsed">
+                            </ToggleButton>
+                        </StackPanel>
+                    </StackPanel>
+                </controlsToolkit:DockPanel>
+                <!--<data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom"
+                            DisplayMode="FirstLastPreviousNext" Source="{Binding}" IsEnabled="True"
+                            AutoEllipsis="False" IsTotalItemCountFixed="False"/>-->
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <layoutToolkit:Accordion  x:Name="EmbSummary"  ExpandDirection="Down" SelectionMode="ZeroOrOne"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  >
+                        <layoutToolkit:AccordionItem Header="Embryology Summary"  Foreground="DarkBlue" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="AccItem"  >
+
+                            <Grp:GroupBox Header="Embryology Summary"  Grid.Row="0" Margin="4"  >
+                                <Grid ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" Grid.RowSpan="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                            <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="Trigger Date " Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <controls:DatePicker  Grid.Row="0" Grid.Column="1"    Margin="4"  x:Name="dtTriggerDate" IsEnabled="False"></controls:DatePicker>
+
+                                                    <TextBlock Text="Trigger Time " Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <inputToolkit:TimePicker Margin="4"  Grid.Row="1" Grid.Column="1"  x:Name="dtTriggerTime" IsEnabled="False"></inputToolkit:TimePicker>
+
+
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+
+                                        <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                            <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="OPU Date " Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <controls:DatePicker  Grid.Row="0" Grid.Column="1"    Margin="4"  x:Name="dtOPUDate1" IsEnabled="False"></controls:DatePicker>
+
+                                                    <TextBlock Text="OPU Time" Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <inputToolkit:TimePicker Margin="4"  Grid.Row="1" Grid.Column="2"    x:Name="dtOPUTime" IsEnabled="False"></inputToolkit:TimePicker>
+
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+
+
+
+                                        <!--<TextBlock Text="Trigger Date " Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                                            <controls:DatePicker  Grid.Row="0" Grid.Column="1"    Margin="4"  x:Name="dtTriggerDate"></controls:DatePicker>-->
+
+
+                                        <!--<TextBlock Text="OPU Date " Grid.Row="0" Grid.Column="2"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                                            <controls:DatePicker  Grid.Row="0" Grid.Column="3"    Margin="4"  x:Name="dtOPUDate1"></controls:DatePicker>-->
+
+                                        <!--<TextBlock Text="Trigger Time " Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                                            <inputToolkit:TimePicker Margin="4"  Grid.Row="1" Grid.Column="1"  x:Name="dtTriggerTime"></inputToolkit:TimePicker>-->
+
+                                        <!--<TextBlock Text="OPU Time" Grid.Row="1" Grid.Column="2"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                                            <inputToolkit:TimePicker Margin="4"  Grid.Row="1" Grid.Column="3"    x:Name="dtOPUTime"></inputToolkit:TimePicker>-->
+
+                                        <Grid Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                                            <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="No of Oocytes Retrieved" Grid.Row="0" Grid.Column="0"   Margin="4" VerticalAlignment="Center" ></TextBlock>
+
+                                                    <Grid Grid.Row="0" Grid.Column="1">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBox Grid.Row="0" Grid.Column="0" x:Name="txtNoOocyteRetrieved" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" MaxLength="2" TextChanged="txtNoOocyteRetrieved_TextChanged" KeyDown="txtNoOocyteRetrieved_KeyDown"></TextBox>
+                                                        <HyperlinkButton Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"  Content="Save"  Padding="5,0,5,0" Click="SaveNoOfOocyte_Click"  x:Name="hlbOocyteNoSave"></HyperlinkButton>
+
+                                                    </Grid>
+
+                                                    <!--<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                                                                                            <TextBox x:Name="txtNoOocyteRetrieved" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4"></TextBox>
+                                                                                            <HyperlinkButton VerticalAlignment="Center"  Content="Save"  Padding="5,0,5,0" Click="SaveNoOfOocyte_Click"  x:Name="hlbView"></HyperlinkButton>
+                                                                                        </StackPanel>-->
+
+                                                    <!--<TextBox Grid.Row="0" Grid.Column="1" x:Name="txtNoOocyteRetrieved" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4"></TextBox>-->
+
+                                                    <Grid VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Text="GV" Margin="2" HorizontalAlignment="Right"  Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                        <TextBox x:Name="txtGV" Margin="4" Grid.Column="1" TabIndex="10" IsEnabled="False"></TextBox>
+                                                        <TextBlock Text="M I" Margin="2"  Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                        <TextBox x:Name="txtMI" Margin="4"  Grid.Column="3"  TabIndex="10" IsEnabled="False"></TextBox>
+                                                        <TextBlock Text="M II " Margin="2" HorizontalAlignment="Right"  Grid.Column="4" VerticalAlignment="Center"></TextBlock>
+                                                        <TextBox x:Name="txtMII" Margin="4"  Grid.Column="5" TabIndex="10" IsEnabled="False"></TextBox>
+
+                                                    </Grid>
+
+
+                                                </Grid>
+                                            </Border>
+
+                                        </Grid>
+
+
+                                        <Grid Grid.Row="0" Grid.Column="6" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                            <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="Fresh PGD/PGS Embryos " Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <TextBox x:Name="txtFreshPGDPGSEmbryos" Margin="4" Grid.Column="1" TabIndex="10" IsEnabled="False"></TextBox>
+
+                                                    <TextBlock Text="Frozen PGD/PGS Embryos" Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <TextBox x:Name="txtFrozenPGDPGSEmbryos" Grid.Row="1" Margin="4" Grid.Column="1" TabIndex="10" IsEnabled="False"></TextBox>
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="8" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                            <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="Thawed PGD/PGS Embryos " Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <TextBox x:Name="txtThawedPGDPGSEmbryos" Margin="4" Grid.Column="1" TabIndex="10" IsEnabled="False"></TextBox>
+
+                                                    <TextBlock Text="Survived PGD/PGS Embryos Post thawing" Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                    <TextBox x:Name="txtSurvivedPGDPGSEmbryos"  Grid.Row="1" Margin="4" Grid.Column="1" TabIndex="10" IsEnabled="False"></TextBox>
+                                                </Grid>
+                                            </Border> 
+                                        </Grid>
+
+                                        <!--<TextBlock Text="No of Oocytes Retrieved" Grid.Row="0" Grid.Column="4"   Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                                                            <TextBox Grid.Row="0" Grid.Column="5" x:Name="txtNoOocyteRetrieved" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4"></TextBox>-->
+
+
+
+
+
+
+                                        <!--<Grid VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
+                                                                                <Grid.RowDefinitions>
+                                                                                    <RowDefinition></RowDefinition>
+                                                                                </Grid.RowDefinitions>
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                                    <ColumnDefinition></ColumnDefinition>
+                                                                                </Grid.ColumnDefinitions>
+
+                                                                                <TextBlock Text="GV" Margin="2" HorizontalAlignment="Right"  Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                                                <TextBox x:Name="txtGV" Margin="4" Text="{Binding GV,Mode=TwoWay}" Grid.Column="1"  TextWrapping="Wrap" TextChanged="GetTotal_TextChanged" KeyDown="txtMI_KeyDown" TabIndex="10"></TextBox>
+                                                                                <TextBlock Text="MI" Margin="2"  Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                                                <TextBox x:Name="txtMI" Margin="4" Text="{Binding MI,Mode=TwoWay}" Grid.Column="3" TextWrapping="Wrap" TextChanged="GetTotal_TextChanged" KeyDown="txtMI_KeyDown" TabIndex="10"></TextBox>
+                                                                                <TextBlock Text="MII " Margin="2" HorizontalAlignment="Right"  Grid.Column="4" VerticalAlignment="Center"></TextBlock>
+                                                                                <TextBox x:Name="txtMII" Margin="4" Text="{Binding MII,Mode=TwoWay}" Grid.Column="5" TextWrapping="Wrap" TextChanged="GetTotal_TextChanged" KeyDown="txtMI_KeyDown" TabIndex="10"></TextBox>
+                                                                                
+                                                                            </Grid>-->
+
+                                    </Grid>
+
+                                    <Grid  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="12">
+                                        <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition  Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto" ></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text="Oocyte Cytoplasm Dysmorphisim - Present" Margin="2"  Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Margin="4"  x:Name="txtOocyteCytoplasmDysmorphisimPresent"   VerticalAlignment="Center"  TabIndex="11"  Grid.Column="1 " IsEnabled="False" />
+                                                <TextBlock Text="Absent" Margin="2"  Grid.Column="2" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Margin="4"  x:Name="txtOocyteCytoplasmDysmorphisimAbsent"    VerticalAlignment="Center"  TabIndex="11"  Grid.Column="3 " IsEnabled="False" />
+
+
+                                                <TextBlock Text="Extracytoplasmic Dysmorphisim - Present" Margin="2"  Grid.Column="4" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Margin="4"  x:Name="txtExtracytoplasmicDysmorphisimPresent"   VerticalAlignment="Center"  TabIndex="12"  Grid.Column="5" IsEnabled="False"/>
+                                                <TextBlock Text="Absent" Margin="2"  Grid.Column="6" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Margin="4"  x:Name="txtExtracytoplasmicDysmorphisimAbsent"   VerticalAlignment="Center"  TabIndex="12"  Grid.Column="7" IsEnabled="False"/>
+
+
+                                                <TextBlock Text="Oocyte-Corona-Cumulus Complex - Normal" Margin="2"  Grid.Column="8" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Margin="4"  x:Name="txtOocyteCoronaCumulusComplexPresent"  VerticalAlignment="Center"  TabIndex="12"  Grid.Column="9" IsEnabled="False" />
+                                                <TextBlock Text="Abnormal" Margin="2"  Grid.Column="10" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Margin="4"  x:Name="txtOocyteCoronaCumulusComplexAbsent"    VerticalAlignment="Center"  TabIndex="12"  Grid.Column="11" IsEnabled="False"/>
+
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                            </Grp:GroupBox>
+                        </layoutToolkit:AccordionItem>
+                    </layoutToolkit:Accordion>
+
+                    <data:DataGrid Grid.Row="1"  x:Name="dgDayList" controlsToolkit:DockPanel.Dock="Top" Margin="4" ItemsSource="{Binding}" AutoGenerateColumns="False"   LoadingRow="dgDayList_LoadingRow"  VerticalScrollBarVisibility="Visible"  Visibility="Collapsed">
+                        <data:DataGrid.Columns>
+                            <data:DataGridTextColumn Width="100" Binding="{Binding CycleCode,Mode=TwoWay}" Header="Cycle Code" IsReadOnly="True" Visibility="Collapsed"/>
+                            <data:DataGridTextColumn Binding="{Binding OocyteNumber}" Header="Oocyte/Embryo Number" IsReadOnly="True" ></data:DataGridTextColumn>
+
+                            <data:DataGridTemplateColumn IsReadOnly="True" Header=" Day 0 " >
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="80">
+                                            <HyperlinkButton Background="White" HorizontalAlignment="Center"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay0_Click"    x:Name="btnLabDay0" Visibility="{Binding Day0, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay0,Mode=TwoWay}">
+                                                <Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day0Image}" x:Name="IMgLabDay0"  />
+                                            </HyperlinkButton>
+                                            <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan0, Mode=TwoWay}"   FontWeight="Bold"/>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn IsReadOnly="True" Header="Fert Check">
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="80">
+                                            <HyperlinkButton Background="White" HorizontalAlignment="Center"  VerticalAlignment="Center"  Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnFertCheck_Click" x:Name="btnFertCheck"  IsEnabled="{Binding IsFertCheck,Mode=TwoWay}">
+
+                                                <!--<HyperlinkButton Background="White" HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="4" IsTabStop="False" Click="btnFertCheck_Click"    x:Name="btnFertCheck" Visibility="{Binding Day0, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay0,Mode=TwoWay}" IsEnabled="False">-->
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day0Image}" x:Name="IMgLabDay0"  />-->
+
+                                                <Image HorizontalAlignment="Center" Margin="8" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=FertCheckImage}" x:Name="IMgFertCheck"  />
+                                            </HyperlinkButton>
+                                            <!--<TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan0, Mode=TwoWay}"   FontWeight="Bold"/>-->
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True" Header=" Day 1 " Visibility="Collapsed">
+                                <!--Visibility="{Binding Day1Visible,Converter={StaticResource VisiblilityConverter}}" day 1-->
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton Background="White" Content="View Observation"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnLavDay1_Click" x:Name="btnLabDay1" Visibility="{Binding Day1, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay1,Mode=TwoWay}">
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>-->
+                                            </HyperlinkButton>
+                                            <!--<TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan1, Mode=TwoWay}"   FontWeight="Bold"/>-->
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True" Header=" Day 2 " Visibility="Collapsed">
+                                <!--Visibility="{Binding Day1Visible,Converter={StaticResource VisiblilityConverter}}" day 2-->
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton Background="White" Content="View Observation"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnLabDay2_Click" x:Name="btnLabDay2" Visibility="{Binding Day2, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay2,Mode=TwoWay}">
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>-->
+                                            </HyperlinkButton>
+                                            <!--<TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan1, Mode=TwoWay}"   FontWeight="Bold"/>-->
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True" Header="Day 3" Visibility="Collapsed">
+                                <!--Visibility="{Binding Day1Visible,Converter={StaticResource VisiblilityConverter}}"-->
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton Background="White" Content="View Observation"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnLabDay3_Click" x:Name="btnLabDay3" Visibility="{Binding Day3, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay3,Mode=TwoWay}">
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>-->
+                                            </HyperlinkButton>
+                                            <TextBlock Canvas.Left="100" Canvas.Top="1" FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Day3PGDPGS, Mode=TwoWay}" FontWeight="Bold"/>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True" Header=" Day 4  " Visibility="Collapsed">
+                                <!--Visibility="{Binding Day1Visible,Converter={StaticResource VisiblilityConverter}}" day 4-->
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton Background="White" Content="View Observation"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnLabDay4_Click" x:Name="btnLabDay4" Visibility="{Binding Day4, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay4,Mode=TwoWay}">
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>-->
+                                            </HyperlinkButton>
+                                            <!--<TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan1, Mode=TwoWay}"   FontWeight="Bold"/>-->
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True" Header=" Day 5 " Visibility="Collapsed">
+                                <!--Visibility="{Binding Day1Visible,Converter={StaticResource VisiblilityConverter}}" day 5-->
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton Background="White" Content="View Observation"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnLabDay5_Click" x:Name="btnLabDay5" Visibility="{Binding Day5, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay5,Mode=TwoWay}">
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>-->
+                                            </HyperlinkButton>
+                                            <TextBlock Canvas.Left="100" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Day5PGDPGS, Mode=TwoWay}"   FontWeight="Bold"/>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True" Header="Day 6" Visibility="Collapsed">
+                                <!--Visibility="{Binding Day1Visible,Converter={StaticResource VisiblilityConverter}}"-->
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton Background="White" Content="View Observation"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnLabDay6_Click" x:Name="btnLabDay6" Visibility="{Binding Day6, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay6,Mode=TwoWay}">
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>-->
+                                            </HyperlinkButton>
+                                            <TextBlock Canvas.Left="100" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Day6PGDPGS, Mode=TwoWay}"   FontWeight="Bold"/>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True" Header="Day 7" Visibility="Collapsed">
+                                <!--Visibility="{Binding Day1Visible,Converter={StaticResource VisiblilityConverter}}"-->
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton Background="White" Content="View Observation"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" Margin="4" IsTabStop="False" Click="btnLabDay7_Click" x:Name="btnLabDay7" Visibility="{Binding Day7, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay7,Mode=TwoWay}">
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>-->
+                                            </HyperlinkButton>
+                                            <TextBlock Canvas.Left="100" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Day7PGDPGS, Mode=TwoWay}"   FontWeight="Bold"/>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+
+                            <data:DataGridTemplateColumn IsReadOnly="True">
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton VerticalAlignment="Center"   Content="Add Observations"  Padding="5,0,5,0" Click="hlbAddObservations_Click"  x:Name="hlbAddObservations" Margin="4" IsEnabled="{Binding IsAddObservation,Mode=TwoWay}">
+                                                <!--<HyperlinkButton Background="White" HorizontalAlignment="Center"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnFertCheck_Click"    x:Name="btnFertCheck" Visibility="{Binding Day0, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay0,Mode=TwoWay}" IsEnabled="False">-->
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day0Image}" x:Name="IMgLabDay0"  />-->
+                                                <!--<Image HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="/PalashDynamics;component/Icons/positive.png" x:Name="IMgFertCheck"  />-->
+                                            </HyperlinkButton>
+                                            <!--<TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan0, Mode=TwoWay}"   FontWeight="Bold"/>-->
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn  IsReadOnly="True"  Header="Decision">
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <inputcombo:AutoCompleteComboBox x:Name="cmbDecision" Padding="5,0,5,0" SelectedValue="{Binding SelectedDecision.ID}" SelectedItem="{Binding SelectedDecision,Mode=TwoWay}" ItemsSource="{Binding Decision}" HorizontalAlignment="Stretch"  SelectedValuePath="ID" VerticalAlignment="Center" Width="130"  Margin="4" SelectionChanged="cmbDecision_SelectionChanged" IsEnabled="{Binding IsDecision,Mode=TwoWay}"></inputcombo:AutoCompleteComboBox>
+
+                                            <!--<HyperlinkButton Background="White"   HorizontalAlignment="Center"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay6_Click"   x:Name="btnLabDay6" Visibility="{Binding Day6, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay6,Mode=TwoWay}">
+                                                <Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day6Image}" x:Name="IMgLabDay6" />
+                                            </HyperlinkButton>
+                                            <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan6, Mode=TwoWay}"   FontWeight="Bold"/>-->
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn IsReadOnly="True" Visibility="Collapsed">
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton VerticalAlignment="Center"   Content="Freeze Decision"  Padding="5,0,5,0" Click="hlbFreezedecision_Click"  x:Name="hlbFreezedecision" Margin="4" IsEnabled="{Binding IsFreezedecision,Mode=TwoWay}">
+                                                <!--<HyperlinkButton Background="White" HorizontalAlignment="Center"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnFertCheck_Click"    x:Name="btnFertCheck" Visibility="{Binding Day0, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay0,Mode=TwoWay}" IsEnabled="False">-->
+                                                <!--<Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day0Image}" x:Name="IMgLabDay0"  />-->
+                                                <!--<Image HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="/PalashDynamics;component/Icons/positive.png" x:Name="IMgFertCheck"  />-->
+                                            </HyperlinkButton>
+                                            <!--<TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan0, Mode=TwoWay}"   FontWeight="Bold"/>-->
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn Visibility="Collapsed">
+                                <data:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <!--<TextBox Background="{Binding IsExtendedCultureForBoth,Mode=TwoWay}" Width="15" Height="15" Margin="4" IsReadOnly="True" ></TextBox>-->
+                                            <Image HorizontalAlignment="Center" Margin="2" VerticalAlignment="Center" Stretch="Fill"  Source="{Binding Path=IsExtendedCultureForBoth}"  Height="13" Width="13" ></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTemplateColumn IsReadOnly="True" Visibility="Collapsed">
+                                <data:DataGridTemplateColumn.CellTemplate  >
+                                    <DataTemplate >
+                                        <Canvas Height="40" Width="150">
+                                            <HyperlinkButton VerticalAlignment="Center"   Content="Select patient"  Padding="5,0,5,0" Click="hlbSelectPatient_Click"  x:Name="hlbSelectPatient" Margin="4" IsEnabled="{Binding IsSelectPatient,Mode=TwoWay}"></HyperlinkButton>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+
+                            <data:DataGridTextColumn Width="150" Binding="{Binding PatientName,Mode=TwoWay}" Header="Patient Name" IsReadOnly="True" Visibility="Collapsed"/>
+                            <data:DataGridTextColumn Width="150" Binding="{Binding MRNO,Mode=TwoWay}" Header="MR No." IsReadOnly="True" Visibility="Collapsed"/>
+
+                            <data:DataGridTextColumn Binding="{Binding SerialOocyteNumber}" Header="SerialOocyteNumber" IsReadOnly="True" Visibility="Collapsed" ></data:DataGridTextColumn>
+                        </data:DataGrid.Columns>
+                    </data:DataGrid>
+
+                    <StackPanel Grid.Row="2" x:Name="LeftFooter" Orientation="Horizontal" Margin="1" HorizontalAlignment="Right">
+                        <Image   Source="/PalashDynamics;component/Icons/green.png" Height="16" ></Image>
+                        <TextBlock x:Name="lblAvailable" Margin="5,0,5,0" Width="Auto" MinHeight="20" Text="Previous Cycle Frozen Embryo" HorizontalAlignment="Left"></TextBlock>
+                        <Image   Source="/PalashDynamics;component/Icons/yellow.png" Height="16" ></Image>
+                        <TextBlock x:Name="lblBooked" Margin="5,0,5,0" Width="Auto" MinHeight="20" Text="Current Cycle Frozen Embryo" HorizontalAlignment="Left"></TextBlock>
+                    </StackPanel>
+                </Grid>
+
+
+
+
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+    </Grid>
+
+
+
+</UserControl>

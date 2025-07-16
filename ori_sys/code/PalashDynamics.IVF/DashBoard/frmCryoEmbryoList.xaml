@@ -1,0 +1,89 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmCryoEmbryoList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+     Width="1000" Height="600" 
+           Title="Embryo Bank" Loaded="ChildWindow_Loaded"
+                         xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+                       xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+
+
+    <Grid x:Name="Root" Background="Black">
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White">
+            <Grid x:Name="DisplayArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+
+                <Border BorderBrush="PaleGreen" Grid.Row="0" BorderThickness="0" Background="Transparent">
+
+                    <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton x:Name="cmdOK"  Grid.Row="4" Content="OK" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdOK_Click" TabIndex="5" />
+                                    <ToggleButton x:Name="cmdCancel"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click" TabIndex="6"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+
+                            <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                                <StackPanel controlsToolkit:DockPanel.Dock="Top" Margin="0,4,0,0">
+                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Embryos In Cryo Bank" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                </StackPanel>
+
+
+                                <data:DataPager TabIndex="20" x:Name="EmbryoDataPager" controlsToolkit:DockPanel.Dock="Bottom"                        
+                        DisplayMode="FirstLastPreviousNext" IsEnabled="True" IsTotalItemCountFixed="True"
+                        Source="{Binding }" AutoEllipsis="False"/>
+
+                                <data:DataGrid Height="Auto" Width="Auto" Grid.Row="0" ItemsSource="{Binding EmbryoList}"  x:Name="EmbryoDataGrid"  AutoGenerateColumns="False" SelectionChanged="dataGrid2_SelectionChanged" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTemplateColumn Header="Select" >
+                                            <data:DataGridTemplateColumn.CellTemplate  >
+                                                <DataTemplate >
+                                                    <CheckBox Margin="10,2,10,2" IsChecked="{Binding IsThaw, Mode=TwoWay}" x:Name="chkSelect" IsTabStop="True" Click="chkSelect_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" ></CheckBox >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Embryo No." Binding="{Binding EmbNumber}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Date" Binding="{Binding VitrificationDate}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="MR. No." Binding="{Binding MRNo}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Name" Width="150" Binding="{Binding PatientName}"/>
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Tank" Binding="{Binding Tank}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Cane" Binding="{Binding Can}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Canister No." Binding="{Binding Conistor}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Straw" Binding="{Binding Straw}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Shape" Binding="{Binding GobletShape}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Color" Binding="{Binding ColorCode}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Goblet Size" Binding="{Binding GobletSize}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Cell Stage" Binding="{Binding CellStage}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Grade" Binding="{Binding Grade}" />
+                                        <data:DataGridTextColumn IsReadOnly="True" Header="Transfer Day" Binding="{Binding TransferDay}" />
+
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:ChildWindow>

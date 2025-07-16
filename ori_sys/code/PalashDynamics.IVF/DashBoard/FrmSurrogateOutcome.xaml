@@ -1,0 +1,480 @@
+﻿<UserControl x:Class="PalashDynamics.IVF.DashBoard.FrmSurrogateOutcome"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"     
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+             xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" 
+              xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+               xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+             xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+             xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+               xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+              xmlns:Common="clr-namespace:DataDrivenApplication"
+   Loaded="UserControl_Loaded" Width="auto" Height="auto">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+            <local:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel Margin="4"  LastChildFill="True" Grid.Row="1">
+            <controlsToolkit:DockPanel Margin="4" LastChildFill="true">
+                <controlsToolkit:DockPanel x:Name="docTaboutcome" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Name="BHCGGrid" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0" controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="BHCG Details " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                    <data:DataGrid Grid.Row="1" SelectionMode="Single" x:Name="dgBHCGDetailsGrid" ItemsSource="{Binding}"  AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch" Height="160">
+                                        <data:DataGrid.Columns>
+                                            <data:DataGridTemplateColumn Header="Date">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <controls:DatePicker  Width="100" Height="28"  SelectedDate="{Binding BHCGAss1Date,Mode=TwoWay}"  Margin="4" ></controls:DatePicker>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn Header="Result">
+                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <Grid >
+                                                            <CustomCombo:AutoCompleteComboBox TabIndex="17" VerticalAlignment="Center" x:Name="cmbBHCGResult" ItemsSource="{Binding BHCGResultListVO}" SelectedItem="{Binding selectedBHCGResultList,Mode=TwoWay}" SelectedValue="{Binding selectedBHCGResultList.ID}" Text=""  />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn Header="BHCG Value" >
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <TextBox x:Name="txtBHCGValue" Width="250"  VerticalAlignment="Center"  Height="28"  Text="{Binding BHCGAss1BSCGValue,Mode=TwoWay}"></TextBox>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn Header="Surrogate">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <CustomCombo:AutoCompleteComboBox Margin="4" ItemsSource="{Binding SurrogatePatientList}"   SelectedItem="{Binding SelectedSurrogatePatientList,Mode=TwoWay}"  SelectedValue="{Binding SelectedSurrogatePatientList.PatientID}" VerticalAlignment="Top" Text="" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton Visibility="Visible"  x:Name="AddLink" Content="Add" Margin="5" VerticalAlignment="Center" Click="AddLink_Click" ></HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteSchedule" ToolTipService.ToolTip="Delete" Click="cmdDeleteDrug_Click"></HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                        </data:DataGrid.Columns>
+                                    </data:DataGrid>
+                                </Grid>
+                                <layoutToolkit:Accordion Grid.Row="1" x:Name="SelfSummary"  ExpandDirection="Down" SelectionMode="ZeroOrOne"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  >
+                                    <layoutToolkit:AccordionItem Header="Self"  Foreground="DarkBlue" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="AccItem" >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <StackPanel x:Name="Stack3" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Orientation="Horizontal">
+                                                    <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="No. Of Sacs Observed" Margin="4"></TextBlock>
+                                                    <TextBox Width="120" VerticalAlignment="Center"  Text="{Binding NoOfSacs,Mode=TwoWay}" x:Name="txtNoOfSacs" Margin="4" TextChanged="txtNoOfSacs_TextChanged"  KeyDown="txtNoOfSacs_KeyDown" ></TextBox>
+                                                    <TextBlock VerticalAlignment="Center" Text="Observation Date" Margin="4"></TextBlock>
+                                                    <controls:DatePicker  HorizontalAlignment="Left"   VerticalAlignment="Center"  Margin="4" x:Name="dtObservationDate"></controls:DatePicker>
+                                                    <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Remark" Margin="4"></TextBlock>
+                                                    <TextBox Width="200" VerticalAlignment="Center"  Text="{Binding SacRemark,Mode=TwoWay}" x:Name="txtSacRemark" Margin="4" ></TextBox>
+                                                    <StackPanel Orientation="Horizontal" x:Name="PregnacncyAchievedGrid" Visibility="Collapsed">
+                                                        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pregnancy Achieved" Margin="4"></TextBlock>
+                                                        <CustomCombo:AutoCompleteComboBox  Grid.Column="1" Grid.Row="0"  Width="130" x:Name="cmbPregnancyAchieved" HorizontalAlignment="Left"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  VerticalAlignment="Center" Text="" Margin="4" IsEnabled="False" />
+                                                        <TextBox Width="200" VerticalAlignment="Center" x:Name="txtID" Margin="4" Visibility="Collapsed" ></TextBox>
+                                                        <TextBox Width="200" VerticalAlignment="Center" x:Name="txtUnitID" Margin="4" Visibility="Collapsed" ></TextBox>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                            <Border Grid.Row="1" controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="Sacs Details " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                            </Border>
+                                            <Grid Grid.Row="2" Name="SacGrid" >
+                                                <data:DataGrid  SelectionMode="Single" x:Name="dgSacsDetailsGrid" ItemsSource="{Binding}"  AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch" Height="160">
+                                                    <data:DataGrid.Columns>
+                                                        <data:DataGridTextColumn Width="100" Binding="{Binding SaceNoStr}" Header="Sacs"/>
+
+                                                        <data:DataGridTemplateColumn Header="Fetal Heart">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <Grid>
+                                                                        <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsFetalHeart,Mode=TwoWay}" x:Name="ChkFetalHeart" Click="ChkFetalHeart_Click" HorizontalAlignment="Center" ></CheckBox>
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Header="Result">
+                                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                                <DataTemplate>
+                                                                    <Grid >
+                                                                        <CustomCombo:AutoCompleteComboBox TabIndex="17" VerticalAlignment="Center" x:Name="cmbResult" ItemsSource="{Binding OutcomeResultListVO}" SelectedItem="{Binding selectedResultList,Mode=TwoWay}" SelectedValue="{Binding selectedResultList.ID}" Text=""  />
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Header="Pregnancy">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <Grid>
+                                                                        <CustomCombo:AutoCompleteComboBox TabIndex="17" VerticalAlignment="Center" x:Name="cmbPregancy" ItemsSource="{Binding OutcomePregnancyListVO}" SelectedItem="{Binding selectedPregnancyList,Mode=TwoWay}" SelectedValue="{Binding selectedPregnancyList.ID}" Text="" />
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Header="Congenital Abnormality">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <Grid>
+                                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                                            <RadioButton Margin="2" Content="Yes" IsChecked="{Binding CongenitalAbnormalityYes,Mode=TwoWay}" x:Name="CongenitalAbnormalityYes" Click="CongenitalAbnormalityYes_Click"></RadioButton>
+                                                                            <RadioButton Margin="2" Content="No"  IsChecked="{Binding CongenitalAbnormalityNo,Mode=TwoWay}" x:Name="CongenitalAbnormalityNo" Click="CongenitalAbnormalityNo_Click"></RadioButton>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Header="Remarks" >
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <Grid>
+                                                                        <TextBox x:Name="txtCongenitalAbnormality" Width="250" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True" VerticalAlignment="Center"  Height="28"  Text="{Binding CongenitalAbnormalityReason,Mode=TwoWay}" IsEnabled="{Binding Status}"></TextBox>
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+                                            </Grid>
+                                            <!--<Grid Grid.Row="3" Name="PregnacncyAchievedGrid" Visibility="Collapsed">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pregnancy Achieved" Margin="4"></TextBlock>
+                                                    <CustomCombo:AutoCompleteComboBox  Grid.Column="1" Grid.Row="0"  Width="130" x:Name="cmbPregnancyAchieved" HorizontalAlignment="Left"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  VerticalAlignment="Center" Text="" Margin="4" IsEnabled="False" />
+                                                </Grid>-->
+                                        </Grid>
+
+
+
+
+                                    </layoutToolkit:AccordionItem>
+                                </layoutToolkit:Accordion>
+                                <Border Grid.Row="2" controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width=".5*"></ColumnDefinition>
+                                            <ColumnDefinition Width=".5*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <layoutToolkit:Accordion Grid.Row="0"  Grid.Column="0" x:Name="Surrogate1Summary"  ExpandDirection="Down" SelectionMode="ZeroOrOne"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  >
+                                            <layoutToolkit:AccordionItem Header="Surrogate 1"  Foreground="DarkBlue" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="AccItemSurrogate1"  >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <StackPanel Grid.Row="0" x:Name="StackSurrogate1" Orientation="Horizontal">
+                                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="No. Of Sacs Observed" Margin="4"></TextBlock>
+                                                            <TextBox Width="120" VerticalAlignment="Center"  Text="{Binding NoOfSacs,Mode=TwoWay}" x:Name="txtNoOfSacsSurrogate1" Margin="4" TextChanged="txtNoOfSacsSurrogate1_TextChanged"  KeyDown="txtNoOfSacs_KeyDown" ></TextBox>
+                                                            <TextBlock VerticalAlignment="Center" Text="Observation Date" Margin="4"></TextBlock>
+                                                            <controls:DatePicker  HorizontalAlignment="Left"   VerticalAlignment="Center"  Margin="4" x:Name="dtObservationDateSurrogate1"></controls:DatePicker>
+                                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Remark" Margin="4"></TextBlock>
+                                                            <TextBox Width="200" VerticalAlignment="Center"  Text="{Binding SacRemark,Mode=TwoWay}" x:Name="txtSacRemarkSurrogate1" Margin="4" ></TextBox>
+                                                        </StackPanel>
+                                                        <StackPanel Grid.Row="1" Orientation="Horizontal" x:Name="PregnacncyAchievedGridSurrogate1" >
+                                                            <CheckBox IsThreeState="False" IsChecked="{Binding IsUnlinkSurrogate,Mode=TwoWay}" x:Name="chkIsUnlinkSurrogate1" Content="Unlink" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right"></CheckBox>
+                                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="txbPregnancyAchievedSurrogate1" Text="Pregnancy Achieved" Margin="4" Visibility="Collapsed"></TextBlock>
+                                                            <CustomCombo:AutoCompleteComboBox   Width="130" x:Name="cmbPregnancyAchievedSurrogate1" HorizontalAlignment="Left"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  VerticalAlignment="Center" Text="" Margin="4" IsEnabled="False" Visibility="Collapsed"/>
+                                                            <TextBox Width="200" VerticalAlignment="Center" x:Name="txtSurrogate1ID" Margin="4" Visibility="Collapsed" ></TextBox>
+                                                            <TextBox Width="200" VerticalAlignment="Center" x:Name="txtSurrogate1UnitID" Margin="4" Visibility="Collapsed" ></TextBox>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <Border Grid.Row="1" controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="Sacs Details " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                    <Grid Grid.Row="2" Name="SacGridSurrogate1" >
+                                                        <data:DataGrid  SelectionMode="Single" x:Name="dgSacsDetailsGridSurrogate1" ItemsSource="{Binding}"  AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch" Height="160"  >
+                                                            <data:DataGrid.Columns>
+                                                                <data:DataGridTextColumn Width="100" Binding="{Binding SaceNoStr}" Header="Sacs"/>
+
+                                                                <data:DataGridTemplateColumn Header="Fetal Heart">
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsFetalHeart,Mode=TwoWay}" x:Name="ChkFetalHeartSurrogate1" Click="ChkFetalHeartSurrogate1_Click" HorizontalAlignment="Center" ></CheckBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Result">
+                                                                    <data:DataGridTemplateColumn.CellTemplate >
+                                                                        <DataTemplate>
+                                                                            <Grid >
+                                                                                <CustomCombo:AutoCompleteComboBox TabIndex="17" VerticalAlignment="Center" x:Name="cmbResult" ItemsSource="{Binding OutcomeResultListVO}" SelectedItem="{Binding selectedResultList,Mode=TwoWay}" SelectedValue="{Binding selectedResultList.ID}" Text=""  />
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Pregnancy">
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <CustomCombo:AutoCompleteComboBox TabIndex="17" VerticalAlignment="Center" x:Name="cmbPregancy" ItemsSource="{Binding OutcomePregnancyListVO}" SelectedItem="{Binding selectedPregnancyList,Mode=TwoWay}" SelectedValue="{Binding selectedPregnancyList.ID}" Text="" />
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Congenital Abnormality">
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                                                    <RadioButton Margin="2" Content="Yes" IsChecked="{Binding CongenitalAbnormalityYes,Mode=TwoWay}" x:Name="CongenitalAbnormalitySurrogate1Yes" Click="CongenitalAbnormalitySurrogate1Yes_Click"></RadioButton>
+                                                                                    <RadioButton Margin="2" Content="No"  IsChecked="{Binding CongenitalAbnormalityNo,Mode=TwoWay}" x:Name="CongenitalAbnormalitySurrogate1No" Click="CongenitalAbnormalitySurrogate1No_Click"></RadioButton>
+                                                                                </StackPanel>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Remarks" >
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <TextBox x:Name="txtCongenitalAbnormality" Width="250" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True" VerticalAlignment="Center"  Height="28"  Text="{Binding CongenitalAbnormalityReason,Mode=TwoWay}" IsEnabled="{Binding Status}"></TextBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+                                                            </data:DataGrid.Columns>
+                                                        </data:DataGrid>
+                                                    </Grid>
+                                                    <!--<Grid Grid.Row="3" Name="PregnacncyAchievedGridSurrogate1" Visibility="Collapsed">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pregnancy Achieved" Margin="4"></TextBlock>
+                                                    <CustomCombo:AutoCompleteComboBox  Grid.Column="1" Grid.Row="0"  Width="130" x:Name="cmbPregnancyAchievedSurrogate1" HorizontalAlignment="Left"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  VerticalAlignment="Center" Text="" Margin="4" IsEnabled="False" />
+                                                </Grid>-->
+                                                </Grid>
+                                            </layoutToolkit:AccordionItem>
+                                        </layoutToolkit:Accordion>
+
+                                        <layoutToolkit:Accordion Grid.Row="0" Grid.Column="1" x:Name="Surrogate2Summary"  ExpandDirection="Down" SelectionMode="ZeroOrOne"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  >
+                                            <layoutToolkit:AccordionItem Header="Surrogate 2"  Foreground="DarkBlue" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="AccItemSurrogate2"  >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <StackPanel x:Name="StackSurrogate2" Grid.Row="0" Orientation="Horizontal">
+                                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="No. Of Sacs Observed" Margin="4"></TextBlock>
+                                                            <TextBox Width="120" VerticalAlignment="Center"  Text="{Binding NoOfSacs,Mode=TwoWay}" x:Name="txtNoOfSacsSurrogate2" Margin="4" TextChanged="txtNoOfSacsSurrogate2_TextChanged"  KeyDown="txtNoOfSacs_KeyDown" ></TextBox>
+                                                            <TextBlock VerticalAlignment="Center" Text="Observation Date" Margin="4"></TextBlock>
+                                                            <controls:DatePicker  HorizontalAlignment="Left"   VerticalAlignment="Center"  Margin="4" x:Name="dtObservationDateSurrogate2"></controls:DatePicker>
+                                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Remark" Margin="4"></TextBlock>
+                                                            <TextBox Width="200" VerticalAlignment="Center"  Text="{Binding SacRemark,Mode=TwoWay}" x:Name="txtSacRemarkSurrogate2" Margin="4" ></TextBox>
+                                                        </StackPanel>
+                                                        <StackPanel Grid.Row="1" Orientation="Horizontal" x:Name="PregnacncyAchievedGridSurrogate2" >
+                                                            <CheckBox IsThreeState="False" IsChecked="{Binding IsUnlinkSurrogate,Mode=TwoWay}" x:Name="chkIsUnlinkSurrogate2" Content="Unlink" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right"></CheckBox>
+                                                            <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" x:Name="txbPregnancyAchievedSurrogate2" HorizontalAlignment="Right" Text="Pregnancy Achieved" Margin="4" Visibility="Collapsed"></TextBlock>
+                                                            <CustomCombo:AutoCompleteComboBox  Grid.Column="1" Grid.Row="0"  Width="130" x:Name="cmbPregnancyAchievedSurrogate2" HorizontalAlignment="Left"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  VerticalAlignment="Center" Text="" Margin="4" IsEnabled="False" Visibility="Collapsed"/>
+                                                            <TextBox Width="200" VerticalAlignment="Center" x:Name="txtSurrogate2ID" Margin="4" Visibility="Collapsed" ></TextBox>
+                                                            <TextBox Width="200" VerticalAlignment="Center" x:Name="txtSurrogate2UnitID" Margin="4" Visibility="Collapsed" ></TextBox>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <Border Grid.Row="1" controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="Sacs Details " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                    <Grid Grid.Row="2" Name="SacGridSurrogate2" >
+                                                        <data:DataGrid  SelectionMode="Single" x:Name="dgSacsDetailsGridSurrogate2" ItemsSource="{Binding}"  AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch" Height="160"  >
+                                                            <data:DataGrid.Columns>
+                                                                <data:DataGridTextColumn Width="100" Binding="{Binding SaceNoStr}" Header="Sacs"/>
+
+                                                                <data:DataGridTemplateColumn Header="Fetal Heart">
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsFetalHeart,Mode=TwoWay}" x:Name="ChkFetalHeartSurrogate2" Click="ChkFetalHeartSurrogate2_Click" HorizontalAlignment="Center" ></CheckBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Result">
+                                                                    <data:DataGridTemplateColumn.CellTemplate >
+                                                                        <DataTemplate>
+                                                                            <Grid >
+                                                                                <CustomCombo:AutoCompleteComboBox TabIndex="17" VerticalAlignment="Center" x:Name="cmbResult" ItemsSource="{Binding OutcomeResultListVO}" SelectedItem="{Binding selectedResultList,Mode=TwoWay}" SelectedValue="{Binding selectedResultList.ID}" Text="" />
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Pregnancy">
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <CustomCombo:AutoCompleteComboBox TabIndex="17" VerticalAlignment="Center" x:Name="cmbPregancy" ItemsSource="{Binding OutcomePregnancyListVO}" SelectedItem="{Binding selectedPregnancyList,Mode=TwoWay}" SelectedValue="{Binding selectedPregnancyList.ID}" Text=""  />
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Congenital Abnormality">
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                                                    <RadioButton Margin="2" Content="Yes" IsChecked="{Binding CongenitalAbnormalityYes,Mode=TwoWay}" x:Name="CongenitalAbnormalitySurrogate2Yes" Click="CongenitalAbnormalitySurrogate2Yes_Click"></RadioButton>
+                                                                                    <RadioButton Margin="2" Content="No"  IsChecked="{Binding CongenitalAbnormalityNo,Mode=TwoWay}" x:Name="CongenitalAbnormalitySurrogate2No" Click="CongenitalAbnormalitySurrogate2No_Click"></RadioButton>
+                                                                                </StackPanel>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+                                                                <data:DataGridTemplateColumn Header="Remarks" >
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <TextBox x:Name="txtCongenitalAbnormality" Width="250" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True" VerticalAlignment="Center"  Height="28"  Text="{Binding CongenitalAbnormalityReason,Mode=TwoWay}" IsEnabled="{Binding Status}"></TextBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+                                                            </data:DataGrid.Columns>
+                                                        </data:DataGrid>
+                                                    </Grid>
+                                                    <!--<Grid Grid.Row="3" Name="PregnacncyAchievedGridSurrogate2" Visibility="Collapsed">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pregnancy Achieved" Margin="4"></TextBlock>
+                                                    <CustomCombo:AutoCompleteComboBox  Grid.Column="1" Grid.Row="0"  Width="130" x:Name="cmbPregnancyAchievedSurrogate2" HorizontalAlignment="Left"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  VerticalAlignment="Center" Text="" Margin="4" IsEnabled="False" />
+                                                </Grid>-->
+                                                </Grid>
+                                            </layoutToolkit:AccordionItem>
+                                        </layoutToolkit:Accordion>
+
+                                        <CheckBox Grid.ColumnSpan="2" Grid.Row="1" IsThreeState="False" IsChecked="{Binding IsFreeze,Mode=TwoWay}" x:Name="chkIsFreeze" Content="Finalise" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right" Click="chkIsFreeze_Click"></CheckBox>
+
+
+
+                                    </Grid>
+
+                                </Border>
+
+                                <Grid Grid.Row="6">
+                                    <CheckBox IsThreeState="False" IsChecked="{Binding IsClosed,Mode=TwoWay}" Grid.Row="0" x:Name="chkIsclosed" Content="Is Closed" VerticalAlignment="Center" Margin="4" Click="chkIsclosed_Click"></CheckBox>
+                                </Grid>
+                            </Grid>
+
+                            <StackPanel  Orientation="Horizontal"  Margin="0,0,0,0" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1">
+                                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom" HorizontalAlignment="Right" VerticalAlignment="Center" >
+                                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="3" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                                        <StackPanel  Orientation="Horizontal" VerticalAlignment="Center"   Margin="3" HorizontalAlignment="Right" Background="Transparent">
+                                            <StackPanel  Orientation="Horizontal"  Margin="0,0,0,0">
+                                                <ToggleButton x:Name="cmdSaveOut"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSave_Click" TabIndex="3">
+                                                    <StackPanel Orientation="Horizontal" >
+                                                        <Common:XamlCheckmark Width="10" Height="10" Margin="0,0,5,0"/>
+                                                        <TextBlock Text="Save" TextWrapping="Wrap"/>
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </controlsToolkit:DockPanel>
+                            </StackPanel>
+                        </Grid>
+                    </controlsToolkit:DockPanel>
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>

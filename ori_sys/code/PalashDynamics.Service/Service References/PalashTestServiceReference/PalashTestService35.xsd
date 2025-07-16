@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.DiagnosisServiceDrugLink" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.DiagnosisServiceDrugLink" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:complexType name="clsGetDiagnosisByIDBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisDetails" nillable="true" type="q1:clsEMRAddDiagnosisVO" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="DiagnosisDrugDetails" nillable="true" type="q2:clsItemMasterVO" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="DiagnosisDrugList" nillable="true" type="q3:ArrayOfclsItemMasterVO" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisList" nillable="true" type="q4:ArrayOfclsEMRAddDiagnosisVO" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisServiceDetails" nillable="true" type="q5:clsDoctorSuggestedServiceDetailVO" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisServiceList" nillable="true" type="q6:ArrayOfclsDoctorSuggestedServiceDetailVO" />
+      <xs:element minOccurs="0" name="DrugList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDiagnosisByIDBizActionVO" nillable="true" type="tns:clsGetDiagnosisByIDBizActionVO" />
+  <xs:complexType name="clsGetDiagnosisListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisDetails" nillable="true" type="q7:clsEMRAddDiagnosisVO" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisList" nillable="true" type="q8:ArrayOfclsEMRAddDiagnosisVO" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDiagnosisListBizActionVO" nillable="true" type="tns:clsGetDiagnosisListBizActionVO" />
+  <xs:complexType name="clsAddDiagnosisServiceItemBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" nillable="true" type="xs:long" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisDetails" nillable="true" type="q9:clsEMRAddDiagnosisVO" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="DiagnosisDrugList" nillable="true" type="q10:ArrayOfclsItemMasterVO" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisList" nillable="true" type="q11:ArrayOfclsEMRAddDiagnosisVO" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisServiceList" nillable="true" type="q12:ArrayOfclsDoctorSuggestedServiceDetailVO" />
+      <xs:element minOccurs="0" name="DrugCodeList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DrugList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DrugNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCheckStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceCodeList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceGroupList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceNameList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceSpecliztionList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceTypeList" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdateWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddDiagnosisServiceItemBizActionVO" nillable="true" type="tns:clsAddDiagnosisServiceItemBizActionVO" />
+  <xs:complexType name="clsDeleteDiagnosisServiceBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="DiagnosisDetails" nillable="true" type="q13:clsEMRAddDiagnosisVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeleteDiagnosisServiceBizActionVO" nillable="true" type="tns:clsDeleteDiagnosisServiceBizActionVO" />
+  <xs:complexType name="clsGetMasterDrugListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="DrugList" nillable="true" type="q14:ArrayOfclsItemMasterVO" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="Drugdetails" nillable="true" type="q15:clsItemMasterVO" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMasterDrugListBizActionVO" nillable="true" type="tns:clsGetMasterDrugListBizActionVO" />
+</xs:schema>

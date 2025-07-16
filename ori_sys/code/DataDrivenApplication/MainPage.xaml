@@ -1,0 +1,139 @@
+﻿<UserControl xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"  x:Class="DataDrivenApplication.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480"
+              xmlns:Data="clr-namespace:System.Windows;assembly=System.Windows.Controls" 
+>
+    <UserControl.Resources>
+        <Data:HierarchicalDataTemplate x:Key="ChildItemTemplate" ItemsSource="{Binding Path=DependentFieldDetail}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Title}" />
+            </StackPanel>
+        </Data:HierarchicalDataTemplate>
+        
+            
+       
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Width="600">
+        <Grid x:Name="FormDetail">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock  Grid.Row="0" Grid.Column="0" Text="Title"></TextBlock>
+            <TextBox x:Name="fTitle" Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Description"></TextBlock>
+            <TextBox x:Name="fDescription" Grid.Row="1" Grid.Column="1"></TextBox>
+            <Button Grid.Row="2" Grid.Column="1" Content="Create Form" Click="CreateForm_Click"></Button>
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                <Button Content="Add" Click="Button_Click_2"></Button>
+                <Button Content="Subtract" Click="Button_Click_21"></Button>
+                <Button Content="Multiply" Click="Button_Click_22"></Button>
+                <Button Content="Divide" Click="Button_Click_23"></Button>
+                <TextBlock x:Name="Result"></TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="FieldDetail" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Title"></TextBlock>
+            <TextBox x:Name="fdTitle" Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Field Type"></TextBlock>
+            <ComboBox x:Name="fdType" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Title" SelectionChanged="fdType_SelectionChanged">
+                <!--<ComboBox.Items>
+                    <ListBoxItem Content="Text"/>
+                    <ListBoxItem Content="Date"/>
+                    <ListBoxItem Content="Time"/>
+                    <ListBoxItem Content="List"/>
+                </ComboBox.Items>-->
+            </ComboBox>
+
+            <TextBlock x:Name="lblOptions" Grid.Row="2" Grid.Column="0" Text="Field Options" Visibility="Collapsed"></TextBlock>
+            <Grid x:Name="fdOptions" Grid.Row="2" Grid.Column="1" Visibility="Collapsed">
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>-->
+                <Grid x:Name="TextDataTypeSetting">
+                    <StackPanel x:Name="optTextSettings" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <RadioButton x:Name="rdbSingleLine" Content="Single Line" IsChecked="True"></RadioButton>
+                        <RadioButton x:Name="rdbMultiMultiline" Content="Multi Line"></RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="BooleanDataTypeSetting">
+                    <StackPanel x:Name="optBooleanSettings" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <RadioButton x:Name="rdbCheckBox" Content="Checkbox" IsChecked="True"></RadioButton>
+                        <RadioButton x:Name="rdbYesNo" Content="Yes/No"></RadioButton>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="ListDataTypeSetting">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="fdOptionList" AcceptsReturn="True" TextWrapping="Wrap" Height="80" VerticalScrollBarVisibility="Visible" >
+
+                    </TextBox>
+                    <StackPanel x:Name="optListSettings" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <RadioButton x:Name="rdbSingleChoice" Content="Single Choice" IsChecked="True"></RadioButton>
+                        <RadioButton x:Name="rdbMultiChoice" Content="Multiple Choice"></RadioButton>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Paraent Field" Margin="0,0,0,0"></TextBlock>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" >
+
+                <ComboBox x:Name="fdParent"  DisplayMemberPath="Title"  Visibility="Collapsed" SelectionChanged="fdParent_SelectionChanged" Width="400">
+                </ComboBox>
+                <Button Content="X" Click="Button_Click_1" Visibility="Collapsed"></Button>
+                <controls:TreeView x:Name="trvParent" SelectedItemChanged="trvParent_SelectedItemChanged" BorderThickness="0" Height="300"  Width="300"  Background="Transparent" RenderTransformOrigin="0.5,0.5" ItemTemplate="{StaticResource ChildItemTemplate}">
+
+                </controls:TreeView>
+            </StackPanel>
+            <!--<ComboBox.Items>
+                    <ListBoxItem Content="Text"/>
+                    <ListBoxItem Content="Date"/>
+                    <ListBoxItem Content="Time"/>
+                    <ListBoxItem Content="List"/>
+                </ComboBox.Items>-->
+
+            <Grid x:Name="fdCondition" Grid.Row="4" Grid.Column="1" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition  Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="lbcTitle" Margin="0,0,10,0" Grid.Column="0" Text="{Binding ElementName=trvParent,Path=SelectedItem.Title}"></TextBlock>
+                <ComboBox x:Name="lbcCondition" Margin="0,0,10,0" Grid.Column="1" Width="200" DisplayMemberPath="Title"></ComboBox>
+                <ContentControl x:Name="cValueContainer" Margin="0,0,10,0" Grid.Column="2" Width="200"></ContentControl>
+            </Grid>
+            <Button Grid.Row="5" Grid.Column="1" Content="Add Field" Click="AddField_Click"></Button>
+            <Button Grid.Row="6" Grid.Column="1" Content="Form Preview" Click="Preview_Click"></Button>
+            <Button Grid.Row="7" Grid.Column="1" Content="Go Back" Click="GoBack_Click"></Button>
+        </Grid>
+
+        <Grid x:Name="Form" Visibility="Collapsed">
+        </Grid>
+    </Grid>
+</UserControl>

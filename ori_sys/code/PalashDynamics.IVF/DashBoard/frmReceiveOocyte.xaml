@@ -1,0 +1,85 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmReceiveOocyte"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             
+              xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+           Loaded="ChildWindow_Loaded"
+           Title="Receive Oocyte" Width="500" Height="300">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="Black">
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White">
+            <Grid x:Name="DisplayArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="PaleGreen" Grid.Row="0" BorderThickness="0" Background="Transparent">
+                    <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton x:Name="cmdSave"  Grid.Row="4" Content="Save" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSave_Click" TabIndex="5" />
+                                    <ToggleButton x:Name="cmdCancel"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click" TabIndex="6"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+
+                            <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <!--<ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>-->
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="MR No " Margin="2" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                    <TextBox x:Name="txtMrNo"  Margin="2" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+                                    <!--<ToggleButton x:Name="cmdGetSample" Grid.Column="3" HorizontalAlignment="Right" Content="Select Sample"  Background="#000000" Margin="0,4,-1,4" Width="100" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdGetSample_Click" >  </ToggleButton>-->
+
+                                    <TextBlock Text="OPU Date " Margin="2" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbOPUDate" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="OPUID" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="1" Grid.Column="1"   SelectionChanged="cmbOPUDate_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Total No Of Oocytes" Margin="2" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                    <TextBox x:Name="txtTotalNoOfOocytes"  Margin="2" Grid.Row="2"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+
+                                    <TextBlock Text="Available Oocytes" Margin="2" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                    <TextBox x:Name="txtAvailableOocytes"  Margin="2" Grid.Row="3"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"/>
+
+                                    <TextBlock Text="Consumed Oocytes" Margin="2" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                    <TextBox x:Name="txtConsumedOocytes"  Margin="2" Grid.Row="4"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+
+                                    <CheckBox VerticalAlignment="Center" Margin="4" Grid.Row="5" Grid.Column="1" x:Name="chkFreezed" Content="Is Freezed"  IsChecked="{Binding AttachedSurrogate, Mode=TwoWay}" Click="chkFreezed_Click" ></CheckBox>
+                                </Grid>
+
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:ChildWindow>

@@ -1,0 +1,87 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="UserInformationSoap" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_DataTemplateHttpsService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="Transport" />
+                </binding>
+                <binding name="BasicHttpBinding_IPalashService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="Transport" />
+                </binding>
+            </basicHttpBinding>
+            <customBinding>
+                <binding name="CustomBinding_IPalashService1">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_IPalashService">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_IPalashService2">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_IPalashService3">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_EmailService">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_DataTemplateService">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_IPalashService4">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_IPalashService5">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+            </customBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost/HealthBerries.WebServer/PalashDynamics.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_IPalashService1"
+                contract="PalashServiceReferance.IPalashService" name="CustomBinding_IPalashService1" />
+            <endpoint address="http://localhost/WyZax.WebServer/UserInformation.asmx"
+                binding="basicHttpBinding" bindingConfiguration="UserInformationSoap"
+                contract="UserInforServiceRef.UserInformationSoap" name="UserInformationSoap" />
+            <endpoint address="http://localhost/WyZax.WebServer/PalashDynamics.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_IPalashService2"
+                contract="PalashServiceReferance.IPalashService" name="CustomBinding_IPalashService2" />
+            <endpoint address="http://localhost/WyZax.WebServer/PalashDynamics.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_IPalashService3"
+                contract="PalashServiceReferance.IPalashService" name="CustomBinding_IPalashService3" />
+            <endpoint address="http://localhost/Palash_IVF_Base.WebServer/PalashDynamics.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_IPalashService4"
+                contract="PalashServiceReferance.IPalashService" name="CustomBinding_IPalashService" />
+            <endpoint address="http://localhost/Palash_IVF_Base.WebServer/EmailService.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_EmailService"
+                contract="EmailServiceReference.EmailService" name="CustomBinding_EmailService" />
+            <endpoint address="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_IPalashService5"
+                contract="PalashServiceReferance.IPalashService" name="CustomBinding_IPalashService4" />
+            <endpoint address="https://localhost/Palash_IVF_MAH.WebServer/EMR/DataTemplateHttpsService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_DataTemplateHttpsService"
+                contract="DataTemplateHttpsServiceRef.DataTemplateHttpsService"
+                name="BasicHttpBinding_DataTemplateHttpsService" />
+            <endpoint address="http://localhost/Palash_IVF_Base.WebServer/EMR/DataTemplateService.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_DataTemplateService"
+                contract="DataTemplateServiceRef.DataTemplateService" name="CustomBinding_DataTemplateService" />
+            <endpoint address="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPalashService"
+                contract="PalashTestServiceReference.IPalashService" name="BasicHttpBinding_IPalashService" />
+        </client>
+    </system.serviceModel>
+</configuration>

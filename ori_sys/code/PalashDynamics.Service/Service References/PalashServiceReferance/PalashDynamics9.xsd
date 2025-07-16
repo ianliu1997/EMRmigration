@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.CompoundMaster" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.CompoundMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="clsCompoundMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompoundId" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCompoundMasterVO" nillable="true" type="tns:clsCompoundMasterVO" />
+  <xs:complexType name="clsCompoundMasterDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AvailableStock" type="xs:double" />
+      <xs:element minOccurs="0" name="CompoundDrug" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompoundDrugID" type="xs:long" />
+      <xs:element minOccurs="0" name="CompoundDrugUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CompoundId" type="xs:long" />
+      <xs:element minOccurs="0" name="CompoundMasterID" type="xs:long" />
+      <xs:element minOccurs="0" name="CompoundUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsNew" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="MeasureUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrescriptionDetailID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrescriptionDetailUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="RowID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StockQty" type="xs:double" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCompoundMasterDetailsVO" nillable="true" type="tns:clsCompoundMasterDetailsVO" />
+  <xs:complexType name="ArrayOfclsCompoundMasterDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsCompoundMasterDetailsVO" nillable="true" type="tns:clsCompoundMasterDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsCompoundMasterDetailsVO" nillable="true" type="tns:ArrayOfclsCompoundMasterDetailsVO" />
+  <xs:complexType name="clsAddUpdateCompoundMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompoundMaster" nillable="true" type="tns:clsCompoundMasterVO" />
+      <xs:element minOccurs="0" name="CompoundMasterDetailsList" nillable="true" type="tns:ArrayOfclsCompoundMasterDetailsVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateCompoundMasterBizActionVO" nillable="true" type="tns:clsAddUpdateCompoundMasterBizActionVO" />
+  <xs:complexType name="clsGetCompoundMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompoundDetail" nillable="true" type="tns:clsCompoundMasterDetailsVO" />
+      <xs:element minOccurs="0" name="CompoundId" type="xs:long" />
+      <xs:element minOccurs="0" name="CompoundMaster" nillable="true" type="tns:clsCompoundMasterVO" />
+      <xs:element minOccurs="0" name="CompoundMasterDetailsList" nillable="true" type="tns:ArrayOfclsCompoundMasterDetailsVO" />
+      <xs:element minOccurs="0" name="CompoundMasterList" nillable="true" type="tns:ArrayOfclsCompoundMasterVO" />
+      <xs:element minOccurs="0" name="IsCompoundDetailList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCompoundDrug" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMeasureUnit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:long" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="strItemID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCompoundMasterBizActionVO" nillable="true" type="tns:clsGetCompoundMasterBizActionVO" />
+  <xs:complexType name="ArrayOfclsCompoundMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsCompoundMasterVO" nillable="true" type="tns:clsCompoundMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsCompoundMasterVO" nillable="true" type="tns:ArrayOfclsCompoundMasterVO" />
+  <xs:complexType name="clsCheckCompoundDrugBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompoundDrug" nillable="true" type="tns:clsCompoundMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckCompoundDrugBizActionVO" nillable="true" type="tns:clsCheckCompoundDrugBizActionVO" />
+</xs:schema>

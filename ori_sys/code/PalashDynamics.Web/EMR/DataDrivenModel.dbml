@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PalashDynamics" Class="DataDrivenModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ADMINISTRATOR7\MITHILESH;Initial Catalog=PalashDynamics;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PalashDynamicsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EMRTemplate" Member="EMRTemplates">
+    <Type Name="EMRTemplate">
+      <Column Name="TemplateId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Template" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntraTemplateRelations" Member="IntraTemplateRelations">
+    <Type Name="IntraTemplateRelation">
+      <Column Name="RelationId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TemplateId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SourceSectionId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SourceFieldId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TargetSectionId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TargetFieldId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Condition" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Variance" Member="Variances">
+    <Type Name="Variance">
+      <Column Name="VarianceId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DoctorId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClinicId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="VisitId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Variance1" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Variance2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Variance3" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Variance4" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Variance5" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Variance6" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Variance7" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ListVariance1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ListVariance2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ListVariance3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ListVariance4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ListVariance5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ListVariance6" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ListVariance7" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientEMRData" Member="PatientEMRDatas">
+    <Type Name="PatientEMRData">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Template" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VisitId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SavedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetTemplateDetailsByTemplateId" Method="GetTemplateDetailsByTemplateId">
+    <Parameter Name="TemplateId" Parameter="templateId" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetTemplateDetailsByTemplateIdResult">
+      <Column Name="[XML_F52E2B61-18A1-11d1-B105-00805F49916B]" Member="XML_F52E2B61_18A1_11d1_B105_00805F49916B" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03BE1018-E811-44E1-934C-0D4C32324176}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.DataAccessLayer</RootNamespace>
+    <AssemblyName>PalashDynamics.DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/PalashDynamics.DataAccessLayer/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="com.seedhealthcare.hms.ConfigurationManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportComponents\com.seedhealthcare.hms.ConfigurationManager\bin\Debug\com.seedhealthcare.hms.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportComponents\com.seedhealthcare.hms.ConfigurationManager\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportComponents\com.seedhealthcare.hms.ConfigurationManager\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDataAccessLayer\Administration\Agency\clsBaseAgencyMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseDepartmentScheduleDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseDischargeTemplateMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseDoctorScheduleDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseIPDConfigDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseMasterEntryDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseMenuDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseOtConfigDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBasePackageServiceDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBasePackageServiceNewDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBasePassConfigDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBasePatientConsentDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBasePatientSourceMasterMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseServiceMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseStaffMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseUnitMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseMISConfigDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseUserRightsDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\ANC\clsBaseANCDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Billing\clsBaseApprovalDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Billing\clsBaseBillDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Billing\clsBaseChargeDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Billing\clsBaseExpensesDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Billing\clsBasePaymentDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Billing\clsBaseTariffMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Billing\DoctorProcedureLinkBaseDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\ClientDetails\clsBaseClientDetailsDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\CompoundDrug\clsBaseCompoundDrugDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\CRM\clsBaseCampMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\CRM\clsBaseCampServiceDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\CRM\clsBaseLoyaltyProgramDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\DashboardMIS\clsBaseDashboardMisDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\EMR\clsBaseDrugDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\EMR\clsBaseEMRDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\EMR\clsBasePatientEMRDataDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\EMR\clsBaseVarianceDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseCAGRNDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseExpiryItemDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseGRNDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseGRNReturnDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseIndentDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseIssueItemDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseItemConversionsDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseItemMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseItemReorderQuantityDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseItemSalesDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseItemStockDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseMaterialConsumptionDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseOpeningBalanceDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseReceivedItemAgainstReturnDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseReceivedItemDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseReturnItemDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseWOGRNDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseWorkOrderDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseAutoChargesDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseBedDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseBedReleaseCheckListDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseDischargeSummaryDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseIPDAdmissionDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseIPDDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseIPDIntakeOutputChartDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseIPDVitalSDetailsDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBasePatientVitalsMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseReservationDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFEmbryoTransferDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFLabDayDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFLabDaysSummaryDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\clsBaseIVFPlanTherapyDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseDonorDetailsDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_LabDaysDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_OPUDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_PGDDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboad_PlanTherapyDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_IUIDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_SemenDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_ThawingDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFDashboard_VitrificationDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFROSEstimationDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\clsBaseIVFSpermDefectTestDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\cls_BaseIVFDashboard_SurrogateDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\cls_NewBaseSpremFreezingDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IVFPlanTherapy\DashBoard\cls_NewBaseSpremThawingDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBaseCompanyPaymentDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBaseDoctorDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBaseLocationDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBasePackageDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBaseTariffDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBaseVisitTypeDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBaseCounterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\NursingStation\clsBaseDrugAdministrationChartDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OpeartionTheatre\clsBaseOTDetailsDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OutPatientDepartment\Appointment\clsBaseAppointmentDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Masters\clsBaseMasterDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OutPatientDepartment\QueueManagement\clsBaseQueueDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OutPatientDepartment\Registration\clsBaseRefundDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Pathology\clsBaseOrderBookingDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Patient\clsBaseHSGDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Patient\clsBasePatientDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OutPatientDepartment\Registration\clsBasePatientKinDetailsDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OutPatientDepartment\Registration\clsBasePatientSposorDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OutPatientDepartment\Registration\clsBaseVisitDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBaseQuotationDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Patient\clsBaseTESEDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Radiology\clsBaseRadiologyDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\RateContract\clsBaseRateContractDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\RSIJ\clsBaseRSIJMaster.cs" />
+    <Compile Include="BaseDataAccessLayer\TokenDisplay\clsBaseTokenDisplayDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\User\clsBaseUserManagementDAL.cs" />
+    <Compile Include="DALHelper.cs" />
+    <Compile Include="DemoImage.cs" />
+    <Compile Include="newSecurity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security.cs" />
+    <Compile Include="BaseDataAccessLayer\Administration\clsBaseAppConfigDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\Agency\clsAgencyMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsAppConfigDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\OutPatientDepartment\Registration\clsBaseAdvanceDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsDepartmentScheduleDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsDischargeTemplateMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsDoctorScheduleDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsIPDConfigDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsMasterEntryDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsMenuDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsMISConfigDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsOtConfigDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsPackageServiceDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsPackageServiceNewDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsPassConfigDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsPatientConsentDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsPatientSourceMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsServiceMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsStaffMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsUnitMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Administration\clsUserRightsDAL.cs" />
+    <Compile Include="SqlServerStoredProc\ANC\clsANCDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Billing\clsApprovalDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Billing\clsBillDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Billing\clsChargeDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Billing\clsExpensesDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Billing\clsPaymentDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Billing\clsTariffMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Billing\DoctorProcedureLinkDAL.cs" />
+    <Compile Include="SqlServerStoredProc\ClientDetails\clsClientDetailsDAL.cs" />
+    <Compile Include="SqlServerStoredProc\CompoundDrug\clsCompoundDrugDAL.cs" />
+    <Compile Include="SqlServerStoredProc\CRM\clsCampMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\CRM\clsCampServiceDAL.cs" />
+    <Compile Include="SqlServerStoredProc\CRM\clsLoyaltyProgramDAL.cs" />
+    <Compile Include="SqlServerStoredProc\DashboardMIS\clsDashboardMisDAL.cs" />
+    <Compile Include="SqlServerStoredProc\EMR\clsDrugDAL.cs" />
+    <Compile Include="SqlServerStoredProc\EMR\clsEMRDAL.cs" />
+    <Compile Include="SqlServerStoredProc\EMR\clsPatientEMRDataDAL.cs" />
+    <Compile Include="SqlServerStoredProc\EMR\clsVarianceDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\Inventory\clsBasePurchaseOrderDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsCAGRNDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsExpiryItemDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsGRNDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsGRNReturnDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsIndentDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsIssueItemDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsItemConversionsDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsItemMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsItemReorderQuantityDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsItemSalesDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsItemStockDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsMaterialConsumptionDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsOpeningBalanceDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsPurchaseOrderDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsQuotationDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsReceivedItemAgainstReturnDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsReceivedItemDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsReturnItemDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsWOGRNDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Inventory\clsWorkOrderDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsAutoChargesDAL.cs" />
+    <Compile Include="BaseDataAccessLayer\IPD\clsBaseBedStatusDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsBedDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsBedReleaseCheckListDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsBedReservationDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsBedStatusDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsDischargeSummaryDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsIPDAdmissionDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsIPDDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsIPDIntakeOutputChartDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsPatientVitalsMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IPD\clsVitalSDetailsDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\clsIVFDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\clsIVFEmbryoTransferDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\clsIVFLabDaysSummaryDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\clsIVFPlanTherapyDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\clsIVFLabDayDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsDonorDetailsDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_PGDDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_SemenDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_ThawingDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_LabDaysDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_OPUDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboad_PlanTherapyDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_IUIDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFDashboard_VitrificationDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFROSEstimationDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\clsIVFSpermDefectTestDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\cls_IVFDashboard_SurrogateDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\cls_NewSpremFreezingDAL.cs" />
+    <Compile Include="SqlServerStoredProc\IVFPlanTherapy\DashBoard\cls_NewSpremThawingDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsCompanyDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsCounterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsLocationDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsPackageDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsTariffDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsDoctorDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsVisitTypeDAL.cs" />
+    <Compile Include="SqlServerStoredProc\NursingStation\clsDrugAdministrationChartDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OpeartionTheatre\clsOTDetailsDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OutPatientDepartment\Appointment\clsAppointmentDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Masters\clsMasterDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OutPatientDepartment\QueueManagement\clsQueueDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OutPatientDepartment\Registration\clsAdvanceDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OutPatientDepartment\Registration\clsRefundDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Pathology\clsOrderBookingDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Patient\clsHSGDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Patient\clsPatientDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OutPatientDepartment\Registration\clsPatientKinDetailsDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OutPatientDepartment\Registration\clsPatientSposorDAL.cs" />
+    <Compile Include="SqlServerStoredProc\OutPatientDepartment\Registration\clsVisitDAL.cs" />
+    <Compile Include="SqlServerStoredProc\Patient\clsTESE_DAL.cs" />
+    <Compile Include="SqlServerStoredProc\Radiology\clsRadiologyDAL.cs" />
+    <Compile Include="SqlServerStoredProc\RateContract\clsRateContractDAL.cs" />
+    <Compile Include="SqlServerStoredProc\RSIJ\clsRSIJMaster.cs" />
+    <Compile Include="SqlServerStoredProc\TokenDisplay\clsTokenDisplayDAL.cs" />
+    <Compile Include="SqlServerStoredProc\User\clsUserManagementDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PalashDynamics.ValueObjects\PalashDynamics.ValueObjects.csproj">
+      <Project>{DC112F80-EDDC-4B6F-B1B1-FA313764A20D}</Project>
+      <Name>PalashDynamics.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SupportComponents\com.seedhealthcare.hms.CustomExceptions\com.seedhealthcare.hms.CustomExceptions.csproj">
+      <Project>{086E4E26-FE28-4505-A54B-412FDD7B0D15}</Project>
+      <Name>com.seedhealthcare.hms.CustomExceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SupportComponents\com.seedhealthcare.hms.Logging\com.seedhealthcare.hms.Logging.csproj">
+      <Project>{6ED21B3D-4E8F-4F2D-9EF5-2A352D2E8F4F}</Project>
+      <Name>com.seedhealthcare.hms.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

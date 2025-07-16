@@ -1,0 +1,23 @@
+﻿<UserControl xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"  x:Class="DataDrivenApplication.SilverlightControl1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:Data="clr-namespace:System.Windows;assembly=System.Windows.Controls" >
+    <UserControl.Resources>
+        <Data:HierarchicalDataTemplate x:Key="ChildItemTemplate" ItemsSource="{Binding Path=Items}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Title}" />
+            </StackPanel>
+        </Data:HierarchicalDataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <controls:TreeView x:Name="SampleSelection" BorderThickness="0"  Width="300"  Background="Transparent" RenderTransformOrigin="0.5,0.5" ItemTemplate="{StaticResource ChildItemTemplate}">
+            <!--<controls:TreeView.ItemTemplate>
+                <Data:HierarchicalDataTemplate ItemsSource="{Binding Path=Items}" ItemTemplate="{StaticResource AssemblyNameTemplate}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Title}" />
+                    </StackPanel>
+                </Data:HierarchicalDataTemplate>
+            </controls:TreeView.ItemTemplate>-->
+        </controls:TreeView>
+    </Grid>
+</UserControl>

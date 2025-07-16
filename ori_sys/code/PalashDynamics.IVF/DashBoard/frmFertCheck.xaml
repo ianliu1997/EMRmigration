@@ -1,0 +1,242 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmFertCheck"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+           xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"        
+           Width="350" Height="280"                
+           xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+           xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" Loaded="ChildWindow_Loaded"
+           xmlns:Common="clr-namespace:DataDrivenApplication"    
+           xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:dgAdapter="clr-namespace:PalashDynamics.DataGridSelectionAdapter"     
+           Title="Fertilization">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+            <SolidColorBrush x:Key="Heading" Color="#FF0F3C64"/>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+
+
+    <Grid x:Name="Root" Background="Black">
+        <Grid.Resources>
+            <!--added by neena -->
+            <Style x:Key="DataGridAutoCompleteTemplate1" TargetType="CustomCombo:AutoCompleteComboBox">
+                <Setter Property="Background" Value="#FF1F3B53"/>
+                <Setter Property="IsTabStop" Value="False" />
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                            <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                            <GradientStop Color="#FF718597" Offset="0.375"/>
+                            <GradientStop Color="#FF617584" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="input:AutoCompleteBox">
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="PopupStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0:0:0.2" To="PopupOpened" />
+                                            <VisualTransition GeneratedDuration="0:0:0.5" To="PopupClosed" />
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="PopupOpened">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="1.0" />
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="PopupClosed">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="PopupBorder" Storyboard.TargetProperty="Opacity" To="0.0" />
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <TextBox IsTabStop="True" x:Name="Text" Style="{TemplateBinding TextBoxStyle}" Margin="0" />
+                                <ToggleButton 
+                                x:Name="DropDownToggle"                        
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource ComboToggleButton}"
+                                Margin="0"
+                                HorizontalContentAlignment="Center" 
+                                Background="{TemplateBinding Background}" 
+                                BorderThickness="0" 
+                                Height="16" Width="16"
+                                >
+
+
+                                    <ToggleButton.Content>
+                                        <Path x:Name="BtnArrow" Height="4" Width="8" Stretch="Uniform" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z " 
+                                          Margin="0,0,6,0" HorizontalAlignment="Right">
+                                            <Path.Fill>
+                                                <SolidColorBrush x:Name="BtnArrowColor" Color="#FF333333"/>
+                                            </Path.Fill>
+                                        </Path>
+                                    </ToggleButton.Content>
+                                </ToggleButton>
+                                <Popup x:Name="Popup">
+                                    <Border x:Name="PopupBorder" HorizontalAlignment="Stretch" Opacity="0.0" BorderThickness="0" CornerRadius="3">
+                                        <Border.RenderTransform>
+                                            <TranslateTransform X="2" Y="2" />
+                                        </Border.RenderTransform>
+                                        <Border.Background>
+                                            <SolidColorBrush Color="#11000000" />
+                                        </Border.Background>
+                                        <Border HorizontalAlignment="Stretch" BorderThickness="0" CornerRadius="3">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="#11000000" />
+                                            </Border.Background>
+                                            <Border.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform />
+                                                    <RotateTransform />
+                                                    <TranslateTransform X="-1" Y="-1" />
+                                                </TransformGroup>
+                                            </Border.RenderTransform>
+                                            <Border HorizontalAlignment="Stretch" Opacity="1.0" Padding="1" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
+                                                <Border.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform />
+                                                        <SkewTransform />
+                                                        <RotateTransform />
+                                                        <TranslateTransform X="-2" Y="-2" />
+                                                    </TransformGroup>
+                                                </Border.RenderTransform>
+                                                <Border.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFDDDDDD" Offset="0"/>
+                                                        <GradientStop Color="#AADDDDDD" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                                <dgAdapter:DataGridSelectionAdapter Width="auto" x:Name="SelectionAdapter" AutoGenerateColumns="False" IsReadOnly="True">
+                                                    <dgAdapter:DataGridSelectionAdapter.Columns>
+                                                        <data:DataGridTemplateColumn>
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate >
+                                                                    <CheckBox x:Name="chkMultipleDoctors" IsChecked="{Binding Status, Mode=TwoWay}" ></CheckBox>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+                                                        <data:DataGridTextColumn IsReadOnly="True" Header="Oocyte List" Width="Auto"  Binding="{Binding Description, Mode=TwoWay}" />
+                                                    </dgAdapter:DataGridSelectionAdapter.Columns>
+                                                </dgAdapter:DataGridSelectionAdapter>
+                                            </Border>
+                                        </Border>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White">
+            <Grid x:Name="DisplayArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+
+                <Border BorderBrush="PaleGreen" Grid.Row="0" BorderThickness="0" Background="Transparent">
+
+                    <controlsToolkit:DockPanel LastChildFill="True" Margin="4" >
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                    <CheckBox x:Name="chkFreeze" IsChecked="{Binding Isfreezed, Mode=TwoWay}" Content="Finalize" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="1"  FontWeight="ExtraBlack" Foreground="Red" Grid.Row="8" Grid.Column="2"    TabIndex="22"></CheckBox>
+
+                                    <ToggleButton x:Name="cmdNew"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSave_Click" TabIndex="23">
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Common:XamlCheckmark Width="10" Height="10" Margin="0,0,5,0"/>
+                                            <TextBlock Text="Save" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="CmdClose"  Grid.Row="4" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdClose_Click" TabIndex="24" >
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                                            <TextBlock Text="Close" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                    </ToggleButton>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <ScrollViewer VerticalScrollBarVisibility="Visible">
+                                <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition />                                           
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="Observation Date " Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                        <controls:DatePicker  Grid.Row="0" Grid.Column="1"    Margin="4"  x:Name="dtObservationDate" ></controls:DatePicker>
+
+                                        <TextBlock Text="Observation Time " Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                        <inputToolkit:TimePicker Margin="4"  Grid.Row="1" Grid.Column="1"  x:Name="dtObservationTime" ></inputToolkit:TimePicker>
+
+                                        <TextBlock Text="Fertilization " Grid.Row="2" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                        <Grid Grid.Row="2" Grid.Column="1" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <inputcombo:AutoCompleteComboBox  x:Name="cmbFertilizationCheck" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center"  Margin="4"  Grid.Row="0" Grid.Column="0"  SelectionChanged="cmbFertilizationCheck_SelectionChanged" ></inputcombo:AutoCompleteComboBox>
+                                            <inputcombo:AutoCompleteComboBox  x:Name="cmbFertilizationCheckResult" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center"  Margin="4"  Grid.Row="0" Grid.Column="1" Visibility="Collapsed" ></inputcombo:AutoCompleteComboBox>
+                                        </Grid>
+
+
+                                        <TextBlock Text="Remarks " Grid.Row="3" Grid.Column="0"  Margin="4" VerticalAlignment="Center" ></TextBlock>
+                                        <TextBox x:Name="txtRemarks" Text="{Binding Remarks, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100" Margin="2"  Grid.Row="3" Grid.Column="1" TabIndex="15" MaxLength="200"></TextBox>
+
+                                        <TextBlock Text="Apply To" Margin="4"  Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" ></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox x:Name="cmbApplay" Style="{StaticResource DataGridAutoCompleteTemplate1}"  HorizontalAlignment="Stretch" VerticalAlignment="Center"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID" Grid.Column="1"  Grid.Row="4" Margin="4" >
+
+                                        </CustomCombo:AutoCompleteComboBox>
+
+
+
+                                    </Grid>
+
+                                </controlsToolkit:DockPanel>
+                            </ScrollViewer>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:ChildWindow>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PackageNew" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PackageNew" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Pathology.PathologyMasters" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:complexType name="clsPackageServiceMasterVO">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="clsPackageServiceMasterVO" nillable="true" type="tns:clsPackageServiceMasterVO" />
+  <xs:complexType name="clsPackageRelationsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsSetAll" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PackageServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageServiceUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageRelationsVO" nillable="true" type="tns:clsPackageRelationsVO" />
+  <xs:complexType name="clsPackageServiceConditionsVO">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="ConditionList" nillable="true" type="q1:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="ConditionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConditionTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="Discount" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsSet" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSpecilizationGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="SelectedCondition" nillable="true" type="q2:MasterListItem" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="SelectedService" nillable="true" type="q3:MasterListItem" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="ServiceList" nillable="true" type="q4:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageServiceConditionsVO" nillable="true" type="tns:clsPackageServiceConditionsVO" />
+  <xs:complexType name="clsPackageServiceRelationsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsSetAllRelations" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSpecilizationGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProcessID" type="xs:long" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageServiceRelationsVO" nillable="true" type="tns:clsPackageServiceRelationsVO" />
+  <xs:complexType name="clsAddPackageSourceTariffCompanyRelationsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PackageSourceRelation" nillable="true" type="tns:clsPackageSourceRelationVO" />
+      <xs:element minOccurs="0" name="ResultSuccessStatus" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPackageSourceTariffCompanyRelationsBizActionVO" nillable="true" type="tns:clsAddPackageSourceTariffCompanyRelationsBizActionVO" />
+  <xs:complexType name="clsPackageSourceRelationVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsSaveForL2" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientCategoryL1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryL1ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCategoryL2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryL2ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCategoryL3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryL3ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageSourceRelationVO" nillable="true" type="tns:clsPackageSourceRelationVO" />
+  <xs:complexType name="clsGetPackageSourceTariffCompanyListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PackageLinkingDetails" nillable="true" type="tns:ArrayOfclsPackageSourceRelationVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tariffID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageSourceTariffCompanyListBizActionVO" nillable="true" type="tns:clsGetPackageSourceTariffCompanyListBizActionVO" />
+  <xs:complexType name="ArrayOfclsPackageSourceRelationVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageSourceRelationVO" nillable="true" type="tns:clsPackageSourceRelationVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageSourceRelationVO" nillable="true" type="tns:ArrayOfclsPackageSourceRelationVO" />
+  <xs:complexType name="clsAddPackageRateClinicWiseBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageRateClinicWise" nillable="true" type="tns:clsPackageRateClinicWiseVO" />
+      <xs:element minOccurs="0" name="PackageRateClinicWiseList" nillable="true" type="tns:ArrayOfclsPackageRateClinicWiseVO" />
+      <xs:element minOccurs="0" name="PackageServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ResultSuccessStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="tariffID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPackageRateClinicWiseBizActionVO" nillable="true" type="tns:clsAddPackageRateClinicWiseBizActionVO" />
+  <xs:complexType name="clsPackageRateClinicWiseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsRateEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientCategoryL3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryL3ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Rate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TariffName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPackageRateClinicWiseVO" nillable="true" type="tns:clsPackageRateClinicWiseVO" />
+  <xs:complexType name="ArrayOfclsPackageRateClinicWiseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageRateClinicWiseVO" nillable="true" type="tns:clsPackageRateClinicWiseVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageRateClinicWiseVO" nillable="true" type="tns:ArrayOfclsPackageRateClinicWiseVO" />
+  <xs:complexType name="clsGetPackageRateClinicWiseBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageRateClinicWiseList" nillable="true" type="tns:ArrayOfclsPackageRateClinicWiseVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tariffID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageRateClinicWiseBizActionVO" nillable="true" type="tns:clsGetPackageRateClinicWiseBizActionVO" />
+  <xs:complexType name="ArrayOfclsPackageServiceRelationsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageServiceRelationsVO" nillable="true" type="tns:clsPackageServiceRelationsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageServiceRelationsVO" nillable="true" type="tns:ArrayOfclsPackageServiceRelationsVO" />
+  <xs:complexType name="ArrayOfclsPackageServiceConditionsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageServiceConditionsVO" nillable="true" type="tns:clsPackageServiceConditionsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageServiceConditionsVO" nillable="true" type="tns:ArrayOfclsPackageServiceConditionsVO" />
+  <xs:complexType name="clsAddServiceMasterNewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddItems" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AppliToAllTariff" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FamilyMemberMasterDetails" nillable="true" type="tns:ArrayOfclsPackageRelationsVO" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNewServiceMaster" type="xs:boolean" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Pathology.PathologyMasters" minOccurs="0" name="ServiceAgencyMasterDetails" nillable="true" type="q5:ArrayOfclsServiceAgencyMasterVO" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceItemMasterDetails" nillable="true" type="q6:ArrayOfclsServiceItemMasterVO" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetails" nillable="true" type="q7:clsServiceMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdateServiceMasterStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="objPackageRelations" nillable="true" type="tns:clsPackageRelationsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddServiceMasterNewBizActionVO" nillable="true" type="tns:clsAddServiceMasterNewBizActionVO" />
+  <xs:complexType name="ArrayOfclsPackageRelationsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPackageRelationsVO" nillable="true" type="tns:clsPackageRelationsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPackageRelationsVO" nillable="true" type="tns:ArrayOfclsPackageRelationsVO" />
+  <xs:complexType name="clsGetServiceMasterListNewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyMemberMasterDetails" nillable="true" type="tns:ArrayOfclsPackageRelationsVO" />
+      <xs:element minOccurs="0" name="FromPackage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetAllServiceClassRateDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetAllServiceListDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetAllServiceMasterDetailsForID" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetAllTariffIDDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetServiceItemsList" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GetTariffServiceMasterID" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNewServiceMaster" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Pathology.PathologyMasters" minOccurs="0" name="ServiceAgencyMasterDetails" nillable="true" type="q8:ArrayOfclsServiceAgencyMasterVO" />
+      <xs:element minOccurs="0" name="ServiceCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceItemMasterDetails" nillable="true" type="q9:ArrayOfclsServiceItemMasterVO" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceList" nillable="true" type="q10:ArrayOfclsServiceMasterVO" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMaster" nillable="true" type="q11:clsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Specialization" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubSpecialization" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="objPackageRelations" nillable="true" type="tns:clsPackageRelationsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetServiceMasterListNewBizActionVO" nillable="true" type="tns:clsGetServiceMasterListNewBizActionVO" />
+  <xs:complexType name="clsGetPackageRelationsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="PackageRelationsList" nillable="true" type="q12:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="PackageServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageServiceUnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageRelationsBizActionVO" nillable="true" type="tns:clsGetPackageRelationsBizActionVO" />
+  <xs:complexType name="clsAddPackageServiceNewBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="Details" nillable="true" type="q13:clsPackageServiceVO" />
+      <xs:element minOccurs="0" name="IsFixedRate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSavePatientData" type="xs:boolean" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="PackageSeviceItemsDetails" nillable="true" type="q14:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="PharmacyFixedRate" type="xs:double" />
+      <xs:element minOccurs="0" name="PharmacyPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceFixedRate" type="xs:double" />
+      <xs:element minOccurs="0" name="ServicePercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatePackageFreezeStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatePackageStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UpdatePackgeApproveStatus" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPackageServiceNewBizActionVO" nillable="true" type="tns:clsAddPackageServiceNewBizActionVO" />
+  <xs:complexType name="clsGetPackageServiceDetailsListNewBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="ItemDetails" nillable="true" type="q15:ArrayOfclsPackageItemMasterVO" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="PackageDetailList" nillable="true" type="q16:ArrayOfclsPackageServiceDetailsVO" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="PackageMasterList" nillable="true" type="q17:clsPackageServiceVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageServiceDetailsListNewBizActionVO" nillable="true" type="tns:clsGetPackageServiceDetailsListNewBizActionVO" />
+  <xs:complexType name="clsGetPackageServicesAndRelationsNewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageServiceRelationList" nillable="true" type="tns:ArrayOfclsPackageServiceRelationsVO" />
+      <xs:element minOccurs="0" name="ServiceConditionList" nillable="true" type="tns:ArrayOfclsPackageServiceConditionsVO" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageServicesAndRelationsNewBizActionVO" nillable="true" type="tns:clsGetPackageServicesAndRelationsNewBizActionVO" />
+  <xs:complexType name="clsAddPackagePharmacyItemsNewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicableToAll" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ApplicableToAllDiscount" type="xs:double" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="ItemDetails" nillable="true" type="q18:ArrayOfclsPackageItemMasterVO" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalBudget" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPackagePharmacyItemsNewBizActionVO" nillable="true" type="tns:clsAddPackagePharmacyItemsNewBizActionVO" />
+  <xs:complexType name="clsGetPackagePharmacyItemListNewBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="ItemDetails" nillable="true" type="q19:ArrayOfclsPackageItemMasterVO" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackagePharmacyItemListNewBizActionVO" nillable="true" type="tns:clsGetPackagePharmacyItemListNewBizActionVO" />
+  <xs:complexType name="clsDeletePackageServiceDetilsListNewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsDeletePatientData" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSpecilizationGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeletePackageServiceDetilsListNewBizActionVO" nillable="true" type="tns:clsDeletePackageServiceDetilsListNewBizActionVO" />
+  <xs:complexType name="clsGetPackageConditionalServicesNewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MemberRelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceConditionList" nillable="true" type="q20:ArrayOfclsServiceMasterVO" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SponsorUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageConditionalServicesNewBizActionVO" nillable="true" type="tns:clsGetPackageConditionalServicesNewBizActionVO" />
+  <xs:complexType name="clsGetPackageRelationListBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="PackageRelationsList" nillable="true" type="q21:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="PackageTariffID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageRelationListBizActionVO" nillable="true" type="tns:clsGetPackageRelationListBizActionVO" />
+  <xs:complexType name="clsDeletePackageItemDetilsListNewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsCategory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDeletePatientData" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemGroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:long" />
+      <xs:element minOccurs="0" name="PackageUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeletePackageItemDetilsListNewBizActionVO" nillable="true" type="tns:clsDeletePackageItemDetilsListNewBizActionVO" />
+  <xs:complexType name="clsAddPackageConsentLinkBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddItems" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AppliToAllTariff" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNewServiceMaster" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceItemMasterDetails" nillable="true" type="q22:ArrayOfclsServiceMasterVO" />
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetails" nillable="true" type="q23:clsServiceMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdateServiceMasterStatus" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPackageConsentLinkBizActionVO" nillable="true" type="tns:clsAddPackageConsentLinkBizActionVO" />
+  <xs:complexType name="clsGetPackageConsentLinkBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddItems" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AppliToAllTariff" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNewServiceMaster" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceItemMasterDetails" nillable="true" type="q24:ArrayOfclsServiceMasterVO" />
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="ServiceMasterDetails" nillable="true" type="q25:clsServiceMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdateServiceMasterStatus" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPackageConsentLinkBizActionVO" nillable="true" type="tns:clsGetPackageConsentLinkBizActionVO" />
+</xs:schema>

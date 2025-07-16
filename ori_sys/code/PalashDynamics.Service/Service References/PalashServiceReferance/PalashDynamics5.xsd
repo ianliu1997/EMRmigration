@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.WorkOrder" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.WorkOrder" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd22" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:complexType name="clsGetWorkOrderDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FilterPendingQuantity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MinRows" type="xs:int" />
+      <xs:element minOccurs="0" name="POTerms" nillable="true" type="tns:ArrayOfclsWorkOrderTerms" />
+      <xs:element minOccurs="0" name="PoIndentList" nillable="true" type="tns:ArrayOfclsWorkOrderDetailVO" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsWorkOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsWorkOrderDetailVO" />
+      <xs:element minOccurs="0" name="SearchID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetWorkOrderDetailsBizActionVO" nillable="true" type="tns:clsGetWorkOrderDetailsBizActionVO" />
+  <xs:complexType name="ArrayOfclsWorkOrderTerms">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsWorkOrderTerms" nillable="true" type="tns:clsWorkOrderTerms" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsWorkOrderTerms" nillable="true" type="tns:ArrayOfclsWorkOrderTerms" />
+  <xs:complexType name="clsWorkOrderTerms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TermsAndConditionID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="WOID" type="xs:long" />
+      <xs:element minOccurs="0" name="WOUnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsWorkOrderTerms" nillable="true" type="tns:clsWorkOrderTerms" />
+  <xs:complexType name="ArrayOfclsWorkOrderDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsWorkOrderDetailVO" nillable="true" type="tns:clsWorkOrderDetailVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsWorkOrderDetailVO" nillable="true" type="tns:ArrayOfclsWorkOrderDetailVO" />
+  <xs:complexType name="clsWorkOrderDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BarCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchesRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ConditionFound" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ConversionFactor" type="xs:double" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="CurrencyList" nillable="true" type="q1:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="DiscPercent" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DiscountAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DiscountPercent" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IndentDetailUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IndentNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IndentUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsMultipleContract" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemCategory" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemGroup" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemTax" type="xs:double" />
+      <xs:element minOccurs="0" name="MRP" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ManuallyClosed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PUM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PendingQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PurchaseUOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Rate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SelectItem" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="SelectedCurrency" nillable="true" type="q2:MasterListItem" />
+      <xs:element minOccurs="0" name="Specification" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StockUOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VATAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VATPer" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VATPercent" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WODate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WOID" type="xs:long" />
+      <xs:element minOccurs="0" name="WONO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WOUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="WoItemsID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsWorkOrderDetailVO" nillable="true" type="tns:clsWorkOrderDetailVO" />
+  <xs:complexType name="clsWorkOrderVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApprovedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancellationRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DeliveryDays" type="xs:long" />
+      <xs:element minOccurs="0" name="DeliveryDuration" type="xs:long" />
+      <xs:element minOccurs="0" name="DeliveryLocation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direct" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EditForApprove" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Freezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GRNNowithDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guarantee_Warrantee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsApproveded" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsApprovededEnable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEnable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEnabledFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfclsWorkOrderDetailVO" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentMode" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentModeID" type="xs:long" />
+      <xs:element minOccurs="0" name="PaymentTerms" type="xs:long" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schedule" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="StoreName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalDiscount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalNet" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalVAT" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WONO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkTermsList" nillable="true" type="tns:ArrayOfclsWorkOrderTerms" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q3:ArrayOflong" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsWorkOrderVO" nillable="true" type="tns:clsWorkOrderVO" />
+  <xs:complexType name="clsUpdateRemarkForCancellationWO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkOrder" nillable="true" type="tns:clsWorkOrderVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateRemarkForCancellationWO" nillable="true" type="tns:clsUpdateRemarkForCancellationWO" />
+  <xs:complexType name="WOIndent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:long" />
+      <xs:element minOccurs="0" name="WOID" type="xs:long" />
+      <xs:element minOccurs="0" name="WOUnitId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WOIndent" nillable="true" type="tns:WOIndent" />
+  <xs:complexType name="clsGetWorkOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CancelWO" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Freezed" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchDeliveryStoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchStoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchSupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="WONO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkOrder" nillable="true" type="tns:clsWorkOrderVO" />
+      <xs:element minOccurs="0" name="WorkOrderList" nillable="true" type="tns:ArrayOfclsWorkOrderVO" />
+      <xs:element minOccurs="0" name="flagWOFromGRN" type="xs:boolean" />
+      <xs:element minOccurs="0" name="searchFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="searchToDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetWorkOrderBizActionVO" nillable="true" type="tns:clsGetWorkOrderBizActionVO" />
+  <xs:complexType name="ArrayOfclsWorkOrderVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsWorkOrderVO" nillable="true" type="tns:clsWorkOrderVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsWorkOrderVO" nillable="true" type="tns:ArrayOfclsWorkOrderVO" />
+  <xs:complexType name="clsGetWorkOrderForCloseBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchStoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="SearchSupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="WONO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkOrder" nillable="true" type="tns:clsWorkOrderVO" />
+      <xs:element minOccurs="0" name="WorkOrderList" nillable="true" type="tns:ArrayOfclsWorkOrderVO" />
+      <xs:element minOccurs="0" name="searchFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="searchToDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetWorkOrderForCloseBizActionVO" nillable="true" type="tns:clsGetWorkOrderForCloseBizActionVO" />
+  <xs:complexType name="clsAddWorkOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="POIndentList" nillable="true" type="tns:ArrayOfclsWorkOrderDetailVO" />
+      <xs:element minOccurs="0" name="POTerms" nillable="true" type="tns:ArrayOfclsWorkOrderTerms" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsWorkOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderItems" nillable="true" type="tns:clsWorkOrderDetailVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsWorkOrderDetailVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddWorkOrderBizActionVO" nillable="true" type="tns:clsAddWorkOrderBizActionVO" />
+  <xs:complexType name="clsCancelWorkOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="WorkOrder" nillable="true" type="tns:clsWorkOrderVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCancelWorkOrderBizActionVO" nillable="true" type="tns:clsCancelWorkOrderBizActionVO" />
+  <xs:complexType name="clsAddRateContractBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="RateContract" nillable="true" type="q4:clsRateContractVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddRateContractBizActionVO" nillable="true" type="tns:clsAddRateContractBizActionVO" />
+  <xs:complexType name="clsGetRateContractBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PagingEnabled" type="xs:boolean" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="RateContract" nillable="true" type="q5:ArrayOfclsRateContractVO" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRateContractBizActionVO" nillable="true" type="tns:clsGetRateContractBizActionVO" />
+  <xs:complexType name="clsGetRateContractItemDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContractID" type="xs:long" />
+      <xs:element minOccurs="0" name="ContractUnitId" type="xs:long" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="RateContractList" nillable="true" type="q6:ArrayOfclsRateContractDetailsVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRateContractItemDetailsBizActionVO" nillable="true" type="tns:clsGetRateContractItemDetailsBizActionVO" />
+  <xs:complexType name="clsCheckContractBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FromDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ItemIDs" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckContractBizActionVO" nillable="true" type="tns:clsCheckContractBizActionVO" />
+  <xs:complexType name="clsAddWorkOrderTermsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="POterms" nillable="true" type="tns:clsWorkOrderTerms" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddWorkOrderTermsBizActionVO" nillable="true" type="tns:clsAddWorkOrderTermsBizActionVO" />
+  <xs:complexType name="clsFreezWorkOrderBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PurchaseOrder" nillable="true" type="tns:clsWorkOrderVO" />
+      <xs:element minOccurs="0" name="PurchaseOrderList" nillable="true" type="tns:ArrayOfclsWorkOrderDetailVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFreezWorkOrderBizActionVO" nillable="true" type="tns:clsFreezWorkOrderBizActionVO" />
+</xs:schema>

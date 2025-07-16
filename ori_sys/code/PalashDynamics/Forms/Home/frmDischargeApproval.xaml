@@ -1,0 +1,261 @@
+﻿<UserControl x:Class="PalashDynamics.Forms.Home.frmDischargeApproval"
+   xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"                  
+                 xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+                 xmlns:my1="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+                 xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+                 xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  
+                 xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+                 xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+                 xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+                 xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"          
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                 xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"
+             xmlns:ChartToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+             Loaded="UserControl_Loaded" Height="Auto" Width="Auto" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="2" Background="White" Width="Auto" Height="auto">
+        <Grid >
+            <controlsToolkit:DockPanel x:Name="docAppointment"  LastChildFill="True" Grid.Row="0" controlsToolkit:DockPanel.Dock="Top">
+
+
+                <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock="Top">
+                    <Border controlsToolkit:DockPanel.Dock= "Top"  BorderBrush="#FF788678"   Width="auto" BorderThickness="1" CornerRadius="3,3,3,3"  Margin="2">
+
+                        <Grid Width="Auto"  Margin="0" controlsToolkit:DockPanel.Dock="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".5*"></ColumnDefinition>
+                                <ColumnDefinition Width=".5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <toolkit:DockPanel  Grid.Column="0"  Name="Embryo" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                <StackPanel my:DockPanel.Dock="Top" Margin="0,4,0,0">
+                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Patient Discharge Approval " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                </StackPanel>
+                                <data:DataPager x:Name="EmbryoDataPager" toolkit:DockPanel.Dock="Bottom" TabIndex="20" 
+                                                DisplayMode="FirstLastPreviousNext" IsEnabled="True" 
+                                                Source="{Binding}" 
+                                                AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+
+                                <data:DataGrid x:Name="dgPatientAdmissionList"  Height="Auto" Width="Auto" Margin="2" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserSortColumns="True" SelectionChanged="dgPatientAdmissionList_SelectionChanged">
+                                    <data:DataGrid.Columns>                                          
+                                        <data:DataGridTemplateColumn Header="Print" Width="Auto" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <HyperlinkButton Content="Bill Details" VerticalAlignment="Center" x:Name="hlBillDetails"  ></HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn Header="MRNo" IsReadOnly="False" Width="Auto" CanUserSort="True" SortMemberPath="MRNo">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBox x:Name="txtMRNo" Foreground="{Binding NextapColor}" Text="{Binding Path=MRNo, Mode=TwoWay}"  IsReadOnly="True"  ></TextBox>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="IPDNo" Width="Auto" CanUserSort="True" SortMemberPath="IPDNO">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding IPDNO, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Patient Name"  CanUserSort="True" SortMemberPath="PatientName" Width="Auto">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding PatientName, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+
+                                        <data:DataGridTemplateColumn   Header="Admission Date" Width="Auto" CanUserSort="True" SortMemberPath="AdmissionDate">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding AdmissionDate, Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn   Header="Doctor Name" Width="Auto" CanUserSort="True" SortMemberPath="DoctorName">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding DoctorName, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn   Header="Company Name" CanUserSort="True" SortMemberPath="CompanyName" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding CompanyName, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn   Header="Ward" Width="Auto" CanUserSort="True" SortMemberPath="Ward">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding Ward, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn   Header="Bed" Width="Auto" CanUserSort="True" SortMemberPath="Bed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding Bed, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>                                       
+
+                                        <data:DataGridTemplateColumn Header="Sanctioned Amt" Width="Auto" CanUserSort="True" SortMemberPath="SanctionedAmount" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding SanctionedAmount, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+
+                                        <data:DataGridTemplateColumn Header="CompanyApprovedAmount" Width="Auto" CanUserSort="True" SortMemberPath="CompanyApprovedAmount" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding CompanyApprovedAmount, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+
+
+                                        <data:DataGridTemplateColumn Header="CreditLimitAmount" Width="Auto" CanUserSort="True" SortMemberPath="CreditLimitAmount" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding CreditLimitAmount, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+
+
+
+                                        <data:DataGridTemplateColumn   Header="Bill Amount" Width="Auto" CanUserSort="True" SortMemberPath="BillAmount" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding BillAmount, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Visibility="Collapsed"  Header="SelfPay" Width="Auto" CanUserSort="True" SortMemberPath="SelfPay">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding SelfPay, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Visibility="Collapsed"  Header="CompanyPay" Width="Auto" CanUserSort="True" SortMemberPath="CompanyPay">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding CompanyPay, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn   Header="Total Balance" Width="Auto" CanUserSort="True" SortMemberPath="TotalBalance" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding TotalBalance, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn   Header="Un-Billed Charges" Width="Auto" CanUserSort="True" SortMemberPath="UnbilledCharges" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding UnbilledCharges, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn   Header="Effective Advance" Width="Auto" CanUserSort="True" SortMemberPath="EffectiveAdvance" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="{Binding NextapColor}"  Margin="4" Text="{Binding EffectiveAdvance, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBlock >
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Visibility="Collapsed" Header="EMR" Width="Auto">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <HyperlinkButton Content="EMR" VerticalAlignment="Center" x:Name="hlEMR"  IsEnabled="{Binding IsCancelAdmEnable}"></HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                        <data:DataGridTemplateColumn Header="Applied For Approval" Width="Auto" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox x:Name="chkApproval" IsChecked="{Binding IsAppliedForApproval,Mode=TwoWay}" Visibility="{Binding IsCheckBoxVisible,Mode=OneWay}"  VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False"></CheckBox>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>  
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </toolkit:DockPanel >
+                            <toolkit:DockPanel  Grid.Column="1" Name="Sperms" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                <StackPanel my:DockPanel.Dock="Top" Margin="0,4,0,0">
+                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Approval Department" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                </StackPanel>
+                                <data:DataPager x:Name="SpermsDataPager" toolkit:DockPanel.Dock="Bottom" TabIndex="21" 
+                                                DisplayMode="FirstLastPreviousNext" IsEnabled="True" 
+                                                Source="{Binding}" 
+                                                AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+
+                                <data:DataGrid x:Name="dgDepartmentList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0" HorizontalAlignment="Stretch" TabIndex="4" CanUserSortColumns="False"  >
+                                    <data:DataGrid.Columns>
+                                        <data:DataGridTextColumn IsReadOnly="True"   Binding="{Binding DepartmentName}"  Header="Department Name"  >
+                                        </data:DataGridTextColumn>
+                                        <data:DataGridTextColumn IsReadOnly="True"  Binding="{Binding Remark}"  Header="Request Remark"  >
+                                        </data:DataGridTextColumn>
+                                        <data:DataGridTemplateColumn Header="Approval Remark" Width="270">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBox x:Name="Remark" IsEnabled="{Binding IsEnable}" Margin="0" Text="{Binding ApprovalRemark, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="265" />
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTemplateColumn Header="Approval Status">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox x:Name="chkApproval" IsEnabled="{Binding IsEnable}" IsChecked="{Binding ApprovalStatus,Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Click="chkApproval_Click" ></CheckBox>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </toolkit:DockPanel >
+                        </Grid>
+                    </Border>
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+        </Grid>
+    </Grid>
+</UserControl>

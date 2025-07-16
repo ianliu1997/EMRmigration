@@ -1,0 +1,205 @@
+﻿<UserControl x:Class="DataDrivenApplication.TemplateAssignment"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:Common="clr-namespace:DataDrivenApplication"
+    xmlns:Data="clr-namespace:System.Windows;assembly=System.Windows.Controls"
+    xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"             
+    >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White"  Margin="10">
+        <Border x:Name="Container" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,8,0,0" >
+            <Grid>
+                <Grid Margin="5,15,5,30">
+                    <Grid.RowDefinitions>
+                        <!--<RowDefinition Height="Auto"/>-->
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--<Grid Grid.Row="0" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Primary Symptoms :" VerticalAlignment="Center" Grid.Column="0" Margin="10,1,10,1" FontFamily="Portable User Interface" Foreground="{StaticResource Heading}" FontWeight="Bold"></TextBlock>
+                        <TextBox x:Name="TxtVisitComplaints" Grid.Column="1" Margin="10,1,10,1" Height="50" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsReadOnly="True"></TextBox>
+                    </Grid>-->
+                    <Grid Grid.Row="0" x:Name="UpperGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Border  BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,8,3,0" >
+                                <TextBox x:Name="TxtVisitComplaints" Margin="20,13,0,0" TextWrapping="Wrap" Height="32" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsReadOnly="True" />
+                            </Border>
+                            <Border HorizontalAlignment="Left" Margin="8,0,0,0" VerticalAlignment="Top" Background="{StaticResource BackgroundDefault}" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="0.994"/>
+                                        <SkewTransform AngleX="-20"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="3.627" Y="0.063"/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock  Text="Reception Remarks" FontFamily="Portable User Interface" Margin="10,1,10,1" Foreground="{StaticResource Heading}" FontWeight="Bold"/>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Border  BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="3,8,0,0" >
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox Grid.Column="0" Height="25" x:Name="cmbComplaint" Style="{StaticResource ComboBoxDefault}" BorderBrush="{StaticResource BorderDefault}" TabIndex="1" DisplayMemberPath="Title" Margin="20,13,5,0" SelectionChanged="cmbComplaint_SelectionChanged" SelectedItem="{Binding clsEMRTemplateVO, Mode=OneWay}" SelectedValuePath="TemplateID"/>
+                                    <HyperlinkButton x:Name="LinkProtocol" Margin="5" Grid.Column="1" VerticalAlignment="Center" Content="Protocol Definition" Click="LinkProtocol_Click"></HyperlinkButton>
+                                    <HyperlinkButton x:Name="LinkFlowChart" Margin="5" Grid.Column="2" VerticalAlignment="Center" Content="Flow Chart" Click="LinkFlowChart_Click"></HyperlinkButton>
+                                </Grid>
+                            </Border>
+                            <Border HorizontalAlignment="Left" Margin="8,0,0,0" VerticalAlignment="Top" Background="{StaticResource BackgroundDefault}" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="0.994"/>
+                                        <SkewTransform AngleX="-20"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="3.627" Y="0.063"/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock  Text="Case Sheet" FontFamily="Portable User Interface" Margin="10,1,10,1" Foreground="{StaticResource Heading}" FontWeight="Bold"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <Border Grid.Row="2" Visibility="Collapsed" x:Name="BorderForm" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,0,0,0" >
+                        <ScrollViewer  Style="{StaticResource ScrollViewerStyle1}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+                            <Grid x:Name="Form">
+                            </Grid>                            
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Row="2"  x:Name="HistoryBorderForm" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,0,0,0" >
+                        <ScrollViewer  Style="{StaticResource ScrollViewerStyle1}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+                            <Grid x:Name="HistoryForm">
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                    <sdk:TabControl  BorderBrush="{StaticResource TabControlDarkerBorder}" Grid.Row="1" x:Name="FormTab" SelectionChanged="FormTab_SelectionChanged" Height="30">
+                        <sdk:TabItem x:Name="tabHistory" Header="History" Style="{StaticResource TabItemStyle}"></sdk:TabItem>
+                        <sdk:TabItem x:Name="tabConsultation" Header="Consultation" Style="{StaticResource TabItemStyle}"></sdk:TabItem>
+                        <sdk:TabItem x:Name="tabMedication" Header="Medication" Style="{StaticResource TabItemStyle}"></sdk:TabItem>
+                        <sdk:TabItem x:Name="tabFUConsultation" Header="Follow Up Consultation" Style="{StaticResource TabItemStyle}"></sdk:TabItem>                        
+                    </sdk:TabControl>
+                    <!--<Border Grid.Row="1" Visibility="Collapsed" x:Name="BorderVariance" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,8,0,0" >
+                        <ScrollViewer  Style="{StaticResource ScrollViewerStyle1}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+                            <Grid x:Name="GrdVariance">
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>-->
+
+
+
+                </Grid>
+                <StackPanel  Orientation="Horizontal" x:Name="ItemListToolbar" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="215,0,10,2">
+                    <!--<Button x:Name="AddItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="1" Click="AddItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Common:XamlCross Width="9" Height="9" Margin="0,0,5,0" RenderTransformOrigin="0.5,0.5">
+                                <Common:XamlCross.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="45"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Common:XamlCross.RenderTransform>
+                            </Common:XamlCross>
+                            <TextBlock x:Name="cmdAdd" Text="Add Section" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="EditItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontWeight="Bold" FontFamily="Portable User Interface" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="2" Click="EditItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Common:XamlPencil Width="10" Height="10" RenderTransformOrigin="0.5,0.5" Margin="0,0,5,0">
+                                <Common:XamlPencil.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-45"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Common:XamlPencil.RenderTransform>
+                            </Common:XamlPencil>
+                            <TextBlock x:Name="cmdEdit" Text="Edit Section" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>-->
+                    <ComboBox Visibility="Collapsed" x:Name="cmbUser" Style="{StaticResource ComboBoxDefault}" BorderBrush="{StaticResource BorderDefault}" TabIndex="3" DisplayMemberPath="Title" Margin="0,0,5,0" Padding="10,3,10,3" Width="200" SelectionChanged="cmbUser_SelectionChanged">
+                        <ComboBox.Items>
+                            <ComboBoxItem Content="Admin"></ComboBoxItem>
+                            <ComboBoxItem Content="Nurse"></ComboBoxItem>
+                            <ComboBoxItem Content="Doctor"></ComboBoxItem>
+                            <!--<ComboBoxItem Content="FrontOffice"></ComboBoxItem>-->
+                        </ComboBox.Items>
+                    </ComboBox>
+                    <!--<Button x:Name="SelectPatientItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="SelectPatientButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdSP" Text="Select Patient" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>-->
+                    <!--<Button x:Name="HomeItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="HomeItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdHome" Text="Go Back" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>-->
+                    <!--<ToggleButton x:Name="DeleteItemButton" x:FieldModifier="public" Style="{StaticResource ToggleButtonStyle}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="DeleteItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="cmdDelete" Text="Close" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </ToggleButton>-->
+                    <ToggleButton x:Name="SaveItemButton" Foreground="White"  x:FieldModifier="public" Style="{StaticResource ToggleButtonStyle}"  FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="SaveTemplateItemButton_Click"><!--Foreground="{StaticResource Heading}"-->
+                        <StackPanel Orientation="Horizontal">
+                            <Common:XamlCheckmark Width="17" Height="13" Margin="0,0,5,0" RenderTransformOrigin="0.5,0.5">
+                            </Common:XamlCheckmark>
+                            <TextBlock x:Name="cmdSerilize" Text="Save" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </ToggleButton>
+
+                    <ToggleButton x:Name="PrintItemButton" x:FieldModifier="public" Style="{StaticResource ToggleButtonStyle}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Visibility="Collapsed" Click="PrintItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdPrint" Text="Print" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </ToggleButton>
+                    <!--<Button Visibility="Collapsed" x:Name="VarianceItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="VarianceItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="cmdVariance" Text="Get Variance" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>-->
+
+                    <!--<Button x:Name="SerilizeItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="SerilizeTemplateItemButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock  Text="Serilize Template" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Button>-->
+                </StackPanel>
+            </Grid>
+
+        </Border>
+        <Border HorizontalAlignment="Left" Margin="8,0,0,0" x:Name="ContainerTitle" VerticalAlignment="Top" Background="{StaticResource BackgroundDefault}" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="0.994"/>
+                    <SkewTransform AngleX="-20"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="3.627" Y="0.063"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <TextBlock x:Name="FormTitle" Text="Patient EMR" FontFamily="Portable User Interface" Margin="10,1,10,1" Foreground="{StaticResource Heading}" FontWeight="Bold"/>
+        </Border>
+    </Grid>
+</UserControl>

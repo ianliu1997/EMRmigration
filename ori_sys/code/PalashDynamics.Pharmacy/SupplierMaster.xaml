@@ -1,0 +1,409 @@
+﻿<UserControl x:Class="PalashDynamics.Pharmacy.SupplierMaster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+   xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"         
+             xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+             xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+             xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    Height="Auto" Width="Auto">
+
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition>
+
+            </RowDefinition>
+            <RowDefinition>
+
+            </RowDefinition>
+        </Grid.RowDefinitions>-->
+
+        <toolkit:DockPanel  LastChildFill="True" >
+
+            <StackPanel   Orientation="Horizontal" HorizontalAlignment="Right"  toolkit:DockPanel.Dock="Bottom">
+                <ToggleButton  Margin="4"  Content="New" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdAdd" Click="cmdAdd_Click"></ToggleButton>
+                <ToggleButton   Margin="4" Content="Save" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click"></ToggleButton>
+                <ToggleButton   Margin="4"  Content="Modify" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" Click="cmdModify_Click"></ToggleButton>
+                <ToggleButton  Margin="4" Content="Cancel" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click"></ToggleButton>
+            </StackPanel>
+
+            <Grid x:Name="PageContainer" >
+
+
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+
+                    <toolkit:DockPanel x:Name="docList">
+
+
+                        <toolkit:DockPanel x:Name="DockTop" toolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+
+                        </toolkit:DockPanel>
+
+                        <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+
+                            <Grid toolkit:DockPanel.Dock="Top" Margin="0,4,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto" MinWidth="150" MaxWidth="150"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="txtSearchCriteria" Grid.Column="0" Text="Description" Margin="4,10,4,4" Width="75" />
+                                <TextBox Grid.Column="1" x:Name="txtSearch" Margin="4" KeyDown="txtSearchCriteria_KeyDown" Width="200" MaxLength="200" ></TextBox>
+                                <Button Grid.Column="2" x:Name="cmdSearch" Click="cmdSearch_Click"   ToolTipService.ToolTip="Search Supplier"  HorizontalAlignment="Left" >
+                                    <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,0" Width="20" ></Image>
+                                </Button>
+                            </Grid>
+                            <StackPanel toolkit:DockPanel.Dock="Bottom" Margin="0,4,0,0">
+                                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Supplier " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                </Border>
+                            </StackPanel>
+
+
+                        </toolkit:DockPanel>
+                        <toolkit:DockPanel LastChildFill="True">
+                            <!--<sdk:DataPager x:Name="dataGrid2Pager" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />-->
+
+                            <sdk:DataPager x:Name="dataGrid2Pager" toolkit:DockPanel.Dock="Bottom"
+                                                DisplayMode="FirstLastPreviousNext" IsEnabled="True" 
+                                                Source="{Binding}" 
+                                                AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+
+                            <sdk:DataGrid  x:Name="grdSupplier" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                                <sdk:DataGrid.Columns>
+                                    <sdk:DataGridTemplateColumn Header="View">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton x:Name="cmdView" Margin="4" Content="View" Click="cmdView_Click" Cursor="Hand"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                    <sdk:DataGridTextColumn IsReadOnly="True" Header="Code" Binding="{Binding Code}"  />
+                                    <sdk:DataGridTextColumn IsReadOnly="True"  Header="Description"  Binding="{Binding SupplierName}"/>
+                                    <sdk:DataGridTextColumn IsReadOnly="True"  Header="PO Closer Days"  Binding="{Binding POAutoCloseDays}"/>
+                                    <sdk:DataGridTemplateColumn Header="Status">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=Status}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                </sdk:DataGrid.Columns>
+                            </sdk:DataGrid>
+
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+
+                </Grid>
+
+                <Grid  Height="AUTO" Width="auto" Visibility="Collapsed" x:Name="BackPanel" Grid.Row="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" Margin="4">
+                        <toolkit:DockPanel x:Name="docSupplier"  LastChildFill="True"  toolkit:DockPanel.Dock="Top">
+                            <toolkit:DockPanel x:Name="DocMain" toolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+                                    <toolkit:DockPanel x:Name="docContet" toolkit:DockPanel.Dock="Top">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <!--<GroupBox:GroupBox  Grid.Row="0" Grid.Column="0" Margin="4" Header="" >-->
+
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="580" />
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="580" />
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Code" Margin="4,9,10,0" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="1" Grid.Row="0" IsEnabled="True" x:Name="txtCode" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtCode_LostFocus"></TextBox>
+
+                                                <TextBlock Grid.Column="2" Grid.Row="0" Text="Description" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="3" Grid.Row="0" x:Name="txtName" Margin="4" MaxLength="200" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtName_LostFocus" ></TextBox>
+
+
+                                                <!--<TextBlock Grid.Column="0" Grid.Row="1" Text="Country" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="1" Grid.Row="1" x:Name="txtCountry" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtCountry_LostFocus"></TextBox>
+
+                                                <TextBlock Grid.Column="2" Grid.Row="1" Text="State" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="3" Grid.Row="1" x:Name="txtState" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtState_LostFocus"></TextBox>
+
+                                                <TextBlock Grid.Column="0" Grid.Row="2" Text="City" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="1" Grid.Row="2" x:Name="txtCity" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtCity_LostFocus"></TextBox>
+
+                                                <TextBlock Grid.Column="2" Grid.Row="2" Text="Pincode" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="3" Grid.Row="2" x:Name="txtPincode" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>-->
+
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Country" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="1" Grid.Column="1"   Margin="4" x:Name="cmbCountry" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   SelectionChanged="cmbCountry_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+                                                <!--<input:AutoCompleteBox Margin="4" Grid.Row="7" Grid.Column="1" Text="{Binding Country, Mode=TwoWay}"  x:Name="txtCountry" LostFocus="txtCountry_LostFocus" KeyDown ="txtCountry_KeyDown" TextChanged="txtCountry_TextChanged"></input:AutoCompleteBox>-->
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="State" Margin="5" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="1" Grid.Column="3"   Margin="4" x:Name="cmbState" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="StateID"  SelectionChanged="cmbState_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+                                                <!-- <input:AutoCompleteBox Margin="4" Grid.Row="7" Grid.Column="3" Text="{Binding State, Mode=TwoWay}"  x:Name="txtState" LostFocus="txtState_LostFocus"></input:AutoCompleteBox>-->
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Collapsed" Text="Region Zone" Margin="8,4,0,4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="2" Grid.Column="1" Visibility="Collapsed" Margin="4" x:Name="cmbDistrict" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="DistID" SelectionChanged="cmbDistrict_SelectionChanged"    ></CustomCombo:AutoCompleteComboBox>
+                                                <!--<TextBox  Margin="4" Grid.Row="6" Grid.Column="1" Text="{Binding District, Mode=TwoWay}" x:Name="txtDistrict"  VerticalAlignment="Center"></TextBox>-->
+                                                <!-- <input:AutoCompleteBox Margin="4" Grid.Row="8" Grid.Column="1" Text="{Binding District, Mode=TwoWay}"  x:Name="txtDistrict" LostFocus="txtDistrict_LostFocus"></input:AutoCompleteBox>-->
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="City" Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="2" Grid.Column="1"   Margin="4" x:Name="cmbCity" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="CityID" SelectionChanged="cmbCity_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+                                                <!--  <input:AutoCompleteBox Margin="4" Grid.Row="8" Grid.Column="3" Text="{Binding City, Mode=TwoWay}"  x:Name="txtCity" LostFocus="txtCity_LostFocus"  KeyDown ="txtCountry_KeyDown" TextChanged="txtCountry_TextChanged"></input:AutoCompleteBox>-->
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Area" Margin="4" Grid.Row="2" Grid.Column="2"></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="2" Grid.Column="3"   Margin="4"  x:Name="cmbArea" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="AreaID" SelectionChanged="cmbArea_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Collapsed" Text="Zone" Margin="4" Grid.Row="3" Grid.Column="2"></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="3" Grid.Column="3" Visibility="Collapsed" Margin="4"  x:Name="cmbAddressLocation6" VerticalAlignment="Center" SelectedItemBinding="{Binding clsAddressLocation6VO, Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cmbAddressLocation6_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="PIN Code" Margin="4" Grid.Row="4" Grid.Column="0" ></TextBlock>
+                                                <input:AutoCompleteBox Margin="4" Grid.Row="4"  Grid.Column="1"    x:Name="txtPinCode" Text="{Binding PinCode, Mode=TwoWay}" KeyDown="txtAutocompleteNumber_KeyDown" TextChanged="txtAutocompleteNumber_TextChanged" SelectionChanged="txtPinCode_SelectionChanged"></input:AutoCompleteBox>
+
+                                                <TextBlock Grid.Column="0" Grid.Row="5" Text="Address Line1" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Height="35" AcceptsReturn="True" x:Name="txtAddressLine1" Margin="4" MaxLength="150" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtAddressLine1_LostFocus" ></TextBox>
+
+                                                <TextBlock Grid.Column="2" Grid.Row="5" Text="Address Line2" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="3" Grid.Row="5" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Height="35" AcceptsReturn="True" x:Name="txtAddressLine2" Margin="4" MaxLength="150" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtAddressLine2_LostFocus"></TextBox>
+
+                                                <TextBlock Grid.Column="0" Grid.Row="6" Text="Address Line3" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                <TextBox  Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Height="35" AcceptsReturn="True" x:Name="txtAddressLine3" Margin="4" MaxLength="150" VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtAddressLine3_LostFocus"></TextBox>
+
+                                                <TextBlock Grid.Column="2" Grid.Row="6" Text="Depreciation" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Grid.Column="3" Grid.Row="6" x:Name="txtDepreciation" Margin="4" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                <TextBlock Grid.Column="0" Grid.Row="7" Text="Rating" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                <TextBox  Grid.Column="1" Grid.Row="7" x:Name="txtRatingSystem" Margin="4" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                <TextBlock Grid.Column="2" Grid.Row="4" Text="Supplier Category" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                <inputcombo:AutoCompleteComboBox Grid.Column="3" Grid.Row="4" x:Name="cmbSupplierCategory" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" HorizontalAlignment="Stretch" VerticalAlignment="Center"></inputcombo:AutoCompleteComboBox>
+
+                                                <TextBlock Grid.Column="2" Grid.Row="7" Text="PO Auto Close(Days)" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTipService.ToolTip="Days are Effective from Second PO ApprovalDate"></TextBlock>
+
+                                                <TextBox  Grid.Column="3" Grid.Row="7" Width="100" x:Name="txtPOAutoCancelDays" KeyDown="txtPOAutoCancelDays_KeyDown" TextChanged="txtPOAutoCancelDays_TextChanged" ToolTipService.ToolTip="Days are Effective from Second PO ApprovalDate" Margin="4" MaxLength="5" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+
+                                            </Grid>
+                                            <!--</GroupBox:GroupBox>-->
+
+                                            <GroupBox:GroupBox Grid.Row="1" Grid.Column="0" Margin="4" Header="Reg. Off. Address" >
+
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition  ></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <GroupBox:GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Contact Person1" HorizontalAlignment="Stretch" >
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+
+
+                                                            </Grid.RowDefinitions>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="0"  x:Name="txtContactperson1Name" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtContactperson1Name_LostFocus"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Mobile No" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtContactperson1MobileNo" Margin="4"   VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtContactperson1MobileNo_TextChanged" KeyDown="txtContactperson1MobileNo_KeyDown" IsEnabled="True" MaxLength="50"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Email" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="2"  x:Name="txtContactperson1Email" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtContactperson1Email_LostFocus" ></TextBox>
+
+                                                        </Grid>
+
+                                                    </GroupBox:GroupBox>
+
+                                                    <GroupBox:GroupBox  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"  Header="Contact Person2" Margin="4">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                            </Grid.RowDefinitions>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="0"  x:Name="txtContactperson2Name" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtContactperson2Name_LostFocus"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Mobile No" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtContactperson2MobileNo" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtContactperson2MobileNo_TextChanged" KeyDown="txtContactperson2MobileNo_KeyDown"></TextBox>
+
+                                                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Email" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                                            <TextBox Grid.Column="1" Grid.Row="2"  x:Name="txtContactperson2Email" Margin="4" MaxLength="50"  VerticalAlignment="Center" HorizontalAlignment="Stretch" LostFocus="txtContactperson2Email_LostFocus"></TextBox>
+
+                                                        </Grid>
+
+
+
+                                                    </GroupBox:GroupBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Phone No" Margin="4" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox Grid.Column="1" Grid.Row="1"  x:Name="txtPhoneNo" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtPhoneNo_TextChanged" KeyDown="txtPhoneNo_KeyDown"></TextBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="2" Text="Fax" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox Grid.Column="3" Grid.Row="2"  x:Name="txtFax" Margin="4" MaxLength="50" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextChanged="txtFax_TextChanged" KeyDown="txtFax_KeyDown"></TextBox>
+                                                </Grid>
+                                            </GroupBox:GroupBox>
+
+                                            <GroupBox:GroupBox Grid.Row="2"  Margin="4" Header="Payment Details" >
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Mode of Payment" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <inputcombo:AutoCompleteComboBox Grid.Column="1" Grid.Row="0" x:Name="cmbModeofPayment" Margin="4" SelectedValuePath="ID" SelectedValue="ID" HorizontalAlignment="Stretch" VerticalAlignment="Center"></inputcombo:AutoCompleteComboBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Terms of Payment" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <inputcombo:AutoCompleteComboBox Grid.Column="1" Grid.Row="1" x:Name="cmbTermsofPayment" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" HorizontalAlignment="Stretch" VerticalAlignment="Center"></inputcombo:AutoCompleteComboBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Tax Nature" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <inputcombo:AutoCompleteComboBox Grid.Column="3" Grid.Row="0"  x:Name="cmbTaxNature" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" HorizontalAlignment="Stretch" VerticalAlignment="Center"></inputcombo:AutoCompleteComboBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="1" Text="Currency" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <inputcombo:AutoCompleteComboBox Grid.Column="3" Grid.Row="1" x:Name="cmbCurrency" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" HorizontalAlignment="Stretch" VerticalAlignment="Center"></inputcombo:AutoCompleteComboBox>
+
+
+                                                </Grid>
+                                            </GroupBox:GroupBox>
+
+                                            <GroupBox:GroupBox Grid.Row="3" Margin="4"  Header="Tax Details"  >
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="MST Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="0" x:Name="txtMSTNumber" Margin="4" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="CST Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="1" x:Name="txtCSTNumber" Margin="4" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="VAT Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="2" x:Name="txtVATNumber" Margin="4" TextWrapping="Wrap" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Drug Licence Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="3" Grid.Row="0" x:Name="txtDrugLicenceNumber" Margin="4" TextWrapping="Wrap" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="1" Text="Service Tax Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="3" Grid.Row="1" x:Name="txtServiceTaxNumber" Margin="4" TextWrapping="Wrap" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="2" Text="PAN Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="3" Grid.Row="2" x:Name="txtPANNumber" Margin="4" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="3" Text="GSTIN Number" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="3" x:Name="txtGSTINNumber" Margin="4" TextWrapping="Wrap" MaxLength="15" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+
+                                                </Grid>
+                                            </GroupBox:GroupBox>
+
+                                            <!--<GroupBox:GroupBox Grid.Row="4" Margin="4"  Header="Tax Details" Visibility="Collapsed" >
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+
+                                                    </Grid.RowDefinitions>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Depreciation" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="1" Grid.Row="0" x:Name="txtDepreciation" Margin="4" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Rating system" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBox  Grid.Column="3" Grid.Row="0" x:Name="txtRatingSystem" Margin="4" MaxLength="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
+
+                                                    <TextBlock Grid.Column="4" Grid.Row="0" Text="Supplier Category" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                    <inputcombo:AutoCompleteComboBox Grid.Column="5" Grid.Row="0" x:Name="cmbSupplierCategory" Margin="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" HorizontalAlignment="Stretch" VerticalAlignment="Center"></inputcombo:AutoCompleteComboBox>
+                                                </Grid>
+                                            </GroupBox:GroupBox>-->
+                                        </Grid>
+                                    </toolkit:DockPanel>
+                                </Border>
+                            </toolkit:DockPanel>
+                        </toolkit:DockPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </toolkit:DockPanel>
+    </Grid>
+</UserControl>

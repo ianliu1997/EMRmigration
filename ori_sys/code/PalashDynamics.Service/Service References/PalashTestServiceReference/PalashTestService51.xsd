@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.StaffMaster" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.StaffMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:complexType name="clsAddStaffBankInfoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientServiceList" nillable="true" type="tns:ArrayOfclsStaffBankInfoVO" />
+      <xs:element minOccurs="0" name="objStaffBankDetail" nillable="true" type="tns:clsStaffBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddStaffBankInfoBizActionVO" nillable="true" type="tns:clsAddStaffBankInfoBizActionVO" />
+  <xs:complexType name="ArrayOfclsStaffBankInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsStaffBankInfoVO" nillable="true" type="tns:clsStaffBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsStaffBankInfoVO" nillable="true" type="tns:ArrayOfclsStaffBankInfoVO" />
+  <xs:complexType name="clsStaffBankInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountType" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AccountTypeId" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AccountTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankId" type="xs:long" />
+      <xs:element minOccurs="0" name="BankName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BranchAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BranchId" type="xs:long" />
+      <xs:element minOccurs="0" name="BranchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MICRNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStaffBankInfoVO" nillable="true" type="tns:clsStaffBankInfoVO" />
+  <xs:complexType name="clsUpdateStaffBankInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientServiceList" nillable="true" type="tns:ArrayOfclsStaffBankInfoVO" />
+      <xs:element minOccurs="0" name="objStaffBankDetail" nillable="true" type="tns:clsStaffBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateStaffBankInfoVO" nillable="true" type="tns:clsUpdateStaffBankInfoVO" />
+  <xs:complexType name="clsGetStaffBankInfoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffBankDetailList" nillable="true" type="tns:ArrayOfclsStaffBankInfoVO" />
+      <xs:element minOccurs="0" name="StaffID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="objStaffBankDetail" nillable="true" type="tns:clsStaffBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffBankInfoBizActionVO" nillable="true" type="tns:clsGetStaffBankInfoBizActionVO" />
+  <xs:complexType name="clsGetStaffBankInfoByIdVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BankId" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffBankDetailList" nillable="true" type="tns:ArrayOfclsStaffBankInfoVO" />
+      <xs:element minOccurs="0" name="StaffID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="objStaffBankDetail" nillable="true" type="tns:clsStaffBankInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffBankInfoByIdVO" nillable="true" type="tns:clsGetStaffBankInfoByIdVO" />
+  <xs:complexType name="ArrayOfclsStaffMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsStaffMasterVO" nillable="true" type="tns:clsStaffMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsStaffMasterVO" nillable="true" type="tns:ArrayOfclsStaffMasterVO" />
+  <xs:complexType name="clsStaffMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessCardNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AgeDays" type="xs:long" />
+      <xs:element minOccurs="0" name="AgeMonth" type="xs:long" />
+      <xs:element minOccurs="0" name="AgeYears" type="xs:long" />
+      <xs:element minOccurs="0" name="BankBranchId" type="xs:long" />
+      <xs:element minOccurs="0" name="BankId" type="xs:long" />
+      <xs:element minOccurs="0" name="BloodGroupId" type="xs:long" />
+      <xs:element minOccurs="0" name="ClinicId" type="xs:long" />
+      <xs:element minOccurs="0" name="ClinicName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateofJoining" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartmentID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Designation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DesignationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Education" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Experience" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsApplicableAdvise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDischargeApprove" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMarketingExecutives" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatusId" type="xs:long" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileCountryCode" type="xs:long" />
+      <xs:element minOccurs="0" name="MobileNo" type="xs:long" />
+      <xs:element minOccurs="0" name="PANNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PFNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Photo" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PrefixID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReligionId" type="xs:long" />
+      <xs:element minOccurs="0" name="ResiNoCountryCode" type="xs:long" />
+      <xs:element minOccurs="0" name="ResiSTDCode" type="xs:long" />
+      <xs:element minOccurs="0" name="ResidenceNo" type="xs:long" />
+      <xs:element minOccurs="0" name="RowID" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffAddressInfo" nillable="true" type="tns:ArrayOfclsStaffAddressInfoVO" />
+      <xs:element minOccurs="0" name="StaffAddressInformation" nillable="true" type="tns:clsStaffAddressInfoVO" />
+      <xs:element minOccurs="0" name="StaffBankInfo" nillable="true" type="tns:ArrayOfclsStaffBankInfoVO" />
+      <xs:element minOccurs="0" name="StaffBankInformation" nillable="true" type="tns:clsStaffBankInfoVO" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" type="xs:long" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStaffMasterVO" nillable="true" type="tns:clsStaffMasterVO" />
+  <xs:complexType name="ArrayOfclsStaffAddressInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsStaffAddressInfoVO" nillable="true" type="tns:clsStaffAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsStaffAddressInfoVO" nillable="true" type="tns:ArrayOfclsStaffAddressInfoVO" />
+  <xs:complexType name="clsStaffAddressInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="BranchId" type="xs:long" />
+      <xs:element minOccurs="0" name="Contact1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contact2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFromMarketing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MOVID" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStaffAddressInfoVO" nillable="true" type="tns:clsStaffAddressInfoVO" />
+  <xs:complexType name="clsGetStaffMasterDetailsByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StaffDetails" nillable="true" type="tns:clsStaffMasterVO" />
+      <xs:element minOccurs="0" name="StaffID" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffMasterList" nillable="true" type="tns:clsStaffMasterVO" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffMasterDetailsByIDBizActionVO" nillable="true" type="tns:clsGetStaffMasterDetailsByIDBizActionVO" />
+  <xs:complexType name="clsGetStaffMasterDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClinicId" type="xs:long" />
+      <xs:element minOccurs="0" name="ClinicName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DesignationID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StaffMasterList" nillable="true" type="tns:ArrayOfclsStaffMasterVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="StrClinicID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffMasterDetailsBizActionVO" nillable="true" type="tns:clsGetStaffMasterDetailsBizActionVO" />
+  <xs:complexType name="clsStaffAddressDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="BranchId" type="xs:long" />
+      <xs:element minOccurs="0" name="Contact1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contact2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsNew" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowID" type="xs:long" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsStaffAddressDetailsVO" nillable="true" type="tns:clsStaffAddressDetailsVO" />
+  <xs:complexType name="clsGetStaffMasterByUnitIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DesignationID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromNurseSchedule" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsStaffPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StaffAddressList" nillable="true" type="tns:ArrayOfclsStaffAddressDetailsVO" />
+      <xs:element minOccurs="0" name="StaffMasterList" nillable="true" type="tns:ArrayOfclsStaffMasterVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffMasterByUnitIDBizActionVO" nillable="true" type="tns:clsGetStaffMasterByUnitIDBizActionVO" />
+  <xs:complexType name="ArrayOfclsStaffAddressDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsStaffAddressDetailsVO" nillable="true" type="tns:clsStaffAddressDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsStaffAddressDetailsVO" nillable="true" type="tns:ArrayOfclsStaffAddressDetailsVO" />
+  <xs:complexType name="clsGetUserSearchBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DesignationID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRegisteredStaff" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffMasterList" nillable="true" type="tns:ArrayOfclsStaffMasterVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetUserSearchBizActionVO" nillable="true" type="tns:clsGetUserSearchBizActionVO" />
+  <xs:complexType name="clsGetStaffBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DesignationID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GRODesignationID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsForGRO" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForPathology" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForRadiology" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q1:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PathologyDesignationID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RadiologyDesignationID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffDetails" nillable="true" type="tns:clsStaffMasterVO" />
+      <xs:element minOccurs="0" name="StaffMasterList" nillable="true" type="tns:ArrayOfclsStaffMasterVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffBizActionVO" nillable="true" type="tns:clsGetStaffBizActionVO" />
+  <xs:complexType name="clsAddStaffMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StaffDetails" nillable="true" type="tns:clsStaffMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddStaffMasterBizActionVO" nillable="true" type="tns:clsAddStaffMasterBizActionVO" />
+  <xs:complexType name="clsAddStaffAddressInfoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientServiceList" nillable="true" type="tns:ArrayOfclsStaffAddressInfoVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="objStaffBankDetail" nillable="true" type="tns:clsStaffAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddStaffAddressInfoBizActionVO" nillable="true" type="tns:clsAddStaffAddressInfoBizActionVO" />
+  <xs:complexType name="clsGetStaffAddressInfoBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsfromMarketing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffAddressDetailList" nillable="true" type="tns:ArrayOfclsStaffAddressInfoVO" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="objStaffAddressDetail" nillable="true" type="tns:clsStaffAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffAddressInfoBizActionVO" nillable="true" type="tns:clsGetStaffAddressInfoBizActionVO" />
+  <xs:complexType name="clsGetStaffAddressInfoByIdVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsfromMarketing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffAddressDetailList" nillable="true" type="tns:ArrayOfclsStaffAddressInfoVO" />
+      <xs:element minOccurs="0" name="StaffId" type="xs:long" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="objStaffAddressDetail" nillable="true" type="tns:clsStaffAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetStaffAddressInfoByIdVO" nillable="true" type="tns:clsGetStaffAddressInfoByIdVO" />
+  <xs:complexType name="clsUpdateStaffAddressInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientServiceList" nillable="true" type="tns:ArrayOfclsStaffAddressInfoVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="objStaffAddressDetail" nillable="true" type="tns:clsStaffAddressInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateStaffAddressInfoVO" nillable="true" type="tns:clsUpdateStaffAddressInfoVO" />
+</xs:schema>

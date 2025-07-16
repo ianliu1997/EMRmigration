@@ -1,0 +1,1856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Billing" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd36" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IPD" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd35" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" />
+  <xs:complexType name="clsPatientGeneralVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="AdmissionUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" name="AgencyID" type="xs:long" />
+      <xs:element minOccurs="0" name="AgencyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Alerts" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttachedImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BMI" type="xs:double" />
+      <xs:element minOccurs="0" name="BabyWeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BedID" type="xs:long" />
+      <xs:element minOccurs="0" name="BedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillBalanceAmountSelf" type="xs:double" />
+      <xs:element minOccurs="0" name="BillingToBedCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="BloodGroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="BringScanDoc" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassID" type="xs:long" />
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClinicName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="Complaint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNO1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateOfBirthFromAge" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DonarCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DonorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Education" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EducationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromFollowUp" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromForm" type="xs:long" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="GeneralDetailsBarcodeImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Height" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IPDAdmissionID" type="xs:long" />
+      <xs:element minOccurs="0" name="IPDAdmissionNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPDPatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAge" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBedReservation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsClinicVisited" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDischarged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDocAttached" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEMR" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromAppointment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPatientChecked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPatientEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsReadyForDischarged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsReferralDoc" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSignificant" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSurrogate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSurrogateAlreadyLinked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSurrogateUsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarriageAnnDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MemberRelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationalityID" type="xs:long" />
+      <xs:element minOccurs="0" name="NewPatientCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="NoOfPeople" type="xs:int" />
+      <xs:element minOccurs="0" name="OPDNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldRegistrationNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_External_UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="PName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRORemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PanNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="PatientKind" type="q1:PatientsKind" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientPROID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientSourceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientSponsorCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Photo" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PreferredLangID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferenceNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferralDetail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferralDoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferralTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferredToDoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegType" type="xs:short" />
+      <xs:element minOccurs="0" name="RegistrationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Religion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemarkForPatientType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchFromIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchKeyword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SonDaughterOf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialRegID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpecialRegName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpouseID" type="xs:long" />
+      <xs:element minOccurs="0" name="Tariff" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TreatRequiredID" type="xs:long" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UniversalID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="WardID" type="xs:long" />
+      <xs:element minOccurs="0" name="WardName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Weight" type="xs:double" />
+      <xs:element minOccurs="0" name="_PatientPROID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientGeneralVO" nillable="true" type="tns:clsPatientGeneralVO" />
+  <xs:complexType name="clsGetPatientGeneralDetailsListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DonarCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DonorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="IPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISFromQueeManagment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdentityID" type="xs:long" />
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCurrentAdmitted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDocAttached" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromFindPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromSurrogacyModule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLoyaltyMember" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSearchForRegistration" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSelfAndDonor" type="xs:int" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldRegistrationNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PQueueUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDetailsList" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchInAnotherClinic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ShowOutSourceDonor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SpecialRegID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isfromMaterialConsumpation" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientGeneralDetailsListBizActionVO" nillable="true" type="tns:clsGetPatientGeneralDetailsListBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientGeneralVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientGeneralVO" nillable="true" type="tns:clsPatientGeneralVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientGeneralVO" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+  <xs:complexType name="clsGetCoupleGeneralDetailsListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOBFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsLoyaltyMember" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDetailsList" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchInAnotherClinic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchKeyword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitWise" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCoupleGeneralDetailsListBizActionVO" nillable="true" type="tns:clsGetCoupleGeneralDetailsListBizActionVO" />
+  <xs:complexType name="clsGetPatientGeneralDetailsListForSurrogacyBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AgencyID" type="xs:long" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOBFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFromSurrogacyModule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLoyaltyMember" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDetailsList" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchInAnotherClinic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitWise" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientGeneralDetailsListForSurrogacyBizActionVO" nillable="true" type="tns:clsGetPatientGeneralDetailsListForSurrogacyBizActionVO" />
+  <xs:complexType name="clsGetOTPatientGeneralDetailsListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AdmissionWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOBWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DonorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="IPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCurrentAdmitted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromFindPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFromSurrogacyModule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLoyaltyMember" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSearchForRegistration" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSelfAndDonor" type="xs:int" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PQueueUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientDetailsList" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationWise" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchInAnotherClinic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ShowOutSourceDonor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitWise" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetOTPatientGeneralDetailsListBizActionVO" nillable="true" type="tns:clsGetOTPatientGeneralDetailsListBizActionVO" />
+  <xs:complexType name="clsTESEVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" minOccurs="0" name="CoupleDetail" nillable="true" type="q2:clsCoupleVO" />
+      <xs:element minOccurs="0" name="CoupleID" type="xs:long" />
+      <xs:element minOccurs="0" name="CoupleUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="CryoDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CryoTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmbroLogistID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LabInchargeID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SpouseID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tissue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TissueSideID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsTESEVO" nillable="true" type="tns:clsTESEVO" />
+  <xs:complexType name="clsTESEDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContainerNumber" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="CryoDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CryoTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmbroLogist" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmbroLogistID" type="xs:long" />
+      <xs:element minOccurs="0" name="HolderNumber" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LabIncharge" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LabInchargeID" type="xs:long" />
+      <xs:element minOccurs="0" name="No_of_VailsRemain" type="xs:long" />
+      <xs:element minOccurs="0" name="No_of_VailsUsed" type="xs:long" />
+      <xs:element minOccurs="0" name="NoofVailsFrozen" type="xs:long" />
+      <xs:element minOccurs="0" name="RenewalDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TESE_ID" type="xs:long" />
+      <xs:element minOccurs="0" name="TESE_UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Tissue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TissueSideID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsTESEDetailsVO" nillable="true" type="tns:clsTESEDetailsVO" />
+  <xs:complexType name="clsPatientOtherDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Question1" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Question2" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Question3" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Question4" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Question4Details" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Question5A" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Question5B" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Question5C" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientOtherDetailsVO" nillable="true" type="tns:clsPatientOtherDetailsVO" />
+  <xs:complexType name="clsGetPatientDetailsForCounterSaleBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientDetailsForCounterSaleBizActionVO" nillable="true" type="tns:clsGetPatientDetailsForCounterSaleBizActionVO" />
+  <xs:complexType name="clsPatientVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AgencyID" type="xs:long" />
+      <xs:element minOccurs="0" name="AgencyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BDID" type="xs:long" />
+      <xs:element minOccurs="0" name="BabyNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="BabyOfNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="BabyWeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BloodGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BloodGroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="BoneStructure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityID" type="xs:long" />
+      <xs:element minOccurs="0" name="CityN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClinicName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:long" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNO1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryID" type="xs:long" />
+      <xs:element minOccurs="0" name="CountryN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Doctor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DonorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DonorID" type="xs:long" />
+      <xs:element minOccurs="0" name="DonorSourceID" type="xs:long" />
+      <xs:element minOccurs="0" name="DonorUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Education" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EducationID" type="xs:long" />
+      <xs:element minOccurs="0" name="EffectiveDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Eye" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EyeColorID" type="xs:long" />
+      <xs:element minOccurs="0" name="FamilyDetails" nillable="true" type="tns:ArrayOfclsPatientFamilyDetailsVO" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromForm" type="xs:long" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="GenderImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="GeneralDetails" nillable="true" type="tns:clsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="Hair" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HairColorID" type="xs:long" />
+      <xs:element minOccurs="0" name="Height" type="xs:double" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ISDischarged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdentityID" type="xs:long" />
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsClinicVisited" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDonor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsExistingBatch" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIPDPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInternationalPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLatestPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLoyaltyMember" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPanNoSave" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsReferralDoc" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisitForPatho" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IssueDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="KinInformationList" nillable="true" type="tns:ArrayOfclsKinInformationVO" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkParentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkPatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="LinkPatientMrNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkPatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyCardID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyCardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatusID" type="xs:long" />
+      <xs:element minOccurs="0" name="MarriageAnnDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileCountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationalityID" type="xs:long" />
+      <xs:element minOccurs="0" name="NoOfPeople" type="xs:int" />
+      <xs:element minOccurs="0" name="OccupationId" type="xs:long" />
+      <xs:element minOccurs="0" name="OldRegistrationNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherDetails" nillable="true" type="tns:clsPatientOtherDetailsVO" />
+      <xs:element minOccurs="0" name="PanNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentPatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCategoryIDForPath" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientSourceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientSponsorCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="Photo" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreferNameonLoyaltyCard" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreferredLangID" type="xs:long" />
+      <xs:element minOccurs="0" name="Prefix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrefixId" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferralDetail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferralDoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferralName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferralTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferredToDoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReligionID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemarkForPatientType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResiNoCountryCode" type="xs:long" />
+      <xs:element minOccurs="0" name="ResiSTDCode" type="xs:long" />
+      <xs:element minOccurs="0" name="ScanDocList" nillable="true" type="tns:ArrayOfclsPatientScanDocumentVO" />
+      <xs:element minOccurs="0" name="SelectPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceDetails" nillable="true" type="tns:ArrayOfclsPatientServiceDetails" />
+      <xs:element minOccurs="0" name="Skin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkinColorID" type="xs:long" />
+      <xs:element minOccurs="0" name="SonDaughterOf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialRegID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpecialRegistrationID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpouseDetails" nillable="true" type="tns:clsPatientSpouseVO" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateID" type="xs:long" />
+      <xs:element minOccurs="0" name="StateN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SurrogateOtherDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Taluka" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="TreatRequiredID" type="xs:long" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UniversalID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="_Eye" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientVO" nillable="true" type="tns:clsPatientVO" />
+  <xs:complexType name="ArrayOfclsPatientFamilyDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientFamilyDetailsVO" nillable="true" type="tns:clsPatientFamilyDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientFamilyDetailsVO" nillable="true" type="tns:ArrayOfclsPatientFamilyDetailsVO" />
+  <xs:complexType name="clsPatientFamilyDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MemberRegistered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tariff" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientFamilyDetailsVO" nillable="true" type="tns:clsPatientFamilyDetailsVO" />
+  <xs:complexType name="ArrayOfclsKinInformationVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsKinInformationVO" nillable="true" type="tns:clsKinInformationVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsKinInformationVO" nillable="true" type="tns:ArrayOfclsKinInformationVO" />
+  <xs:complexType name="clsKinInformationVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="FamilyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsRegisteredPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="KinFirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KinID" type="xs:long" />
+      <xs:element minOccurs="0" name="KinLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KinMiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KinPatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="KinPatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="KinUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="MRCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileCountryCode" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="MobileNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Relationship" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationshipID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsKinInformationVO" nillable="true" type="tns:clsKinInformationVO" />
+  <xs:complexType name="ArrayOfclsPatientScanDocumentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientScanDocumentVO" nillable="true" type="tns:clsPatientScanDocumentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientScanDocumentVO" nillable="true" type="tns:ArrayOfclsPatientScanDocumentVO" />
+  <xs:complexType name="clsPatientScanDocumentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachedFileContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="AttachedFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EMRImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Identity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityID" type="xs:long" />
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsForSpouse" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Isfreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientScanDocumentVO" nillable="true" type="tns:clsPatientScanDocumentVO" />
+  <xs:complexType name="ArrayOfclsPatientServiceDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientServiceDetails" nillable="true" type="tns:clsPatientServiceDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientServiceDetails" nillable="true" type="tns:ArrayOfclsPatientServiceDetails" />
+  <xs:complexType name="clsPatientServiceDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConcessionAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyID" type="xs:long" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="SelectService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientServiceDetails" nillable="true" type="tns:clsPatientServiceDetails" />
+  <xs:complexType name="clsPatientSpouseVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BloodGroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityID" type="xs:long" />
+      <xs:element minOccurs="0" name="CityN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClinicName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNO1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryID" type="xs:long" />
+      <xs:element minOccurs="0" name="CountryN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Education" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EducationID" type="xs:long" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Flag1" type="xs:int" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IdentityID" type="xs:long" />
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAge" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsClinicVisited" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInternationalPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatusID" type="xs:long" />
+      <xs:element minOccurs="0" name="MarriageAnnDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileCountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationalityID" type="xs:long" />
+      <xs:element minOccurs="0" name="NoOfPeople" type="xs:int" />
+      <xs:element minOccurs="0" name="OccupationId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Photo" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreferredLangID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrefixId" type="xs:long" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionID" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReligionID" type="xs:long" />
+      <xs:element minOccurs="0" name="RemarkForPatientType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResiNoCountryCode" type="xs:long" />
+      <xs:element minOccurs="0" name="ResiSTDCode" type="xs:long" />
+      <xs:element minOccurs="0" name="SonDaughterOf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialRegID" type="xs:long" />
+      <xs:element minOccurs="0" name="SpouseBarcodeImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="SpouseCompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpouseOldRegistrationNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpousePanNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateID" type="xs:long" />
+      <xs:element minOccurs="0" name="StateN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Taluka" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TreatRequiredID" type="xs:long" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientSpouseVO" nillable="true" type="tns:clsPatientSpouseVO" />
+  <xs:complexType name="clsGetPatientDetailsForPathologyBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Billing" minOccurs="0" name="PatientBillDetailList" nillable="true" type="q3:ArrayOfclsChargeVO" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Billing" minOccurs="0" name="PatientBillInfoDetail" nillable="true" type="q4:clsBillVO" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientDetailsForPathologyBizActionVO" nillable="true" type="tns:clsGetPatientDetailsForPathologyBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientFollowUpVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientFollowUpVO" nillable="true" type="tns:clsPatientFollowUpVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientFollowUpVO" nillable="true" type="tns:ArrayOfclsPatientFollowUpVO" />
+  <xs:complexType name="clsPatientFollowUpVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualServiceConsumedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Clinic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="Doctor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="Flag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpCompletedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpDisplayDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpNo" type="xs:int" />
+      <xs:element minOccurs="0" name="FollowUpPostPoneDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpPostPoneFromId" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpPostponeTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpScheduleDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsClose" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPostPone" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPostPoneUsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSchedule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaritalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackageServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PreviousFollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegisteredClinic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:long" />
+      <xs:element minOccurs="0" name="SinceDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SinceDay" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tariff" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientFollowUpVO" nillable="true" type="tns:clsPatientFollowUpVO" />
+  <xs:complexType name="clsGetPatientPenPusherDetailListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientPenPusherDetailsInfo" nillable="true" type="tns:clsPatientPenPusherInfoVO" />
+      <xs:element minOccurs="0" name="PatientPenPusherDetailsList" nillable="true" type="tns:ArrayOfclsPatientPenPusherInfoVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientPenPusherDetailListBizActionVO" nillable="true" type="tns:clsGetPatientPenPusherDetailListBizActionVO" />
+  <xs:complexType name="clsPatientPenPusherInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientPerscriptionInfo" nillable="true" type="tns:clsPatientPerscriptionInfoVO" />
+      <xs:element minOccurs="0" name="PatientPerscriptionInfoList" nillable="true" type="tns:ArrayOfclsPatientPerscriptionInfoVO" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientPenPusherInfoVO" nillable="true" type="tns:clsPatientPenPusherInfoVO" />
+  <xs:complexType name="clsPatientPerscriptionInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Days" type="xs:long" />
+      <xs:element minOccurs="0" name="Dose" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DrugID" type="xs:long" />
+      <xs:element minOccurs="0" name="Frequency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrescriptionID" type="xs:long" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Route" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientPerscriptionInfoVO" nillable="true" type="tns:clsPatientPerscriptionInfoVO" />
+  <xs:complexType name="ArrayOfclsPatientPerscriptionInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientPerscriptionInfoVO" nillable="true" type="tns:clsPatientPerscriptionInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientPerscriptionInfoVO" nillable="true" type="tns:ArrayOfclsPatientPerscriptionInfoVO" />
+  <xs:complexType name="ArrayOfclsPatientPenPusherInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientPenPusherInfoVO" nillable="true" type="tns:clsPatientPenPusherInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientPenPusherInfoVO" nillable="true" type="tns:ArrayOfclsPatientPenPusherInfoVO" />
+  <xs:complexType name="clsAddUpdateTESEBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FemalePatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="MalePatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TESE" nillable="true" type="tns:clsTESEVO" />
+      <xs:element minOccurs="0" name="TESEDetails" nillable="true" type="tns:clsTESEDetailsVO" />
+      <xs:element minOccurs="0" name="TESEDetailsList" nillable="true" type="tns:ArrayOfclsTESEDetailsVO" />
+      <xs:element minOccurs="0" name="TESEList" nillable="true" type="tns:ArrayOfclsTESEVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateTESEBizActionVO" nillable="true" type="tns:clsAddUpdateTESEBizActionVO" />
+  <xs:complexType name="ArrayOfclsTESEDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsTESEDetailsVO" nillable="true" type="tns:clsTESEDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsTESEDetailsVO" nillable="true" type="tns:ArrayOfclsTESEDetailsVO" />
+  <xs:complexType name="ArrayOfclsTESEVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsTESEVO" nillable="true" type="tns:clsTESEVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsTESEVO" nillable="true" type="tns:ArrayOfclsTESEVO" />
+  <xs:complexType name="clsGetTESEBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TESE" nillable="true" type="tns:clsTESEVO" />
+      <xs:element minOccurs="0" name="TESEDeatailsList" nillable="true" type="tns:ArrayOfclsTESEDetailsVO" />
+      <xs:element minOccurs="0" name="TESEDetails" nillable="true" type="tns:clsTESEDetailsVO" />
+      <xs:element minOccurs="0" name="TESEList" nillable="true" type="tns:ArrayOfclsTESEVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetTESEBizActionVO" nillable="true" type="tns:clsGetTESEBizActionVO" />
+  <xs:complexType name="AddBarcodeImageBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ObjBarcodeImage" nillable="true" type="tns:AddBarcodeImageVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddBarcodeImageBizActionVO" nillable="true" type="tns:AddBarcodeImageBizActionVO" />
+  <xs:complexType name="AddBarcodeImageVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Flag1" type="xs:int" />
+      <xs:element minOccurs="0" name="GeneralDetailsBarcodeImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="GeneralDetailsMRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpouseBarcodeImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="SpouseMRNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddBarcodeImageVO" nillable="true" type="tns:AddBarcodeImageVO" />
+  <xs:complexType name="clsPatientAttachmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachedFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Attachment" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="CasePaperType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Doctor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientAttachmentVO" nillable="true" type="tns:clsPatientAttachmentVO" />
+  <xs:complexType name="clsPatientLinkFileBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttachmentFileContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsCompleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFinalized" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferredBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Report" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="SourceURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:long" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientLinkFileBizActionVO" nillable="true" type="tns:clsPatientLinkFileBizActionVO" />
+  <xs:complexType name="clsPatientFollowUpImageVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EditImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientFollowUpImageVO" nillable="true" type="tns:clsPatientFollowUpImageVO" />
+  <xs:complexType name="clsPatientProspectServiceInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProspectSaleID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientProspectServiceInfoVO" nillable="true" type="tns:clsPatientProspectServiceInfoVO" />
+  <xs:complexType name="clsPatientProspectInterestedInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="InterestedID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProspectSaleID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientProspectInterestedInfoVO" nillable="true" type="tns:clsPatientProspectInterestedInfoVO" />
+  <xs:complexType name="clsPatientProspectSalesInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventID" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpID" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowUpRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Interested" type="xs:boolean" />
+      <xs:element minOccurs="0" name="L1" type="xs:long" />
+      <xs:element minOccurs="0" name="L2" type="xs:long" />
+      <xs:element minOccurs="0" name="L3" type="xs:long" />
+      <xs:element minOccurs="0" name="ProspectID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProspectUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SaleInterestedList" nillable="true" type="tns:ArrayOfclsPatientProspectInterestedInfoVO" />
+      <xs:element minOccurs="0" name="SaleServiceList" nillable="true" type="tns:ArrayOfclsPatientProspectServiceInfoVO" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:long" />
+      <xs:element minOccurs="0" name="TypeOfLead" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsPatientProspectSalesInfoVO" nillable="true" type="tns:clsPatientProspectSalesInfoVO" />
+  <xs:complexType name="ArrayOfclsPatientProspectInterestedInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientProspectInterestedInfoVO" nillable="true" type="tns:clsPatientProspectInterestedInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientProspectInterestedInfoVO" nillable="true" type="tns:ArrayOfclsPatientProspectInterestedInfoVO" />
+  <xs:complexType name="ArrayOfclsPatientProspectServiceInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientProspectServiceInfoVO" nillable="true" type="tns:clsPatientProspectServiceInfoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientProspectServiceInfoVO" nillable="true" type="tns:ArrayOfclsPatientProspectServiceInfoVO" />
+  <xs:complexType name="clsTemplateImageBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedUnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttachmentFileContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsCompleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFinalized" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsModifyandAttRep" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferredBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Report" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="SourceURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsTemplateImageBizActionVO" nillable="true" type="tns:clsTemplateImageBizActionVO" />
+  <xs:complexType name="clsGetPatientFamilyDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyDetails" nillable="true" type="tns:ArrayOfclsPatientFamilyDetailsVO" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientFamilyDetailsBizActionVO" nillable="true" type="tns:clsGetPatientFamilyDetailsBizActionVO" />
+  <xs:complexType name="clsCheckPatientMemberRegisteredBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyDetails" nillable="true" type="tns:clsPatientFamilyDetailsVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckPatientMemberRegisteredBizActionVO" nillable="true" type="tns:clsCheckPatientMemberRegisteredBizActionVO" />
+  <xs:complexType name="clsAddPatientPhotoToServerBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="PatientDetailsList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientPhotoToServerBizActionVO" nillable="true" type="tns:clsAddPatientPhotoToServerBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientVO" nillable="true" type="tns:clsPatientVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientVO" nillable="true" type="tns:ArrayOfclsPatientVO" />
+  <xs:complexType name="clsMovePatientPhotoToServerBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="PatientDetailsList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsMovePatientPhotoToServerBizActionVO" nillable="true" type="tns:clsMovePatientPhotoToServerBizActionVO" />
+  <xs:complexType name="clsGetTariffAndRelationFromApplicationConfigurationBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyDetails" nillable="true" type="tns:ArrayOfclsPatientFamilyDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetTariffAndRelationFromApplicationConfigurationBizActionVO" nillable="true" type="tns:clsGetTariffAndRelationFromApplicationConfigurationBizActionVO" />
+  <xs:complexType name="clsAddPatientForPathologyBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IPD" minOccurs="0" name="BizActionVOSaveAdmission" nillable="true" type="q5:clsSaveIPDAdmissionBizActionVO" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="BizActionVOSaveSponsor" nillable="true" type="q6:clsAddPatientSponsorBizActionVO" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="BizActionVOSaveSponsorForMale" nillable="true" type="q7:clsAddPatientSponsorBizActionVO" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="BizActionVOSaveVisit" nillable="true" type="q8:clsAddVisitBizActionVO" />
+      <xs:element minOccurs="0" name="IsAddWithtransaction" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSaveAdmission" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSaveInTRegistration" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSavePatientFromIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSavePatientFromOPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSaveSponsor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientForPathologyBizActionVO" nillable="true" type="tns:clsAddPatientForPathologyBizActionVO" />
+  <xs:complexType name="clsAddPatientBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IPD" minOccurs="0" name="BizActionVOSaveAdmission" nillable="true" type="q9:clsSaveIPDAdmissionBizActionVO" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="BizActionVOSaveSponsor" nillable="true" type="q10:clsAddPatientSponsorBizActionVO" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" minOccurs="0" name="BizActionVOSaveSponsorForMale" nillable="true" type="q11:clsAddPatientSponsorBizActionVO" />
+      <xs:element minOccurs="0" name="IsAddWithtransaction" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSaveAdmission" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSaveInTRegistration" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSavePatientFromIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSavePatientFromOPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSaveSponsor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientBizActionVO" nillable="true" type="tns:clsAddPatientBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientFollowUpImageVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientFollowUpImageVO" nillable="true" type="tns:clsPatientFollowUpImageVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientFollowUpImageVO" nillable="true" type="tns:ArrayOfclsPatientFollowUpImageVO" />
+  <xs:complexType name="clsAddNewCoupleBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddNewCoupleBizActionVO" nillable="true" type="tns:clsAddNewCoupleBizActionVO" />
+  <xs:complexType name="clsAddPatientLinkFileBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FROMEMR" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientLinkFileBizActionVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientLinkFileBizActionVO" nillable="true" type="tns:clsAddPatientLinkFileBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientLinkFileBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientLinkFileBizActionVO" nillable="true" type="tns:clsPatientLinkFileBizActionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientLinkFileBizActionVO" nillable="true" type="tns:ArrayOfclsPatientLinkFileBizActionVO" />
+  <xs:complexType name="clsGetPatientLinkFileBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientLinkFileBizActionVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientLinkFileBizActionVO" nillable="true" type="tns:clsGetPatientLinkFileBizActionVO" />
+  <xs:complexType name="clsAddPatientProspectBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SaleDetails" nillable="true" type="tns:clsPatientProspectSalesInfoVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="VitalList" nillable="true" type="q12:ArrayOfclsEMRVitalsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientProspectBizActionVO" nillable="true" type="tns:clsAddPatientProspectBizActionVO" />
+  <xs:complexType name="clsGetPatientProspectBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventID" type="xs:long" />
+      <xs:element minOccurs="0" name="FFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRegistered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="SalesPersonID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientProspectBizActionVO" nillable="true" type="tns:clsGetPatientProspectBizActionVO" />
+  <xs:complexType name="clsGetProspectFollowUpBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventID" type="xs:long" />
+      <xs:element minOccurs="0" name="FFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRegistered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="SalesPersonID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ZoneID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetProspectFollowUpBizActionVO" nillable="true" type="tns:clsGetProspectFollowUpBizActionVO" />
+  <xs:complexType name="clsGetPatientProspectByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="Prospect" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientProspectByIDBizActionVO" nillable="true" type="tns:clsGetPatientProspectByIDBizActionVO" />
+  <xs:complexType name="clsAddPatientFileBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsTemplateImageBizActionVO" />
+      <xs:element minOccurs="0" name="PatientLinkFile" nillable="true" type="tns:clsTemplateImageBizActionVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientFileBizActionVO" nillable="true" type="tns:clsAddPatientFileBizActionVO" />
+  <xs:complexType name="ArrayOfclsTemplateImageBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsTemplateImageBizActionVO" nillable="true" type="tns:clsTemplateImageBizActionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsTemplateImageBizActionVO" nillable="true" type="tns:ArrayOfclsTemplateImageBizActionVO" />
+  <xs:complexType name="clsGetPatientProspectOtherBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="InterstedDetails" nillable="true" type="q13:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="PatientId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="ProspectID" type="xs:long" />
+      <xs:element minOccurs="0" name="ProspectUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="SalesDetails" nillable="true" type="tns:clsPatientProspectSalesInfoVO" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="ServiceDetais" nillable="true" type="q14:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" minOccurs="0" name="VitalList" nillable="true" type="q15:ArrayOfclsEMRVitalsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientProspectOtherBizActionVO" nillable="true" type="tns:clsGetPatientProspectOtherBizActionVO" />
+  <xs:complexType name="clsAddEMRTemplateImageBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:ArrayOfclsTemplateImageBizActionVO" />
+      <xs:element minOccurs="0" name="IsModify" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddEMRTemplateImageBizActionVO" nillable="true" type="tns:clsAddEMRTemplateImageBizActionVO" />
+  <xs:complexType name="clsGetPatientLinkFileViewDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FROMEMR" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientLinkFileBizActionVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Report" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ReportID" type="xs:long" />
+      <xs:element minOccurs="0" name="SourceURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientLinkFileViewDetailsBizActionVO" nillable="true" type="tns:clsGetPatientLinkFileViewDetailsBizActionVO" />
+  <xs:complexType name="clsDeletePatientLinkFileBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeletePatientLinkFileBizActionVO" nillable="true" type="tns:clsDeletePatientLinkFileBizActionVO" />
+  <xs:complexType name="clsAddPatientFollowUpBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientFollowUpBizActionVO" nillable="true" type="tns:clsAddPatientFollowUpBizActionVO" />
+  <xs:complexType name="clsUpdatePatientFollowUpBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FollowUpList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="IsMultiple" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdatePatientFollowUpBizActionVO" nillable="true" type="tns:clsUpdatePatientFollowUpBizActionVO" />
+  <xs:complexType name="clsChangeSchedulePatientFollowUpBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FollowUpDetails" nillable="true" type="tns:clsPatientFollowUpVO" />
+      <xs:element minOccurs="0" name="FollowUpList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="IsMultiple" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChangeSchedulePatientFollowUpBizActionVO" nillable="true" type="tns:clsChangeSchedulePatientFollowUpBizActionVO" />
+  <xs:complexType name="clsUpdatProspectFollowUpBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FollowUpList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="IsMultiple" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdatProspectFollowUpBizActionVO" nillable="true" type="tns:clsUpdatProspectFollowUpBizActionVO" />
+  <xs:complexType name="clsGetPatientFollowUpBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Completed" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowupPatientlist" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="PatientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Postpone" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="ViewPatient" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientFollowUpBizActionVO" nillable="true" type="tns:clsGetPatientFollowUpBizActionVO" />
+  <xs:complexType name="clsGetFollowUpRenewBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Completed" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowupPatientlist" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Postpone" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="ViewPatient" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetFollowUpRenewBizActionVO" nillable="true" type="tns:clsGetFollowUpRenewBizActionVO" />
+  <xs:complexType name="clsGetFollowUp_DashBoardBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Completed" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FollowUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FollowUpStatus" type="xs:long" />
+      <xs:element minOccurs="0" name="FollowupPatientlist" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MRNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientList" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Postpone" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecilizationID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="ViewPatient" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetFollowUp_DashBoardBizActionVO" nillable="true" type="tns:clsGetFollowUp_DashBoardBizActionVO" />
+  <xs:complexType name="clsAddAudioFileBookBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AudioFile" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddAudioFileBookBizActionVO" nillable="true" type="tns:clsAddAudioFileBookBizActionVO" />
+  <xs:complexType name="clsAddDonorCodeBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddDonorCodeBizActionVO" nillable="true" type="tns:clsAddDonorCodeBizActionVO" />
+  <xs:complexType name="clsGetPatientForLoyaltyCardIssueBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsLoyaltymember" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IssuDate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyCardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MrNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientForLoyaltyCardIssueBizActionVO" nillable="true" type="tns:clsGetPatientForLoyaltyCardIssueBizActionVO" />
+  <xs:complexType name="clsGetPatientBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsFromSearchWindow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientAttachmentDetail" nillable="true" type="tns:clsPatientAttachmentVO" />
+      <xs:element minOccurs="0" name="PatientAttachmentDetailList" nillable="true" type="tns:ArrayOfclsPatientAttachmentVO" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="SurrogateID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientBizActionVO" nillable="true" type="tns:clsGetPatientBizActionVO" />
+  <xs:complexType name="ArrayOfclsPatientAttachmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsPatientAttachmentVO" nillable="true" type="tns:clsPatientAttachmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsPatientAttachmentVO" nillable="true" type="tns:ArrayOfclsPatientAttachmentVO" />
+  <xs:complexType name="clsGetPatientTariffsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsOPDIPD" type="xs:boolean" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q16:ArrayOfMasterListItem" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientSourceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientTariffsBizActionVO" nillable="true" type="tns:clsGetPatientTariffsBizActionVO" />
+  <xs:complexType name="clsGetPatientListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="PatientDetailsList" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="SearchName" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SelectedStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientListBizActionVO" nillable="true" type="tns:clsGetPatientListBizActionVO" />
+  <xs:complexType name="clsCheckPatientDuplicacyBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="PatientEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientList" nillable="true" type="tns:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="ResultStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCheckPatientDuplicacyBizActionVO" nillable="true" type="tns:clsCheckPatientDuplicacyBizActionVO" />
+  <xs:complexType name="clsGetPatientLabUploadReportDataBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPathology" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Report" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="SourceURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientLabUploadReportDataBizActionVO" nillable="true" type="tns:clsGetPatientLabUploadReportDataBizActionVO" />
+  <xs:complexType name="clsGetPatientDetailsForCRMBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" name="AgeFilter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CivilID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ComplaintID" type="xs:long" />
+      <xs:element minOccurs="0" name="ContactNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyCardID" type="xs:long" />
+      <xs:element minOccurs="0" name="MRNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatusID" type="xs:long" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OPDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:ArrayOfclsPatientVO" />
+      <xs:element minOccurs="0" name="ProtocolID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="TreatmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientDetailsForCRMBizActionVO" nillable="true" type="tns:clsGetPatientDetailsForCRMBizActionVO" />
+  <xs:complexType name="clsAddPatientServiceDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientServiceList" nillable="true" type="tns:ArrayOfclsPatientServiceDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPatientServiceDetailsVO" nillable="true" type="tns:clsAddPatientServiceDetailsVO" />
+  <xs:complexType name="clsGetPatientBillBalanceAmountBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientGeneralDetails" nillable="true" type="tns:clsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientBillBalanceAmountBizActionVO" nillable="true" type="tns:clsGetPatientBillBalanceAmountBizActionVO" />
+  <xs:complexType name="clsHSGVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ampullary_Blockage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AttachedFileContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="AttachedFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Blocked_tube" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Cornul_blockage" type="xs:boolean" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.IVFPlanTherapy" minOccurs="0" name="CoupleDetail" nillable="true" type="q17:clsCoupleVO" />
+      <xs:element minOccurs="0" name="CoupleID" type="xs:long" />
+      <xs:element minOccurs="0" name="CoupleUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fimbrial_Blockage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HSGDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HSGTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hydrosalplnx" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFreezed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Isthmic_Blockage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LinkServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Other_Patho" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Patent_Tube" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientTypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Uterus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cavity" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsHSGVO" nillable="true" type="tns:clsHSGVO" />
+  <xs:complexType name="clsGetPatientPenPusherDetailByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientPrescriptionDetails" nillable="true" type="tns:clsPatientPerscriptionInfoVO" />
+      <xs:element minOccurs="0" name="PatientPrescriptionDetailsList" nillable="true" type="tns:ArrayOfclsPatientPerscriptionInfoVO" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientPenPusherDetailByIDBizActionVO" nillable="true" type="tns:clsGetPatientPenPusherDetailByIDBizActionVO" />
+  <xs:complexType name="clsAddUpdateHSGBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HSGDetails" nillable="true" type="tns:clsHSGVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdateHSGBizActionVO" nillable="true" type="tns:clsAddUpdateHSGBizActionVO" />
+  <xs:complexType name="clsGetHSGBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HSGDetails" nillable="true" type="tns:clsHSGVO" />
+      <xs:element minOccurs="0" name="HSGList" nillable="true" type="tns:ArrayOfclsHSGVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetHSGBizActionVO" nillable="true" type="tns:clsGetHSGBizActionVO" />
+  <xs:complexType name="ArrayOfclsHSGVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsHSGVO" nillable="true" type="tns:clsHSGVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsHSGVO" nillable="true" type="tns:ArrayOfclsHSGVO" />
+  <xs:complexType name="clsAddUpdatePatientScanDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientScanDocList" nillable="true" type="tns:ArrayOfclsPatientScanDocumentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddUpdatePatientScanDocument" nillable="true" type="tns:clsAddUpdatePatientScanDocument" />
+  <xs:complexType name="clsGetPatientScanDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientScanDoc" nillable="true" type="tns:clsPatientScanDocumentVO" />
+      <xs:element minOccurs="0" name="PatientScanDocList" nillable="true" type="tns:ArrayOfclsPatientScanDocumentVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPatientScanDocument" nillable="true" type="tns:clsGetPatientScanDocument" />
+  <xs:complexType name="clsUpdatePatientForIssueBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdatePatientForIssueBizActionVO" nillable="true" type="tns:clsUpdatePatientForIssueBizActionVO" />
+  <xs:complexType name="clsDeActiveIssuePatientBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientDetails" nillable="true" type="tns:clsPatientVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeActiveIssuePatientBizActionVO" nillable="true" type="tns:clsDeActiveIssuePatientBizActionVO" />
+</xs:schema>

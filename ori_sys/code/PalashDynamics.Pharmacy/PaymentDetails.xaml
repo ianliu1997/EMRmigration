@@ -1,0 +1,95 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Pharmacy.PaymentDetails"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           Width="360" Height="330"  HasCloseButton="False">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="Black">
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White">
+            <Grid x:Name="DisplayArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border BorderBrush="#FF37210B" BorderThickness="1" Background="#FF2D355C" />
+                <TextBlock x:Name="SampleHeader" Margin="8,8,0,8" Text="Payment Details" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="White" FontWeight="Bold" FontSize="12" />
+
+
+                <Border BorderBrush="PaleGreen" Grid.Row="1" BorderThickness="0" Background="Transparent">
+
+                    <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                        <!--<Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                                <Button x:Name="cmdSave" Content="Save"   Width="70" Height="25" Margin="4" Click="cmdSave_Click"></Button>
+                                <Button x:Name="cmdCancel" Content="Cancel"   Width="70" Height="25" Margin="4" Click="cmdCancel_Click"></Button>
+                            </StackPanel>
+                        </Border>-->
+
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="0" CornerRadius="3,3,3,3" Background="Transparent">
+
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton x:Name="cmdSave"  Grid.Row="4" Content="Save" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdSave_Click" />
+                                    <ToggleButton x:Name="cmdCancel"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                                <TextBlock x:Name="lblError" HorizontalAlignment="Center" Foreground="Red" VerticalAlignment="Center" Text=""  Margin="4" controlsToolkit:DockPanel.Dock="Top"/>
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <!--<RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>-->
+                                    </Grid.RowDefinitions>
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Pay Mode" Grid.Column="0" Grid.Row="1" Margin="4" />
+                                    <input:AutoCompleteComboBox x:Name="cmbPayMode" SelectedValuePath="ID" SelectionChanged="cmbPayMode_SelectionChanged" Margin="2,4,4,4" Grid.Row="1" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Paid Amount" Grid.Column="0" Grid.Row="2" Margin="4" />
+                                    <TextBox x:Name="txtPaidAmount"  Text="" Grid.Row="2" Grid.Column="1" Margin="2,6,4,6" HorizontalAlignment="Stretch" IsReadOnly="True" Style="{StaticResource NumericFieldAlignment}"/>
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Number" Grid.Column="0" Grid.Row="3" Margin="4" />
+                                    <TextBox x:Name="txtNumber"  Text="" Grid.Row="3" Grid.Column="1" Margin="2,6,4,6" HorizontalAlignment="Stretch"  MaxLength="50" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" LostFocus="txtNumber_LostFocus" />
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Bank Name" Grid.Column="0" Grid.Row="4" Margin="4" />
+                                    <input:AutoCompleteComboBox x:Name="cmbBank"  SelectedValuePath="ID" Margin="2,4,4,4"  Grid.Row="4" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Date" Grid.Column="0" Grid.Row="5" Margin="4" />
+                                    <controls:DatePicker x:Name="dtpDate" Grid.Row="5" Grid.Column="1" Style="{StaticResource DtpDefaultStyle}" HorizontalAlignment="Stretch"/>
+                                    <Image Grid.Row="6" Grid.Column="1" Source="/PalashDynamics;component/Icons/calculator-icon1.png"  Height="30"  Width="30" MouseLeftButtonDown="Image_MouseLeftButtonDown" HorizontalAlignment="Right" ></Image>
+
+                                    <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Recived Amount" Grid.Column="0" Grid.Row="6" Margin="4" />
+                                    <TextBox x:Name="txtRecivedAmount"  Text="" Grid.Row="6" Grid.Column="1" Margin="2,6,4,6" HorizontalAlignment="Stretch"  MaxLength="50" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" LostFocus="txtRecivedAmount_LostFocus"/>
+
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Amount to be returned" Grid.Column="0" Grid.Row="7" Margin="4" />
+                                    <TextBox x:Name="txtAmounttobereturned"  Text="" Grid.Row="7" Grid.Column="1" Margin="2,6,4,6" HorizontalAlignment="Stretch"  MaxLength="50" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" IsReadOnly="True" />-->
+                                    
+                                    
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:ChildWindow>

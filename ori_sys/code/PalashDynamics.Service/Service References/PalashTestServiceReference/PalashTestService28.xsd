@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.Indent" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.Indent" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:complexType name="clsUpdateRemarkForIndentCancellationBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CancellationRemark" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="IndentMaster" nillable="true" type="q1:clsIndentMasterVO" />
+      <xs:element minOccurs="0" name="IsEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRejectIndent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateRemarkForIndentCancellationBizActionVO" nillable="true" type="tns:clsUpdateRemarkForIndentCancellationBizActionVO" />
+</xs:schema>

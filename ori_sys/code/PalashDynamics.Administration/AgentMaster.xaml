@@ -1,0 +1,418 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.AgentMaster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controlsToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"             
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"  
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  
+    Loaded="PatientRegistrationCharges_Loaded"
+    xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:my="clr-namespace:PalashDynamics;assembly=PalashDynamics.WaterMarkTextBox"
+    Height="Auto" Width="Auto" >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right" >
+
+                        <ToggleButton x:Name="cmdNew" Content="New"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdNew_Click" TabIndex="3" ></ToggleButton>
+                        <ToggleButton x:Name="cmdSave" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdSave_Click" TabIndex="4"></ToggleButton>
+                        <ToggleButton Content="Modify" x:Name="cmdModify" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdModify_Click" ></ToggleButton>
+                        <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdCancel_Click" TabIndex="5"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid x:Name="PageContainer" >
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <controlsToolkit:DockPanel x:Name="docList">
+                        <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                            <Grid toolkit:DockPanel.Dock="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto" MinWidth="150" MaxWidth="150"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <!--<TextBlock x:Name="txtSearchCriteria" Grid.Column="0" Text="Patient Category" Margin="4,10,4,4" Width="75"/>
+                                <TextBox Grid.Column="1" x:Name="txtSearch" Margin="4" Width="300" ></TextBox>
+                                <Button Grid.Column="2" x:Name="cmdSearch" Click="cmdSearch_Click"   ToolTipService.ToolTip="Search Tariff"  HorizontalAlignment="Left" >
+                                    <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,0" Width="20" ></Image>
+                                </Button>-->
+                            </Grid>
+                            <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                    <ContentControl x:Name="ContentControl" Content="List Of Agent" VerticalAlignment="Center" FontSize="12"  Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                </Border>
+                            </StackPanel>
+                        </toolkit:DockPanel>
+                        <sdk:DataPager x:Name="dataGrid2Pager" controlsToolkit:DockPanel.Dock="Bottom"  
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+
+
+                        <sdk:DataGrid  x:Name="grdMaster" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                            <sdk:DataGrid.Columns>
+                                <sdk:DataGridTemplateColumn Header="View">
+                                    <sdk:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <HyperlinkButton Margin="4" x:Name="cmdView" Content="View" Click="cmdView_Click"></HyperlinkButton>
+                                        </DataTemplate>
+                                    </sdk:DataGridTemplateColumn.CellTemplate>
+                                </sdk:DataGridTemplateColumn>
+                                <!--<sdk:DataGridTextColumn IsReadOnly="True" Header="Code" Binding="{Binding Code}" />-->
+                                <sdk:DataGridTextColumn IsReadOnly="True"  Header="Agent Name"  Binding="{Binding Name}" />
+                                <sdk:DataGridTextColumn IsReadOnly="True"  Header="Spouse Name"  Binding="{Binding SpouseName}"  />
+                                <sdk:DataGridTextColumn IsReadOnly="True"  Header="Mobile No"  Binding="{Binding MobileNo}" />                              
+
+                                <sdk:DataGridTemplateColumn Header="Status">
+                                    <sdk:DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=Status,Mode=TwoWay}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                                        </DataTemplate>
+                                    </sdk:DataGridTemplateColumn.CellTemplate>
+                                </sdk:DataGridTemplateColumn>
+                            </sdk:DataGrid.Columns>
+                        </sdk:DataGrid>
+
+                    </controlsToolkit:DockPanel>
+
+
+                </Grid>
+
+                <Grid  Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1">
+                    <controlsToolkit:DockPanel x:Name="Content" controlsToolkit:DockPanel.Dock="top" LastChildFill="true"  >
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+                            <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" controlsToolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                    <GroupBox:GroupBox x:Name="grpMasterDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch" Header="Agent Information">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="4" Text="Name" />
+                                            <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtName" Text="{Binding Name, Mode=TwoWay}" Margin="4"  MaxLength="30" TabIndex="0" ></TextBox>
+
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="D.O.B." Grid.Row="0" Grid.Column="2" Margin="4" ></TextBlock>
+                                            <controls:DatePicker x:Name="dtpDOB" Grid.Row="0" Grid.Column="3"  Margin="4" SelectedDate="{Binding DOB, Mode=TwoWay , NotifyOnValidationError=True, ValidatesOnExceptions=True }" Style="{StaticResource DatePickerStyle}" TabIndex="1" />
+
+                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0"  Grid.Column="4" Margin="4" Text="Occupation" />
+                                            <CustomCombo:AutoCompleteComboBox  Grid.Row="0" Grid.Column="5"   x:Name="cmbOccupation" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Margin="4"  VerticalAlignment="Center"  SelectedValuePath="ID" Grid.ColumnSpan="2" TabIndex="2" />
+
+                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Married" TextWrapping="Wrap" Margin="4" Grid.Column="0" Grid.Row="1" ></TextBlock>
+                                            <StackPanel x:Name="stkMarriedyesNo" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1">
+                                                <RadioButton VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="chkIfYesrdo"   Content="Yes" GroupName="MarriedYesNo" Margin="4" IsChecked="True" Click="chkIfYesrdo_Click" TabIndex="3"></RadioButton>
+                                                <RadioButton VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="chkIfNordo" Content="No" GroupName="MarriedYesNo" Margin="4" Click="chkIfNordo_Click"  TabIndex="4"></RadioButton>
+                                            </StackPanel>
+
+                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Years Of Marriage" TextWrapping="Wrap" Margin="4" Grid.Column="2" Grid.Row="1" ></TextBlock>
+                                            <TextBox Grid.Column="3" Grid.Row="1" x:Name="txtMarried" Text="{Binding YearsOfMerrage, Mode=TwoWay}" Margin="4"  MaxLength="2" TabIndex="5" KeyDown="txtMarried_KeyDown" TextChanged="txtMarried_TextChanged" ></TextBox>
+
+                                            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <GroupBox:GroupBox x:Name="grpSpouseDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Header="Spouse Information">
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="4" Text="Name" />
+                                                        <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtSpouseName" Text="{Binding SpouseName, Mode=TwoWay}" Margin="4"  MaxLength="30" TabIndex="6"  ></TextBox>
+
+                                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="D.O.B." Grid.Row="0" Grid.Column="2" Margin="4" ></TextBlock>
+                                                        <controls:DatePicker x:Name="dtpSpouseDOB" Grid.Row="0" Grid.Column="3"  Margin="4" SelectedDate="{Binding SpouseDOB, Mode=TwoWay , NotifyOnValidationError=True, ValidatesOnExceptions=True }" Style="{StaticResource DatePickerStyle}"  TabIndex="7" />
+
+                                                        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Previous Done" TextWrapping="Wrap" Margin="4" Grid.Column="0" Grid.Row="1" ></TextBlock>
+                                                        <StackPanel x:Name="stkPreviousDoneyesNo" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1">
+                                                            <RadioButton VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="chkPreviousDoneIfYesrdo"   Content="Yes" GroupName="PreviousDoneYesNo" Margin="4" IsChecked="True" Click="chkPreviousDoneIfYesrdo_Click" TabIndex="8"></RadioButton>
+                                                            <RadioButton VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="chkPreviousDoneIfNordo" Content="No" GroupName="PreviousDoneYesNo" Margin="4" Click="chkPreviousDoneIfNordo_Click" TabIndex="9"></RadioButton>
+                                                        </StackPanel>
+
+                                                        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="No. Of Donation" TextWrapping="Wrap" Margin="4" Grid.Column="2" Grid.Row="1" ></TextBlock>
+                                                        <TextBox Grid.Column="3" Grid.Row="1" x:Name="txtNODonation" Text="{Binding NoofDonationTime, Mode=TwoWay}" Margin="4"  MaxLength="30" TabIndex="10" TextChanged="txtNODonation_TextChanged"  KeyDown="txtNODonation_KeyDown" ></TextBox>
+
+                                                        <sdk:DataGrid  x:Name="grdDonationMaster" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"  Height="150" VerticalScrollBarVisibility="Visible" >
+                                                            <sdk:DataGrid.Columns>                                                               
+                                                                <sdk:DataGridTextColumn IsReadOnly="True"  Header="Sr NO"  Binding="{Binding SrNo}" />
+                                                                <sdk:DataGridTemplateColumn Header="Year" >
+                                                                    <sdk:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <TextBox x:Name="txtYear" VerticalAlignment="Center" Text="{Binding Year,Mode=TwoWay}" MaxLength="4" KeyDown="txtMarried_KeyDown" TextChanged="txtMarried_TextChanged"></TextBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </sdk:DataGridTemplateColumn.CellTemplate>
+                                                                </sdk:DataGridTemplateColumn>
+                                                                <sdk:DataGridTemplateColumn Header="Clinic" >
+                                                                    <sdk:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <TextBox x:Name="txtClinic" VerticalAlignment="Center" Text="{Binding Clinic,Mode=TwoWay}" ></TextBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </sdk:DataGridTemplateColumn.CellTemplate>
+                                                                </sdk:DataGridTemplateColumn>
+
+                                                                <!--<sdk:DataGridTextColumn IsReadOnly="True"  Header="Year"  Binding="{Binding Year}" />
+                                                                <sdk:DataGridTextColumn IsReadOnly="True"  Header="Clinic"  Binding="{Binding Clinic}" />-->                                                                                                                          
+                                                            </sdk:DataGrid.Columns>
+                                                        </sdk:DataGrid>
+
+
+
+                                                    </Grid>
+                                                </GroupBox:GroupBox>
+                                                <GroupBox:GroupBox x:Name="grpDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                 
+                                                        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Previous Surrogacy Done" TextWrapping="Wrap" Margin="4" Grid.Column="0" Grid.Row="1" ></TextBlock>
+                                                        <StackPanel x:Name="stkPreviousSurrogacyDoneyesNo" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1">
+                                                            <RadioButton VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="chkPreviousSurrogacyDoneIfYesrdo"   Content="Yes" GroupName="PreviousSurrogacyDoneYesNo" Margin="4" IsChecked="True" Click="chkPreviousSurrogacyDoneIfYesrdo_Click" TabIndex="11"></RadioButton>
+                                                            <RadioButton VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="chkPreviousSurrogacyDoneIfNordo" Content="No" GroupName="PreviousSurrogacyDoneYesNo" Margin="4" Click="chkPreviousSurrogacyDoneIfNordo_Click" TabIndex="12"></RadioButton>
+                                                        </StackPanel>
+
+                                                        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="No. Of Surrogacy" TextWrapping="Wrap" Margin="4" Grid.Column="2" Grid.Row="1" ></TextBlock>
+                                                        <TextBox Grid.Column="3" Grid.Row="1" x:Name="txtNOSurrogacy" Text="{Binding NoofSurogacyDone, Mode=TwoWay}" Margin="4"  MaxLength="30" TabIndex="13" TextChanged="txtNOSurrogacy_TextChanged"  KeyDown="txtNODonation_KeyDown"></TextBox>
+
+                                                        <sdk:DataGrid  x:Name="grdSurrogacyMaster" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Height="150" VerticalScrollBarVisibility="Visible">
+                                                            <sdk:DataGrid.Columns>
+                                                                <sdk:DataGridTextColumn IsReadOnly="True"  Header="Sr NO"  Binding="{Binding SrNo}" />
+                                                                <sdk:DataGridTemplateColumn Header="Year" >
+                                                                    <sdk:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <TextBox x:Name="txtYearSurrogate"  VerticalAlignment="Center" Text="{Binding Year,Mode=TwoWay}" MaxLength="4" KeyDown="txtMarried_KeyDown" TextChanged="txtMarried_TextChanged"></TextBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </sdk:DataGridTemplateColumn.CellTemplate>
+                                                                </sdk:DataGridTemplateColumn>
+                                                                <sdk:DataGridTemplateColumn Header="Clinic" >
+                                                                    <sdk:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <TextBox x:Name="txtClinicSurrogate" VerticalAlignment="Center" Text="{Binding Clinic,Mode=TwoWay}" ></TextBox>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </sdk:DataGridTemplateColumn.CellTemplate>
+                                                                </sdk:DataGridTemplateColumn>
+                                                                <!--<sdk:DataGridTextColumn IsReadOnly="True"  Header="Year"  Binding="{Binding Year}" />
+                                                                <sdk:DataGridTextColumn IsReadOnly="True"  Header="Clinic"  Binding="{Binding Clinic}" />-->
+                                                            </sdk:DataGrid.Columns>
+                                                        </sdk:DataGrid>
+                                                    </Grid>
+                                                </GroupBox:GroupBox>
+                                            </Grid>
+
+
+                                            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <GroupBox:GroupBox x:Name="grpContactDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Header="Contact Information">
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>                                                                                                                   
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Mobile No." Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>                                                      
+                                                        <Grid  Grid.Row="0" Grid.Column="1">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="4*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <my:WaterMarkTextbox Margin="4" WaterMark="Country" x:Name="txtMobileCountryCode" Grid.Column="0" TextBoxAlignment="Right" KeyDown="txtMobileCountryCode_KeyDown" OnTextChanged="txtMobileCountryCode_OnTextChanged" TabIndex="14"></my:WaterMarkTextbox>                                                          
+                                                            <my:WaterMarkTextbox Margin="4"   WaterMark="Mobile Number" x:Name="txtContactNo1"    Grid.Column="1" TextBoxAlignment="Right"  TabIndex="15" KeyDown="txtContactNo1_KeyDown" OnTextChanged="txtContactNo1_OnTextChanged" ></my:WaterMarkTextbox>                                                          
+                                                        </Grid>
+
+                                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Alt Mobile No." Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                                                        <Grid  Grid.Row="1" Grid.Column="1">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="4*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <my:WaterMarkTextbox Margin="4" WaterMark="Country" x:Name="txtAltMobileCountryCode" Grid.Column="0" TextBoxAlignment="Right" KeyDown="txtMobileCountryCode_KeyDown" OnTextChanged="txtMobileCountryCode_OnTextChanged" TabIndex="16"></my:WaterMarkTextbox>
+                                                            <my:WaterMarkTextbox Margin="4"   WaterMark="Mobile Number" x:Name="txtAltContactNo1"    Grid.Column="1" TextBoxAlignment="Right"  TabIndex="17" KeyDown="txtContactNo1_KeyDown" OnTextChanged="txtContactNo1_OnTextChanged" ></my:WaterMarkTextbox>
+                                                        </Grid>
+                                                        
+                                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Landline No." Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                                                        <Grid  Grid.Row="2" Grid.Column="1">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="4*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <my:WaterMarkTextbox Margin="4" WaterMark="Country" x:Name="txtLandlineCountryCode" Grid.Column="0" TextBoxAlignment="Right" KeyDown="txtMobileCountryCode_KeyDown" OnTextChanged="txtLandlineCountryCode_OnTextChanged" TabIndex="18" ></my:WaterMarkTextbox>
+                                                            <my:WaterMarkTextbox Margin="4"   WaterMark="Mobile Number" x:Name="txtLandlineContactNo1"    Grid.Column="1" TextBoxAlignment="Right"  TabIndex="19"  KeyDown="txtMobileCountryCode_KeyDown" OnTextChanged="txtLandlineContactNo1_OnTextChanged" ></my:WaterMarkTextbox>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                </GroupBox:GroupBox>
+                                                <GroupBox:GroupBox x:Name="grpAddressDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Header="Address">
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        
+                                                        <Grid Grid.Row="0" Grid.Column="0" >
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                <ColumnDefinition ></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                            </Grid.RowDefinitions>
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="4" Text="Address Line 1" />
+                                                            <TextBox Height="70" Grid.Column="1" Grid.Row="0" x:Name="txtAddressLine1" Text="{Binding AddressLine1, Mode=TwoWay}" Margin="4"  MaxLength="200" TabIndex="20" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" ></TextBox>
+
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="4" Text="Street" />
+                                                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtStreet" Text="{Binding Street, Mode=TwoWay}" Margin="4"  MaxLength="200" TabIndex="21" ></TextBox>
+
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="4" Text="Country" />
+                                                            <CustomCombo:AutoCompleteComboBox  Grid.Row="2" Grid.Column="1"   x:Name="txtCountry" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Margin="4,10,4,4"  VerticalAlignment="Center"  SelectedValuePath="ID" Grid.ColumnSpan="2" TabIndex="22" SelectionChanged="txtCountry_SelectionChanged"/>
+
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="4" Text="City" />
+                                                            <CustomCombo:AutoCompleteComboBox  Grid.Row="3" Grid.Column="1"   x:Name="txtCity" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Margin="4,10,4,4"  VerticalAlignment="Center"  SelectedValuePath="ID" Grid.ColumnSpan="2" TabIndex="23" />
+
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0" Margin="4" Text="Pincode" />
+                                                            <TextBox Grid.Column="1" Grid.Row="4" x:Name="txtPincode" Text="{Binding Pincode, Mode=TwoWay}" Margin="4"  MaxLength="200" TabIndex="24" ></TextBox>
+
+                                                        </Grid>
+
+                                                        <Grid Grid.Row="0" Grid.Column="1" >
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                <ColumnDefinition ></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                            </Grid.RowDefinitions>
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="4" Text="Address Line 2" />
+                                                            <TextBox Height="70" Grid.Column="1" Grid.Row="0" x:Name="txtAddressLine2" Text="{Binding AddressLine2, Mode=TwoWay}" Margin="4"  MaxLength="200" TabIndex="25" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" ></TextBox>
+
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="4" Text="Landmark" />
+                                                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtLandmark" Text="{Binding LandMark, Mode=TwoWay}" Margin="4"  MaxLength="200" TabIndex="26" ></TextBox>
+
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="4" Text="State" />
+                                                            <CustomCombo:AutoCompleteComboBox  Grid.Row="2" Grid.Column="1"   x:Name="txtState" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Margin="4,10,4,4"  VerticalAlignment="Center"  SelectedValuePath="ID" Grid.ColumnSpan="2" TabIndex="27" SelectionChanged="txtState_SelectionChanged"/>
+
+                                                            <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="4" Text="Area" />
+                                                            <TextBox Grid.Column="1" Grid.Row="3" x:Name="txtArea" Text="{Binding Area, Mode=TwoWay}" Margin="4"  MaxLength="200" TabIndex="28" ></TextBox>
+
+                                                        </Grid>
+
+
+                                                    </Grid>
+
+                                                </GroupBox:GroupBox>
+                                                <GroupBox:GroupBox x:Name="grpOtherDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Header="Other Information">
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Margin="4" Text="Pan No." />
+                                                        <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtPanNO" Text="{Binding PanNo, Mode=TwoWay}" Margin="4"  MaxLength="200" TabIndex="29"  TextChanged="txtPanNo_TextChanged" KeyDown="txtPanNo_KeyDown"  ></TextBox>
+
+                                                        <TextBlock   VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="4" Text="Aadhar No." />
+                                                        <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtAadharNo" Text="{Binding AadharNo, Mode=TwoWay}" Margin="4"  MaxLength="12" TabIndex="30"  KeyDown="txtMarried_KeyDown" TextChanged="txtMarried_TextChanged"  ></TextBox>
+
+
+
+
+                                                    </Grid>
+
+                                                </GroupBox:GroupBox>
+
+                                            </Grid>
+
+                                        </Grid>
+                                    </GroupBox:GroupBox>
+                                </Border>
+
+
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>
+

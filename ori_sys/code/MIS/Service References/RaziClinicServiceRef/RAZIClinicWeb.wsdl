@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RAZIClinicWeb" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CustomBinding_IPalashService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd30" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.Quotation" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.PurchaseOrder" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.MaterialConsumption" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd9" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.EMR" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Billing" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.StaffMaster" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.PatientSourceMaster" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.MISConfiguration" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Pathology" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd18" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.QueueManagement" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd19" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.User" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd20" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Appointment" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd21" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM.LoyaltyProgram" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd23" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment.Registration.OPDPatientMaster" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd24" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.OutPatientDepartment" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd25" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master.DoctorMaster" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.DoctorScheduleMaster" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd27" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.Menu" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd28" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.EnquirySearch" />
+      <xsd:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd29" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.RoleMaster" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPalashService_Process_InputMessage">
+    <wsdl:part name="parameters" element="tns:Process" />
+  </wsdl:message>
+  <wsdl:message name="IPalashService_Process_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPalashService_GetSessionUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionUser" />
+  </wsdl:message>
+  <wsdl:message name="IPalashService_GetSessionUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPalashService_SetSessionUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetSessionUser" />
+  </wsdl:message>
+  <wsdl:message name="IPalashService_SetSessionUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetSessionUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPalashService">
+    <wsdl:operation name="Process">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPalashService/Process" message="tns:IPalashService_Process_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPalashService/ProcessResponse" message="tns:IPalashService_Process_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPalashService/GetSessionUser" message="tns:IPalashService_GetSessionUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPalashService/GetSessionUserResponse" message="tns:IPalashService_GetSessionUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSessionUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPalashService/SetSessionUser" message="tns:IPalashService_SetSessionUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPalashService/SetSessionUserResponse" message="tns:IPalashService_SetSessionUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_IPalashService" type="tns:IPalashService">
+    <wsp:PolicyReference URI="#CustomBinding_IPalashService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Process">
+      <soap12:operation soapAction="http://tempuri.org/IPalashService/Process" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionUser">
+      <soap12:operation soapAction="http://tempuri.org/IPalashService/GetSessionUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSessionUser">
+      <soap12:operation soapAction="http://tempuri.org/IPalashService/SetSessionUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RAZIClinicWeb">
+    <wsdl:port name="CustomBinding_IPalashService" binding="tns:CustomBinding_IPalashService">
+      <soap12:address location="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1088 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2871F480-4A5F-411A-979B-8BD99AA2774D}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EMR</RootNamespace>
+    <AssemblyName>EMR</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>EMR.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>EMR.App</SilverlightAppEntry>
+    <TestPageFileName>EMRTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blacklight.Silverlight.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="C1.Silverlight">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Automation">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Carousel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Carousel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart.Editor">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart.Extended">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Chart3D">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Chart3D.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Data">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Excel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Filters">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Filters.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Ria">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Ria.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DataGrid.Summaries">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DataGrid.Summaries.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.DateTimeEditors">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.DateTimeEditors.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Docking">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Excel">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Extended">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Extended.Analytics">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Extended.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.FlexGrid.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.FlexGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.FlexGridFilter.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.FlexGridFilter.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Gauge">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Gauge.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Imaging">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Legacy">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Maps">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.MediaPlayer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.MediaPlayer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Olap.4">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Olap.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.OrgChart">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.OrgChart.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.OutlookBar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.OutlookBar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Pdf">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.PdfViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.PdfViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.ReportViewer">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.ReportViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.LegacyHtmlFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.LegacyHtmlFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.PdfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.PdfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.RtfFilter">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.RtfFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.RichTextBox.Toolbar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.RichTextBox.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Schedule">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.SpellChecker">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.BureauBlack">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.BureauBlack.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Cosmopolitan">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Cosmopolitan.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ExpressionDark">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ExpressionDark.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ExpressionLight">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ExpressionLight.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Office2007">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.Office2010">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.Office2010.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.RainierOrange">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.RainierOrange.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.ShinyBlue">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.ShinyBlue.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Theming.WhistlerBlue">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Theming.WhistlerBlue.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.TileView">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.TileView.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Toolbar">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Uploader">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Uploader.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Zip">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Editor">
+      <HintPath>..\Library\Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="FJ.Core">
+      <HintPath>..\Library\FJ.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Groupbox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="mscorlib" />
+    <Reference Include="PalashDynamics.Converters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\PalashDynamics.Converters\Bin\Debug\PalashDynamics.Converters.dll</HintPath>
+    </Reference>
+    <Reference Include="PalashDynamics.WaterMarkTextBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\PalashDynamics.WaterMarkTextBox\Bin\Debug\PalashDynamics.WaterMarkTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit.Internals, Version=4.0.5.0, Culture=neutral, PublicKeyToken=2c5c654d367bf4a7, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculator.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="ColorPicker\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComplaintStatus.xaml.cs">
+      <DependentUpon>ComplaintStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmrHistroyImageUpload.xaml.cs">
+      <DependentUpon>EmrHistroyImageUpload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCostEstimate.xaml.cs">
+      <DependentUpon>FrmCostEstimate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRCommonHistory.xaml.cs">
+      <DependentUpon>frmEMRCommonHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMREducation.xaml.cs">
+      <DependentUpon>frmEMREducation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRERPerformanceHistory.xaml.cs">
+      <DependentUpon>frmEMRERPerformanceHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRFamilyHistory.xaml.cs">
+      <DependentUpon>frmEMRFamilyHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRFollowup.xaml.cs">
+      <DependentUpon>frmEMRFollowup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRInvestigation.xaml.cs">
+      <DependentUpon>frmEMRInvestigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRInvestigationDocs.xaml.cs">
+      <DependentUpon>frmEMRInvestigationDocs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRMaritalHistory.xaml.cs">
+      <DependentUpon>frmEMRMaritalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRMedDrugSelectionList.xaml.cs">
+      <DependentUpon>frmEMRMedDrugSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRMedication.xaml.cs">
+      <DependentUpon>frmEMRMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRMenstrualHistory.xaml.cs">
+      <DependentUpon>frmEMRMenstrualHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRObstetricalHistory.xaml.cs">
+      <DependentUpon>frmEMRObstetricalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMROtherServices.xaml.cs">
+      <DependentUpon>frmEMROtherServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRPastHistory.xaml.cs">
+      <DependentUpon>frmEMRPastHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRPersonalHistory.xaml.cs">
+      <DependentUpon>frmEMRPersonalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRPhysicalExam.xaml.cs">
+      <DependentUpon>frmEMRPhysicalExam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRProcedure.xaml.cs">
+      <DependentUpon>frmEMRProcedure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRSurgicalHistory.xaml.cs">
+      <DependentUpon>frmEMRSurgicalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRTreatmentHistory.xaml.cs">
+      <DependentUpon>frmEMRTreatmentHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRVitals.xaml.cs">
+      <DependentUpon>frmEMRVitals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFollowpNotes.xaml.cs">
+      <DependentUpon>frmFollowpNotes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHistorySelection.xaml.cs">
+      <DependentUpon>FrmHistorySelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDCurrentMedication.xaml.cs">
+      <DependentUpon>frmIPDCurrentMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDDiagnosis.xaml.cs">
+      <DependentUpon>frmIPDDiagnosis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRAllergies.xaml.cs">
+      <DependentUpon>frmIPDEMRAllergies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRChiefComplaint.xaml.cs">
+      <DependentUpon>frmIPDEMRChiefComplaint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRCommonHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRCommonHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRCompoundMedication.xaml.cs">
+      <DependentUpon>frmIPDEMRCompoundMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMREducation.xaml.cs">
+      <DependentUpon>frmIPDEMREducation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRFamilyHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRFamilyHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRFollowup.xaml.cs">
+      <DependentUpon>frmIPDEMRFollowup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRInvestigation.xaml.cs">
+      <DependentUpon>frmIPDEMRInvestigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRInvestigationDocs.xaml.cs">
+      <DependentUpon>frmIPDEMRInvestigationDocs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRMaritalHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRMaritalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRMedication.xaml.cs">
+      <DependentUpon>frmIPDEMRMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRMenstrualHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRMenstrualHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRObstetricalHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRObstetricalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRPastHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRPastHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRPersonalHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRPersonalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRPhysicalExam.xaml.cs">
+      <DependentUpon>frmIPDEMRPhysicalExam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRProcedure.xaml.cs">
+      <DependentUpon>frmIPDEMRProcedure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRSurgicalHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRSurgicalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRTreatmentHistory.xaml.cs">
+      <DependentUpon>frmIPDEMRTreatmentHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDEMRVitals.xaml.cs">
+      <DependentUpon>frmIPDEMRVitals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDPatientEMRDashboard.xaml.cs">
+      <DependentUpon>frmIPDPatientEMRDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDPatientEMRRefferal.xaml.cs">
+      <DependentUpon>frmIPDPatientEMRRefferal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmIPDViewGrowthChart.xaml.cs">
+      <DependentUpon>frmIPDViewGrowthChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientEMRDashboard.xaml.cs">
+      <DependentUpon>frmPatientEMRDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientEMRRefferal.xaml.cs">
+      <DependentUpon>frmPatientEMRRefferal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintSummery.xaml.cs">
+      <DependentUpon>frmPrintSummery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcedureDiagnosisSelection.xaml.cs">
+      <DependentUpon>frmProcedureDiagnosisSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPtListForDashboard.xaml.cs">
+      <DependentUpon>FrmPtListForDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmReferralLetter.xaml.cs">
+      <DependentUpon>frmReferralLetter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectionDoctorSpecliztion.xaml.cs">
+      <DependentUpon>frmSelectionDoctorSpecliztion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmServiceSelectionList.xaml.cs">
+      <DependentUpon>frmServiceSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewGrowthChart.xaml.cs">
+      <DependentUpon>frmViewGrowthChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nursing\Nursing.xaml.cs">
+      <DependentUpon>Nursing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nursing\TemplateList.xaml.cs">
+      <DependentUpon>TemplateList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nursing\TemplateListNew.xaml.cs">
+      <DependentUpon>TemplateListNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OPDModule\CompoundDrugList.xaml.cs">
+      <DependentUpon>CompoundDrugList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridSelectionAdapter.cs" />
+    <Compile Include="DefaultValues.Designer.cs" />
+    <Compile Include="DesignControl.cs" />
+    <Compile Include="frmAddDiagnosis.xaml.cs">
+      <DependentUpon>frmAddDiagnosis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssignDoctor.xaml.cs">
+      <DependentUpon>frmAssignDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCPOELabServicesSelection.xaml.cs">
+      <DependentUpon>frmCPOELabServicesSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCPOEOtherSelectionList.xaml.cs">
+      <DependentUpon>frmCPOEOtherSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCPOEServiceSelectionList.xaml.cs">
+      <DependentUpon>frmCPOEServiceSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCurrentMedication.xaml.cs">
+      <DependentUpon>frmCurrentMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDiagnosis.xaml.cs">
+      <DependentUpon>frmDiagnosis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDiagnosisEMRTemplate.xaml.cs">
+      <DependentUpon>frmDiagnosisEMRTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDiagnosisSelection.xaml.cs">
+      <DependentUpon>frmDiagnosisSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctorRoundSelection.xaml.cs">
+      <DependentUpon>frmDoctorRoundSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMR.xaml.cs">
+      <DependentUpon>frmEMR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRAllergies.xaml.cs">
+      <DependentUpon>frmEMRAllergies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRChiefComplaint.xaml.cs">
+      <DependentUpon>frmEMRChiefComplaint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRClinicalHistory.xaml.cs">
+      <DependentUpon>frmEMRClinicalHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRCompoundMedication.xaml.cs">
+      <DependentUpon>frmEMRCompoundMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRMedicationDrugSelectionList.xaml.cs">
+      <DependentUpon>frmEMRMedicationDrugSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmEMRPrescribedMedication.xaml.cs">
+      <DependentUpon>frmEMRPrescribedMedication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmOtherMedicationDrug.xaml.cs">
+      <DependentUpon>frmOtherMedicationDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CanvasHelper.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\DrawingArea.cs" />
+    <Compile Include="Helpers\JsonSerializerHelper.cs" />
+    <Compile Include="Helpers\ToolHelper.cs" />
+    <Compile Include="IPD_EMR\frmIPDEMR.xaml.cs">
+      <DependentUpon>frmIPDEMR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterLists.cs" />
+    <Compile Include="OtherPrescription.xaml.cs">
+      <DependentUpon>OtherPrescription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientLinkFileDeleteWindow.xaml.cs">
+      <DependentUpon>PatientLinkFileDeleteWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientVisitSummary.xaml.cs">
+      <DependentUpon>PatientVisitSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintReferralOrder.xaml.cs">
+      <DependentUpon>PrintReferralOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Window.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OPDModule\OPDModule.csproj">
+      <Project>{4993806D-1D67-490B-BDD0-D71A25E03245}</Project>
+      <Name>OPDModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamic.Localization\PalashDynamic.Localization.csproj">
+      <Project>{C79BA59E-5157-40A1-BC4A-6335984B92FD}</Project>
+      <Name>PalashDynamic.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Administration\PalashDynamics.Administration.csproj">
+      <Project>{5BBF7708-7343-4373-88B8-60F339BA97D0}</Project>
+      <Name>PalashDynamics.Administration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.IPD\PalashDynamics.IPD.csproj">
+      <Project>{B67F97EC-FAC0-4ACC-B9B6-7DB7FD0CB487}</Project>
+      <Name>PalashDynamics.IPD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SearchResultLists\PalashDynamics.SearchResultLists.csproj">
+      <Project>{1222821C-4F56-416A-8F9D-A861422ABC29}</Project>
+      <Name>PalashDynamics.SearchResultLists</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RichTextEditor\RichTextEditor.csproj">
+      <Project>{C7A2FD85-3455-4CC4-8DF4-960707AB3EBA}</Project>
+      <Name>RichTextEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorPicker\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ComplaintStatus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EmrHistroyImageUpload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmCostEstimate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRCommonHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMREducation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRERPerformanceHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRFamilyHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRFollowup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRInvestigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRInvestigationDocs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRMaritalHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRMedDrugSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRMenstrualHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRObstetricalHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMROtherServices.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRPastHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRPersonalHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRPhysicalExam.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRProcedure.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRSurgicalHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRTreatmentHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmEMRVitals.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFollowpNotes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmHistorySelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDCurrentMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDDiagnosis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRAllergies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRChiefComplaint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRCommonHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDEMRCompoundMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMREducation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRFamilyHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRFollowup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRInvestigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRInvestigationDocs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRMaritalHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDEMRMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRMenstrualHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDEMRObstetricalHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDEMRPastHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRPersonalHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRPhysicalExam.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRProcedure.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDEMRSurgicalHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDEMRTreatmentHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmIPDEMRVitals.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDPatientEMRDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDPatientEMRRefferal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmIPDViewGrowthChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPatientEMRDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPatientEMRRefferal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPrintSummery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmProcedureDiagnosisSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FrmPtListForDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmReferralLetter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmSelectionDoctorSpecliztion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmServiceSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmViewGrowthChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nursing\Nursing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nursing\TemplateList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nursing\TemplateListNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OPDModule\CompoundDrugList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAddDiagnosis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAssignDoctor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCPOELabServicesSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCPOEOtherSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCPOEServiceSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCurrentMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDiagnosis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDiagnosisEMRTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDiagnosisSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmDoctorRoundSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRAllergies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRChiefComplaint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRClinicalHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRCompoundMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRMedicationDrugSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmEMRPrescribedMedication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmOtherMedicationDrug.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IPD_EMR\frmIPDEMR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OtherPrescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientLinkFileDeleteWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientVisitSummary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PrintReferralOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\Generic1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DefaultValues.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Allergies.png" />
+    <Resource Include="Icons\chart.png" />
+    <Resource Include="Icons\Clinical History.png" />
+    <Resource Include="Icons\Complaints.png" />
+    <Resource Include="Icons\CPOE.png" />
+    <Resource Include="Icons\Current Medication.png" />
+    <Resource Include="Icons\DashBoard.png" />
+    <Resource Include="Icons\Diagnosis.png" />
+    <Resource Include="Icons\Diagnostik_report.png" />
+    <Resource Include="Icons\DMS.PNG" />
+    <Resource Include="Icons\error.png" />
+    <Resource Include="Icons\Family History.png" />
+    <Resource Include="Icons\Follow UP.png" />
+    <Resource Include="Icons\graph.png" />
+    <Resource Include="Icons\green.png" />
+    <Resource Include="Icons\History.png" />
+    <Resource Include="Icons\Home-32.png" />
+    <Resource Include="Icons\Investigation.png" />
+    <Resource Include="Icons\Listofvisits.png" />
+    <Resource Include="Icons\Medication.png" />
+    <Resource Include="Icons\orange.png" />
+    <Resource Include="Icons\other.png" />
+    <Resource Include="Icons\Past History.png" />
+    <Resource Include="Icons\Pathology_report.png" />
+    <Resource Include="Icons\patient_List.png" />
+    <Resource Include="Icons\Performance.png" />
+    <Resource Include="Icons\Personal History.png" />
+    <Resource Include="Icons\Physical Exam.png" />
+    <Resource Include="Icons\Printprescription.png" />
+    <Resource Include="Icons\Printsummary.png" />
+    <Resource Include="Icons\Radiology_report.png" />
+    <Resource Include="Icons\Referral.png" />
+    <Resource Include="Icons\tick.png" />
+    <Resource Include="Icons\tick_red.png" />
+    <Resource Include="Icons\yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\brush.jpg" />
+    <Resource Include="Resources\circle.PNG" />
+    <Resource Include="Resources\erase.jpg" />
+    <Resource Include="Resources\pen.jpg" />
+    <Resource Include="Resources\pencil.jpg" />
+    <Resource Include="Resources\rect.PNG" />
+    <Resource Include="Resources\redo.jpg" />
+    <Resource Include="Resources\save.jpg" />
+    <Resource Include="Resources\sticky.jpg" />
+    <Resource Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\follow-up.png" />
+    <Resource Include="Icons\Patienteducation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\histerscopy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\laparoscopynew.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

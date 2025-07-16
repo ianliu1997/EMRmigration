@@ -1,0 +1,1249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{68EF3491-14CD-44FB-9516-2C24389B4C3D}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.MIS</RootNamespace>
+    <AssemblyName>PalashDynamics.MIS</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.MIS.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.MIS.App</SilverlightAppEntry>
+    <TestPageFileName>PalashDynamics.MISTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Groupbox">
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\PalashDynamics.MIS\Bin\Debug\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\AdministrationReports.xaml.cs">
+      <DependentUpon>AdministrationReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AdmissionReport.xaml.cs">
+      <DependentUpon>AdmissionReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AuditTrailUser Activity.xaml.cs">
+      <DependentUpon>AuditTrailUser Activity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\DischargeReport.xaml.cs">
+      <DependentUpon>DischargeReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\DPR.xaml.cs">
+      <DependentUpon>DPR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\TransferReport.xaml.cs">
+      <DependentUpon>TransferReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\UserAuditTrail.xaml.cs">
+      <DependentUpon>UserAuditTrail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\UserList.xaml.cs">
+      <DependentUpon>UserList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clinical\ClinicalReport.xaml.cs">
+      <DependentUpon>ClinicalReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\Analysis Report.xaml.cs">
+      <DependentUpon>Analysis Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\AppointmentListReport.xaml.cs">
+      <DependentUpon>AppointmentListReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\ClinicWiseInvestigationReport.xaml.cs">
+      <DependentUpon>ClinicWiseInvestigationReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\ClinicWisePatientDetail.xaml.cs">
+      <DependentUpon>ClinicWisePatientDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\ConsalltionAndProcedureReport.xaml.cs">
+      <DependentUpon>ConsalltionAndProcedureReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\Consultation_PartailProcedureDoneReport.xaml.cs">
+      <DependentUpon>Consultation_PartailProcedureDoneReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\CRMReport.xaml.cs">
+      <DependentUpon>CRMReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\CustomerDetailReport.xaml.cs">
+      <DependentUpon>CustomerDetailReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\DoctorWisePatientReport.xaml.cs">
+      <DependentUpon>DoctorWisePatientReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmAccEmbryoCount.xaml.cs">
+      <DependentUpon>frmAccEmbryoCount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmLostPatientList.xaml.cs">
+      <DependentUpon>frmLostPatientList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\frmRemarkPRO.xaml.cs">
+      <DependentUpon>frmRemarkPRO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\FullyProcedureDone.xaml.cs">
+      <DependentUpon>FullyProcedureDone.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\LoyaltyProgramReport.xaml.cs">
+      <DependentUpon>LoyaltyProgramReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\PatientPRO.xaml.cs">
+      <DependentUpon>PatientPRO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\PatientReferralListReport.xaml.cs">
+      <DependentUpon>PatientReferralListReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\SearchPatient.xaml.cs">
+      <DependentUpon>SearchPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\unitWiseFootAllRevenueMix.xaml.cs">
+      <DependentUpon>unitWiseFootAllRevenueMix.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\UnitwiseFootwallReport.xaml.cs">
+      <DependentUpon>UnitwiseFootwallReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRM\VisitwiseReferralDoctor.xaml.cs">
+      <DependentUpon>VisitwiseReferralDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\DashboardReports.xaml.cs">
+      <DependentUpon>DashboardReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\ReferralReport.xaml.cs">
+      <DependentUpon>ReferralReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridSelectionAdapter.cs" />
+    <Compile Include="EMR\CPOEReport.xaml.cs">
+      <DependentUpon>CPOEReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EMR\DiagnosisVitalsReport.xaml.cs">
+      <DependentUpon>DiagnosisVitalsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EMR\EMRReport.xaml.cs">
+      <DependentUpon>EMRReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EMR\FrmAllHistory.xaml.cs">
+      <DependentUpon>FrmAllHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EMR\frmRptProcedure.xaml.cs">
+      <DependentUpon>frmRptProcedure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EMR\HistroAndLapro.xaml.cs">
+      <DependentUpon>HistroAndLapro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EMR\PrescriptionReport.xaml.cs">
+      <DependentUpon>PrescriptionReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EMR\RptDiagnosis.xaml.cs">
+      <DependentUpon>RptDiagnosis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\ABCAnalysis.xaml.cs">
+      <DependentUpon>ABCAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\AvailableStock.xaml.cs">
+      <DependentUpon>AvailableStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\DailyPharmacySales.xaml.cs">
+      <DependentUpon>DailyPharmacySales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\DailyPharmacyDetailsReport.xaml.cs">
+      <DependentUpon>DailyPharmacyDetailsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\FNSAnalysis.xaml.cs">
+      <DependentUpon>FNSAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\GRC.xaml.cs">
+      <DependentUpon>GRC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\GRNatClinicReport .xaml.cs">
+      <DependentUpon>GRNatClinicReport .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\GRNLedgerDetailsReport.xaml.cs">
+      <DependentUpon>GRNLedgerDetailsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\GRNLedgerReport.xaml.cs">
+      <DependentUpon>GRNLedgerReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\GRNReport.xaml.cs">
+      <DependentUpon>GRNReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\GRNReportWithoutItem.xaml.cs">
+      <DependentUpon>GRNReportWithoutItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\IndentPendingForApproval.xaml.cs">
+      <DependentUpon>IndentPendingForApproval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\IndentReceiveandIssueReport.xaml.cs">
+      <DependentUpon>IndentReceiveandIssueReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\IndentToGRNDetailsReport.xaml.cs">
+      <DependentUpon>IndentToGRNDetailsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\InventoryReports.xaml.cs">
+      <DependentUpon>InventoryReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\IssueQSToGRNReturn.xaml.cs">
+      <DependentUpon>IssueQSToGRNReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\IssueQSToScrapExpiryReturn.xaml.cs">
+      <DependentUpon>IssueQSToScrapExpiryReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\IssuestoClinic.xaml.cs">
+      <DependentUpon>IssuestoClinic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\ItemLedgerReport.xaml.cs">
+      <DependentUpon>ItemLedgerReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\ItemReturn.xaml.cs">
+      <DependentUpon>ItemReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\ItemWiseDailySales.xaml.cs">
+      <DependentUpon>ItemWiseDailySales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\ItemWisePackageIssue.xaml.cs">
+      <DependentUpon>ItemWisePackageIssue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\MaterialConsumption.xaml.cs">
+      <DependentUpon>MaterialConsumption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\MaterialConsumptionReportMIS.xaml.cs">
+      <DependentUpon>MaterialConsumptionReportMIS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\PurchaseOrderItemWise.xaml.cs">
+      <DependentUpon>PurchaseOrderItemWise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\PurchaseorderList.xaml.cs">
+      <DependentUpon>PurchaseorderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\QuotationComparison.xaml.cs">
+      <DependentUpon>QuotationComparison.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\ReturnsFromClinic.xaml.cs">
+      <DependentUpon>ReturnsFromClinic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\SalesReturnReport.xaml.cs">
+      <DependentUpon>SalesReturnReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\SotckCheckReport.xaml.cs">
+      <DependentUpon>SotckCheckReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\StockAdjustmentReport.xaml.cs">
+      <DependentUpon>StockAdjustmentReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\StockLedgerReport.xaml.cs">
+      <DependentUpon>StockLedgerReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharmacy\StockStatementReport .xaml.cs">
+      <DependentUpon>StockStatementReport .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\BiochemicalPregancy_rate.xaml.cs">
+      <DependentUpon>BiochemicalPregancy_rate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\ChemicalPregnancyRate.xaml.cs">
+      <DependentUpon>ChemicalPregnancyRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\CleavageRate.xaml.cs">
+      <DependentUpon>CleavageRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\Cumulative PregnancyRate.xaml.cs">
+      <DependentUpon>Cumulative PregnancyRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\DonorMother.xaml.cs">
+      <DependentUpon>DonorMother.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\Fertilization_rate.xaml.cs">
+      <DependentUpon>Fertilization_rate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\GroodGradeEmbryos.xaml.cs">
+      <DependentUpon>GroodGradeEmbryos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\Implantion_rate.xaml.cs">
+      <DependentUpon>Implantion_rate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\IVFPatientDemographic.xaml.cs">
+      <DependentUpon>IVFPatientDemographic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\IVFReport.xaml.cs">
+      <DependentUpon>IVFReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\IVF_IUI_PatientTherapyCount.xaml.cs">
+      <DependentUpon>IVF_IUI_PatientTherapyCount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\IVIPatientTeropyCountReport.xaml.cs">
+      <DependentUpon>IVIPatientTeropyCountReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\LiveBirthRate.xaml.cs">
+      <DependentUpon>LiveBirthRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\MiscarriageRate .xaml.cs">
+      <DependentUpon>MiscarriageRate .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\OnGoingPregancy_rate.xaml.cs">
+      <DependentUpon>OnGoingPregancy_rate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\OPU_ETCountReport.xaml.cs">
+      <DependentUpon>OPU_ETCountReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\Patient IVFANCSummary.xaml.cs">
+      <DependentUpon>Patient IVFANCSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\PatientETDetails.xaml.cs">
+      <DependentUpon>PatientETDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\PatientInvestigationReport.xaml.cs">
+      <DependentUpon>PatientInvestigationReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\PatientOPU.xaml.cs">
+      <DependentUpon>PatientOPU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\PGD_PGSReport.xaml.cs">
+      <DependentUpon>PGD_PGSReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\PregnancyRateWithDonor.xaml.cs">
+      <DependentUpon>PregnancyRateWithDonor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\PregnancySucessRateGraph.xaml.cs">
+      <DependentUpon>PregnancySucessRateGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IVF\PregnancySucessRatePieChart.xaml.cs">
+      <DependentUpon>PregnancySucessRatePieChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\DaoctorMasterReport.xaml.cs">
+      <DependentUpon>DaoctorMasterReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\frmRptMaster.xaml.cs">
+      <DependentUpon>frmRptMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ItemMasterReport.xaml.cs">
+      <DependentUpon>ItemMasterReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\RegistrationReport.xaml.cs">
+      <DependentUpon>RegistrationReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ServiceMasterReportX.xaml.cs">
+      <DependentUpon>ServiceMasterReportX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\StaffMasterReport.xaml.cs">
+      <DependentUpon>StaffMasterReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\TariffServiceClassRate.xaml.cs">
+      <DependentUpon>TariffServiceClassRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\UserMasterReport.xaml.cs">
+      <DependentUpon>UserMasterReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation Theatre\CancelOTBookingList.xaml.cs">
+      <DependentUpon>CancelOTBookingList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation Theatre\OTBookingList.xaml.cs">
+      <DependentUpon>OTBookingList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation Theatre\OTReports.xaml.cs">
+      <DependentUpon>OTReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyReport\FrmAllPathologyHistory.xaml.cs">
+      <DependentUpon>FrmAllPathologyHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyReport\OutSourceReport.xaml.cs">
+      <DependentUpon>OutSourceReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathologyReport\PathologyReport.xaml.cs">
+      <DependentUpon>PathologyReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PharmacyCollectionReport.xaml.cs">
+      <DependentUpon>PharmacyCollectionReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sales\CashCollectionReport.xaml.cs">
+      <DependentUpon>CashCollectionReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\ClinicWisefortheselectedduration.xaml.cs">
+      <DependentUpon>ClinicWisefortheselectedduration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\CollectionReport.xaml.cs">
+      <DependentUpon>CollectionReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\COMPANYPAYMENTANDTDS.xaml.cs">
+      <DependentUpon>COMPANYPAYMENTANDTDS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\DailyCollectionReport.xaml.cs">
+      <DependentUpon>DailyCollectionReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\DailySalesReport.xaml.cs">
+      <DependentUpon>DailySalesReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\DoctorBasedConsultationBillingReport.xaml.cs">
+      <DependentUpon>DoctorBasedConsultationBillingReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\DoctorWisePatientDetail.xaml.cs">
+      <DependentUpon>DoctorWisePatientDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\DoctorWiseRevenue.xaml.cs">
+      <DependentUpon>DoctorWiseRevenue.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sales\GynaueReport.xaml.cs">
+      <DependentUpon>GynaueReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\BalanceAmoutReport.xaml.cs">
+      <DependentUpon>BalanceAmoutReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\DailyCollectionReportDues.xaml.cs">
+      <DependentUpon>DailyCollectionReportDues.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\DailyCollectionReportIPD.xaml.cs">
+      <DependentUpon>DailyCollectionReportIPD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\DailyCollectionSummary.xaml.cs">
+      <DependentUpon>DailyCollectionSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\DiscountRegisterDaily.xaml.cs">
+      <DependentUpon>DiscountRegisterDaily.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\IPDReport.xaml.cs">
+      <DependentUpon>IPDReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\IPDReportDetails.xaml.cs">
+      <DependentUpon>IPDReportDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\IPD\IPDSalesReport.xaml.cs">
+      <DependentUpon>IPDSalesReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\LedgerDetailsReport.xaml.cs">
+      <DependentUpon>LedgerDetailsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\MonthlyRevenueReport.xaml.cs">
+      <DependentUpon>MonthlyRevenueReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\PackageBookingReport.xaml.cs">
+      <DependentUpon>PackageBookingReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\PackageServiceBookingReport.xaml.cs">
+      <DependentUpon>PackageServiceBookingReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\PackageServiceStatusReport.xaml.cs">
+      <DependentUpon>PackageServiceStatusReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\PatientAdvance.xaml.cs">
+      <DependentUpon>PatientAdvance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\PatientAdvanceConsumed.xaml.cs">
+      <DependentUpon>PatientAdvanceConsumed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\PatientWiseDoctorReport.xaml.cs">
+      <DependentUpon>PatientWiseDoctorReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\PatientWiseProcedureReport.xaml.cs">
+      <DependentUpon>PatientWiseProcedureReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\RefundCollection.xaml.cs">
+      <DependentUpon>RefundCollection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\RevenueDetailsReport.xaml.cs">
+      <DependentUpon>RevenueDetailsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\RevenueHeaderReport.xaml.cs">
+      <DependentUpon>RevenueHeaderReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\RevenueStreamClinicWiseReport.xaml.cs">
+      <DependentUpon>RevenueStreamClinicWiseReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\RevenueTrandeReport.xaml.cs">
+      <DependentUpon>RevenueTrandeReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SalesReport.xaml.cs">
+      <DependentUpon>SalesReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\ServicewiseBillingReport.xaml.cs">
+      <DependentUpon>ServicewiseBillingReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\ServiceWiseDailyCollection.xaml.cs">
+      <DependentUpon>ServiceWiseDailyCollection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\WeeklySalesReport.xaml.cs">
+      <DependentUpon>WeeklySalesReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchCriteriaReport.xaml.cs">
+      <DependentUpon>SearchCriteriaReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubReportLinks.xaml.cs">
+      <DependentUpon>SubReportLinks.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\DataSources\PalashDynamics.ValueObjects.clsUserVO.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Administration\AdministrationReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administration\AdmissionReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administration\AuditTrailUser Activity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administration\DischargeReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administration\DPR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Administration\TransferReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administration\UserAuditTrail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administration\UserList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clinical\ClinicalReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\Analysis Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\AppointmentListReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\ClinicWiseInvestigationReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\ClinicWisePatientDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\ConsalltionAndProcedureReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\Consultation_PartailProcedureDoneReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\CRMReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\CustomerDetailReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\DoctorWisePatientReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\frmAccEmbryoCount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\frmLostPatientList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\frmRemarkPRO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\FullyProcedureDone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\LoyaltyProgramReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\PatientPRO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\PatientReferralListReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\SearchPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\unitWiseFootAllRevenueMix.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\UnitwiseFootwallReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRM\VisitwiseReferralDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dashboard\DashboardReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dashboard\ReferralReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\CPOEReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\DiagnosisVitalsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\EMRReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\FrmAllHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\frmRptProcedure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\HistroAndLapro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\PrescriptionReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EMR\RptDiagnosis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\ABCAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\AvailableStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\DailyPharmacySales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\DailyPharmacyDetailsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\FNSAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\GRC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\GRNatClinicReport .xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\GRNLedgerDetailsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\GRNLedgerReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\GRNReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\GRNReportWithoutItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\IndentPendingForApproval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\IndentReceiveandIssueReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\IndentToGRNDetailsReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventoryPharmacy\InventoryReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\IssueQSToGRNReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\IssueQSToScrapExpiryReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\IssuestoClinic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\ItemLedgerReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\ItemReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\ItemWiseDailySales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\ItemWisePackageIssue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\MaterialConsumption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\MaterialConsumptionReportMIS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\PurchaseOrderItemWise.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\PurchaseorderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\QuotationComparison.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\ReturnsFromClinic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\SalesReturnReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\SotckCheckReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\StockAdjustmentReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\StockLedgerReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventoryPharmacy\StockStatementReport .xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\BiochemicalPregancy_rate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\ChemicalPregnancyRate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\CleavageRate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\Cumulative PregnancyRate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\DonorMother.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\Fertilization_rate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\GroodGradeEmbryos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\Implantion_rate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\IVFPatientDemographic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\IVFReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\IVF_IUI_PatientTherapyCount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\IVIPatientTeropyCountReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\LiveBirthRate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\MiscarriageRate .xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\OnGoingPregancy_rate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IVF\OPU_ETCountReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\Patient IVFANCSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\PatientETDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\PatientInvestigationReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\PatientOPU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\PGD_PGSReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\PregnancyRateWithDonor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\PregnancySucessRateGraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IVF\PregnancySucessRatePieChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\DaoctorMasterReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\frmRptMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\ItemMasterReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\RegistrationReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\ServiceMasterReportX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\StaffMasterReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\TariffServiceClassRate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Masters\UserMasterReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation Theatre\CancelOTBookingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation Theatre\OTBookingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation Theatre\OTReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PathologyReport\FrmAllPathologyHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PathologyReport\OutSourceReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PathologyReport\PathologyReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PharmacyCollectionReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\CashCollectionReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\ClinicWisefortheselectedduration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\CollectionReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\COMPANYPAYMENTANDTDS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\DailyCollectionReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Sales\DailySalesReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\DoctorBasedConsultationBillingReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\DoctorWisePatientDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Sales\DoctorWiseRevenue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\GynaueReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\BalanceAmoutReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\DailyCollectionReportDues.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\DailyCollectionReportIPD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\DailyCollectionSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\DiscountRegisterDaily.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\IPDReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\IPDReportDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\IPD\IPDSalesReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\LedgerDetailsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\MonthlyRevenueReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\PackageBookingReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\PackageServiceBookingReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\PackageServiceStatusReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\PatientAdvance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\PatientAdvanceConsumed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\PatientWiseDoctorReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Sales\PatientWiseProcedureReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\RefundCollection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\RevenueDetailsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\RevenueHeaderReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\RevenueStreamClinicWiseReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\RevenueTrandeReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\SalesReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\ServicewiseBillingReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\ServiceWiseDailyCollection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\WeeklySalesReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchCriteriaReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubReportLinks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Accounts\" />
+    <Folder Include="SecuritySystemManagement\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

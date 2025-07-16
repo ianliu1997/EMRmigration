@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="PalashDynamics.MIS.EMR.EMRReport"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+             mc:Ignorable="d"  d:DesignHeight="300" >
+    <Border HorizontalAlignment="Stretch" BorderThickness="2" Margin="8,8,8,8" CornerRadius="0,0,3,3" Background="Transparent">
+        <toolkit:DockPanel LastChildFill="True" >
+            <toolkit:DockPanel  x:Name="Links">
+                <Grid toolkit:DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <HyperlinkButton Grid.Row="0" Grid.Column="0" Content="Hysteroscopy and laparoscopy Report" Margin="2" Click="hlHistroScopyAndLaproScopy_Click"  x:Name="hlHistroScopyAndLaproScopy"  />
+                    <HyperlinkButton Grid.Row="1" Grid.Column="0" Content="Patient History Report" Margin="2"  x:Name="hlHistory" Click="hlHistory_Click" />
+                    <HyperlinkButton Grid.Row="2" Grid.Column="0" Content="Investigation Report" Margin="2"  x:Name="hlCPOEReport" Click="hlCPOEReport_Click" />
+                    <HyperlinkButton Grid.Row="3" Grid.Column="0" Content="Prescription Report" Margin="2"  x:Name="hlPrescriptionReport" Click="hlPrescriptionReport_Click" />
+                    <HyperlinkButton Grid.Row="4" Content="Procedure Report" Margin="2,2,2,0"  x:Name="hlProcedure" Click="hlProcedure_Click"  Height="16" VerticalAlignment="Top"  />
+                    <HyperlinkButton Grid.Row="5" Content="Diagnosis Report" Margin="2,2,2,0"  x:Name="hlDiagnosis" Click="hlDiagnosis_Click"  Height="16" VerticalAlignment="Top"  />
+                    <HyperlinkButton Grid.Row="6" Content="Vitals Report" Margin="2,2,2,0"  x:Name="hlVitals" Click="hlVitals_Click"  Height="16" VerticalAlignment="Top"  />
+                </Grid >
+            </toolkit:DockPanel>
+            <toolkit:DockPanel Visibility="Collapsed" x:Name="content_control">
+                <ContentControl x:Name="content"  ></ContentControl>
+            </toolkit:DockPanel>
+        </toolkit:DockPanel>
+    </Border>
+</UserControl>

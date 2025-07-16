@@ -1,0 +1,90 @@
+﻿<controls:ChildWindow x:Class="OPDModule.frmBillListPatientWise"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    Height="600" Width="900" Title="Bill List Patient-Wise" Loaded="ChildWindow_Loaded">
+    <controls:ChildWindow.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+
+    </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <controlsToolkit:DockPanel Margin="4" LastChildFill="True" Grid.Row="0">
+            <!--<data:DataPager controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNextNumeric"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="False"  />-->
+            <data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+            <data:DataGrid  x:Name="dgBillList" Margin="0,0,0,1" ItemsSource="{Binding}"  AutoGenerateColumns="False"  SelectionChanged="dgBillList_SelectionChanged" CanUserSortColumns="False">
+                <data:DataGrid.Columns >               
+                    <data:DataGridTextColumn Binding="{Binding BillNo, Mode=OneWay}" Header="Bill No." IsReadOnly="True"/>
+                    <data:DataGridTextColumn Binding="{Binding Opd_Ipd_External_No,Mode=OneWay}"  Header="OPD No" IsReadOnly="True" />
+                    <data:DataGridTextColumn Binding="{Binding TotalBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Amount" IsReadOnly="True" >
+                        <data:DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Right"/>
+                            </Style>
+                        </data:DataGridTextColumn.ElementStyle>
+                    </data:DataGridTextColumn>
+                    <data:DataGridTextColumn Binding="{Binding TotalConcessionAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Concession" IsReadOnly="True" >
+                        <data:DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Right"/>
+                            </Style>
+                        </data:DataGridTextColumn.ElementStyle>
+                    </data:DataGridTextColumn>
+                    <data:DataGridTextColumn Binding="{Binding NetBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Net Amount" IsReadOnly="True" >
+                        <data:DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Right"/>
+                            </Style>
+                        </data:DataGridTextColumn.ElementStyle>
+                    </data:DataGridTextColumn>
+
+                    <data:DataGridTextColumn Binding="{Binding PaidAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Paid Amount" IsReadOnly="True" >
+                        <data:DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Right"/>
+                            </Style>
+                        </data:DataGridTextColumn.ElementStyle>
+                    </data:DataGridTextColumn>
+
+                    <data:DataGridTextColumn Binding="{Binding BalanceAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Balance Amount" IsReadOnly="True" >
+                        <data:DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Right"/>
+                            </Style>
+                        </data:DataGridTextColumn.ElementStyle>
+                    </data:DataGridTextColumn>
+                    <data:DataGridTemplateColumn>
+                        <data:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <HyperlinkButton Background="White"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnPrint_Click"   x:Name="btnPrint">
+                                    <Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/Print_32.png"  Visibility="{Binding IsFreezed}"/>
+                                </HyperlinkButton>
+                            </DataTemplate>
+                        </data:DataGridTemplateColumn.CellTemplate>
+                    </data:DataGridTemplateColumn>
+                </data:DataGrid.Columns>
+            </data:DataGrid>
+        </controlsToolkit:DockPanel>
+
+        <ToggleButton x:Name="CancelButton" Style="{StaticResource ToggleButtonStyle}" Content="Cancel" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <ToggleButton x:Name="OKButton" Style="{StaticResource ToggleButtonStyle}" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" />
+    </Grid>
+</controls:ChildWindow>

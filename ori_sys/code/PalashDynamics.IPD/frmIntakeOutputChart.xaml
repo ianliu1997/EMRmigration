@@ -1,0 +1,306 @@
+﻿<UserControl x:Class="PalashDynamics.IPD.frmIntakeOutputChart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+    xmlns:my="clr-namespace:PalashDynamics;assembly=PalashDynamics.WaterMarkTextBox"
+     xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+    mc:Ignorable="d"
+    Width="Auto" Height="Auto"
+    >
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:DateTimeToAgePart x:Key="DateTimeToAgePart"></Converter:DateTimeToAgePart>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Border Grid.Column="1" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4" BorderThickness="2" CornerRadius="3,3,3,3" Background="Transparent">
+            <controlsToolkit:DockPanel LastChildFill="True">
+
+                <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom">
+                    <controlsToolkit:DockPanel Margin="4" controlsToolkit:DockPanel.Dock="Top">
+                        <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent">
+                            <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                <TextBlock Text="{Binding lblDate,Source={StaticResource locResource}}" Margin="4"></TextBlock>
+                                <controls:DatePicker x:Name="dtpDate"  Grid.Row="2" Grid.Column="1" Margin="4" SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True }" Style="{StaticResource DatePickerStyle}"  TabIndex="7" />
+                                <ToggleButton Content="{Binding btnPrint,Source={StaticResource locResource}}" x:Name="btnPrint" MinWidth="50" Margin="4" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Click="btnPrint_Click" ></ToggleButton>
+                                <ToggleButton Content="{Binding btnModify,Source={StaticResource locResource}}" x:Name="btnModify" MinWidth="50" Margin="4" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Click="btnModify_Click" ></ToggleButton>
+                                <ToggleButton Content="{Binding btnSave,Source={StaticResource locResource}}" x:Name="btnSave" MinWidth="50" Margin="4" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Checked="cmdSave_Click"></ToggleButton>
+                                <ToggleButton Content="{Binding btnClose,Source={StaticResource locResource}}" x:Name="btnClose" MinWidth="50" Margin="4" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Click="btnClose_Click"></ToggleButton>
+                            </StackPanel>
+                        </StackPanel>
+                    </controlsToolkit:DockPanel>
+                </controlsToolkit:DockPanel>
+
+                <controlsToolkit:DockPanel Grid.Row="0" x:Name="docPatientInfo" LastChildFill="True">
+
+                    <Border Grid.Column="1" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border controlsToolkit:DockPanel.Dock="Top" Grid.Row="0" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="{Binding lblIntakeOutputChart,Source={StaticResource locResource}}" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch" />
+                            </Border>
+
+                            <StackPanel VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal" >
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4" Text="{Binding lblMRNo,Source={StaticResource locResource}}" Grid.Row="0" />
+                                <TextBox Margin="4" Text="{Binding MRNo, Mode=TwoWay}" x:Name="txtMRNo" Width="200" TabIndex="0" KeyUp="txtMRNumber_KeyUp"></TextBox>
+                                <Button VerticalAlignment="Center"  x:Name="CmdPatientAppSearch" Margin="4" ToolTipService.ToolTip="{Binding totipSearch,Source={StaticResource locResource}}" Click="CmddischargePatientListSearch_Click">
+                                    <Button.Content>
+                                        <Image Height="18" Source="/PalashDynamics;component/Icons/xmag.png"></Image>
+                                    </Button.Content>
+                                </Button>
+                                <Button VerticalAlignment="Center"  x:Name="cmdPatientSearch" Margin="4" ToolTipService.ToolTip="{Binding totipSearch,Source={StaticResource locResource}}" Click="CmdPatientSearch_Click">
+                                    <Button.Content>
+                                        <Image Height="18" Source="/PalashDynamics;component/Icons/previous_patient_search.jpg"></Image>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button VerticalAlignment="Center" Visibility="Collapsed"   x:Name="cmdPastDetails" Margin="4" ToolTipService.ToolTip="{Binding totipPatientPastDetails,Source={StaticResource locResource}}"  Click="cmdPastDetails_Click">
+                                    <Button.Content>
+                                        <Image Height="18" Source="/PalashDynamics;component/Icons/patient_past_details.jpg"></Image>
+                                    </Button.Content>
+                                </Button>
+                                <!--<ToggleButton x:Name="cmdPastDetails" VerticalAlignment="Center" Width="100" Content="Past Details" Margin="4" Background="#000000" Style="{StaticResource ToggleButtonStyle}" Click="cmdPastDetails_Click"></ToggleButton>-->
+                            </StackPanel>
+
+                            <sdk:DataGrid x:Name="dgInputOutputList" ItemsSource="{Binding}" Grid.Row="2" Height="100" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" SelectionChanged="dgInputOutputList_SelectionChanged">
+                                <sdk:DataGrid.Columns>
+
+                                    <sdk:DataGridTextColumn Binding="{Binding ID, Mode=OneWay}" Header="{Binding grdSrNo,Source={StaticResource locResource}}" IsReadOnly="True"/>
+                                    <sdk:DataGridTextColumn Binding="{Binding Date,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="{Binding grdDate,Source={StaticResource locResource}}" IsReadOnly="True"/>
+                                    <sdk:DataGridTextColumn Binding="{Binding IntakeTotal, Mode=OneWay}" Header="{Binding grdTotalIntake,Source={StaticResource locResource}}" IsReadOnly="True"/>
+                                    <sdk:DataGridTextColumn Binding="{Binding OutputTotal, Mode=OneWay}" Header="{Binding grdTotalOutput,Source={StaticResource locResource}}" IsReadOnly="True"/>
+                                    <data:DataGridTemplateColumn Header="{Binding grdIsFreezed,Source={StaticResource locResource}}">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox x:Name="chkIsFreeze" IsChecked="{Binding Path=IsFreezed,Mode=TwoWay}" IsEnabled="{Binding IsEnable,Mode=TwoWay}" VerticalAlignment="Center" Click="chkIsFreeze_Click" HorizontalAlignment="Center"></CheckBox>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                     <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r" IsEnabled="{Binding IsEnable,Mode=TwoWay}"  Padding="5,0,5,0" IsTabStop="False" Visibility="{Binding IsVisible}"  Click="cmdUpdateStatusDetails_Click"  x:Name="cmdUpdateStatusDetails"></HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                               
+                                </sdk:DataGrid.Columns>
+                            </sdk:DataGrid>
+
+
+                            <Grid HorizontalAlignment="Stretch" Grid.Row="3" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="21"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border controlsToolkit:DockPanel.Dock="Top" Grid.Column="0" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                </Border>
+                                <ContentControl Grid.Column="0" VerticalAlignment="Center" FontSize="11" Margin="-1" Style="{StaticResource Header}" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding lblDate,Source={StaticResource locResource}}" HorizontalAlignment="Left" Width="84" ></TextBlock>
+                                        <Border BorderBrush="Gray" BorderThickness="0.5" Height="20" HorizontalAlignment="Right" Background="Transparent"></Border>
+                                    </StackPanel>
+                                </ContentControl>
+
+                                <Border controlsToolkit:DockPanel.Dock="Top" Grid.Column="1" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                </Border>
+                                <ContentControl Grid.Column="1" VerticalAlignment="Center" FontSize="11" Margin="-1" Style="{StaticResource Header}" >
+                                    <TextBlock Text="dd/mm/yyyy" x:Name="txtDate" HorizontalAlignment="Right" ></TextBlock>
+                                </ContentControl>
+
+                            </Grid>
+
+
+
+                            <Grid HorizontalAlignment="Stretch" Grid.Row="4" >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="84"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="21"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <!--<ContentControl VerticalAlignment="Center" Grid.Column="0" FontSize="11" Content=" " Margin="-1" Visibility="Collapsed" Style="{StaticResource Header}"></ContentControl>
+                                
+                                <ContentControl VerticalAlignment="Center" Grid.Column="1" FontSize="11" Margin="-1" Visibility="Collapsed" Style="{StaticResource Header}">
+                                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                                        <Border BorderBrush="Gray" BorderThickness="0.5" Height="20" HorizontalAlignment="Left" Background="Transparent"></Border>                                        
+                                    </StackPanel>
+                                </ContentControl>
+                                <ContentControl VerticalAlignment="Center" Grid.Column="2" FontSize="11"  Margin="-1" Visibility="Collapsed" Style="{StaticResource Header}" >
+                                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding grdIntake,Source={StaticResource locResource}}" HorizontalAlignment="Stretch"  FontSize="11.5" Grid.Column="1"></TextBlock>
+                                    </StackPanel>
+                                </ContentControl>
+                                <ContentControl VerticalAlignment="Center" Grid.Column="3" FontSize="11" Margin="-1" Visibility="Collapsed" Style="{StaticResource Header}">
+                                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+                                        <Border BorderBrush="Gray" BorderThickness="0.5" Height="20" HorizontalAlignment="Left" Background="Transparent"></Border>
+                                    </StackPanel>
+                                </ContentControl>
+                                <ContentControl VerticalAlignment="Center" Grid.Column="4" FontSize="11"  Margin="-1" Visibility="Collapsed" Style="{StaticResource Header}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding grdOutput,Source={StaticResource locResource}}" HorizontalAlignment="Center"  FontSize="11.5" Grid.Column="2"></TextBlock>
+                                    </StackPanel>
+                                </ContentControl>-->
+                            </Grid>
+
+
+
+                            <sdk:DataGrid x:Name="grdInPutOutput" Grid.Row="4" ItemsSource="{Binding}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Height="400" AutoGenerateColumns="False" LostFocus="grdInPutOutput_LostFocus" >
+
+                                <sdk:DataGrid.Columns>
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdTime,Source={StaticResource locResource}}" Width="90">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Margin="4" Text="{Binding Time}" FontWeight="{Binding Styles}" LostFocus="TextBlock_LostFocus" ></TextBlock>
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdOralNg,Source={StaticResource locResource}}" Width="135">
+                                    <!--<sdk:DataGridTemplateColumn Header="IV Fluid/Oral" Width="135">-->
+                                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!--<TextBlock  Text="{Binding OralNg}" FontWeight="{Binding Styles}"></TextBlock>-->
+                                                <TextBox Margin="0" BorderThickness="0" Background="Transparent"  x:Name="txtOralNg" MaxLength="7" Text="{Binding OralNg,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" LostFocus="txtOralNg_LostFocus"></TextBox >
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdTotalParental,Source={StaticResource locResource}}" Width="160">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!--<TextBlock Text="{Binding TotalParental}" FontWeight="{Binding Styles}"></TextBlock>-->
+                                                <TextBox Margin="0" BorderThickness="0"  Background="Transparent"  x:Name="txtTotalParental" MaxLength="7" Text="{Binding TotalParental,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" LostFocus="txtOralNg_LostFocus" ></TextBox >
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdOthers,Source={StaticResource locResource}}" Width="185">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!--<TextBlock Text="{Binding IntakeOthers}" FontWeight="{Binding Styles}"></TextBlock>-->
+                                                <TextBox Margin="0" BorderThickness="0" Background="Transparent"  x:Name="txtOthers" MaxLength="7" Text="{Binding IntakeOthers,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" LostFocus="txtOralNg_LostFocus" ></TextBox >
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdTotalIntake,Source={StaticResource locResource}}" Width="150"  IsReadOnly="True">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding IntakeTotal}" FontWeight="{Binding Styles}" LostFocus="TextBlock_LostFocus" ></TextBlock>
+                                                <!--<TextBox Margin="0" BorderThickness="0"  Background="Transparent"  x:Name="txtIntakeTotal"  Text="{Binding IntakeTotal,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" ></TextBox >-->
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdUrine,Source={StaticResource locResource}}" Width="120">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!--<TextBlock Text="{Binding Urine}" FontWeight="{Binding Styles}"></TextBlock>-->
+                                                <TextBox Margin="0" BorderThickness="0"  Background="Transparent"  x:Name="txtUrine" MaxLength="7" Text="{Binding Urine,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" LostFocus="txtOralNg_LostFocus" ></TextBox >
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdNg,Source={StaticResource locResource}}" Width="116">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!--<TextBlock Text="{Binding Ng}" FontWeight="{Binding Styles}"></TextBlock>-->
+                                                <TextBox Margin="0" BorderThickness="0"  Background="Transparent"  x:Name="txtNg" MaxLength="7" Text="{Binding Ng,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" LostFocus="txtOralNg_LostFocus" KeyDown="txtNg_KeyDown" ></TextBox >
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdDrain,Source={StaticResource locResource}}" Width="120">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!--<TextBlock Text="{Binding Drain}" FontWeight="{Binding Styles}"></TextBlock>-->
+                                                <TextBox Margin="0" BorderThickness="0"  Background="Transparent"  x:Name="txtDrain" MaxLength="7" Text="{Binding Drain,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" LostFocus="txtOralNg_LostFocus" ></TextBox >
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdOthers,Source={StaticResource locResource}}" Width="128">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!--<TextBlock Text="{Binding OutputOthers}" FontWeight="{Binding Styles}"></TextBlock>-->
+                                                <TextBox Margin="0" BorderThickness="0"  Background="Transparent"  x:Name="txtOutputOthers" MaxLength="7" Text="{Binding OutputOthers,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" LostFocus="txtOralNg_LostFocus" ></TextBox > 
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+                                    <sdk:DataGridTemplateColumn Header="{Binding grdTotalOutput,Source={StaticResource locResource}}" Width="120" >
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding OutputTotal}" FontWeight="{Binding Styles}"></TextBlock>
+                                                <!--<TextBox Margin="0" BorderThickness="0"  Background="Transparent"  x:Name="txtOutputTotal"  Text="{Binding OutputTotal,Mode=TwoWay}" VerticalAlignment="Stretch" FontWeight="{Binding Styles}" IsReadOnly="{Binding ReadOnly}" HorizontalAlignment="Stretch" ></TextBox >-->
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+
+                                </sdk:DataGrid.Columns>
+
+                            </sdk:DataGrid>
+
+                        </Grid>
+                    </Border>
+
+                </controlsToolkit:DockPanel>
+
+
+
+            </controlsToolkit:DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

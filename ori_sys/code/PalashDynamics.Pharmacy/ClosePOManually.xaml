@@ -1,0 +1,206 @@
+﻿<UserControl x:Class="PalashDynamics.Pharmacy.ClosePOManually"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+    xmlns:WMT="clr-namespace:PalashDynamics;assembly=PalashDynamics.WaterMarkTextBox" Loaded="UserControl_Loaded"
+             xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    Height="auto" Width="auto">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <toolkit:DockPanel x:Name="MainDockPanel" LastChildFill="True">
+            <toolkit:DockPanel x:Name="DockButtons" toolkit:DockPanel.Dock="Bottom">
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton x:Name="cmdPrint" Content="Print PO" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Visibility="Collapsed" Style="{StaticResource ToggleButtonStyle}" Click="cmdPrint_Click"></ToggleButton>
+                        <ToggleButton x:Name="cmdClose" Content="Close PO" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Visibility="Collapsed" Style="{StaticResource ToggleButtonStyle}" Click="cmdClosePO_Click"></ToggleButton>
+                        <ToggleButton Content="Cancel"  Click="cmdCancel_Click" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Visibility="Collapsed" Style="{StaticResource ToggleButtonStyle}" ></ToggleButton>
+
+                    </StackPanel>
+                </StackPanel>
+            </toolkit:DockPanel>
+            <toolkit:DockPanel x:Name="DockGrids" toolkit:DockPanel.Dock="Top">
+                <Grid>
+                    <Grid x:Name="FrontPanel" >
+                        <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                            <toolkit:DockPanel x:Name="DockFrontPanel" LastChildFill="True">
+                                <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                                    <Grp:GroupBox Margin="4"  Header="Search Purchase Order">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="From Date" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                            <sdk:DatePicker x:Name="dtpFromDate" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center"  ></sdk:DatePicker>
+
+                                            <TextBlock Text="To Date" HorizontalAlignment="Right" Grid.Column="2" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                            <sdk:DatePicker x:Name="dtpToDate" Grid.Column="3" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></sdk:DatePicker>
+
+                                            <TextBlock Text="Store" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox x:Name="cmbStore" SelectionChanged="cmbStore_SelectionChanged_1"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="4"></inputcombo:AutoCompleteComboBox>
+
+                                            <TextBlock Text="Supplier" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox SelectionChanged="cmbSupplier_SelectionChanged" x:Name="cmbSupplier"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1" Margin="4"  ></inputcombo:AutoCompleteComboBox>
+
+                                            <TextBlock Text="Purchase No." HorizontalAlignment="Right" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                            <TextBox HorizontalAlignment="Stretch" x:Name="txtPONO" Grid.Column="5" Grid.Row="2" VerticalAlignment="Center" Margin="4" KeyUp="txtPONO_KeyUp"></TextBox>
+                                            
+                                            <Button Grid.Column="6"  Grid.Row="1" x:Name="cmdSearch" Margin="4" Click="cmdSearch_Click" ToolTipService.ToolTip="Search PO" >
+                                                <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="20" ></Image>
+                                            </Button>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                </toolkit:DockPanel>
+
+                                <toolkit:DockPanel toolkit:DockPanel.Dock="Top"  LastChildFill="True" >
+                                    <sdk:DataPager x:Name="datapager"  DisplayMode="FirstLastPreviousNext" toolkit:DockPanel.Dock="Bottom"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+                                    <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="PO List" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                    <sdk:DataGrid  x:Name="dgPOList" Margin="0,0,0,1" Height="130" VerticalScrollBarVisibility="Visible"   ItemsSource="{Binding}"  AutoGenerateColumns="False" SelectionChanged="dgPOList_SelectionChanged" CanUserSortColumns="False">
+                                        <sdk:DataGrid.Columns >
+                                            <sdk:DataGridTextColumn Binding="{Binding PONO, Mode=OneWay}" Header="PO Number" IsReadOnly="True"/>
+                                            <sdk:DataGridTextColumn Binding="{Binding Date,Mode=OneWay, Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"   Header="PO Date" IsReadOnly="True" />
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,Mode=OneWay}" Visibility="Collapsed"  />
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Supplier Name"  Binding="{Binding SupplierName,Mode=OneWay}"   />
+                                            <sdk:DataGridTextColumn Binding="{Binding GRNNowithDate,Mode=OneWay}"  Header="GRN No. - Date" Visibility="Visible"  IsReadOnly="True" />
+                                            <sdk:DataGridTextColumn Binding="{Binding IndentNowithDate,Mode=OneWay}"  Header="Purchase Requisition No. - Date" Visibility="Visible"  IsReadOnly="True" />
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Type"  Binding="{Binding Type,Mode=OneWay}"   />
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Delivery Location" Binding="{Binding DeliveryLocation}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn Visibility="Collapsed"  Binding="{Binding StoreID,Mode=OneWay}"   />
+                                            <sdk:DataGridTextColumn Visibility="Collapsed"  Binding="{Binding SupplierID,Mode=OneWay}"   />
+
+                                            <sdk:DataGridTemplateColumn Header="Close PO" >
+                                                <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox x:Name="Close" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ClosePO_Click"></CheckBox>
+                                                    </DataTemplate>
+                                                </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                            </sdk:DataGridTemplateColumn>
+
+                                        </sdk:DataGrid.Columns>
+                                    </sdk:DataGrid>
+
+                                </toolkit:DockPanel>
+                                <toolkit:DockPanel  toolkit:DockPanel.Dock="Top" >
+                                    <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="PO Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                    <sdk:DataGrid x:Name="grdpo" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="0"  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"   AutoGenerateColumns="false">
+                                        <sdk:DataGrid.Columns>
+                                            <sdk:DataGridTextColumn  IsReadOnly="True" Header="Item Code" Width="100"  Binding="{Binding ItemCode,Mode=OneWay}">
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="Item Name" Width="100"  Binding="{Binding ItemName,Mode=OneWay}">
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Header="UOM" IsReadOnly="True"  Width="100" Binding="{Binding PUM,Mode=OneWay}">
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"    Header="PO Quantity" Width="100"  Binding="{Binding Quantity, StringFormat=0.00,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="Cost Price" Width="100" Binding="{Binding Rate, StringFormat=0.000,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Amount" Width="100"  Binding="{Binding Amount, StringFormat=0.000,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="M.R.P" Width="100"  Binding="{Binding MRP,StringFormat=0.000, Mode=OneWay}" Visibility="Visible">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="Discount %" Width="100" Binding="{Binding DiscountPercent, StringFormat=0.00,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="Discount Amount" Width="Auto"  Binding="{Binding DiscountAmount, StringFormat=0.000,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="VAT%" Width="100"  Binding="{Binding VATPercent, StringFormat=0.00,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="VAT Amount" Width="100"  Binding="{Binding VATAmount, StringFormat=0.000,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"  Header="Net Amount" Width="100"  Binding="{Binding NetAmount, StringFormat=0.000,Mode=OneWay}">
+                                                <sdk:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </sdk:DataGridTextColumn.ElementStyle>
+                                            </sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True"   Header="Specification" Width="100"  Binding="{Binding Specification,Mode=OneWay}">
+
+                                            </sdk:DataGridTextColumn>
+
+
+                                        </sdk:DataGrid.Columns>
+                                    </sdk:DataGrid>
+
+                                </toolkit:DockPanel>
+
+
+                            </toolkit:DockPanel>
+                        </Border>
+
+                    </Grid>
+                </Grid>
+            </toolkit:DockPanel>
+        </toolkit:DockPanel>
+    </Grid>
+</UserControl>
+

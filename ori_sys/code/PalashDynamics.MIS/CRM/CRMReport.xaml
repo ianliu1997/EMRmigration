@@ -1,0 +1,74 @@
+﻿<UserControl xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  x:Class="PalashDynamics.MIS.CRM.CRMReport"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"             
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"               
+    mc:Ignorable="d"
+    >
+    
+    <toolkit:DockPanel LastChildFill="True">
+
+        <toolkit:DockPanel  x:Name="Links">
+            <Border HorizontalAlignment="Stretch" BorderThickness="2" Margin="8,8,8,8" CornerRadius="0,0,3,3" Background="Transparent">
+                <Grid toolkit:DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <HyperlinkButton Grid.Row="0" Grid.Column="0" Content="CUSTOMER DETAIL REPORT" Margin="2"  x:Name="hlCustomerDetailReport" Click="hlCustomerDetailReport_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="1"  Grid.Column="0" Content="CLINIC WISE PATIENT DETAILS REPORT" x:Name="hlClinicWisePatientDetail" Margin="2" Click="hlClinicWisePatientDetail_Click" Visibility="Collapsed"  />
+                    <HyperlinkButton Grid.Row="2"  Grid.Column="0" Content="CLINIC WISE INVESTIGATION REPORT"  x:Name="hlClinicwiseInvestigation" Margin="2" Click="hlClinicwiseInvestigation_Click"  Visibility="Collapsed"   />
+                    <HyperlinkButton Grid.Row="3"  Grid.Column="0" Content="PATIENT LIST" x:Name="hlSearchPatient" Margin="2"  Click="hlSearchPatient_Click" Visibility="Collapsed"/>
+                    <HyperlinkButton Grid.Row="4" Grid.Column="0" Content="PRO DOCTOR LIST" x:Name="hlVisitwiseReferralDoctorReport" Margin="2" Click="hlVisitwiseReferralDoctorReport_Click" Visibility="Collapsed" />
+                    <HyperlinkButton Grid.Row="5"  Grid.Column="0" Content="ANALYSIS REPORT" x:Name="hlAnalysisReport" Margin="2" Click="hlAnalysisReport_Click"  Visibility="Collapsed"/>
+                    <HyperlinkButton Grid.Row="8"  Grid.Column="0" Content="REFERRAL PATIENT LIST" x:Name="hlReferralPatient" Margin="2" Click="hlReferralPatient_Click" Visibility="Collapsed"  />
+                    <!--<HyperlinkButton Grid.Row="9"  Grid.Column="0" Content="LOST PATIENT LIST" x:Name="hlLostPatientList" Margin="2" Click="hlLostPatientList_Click"   />-->
+                    <!--<HyperlinkButton Grid.Row="10"  Grid.Column="0" Content="APPOINTMENT LIST REPORT" x:Name="hlAppointmentListReport" Margin="2" Click="hlAppointmentListReport_Click"   />-->
+                    <!--added by rohini dated2 5/12/2015-->
+                    <HyperlinkButton Grid.Row="11"  Grid.Column="0" Content="PATIENT REGISTRATION" x:Name="hlPatientRegistartion" Margin="2" Click="hlPatientRegistartion_Click"/>
+                    <!--<HyperlinkButton Grid.Row="4"  Grid.Column="0" Content="LOYALTY PROGRAM REPORT" x:Name="hlLoyaltyProgram" Margin="2" Click="hlLoyaltyProgram_Click"/>
+                    <HyperlinkButton Grid.Row="5"  Grid.Column="0" Content="DOCTOR WISE PATIENT REPORT" x:Name="hlDoctorWisePatientReport" Margin="2" Click="hlDoctorWisePatientReport_Click"/>-->
+                    <HyperlinkButton Grid.Row="12"  Grid.Column="0" Content="CONSULTATION-PROCEDURE REPORT" x:Name="ConsaltationandProcedureReport" Margin="2" Visibility="Collapsed" Click="ConsaltationandProcedureReport_Click"/>
+                    <HyperlinkButton Grid.Row="13"  Grid.Column="0" Content="CONSULTATION (PROCEDURE PENDING) REPORT" x:Name="ConsaltationandPartailProcedureDoneReport" Margin="2" Visibility="Collapsed" Click="ConsaltationandPartailProcedureDoneReport_Click"/>
+                    <HyperlinkButton Grid.Row="14"  Grid.Column="0" Content="PROCEDURE  (COMPLETED) REPORT" x:Name="FullyProcedureDoneReport" Margin="2" Visibility="Collapsed" Click="FullyProcedureDoneReport_Click"/>
+                    <HyperlinkButton Grid.Row="15"  Grid.Column="0" Content="UNIT WISE FOOTFALL REPORT" x:Name="UNITWISEFOOTFALL" Margin="2" Visibility="Collapsed" Click="UNITWISEFOOTFALL_Click"/>
+                    <HyperlinkButton Grid.Row="16"  Grid.Column="0" Content="UNIT WISE FOOTFALL REVENUE MIX  REPORT" x:Name="UNITWISEFOOTFALLREVENUEMIX" Margin="2" Visibility="Collapsed" Click="UNITWISEFOOTFALLREVENUEMIX_Click"/>
+
+
+                </Grid >
+            </Border>
+            
+        </toolkit:DockPanel>
+        <toolkit:DockPanel Visibility="Collapsed" x:Name="content_control">
+                <ContentControl x:Name="content"  ></ContentControl>
+            </toolkit:DockPanel>
+           
+        
+    </toolkit:DockPanel>
+        
+   
+    
+</UserControl>

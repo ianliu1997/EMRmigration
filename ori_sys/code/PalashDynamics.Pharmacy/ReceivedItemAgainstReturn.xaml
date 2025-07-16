@@ -1,0 +1,531 @@
+﻿<UserControl x:Class="PalashDynamics.Pharmacy.ReceivedItemAgainstReturn"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+xmlns:converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"     
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"             
+mc:Ignorable="d"
+Width="Auto" 
+Height="Auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converter:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <toolkit:DockPanel LastChildFill="True">
+        <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4" Background="Transparent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <toolkit:DockPanel Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Visibility="Visible"  LastChildFill="True" x:Name="FrontPanel">
+                    <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                        <StackPanel Grid.Column="1" Margin="4" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <ToggleButton Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  Content="New"   x:Name="cmdNew" Click="cmdNew_Click"></ToggleButton>
+                            <ToggleButton Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Content="Print"   x:Name="cmdPrint" Click="cmdPrint_Click" ></ToggleButton>
+                        </StackPanel>
+                    </toolkit:DockPanel>
+                    <toolkit:DockPanel LastChildFill="True">
+                        <toolkit:DockPanel  LastChildFill="True">
+                            <toolkit:DockPanel x:Name="dpSearch1" toolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition  ></ColumnDefinition>
+                                        <ColumnDefinition  ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grp:GroupBox Header="Received Number" Margin="2" Grid.Row="0" Grid.Column="0">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <TextBox Text="" x:Name="txtRetunNumberSrc" Margin="4" Grid.Row="0"></TextBox>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                    <Grp:GroupBox Header="Received Date" Margin="2" Grid.Row="0" Grid.Column="2">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="From Date" Margin="2" Grid.Row="0" Grid.Column="0" ></TextBlock>
+                                            <controls:DatePicker x:Name="dpReceivedFromDate" Margin="2" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch" ></controls:DatePicker>
+                                            <TextBlock Text="To Date" Margin="2" Grid.Row="1" Grid.Column="0" ></TextBlock>
+                                            <controls:DatePicker x:Name="dpReceivedToDate" Margin="2" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Stretch" ></controls:DatePicker>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                    <Grp:GroupBox Header="Store" Margin="2" Grid.Row="0" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Received To" Margin="2" ></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox  SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="StoreId" Margin="2"  Grid.Row="0" Grid.Column="1 "   x:Name="cmbReceivedFromStoreSrch"  ></inputcombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Return From" Margin="2" ></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="StoreId" Margin="2"  Grid.Row="1" Grid.Column="1 "   x:Name="cmbReceivedToStoreSrch" ></inputcombo:AutoCompleteComboBox>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="3" Margin="2"   Orientation="Horizontal">
+                                        <Button x:Name="cmdSearchReceived" Margin="4" ToolTipService.ToolTip="Search Receive Returned Items" Click="cmdSearchReceived_Click">
+                                            <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4" Width="20" ></Image>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+
+                            </toolkit:DockPanel>
+
+                            <toolkit:DockPanel LastChildFill="True" x:Name="dpReceivedList">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+
+                                    <toolkit:DockPanel Grid.Row="0" LastChildFill="True" x:Name="dpItemListBottom1">
+                                        <Border Grid.Row="0" controlsToolkit:DockPanel.Dock="Top"  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                            <ContentControl VerticalAlignment="Center" FontSize="12" Content="Receive Return List" Margin="4,4,4,2" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                        </Border>
+                                        <data:DataPager x:Name="dgdpReceivedList" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" Margin="4,0,4,0"  />
+                                        <data:DataGrid   x:Name="dgReceivedList" ScrollViewer.HorizontalScrollBarVisibility="auto" ScrollViewer.VerticalScrollBarVisibility="auto" AutoGenerateColumns="False"  AlternatingRowBackground="Silver" VerticalAlignment="Stretch" Margin="4,4,4,2"    SelectionChanged="dgReceivedList_SelectionChanged"   >
+                                            <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="Received Number"  Binding="{Binding ReceivedNumber,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Visible" IsReadOnly="True"  Header="Received Date"  Binding="{Binding ReceivedDate,Mode=TwoWay,Converter={StaticResource DateConverter},ConverterParameter='dd/MMM/yyyy'}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="Received To"  Binding="{Binding ReceivedFromStoreName,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Visible"  IsReadOnly="True" Header="Returned From"  Binding="{Binding ReceivedToStoreName,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Total Items"  Binding="{Binding TotalItems,Mode=TwoWay,StringFormat=0.00}" Visibility="Collapsed">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Total Amount"  Binding="{Binding TotalAmount,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Remark"  Binding="{Binding Remark,Mode=TwoWay}"></data:DataGridTextColumn>
+                                            </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </toolkit:DockPanel>
+                                    <toolkit:DockPanel Grid.Row="1" LastChildFill="True" x:Name="dpItemListHeader1">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition ></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Border Grid.Row="0" controlsToolkit:DockPanel.Dock="Top"  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="Receive Return Details List" Margin="4,4,4,2" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                            </Border>
+
+                                            <data:DataGrid Grid.Row="1" x:Name="dgReceivedItemList" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False"  AlternatingRowBackground="Silver" VerticalAlignment="Stretch"  Margin="4"     >
+                                                <data:DataGrid.Columns>
+
+                                                    <data:DataGridTextColumn IsReadOnly="True"  Header="Item Code"  Binding="{Binding ItemCode,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Visibility="Visible" IsReadOnly="True"  Header="Item Name"  Binding="{Binding ItemName,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn IsReadOnly="True"  Header="Batch Code"  Binding="{Binding BatchCode,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn IsReadOnly="True" Header="Expiry Date"  Binding="{Binding ExpiryDate,Mode=TwoWay,Converter={StaticResource DateConverter},ConverterParameter={StaticResource ExpiryDateDisplayFormat}}"></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Visibility="Visible"  IsReadOnly="True" Header="Return Quantity"  Binding="{Binding ReturnQty,Mode=TwoWay,StringFormat=0.0}">
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn IsReadOnly="True"  Header="UOM"  Binding="{Binding ReturnUOM,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                    <data:DataGridTemplateColumn Header="Received Quantity" IsReadOnly="True">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock  VerticalAlignment="Center" Text="{Binding ReceivedQty,Mode=TwoWay,StringFormat=0.0}" TextAlignment="Right" ></TextBlock>
+                                                            </DataTemplate>
+
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                            <DataTemplate>
+                                                                <TextBox x:Name="txtReceivedItem" Text="{Binding ReceivedQty,Mode=TwoWay,StringFormat=0.0}" TextAlignment="Right"  ></TextBox>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTextColumn IsReadOnly="True"  Header="UOM"  Binding="{Binding ReceivedUOM,Mode=TwoWay}"></data:DataGridTextColumn>
+
+                                                    <data:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Header="MRP"  Binding="{Binding MRP,Mode=TwoWay,StringFormat=0.00}">
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+
+                                                    <data:DataGridTextColumn  IsReadOnly="True" Header="Base Cost Price"  Binding="{Binding PurchaseRate,Mode=TwoWay,StringFormat=0.00}">
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+
+                                                    <data:DataGridTextColumn IsReadOnly="True" Header="Total Cost Amount"  Binding="{Binding ItemTotalAmount,Mode=TwoWay,StringFormat=0.00}" >
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+
+                                                    <data:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Header="VAT%"  Binding="{Binding ItemVATPercentage,Mode=TwoWay,StringFormat=0.00}">
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+
+                                                    <data:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Header="VAT Amount"  Binding="{Binding ItemVATAmount,Mode=TwoWay,StringFormat=0.00}">
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn IsReadOnly="True" Header="Net Pay Before VAT Amt"  Binding="{Binding NetPayBeforeVATAmount,Mode=TwoWay}" Visibility="Collapsed"></data:DataGridTextColumn>
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <TextBlock HorizontalAlignment="Right" Text="Total Receives" VerticalAlignment="Center" Margin="1,0,1,0"></TextBlock>
+                                                <TextBox x:Name="txtTotalCountRecords" TextAlignment="Right" VerticalAlignment="Center" IsReadOnly="True"  Margin="1,0,4,4" Width="70" ></TextBox>
+                                            </StackPanel>
+                                        </Grid>
+                                    </toolkit:DockPanel>
+                                </Grid>
+                            </toolkit:DockPanel>
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+                </toolkit:DockPanel>
+                <toolkit:DockPanel Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch"  Visibility="Collapsed"  LastChildFill="True"  x:Name="BackPanel" >
+                    <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                        <StackPanel  Margin="4"  Orientation="Horizontal" >
+                            <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton x:Name="CmdSave"  Content="Save"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdSave_Click"  />
+                                    <ToggleButton x:Name="CmdClose"  Content="Cancel"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdClose_Click"  />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </toolkit:DockPanel>
+                    <toolkit:DockPanel  LastChildFill="True">
+                        <toolkit:DockPanel x:Name="dpSummary" toolkit:DockPanel.Dock="Bottom" LastChildFill="True">
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3" Margin="4,4,4,4" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25"></ColumnDefinition>
+                                        <ColumnDefinition Width="85" />
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Visibility="Collapsed" Text="Number of Items" Margin="4" Grid.ColumnSpan="2"></TextBlock>
+                                    <TextBox Visibility="Collapsed" Margin="4" Grid.Column="2" MaxLength="10" IsReadOnly="True" x:Name="txtNoOfItems" Text="{Binding StringFormat=0.00}" TextAlignment="Right"></TextBox>
+
+                                    <TextBlock Text="Total Cost Amount" Margin="4" Grid.ColumnSpan="2"></TextBlock>
+                                    <TextBox Margin="4" Grid.Column="2" MaxLength="50" IsReadOnly="True" x:Name="txtTotalAmount" Text="{Binding StringFormat=0.00}" TextAlignment="Right"></TextBox>
+
+                                    <TextBlock Grid.RowSpan="2" Grid.Column="3" Text="Remark" Margin="4" VerticalAlignment="Center"></TextBlock>
+                                    <TextBox Margin="2" Grid.RowSpan="2" Grid.Column="4" x:Name="txtRemark" VerticalScrollBarVisibility="Visible"></TextBox>
+
+                                    <TextBlock Visibility="Collapsed" Grid.Row="1" Text="Received By" Margin="2" Grid.ColumnSpan="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox Visibility="Collapsed" Margin="2"  Grid.Row="1" Grid.Column="2" x:Name="cmbReceivedBy" IsEnabled="False"></inputcombo:AutoCompleteComboBox>
+
+                                </Grid>
+                            </Border>
+                        </toolkit:DockPanel>
+
+                        <toolkit:DockPanel x:Name="dpSearch" toolkit:DockPanel.Dock="Top" LastChildFill="True">
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition  ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grp:GroupBox Header="Store" Margin="2" Grid.Row="0" Grid.Column="1">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Received To" Margin="2" ></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox  SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="StoreId" Margin="2"  Grid.Row="0" Grid.Column="1 "   x:Name="cmbFromStore" KeyDown="cmbFromStore_KeyDown" SelectionChanged="cmbFromStore_SelectionChanged" ></inputcombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Return From" Margin="2" ></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox SelectedItemBinding="{Binding clsStoreVO, Mode=OneWay}" SelectedValuePath="StoreId" Margin="2"  Grid.Row="1" Grid.Column="1 "   x:Name="cmbToStore" SelectionChanged="cmbToStore_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                    <Grp:GroupBox Header="Received Details" Margin="2" Grid.Row="0" Grid.Column="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Received Number" Margin="2" ></TextBlock>
+                                            <TextBox  MaxLength="50" IsReadOnly="True" Margin="2"  Grid.Row="0" Grid.Column="1 "   x:Name="txtReceivedNumber"></TextBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Received Date" Margin="2" ></TextBlock>
+                                            <controls:DatePicker x:Name="dpReceivedDate" Margin="2" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Stretch" ></controls:DatePicker>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                </Grid>
+                            </Border>
+                        </toolkit:DockPanel>
+                        <toolkit:DockPanel LastChildFill="True" x:Name="dpItemList">
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3" Margin="4,4,4,4" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <toolkit:DockPanel Grid.Row="0" LastChildFill="True" >
+                                        <data:DataPager x:Name="dgdpReturnList" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" Margin="4,0,4,0"  />
+                                        <data:DataGrid   x:Name="dgReturnList" ScrollViewer.HorizontalScrollBarVisibility="auto" ScrollViewer.VerticalScrollBarVisibility="auto" AutoGenerateColumns="False"  AlternatingRowBackground="Silver" VerticalAlignment="Stretch"  Margin="4,4,4,2"   SelectionChanged="dgReturnList_SelectionChanged"   >
+                                            <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="Return Number"  Binding="{Binding ReturnNumber,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Visible" IsReadOnly="True"  Header="Return Date"  Binding="{Binding ReturnDate,Mode=TwoWay,Converter={StaticResource DateConverter},ConverterParameter='dd/MMM/yyyy'}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="Returned From"  Binding="{Binding ReturnFromStoreName,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Visible"  IsReadOnly="True" Header="Received To"  Binding="{Binding ReturnToStoreName,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Total Items"  Binding="{Binding TotalItems,Mode=TwoWay,StringFormat=0.00}" Visibility="Collapsed">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Total Amount"  Binding="{Binding TotalAmount,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Return By"  Binding="{Binding ReturnByName,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Remark"  Binding="{Binding Remark,Mode=TwoWay}"></data:DataGridTextColumn>
+                                            </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </toolkit:DockPanel>
+                                    <toolkit:DockPanel LastChildFill="True" x:Name="dpItemListHeader" Grid.Row="1" >
+                                        <data:DataGrid  x:Name="dgReturnItemList" ScrollViewer.HorizontalScrollBarVisibility="auto" ScrollViewer.VerticalScrollBarVisibility="auto" AutoGenerateColumns="False"  AlternatingRowBackground="Silver" VerticalAlignment="Stretch"  Margin="4">
+                                            <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="Item Code"  Binding="{Binding ItemCode,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Visible" IsReadOnly="True"  Header="Item Name"  Binding="{Binding ItemName,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="Batch Code"  Binding="{Binding BatchCode,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Expiry Date"  Binding="{Binding ExpiryDate,Mode=TwoWay,Converter={StaticResource DateConverter},ConverterParameter={StaticResource ExpiryDateDisplayFormat}}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Visible"  IsReadOnly="True" Header="Returned Quantity"  Binding="{Binding ReturnQty,Mode=TwoWay,StringFormat=0.0}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="UOM"  Binding="{Binding ReturnUOM,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Balance Quantity"  Binding="{Binding BalanceQty,Mode=TwoWay,StringFormat=0.0}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn IsReadOnly="True"  Header="UOM"  Binding="{Binding BaseUOM,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTemplateColumn Header="Receive Quantity">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock  VerticalAlignment="Center" Text="{Binding ReceivedQty,Mode=TwoWay,StringFormat=0.0}" TextAlignment="Right" ></TextBlock>
+                                                        </DataTemplate>
+
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                    <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        <DataTemplate>
+                                                            <TextBox x:Name="txtReceivedItem" Text="{Binding ReceivedQty,Mode=TwoWay,StringFormat=0.0}" TextAlignment="Right"></TextBox>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                </data:DataGridTemplateColumn>
+
+                                                <data:DataGridTemplateColumn Header="Receive UOM">
+                                                    <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        <DataTemplate>
+                                                            <HyperlinkButton  Content="{Binding SelectedUOM.Description,Mode=TwoWay}"  Click="HyperlinkButton_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4"></HyperlinkButton>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                </data:DataGridTemplateColumn>
+
+                                                <!--<data:DataGridTemplateColumn Header="Receive UOM" >
+                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding SelectedUOM.Description,Mode=TwoWay }" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <inputcombo:AutoCompleteComboBox x:Name="cmbUOM" SelectedValue="{Binding SelectedUOM.ID}" SelectedItem="{Binding SelectedUOM,Mode=TwoWay}" ItemsSource="{Binding UOMList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GotFocus="cmbUOM_GotFocus" SelectionChanged="cmbUOM_SelectionChanged" ></inputcombo:AutoCompleteComboBox>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellEditingTemplate>
+                                            </data:DataGridTemplateColumn>-->
+
+                                                <data:DataGridTextColumn IsReadOnly="True" Binding="{Binding SUOM, Mode=TwoWay}" Header="Stock UOM" Visibility="Collapsed"/>
+
+                                                <!--Cell-4-->
+                                                <data:DataGridTextColumn  IsReadOnly="True"  Binding="{Binding ConversionFactor, StringFormat=0.00, Mode=TwoWay}" Header="Stock CF" Visibility="Collapsed">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <!--Cell-5-->
+                                                <data:DataGridTextColumn IsReadOnly="True" Binding="{Binding StockingQuantity, StringFormat=0.00 }"  Header="Stock Quantity" Visibility="Collapsed">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"  />
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn IsReadOnly="True" Binding="{Binding BaseUOM, Mode=TwoWay}" Header="Base UOM" Visibility="Collapsed"/>
+
+                                                <data:DataGridTextColumn  IsReadOnly="True"  Binding="{Binding BaseConversionFactor, StringFormat=0.00, Mode=TwoWay}" Header="Base CF" Visibility="Collapsed">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <!--Cell-22-->
+                                                <data:DataGridTextColumn Binding="{Binding BaseQuantity, StringFormat=0.00, Mode=TwoWay}" Header="Base Quantity" Visibility="Collapsed">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Header="MRP"  Binding="{Binding MRP,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn  IsReadOnly="True" Header="Base Cost Price"  Binding="{Binding PurchaseRate,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn IsReadOnly="True" Header="Total Cost Amount"  Binding="{Binding ItemTotalAmount,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn Visibility="Collapsed"  IsReadOnly="True" Header="VAT%"  Binding="{Binding ItemVATPercentage,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Collapsed"  IsReadOnly="True" Header="VAT Amount"  Binding="{Binding ItemVATAmount,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Collapsed"  IsReadOnly="True" Header="Conversion"  Binding="{Binding ConversionFactor,Mode=TwoWay}"></data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Visibility="Collapsed"  IsReadOnly="True" Header="Net Pay Before VAT Amount"  Binding="{Binding NetPayBeforeVATAmount,Mode=TwoWay,StringFormat=0.00}">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTemplateColumn>
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click ="cmdDelete_Click"  x:Name="cmdDelete" ToolTipService.ToolTip="Delete"></HyperlinkButton>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                            </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </toolkit:DockPanel>
+                                </Grid>
+                            </Border>
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+                </toolkit:DockPanel>
+            </Grid>
+        </Border>
+    </toolkit:DockPanel>
+</UserControl>

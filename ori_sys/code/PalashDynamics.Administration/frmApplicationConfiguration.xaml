@@ -1,0 +1,776 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.frmApplicationConfiguration"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+     xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+               xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+     xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"    
+    mc:Ignorable="d" Loaded="UserControl_Loaded"
+    d:DesignHeight="500" d:DesignWidth="500">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4" controlsToolkit:DockPanel.Dock="Top" BorderThickness="0" CornerRadius="3,3,3,3" Background="Transparent">
+                <StackPanel x:Name="Header" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent">
+                    <TextBlock  Margin="4,4,4,4" Text="Unit"  VerticalAlignment="Center"  HorizontalAlignment="Center" Height="23" Width="40"></TextBlock>
+                    <CustomCombo:AutoCompleteComboBox x:Name="cmbUnit" Margin="4" Width="202" SelectedItemBinding="{Binding MasterListItem,Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cmbUnit_SelectionChanged" Height="21"></CustomCombo:AutoCompleteComboBox>
+                </StackPanel>
+
+            </Border>
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="0" CornerRadius="3,3,3,3" Background="Transparent">
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <ToggleButton x:Name="cmdSave" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdSave_Click"></ToggleButton>
+                    <!--<ToggleButton Content="Close" x:Name="cmdClose" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdCancel_Click"></ToggleButton>-->
+                </StackPanel>
+
+            </Border>
+
+            <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,0"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+
+
+
+                <sdk:TabControl x:Name="tabConfig"  Margin="4">
+
+                    <sdk:TabItem  Header="Application" Style="{StaticResource TabItemStyle}" >
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,0"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <toolkit:DockPanel LastChildFill="True">
+
+                                    <toolkit:DockPanel  x:Name="ContentDockPanel" toolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Grp:GroupBox Header="Email Account Information" Margin ="4"  Grid.Row="0" HorizontalAlignment="Stretch">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width ="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+                                                        <ColumnDefinition Width ="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition ></ColumnDefinition>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Host"></TextBlock>
+                                                    <TextBox Grid.Row="0"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtHost" Text="{Binding Host,Mode=TwoWay}"  MaxLength="50"></TextBox>
+                                                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Port No."></TextBlock>
+                                                    <TextBox Grid.Row="2"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtPortNo" Text="{Binding Port,Mode=TwoWay}"  MaxLength="50"></TextBox>
+                                                    <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="User Name"></TextBlock>
+                                                    <TextBox Grid.Row="3"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtUserName" Text="{Binding UserName,Mode=TwoWay}"  MaxLength="50"></TextBox>
+                                                    <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Password"></TextBlock>
+                                                    <PasswordBox Grid.Row="1"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtPassword" Password="{Binding Password,Mode=TwoWay}"  MaxLength="50"></PasswordBox>
+                                                    <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Confirm Password"></TextBlock>
+                                                    <PasswordBox Grid.Row="1"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtConfirmPassword"  LostFocus="txtConfirmPassword_LostFocus" MaxLength="50"></PasswordBox>
+
+                                                    <CheckBox Grid.Row="3" Content="Enable Ssl"  Grid.Column="2" Margin="4" VerticalAlignment="Center" x:Name="chkEnableSsl" IsChecked="{Binding EnableSsl,Mode=TwoWay}" ></CheckBox>
+
+                                                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Email"></TextBlock>
+                                                    <TextBox Grid.Row="0" Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="txtEmail" Text="{Binding Email,Mode=TwoWay}" LostFocus="txtEmail_LostFocus" MaxLength="100"></TextBox>
+
+
+                                                </Grid>
+                                            </Grp:GroupBox>
+
+                                            <Grp:GroupBox Header="SMS Account Information" Margin="4" Grid.Row="1" HorizontalAlignment="Stretch" >
+                                                <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"></RowDefinition>
+                                                            <RowDefinition Height="Auto"></RowDefinition>
+                                                            <RowDefinition Height="Auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width ="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition />
+                                                            <ColumnDefinition Width ="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="SMS URL"></TextBlock>
+                                                        <TextBox Grid.Row="0" Grid.ColumnSpan="4" Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtSMSURL" Text="{Binding SMSUrl,Mode=TwoWay}"  MaxLength="50"></TextBox>
+
+                                                        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="User ID"></TextBlock>
+                                                        <TextBox Grid.Row="1"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtSMSUserName" Text="{Binding SMS_UserName,Mode=TwoWay}"  MaxLength="50"></TextBox>
+
+                                                        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Password"></TextBlock>
+                                                        <PasswordBox Grid.Row="2"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtSMSPassword"  Password="{Binding SMSPassword,Mode=TwoWay}"  LostFocus="txtSMSPassword_LostFocus" MaxLength="50"></PasswordBox>
+
+                                                        <TextBlock Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Confirm Password"></TextBlock>
+                                                        <PasswordBox Grid.Row="2"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtSMSConfirmPassword"  LostFocus="txtSMSConfirmPassword_LostFocus" MaxLength="50"></PasswordBox>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Grp:GroupBox>
+                                        </Grid>
+                                    </toolkit:DockPanel>
+
+                                    <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Visibility="Collapsed" Grid.Column="3" Margin="4,8,4,4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Database Name"></TextBlock>
+                                            <TextBox Grid.Row="0" Visibility="Collapsed" Grid.Column="4" Margin="4,8,4,4" VerticalAlignment="Center"  x:Name="txtDatabaseName" Text="{Binding DatabaseName,Mode=TwoWay}" LostFocus="txtDatabaseName_LostFocus" MaxLength="50"></TextBox>
+
+
+
+                                            <CheckBox x:Name="chkIsHO" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Content="Head Office" IsChecked="{Binding IsHO, Mode=TwoWay}" Click="chkIsHO_Click"></CheckBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Country"></TextBlock>
+                                            <!--<TextBox Grid.Row="1"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtCountry" Text="{Binding Country,Mode=TwoWay}" LostFocus="txtCountry_LostFocus" MaxLength="50"></TextBox>-->
+                                            <CustomCombo:AutoCompleteComboBox Margin="4" Grid.Row="1"  Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValue="ID" SelectedValuePath="ID"  x:Name="txtCountry"  SelectionChanged="txtCountry_SelectionChanged" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default State"></TextBlock>
+                                            <!--<TextBox Grid.Row="1" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtState" Text="{Binding State,Mode=TwoWay}" LostFocus="txtState_LostFocus" MaxLength="50"></TextBox>-->
+                                            <CustomCombo:AutoCompleteComboBox Margin="4" Grid.Row="1" Grid.Column="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValue="ID" SelectedValuePath="ID" x:Name="txtState" SelectionChanged="txtState_SelectionChanged"  ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="4"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="WebSite"></TextBlock>
+                                            <TextBox x:Name="txtWebSite" Margin="4" Grid.Row="1" Grid.Column="5"   Text="{Binding WebSite, Mode=TwoWay}" LostFocus="txtWebSite_LostFocus" HorizontalAlignment="Stretch" TabIndex="6" MaxLength="100"></TextBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default District" Visibility="Collapsed"></TextBlock>
+                                            <TextBox Grid.Row="1" Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="txtDistrict" Text="{Binding District,Mode=TwoWay}" LostFocus="txtDistrict_LostFocus" MaxLength="50" Visibility="Collapsed"></TextBox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default City"></TextBlock>
+                                            <!--<TextBox Grid.Row="2"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtCity" Text="{Binding City,Mode=TwoWay}" LostFocus="txtCity_LostFocus" MaxLength="50"></TextBox>-->
+                                            <CustomCombo:AutoCompleteComboBox Margin="4" Grid.Row="2"  Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValue="ID" SelectedValuePath="ID" x:Name="txtCity"  SelectionChanged="txtCity_SelectionChanged" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Area"></TextBlock>
+                                            <!--<TextBox Grid.Row="2" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtArea" Text="{Binding Area,Mode=TwoWay}" LostFocus="txtArea_LostFocus" MaxLength="50"></TextBox>-->
+                                            <CustomCombo:AutoCompleteComboBox Margin="4" Grid.Row="2" Grid.Column="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  x:Name="txtArea"  SelectedValue="ID" SelectedValuePath="ID" SelectionChanged="txtArea_SelectionChanged" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default PIN Code"></TextBlock>
+                                            <TextBox Grid.Row="2" Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="txtPincode" Text="{Binding Pincode,Mode=TwoWay}"  KeyDown="txtPincode_KeyDown"  TextChanged="txtPincode_TextChanged" MaxLength="50"></TextBox>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Admin Role"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbAdminRole" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Doctor Role"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbDoctorRole" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Nurse Role"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbNurseRole" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Self Tariff"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="4"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbTariff" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="4" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Self Company"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="4"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbSelfCompany" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="4" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Payment Mode"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="4"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbPaymentMode" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock  Visibility="Visible" Grid.Row="5" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Radiology Store"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Visibility="Visible" Grid.Row="5"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbRadiologyStore" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Visibility="Visible" Grid.Row="5" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pathology Store"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Visibility="Visible" Grid.Row="5"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbPathologyStore" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Visibility="Collapsed" Grid.Row="5" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="OT Store"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Visibility="Collapsed" Grid.Row="5"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbOTStore" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="5" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Lab for Inhouse"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="5"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbLab" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+
+                                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Date Format"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="6"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbDateFormat" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="6" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Print Format"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="6"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbPrintFormat" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="6" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pharmacy Store" ToolTipService.ToolTip="Pharmacy Store"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="6"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbPharmacyStore" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Visibility="Visible" Grid.Row="7" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pathology Department"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Visibility="Visible" Grid.Row="7"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbPathologyDepartment" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock  Visibility="Visible" Grid.Row="7" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Radiology Department"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Visibility="Visible" Grid.Row="7"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbRadiologyDepartment" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="7" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Refund Amount" ToolTipService.ToolTip="Refund Amount"></TextBlock>
+                                            <TextBox Grid.Row="7" Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="txtRefAmt" Text="{Binding RefundAmount,Mode=TwoWay}" LostFocus="txtArea_LostFocus" MaxLength="50"></TextBox>
+
+
+                                            <TextBlock Grid.Row="8" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Mode For Refund" ToolTipService.ToolTip="Default Mode For Refund"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox x:Name="cmbPayMode" SelectedValuePath="ID" Margin="2,4,0,4" Grid.Row="8" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+
+
+                                            <CheckBox Visibility="Collapsed" x:Name="chkAddLogoToAllReports" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Add Logo To All Reports" IsChecked="{Binding AddLogoToAllReports, Mode=TwoWay}" Checked="chkAddLogoToAllReports_Checked" Unchecked="chkAddLogoToAllReports_Checked" ></CheckBox>
+                                            <StackPanel Visibility="Collapsed" Orientation="Horizontal" Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                                                <Image Source="/PalashDynamics;component/Icons/attachment.JPG" MouseLeftButtonDown="Image_MouseLeftButtonDown" Height="20"></Image>
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Attachment"  Margin="4"></TextBlock>
+                                                <!--<TextBox x:Name="txtlogo" IsReadOnly="True"  Grid.Column="2" Grid.Row="12"  Grid.ColumnSpan="2" VerticalAlignment="Center"  Text="{Binding AttachmentPath,Mode=TwoWay}" Margin="4"></TextBox>
+                                    <Button x:Name="CmdBrowse"  Content="Browse" Grid.Column="2" Grid.Row="12" Margin="4" Click="CmdBrowse_Click"></Button>-->
+
+                                            </StackPanel>
+                                            <TextBox x:Name="txtlogo"  Visibility="Collapsed" IsReadOnly="True"  Grid.Column="3" Grid.Row="7" VerticalAlignment="Center"  Text="{Binding AttachmentPath,Mode=TwoWay}" Margin="4"></TextBox>
+                                            <Button x:Name="CmdBrowse" Visibility="Collapsed" Content="Browse" Grid.Column="4" IsEnabled="False" Grid.Row="7" Margin="4" Click="CmdBrowse_Click"></Button>
+
+                                            <TextBlock Grid.Row="8" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Left" Text="Default Country Code" ></TextBlock>
+                                            <TextBox Grid.Row="8" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtDefaultCountryCode" KeyDown="txtMobileCountryCode_KeyDown" TextChanged="txtMobileCountryCode_OnTextChanged"  MaxLength="4" TextAlignment="Right"></TextBox>
+
+                                            <CheckBox Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Left" Content="Apply Service Concession to Staff" IsChecked="{Binding ApplyConcessionToStaff, Mode=TwoWay}" ></CheckBox>
+                                            <CheckBox x:Name="chkAllowDischargeReq" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Left" Content="Allow Discharge Requests" IsChecked="{Binding IsAllowDischargeRequest, Mode=TwoWay}"  ></CheckBox>
+                                            <TextBlock Grid.Row="8" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Left" Text="Item Expired In(Days)" ></TextBlock>
+                                            <TextBox Grid.Row="8" Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="txtItemExpiredIn"  MaxLength="3" KeyDown="txtPincode_KeyDown"  TextChanged="txtPincode_TextChanged" Text="0" TextAlignment="Right"></TextBox>
+                                            <CheckBox x:Name="chkAllowTransactionAtHO" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Left" Content="Allow Clinical Transaction at HO" IsChecked="{Binding AllowClinicalTransaction, Mode=TwoWay}"  ></CheckBox>
+                                            <CheckBox Visibility="Collapsed" x:Name="chkDeductStockFromRadiology" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Left" Content="Auto Deduct Stock From Radiolgy" IsChecked="{Binding AutoDeductStockFromRadiology, Mode=TwoWay}"  ></CheckBox>
+                                            <CheckBox Visibility="Collapsed" x:Name="chkDeductStockFromPathology" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Left" Content="Auto Deduct Stock From Pathology" IsChecked="{Binding AutoDeductStockFromPathology, Mode=TwoWay}"  ></CheckBox>
+                                            <CheckBox Visibility="Collapsed" x:Name="chkAutoGenerateSampleNo" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Left" Content="Auto Generate Sample No." IsChecked="{Binding AutoGenerateSampleNo, Mode=TwoWay}"  ></CheckBox>
+
+                                        </Grid>
+                                    </toolkit:DockPanel>
+                                </toolkit:DockPanel>
+                            </Border>
+                        </ScrollViewer>
+                    </sdk:TabItem>
+                    <sdk:TabItem  Header="Clinic" Style="{StaticResource TabItemStyle}" >
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                            <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,0"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <!--by rohini-->
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <!--by rohini-->
+                                        </Grid.RowDefinitions>
+
+                                        <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Unit"></TextBlock>
+                                <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbUnit" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cmbUnit_SelectionChanged"></CustomCombo:AutoCompleteComboBox>-->
+
+                                        <TextBlock Grid.Row="0" Grid.Column="2"  Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Department"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="3" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbDepartment" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cmbDepartment_SelectionChanged" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="4" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Doctor"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="5" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbDoctor" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Visit Type"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbVisitType" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Free Followup Visit Type"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbFreeFollowupVisittype" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pharmacy Visit Type"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbPharmacyVisitType" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Appointment Slot"></TextBlock>
+                                        <TextBox Grid.Row="1"  Grid.Column="1" Margin="4" VerticalAlignment="Center" TextAlignment="Right" x:Name="txtAppointmentSlot" Text="{Binding AppointmentSlot,Mode=TwoWay}" TextChanged="txtAppointmentSlot_TextChanged" KeyDown="txtAppointmentSlot_KeyDown"  ></TextBox>
+
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Free Followup Days"></TextBlock>
+                                        <TextBox Grid.Row="2"  Grid.Column="1" Margin="4" VerticalAlignment="Center" TextAlignment="Right" x:Name="txtFreeFolloupDays" Text="{Binding FreeFollowupDays,Mode=TwoWay}" TextChanged="txtFreeFolloupDays_TextChanged" KeyDown="txtFreeFolloupDays_KeyDown"></TextBox>
+
+
+                                        <TextBlock Grid.Row="2" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Consultation Specialization"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="2"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbConsultationSpecialization" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="2"  Grid.Column="4" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Local Language for SMS" Visibility="Collapsed"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="2"   Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbLocalLanSMS" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Visibility="Collapsed" ></CustomCombo:AutoCompleteComboBox>
+
+
+                                        <TextBlock Visibility="Visible" Grid.Row="4" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pathology Specialization"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Visibility="Visible" Grid.Row="4"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbPathoSpecialization" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Visibility="Visible" Grid.Row="4" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Radiology Specialization"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Visibility="Visible" Grid.Row="4"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbRadiologySpecialization" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pharmacy Specialization"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="1"  Margin="4" VerticalAlignment="Center" x:Name="cmbPharmacySpecialization" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <!--Rohinee-->
+                                        <TextBlock Grid.Row="3" Grid.Column="2" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="OPD Cash Counter" ></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="3"  Margin="4" VerticalAlignment="Center" x:Name="cmbOPDCounter" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  ></CustomCombo:AutoCompleteComboBox>
+
+
+                                        <TextBlock Grid.Row="3" Grid.Column="4" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="IPD Cash Counter"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="5"  Margin="4" VerticalAlignment="Center" x:Name="cmbIPDCounter" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+
+                                        <TextBlock Grid.Row="4" Grid.Column="4" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pharmacy Cash Counter" ></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="4"  Grid.Column="5"  Margin="4" VerticalAlignment="Center" x:Name="cmbPharmacyCounter" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  ></CustomCombo:AutoCompleteComboBox>
+
+
+                                        <TextBlock Grid.Row="2" Grid.Column="4" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Lab Cash Counter"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="2"  Grid.Column="5"  Margin="4" VerticalAlignment="Center" x:Name="cmbLabCounter" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock  Grid.Row="5" Grid.Column="4"   VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Radiology Cash Counter"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox    Grid.Row="5"  Grid.Column="5"  Margin="4" VerticalAlignment="Center" x:Name="cmbRadiologyCounter" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <!--....-->
+
+
+
+                                        <!--<TextBlock Grid.Row="5" Grid.Column="0" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="IPD Credit Limit"></TextBlock>-->
+                                        <CheckBox x:Name="chkIpd" Grid.Row="5"  Content="IPD Credit Limit"  Grid.Column="0" HorizontalAlignment="Right"  IsChecked="False" Unchecked="chkIpd_UnChecked" Checked="chkIpd_Checked" />
+                                        <TextBox x:Name="txtIpdCredit" Width="auto"  IsReadOnly="False" IsEnabled="False"  Grid.Row="5" MaxLength="10" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch"/>
+                                        <!--<TextBlock Grid.Row="6" Grid.Column="0" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="OPD Credit Limit"></TextBlock>-->
+                                        <!--<CheckBox x:Name="chkOpd" Grid.Row="6" Grid.Column="0" Content="OPD Credit Limit" HorizontalAlignment="Right"  IsChecked="False" Unchecked="chkOpd_UnChecked" Checked="chkOpd_Checked" />
+                                    <TextBox x:Name="txtOpdCredit" Width="auto"  IsReadOnly="False" IsEnabled="False"  Grid.Row="6" MaxLength="10" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch"/>-->
+                                        <CheckBox x:Name="chkOpd" Grid.Row="5" Grid.Column="2" Content="OPD Credit Limit" HorizontalAlignment="Right"  IsChecked="False" Unchecked="chkOpd_UnChecked" Checked="chkOpd_Checked" />
+                                        <TextBox x:Name="txtOpdCredit" Width="auto"  IsReadOnly="False" IsEnabled="False"  Grid.Row="5" MaxLength="10" Grid.Column="3" Margin="4" HorizontalAlignment="Stretch"/>
+
+                                        <CheckBox x:Name="chkCentralPurchase" VerticalAlignment="Center" Grid.Row="6"  Content="Central Purchase Indenting Store"  Grid.Column="0" HorizontalAlignment="Left" />
+                                        <CustomCombo:AutoCompleteComboBox  VerticalAlignment="Center"  Grid.Row="6"  Grid.Column="1"  Margin="4"  x:Name="cmbIndentStore" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="6" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pathology Visit Type"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="6"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbPathologyVisitType" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        <TextBlock Grid.Row="6" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pathology Company Type"></TextBlock>
+                                        <CustomCombo:AutoCompleteComboBox Grid.Row="6"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbPathologyCompanyType" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+                                        <!--added by rohini as per disscussed with mangesh sir dated 12.1.16-->
+
+                                        <TextBlock Grid.Row="7" Grid.Column="0" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Billing Exceeds Limit"></TextBlock>
+                                        <TextBox Grid.Row="7"  Grid.Column="1" Margin="4" VerticalAlignment="Center" TextAlignment="Right" x:Name="txtBillingExceedsLimit" Text="{Binding BillingExceedsLimit,Mode=TwoWay}"></TextBox>
+
+
+                                        <TextBlock  Grid.Row="8" Grid.Column="0"   VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Disclaimer"></TextBlock>
+                                        <TextBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5"   Margin="4" VerticalAlignment="Center" x:Name="txtDisclaimer" Text="{Binding Disclaimer,Mode=TwoWay}" ></TextBox>
+
+                                    </Grid>
+                                    <Grp:GroupBox Header="Levels Of Authorization" Margin="4" Grid.Row="1" HorizontalAlignment="Stretch" >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="For Refund"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1"  Margin="4" VerticalAlignment="Center" x:Name="cmbForRefund" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="2" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="For Concession"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Column="3"  Margin="4" VerticalAlignment="Center" x:Name="cmbForConcession" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="ID"></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Visibility="Collapsed" Grid.Row="0" Grid.Column="4" Margin="4"  VerticalAlignment="Center"  HorizontalAlignment="Right" Text="For MRP Adjustment"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Visibility="Collapsed" Grid.Column="5"  Margin="4" VerticalAlignment="Center" x:Name="cmbForMRPAdjustment" SelectedItemBinding="{Binding Description, Mode=OneWay}" SelectedValuePath="ID"></CustomCombo:AutoCompleteComboBox>
+
+
+                                        </Grid>
+                                    </Grp:GroupBox>
+
+                                </Grid>
+                            </Border>
+                        </ScrollViewer>
+                    </sdk:TabItem>
+                    <sdk:TabItem Header="Doctor" Style="{StaticResource TabItemStyle}">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <Border controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,0" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Embryologist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbEmbryologistClassification" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Anesthetist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbAnesthetistClassification" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                    <!--<TextBlock Visibility="Collapsed" Grid.Row="1" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Radiologist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox  Visibility="Collapsed" Grid.Row="1"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbRadiologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>-->
+
+                                    <TextBlock Grid.Row="1" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Gynecologist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbGynecologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                    <TextBlock Visibility="Collapsed" Grid.Row="2" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Physician Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Visibility="Collapsed" Grid.Row="2"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbPhysician" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cmbUnit_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Andrologist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbAndrologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cmbDepartment_SelectionChanged" ></CustomCombo:AutoCompleteComboBox>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Biologist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Grid.Row="2"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbBiologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Doctor Type For Referral"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbDoctorType" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Pathologist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox Grid.Row="2"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbPathologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                    <TextBlock Visibility="Visible" Grid.Row="3" Grid.Column="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Radiologist Classification"></TextBlock>
+                                    <CustomCombo:AutoCompleteComboBox  Visibility="Visible" Grid.Row="3"  Grid.Column="3" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbRadiologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+
+                                    <!--<TextBlock Grid.Row="3" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default gynecologist"></TextBlock>
+                                <CustomCombo:AutoCompleteComboBox Grid.Row="3"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbGynecologist" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>-->
+
+
+
+                                </Grid>
+                            </Border>
+
+                        </ScrollViewer>
+                    </sdk:TabItem>
+
+                    <sdk:TabItem  Header="Patient" Style="{StaticResource TabItemStyle}" >
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,0"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grp:GroupBox Header="General Information" Margin ="4"  Grid.Row="0" HorizontalAlignment="Stretch">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Recent Patient Interval"></TextBlock>
+                                            <TextBox Grid.Row="0"  Grid.Column="1" Margin="4,8,4,4" TextAlignment="Right" VerticalAlignment="Center"  x:Name="txtRecentPatientInterval" Text="{Binding SearchPatientsInterval,Mode=TwoWay}" TextChanged="txtRecentPatientInterval_TextChanged" KeyDown="txtRecentPatientInterval_KeyDown"></TextBox>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Patient Registrtion Type"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="3" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbPatientCategory" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="4" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Self Relation"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="5" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbRelation" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0"  Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Patient Source"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbPatientSource" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="2"  Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Company Patient Source"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="3" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbCompanyPatientSource" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+                                            <TextBlock Grid.Row="1" Grid.Column="4" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Pharmacy Patient Category"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="5" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbPharmacyPatientCategory" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Identity Document For International Patient"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="2"  Grid.Column="1" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbIdentity" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="2" Margin="4,8,4,4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Default Patient Category"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="2" Grid.Column="3" Margin="4,8,4,4" VerticalAlignment="Center" x:Name="cmbCategoryL" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="4" Margin="4,8,4,4" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Patient Daily Cash Limit"></TextBlock>
+                                            <TextBox Grid.Row="2"  Grid.Column="5" Margin="4,8,4,4" TextAlignment="Right" VerticalAlignment="Center"  x:Name="txtPatientDailyCashLimit" Text="{Binding PatientDailyCashLimit,Mode=TwoWay}" TextChanged="txtPatientDailyCashLimit_TextChanged" KeyDown="txtPatientDailyCashLimit_KeyDown"></TextBox>
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                    <Grp:GroupBox Header="IVF Information" Margin ="4"  Grid.Row="1" HorizontalAlignment="Stretch">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Oocyte Donotion"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbOocyteDonotion" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="2" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Embryo Receipent"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbEmbryoReceipent" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="4" Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Oocyte Receipent"></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="cmbOocyteReceipent" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                        </Grid>
+                                    </Grp:GroupBox>
+                                </Grid>
+                            </Border>
+                        </ScrollViewer>
+                    </sdk:TabItem>
+
+                    <sdk:TabItem  Header="Auto Email / SMS " Style="{StaticResource TabItemStyle}">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,0"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <toolkit:DockPanel x:Name="docEmail" toolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                    <controlsToolkit:DockPanel x:Name="DocMain1" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                        <controlsToolkit:DockPanel x:Name="docContet2" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                            <controlsToolkit:DockPanel x:Name="docAddEmail" toolkit:DockPanel.Dock="Bottom">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+
+                                                    <TextBlock Text="Event" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                                    <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmdEvent" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="1"></CustomCombo:AutoCompleteComboBox>
+
+                                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Email ID" Grid.Row="0"  Grid.Column="2" Margin="4" />
+                                                    <TextBox x:Name="txtEmailId"  Grid.Column="3" Grid.Row="0" Text="{Binding SendEmailId, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="4" HorizontalAlignment="Stretch"  LostFocus="txtEmailId_LostFocus" MaxLength="50" TabIndex="2"  Height="25"/>
+
+                                                    <TextBlock Text="Email Template" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                                    <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmdEmailTemplate" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="3" ></CustomCombo:AutoCompleteComboBox>
+
+                                                    <TextBlock Text="SMS Template" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                                    <CustomCombo:AutoCompleteComboBox Grid.Row="1"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmdSMSTemplate" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="4" ></CustomCombo:AutoCompleteComboBox>
+
+
+                                                    <StackPanel x:Name="Footer1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent" Grid.Row="1" Grid.Column="4">
+                                                        <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right" >
+                                                            <ToggleButton Content="Add" x:Name="cmdAdd" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   TabIndex="5" Click="cmdAdd_Click"></ToggleButton>
+                                                            <ToggleButton Content="Modify" IsEnabled="False" x:Name="cmdEdit" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" TabIndex="5" Click="cmdEdit_Click"></ToggleButton>
+                                                        </StackPanel>
+                                                    </StackPanel>
+
+                                                </Grid>
+                                            </controlsToolkit:DockPanel>
+                                            <controlsToolkit:DockPanel x:Name="docEmailGrd" toolkit:DockPanel.Dock="Top" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <data:DataGrid x:Name="dgEmailSetting" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch" SelectionChanged="dgEmailSetting_SelectionChanged">
+                                                    <data:DataGrid.Columns>
+                                                        <data:DataGridTextColumn Binding="{Binding ID}"  Header="ID" Visibility="Collapsed" ></data:DataGridTextColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding EventType}"  Header="Event" ></data:DataGridTextColumn>
+                                                        <data:DataGridTextColumn Binding="{Binding SendEmailId}"  Header="Send From Email Id" ></data:DataGridTextColumn>
+                                                        <data:DataGridTemplateColumn Header="Email Template">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center" HorizontalAlignment="Center" Content="{Binding EmailTemplatName}" x:Name="ViewImageEmail" Click="ViewImageEmail_Click" Width="Auto"></HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Header="SMS Template">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center" HorizontalAlignment="Center" Content="{Binding SMSTemplatName}" x:Name="ViewImageSMS" Click="ViewImageSMS_Click" Width="Auto"></HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn Header="CC To">
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center" HorizontalAlignment="Center" Content="Email CC To" x:Name="EmailCCTO" Click="CCTO_Click" Width="Auto"></HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn>
+                                                            <!--<data:DataGridTemplateColumn Header ="Status">-->
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteEvent" ToolTipService.ToolTip="Delete" Click="hlbDeleteEvent_Click"></HyperlinkButton>
+                                                                    <!--<CheckBox  Grid.Row="2" Grid.Column="1"  Margin="4" IsChecked="{Binding IsStatus,Mode=TwoWay}" x:Name="chkIsStatus"></CheckBox>-->
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+                                                        </data:DataGridTemplateColumn>
+
+                                                        <data:DataGridTemplateColumn>
+                                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <HyperlinkButton Background="White" ToolTipService.ToolTip="View"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="cmdViewDetails_Click" x:Name="cmdViewDetails">
+                                                                        <Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/edit_new.png" />
+                                                                    </HyperlinkButton>
+                                                                </DataTemplate>
+                                                            </data:DataGridTemplateColumn.CellTemplate>
+
+                                                        </data:DataGridTemplateColumn>
+                                                    </data:DataGrid.Columns>
+                                                </data:DataGrid>
+                                            </controlsToolkit:DockPanel>
+
+                                        </controlsToolkit:DockPanel>
+                                    </controlsToolkit:DockPanel>
+
+                                </toolkit:DockPanel>
+
+
+                            </Border>
+                        </ScrollViewer>
+                    </sdk:TabItem>
+
+
+                    <sdk:TabItem  Header="Accounts" Style="{StaticResource TabItemStyle}" Visibility="Collapsed" >
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <controlsToolkit:DockPanel LastChildFill="True">
+                                <sdk:TabControl x:Name="tabAccountsConfig"  Margin="4" controlsToolkit:DockPanel.Dock="Top">
+                                    <sdk:TabItem  Header="Billing" Style="{StaticResource TabItemStyle}" >
+                                        <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,4"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Cheque / DD Bank Name"></TextBlock>
+                                                <!--<TextBox Grid.Row="0" Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtChequeDDBankName" Text="{Binding Accounts.ChequeDDBankName,Mode=TwoWay}" MaxLength="50"></TextBox>-->
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbChequeDDBank" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                                <TextBlock Grid.Row="0" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Debit / Credit Card Bank Name"></TextBlock>
+                                                <!--<TextBox Grid.Row="0" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtDebitCreditBankName" Text="{Binding Accounts.DebitCreditBankName,Mode=TwoWay}" MaxLength="50"></TextBox>-->
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="cmbDebitCreditBankName" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+
+                                                <TextBlock Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Cash Ledger"></TextBlock>
+                                                <TextBox Grid.Row="1" Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtCashLedgerName" Text="{Binding Accounts.CashLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+                                                <TextBlock Grid.Row="1" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Advance Ledger"></TextBlock>
+                                                <TextBox Grid.Row="1" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtAdvanceLedgerName" Text="{Binding Accounts.AdvanceLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+                                                <TextBlock Grid.Row="2" Grid.Column="0"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Consultation Ledger"></TextBlock>
+                                                <TextBox Grid.Row="2" Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtConsultationLedgerName" Text="{Binding Accounts.ConsultationLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+                                                <TextBlock Grid.Row="2" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Diagnostic Ledger"></TextBlock>
+                                                <TextBox Grid.Row="2" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtDiagnosticLedgerName" Text="{Binding Accounts.DiagnosticLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+                                                <TextBlock Grid.Row="2" Grid.Column="4"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Other Services Ledger"></TextBlock>
+                                                <TextBox Grid.Row="2" Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="txtOtherServicesLedgerName" Text="{Binding Accounts.OtherServicesLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+                                            </Grid>
+                                        </Border>
+                                    </sdk:TabItem>
+                                    <sdk:TabItem  Header="Inventory" Style="{StaticResource TabItemStyle}" >
+                                        <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}" Margin="4,4,4,0"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="127"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Row="0" Grid.Column="0"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Item Scrap Category"></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="0"  Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="cmbItemScrapCategory" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+                                                <TextBlock Grid.Row="1" Grid.Column="0"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Purchase Ledger "></TextBlock>
+                                                <TextBox Grid.Row="1" Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtPurchaseLedgerName" Text="{Binding Accounts.PurchaseLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+                                                <TextBlock Grid.Row="1" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="COGS Ledger"></TextBlock>
+                                                <TextBox Grid.Row="1" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtCOGSLedgerName" Text="{Binding Accounts.COGSLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+                                                <TextBlock Grid.Row="1" Grid.Column="4"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Profit Ledger"></TextBlock>
+                                                <TextBox Grid.Row="1" Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="txtProfitLedgerName" Text="{Binding Accounts.ProfitLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+                                                <TextBlock Grid.Row="2" Grid.Column="0"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Scrap Income Ledger"></TextBlock>
+                                                <TextBox Grid.Row="2" Grid.Column="1" Margin="4" VerticalAlignment="Center" x:Name="txtScrapIncomeLedger" Text="{Binding Accounts.ScrapIncomeLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+                                                <TextBlock Grid.Row="2" Grid.Column="2"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Cureent Asset Ledger"></TextBlock>
+                                                <TextBox Grid.Row="2" Grid.Column="3" Margin="4" VerticalAlignment="Center" x:Name="txtCureentAssetLedger" Text="{Binding Accounts.CurrentAssetLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+
+
+                                                <TextBlock Grid.Row="2" Grid.Column="4"  Margin="4" VerticalAlignment="Center"  HorizontalAlignment="Right" Text="Expense Ledger"></TextBlock>
+                                                <TextBox Grid.Row="2" Grid.Column="5" Margin="4" VerticalAlignment="Center" x:Name="txtExpenseLedger" Text="{Binding Accounts.ExpenseLedgerName,Mode=TwoWay}" MaxLength="50"></TextBox>
+                                            </Grid>
+                                        </Border>
+
+                                    </sdk:TabItem>
+                                </sdk:TabControl>
+                            </controlsToolkit:DockPanel>
+                        </ScrollViewer>
+                    </sdk:TabItem>
+                </sdk:TabControl>
+            </Border>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>

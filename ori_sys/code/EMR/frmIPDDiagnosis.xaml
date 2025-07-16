@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="EMR.frmIPDDiagnosis"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" toolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+            <!--<ScrollViewer Background="Transparent" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">-->
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition  ></RowDefinition>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" toolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                        <Grid Margin="4" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition ></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <StackPanel x:Name="DockPanelFooter" Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1"  Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent">
+                                <StackPanel Orientation="Horizontal"  Margin="4" HorizontalAlignment="Right"  >
+                                    <ToggleButton x:Name="lnkAddDiagnosis" Content="{Binding btnStandardDiagnosis,Source={StaticResource locResource}}" Grid.Row="1" Grid.Column="0" Click="cmdAddDiagnosis_Click"  Background="#000000" Margin="5,0,10,0" HorizontalAlignment="Left" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  Width="Auto"></ToggleButton>
+                                    <ToggleButton x:Name="lnkNewDiagnosis" Content="{Binding btnAddDiagnosis,Source={StaticResource locResource}}" Grid.Row="1" Grid.Column="0" Click="cmdNewDiagnosis_Click"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Left" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  Width="Auto" ></ToggleButton>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <ContentControl VerticalAlignment="Center" FontSize="12" Content="{Binding lblDiagnosis,Source={StaticResource locResource}}" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+
+                            <data:DataGrid Grid.Row="2" HorizontalAlignment="Stretch"  Grid.ColumnSpan="2" x:Name="dgDiagnosisList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0"  TabIndex="2"  CanUserSortColumns="True" >
+                                <data:DataGrid.Columns >
+                                    <data:DataGridTemplateColumn  IsReadOnly="True">
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <Image  Source="{Binding Path=Image}" Height="20" ></Image>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Code}"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblCode, Mode=TwoWay,Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Diagnosis}" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiagnosis, Mode=TwoWay,Source={StaticResource locResource}}"></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Visibility="Collapsed"  Binding="{Binding ICDId}"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblICDId , Mode=TwoWay,Source={StaticResource locResource}}"></data:DataGridTextColumn>
+                                    <!--<data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblMoreDetails, Mode=TwoWay,Source={StaticResource locResource}}">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton Margin="4" x:Name="cmdView" Content="{Binding TemplateName}" Click="cmdView_Click" Cursor="Hand"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>-->
+                                    <data:DataGridTemplateColumn  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiagnosisType , Mode=TwoWay,Source={StaticResource locResource}}" >
+                                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <inputcombo:AutoCompleteComboBox x:Name="cmbDiagnosis"   SelectedValue="{Binding SelectedDiagnosisType.ID}" SelectedItem="{Binding SelectedDiagnosisType,Mode=TwoWay}" ItemsSource="{Binding DiagnosisTypeList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="cmbDiagnosis_SelectionChanged">
+                                                </inputcombo:AutoCompleteComboBox>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                                    </data:DataGridTemplateColumn>
+
+
+                                    <data:DataGridTemplateColumn>
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" x:Name="cmdDeleteDiagnosis" ToolTipService.ToolTip="Delete" Click="cmdDeleteDiagnosis_Click" IsEnabled="{Binding IsEnabled,Converter={StaticResource NegateValueConverter}}" ></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                            <StackPanel x:Name="Footer1" Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="0"  Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent" Grid.Row="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0"  HorizontalAlignment="Left" Margin="5"  Stretch="Fill" VerticalAlignment="Center" Source="/EMR;component/Icons/green.png" />
+                                    <sdk:Label Grid.Column="1"  HorizontalAlignment="Left" Margin="5"  VerticalAlignment="Top" Content="Final" />
+
+                                    <Image Grid.Column="2"  HorizontalAlignment="Left" Margin="5"  Stretch="Fill" VerticalAlignment="Center" Source="/EMR;component/Icons/yellow.png" />
+                                    <sdk:Label Grid.Column="3"  HorizontalAlignment="Left" Margin="5"  VerticalAlignment="Top" Content="Differential" />
+
+                                    <Image Grid.Column="4"  HorizontalAlignment="Left" Margin="5"  Stretch="Fill" VerticalAlignment="Center" Source="/EMR;component/Icons/orange.png" Visibility="Collapsed" />
+                                    <sdk:Label Grid.Column="5"  HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Content="{Binding lblProvisional,Source={StaticResource locResource}}" Visibility="Collapsed" />
+                                </Grid>
+
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="1"  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                        <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+
+                            <StackPanel Orientation="Horizontal" x:Name="spSpecDoctor" Visibility="Collapsed">
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4,0,4,0" Text="{Binding lblSpecialization, Source={StaticResource locResource}}"  Grid.Row="0" Grid.Column="4"/>
+                                <inputcombo:AutoCompleteComboBox  x:Name="cmbSpecialization" Margin="4,0,4,0" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedValuePath="Code" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  MinWidth="70" ></inputcombo:AutoCompleteComboBox>
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4,0,4,0" Text="{Binding lblDoctor, Source={StaticResource locResource}}"  Grid.Row="0" Grid.Column="4"/>
+                                <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctor" Margin="4,0,4,0" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" SelectedValuePath="Code" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" TabIndex="2" MinWidth="70" ></inputcombo:AutoCompleteComboBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+
+                                <ToggleButton   Margin="5,0,10,0" Content="{Binding btnSave,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" Width="auto"></ToggleButton>
+
+                                <ToggleButton  Margin="5,0,0,0" Width="auto" Content="{Binding btnCancel,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click"></ToggleButton>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Grid Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,5,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"  ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Row="0" Grid.Column="0"  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                            <ContentControl VerticalAlignment="Center" FontSize="12" Content="{Binding lblPreviousDiagnosis,Source={StaticResource locResource}}" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                        </Border>
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch" toolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+                            <data:DataGrid HorizontalAlignment="Stretch" Grid.Column="0" x:Name="dgPreviousDiagnosisList" toolkit:DockPanel.Dock="Top" Grid.Row="1" VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding}" IsReadOnly="True" Margin="0"  TabIndex="2"  CanUserSortColumns="True" >
+                                <data:DataGrid.Columns >
+                                    <data:DataGridTemplateColumn  IsReadOnly="True">
+                                        <data:DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <Image  Source="{Binding Path=Image}" Height="20" ></Image>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Code}" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblCode, Mode=TwoWay,Source={StaticResource locResource}}" ></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Diagnosis}"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiagnosis, Mode=TwoWay,Source={StaticResource locResource}}"></data:DataGridTextColumn>
+
+                                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDiagnosisType , Mode=TwoWay,Source={StaticResource locResource}}" Visibility="Collapsed" >
+                                        <data:DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <inputcombo:AutoCompleteComboBox x:Name="cmbDiagnosis" IsEnabled="False" SelectedValue="{Binding SelectedDiagnosisType.ID}" SelectedItem="{Binding SelectedDiagnosisType,Mode=TwoWay}" ItemsSource="{Binding DiagnosisTypeList}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="cmbDiagnosis_SelectionChanged">
+                                                </inputcombo:AutoCompleteComboBox>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellEditingTemplate>
+                                    </data:DataGridTemplateColumn>
+
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </ScrollViewer>
+                        
+                        <Border Grid.Row="3"  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                            <data:DataPager x:Name="pgrPatientDiagnosis"  toolkit:DockPanel.Dock="Bottom" NumericButtonCount="10" AutoEllipsis="False" PageSize="{Binding PageSize}" DisplayMode="FirstLastPreviousNext"
+                              IsEnabled="True" IsTotalItemCountFixed="True"  />
+                        </Border>
+                    </Grid>
+
+                </Grid>
+            <!--</ScrollViewer>-->
+        </Border>
+    </Grid>
+</UserControl>

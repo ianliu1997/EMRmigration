@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="PalashDynamics.MIS.PathologyReport.PathologyReport"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+             mc:Ignorable="d"  d:DesignHeight="300" >
+    <Border HorizontalAlignment="Stretch" BorderThickness="2" Margin="8,8,8,8" CornerRadius="0,0,3,3" Background="Transparent">
+        <toolkit:DockPanel LastChildFill="True" >
+            <toolkit:DockPanel  x:Name="Links">
+                <Grid toolkit:DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <HyperlinkButton Grid.Row="0" Grid.Column="0" Content="Lab Report" Margin="2"  x:Name="hlLabReport" Click="hlLabReport_Click" />
+                    <HyperlinkButton Grid.Row="1" Grid.Column="0" Content="OutSource Report" Margin="2"  x:Name="hlOutSourceReport" Click="hlOutSourceReport_Click" />
+                    
+                </Grid >
+            </toolkit:DockPanel>
+            <toolkit:DockPanel Visibility="Collapsed" x:Name="content_control">
+                <ContentControl x:Name="content"  ></ContentControl>
+            </toolkit:DockPanel>
+        </toolkit:DockPanel>
+    </Border>
+</UserControl>

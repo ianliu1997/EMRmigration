@@ -1,0 +1,849 @@
+﻿<UserControl xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  x:Class="PalashDynamics.Pharmacy.ItemMaster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:my="clr-namespace:PalashDynamics;assembly=PalashDynamics.WaterMarkTextBox"  
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+    Loaded="UserControl_Loaded" 
+    mc:Ignorable="d"
+   Height="Auto" Width="Auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Height="Auto" Width="Auto">
+        <toolkit:DockPanel  LastChildFill="True" >
+            <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton x:Name="CmdLocation" Click="CmdLocation_Click"  Content="Location" Width="90"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdConversions" Click="CmdConversions_Click"  Content="Conversions" Width="90"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdOtherDetail" Click="CmdOtherDetail_Click"  Content="Other Details" Width="90"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdApplyTax" Click="CmdApplyTax_Click"  Content="Apply Tax"  Visibility="Collapsed" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  />
+                        <ToggleButton x:Name="CmdApplySupplier" Click="CmdApplySupplier_Click"  Content="Apply Supplier" Width="100"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdSetLocation" Click="CmdSetLocation_Click" Content="Apply Location" Width="100"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed"  />
+                        <ToggleButton x:Name="CmdApplyItemTax" Click="CmdApplyItemTax_Click"  Content="Apply Tax" Width="100"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdApplyStore" Click="CmdApplyStore_Click"  Content="Apply Store And Tax" Width="135"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdNew"  Content="New" TabIndex="4"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdNew_Click"  />
+                        <ToggleButton x:Name="CmdSave1" Click="CmdSave1_Click"  Content="Save" TabIndex="29"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdClose" Content="Cancel" Click="CmdClose_Click"   TabIndex="30"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                    </StackPanel>
+                </StackPanel>
+            </toolkit:DockPanel>
+            <Grid x:Name="PageContainer" >
+                <Grid Visibility="Visible" x:Name="FrontPanel">
+                    <toolkit:DockPanel x:Name="MainDockPanel" Margin="4" LastChildFill="True">
+                        <toolkit:DockPanel x:Name="DockMiddle"  Margin="4" toolkit:DockPanel.Dock="Top">
+                            <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition ></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <ContentControl VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="12" Content="List of Items"  Style="{StaticResource Header}"  Margin="-1"    HorizontalAlignment="Stretch" />
+                                    <toolkit:DockPanel LastChildFill="True" Grid.Row="1">
+                                        <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom">
+                                            <!--<sdk:DataPager x:Name="dgDataPager" toolkit:DockPanel.Dock="Bottom" 
+                                                    DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />-->
+
+                                            <sdk:DataPager x:Name="dgDataPager" toolkit:DockPanel.Dock="Bottom"
+                                                DisplayMode="FirstLastPreviousNext" IsEnabled="True" 
+                                                Source="{Binding}" 
+                                                AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+
+
+                                        </toolkit:DockPanel>
+                                        <toolkit:DockPanel  toolkit:DockPanel.Dock="Top" >
+                                            <Grid toolkit:DockPanel.Dock="Top">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock x:Name="ItemName" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Item Name" Margin="4"></TextBlock>
+                                                <TextBox Grid.Row="0" Grid.Column="1" Margin="4" ToolTipService.ToolTip="Enter Item Name" x:Name="txtSearchItemName"   TabIndex="1"  MaxLength="120" KeyUp="txtBox_KeyUp" ></TextBox>
+                                                <TextBlock x:Name="ItemCode" VerticalAlignment="Center" HorizontalAlignment="Right"  Text="Item Code" Grid.Column="2" Margin="4"></TextBlock>
+                                                <TextBox x:Name="txtSearchItemCode" Grid.Column="3" ToolTipService.ToolTip="Enter Item Code" TabIndex="2" Margin="4" MaxLength="50" KeyUp="txtSearchItemCode_KeyUp"></TextBox>
+                                                <Button x:Name="cmdSearch" Margin="4,0,4,4" Height="25" TabIndex="3"  Grid.Column="4"  ToolTipService.ToolTip="Search Item" Click="CmdSearch_Click" >
+                                                    <Image  Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="20" ></Image>
+                                                </Button>
+                                            </Grid>
+                                        </toolkit:DockPanel>
+                                        <toolkit:DockPanel toolkit:DockPanel.Dock="top">
+                                            <sdk:DataGrid x:Name="dgItemList"  SelectionChanged="dgItemList_SelectionChanged"   ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"   VerticalAlignment="Stretch" Margin="4"  HorizontalAlignment="Stretch" AutoGenerateColumns="False" >
+                                                <sdk:DataGrid.Columns>
+                                                    <sdk:DataGridTemplateColumn Header="View">
+                                                        <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                            <DataTemplate>
+                                                                <HyperlinkButton x:Name="Update" TabIndex="0" Padding="5,0,5,0"  Content="View" VerticalAlignment="Center"  Click="Update_Click"  ></HyperlinkButton>
+                                                            </DataTemplate>
+                                                        </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                    </sdk:DataGridTemplateColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Code" IsReadOnly="True"  Binding="{Binding ItemCode}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Name" IsReadOnly="True" Binding="{Binding ItemName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Molecule Name" IsReadOnly="True" Binding="{Binding MoleculeNameString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Group" IsReadOnly="True" Binding="{Binding ItemGroupString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Category" IsReadOnly="True" Binding="{Binding ItemCategoryString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Manufactured By" IsReadOnly="True" Binding="{Binding MfgByString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Marketed By" IsReadOnly="True" Binding="{Binding MrkByString}" Visibility="Collapsed"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Purchase UOM" IsReadOnly="True" Binding="{Binding PUMString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Discount On Sale" IsReadOnly="True" Binding="{Binding DiscountOnSale,StringFormat=0.00}">
+                                                        <sdk:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </sdk:DataGridTextColumn.ElementStyle>
+                                                    </sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTemplateColumn Header="Status"  Visibility="Collapsed"  >
+                                                        <sdk:DataGridTemplateColumn.CellEditingTemplate >
+                                                            <DataTemplate>
+                                                                <CheckBox x:Name="chkStatus"  HorizontalAlignment="Center" Tag="{Binding ID}"  Click="chkStatus_Click"  IsChecked="{Binding Status,Mode=TwoWay}"></CheckBox>
+                                                            </DataTemplate>
+                                                        </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                    </sdk:DataGridTemplateColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ID}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding UnitID}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemCode}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding BrandName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding Strength}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MoleculeName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemGroup}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemCategory}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding DispencingType}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding StoreageType}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PregClass}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding TherClass}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MfgBy}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MrkBy}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PUM}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding SUM}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ConversionFactor}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding Route}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PurchaseRate}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MRP}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding VatPer}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ReorderQnt}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding BatchesRequired}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding InclusiveOfTax}"></sdk:DataGridTextColumn>
+                                                </sdk:DataGrid.Columns>
+                                            </sdk:DataGrid>
+                                        </toolkit:DockPanel>
+                                    </toolkit:DockPanel>
+                                </Grid>
+                            </Border>
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+                </Grid >
+                <Grid Grid.Row="1" Visibility="Collapsed" x:Name="BackPanel">
+                    <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                        <ScrollViewer VerticalScrollBarVisibility="Visible">
+
+                            <toolkit:DockPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Item Code" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBox x:Name="txtItemCode" IsEnabled="False" MaxLength="50"    Margin="4" Grid.Column="1" Grid.Row="0"  HorizontalAlignment="Stretch" Text="{Binding ItemCode, Mode=TwoWay}" ></TextBox>
+                                    <TextBlock Text="Brand Name" Margin="4" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtItemBrandName" LostFocus="txtItemBrandName_LostFocus" TabIndex="1"   Margin="4" MaxLength="120"  Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" Text="{Binding BrandName, Mode=TwoWay}" ></TextBox>
+                                    <TextBlock Text="Strength" Margin="4" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                    <Grid Grid.Row="1" Grid.Column="3">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBox x:Name="txtStrength" Margin="4" MaxLength="50" TabIndex="2"   Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch" Text="{Binding Strength, Mode=TwoWay}"></TextBox>
+                                        <TextBlock Text="Strength Unit" Margin="4" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbStrengthUnit" TabIndex="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="0" Grid.Column="2"  Margin="4" HorizontalAlignment="Stretch" SelectionChanged="cmbStrengthUnit_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+                                    </Grid>
+                                    <TextBlock Text="Item Name" Margin="4" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtItemName" Margin="4" Grid.Column="1" MaxLength="120" TabIndex="4" Grid.Row="2"  HorizontalAlignment="Stretch" Text="{Binding ItemName, Mode=TwoWay}" GotFocus="txtItemName_GotFocus" ></TextBox>
+                                    <TextBlock Text="Molecule Name" Margin="4" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboMoleculeName" TabIndex="5" Grid.Row="2" Grid.Column="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" HorizontalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Item Group" Margin="4" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboItemGroup" TabIndex="6" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cboItemGroup_SelectionChanged"     Grid.Row="4" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Item Category" Margin="4" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboItemCategory" TabIndex="7" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID" Grid.Row="4" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Dispensing Type" Margin="4" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboDispensingType" TabIndex="8" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"    Grid.Row="5" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Storage Type" Margin="4" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="2"></TextBlock>
+                                    <Grid  Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="4" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cboStoreageType" TabIndex="9"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"   SelectedValuePath="ID"  Grid.Row="0" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                        <TextBlock Text="Storage Degree"  Margin="4" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2"></TextBlock>
+                                        <TextBox x:Name="txtStorageDegree" TextAlignment="Right" MaxLength="18" Text="{Binding StorageDegree, Mode=TwoWay,StringFormat='N'}" TabIndex="10" Margin="4" Grid.Column="3" Grid.Row="0"  HorizontalAlignment="Stretch" VerticalAlignment="Center" ></TextBox>
+                                    </Grid>
+                                    <TextBlock Text="Pregnancy Class" Margin="4" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cbopregClass" TabIndex="11" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="6" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Therapeutic Class" Margin="4" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboTheraClass" TabIndex="12"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Grid.Row="6" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Manufactured By" Margin="4" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboMfg" TabIndex="13" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Marketed By" Margin="4" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="2" Visibility="Collapsed"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboMrk" TabIndex="12" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  Visibility="Collapsed" SelectedValuePath="ID"  Grid.Row="7" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Purchase UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboPUM" TabIndex="14" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="9" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch" SelectionChanged="cboPUM_SelectionChanged" ></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Stocking UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboSUM" TabIndex="15"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   Grid.Row="9" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Conversion Factor" Margin="4" Visibility="Collapsed" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtConFact" Margin="4" Grid.Column="1" Visibility="Collapsed" TextAlignment="Right" TabIndex="16" Grid.Row="10"  MaxLength="5"  HorizontalAlignment="Stretch" Text="{Binding ConversionFactor, Mode=TwoWay}" TextChanged="txtConversionFactor_TextChanged" KeyDown="txtNumber_KeyDown" ></TextBox>
+                                    <TextBlock Text="Route" Margin="4" HorizontalAlignment="Right" Grid.Row="12" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboRoute" TabIndex="21" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="12" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Highest Retail Price"  Margin="4" Visibility="Collapsed" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtHRP" TextAlignment="Right" MaxLength="18" Visibility="Collapsed" Text="{Binding HighestRetailPrice, Mode=TwoWay,StringFormat='N'}" TabIndex="21" Margin="4" Grid.Column="1" Grid.Row="11"  HorizontalAlignment="Stretch" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" ></TextBox>
+                                    <TextBlock Text="Base Unit Cost Price"  Margin="4" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="2"></TextBlock>
+                                    <TextBox x:Name="txtPurRate" TextAlignment="Right" MaxLength="18" Text="{Binding PurchaseRate, Mode=TwoWay,StringFormat=0.00}" TabIndex="19" Margin="4" Grid.Column="4" Grid.Row="11"  HorizontalAlignment="Stretch" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" GotFocus="txtCostPrice_GotFocus" ></TextBox>
+                                    <TextBlock Text="Base Unit MRP" Margin="4" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtMRP" TextAlignment="Right" Margin="4" MaxLength="18" TabIndex="18" Text="{Binding MRP, Mode=TwoWay,StringFormat=0.00}" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" Grid.Column="1" Grid.Row="11"  HorizontalAlignment="Stretch"></TextBox>
+                                    <TextBlock Text="Vat %" Margin="4" HorizontalAlignment="Right" Grid.Row="12" Grid.Column="2" Visibility="Collapsed"></TextBlock>
+                                    <TextBox x:Name="txtVatper" TextAlignment="Right" MaxLength="18" Margin="4" Grid.Column="3" Visibility="Collapsed" TabIndex="21" Text="{Binding VatPer, Mode=TwoWay,StringFormat=0.00}" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" Grid.Row="12"  HorizontalAlignment="Stretch"></TextBox>
+                                    <TextBlock Text="Reorder Quantity" Margin="4" Visibility="Collapsed" HorizontalAlignment="Right" Grid.Row="13" Grid.Column="2" ></TextBlock>
+                                    <TextBox x:Name="txtReorderQuanty" Visibility="Collapsed" TextAlignment="Right" MaxLength="5" Text="{Binding ReorderQnt, Mode=TwoWay}" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" TabIndex="25"  Margin="4"  Grid.Column="3" Grid.Row="13"  HorizontalAlignment="Stretch" ></TextBox>
+                                    <TextBlock Text="Discount On Sale (%)" Margin="4" HorizontalAlignment="Right" Grid.Row="12" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtDiscountOnSale" TextAlignment="Right" MaxLength="18" Text="{Binding DiscountOnSale, Mode=TwoWay,StringFormat=0.00}" TabIndex="20"  Margin="4"  Grid.Column="1" Grid.Row="12" TextChanged="txtNumber_TextChanged"  KeyDown="txtNumber_KeyDown" HorizontalAlignment="Stretch"></TextBox>
+                                    <TextBlock Text="Analysis Required" Margin="4" HorizontalAlignment="Right" Grid.Row="13" Grid.Column="0"></TextBlock>
+                                    <Grid x:Name="AnalysisGrid" Grid.Row="13" Grid.Column="1">
+                                        <Grid.RowDefinitions></Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="ChkABC"  Margin="4" HorizontalAlignment="left" TabIndex="22" IsChecked="{Binding IsABC, Mode=TwoWay}" Content="ABC"  Grid.Column="0" Grid.Row="0" FlowDirection="RightToLeft"></CheckBox>
+                                        <CheckBox x:Name="ChkFNS"  Margin="4" HorizontalAlignment="left" TabIndex="23" IsChecked="{Binding IsFNS, Mode=TwoWay}" Content="FNS"  Grid.Column="1" Grid.Row="0" FlowDirection="RightToLeft"></CheckBox>
+                                        <CheckBox x:Name="ChkVED"  Margin="4" HorizontalAlignment="left" TabIndex="24" IsChecked="{Binding IsVED, Mode=TwoWay}" Content="VED"  Grid.Column="2" Grid.Row="0" FlowDirection="RightToLeft"></CheckBox>
+                                    </Grid>
+
+                                    <TextBlock Text="Base UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboBaseUM" TabIndex="16" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="10" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch" SelectionChanged="cboBaseUM_SelectionChanged" ></inputcombo:AutoCompleteComboBox>
+                                    <TextBlock Text="Selling UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboSellingUM" TabIndex="17"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   Grid.Row="10" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Conv Factor Stock-Base" Margin="4" Visibility="Collapsed" HorizontalAlignment="Right" Grid.Row="15" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtConFactStockBase" Margin="4" Visibility="Collapsed" Grid.Column="1" TextAlignment="Right" TabIndex="28" Grid.Row="15"  MaxLength="5"  HorizontalAlignment="Stretch" Text="{Binding ConvFactStockBase, Mode=TwoWay}" TextChanged="txtConversionFactor_TextChanged" KeyDown="txtNumber_KeyDown"></TextBox>
+
+                                    <TextBlock Text="Expiry Alert Before(In Days)" Margin="4" HorizontalAlignment="Right" Grid.Row="16" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtExpiryAlert" Margin="4" Grid.Column="1" TextAlignment="Right" TabIndex="25" Grid.Row="16"  MaxLength="3"  HorizontalAlignment="Stretch" Text="{Binding ItemExpiredInDays, Mode=TwoWay}" TextChanged="txtExpirationdays_TextChanged" KeyDown="txtNumber_KeyDown"></TextBox>
+
+                                    <TextBlock Text="HSN Codes" Margin="4" HorizontalAlignment="Right" Grid.Row="17" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cmbHSNCodes" TabIndex="18" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="17" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+
+                                    <TextBlock Text="Staff– Discount on sale % " Margin="4" HorizontalAlignment="Right" Grid.Row="18" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtStaff" Margin="4" Visibility="Visible" Grid.Column="1" TextAlignment="Right" TabIndex="28" Grid.Row="18"  MaxLength="5"  HorizontalAlignment="Stretch" Text="{Binding StaffDiscount, Mode=TwoWay}" ></TextBox>
+
+                                    <TextBlock Text="Registered Patients – Discount on sale % " Margin="4" HorizontalAlignment="Right" Grid.Row="19" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtRegisteredPatients" Margin="4" Visibility="Visible" Grid.Column="1" TextAlignment="Right" TabIndex="28" Grid.Row="19"  MaxLength="5"  HorizontalAlignment="Stretch" Text="{Binding RegisteredPatientsDiscount, Mode=TwoWay}" ></TextBox> 
+
+                                    <TextBlock Text="Walk-in Patients – Discount on sale % " Margin="4" HorizontalAlignment="Right" Grid.Row="20" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtWalkinPatients" Margin="4" Visibility="Visible" Grid.Column="1" TextAlignment="Right" TabIndex="28" Grid.Row="20"  MaxLength="5"  HorizontalAlignment="Stretch" Text="{Binding WalkinDiscount, Mode=TwoWay}" ></TextBox>
+
+
+
+                                    <TextBlock Text="Conv Factor Base-Sale" Margin="4" Visibility="Collapsed" HorizontalAlignment="Right" Grid.Row="15" Grid.Column="2"></TextBlock>
+                                    <TextBox x:Name="txtConFactBaseSale" Margin="4" Grid.Column="3" Visibility="Collapsed" TextAlignment="Right" TabIndex="29" Grid.Row="15"  MaxLength="5"  HorizontalAlignment="Stretch" Text="{Binding ConvFactBaseSale, Mode=TwoWay}" TextChanged="txtConversionFactor_TextChanged" KeyDown="txtNumber_KeyDown"></TextBox>
+                                    <Grid x:Name="ListGrid" Grid.Row="16" Grid.Column="3">
+                                        <Grid.RowDefinitions></Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox x:Name="chkBatches" Margin="4" HorizontalAlignment="left" TabIndex="26" IsChecked="{Binding BatchesRequired, Mode=TwoWay}" Content="Batches Required"  Grid.Column="0" Grid.Row="0"  FlowDirection="RightToLeft"></CheckBox>
+                                        <CheckBox x:Name="chkInclusive" Visibility="Collapsed" IsChecked="{Binding InclusiveOfTax, Mode=TwoWay}" TabIndex="32"  Margin="4" HorizontalAlignment="left" Content="Exclusive of VAT"  Grid.Column="1" Grid.Row="0" FlowDirection="RightToLeft"></CheckBox>
+                                    </Grid>
+                                </Grid>
+                            </toolkit:DockPanel>
+                        </ScrollViewer>
+                    </toolkit:DockPanel>
+                </Grid>
+            </Grid>
+        </toolkit:DockPanel>
+    </Grid>
+</UserControl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <Grid  x:Name="LayoutRoot" Background="White" Margin="4">
+        <toolkit:DockPanel LastChildFill="True">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+
+                        <ToggleButton x:Name="CmdApplyTax" Click="CmdApplyTax_Click"  Content="Apply Tax"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdApplySupplier" Click="CmdApplySupplier_Click"  Content="Apply Supplier" Width="100"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdApplyStore" Click="CmdApplyStore_Click"  Content="Apply Store" Width="100"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdNew"  Content="New"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdNew_Click"  />
+                        <ToggleButton x:Name="CmdSave1" Click="CmdSave1_Click"  Content="Save"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                        <ToggleButton x:Name="CmdClose" Content="Cancel" Click="CmdClose_Click"     Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Visibility="Visible" x:Name="FrontPanel">
+                    <toolkit:DockPanel x:Name="MainDockPanel" Margin="4" LastChildFill="True">
+
+                        <toolkit:DockPanel x:Name="DockMiddle"  Margin="4" toolkit:DockPanel.Dock="Top">
+                            <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition ></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <ContentControl VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="12" Content="List of Items"  Style="{StaticResource Header}"  Margin="-1"    HorizontalAlignment="Stretch" />
+                                    <toolkit:DockPanel LastChildFill="True" Grid.Row="1">
+                                        <toolkit:DockPanel  toolkit:DockPanel.Dock="Top" >
+                                            <Grid toolkit:DockPanel.Dock="Top">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock x:Name="ItemName" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Item Name" Margin="4"></TextBlock>
+                                                <TextBox Grid.Row="0" Grid.Column="1" Margin="4"  x:Name="txtSearchItemName"   MaxLength="50" ></TextBox>
+                                               <TextBox x:Name="txtSearchItemName" Margin="4" Grid.Column="1"></TextBox>
+
+
+                                                <TextBlock x:Name="ItemCode" VerticalAlignment="Center" HorizontalAlignment="Right"  Text="Item Code" Grid.Column="2" Margin="4"></TextBlock>
+                                                <TextBox x:Name="txtSearchItemCode" Grid.Column="3" Margin="4"></TextBox>
+                                                <Button x:Name="cmdSearch"  Margin="4"  Grid.Column="4"  ToolTipService.ToolTip="Search Item" >
+                                                    <Image  Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="20" ></Image>
+                                                </Button>
+
+
+                                            </Grid>
+
+                                        </toolkit:DockPanel>
+                                        <toolkit:DockPanel toolkit:DockPanel.Dock="top">
+                                            <sdk:DataGrid x:Name="dgItemList"  SelectionChanged="dgItemList_SelectionChanged"   ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"   VerticalAlignment="Stretch" Margin="4"  HorizontalAlignment="Stretch" AutoGenerateColumns="False" >
+                                                <sdk:DataGrid.Columns>
+
+
+                                                    <sdk:DataGridTemplateColumn>
+                                                        <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                            <DataTemplate>
+                                                                <HyperlinkButton x:Name="Update" TabIndex="0" Padding="5,0,5,0"  Content="View" VerticalAlignment="Center"  Click="Update_Click"  ></HyperlinkButton>
+                                                            </DataTemplate>
+                                                        </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                    </sdk:DataGridTemplateColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Code" IsReadOnly="True"  Binding="{Binding ItemCode}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Name" IsReadOnly="True" Binding="{Binding ItemName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Group" IsReadOnly="True" Binding="{Binding ItemGroupString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Item Category" IsReadOnly="True" Binding="{Binding ItemCategoryString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Manufactured By" IsReadOnly="True" Binding="{Binding MfgByString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Marketed By" IsReadOnly="True" Binding="{Binding MrkByString}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Header="Purchase UOM" IsReadOnly="True" Binding="{Binding PUMString}"></sdk:DataGridTextColumn>
+
+                                                    <sdk:DataGridTemplateColumn Header="Status"   >
+                                                        <sdk:DataGridTemplateColumn.CellEditingTemplate >
+                                                            <DataTemplate>
+                                                                <CheckBox x:Name="chkStatus"  HorizontalAlignment="Center" Tag="{Binding ID}"  Click="chkStatus_Click"  IsChecked="{Binding Status,Mode=TwoWay}"></CheckBox>
+                                                            </DataTemplate>
+                                                        </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                    </sdk:DataGridTemplateColumn>
+
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ID}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding UnitID}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemCode}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding BrandName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding Strength}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MoleculeName}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemGroup}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemCategory}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding DispencingType}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding StoreageType}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PregClass}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding TherClass}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MfgBy}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MrkBy}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PUM}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding SUM}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ConversionFactor}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding Route}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PurchaseRate}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MRP}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding VatPer}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ReorderQnt}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding BatchesRequired}"></sdk:DataGridTextColumn>
+                                                    <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding InclusiveOfTax}"></sdk:DataGridTextColumn>
+
+
+                                                </sdk:DataGrid.Columns>
+                                            </sdk:DataGrid>
+                                        </toolkit:DockPanel>
+                                    </toolkit:DockPanel>
+
+                                </Grid>
+
+                            </Border>
+
+                        </toolkit:DockPanel>
+
+
+
+                    </toolkit:DockPanel>
+                </Grid >
+                <Grid Grid.Row="1" Visibility="Collapsed" x:Name="BackPanel">
+
+
+                    <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                        <Grp:GroupBox Header="Add New Item" Margin="4">
+                            <toolkit:DockPanel>
+                                <Grid Margin="4,4,200,4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Item Code" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBox x:Name="txtItemCode" IsEnabled="False" MaxLength="50"    Margin="4" Grid.Column="1" Grid.Row="0"  HorizontalAlignment="Stretch" Text="{Binding ItemCode, Mode=TwoWay}" ></TextBox>
+
+
+                                    <TextBlock Text="Brand Name" Margin="4" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtItemBrandName" LostFocus="txtItemBrandName_LostFocus" TabIndex="0"   Margin="4" MaxLength="50"  Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" Text="{Binding BrandName, Mode=TwoWay}" ></TextBox>
+
+                                    <TextBlock Text="Strength" Margin="4" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                    <TextBox x:Name="txtStrength" Margin="4" MaxLength="50" TabIndex="1"   Grid.Column="3" Grid.Row="1"  HorizontalAlignment="Stretch" Text="{Binding Strength, Mode=TwoWay}"></TextBox>
+
+                                    <TextBlock Text="Item Name" Margin="4" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtItemName" Margin="4" Grid.Column="1" MaxLength="50" TabIndex="2" GotFocus="txtItemName_GotFocus" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Text="{Binding ItemName, Mode=TwoWay}" ></TextBox>
+
+                                    <TextBlock Text="Molecule Name" Margin="4" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboMoleculeName" TabIndex="3"  Grid.ColumnSpan="3"  Grid.Row="3" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" HorizontalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Item Group" Margin="4" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboItemGroup" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"     Grid.Row="4" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Item Category" Margin="4" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboItemCategory" TabIndex="5" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"    Grid.Row="4" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+
+                                    <TextBlock Text="Dispencing Type" Margin="4" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboDispensingType" TabIndex="6" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"    Grid.Row="5" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Storage Type" Margin="4" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboStoreageType" TabIndex="7"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"   SelectedValuePath="ID"  Grid.Row="5" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+
+                                    <TextBlock Text="Pregnency Class" Margin="4" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cbopregClass" TabIndex="8" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"   SelectedValuePath="ID"   Grid.Row="6" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Therapeutic Class" Margin="4" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboTheraClass" TabIndex="9"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="6" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Manufactured By" Margin="4" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboMfg" TabIndex="10" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="7" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Marketed By" Margin="4" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboMrk" TabIndex="11" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"  Grid.Row="7" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+
+                                    <TextBlock Text="Purchase UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="0"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboPUM" TabIndex="12" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="8" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Stocking UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboSUM" TabIndex="13"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="8" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Conversion Factor" Margin="4" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtConFact" Margin="4" Grid.Column="1" TabIndex="14" Grid.Row="9" MaxLength="50"  HorizontalAlignment="Stretch" Text="{Binding ConversionFactor, Mode=TwoWay}"></TextBox>
+
+                                    <TextBlock Text="Route" Margin="4" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="2"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox x:Name="cboRoute" TabIndex="15" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="9" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                    <TextBlock Text="Purchase Rate"  Margin="4" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtPurRate" TextAlignment="Right" Text="{Binding PurchaseRate, Mode=TwoWay}" TabIndex="16" Margin="4" Grid.Column="1" Grid.Row="10"  HorizontalAlignment="Stretch"></TextBox>
+
+                                    <TextBlock Text="MRP" Margin="4" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="2"></TextBlock>
+                                    <TextBox x:Name="txtMRP" TextAlignment="Right" Margin="4" Text="{Binding MRP, Mode=TwoWay}" TabIndex="17" Grid.Column="3" Grid.Row="10"  HorizontalAlignment="Stretch"></TextBox>
+
+                                    <TextBlock Text="Vat %" Margin="4" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0"></TextBlock>
+                                    <TextBox x:Name="txtVatper" TextAlignment="Right" Margin="4" Grid.Column="1" TabIndex="18" Text="{Binding VatPer, Mode=TwoWay}" Grid.Row="11"  HorizontalAlignment="Stretch"></TextBox>
+
+                                    <TextBlock Text="Reorder Quantity" Margin="4" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="2"></TextBlock>
+                                    <TextBox x:Name="txtReorderQuanty" TextAlignment="Right" Text="{Binding ReorderQnt, Mode=TwoWay}" TabIndex="19"  Margin="4"  Grid.Column="3" Grid.Row="11"  HorizontalAlignment="Stretch"></TextBox>
+
+
+                                    <CheckBox x:Name="chkBatches"  Margin="4" HorizontalAlignment="Right" TabIndex="20" IsChecked="{Binding BatchesRequired, Mode=TwoWay}" Content="Batches Required" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="12" FlowDirection="RightToLeft"></CheckBox>
+                                    <CheckBox x:Name="chkInclusive" IsChecked="{Binding InclusiveOfTax, Mode=TwoWay}" TabIndex="21"  Margin="4" HorizontalAlignment="Right" Content="Inclusive of Taxes" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="12" FlowDirection="RightToLeft"></CheckBox>
+
+                                </Grid>
+                            </toolkit:DockPanel>
+                        </Grp:GroupBox>
+                    </toolkit:DockPanel>
+
+
+                </Grid>
+            </Grid>
+
+        </toolkit:DockPanel>
+    </Grid>-->
+
+
+<!--<Grid x:Name="LayoutRoot" Background="White" >
+        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Visibility="Visible" x:Name="FrontPanel">
+            <toolkit:DockPanel x:Name="MainDockPanel" LastChildFill="True">
+                
+                <toolkit:DockPanel x:Name="DockMiddle"  Margin="4" toolkit:DockPanel.Dock="Top">
+                    <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <ContentControl VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="12" Content="List of Items"  Style="{StaticResource Header}"  Margin="-1"    HorizontalAlignment="Stretch" />
+                            <toolkit:DockPanel LastChildFill="True" Grid.Row="1">
+                                <toolkit:DockPanel  toolkit:DockPanel.Dock="Top" >
+                                    <Grid toolkit:DockPanel.Dock="Top">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto"/>
+
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition  />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock x:Name="ItemName" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Item Name" Margin="4"></TextBlock>
+                                        <TextBox x:Name="txtSearchItemName" Margin="4" Grid.Column="1"></TextBox>
+                                    
+
+                                        <TextBlock x:Name="ItemCode" VerticalAlignment="Center" HorizontalAlignment="Right"  Text="Item Code" Grid.Column="2" Margin="4"></TextBlock>
+                                        <TextBox x:Name="txtSearchItemCode" Grid.Column="3" Margin="4"></TextBox>
+                                        <Button x:Name="cmdSearch"  Margin="4"  Grid.Column="4"  ToolTipService.ToolTip="Search Item" >
+                                            <Image  Source="Icons/Search_b.JPG" Margin="4,0,4,4" Width="20" ></Image>
+                                        </Button>
+
+
+                                    </Grid>
+
+                                </toolkit:DockPanel>
+                                <toolkit:DockPanel toolkit:DockPanel.Dock="top">
+                                    <sdk:DataGrid x:Name="dgItemList"  SelectionChanged="dgItemList_SelectionChanged"   ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"   VerticalAlignment="Stretch" Margin="4"  HorizontalAlignment="Stretch" AutoGenerateColumns="False" >
+                                        <sdk:DataGrid.Columns>
+
+
+                                            <sdk:DataGridTemplateColumn>
+                                                <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton x:Name="Update" Content="View" Click="Update_Click"  ></HyperlinkButton>
+                                                    </DataTemplate>
+                                                </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                            </sdk:DataGridTemplateColumn>
+                                            <sdk:DataGridTextColumn  Header="Item Code" IsReadOnly="True"  Binding="{Binding ItemCode}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Header="Item Name" IsReadOnly="True" Binding="{Binding ItemName}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTemplateColumn Header="Status"   >
+                                                <sdk:DataGridTemplateColumn.CellEditingTemplate >
+                                                    <DataTemplate>
+                                                        <CheckBox x:Name="chkStatus"  HorizontalAlignment="Center" Tag="{Binding ID}"  Click="chkStatus_Click"  IsChecked="{Binding Status,Mode=TwoWay}"></CheckBox>
+                                                    </DataTemplate>
+                                                </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                            </sdk:DataGridTemplateColumn>
+                                           
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ID}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding UnitID}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemCode}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding BrandName}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding Strength}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemName}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MoleculeName}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemGroup}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ItemCategory}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding DispencingType}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding StoreageType}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PregClass}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding TherClass}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MfgBy}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MrkBy}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PUM}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding SUM}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ConversionFactor}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding Route}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding PurchaseRate}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding MRP}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding VatPer}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding ReorderQnt}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding BatchesRequired}"></sdk:DataGridTextColumn>
+                                            <sdk:DataGridTextColumn  Visibility="Collapsed"  IsReadOnly="True" Binding="{Binding InclusiveOfTax}"></sdk:DataGridTextColumn>
+
+
+                                        </sdk:DataGrid.Columns>
+                                    </sdk:DataGrid>
+                                </toolkit:DockPanel>
+                            </toolkit:DockPanel>
+                            
+                        </Grid>
+                       
+                    </Border>
+                    
+                </toolkit:DockPanel>
+               
+                
+
+            </toolkit:DockPanel>
+        </Grid >
+        <Grid Grid.Row="1" Visibility="Collapsed" x:Name="BackPanel">
+            <toolkit:DockPanel x:Name="DockMain" LastChildFill="True">
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom">
+                    <StackPanel x:Name="Footer1" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanel1" Orientation="Horizontal"  Margin="0,0,0,0">
+                            
+                            <ToggleButton x:Name="CmdSave1" Click="CmdSave1_Click"  Content="Save"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+                            
+                            <ToggleButton x:Name="CmdClose1"  Content="Close"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  Click="CmdClose1_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                </toolkit:DockPanel>
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                    <Grp:GroupBox Header="Add New Item" Margin="4">
+                        <toolkit:DockPanel>
+                            <Grid Margin="4,4,200,4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Item Code" Margin="4" HorizontalAlignment="Right"></TextBlock>
+                                <TextBox x:Name="txtItemCode" IsEnabled="False" MaxLength="50"    Margin="4" Grid.Column="1" Grid.Row="0"  HorizontalAlignment="Stretch" Text="{Binding ItemCode, Mode=TwoWay}" ></TextBox>
+                                
+
+                                <TextBlock Text="Brand Name" Margin="4" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0"></TextBlock>
+                                <TextBox x:Name="txtItemBrandName" LostFocus="txtItemBrandName_LostFocus" TabIndex="0"   Margin="4" MaxLength="50"  Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Stretch" Text="{Binding BrandName, Mode=TwoWay}" ></TextBox>
+
+                                <TextBlock Text="Strength" Margin="4" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2"></TextBlock>
+                                <TextBox x:Name="txtStrength" Margin="4" MaxLength="50" TabIndex="1"   Grid.Column="3" Grid.Row="1"  HorizontalAlignment="Stretch" Text="{Binding Strength, Mode=TwoWay}"></TextBox>
+
+                                <TextBlock Text="Item Name" Margin="4" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0"></TextBlock>
+                                <TextBox x:Name="txtItemName" Margin="4" Grid.Column="1" MaxLength="50" TabIndex="2" GotFocus="txtItemName_GotFocus" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Text="{Binding ItemName, Mode=TwoWay}" ></TextBox>
+
+                                <TextBlock Text="Molecule Name" Margin="4" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboMoleculeName" TabIndex="3"  Grid.ColumnSpan="3"  Grid.Row="3" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4" HorizontalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Item Group" Margin="4" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboItemGroup" TabIndex="4" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"     Grid.Row="4" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Item Category" Margin="4" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="2"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboItemCategory" TabIndex="5" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"    Grid.Row="4" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+
+                                <TextBlock Text="Dispencing Type" Margin="4" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboDispensingType" TabIndex="6" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"    Grid.Row="5" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Storage Type" Margin="4" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="2"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboStoreageType" TabIndex="7"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"   SelectedValuePath="ID"  Grid.Row="5" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+
+                                <TextBlock Text="Pregnency Class" Margin="4" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cbopregClass" TabIndex="8" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"   SelectedValuePath="ID"   Grid.Row="6" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Therapeutic Class" Margin="4" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="2"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboTheraClass" TabIndex="9"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="6" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Manufactured By" Margin="4" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboMfg" TabIndex="10" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="7" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Marketed By" Margin="4" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="2"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboMrk" TabIndex="11" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"  Grid.Row="7" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+
+                                <TextBlock Text="Purchase UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="0"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboPUM" TabIndex="12" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="8" Grid.Column="1"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Stocking UOM" Margin="4" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="2"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboSUM" TabIndex="13"  SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="8" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Conversion Factor" Margin="4" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0"></TextBlock>
+                                <TextBox x:Name="txtConFact" Margin="4" Grid.Column="1" TabIndex="14" Grid.Row="9" MaxLength="50"  HorizontalAlignment="Stretch" Text="{Binding ConversionFactor, Mode=TwoWay}"></TextBox>
+
+                                <TextBlock Text="Route" Margin="4" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="2"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cboRoute" TabIndex="15" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  SelectedValuePath="ID"   Grid.Row="9" Grid.Column="3"  Margin="4" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+
+                                <TextBlock Text="Purchase Rate"  Margin="4" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0"></TextBlock>
+                                <TextBox x:Name="txtPurRate" TextAlignment="Right" Text="{Binding PurchaseRate, Mode=TwoWay}" TabIndex="16" Margin="4" Grid.Column="1" Grid.Row="10"  HorizontalAlignment="Stretch"></TextBox>
+
+                                <TextBlock Text="MRP" Margin="4" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="2"></TextBlock>
+                                <TextBox x:Name="txtMRP" TextAlignment="Right" Margin="4" Text="{Binding MRP, Mode=TwoWay}" TabIndex="17" Grid.Column="3" Grid.Row="10"  HorizontalAlignment="Stretch"></TextBox>
+
+                                <TextBlock Text="Vat %" Margin="4" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0"></TextBlock>
+                                <TextBox x:Name="txtVatper" TextAlignment="Right" Margin="4" Grid.Column="1" TabIndex="18" Text="{Binding VatPer, Mode=TwoWay}" Grid.Row="11"  HorizontalAlignment="Stretch"></TextBox>
+
+                                <TextBlock Text="Reorder Quantity" Margin="4" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="2"></TextBlock>
+                                <TextBox x:Name="txtReorderQuanty" TextAlignment="Right" Text="{Binding ReorderQnt, Mode=TwoWay}" TabIndex="19"  Margin="4"  Grid.Column="3" Grid.Row="11"  HorizontalAlignment="Stretch"></TextBox>
+
+
+                                <CheckBox x:Name="chkBatches"  Margin="4" HorizontalAlignment="Right" TabIndex="20" IsChecked="{Binding BatchesRequired, Mode=TwoWay}" Content="Batches Required" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="12" FlowDirection="RightToLeft"></CheckBox>
+                                <CheckBox x:Name="chkInclusive" IsChecked="{Binding InclusiveOfTax, Mode=TwoWay}" TabIndex="21"  Margin="4" HorizontalAlignment="Right" Content="Inclusive of Taxes" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="12" FlowDirection="RightToLeft"></CheckBox>
+                                
+                            </Grid>
+                        </toolkit:DockPanel>
+                    </Grp:GroupBox>
+                </toolkit:DockPanel>
+            </toolkit:DockPanel>
+
+        </Grid>
+    </Grid>-->
+<!--</UserControl>-->

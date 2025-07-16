@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.MaterialConsumption" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory.MaterialConsumption" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:complexType name="clsAddMaterialConsumptionBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumptionDetails" nillable="true" type="tns:clsMaterialConsumptionVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddMaterialConsumptionBizActionVO" nillable="true" type="tns:clsAddMaterialConsumptionBizActionVO" />
+  <xs:complexType name="clsMaterialConsumptionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumptionItemDetailsList" nillable="true" type="tns:ArrayOfclsMaterialConsumptionItemDetailsVO" />
+      <xs:element minOccurs="0" name="ConsumptionNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="IssueItemDetailsList" nillable="true" type="q1:ArrayOfclsIssueItemDetailsVO" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StoreID" type="xs:long" />
+      <xs:element minOccurs="0" name="StoreName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalItems" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsMaterialConsumptionVO" nillable="true" type="tns:clsMaterialConsumptionVO" />
+  <xs:complexType name="ArrayOfclsMaterialConsumptionItemDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsMaterialConsumptionItemDetailsVO" nillable="true" type="tns:clsMaterialConsumptionItemDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsMaterialConsumptionItemDetailsVO" nillable="true" type="tns:ArrayOfclsMaterialConsumptionItemDetailsVO" />
+  <xs:complexType name="clsMaterialConsumptionItemDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AvailableStock" type="xs:double" />
+      <xs:element minOccurs="0" name="BatchCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchId" type="xs:long" />
+      <xs:element minOccurs="0" name="ConsumptionID" type="xs:long" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="StockDetails" nillable="true" type="q2:clsItemStockVO" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UsedQty" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsMaterialConsumptionItemDetailsVO" nillable="true" type="tns:clsMaterialConsumptionItemDetailsVO" />
+  <xs:complexType name="clsGetMatarialConsumptionListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumptionList" nillable="true" type="tns:ArrayOfclsMaterialConsumptionVO" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="StoreId" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMatarialConsumptionListBizActionVO" nillable="true" type="tns:clsGetMatarialConsumptionListBizActionVO" />
+  <xs:complexType name="ArrayOfclsMaterialConsumptionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsMaterialConsumptionVO" nillable="true" type="tns:clsMaterialConsumptionVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsMaterialConsumptionVO" nillable="true" type="tns:ArrayOfclsMaterialConsumptionVO" />
+  <xs:complexType name="clsGetMatarialConsumptionItemListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumptionID" type="xs:long" />
+      <xs:element minOccurs="0" name="ItemList" nillable="true" type="tns:ArrayOfclsMaterialConsumptionItemDetailsVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetMatarialConsumptionItemListBizActionVO" nillable="true" type="tns:clsGetMatarialConsumptionItemListBizActionVO" />
+</xs:schema>

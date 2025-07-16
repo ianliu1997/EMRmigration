@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd26" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" />
+  <xs:complexType name="clsGetCampDetailsListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Camp" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="CampDetailsList" nillable="true" type="tns:ArrayOfclsCampMasterVO" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCampDetailsListBizActionVO" nillable="true" type="tns:clsGetCampDetailsListBizActionVO" />
+  <xs:complexType name="ArrayOfclsCampMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsCampMasterVO" nillable="true" type="tns:clsCampMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsCampMasterVO" nillable="true" type="tns:ArrayOfclsCampMasterVO" />
+  <xs:complexType name="clsCampMasterVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CampDetailID" type="xs:long" />
+      <xs:element minOccurs="0" name="CampID" type="xs:long" />
+      <xs:element minOccurs="0" name="CampServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Concession" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionServiceList" nillable="true" type="tns:ArrayOfCampserviceDetailsVO" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="EmailTemplateDetails" nillable="true" type="q1:clsEmailTemplateVO" />
+      <xs:element minOccurs="0" name="EmailTemplateID" type="xs:long" />
+      <xs:element minOccurs="0" name="FreeCampServiceList" nillable="true" type="tns:ArrayOfCampserviceDetailsVO" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientRegistrationValidTillDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="SMSTemplateDetails" nillable="true" type="q2:clsSMSTemplateVO" />
+      <xs:element minOccurs="0" name="SmsTemplateID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubGroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="Tariff" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValidDays" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCampMasterVO" nillable="true" type="tns:clsCampMasterVO" />
+  <xs:complexType name="ArrayOfCampserviceDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CampserviceDetailsVO" nillable="true" type="tns:CampserviceDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCampserviceDetailsVO" nillable="true" type="tns:ArrayOfCampserviceDetailsVO" />
+  <xs:complexType name="CampserviceDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CampDetailsID" type="xs:long" />
+      <xs:element minOccurs="0" name="CampServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ConcessionAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="ConcessionPercentage" type="xs:double" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsConcession" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFree" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NetAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CampserviceDetailsVO" nillable="true" type="tns:CampserviceDetailsVO" />
+  <xs:complexType name="clsUpdateCampMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterDetails" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateCampMasterBizActionVO" nillable="true" type="tns:clsUpdateCampMasterBizActionVO" />
+  <xs:complexType name="clsGetRelationMasterListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyList" nillable="true" type="tns:ArrayOfclsLoyaltyProgramFamilyDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetRelationMasterListBizActionVO" nillable="true" type="tns:clsGetRelationMasterListBizActionVO" />
+  <xs:complexType name="ArrayOfclsLoyaltyProgramFamilyDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsLoyaltyProgramFamilyDetails" nillable="true" type="tns:clsLoyaltyProgramFamilyDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsLoyaltyProgramFamilyDetails" nillable="true" type="tns:ArrayOfclsLoyaltyProgramFamilyDetails" />
+  <xs:complexType name="clsLoyaltyProgramFamilyDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="RelationStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tariff" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsLoyaltyProgramFamilyDetails" nillable="true" type="tns:clsLoyaltyProgramFamilyDetails" />
+  <xs:complexType name="clsGetLoyaltyProgramByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyProgramDetails" nillable="true" type="tns:clsLoyaltyProgramVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoyaltyProgramByIDBizActionVO" nillable="true" type="tns:clsGetLoyaltyProgramByIDBizActionVO" />
+  <xs:complexType name="clsLoyaltyProgramVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttachmentList" nillable="true" type="tns:ArrayOfclsLoyaltyAttachmentVO" />
+      <xs:element minOccurs="0" name="CategoryList" nillable="true" type="tns:ArrayOfclsLoyaltyProgramPatientCategoryVO" />
+      <xs:element minOccurs="0" name="ClinicList" nillable="true" type="tns:ArrayOfclsLoyaltyClinicVO" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="EffectiveDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FamilyList" nillable="true" type="tns:ArrayOfclsLoyaltyProgramFamilyDetails" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFamily" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LoyaltyProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MemberRelationID" type="xs:long" />
+      <xs:element minOccurs="0" name="MemberTariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tariff" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TariffID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsLoyaltyProgramVO" nillable="true" type="tns:clsLoyaltyProgramVO" />
+  <xs:complexType name="ArrayOfclsLoyaltyAttachmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsLoyaltyAttachmentVO" nillable="true" type="tns:clsLoyaltyAttachmentVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsLoyaltyAttachmentVO" nillable="true" type="tns:ArrayOfclsLoyaltyAttachmentVO" />
+  <xs:complexType name="clsLoyaltyAttachmentVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Attachment" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="AttachmentFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsLoyaltyAttachmentVO" nillable="true" type="tns:clsLoyaltyAttachmentVO" />
+  <xs:complexType name="ArrayOfclsLoyaltyProgramPatientCategoryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsLoyaltyProgramPatientCategoryVO" nillable="true" type="tns:clsLoyaltyProgramPatientCategoryVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsLoyaltyProgramPatientCategoryVO" nillable="true" type="tns:ArrayOfclsLoyaltyProgramPatientCategoryVO" />
+  <xs:complexType name="clsLoyaltyProgramPatientCategoryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientCategoryID" type="xs:long" />
+      <xs:element minOccurs="0" name="SelectPatientCategory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsLoyaltyProgramPatientCategoryVO" nillable="true" type="tns:clsLoyaltyProgramPatientCategoryVO" />
+  <xs:complexType name="ArrayOfclsLoyaltyClinicVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsLoyaltyClinicVO" nillable="true" type="tns:clsLoyaltyClinicVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsLoyaltyClinicVO" nillable="true" type="tns:ArrayOfclsLoyaltyClinicVO" />
+  <xs:complexType name="clsLoyaltyClinicVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoyaltyUnitDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoyaltyUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SelectClinic" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsLoyaltyClinicVO" nillable="true" type="tns:clsLoyaltyClinicVO" />
+  <xs:complexType name="clsAddCampDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterDetails" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddCampDetailsBizActionVO" nillable="true" type="tns:clsAddCampDetailsBizActionVO" />
+  <xs:complexType name="clsGetPROPatientListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InputMaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="InputPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InputStartRowIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="OutputTotalRows" type="xs:int" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="PatientList" nillable="true" type="q3:ArrayOfclsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="ReferredDoctorId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="SortExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VisitFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VisitToDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetPROPatientListBizActionVO" nillable="true" type="tns:clsGetPROPatientListBizActionVO" />
+  <xs:complexType name="clsDeleteCampServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterDetails" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDeleteCampServiceBizActionVO" nillable="true" type="tns:clsDeleteCampServiceBizActionVO" />
+  <xs:complexType name="clsAddPROPatientBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Patient" minOccurs="0" name="GeneralDetails" nillable="true" type="q4:clsPatientGeneralVO" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="ReferredDoctorId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="WindowsUserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddPROPatientBizActionVO" nillable="true" type="tns:clsAddPROPatientBizActionVO" />
+  <xs:complexType name="clsAddCampServiceBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampService" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddCampServiceBizActionVO" nillable="true" type="tns:clsAddCampServiceBizActionVO" />
+  <xs:complexType name="clsGetLoyaltyProgramListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LoyaltyProgramList" nillable="true" type="tns:ArrayOfclsLoyaltyProgramVO" />
+      <xs:element minOccurs="0" name="LoyaltyProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoyaltyProgramListBizActionVO" nillable="true" type="tns:clsGetLoyaltyProgramListBizActionVO" />
+  <xs:complexType name="ArrayOfclsLoyaltyProgramVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsLoyaltyProgramVO" nillable="true" type="tns:clsLoyaltyProgramVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsLoyaltyProgramVO" nillable="true" type="tns:ArrayOfclsLoyaltyProgramVO" />
+  <xs:complexType name="clsEmailSMSSentListVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="AttachmentDetails" nillable="true" type="q5:ArrayOfclsEmailAttachmentVO" />
+      <xs:element minOccurs="0" name="AttachmentNos" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="EmailAttachment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailSubject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email_SMS" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnglishText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FailureReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="LocalText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientEmailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientId" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientMobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsEmailSMSSentListVO" nillable="true" type="tns:clsEmailSMSSentListVO" />
+  <xs:complexType name="clsGetCampFreeAndConServiceListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampConServiceList" nillable="true" type="tns:ArrayOfCampserviceDetailsVO" />
+      <xs:element minOccurs="0" name="CampFreeServiceList" nillable="true" type="tns:ArrayOfCampserviceDetailsVO" />
+      <xs:element minOccurs="0" name="CampID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCampFreeAndConServiceListBizActionVO" nillable="true" type="tns:clsGetCampFreeAndConServiceListBizActionVO" />
+  <xs:complexType name="clsAddEmailSMSSentListVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailTemplate" nillable="true" type="tns:clsEmailSMSSentListVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddEmailSMSSentListVO" nillable="true" type="tns:clsAddEmailSMSSentListVO" />
+  <xs:complexType name="clsCampServiceVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CampDetailID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="GroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsConcession" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFree" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubGroupID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsCampServiceVO" nillable="true" type="tns:clsCampServiceVO" />
+  <xs:complexType name="clsGetLoyaltyProgramTariffByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsLoyaltyProgramVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoyaltyProgramTariffByIDBizActionVO" nillable="true" type="tns:clsGetLoyaltyProgramTariffByIDBizActionVO" />
+  <xs:complexType name="clsGetCampMasterByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterDetails" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCampMasterByIDBizActionVO" nillable="true" type="tns:clsGetCampMasterByIDBizActionVO" />
+  <xs:complexType name="clsAddLoyaltyProgramBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LoyaltyProgramDetails" nillable="true" type="tns:clsLoyaltyProgramVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddLoyaltyProgramBizActionVO" nillable="true" type="tns:clsAddLoyaltyProgramBizActionVO" />
+  <xs:complexType name="clsGetCampDetailsByIDBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterDetails" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCampDetailsByIDBizActionVO" nillable="true" type="tns:clsGetCampDetailsByIDBizActionVO" />
+  <xs:complexType name="clsGetCampMasterListBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterList" nillable="true" type="tns:ArrayOfclsCampMasterVO" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPagingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumRows" type="xs:int" />
+      <xs:element minOccurs="0" name="SearchExpression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+      <xs:element minOccurs="0" name="sortExpression" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetCampMasterListBizActionVO" nillable="true" type="tns:clsGetCampMasterListBizActionVO" />
+  <xs:complexType name="clsAddCampMasterBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterDetails" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddCampMasterBizActionVO" nillable="true" type="tns:clsAddCampMasterBizActionVO" />
+  <xs:complexType name="clsUpdateLoyaltyProgramBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LoyaltyProgram" nillable="true" type="tns:clsLoyaltyProgramVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateLoyaltyProgramBizActionVO" nillable="true" type="tns:clsUpdateLoyaltyProgramBizActionVO" />
+  <xs:complexType name="clsUpdateCampDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampMasterDetails" nillable="true" type="tns:clsCampMasterVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateCampDetailsBizActionVO" nillable="true" type="tns:clsUpdateCampDetailsBizActionVO" />
+</xs:schema>

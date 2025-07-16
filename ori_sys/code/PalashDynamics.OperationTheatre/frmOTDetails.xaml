@@ -1,0 +1,381 @@
+﻿<UserControl x:Class="PalashDynamics.OperationTheatre.frmOTDetails"
+   xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" 
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization" 
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"   
+    xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit" 
+    mc:Ignorable="d"
+    Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border x:Name="NewCancelBrd" BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton  Margin="4"  Content="{Binding btnNew,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdNew" ></ToggleButton>
+                        <ToggleButton   Margin="4" Content="{Binding btnSave,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" Visibility="Collapsed" ></ToggleButton>
+                        <ToggleButton   Margin="4"  Content="{Binding btnModify,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" Click="cmdModify_Click" Visibility="Collapsed" ></ToggleButton>
+                        <ToggleButton  Margin="4" Content="{Binding btnCancel,Source={StaticResource locResource}}"  Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" Visibility="Collapsed" ></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid x:Name="PageContainer" >
+
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <controlsToolkit:DockPanel x:Name="OTDetailList">
+                        <controlsToolkit:DockPanel x:Name="DockTop" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                            <controlsToolkit:DockPanel LastChildFill="True" controlsToolkit:DockPanel.Dock="Top">
+                                <Border controlsToolkit:DockPanel.Dock= "Top"  BorderBrush="#FF788678"   Width="auto" BorderThickness="1" CornerRadius="3,3,3,3" Grid.ColumnSpan="2"  Grid.Row="0" Grid.Column="0" Margin="4">
+                                    <Grid x:Name="LayoutRoot1" Background="White" Margin="4" HorizontalAlignment="Stretch"  >
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <!--<RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>-->
+                                        </Grid.RowDefinitions>
+                                        <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding lblFromDate, Source={StaticResource locResource}}" Grid.Row="0" Grid.Column="0" Margin="4" />
+                                        <controls:DatePicker   x:Name="dtpFromDate" Margin="4" Grid.Row="0" Grid.Column="1" KeyUp="txtFirstName_KeyUp" HorizontalAlignment="Stretch" TabIndex="0"/>
+
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding lblToDate, Source={StaticResource locResource}}" Grid.Row="0" Grid.Column="2"  Margin="4" />
+                                        <controls:DatePicker   x:Name="dtpToDate" Margin="4" Grid.Row="0" Grid.Column="3" KeyUp="txtFirstName_KeyUp" HorizontalAlignment="Stretch" TabIndex="1"/>
+
+                                        <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="{Binding lblClinic, Source={StaticResource locResource}}"  Grid.Row="1" Grid.Column="0"/>
+                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbClinic"  Grid.Row="1" Grid.Column="1" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch" KeyUp="txtFirstName_KeyUp" SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" TabIndex="4" IsEnabled="False"></inputcombo:AutoCompleteComboBox>
+
+
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="{Binding lblDepartment, Source={StaticResource locResource}}"  Grid.Row="1" Grid.Column="2"/>
+                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbDepartment"  Grid.Row="1" Grid.Column="3" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch"  SelectionChanged="cmbDepartment_SelectionChanged" KeyUp="txtFirstName_KeyUp" SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" TabIndex="3"></inputcombo:AutoCompleteComboBox>-->
+
+                                        <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="{Binding lblDoctor, Source={StaticResource locResource}}"  Grid.Row="1" Grid.Column="4"/>
+                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbDoctor"  Grid.Row="1" Grid.Column="5" Margin="4" VerticalAlignment="Center"  ItemsSource="{Binding}" HorizontalAlignment="Stretch" KeyUp="txtFirstName_KeyUp" SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" TabIndex="4" ></inputcombo:AutoCompleteComboBox>-->
+
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding lblFirstName, Source={StaticResource locResource}}" Grid.Row="1"  Grid.Column="2" Margin="4" />
+                                        <TextBox x:Name="txtSearchCriteria"  Grid.Column="3" Grid.Row="1" Text="{Binding FirstName, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="4" HorizontalAlignment="Stretch" KeyUp="txtFirstName_KeyUp"  KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged" LostFocus="txtSearchCriteria_LostFocus" MaxLength="30" TabIndex="6"  Height="25"/>
+
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding lblLastName, Source={StaticResource locResource}}" Grid.Row="1"  Grid.Column="4" Margin="4" />
+                                        <TextBox x:Name="txtLastName"  Grid.Column="5" Grid.Row="1" Text="{Binding LastName, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="4" HorizontalAlignment="Stretch" KeyUp="txtFirstName_KeyUp"  KeyDown="TextName_KeyDown" TextChanged="txtName_TextChanged" LostFocus="txtSearchCriteria_LostFocus" MaxLength="30" TabIndex="6"  Height="25"/>
+
+                                        <!--<StackPanel Orientation="Horizontal" Grid.Row="2"  Grid.Column="4" Grid.ColumnSpan="2">
+                                            <TextBlock HorizontalAlignment="Center" x:Name="lblPatientCountString" VerticalAlignment="Center" Text="{Binding lblTotalPatientCount,Mode=TwoWay, Source={StaticResource locResource}}" Margin="4" />
+                                            <TextBlock HorizontalAlignment="Center" x:Name="lblPatientCount" VerticalAlignment="Center"  Margin="4" />
+                                        </StackPanel>-->
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding lblMRNo, Source={StaticResource locResource}}" Grid.Row="1"  Grid.Column="0" Margin="4" />
+                                        <TextBox x:Name="txtMRNO"  Grid.Column="1" Grid.Row="1" Text="{Binding MrNo, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="4" HorizontalAlignment="Stretch" KeyUp="txtFirstName_KeyUp"  TabIndex="5" Height="25"/>
+
+                                        <Button x:Name="cmdSearch" Click="cmdSearch_Click" Margin="4" ToolTipService.ToolTip="{Binding ttpSearch, Source={StaticResource locResource}}"  Grid.Row="1" Grid.Column="7" TabIndex="10" MaxWidth="40"  HorizontalAlignment="Left" >
+                                            <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="20" ></Image>
+                                        </Button>
+
+                                        <!--<StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Right" Visibility="Collapsed">
+                                            <Button x:Name="cmdMoveUp" Grid.Column="3" Grid.Row="2" Margin="4" Click="cmdMoveUp_Click" TabIndex="11" HorizontalAlignment="Left" >
+                                                <Button.Content>
+                                                    <TextBlock Text="5" FontSize="18" FontFamily="Webdings" ToolTipService.ToolTip="{Binding ttpMoveUp, Source={StaticResource locResource}}"></TextBlock>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button Grid.Column="6" Margin="4" x:Name="cmdMoveDown" Grid.Row="2" Click="cmdMoveDown_Click" TabIndex="12" HorizontalAlignment="Left">
+                                                <Button.Content>
+                                                    <TextBlock Text="6" FontSize="18" FontFamily="Webdings" ToolTipService.ToolTip="{Binding ttpMoveDown, Source={StaticResource locResource}}"></TextBlock>
+                                                </Button.Content>
+                                            </Button>
+                                        </StackPanel>-->
+                                        <TextBlock  Text="Operation Theatre" Margin="4" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox  Grid.Row="0" Grid.Column="5" Margin="4" x:Name="CmbOtTheatre"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox >
+
+
+                                        <!--<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Text="{Binding lblVisitStatus, Source={StaticResource locResource}}"  Grid.Row="0" Grid.Column="4"/>
+                                        <inputcombo:AutoCompleteComboBox  x:Name="cmbCurrentVisit"  Grid.Row="0" Grid.Column="5" Margin="4" VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalAlignment="Stretch"  KeyUp="txtFirstName_KeyUp"  SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" TabIndex="2" ></inputcombo:AutoCompleteComboBox>-->
+                                    </Grid>
+                                </Border>
+                                <!--<Grid controlsToolkit:DockPanel.Dock="Top">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock  Text="{Binding lblOTTheatre,Source={StaticResource locResource}}" Margin="4" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                                    <inputcombo:AutoCompleteComboBox  Grid.Row="0" Grid.Column="1" Margin="4" x:Name="CmbOtTheatre"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch" ></inputcombo:AutoCompleteComboBox >
+
+                                    <Button Grid.Column="6" x:Name="cmdSearch" ToolTipService.ToolTip="{Binding ttpSearch,Source={StaticResource locResource}}" Click="cmdSearch_Click"  HorizontalAlignment="Left" >
+                                        <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4" Width="20"></Image>
+                                    </Button>
+                                </Grid>-->
+                                <StackPanel controlsToolkit:DockPanel.Dock="Top" Margin="0,4,0,0">
+                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="{Binding lblListofOTDetails,Source={StaticResource locResource}}" Margin="-1" Style="{StaticResource Header}" HorizontalAlignment="Stretch"/>
+                                    </Border>
+                                </StackPanel>
+                            </controlsToolkit:DockPanel>
+                        </controlsToolkit:DockPanel>
+
+                        <controlsToolkit:DockPanel LastChildFill="True">
+                            <data:DataPager x:Name="dataGrid2Pager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNext" PageSize="{Binding DataListPageSize}" IsEnabled="True" Source="{Binding DataList}" IsTotalItemCountFixed="True" />
+                            <data:DataGrid  x:Name="dgSchedule" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True">
+                                <data:DataGrid.Columns>
+                                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblView, Source={StaticResource locResource}}">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton Margin="4" x:Name="hlkView" Content="{Binding lblView,Source={StaticResource locResource}}" Click="hlkView_Click"  Cursor="Hand"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                    <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblMRNo,Source={StaticResource locResource}}"  Binding="{Binding MRNo}" Width="Auto"/>
+                                    <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblPatientName,Source={StaticResource locResource}}"  Binding="{Binding PatientName}" Width="Auto"/>
+                                    <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblDate,Source={StaticResource locResource}}"  Binding="{Binding Date,StringFormat='dd/MM/yyyy'}" Width="Auto"/>
+                                    <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblStartTime,Source={StaticResource locResource}}"  Binding="{Binding FromTime,Converter={StaticResource DateConverter},ConverterParameter='hh:mm tt'}" Width="Auto"/>
+                                    <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="{Binding lblEndTime,Source={StaticResource locResource}}"  Binding="{Binding ToTime,Converter={StaticResource DateConverter},ConverterParameter='hh:mm tt'}" Width="Auto"/>
+                                    <data:DataGridTextColumn IsReadOnly="True"  Localization:DataGridColumnHelper.HeaderBinding="Operation Theatre"  Binding="{Binding OTName}" Width="Auto"/>
+                                    <data:DataGridTemplateColumn Localization:DataGridColumnHelper.HeaderBinding="{Binding lblIsEmergency, Source={StaticResource locResource}}" IsReadOnly="True">
+                                        <data:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=IsEmergency}" IsEnabled="False"></CheckBox>
+                                            </DataTemplate>
+                                        </data:DataGridTemplateColumn.CellTemplate>
+                                    </data:DataGridTemplateColumn>
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </controlsToolkit:DockPanel>
+                    </controlsToolkit:DockPanel>
+
+                </Grid>
+
+                <Grid Height="Auto" x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1" Background="White">
+                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"    BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4" Background="Transparent">
+                        <controlsToolkit:DockPanel x:Name="Content" controlsToolkit:DockPanel.Dock="top" LastChildFill="true">
+                            <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch" LastChildFill="true">
+
+                                <layoutToolkit:Accordion x:Name="accPat" controlsToolkit:DockPanel.Dock="Top"  SelectionMode="ZeroOrOne" HorizontalAlignment="Stretch">
+                                    <layoutToolkit:AccordionItem Name="accItem" Header="{Binding lblPatientDetails, Source={StaticResource locResource}}" Foreground="Black" VerticalAlignment="Stretch" IsSelected="True">
+                                        <!--<toolkit:DockPanel LastChildFill="True">-->
+                                        <Grid x:Name="grdDemographicDetails">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <!--<toolkit:DockPanel LastChildFill="True" toolkit:DockPanel.Dock="Left" VerticalAlignment="Top" >-->
+                                            <StackPanel>
+                                                <Border x:Name="imgPhoto1" BorderBrush="{StaticResource TabControlDarkerBorder}"    BorderThickness="2" CornerRadius="3,3,0,0" Margin="4" Background="Transparent">
+                                                    <Image   Height="250" Width="250" MaxHeight="60" MaxWidth="100" Stretch="Fill" Margin="2" x:Name="imgPhoto"></Image>
+                                                </Border>
+                                                <!--<Border x:Name="imgPhoto1" BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="2" CornerRadius="3,3,0,0" Margin="4" Background="Transparent">
+                                                    <Image   Height="300" Width="300" MaxHeight="60" MaxWidth="100" Stretch="Fill" Margin="2" x:Name="imgPhoto" ></Image>
+                                                </Border>-->
+                                                <ToggleButton toolkit:DockPanel.Dock="Bottom" Content="Attach Photo" Style="{StaticResource ToggleButtonStyle}" Click="btnPhoto_Click"  Margin="4" IsEnabled="False" x:Name="btnAttachPhoto" Visibility="Collapsed"></ToggleButton>
+                                            </StackPanel>
+                                            <!--</toolkit:DockPanel>-->
+                                            <Grid x:Name="grdBackPanel" toolkit:DockPanel.Dock="Right" Grid.Column="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+
+                                                <!--<TextBlock VerticalAlignment="Center" TextAlignment="Right" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Text="{Binding lblMRNo,StringFormat='\{0\} : ',Source={StaticResource locResource}}" Margin="4"></TextBlock>
+                                                <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtMrNo" Text="{Binding GeneralDetails.MRNo,Mode=TwoWay}"  Margin="4" HorizontalAlignment="Stretch" KeyDown="txtMrNo_KeyDown" ></TextBox>-->
+
+                                                <!--<StackPanel Grid.Row="0" Grid.Column="2"  Orientation="Horizontal"  HorizontalAlignment="Left">-->
+                                                <!-- Grid.ColumnSpan="6" <Button  HorizontalAlignment="Right" x:Name="CmdPatientSearch" Margin="4" ToolTipService.ToolTip="{Binding ttpSearch,Source={StaticResource locResource}}" Click="CmdPatientSearch_Click" >
+                                                        <Button.Content>
+                                                            <Image Height="18" Source="/PalashDynamics;component/Icons/xmag.png" ></Image>
+                                                        </Button.Content>
+                                                    </Button>-->
+
+                                                <!--<Button VerticalAlignment="Center" x:Name="btnPatientSearch" Margin="4" ToolTipService.ToolTip="{Binding ttpSearchPatient,Source={StaticResource locResource}}" Click="btnPatientSearch_Click" >
+                                                        <Button.Content>
+                                                            <Image Height="18" Source="/PalashDynamics;component/Icons/previous_patient_search.jpg"></Image>
+                                                        </Button.Content>
+                                                    </Button>-->
+
+                                                <!--<Button HorizontalAlignment="Left" Grid.Row="0" Width="30" x:Name="cmdOTSchedule" Margin="4" ToolTipService.ToolTip="{Binding ttpSearchOTSchedule,Source={StaticResource locResource}}" Click="cmdOTSchedule_Click" >
+                                                        <Button.Content>
+                                                            <Image Height="18" Source="/PalashDynamics;component/Icons/Search_Appointment.jpg"></Image>
+                                                        </Button.Content>
+                                                    </Button>-->
+
+                                                <ToggleButton HorizontalAlignment="Left" Grid.Row="3" Margin="4" Width="100" Content="{Binding btnOTSchedule,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdOTSchedule" ToolTipService.ToolTip="{Binding ttpSearchOTSchedule,Source={StaticResource locResource}}" Click="cmdOTSchedule_Click"></ToggleButton>
+                                                <!--</StackPanel>-->
+
+
+                                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Right" Grid.Row="1" Grid.Column="0" Text="{Binding lblPatientName,StringFormat='\{0\} : ', Source={StaticResource locResource}}"  Margin="4"></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" x:Name="txtFirstName" Text="{Binding PatientName, Mode=TwoWay}" Margin="4"></TextBlock>
+
+                                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Right"   Grid.Row="1" Grid.Column="2" Text="{Binding lblDOB, Source={StaticResource locResource},StringFormat='\{0\} : '}"  Margin="4"></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" x:Name="txtDOB"  Text="{Binding BirthDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Margin="4"></TextBlock>
+
+                                                <!--<TextBlock VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Right"   Grid.Row="0" Grid.Column="6" Text="{Binding lblMRNo, StringFormat='\{0\} :', Source={StaticResource locResource}}"  Margin="4"></TextBlock>
+                                                        <TextBlock  VerticalAlignment="Center" Grid.Row="0" Grid.Column="7" x:Name="txtMRNo" Text="{Binding MRNo}" Margin="4"></TextBlock>-->
+
+                                                <TextBlock  VerticalAlignment="Center" TextAlignment="Right" Text="{Binding lblGender, StringFormat='\{0\} : ', Source={StaticResource locResource}}" Margin="4" Grid.Row="1" Grid.Column="6" FontWeight="Bold" ></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="7" x:Name="txtGender" Text="{Binding Gender}" Margin="4"></TextBlock>
+
+                                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Right" Grid.Row="2" Grid.Column="2" Text="{Binding lblEducation, StringFormat='\{0\} : ', Source={StaticResource locResource}}"  Margin="4" Visibility="Collapsed"></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" x:Name="txtEducation" Text="{Binding Education}" Margin="4" Visibility="Collapsed"></TextBlock>
+
+                                                <TextBlock VerticalAlignment="Center" Grid.Row="1" TextAlignment="Right" Text="{Binding lblAge, StringFormat='\{0\} : ', Source={StaticResource locResource}}" Grid.Column="4" FontWeight="Bold" Margin="4"></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="1" Grid.Column="5" x:Name="txtAge" Text="{Binding AgeInYearMonthDays}" Margin="4"></TextBlock>
+
+                                                <TextBlock  VerticalAlignment="Center" TextAlignment="Right" Text="{Binding lblMaritalStatus, StringFormat='\{0\} : ', Source={StaticResource locResource}}" Margin="4" Grid.Row="2" Grid.Column="0" FontWeight="Bold" ></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" x:Name="txtMaritalStatus" Text="{Binding MaritalStatus}" Margin="4"></TextBlock>
+
+                                                <TextBlock  VerticalAlignment="Center" TextAlignment="Right" Text="{Binding lblMobileColon, StringFormat='\{0\} : ', Source={StaticResource locResource}}" Margin="4" Grid.Row="2" Grid.Column="4" FontWeight="Bold" ></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="2" Grid.Column="5" x:Name="txtContactNO1" Text="{Binding MOB}" Margin="4"></TextBlock>
+
+
+                                                <TextBlock VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Right" Grid.Row="2" Grid.Column="2" Text="{Binding lblReligion, StringFormat='\{0\} : ', Source={StaticResource locResource}}"  Margin="4"></TextBlock>
+                                                <TextBlock  VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" x:Name="txtReligion" Text="{Binding Religion}" Margin="4"></TextBlock>
+                                                <!--<ToggleButton Grid.Row="2" Content="Attach Photo" Style="{StaticResource ToggleButtonStyle}" Click="btnPhoto_Click"  HorizontalAlignment="Center" Margin="4" ></ToggleButton>-->
+
+                                            </Grid>
+                                        </Grid>
+                                        <!--</toolkit:DockPanel>-->
+                                    </layoutToolkit:AccordionItem>
+                                </layoutToolkit:Accordion>
+                            </controlsToolkit:DockPanel>
+
+                            <!--<controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                                <ContentControl controlsToolkit:DockPanel.Dock="Top" Grid.Row="0" Template="{StaticResource FilledContentControlTemplate}"  Background="Aqua"  x:Name="ResultListContent" ScrollViewer.VerticalScrollBarVisibility="Visible"   ScrollViewer.HorizontalScrollBarVisibility="Auto"  />
+                            </controlsToolkit:DockPanel>-->
+
+
+                            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                                <!--<controlsToolkit:DockPanel>-->
+                                <!--<sdk:Label FontWeight="Bold" Foreground="Black">Drug Allergies :</sdk:Label>
+                                    <ContentControl HorizontalAlignment="Left" controlsToolkit:DockPanel.Dock="Left" Width="Auto" Content="" Foreground="Red" x:Name="allergies" FontWeight="Bold" VerticalAlignment="Center">
+                                    </ContentControl>-->
+
+                                <!--<Button Width="Auto" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding ttpListOfVisits, Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdVisitList"  >
+                                        <Image Source="/EMR;component/Icons/Listofvisits.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                    </Button>-->
+
+                                <Button Width="Auto" Visibility="Collapsed" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding ttpPrintReferralletter, Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdSummary"  >
+                                    <Image Source="/PalashDynamics;component/Icons/Listofvisits.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                </Button>
+
+                                <!--<Button Width="Auto" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding ttpDiagnosticReport,Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdDiagnostics"  >
+                                        <Image Source="/EMR;component/Icons/Diagnostik_report.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                    </Button>
+
+                                    <Button Width="Auto" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding ttpRadiologyReport,Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdRadiology"  >
+                                        <Image Source="/EMR;component/Icons/Radiology_report.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                    </Button>
+
+                                    <Button Width="Auto" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding ttpPathologyReport,Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdPathology"  >
+                                        <Image Source="/EMR;component/Icons/Pathology_report.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                    </Button>-->
+
+                                <Button Width="Auto" Visibility="Collapsed" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding btnPrintPrescription, Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdPrintPrescription" >
+                                    <Image Source="/PalashDynamics;component/Icons/Printprescription.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                </Button>
+
+                                <Button Width="Auto" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding btnPrintSummary, Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdPrintSummary" Click="cmdPrintSummary_Click" > <!--Click="cmdPrintSummary_Click"-->
+                                    <Image Source="/PalashDynamics;component/Icons/Printsummary.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                </Button>
+
+                                <!--<Button Width="Auto" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="{Binding ttpBackToEMR,Source={StaticResource locResource}}" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdPatientQueue" Click="cmdPatientList_Click" >-->
+                                <Button Width="Auto" controlsToolkit:DockPanel.Dock="Right" ToolTipService.ToolTip="Back To OT Details" Margin="5,0,5,0" HorizontalAlignment="Right" x:Name="cmdPatientQueue" Click="cmdPatientList_Click" >
+                                    <Image Source="/PalashDynamics;component/Icons/patient_List.png" Margin="5,0,5,0" Width="20" Height="20"></Image>
+                                </Button>
+
+
+
+                                <!--</controlsToolkit:DockPanel>-->
+
+                            </controlsToolkit:DockPanel>
+
+
+
+
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" Margin="4" HorizontalAlignment="Stretch">
+                                <controlsToolkit:DockPanel x:Name="OTfooter" controlsToolkit:DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" LastChildFill="True">
+
+                                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                        <layoutToolkit:Accordion x:Name="acc" SelectionMode="ZeroOrMore" IsEnabled="True" ExpandDirection="Left" VerticalAlignment="Stretch" BorderThickness="0">
+                                            <toolkit:AccordionItem x:Name="accOT" Header="{Binding lblOptions,Source={StaticResource locResource}}" Foreground="DarkBlue" BorderThickness="0" VerticalAlignment="Stretch">
+                                                <sdk:TreeView  x:Name="tvOTDetails" Tag="OT Details" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" Margin="-5,0,0,0" BorderThickness="0" >
+                                                    <!--<sdk:TreeViewItem Header="{Binding tbhOTSheetDetails,Source={StaticResource locResource}}" x:Name="frmOTSheetDetails" Selected="tvOTDetails_SelectedItemChanged" ></sdk:TreeViewItem>-->
+                                                    <sdk:TreeViewItem Header="OT Schedule Details" x:Name="frmOTSheetDetails" Selected="tvOTDetails_SelectedItemChanged" ></sdk:TreeViewItem>
+
+                                                    <sdk:TreeViewItem Header="{Binding tbhSurgeryDetails,Source={StaticResource locResource}}" x:Name="frmSurgeryDetails" Selected="tvOTDetails_SelectedItemChanged"></sdk:TreeViewItem>
+                                                    <sdk:TreeViewItem Header="{Binding tbhDocEmpDetails,Source={StaticResource locResource}}" x:Name="frmDocEmpDetails" Selected="tvOTDetails_SelectedItemChanged"></sdk:TreeViewItem>
+                                                    <sdk:TreeViewItem Header="{Binding tbhItemDetails,Source={StaticResource locResource}}" x:Name="frmItemDetails" Selected="tvOTDetails_SelectedItemChanged" ></sdk:TreeViewItem>
+                                                    <sdk:TreeViewItem Header="{Binding tbhService,Source={StaticResource locResource}}" x:Name="frmService" Selected="tvOTDetails_SelectedItemChanged" ></sdk:TreeViewItem>
+                                                    <sdk:TreeViewItem Header="Instructions" x:Name="frmOTNotes" Selected="tvOTDetails_SelectedItemChanged"></sdk:TreeViewItem> <!--{Binding tbhOTNotes,Source={StaticResource locResource}}-->
+                                                    <sdk:TreeViewItem Header="Anesthetic And Doctor Notes" x:Name="frmPostInstructionDetails" Selected="tvOTDetails_SelectedItemChanged"></sdk:TreeViewItem>
+                                                    <sdk:TreeViewItem Header="Other Details" x:Name="FrmOTOtherDetails" Selected="tvOTDetails_SelectedItemChanged"></sdk:TreeViewItem>
+                                                </sdk:TreeView>
+                                            </toolkit:AccordionItem>
+
+                                        </layoutToolkit:Accordion>
+                                    </controlsToolkit:DockPanel>
+
+                                    <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Right">
+                                        <ContentControl Template="{StaticResource FilledContentControlTemplate}"  Background="Aqua"  x:Name="dpnlFormDetails" ScrollViewer.VerticalScrollBarVisibility="Visible"   ScrollViewer.HorizontalScrollBarVisibility="Auto"  />
+                                    </controlsToolkit:DockPanel>
+                                </controlsToolkit:DockPanel>
+                            </Border>
+                        </controlsToolkit:DockPanel>
+                    </Border>
+                </Grid>
+
+            </Grid>
+
+        </controlsToolkit:DockPanel>
+    </Grid>
+
+</UserControl>

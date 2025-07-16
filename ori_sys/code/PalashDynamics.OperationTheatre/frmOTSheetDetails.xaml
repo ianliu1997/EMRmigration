@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="PalashDynamics.OperationTheatre.frmOTSheetDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Height="auto" Width="auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <controlsToolkit:DockPanel LastChildFill="True">
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton   Margin="4" Content="{Binding btnModify,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" IsEnabled="False" Click="cmdModify_Click" ></ToggleButton>
+                        <ToggleButton   Margin="4" Content="{Binding btnSave,Source={StaticResource locResource}}" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" ></ToggleButton>
+                        <!--<ToggleButton  Margin="4" Content="{Binding btnCancel,Source={StaticResource locResource}}"  Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" ></ToggleButton>-->
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+
+            <Grid x:Name="grdOTSheet" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock  Grid.Row="0" Grid.Column="0" Text="{Binding lblFromTime,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="0" Grid.Column="1" x:Name="tpFromtime" Margin="4" HorizontalAlignment="Stretch" Value="{Binding FromTime,Mode=TwoWay}" PopupMinutesInterval="15" />
+
+                <TextBlock  Grid.Row="0" Grid.Column="2" Text="{Binding lblToTime,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="0" Grid.Column="3" x:Name="tpToTime1" Margin="4" HorizontalAlignment="Stretch" Value="{Binding ToTime,Mode=TwoWay}" PopupMinutesInterval="15"/>
+
+                <TextBlock  Grid.Row="0" Grid.Column="4" Text="{Binding lblDate,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <controls:DatePicker x:Name="procDate1" Grid.Row="0" Grid.Column="5" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" SelectedDate="{Binding Date,Mode=TwoWay}" ></controls:DatePicker>
+
+                <TextBlock  Grid.Row="1" Grid.Column="0" Text="{Binding lblOperationTheatre,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <inputcombo:AutoCompleteComboBox  Grid.Row="1" Grid.Column="1" Margin="4" x:Name="CmbOT"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox >
+
+                <TextBlock  Grid.Row="1" Grid.Column="2" Text="{Binding lblTotalHours,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="3" x:Name="txttotalHours" Margin="4" Text="{Binding TotalHours,Mode=TwoWay}"  HorizontalAlignment="Stretch"  Grid.Row="1" IsReadOnly="True" ></TextBox>
+
+                <TextBlock  Grid.Row="1" Grid.Column="4" Text="{Binding lblAnesthesiaType,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <inputcombo:AutoCompleteComboBox  Grid.Row="1" Grid.Column="5" Margin="4" x:Name="CmbAnesthesia"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox >
+
+                <TextBlock  Grid.Row="2" Grid.Column="0" Text="{Binding lblProcedureType,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <inputcombo:AutoCompleteComboBox  Grid.Row="2" Grid.Column="1" Margin="4" x:Name="CmbProcedureType"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox >
+
+                <TextBlock  Grid.Row="2" Grid.Column="2" Text="{Binding lblOTResult,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <inputcombo:AutoCompleteComboBox  Grid.Row="2" Grid.Column="3" Margin="4" x:Name="CmbOTResult"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox >
+
+                <TextBlock  Grid.Row="2" Grid.Column="4" Text="{Binding lblOTStatus,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <inputcombo:AutoCompleteComboBox  Grid.Row="2" Grid.Column="5" Margin="4" x:Name="CmbOTStatus"  SelectedItemBinding="{Binding MasterListItem, Mode=TwoWay}" SelectedValuePath="ID"  HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox >
+
+                <TextBlock  Grid.Row="5" Grid.Column="0" Text="{Binding lblManPower,Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <TextBox Grid.Column="1" x:Name="txtManPower" Text="{Binding ManPower,Mode=TwoWay}" Margin="4" MaxLength="2" HorizontalAlignment="Stretch" Grid.Row="5" ></TextBox>
+
+                <TextBlock  Grid.Row="3" Grid.Column="2" Text="{Binding lblWheelInTime,Source={StaticResource locResource}}"  Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="3" Grid.Column="3" x:Name="tpWheelITime" Margin="4" HorizontalAlignment="Stretch" Value="{Binding WheelInTime,Mode=TwoWay}" PopupMinutesInterval="15" />
+
+                <TextBlock  Grid.Row="4" Grid.Column="2" Text="{Binding lblWheelOutTime,Source={StaticResource locResource}}"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="4" Grid.Column="3" x:Name="tpWheelOutTime" Margin="4" HorizontalAlignment="Stretch" Value="{Binding WheelOutTime,Mode=TwoWay}" PopupMinutesInterval="15" />
+
+                <TextBlock  Grid.Row="3" Grid.Column="0" Text="{Binding lblAnesthesiaStartTime, Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="3" Grid.Column="1" x:Name="tpAnesthesiaStartTime" Margin="4" HorizontalAlignment="Stretch" Value="{Binding AnesthesiaStartTime,Mode=TwoWay}" PopupMinutesInterval="15" />
+
+                <TextBlock  Grid.Row="4" Grid.Column="0" Text="{Binding lblAnesthesiaEndTime, Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="4" Grid.Column="1" x:Name="tpAnesthesiaEndTime" Margin="4" HorizontalAlignment="Stretch" Value="{Binding AnesthesiaEndTime,Mode=TwoWay}" PopupMinutesInterval="15" />
+
+                <TextBlock  Grid.Row="3" Grid.Column="4" Text="{Binding lblSurgeryStartTime, Source={StaticResource locResource}}" Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="3" Grid.Column="5" x:Name="tpSurgeryStartTime" Margin="4" HorizontalAlignment="Stretch" Value="{Binding SurgeryStartTime,Mode=TwoWay}" PopupMinutesInterval="15" />
+
+                <TextBlock  Grid.Row="4" Grid.Column="4" Text="{Binding lblSurgeryEndTime, Source={StaticResource locResource}}"  Margin="4" VerticalAlignment="Center"></TextBlock>
+                <toolkit:TimePicker  Grid.Row="4" Grid.Column="5" x:Name="tpSurgeryEndTime" Margin="4" HorizontalAlignment="Stretch" Value="{Binding SurgeryEndTime,Mode=TwoWay}" PopupMinutesInterval="15" />
+
+                <CheckBox  Visibility="Collapsed" Grid.Column="2" Grid.Row="5" Content="{Binding lblEmergency,Source={StaticResource locResource}}" x:Name="chkEmergency" Margin="4" />
+
+                <TextBlock  Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Text="{Binding lblRemarks,Source={StaticResource locResource}}" Margin="4"></TextBlock>
+                <TextBox  Grid.Row="6" Grid.Column="1" x:Name="txtRemark" Margin="4,4,6,4" Text="{Binding Remark,Mode=TwoWay}"  MaxLength="100"   HorizontalAlignment="Stretch" Grid.ColumnSpan="5" Height="50" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" TextWrapping="Wrap" ></TextBox>
+
+                <TextBlock  Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Text="{Binding lblSpecialRequirement,Source={StaticResource locResource}}" Margin="4"></TextBlock>
+                <TextBox  Grid.Row="7" Grid.Column="1" x:Name="txtSpecialRequirement" Margin="4,4,6,4" Text="{Binding SpecialRequirement,Mode=TwoWay}"  MaxLength="100"   HorizontalAlignment="Stretch" Grid.ColumnSpan="5" Height="50" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" TextWrapping="Wrap" ></TextBox>
+
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>

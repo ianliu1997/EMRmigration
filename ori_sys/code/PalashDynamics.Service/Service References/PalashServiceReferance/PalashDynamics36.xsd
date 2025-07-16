@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.ClientDetails" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.ClientDetails" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="clsGetClientBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsClientDetailsVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetClientBizActionVO" nillable="true" type="tns:clsGetClientBizActionVO" />
+  <xs:complexType name="clsClientDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivationDate" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientModuleList" nillable="true" type="tns:ArrayOfclsClientModuleDetailsVO" />
+      <xs:element minOccurs="0" name="ClientSubscription" nillable="true" type="tns:clsClientSubScriptionDetailsVO" />
+      <xs:element minOccurs="0" name="ClientType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ContactNo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPerson1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPerson1MobNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPerson2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPerson2MobNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmailID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FolderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsActivated" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMultilocation" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoOfLocations" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NoOfUsers" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsClientDetailsVO" nillable="true" type="tns:clsClientDetailsVO" />
+  <xs:complexType name="ArrayOfclsClientModuleDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsClientModuleDetailsVO" nillable="true" type="tns:clsClientModuleDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsClientModuleDetailsVO" nillable="true" type="tns:ArrayOfclsClientModuleDetailsVO" />
+  <xs:complexType name="clsClientModuleDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MenuID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="MenuName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsClientModuleDetailsVO" nillable="true" type="tns:clsClientModuleDetailsVO" />
+  <xs:complexType name="clsClientSubScriptionDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ClientID" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsRenewd" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RenewtAlertsDays" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubscriptionEndtDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SubscriptionRenewtDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SubscriptionStartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SubscriptionType" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsClientSubScriptionDetailsVO" nillable="true" type="tns:clsClientSubScriptionDetailsVO" />
+</xs:schema>

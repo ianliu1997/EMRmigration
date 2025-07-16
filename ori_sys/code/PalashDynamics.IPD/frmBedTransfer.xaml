@@ -1,0 +1,437 @@
+﻿<UserControl x:Class="PalashDynamics.IPD.frmBedTransfer"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+           xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+           xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+           xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+         
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"  
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+           Width="Auto" Height="Auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <Grid x:Name="BedTransferLayoutRoot" Background="White" Visibility="Collapsed">
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                <controlsToolkit:DockPanel LastChildFill="true" >
+                    <controlsToolkit:DockPanel LastChildFill="True" x:Name="docButtons" controlsToolkit:DockPanel.Dock="Bottom" >
+                        <Grid x:Name="grdButtons" Visibility="Visible" Background="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <ToggleButton x:Name="cmdPrintTransferPaper" Width="140" Content="Print Transfer Paper" Grid.Column="1" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Margin="4" Click="cmdPrintTransferPaper_Click"></ToggleButton>
+
+                            <ToggleButton x:Name="cmdNew" Content="New" Grid.Column="2" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Margin="4" Click="cmdNew_Click"></ToggleButton>
+
+                            <ToggleButton x:Name="cmdClose" Content="Close" Grid.Column="3" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Margin="4" Click="cmdClose_Click"></ToggleButton>
+                        </Grid>
+                    </controlsToolkit:DockPanel>
+
+                    <controlsToolkit:DockPanel LastChildFill="True" x:Name="docSearch" controlsToolkit:DockPanel.Dock="Top" >
+                        <Grid x:Name="grdSearch" Background="White" Visibility="Visible">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="300"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock  HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="From Date"  Margin="4" />
+                            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" >
+                                <controls:DatePicker   x:Name="dtpFromDate" Margin="4" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch"  TabIndex="0"/>
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="To Date" Grid.Row="0" Grid.Column="2"  Margin="4" />
+                                <controls:DatePicker   x:Name="dtpToDate" Margin="4" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Stretch" TabIndex="1"/>
+                            </StackPanel>
+
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="MR No" Margin="4" Grid.Row="0" Grid.Column="2"></TextBlock>
+                            <Grid Grid.Row="0" Grid.Column="3" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="txtBTListMRNo" Margin="4" Grid.Row="0" Grid.Column="0" Width="200" ></TextBox>
+                                <StackPanel  Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                                    <Button  HorizontalAlignment="Left"   x:Name="CmdBTLSearch" Margin="4"  Click="CmdBTLSearch_Click">
+                                        <Button.Content>
+                                            <Image Height="18" Source="/PalashDynamics;component/Icons/xmag.png" ></Image>
+                                        </Button.Content>
+                                    </Button>
+                                    <Button VerticalAlignment="Center"  x:Name="CmdBTLPatientSearch" Margin="4" Click="CmdBTLPatientSearch_Click">
+                                        <Button.Content>
+                                            <Image Height="18" Source="/PalashDynamics;component/Icons/previous_patient_search.jpg"></Image>
+                                        </Button.Content>
+                                    </Button>
+
+                                    <Button VerticalAlignment="Center"  x:Name="cmdBTLPastDetails" Margin="4"  >
+                                        <Button.Content>
+                                            <Image Height="18" Source="/PalashDynamics;component/Icons/patient_past_details.jpg"></Image>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Unit" Grid.Row="1" Grid.Column="0"  Margin="4" />
+                            <CustomCombo:AutoCompleteComboBox   x:Name="cmbUnitAppointmentSummary" SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Grid.Row="1" Grid.Column="1"  Margin="4"    HorizontalAlignment="Stretch" TabIndex="2" />
+
+                            <ToggleButton x:Name="cmdShow" Content="Search" Margin="4" Grid.Row="1" Grid.Column="2" Style="{StaticResource ToggleButtonStyle}" Background="#000000" HorizontalAlignment="Left" Click="cmdShow_Click"></ToggleButton>
+                        </Grid>
+
+                    </controlsToolkit:DockPanel>
+
+                    <controlsToolkit:DockPanel LastChildFill="True" >
+                        <Border controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                            <ContentControl VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="12" Content="List Of Transfer" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                        </Border>
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                            <controlsToolkit:DockPanel Margin="4" LastChildFill="True">
+                                <data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" />
+                                <data:DataGrid x:Name="dgTransfer" Height="Auto"  Width="Auto" Margin="2" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                                    <data:DataGrid.Columns>
+                                        <!--<data:DataGridTextColumn Header="Sr. No." IsReadOnly="True" />-->
+                                        <data:DataGridTextColumn Header="MR No" Binding="{Binding MRNo}" IsReadOnly="True" />
+                                        <data:DataGridTextColumn Header="PatientName" Binding="{Binding PatientName}"  IsReadOnly="True"/>
+                                        <!--<data:DataGridTextColumn Header="Discharge/Admission" IsReadOnly="True" >
+                                            <data:DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                </Style>
+                                            </data:DataGridTextColumn.ElementStyle>
+                                        </data:DataGridTextColumn>-->
+                                        <data:DataGridTextColumn Header="IPD No" Binding="{Binding IPDNo}" IsReadOnly="True" >
+                                            <data:DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                </Style>
+                                            </data:DataGridTextColumn.ElementStyle>
+                                        </data:DataGridTextColumn>
+
+                                        <!--<data:DataGridTextColumn  Header="Admission Date" Binding="{Binding IPDNo}" IsReadOnly="True" >
+                                            <data:DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                </Style>
+                                            </data:DataGridTextColumn.ElementStyle>
+                                        </data:DataGridTextColumn>-->
+                                        <data:DataGridTextColumn Header="Transfer Date" Binding="{Binding TransferDate, StringFormat=dd/MM/yyyy}" IsReadOnly="True" Width="80" />
+                                        <data:DataGridTextColumn Header="Transfer Time" Binding="{Binding TransferTime, StringFormat=t}" IsReadOnly="True" Width="80"/>
+                                        <!--<data:DataGridTextColumn Header="From BedNo-Ward-Category-Unit-AppliedClass" IsReadOnly="True" />
+                                        <data:DataGridTextColumn Header="To BedNo-Ward-Category-Unit-AppliedClass" IsReadOnly="True" />
+                                        <data:DataGridTextColumn Header="User Name" IsReadOnly="True"/>-->
+                                        <data:DataGridTextColumn Header="Remark" Binding="{Binding Remark}" IsReadOnly="True" />
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+
+                </controlsToolkit:DockPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="PatientTransferLayoutRoot" Background="White" Visibility="Visible">
+            <Border Grid.Column="1" BorderBrush="{StaticResource TabControlDarkerBorder}"  BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                <controlsToolkit:DockPanel Grid.Column="0" LastChildFill="True" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" controlsToolkit:DockPanel.Dock="Bottom">
+                        <HyperlinkButton x:Name="hlkListAllBedTrasfer" Content="Bed Transfer History" VerticalAlignment="Center" HorizontalAlignment="Left" Click="hlkListAllBedTrasfer_Click" Visibility="Visible" />
+                        <ToggleButton x:Name="cmdSave" Content="Save" Grid.Column="3" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Margin="4" Click="cmdSave_Click"></ToggleButton>
+                        <ToggleButton x:Name="cmdCloseTransferTo" Content="Close" Grid.Column="4" Style="{StaticResource ToggleButtonStyle}" Background="#000000" Margin="4" Click="cmdCloseTransferTo_Click"></ToggleButton>
+                    </StackPanel>
+
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".5*"></ColumnDefinition>
+                            <ColumnDefinition Width=".5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Border  Grid.Column="0" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="MRNo" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                                <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="txtMRNo" Margin="4" Grid.Row="0" Grid.Column="0" Width="200" KeyUp="txtMRNumber_KeyUp"></TextBox>
+                                    <StackPanel  Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                                        <Button  HorizontalAlignment="Left" x:Name="CmddischargePatientListSearch" Margin="4"   Click="CmddischargePatientListSearch_Click">
+                                            <Button.Content>
+                                                <Image Height="18" Source="/PalashDynamics;component/Icons/xmag.png" ></Image>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button VerticalAlignment="Center" x:Name="CmdPatientSearch" Margin="4"  Click="btnPatientSearch_Click">
+                                            <Button.Content>
+                                                <Image Height="18" Source="/PalashDynamics;component/Icons/previous_patient_search.jpg"></Image>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button VerticalAlignment="Center"  x:Name="cmdPastDetails" Margin="4"  Click="cmdPastDetails_Click" Visibility="Collapsed">
+                                            <Button.Content>
+                                                <Image Height="18" Source="/PalashDynamics;component/Icons/patient_past_details.jpg"></Image>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button  VerticalAlignment="Center" x:Name="CmdBedStatus" Margin="4"  Click="CmdBedStatus_Click" Visibility="Collapsed">
+                                            <Button.Content>
+                                                <Image Height="18" Source="/PalashDynamics.IPD;component/Icons/released.jpg" ></Image>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                    <Grid x:Name="lblGrid" Grid.Row="0" Grid.Column="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Patient Name : " Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                                        <TextBlock VerticalAlignment="Center" x:Name="lblPatientName" Text="{Binding PatientName,Mode= TwoWay}" HorizontalAlignment="Right" Margin="4" Grid.Row="0" Grid.Column="1"></TextBlock>
+                                    </Grid>
+                                </Grid>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Date" Grid.Row="1" Grid.Column="0" Margin="4" ></TextBlock>
+                                <controls:DatePicker x:Name="dtpDate" Grid.Row="1" Grid.Column="1" IsEnabled="False" Margin="4" LostFocus="dtpDate_LostFocus" />
+                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Time" Grid.Column="2" Grid.Row="1" Margin="4"/>
+                                <inputToolkit:TimePicker x:Name="tpTime" Grid.Row="1" Grid.Column="3" IsEnabled="False" Margin="4" TabIndex="25" />
+
+                                <controlsToolkit:DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="4"  LastChildFill="True" x:Name="docCurrent" controlsToolkit:DockPanel.Dock="Top">
+                                    <Border controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="12" Content="Current Bed Information" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Class" Grid.Row="0" Grid.Column="0" Margin="4" ></TextBlock>
+                                            <TextBox Grid.Row="0" Grid.Column="1" Margin="4"  x:Name="txtClass" IsEnabled="False" Text="{Binding ClassName, Mode=TwoWay}"></TextBox>
+
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Ward" Grid.Row="0" Grid.Column="2" Margin="4" ></TextBlock>
+                                            <TextBox Grid.Row="0" Grid.Column="3" Margin="4"  x:Name="txtWard" IsEnabled="False" Text="{Binding WardName, Mode=TwoWay}"></TextBox>
+
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Bed" Grid.Row="0" Grid.Column="4" Margin="4" ></TextBlock>
+                                            <CustomCombo:AutoCompleteComboBox Grid.Row="0" Grid.Column="5" Margin="4" x:Name="cmbBed" IsEnabled="False"  VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></CustomCombo:AutoCompleteComboBox>
+                                            <!--<TextBox Grid.Row="0" Grid.Column="5" Margin="4"  x:Name="txtBedName" IsEnabled="False" Text="{Binding BedName, Mode=TwoWay}"></TextBox>-->
+                                            <!--<TextBox Grid.Row="0" Grid.Column="5" Margin="4"  x:Name="txtBed" IsEnabled="False"></TextBox>-->
+
+                                        </Grid>
+                                    </Border>
+                                </controlsToolkit:DockPanel>
+
+                                <controlsToolkit:DockPanel Grid.Row="4" Grid.ColumnSpan="4" x:Name="docBedSelection" Margin="4"  LastChildFill="True">
+                                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Grid.Row="1" Grid.ColumnSpan="4"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                        <controlsToolkit:DockPanel LastChildFill="True">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="*"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Border Grid.Row="0" BorderBrush="{StaticResource TabControlDarkerBorder}"  Grid.ColumnSpan="4"  BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="Vacant Bed Selection" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                </Border>
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="ClassName" Grid.Row="1" Grid.Column="0" Margin="4" ></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="1" Grid.Column="1" Margin="4" x:Name="cmbClassName" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" SelectionChanged="cmbClassName_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Ward" Grid.Row="1" Grid.Column="2" Margin="4" ></TextBlock>
+                                                <CustomCombo:AutoCompleteComboBox Grid.Row="1" Grid.Column="3" Margin="4" x:Name="cmbWard" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" IsEnabled="False" SelectionChanged="cmbWard_SelectionChanged"></CustomCombo:AutoCompleteComboBox>
+
+                                                <controls:TabControl Grid.Row="3" Grid.ColumnSpan="4" Padding="0"  BorderBrush="{StaticResource TabControlDarkerBorder}"  x:Name="BedSelectionTabControl" Margin="4,-4,4,4" >
+                                                    <!-- Patient Information -->
+                                                    <controls:TabItem x:Name="tabCensusBedList" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Census Bed List" >
+                                                        <ScrollViewer Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+                                                            <controlsToolkit:DockPanel x:Name="docVacantBed"  LastChildFill="True">
+                                                                <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                                    <Grid>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="*"></RowDefinition>
+                                                                            <RowDefinition Height="Auto"></RowDefinition>
+                                                                        </Grid.RowDefinitions>
+
+                                                                        <sdk:DataGrid x:Name="dgVacantBed" ItemsSource="{Binding}" Grid.Row="0"   Width="Auto" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" Margin="1" >
+                                                                            <sdk:DataGrid.Columns>
+                                                                                <sdk:DataGridTemplateColumn Header="" >
+                                                                                    <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <CheckBox x:Name="chkStatusCensus" Margin="4" VerticalAlignment="Center" Tag="{Binding ID}" HorizontalAlignment="Center" IsChecked="{Binding Status,Mode=TwoWay}" Click="chkStatusCensus_Click"></CheckBox>
+                                                                                        </DataTemplate>
+                                                                                    </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                                                </sdk:DataGridTemplateColumn>
+                                                                                <sdk:DataGridTextColumn Binding="{Binding Code, Mode=OneWay}" Header="Code" IsReadOnly="True" Width="70"/>
+                                                                                <sdk:DataGridTextColumn Binding="{Binding Description, Mode=OneWay}" Header="Bed" IsReadOnly="True"/>
+                                                                                <sdk:DataGridTextColumn Binding="{Binding BedCategoryName, Mode=OneWay}" Header="Class" IsReadOnly="True"/>
+                                                                                <sdk:DataGridTextColumn Binding="{Binding WardName, Mode=OneWay}" Header="Ward"  IsReadOnly="True"/>
+                                                                                <sdk:DataGridTextColumn Binding="{Binding Facilities, Mode=OneWay}" Header="Facilities" IsReadOnly="True"/>
+                                                                            </sdk:DataGrid.Columns>
+                                                                        </sdk:DataGrid>
+                                                                        <data:DataPager  Grid.Row="1" x:Name="dataGridCensusPager" DisplayMode="FirstLastPreviousNext" IsEnabled="True" Source="{Binding}"  AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+                                                                    </Grid>
+                                                                </Border>
+                                                            </controlsToolkit:DockPanel>
+                                                        </ScrollViewer>
+                                                    </controls:TabItem>
+
+                                                    <controls:TabItem x:Name="tabNonCensusBedList" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Non Census Bed List" Visibility="Collapsed" >
+                                                        <ScrollViewer Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" controlsToolkit:ScrollViewerExtensions.IsMouseWheelScrollingEnabled="True">
+                                                            <controlsToolkit:DockPanel x:Name="docNonCensusBedList"  LastChildFill="True">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"></RowDefinition>
+                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                    </Grid.RowDefinitions>
+                                                                    <sdk:DataGrid x:Name="dgNonCensusBed" ItemsSource="{Binding}" Grid.Row="0"  VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False"   Margin="1" >
+                                                                        <sdk:DataGrid.Columns>
+                                                                            <sdk:DataGridTemplateColumn Header="Status" >
+                                                                                <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <CheckBox x:Name="chkStatusNonCensus" Tag="{Binding ID}" HorizontalAlignment="Center" IsChecked="{Binding Status,Mode=TwoWay}" Click="chkStatusNonCensus_Click"></CheckBox>
+                                                                                    </DataTemplate>
+                                                                                </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                                                            </sdk:DataGridTemplateColumn>
+                                                                            <sdk:DataGridTextColumn Binding="{Binding Code, Mode=OneWay}" Header="Code" IsReadOnly="True"/>
+                                                                            <sdk:DataGridTextColumn Binding="{Binding Description, Mode=OneWay}" Header="Bed" IsReadOnly="True"/>
+                                                                            <sdk:DataGridTextColumn Binding="{Binding BedCategoryName, Mode=OneWay}" Header="Class" IsReadOnly="True"/>
+                                                                            <sdk:DataGridTextColumn Binding="{Binding WardName, Mode=OneWay}" Header="Ward"  IsReadOnly="True"/>
+                                                                            <sdk:DataGridTextColumn Binding="{Binding Facilities, Mode=OneWay}" Header="Facilities" IsReadOnly="True"/>
+                                                                        </sdk:DataGrid.Columns>
+                                                                    </sdk:DataGrid>
+                                                                    <data:DataPager x:Name="dataGridNonCensusPager" DisplayMode="FirstLastPreviousNext" Grid.Row="1"  IsEnabled="True"    Source="{Binding}"  AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+                                                                </Grid>
+                                                            </controlsToolkit:DockPanel>
+                                                        </ScrollViewer>
+                                                    </controls:TabItem>
+
+                                                </controls:TabControl>
+                                            </Grid>
+                                        </controlsToolkit:DockPanel>
+                                    </Border>
+                                </controlsToolkit:DockPanel>
+
+                                <CheckBox x:Name="chkKeepOriginalBed" Visibility="Collapsed" IsEnabled="False" Content="Keep Original Bed Occupied" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="4"></CheckBox>
+
+                                <TextBlock Text="Billing Class" Grid.Row="6" Grid.Column="0" Margin="4" Visibility="Collapsed" ></TextBlock>
+                                <CustomCombo:AutoCompleteComboBox Grid.Row="6" Grid.Column="1" Margin="4" x:Name="cmbBillingClass" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" Visibility="Collapsed"></CustomCombo:AutoCompleteComboBox>
+
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Remarks" Grid.Row="7" Grid.Column="0" Margin="4" ></TextBlock>
+                                <TextBox x:Name="txtRemarks" Text="{Binding Remark, Mode=TwoWay}" Margin="4" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" AcceptsReturn="True" Height="80" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"  MaxLength="250" />
+                            </Grid>
+                        </Border>
+
+                        <Grid Grid.Column="1" >
+                            <controlsToolkit:DockPanel LastChildFill="True" >
+                                <Border controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                    <ContentControl VerticalAlignment="Center" Grid.ColumnSpan="4" FontSize="12" Content="Bed Transfer Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                </Border>
+                                <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                    <controlsToolkit:DockPanel LastChildFill="True">
+                                        <!--<data:DataPager x:Name="dgTransferToDataPager" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" />-->
+                                        <data:DataGrid x:Name="dgrdTransfer" Height="Auto"  Width="Auto" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+                                            <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn Header="Patient Name" Binding="{Binding PatientNameForTransfer, Mode=OneWay}" IsReadOnly="True" Width="Auto"/>
+                                                <data:DataGridTextColumn Header="Transfer Date" Binding="{Binding TransferDate, StringFormat=dd/MM/yyyy}" IsReadOnly="True" Width="120" />
+                                                <!--<data:DataGridTextColumn Header="Billing Class" Binding="{Binding BillingClass, Mode=OneWay}" IsReadOnly="True" />-->
+                                                <data:DataGridTextColumn Header="From Class" Binding="{Binding FromClass, Mode=OneWay}" IsReadOnly="True" Width="90"/>
+                                                <data:DataGridTextColumn Header="From Ward" Binding="{Binding FromWard, Mode=OneWay}" IsReadOnly="True" Width="120" />
+                                                <data:DataGridTextColumn Header="From Bed" Binding="{Binding FromBed, Mode=OneWay}" IsReadOnly="True"  >
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Header="To Class" Binding="{Binding ToClass, Mode=OneWay}" IsReadOnly="True" Width="90">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Header="To Ward" Binding="{Binding ToWard, Mode=OneWay}" IsReadOnly="True" Width="120"/>
+                                                <data:DataGridTextColumn Header="To Bed" Binding="{Binding ToBed, Mode=OneWay}" IsReadOnly="True"  />
+                                                <data:DataGridTextColumn Header="From Date" Binding="{Binding FromDate, StringFormat=dd/MM/yyyy}" IsReadOnly="True" Width="120" />
+                                                <data:DataGridTextColumn Header="To Date" Binding="{Binding ToDate, StringFormat=dd/MM/yyyy}" IsReadOnly="True" Width="120" />
+                                                <data:DataGridTextColumn Header="From Time" Binding="{Binding FromDate, StringFormat=t}" IsReadOnly="True" Width="120" />
+                                                <data:DataGridTextColumn Header="To Time" Binding="{Binding ToDate, StringFormat=t}" IsReadOnly="True" Width="120" />
+
+                                            </data:DataGrid.Columns>
+                                        </data:DataGrid>
+                                    </controlsToolkit:DockPanel>
+                                </Border>
+                            </controlsToolkit:DockPanel>
+                        </Grid>
+
+                    </Grid>
+
+                </controlsToolkit:DockPanel>
+            </Border>
+        </Grid>
+        
+    </Grid>
+</UserControl>

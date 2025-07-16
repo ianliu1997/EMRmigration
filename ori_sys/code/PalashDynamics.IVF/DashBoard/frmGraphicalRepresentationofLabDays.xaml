@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="PalashDynamics.IVF.DashBoard.frmGraphicalRepresentationofLabDays"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"     
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+               xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+   Loaded="UserControl_Loaded" >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <local:DateTimeToAgePart x:Key="DateTimeToAgePart"></local:DateTimeToAgePart>
+            <local:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel Margin="4"  LastChildFill="True" Grid.Row="1">
+            <controlsToolkit:DockPanel Margin="4" LastChildFill="true">
+
+                <controlsToolkit:DockPanel x:Name="Bottom" controlsToolkit:DockPanel.Dock="Bottom" Margin="5">
+                    <StackPanel x:Name="FooterBackPanel" Orientation="Horizontal"    Margin="0,3,5,3" HorizontalAlignment="Left" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanelBackPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <ToggleButton x:Name="Cmdsourcedetails" Visibility="Collapsed" Content="Oocyte Details" Width="100"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="Cmdsourcedetails_Click">
+                            </ToggleButton>
+                              <ToggleButton x:Name="Cmdmedia"  Content="Media Details" Width="100" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="Cmdmedia_Click"/>
+                            <ToggleButton x:Name="cmdCryoPreservation" Width="125" Content="Cryo Preservation"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Click="cmdCryoPreservation_Click" Visibility="Collapsed">
+
+                            </ToggleButton>
+                        </StackPanel>
+                    </StackPanel>
+                </controlsToolkit:DockPanel>
+                <data:DataPager x:Name="dgDataPager" controlsToolkit:DockPanel.Dock="Bottom"
+                            DisplayMode="FirstLastPreviousNext" Source="{Binding}" IsEnabled="True"
+                            AutoEllipsis="False" IsTotalItemCountFixed="False"/>
+                    <data:DataGrid x:Name="dgDayList" controlsToolkit:DockPanel.Dock="Top" Margin="0,0,0,1" ItemsSource="{Binding}" AutoGenerateColumns="False"   LoadingRow="dgDayList_LoadingRow"  VerticalScrollBarVisibility="Visible"  >
+                    <data:DataGrid.Columns>
+                        <data:DataGridTextColumn Binding="{Binding OocyteNumber}" Header="Oocyte/Embryo Number" IsReadOnly="True" ></data:DataGridTextColumn>
+                       
+                        <data:DataGridTemplateColumn IsReadOnly="True"  >
+                            <data:DataGridTemplateColumn.CellTemplate  >
+                                <DataTemplate >
+                                    <Canvas Height="40" Width="40">
+                                        <HyperlinkButton Background="White" HorizontalAlignment="Center"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay0_Click"    x:Name="btnLabDay0" Visibility="{Binding Day0, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay0,Mode=TwoWay}">
+                                            <Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day0Image}" x:Name="IMgLabDay0"  />
+                                        </HyperlinkButton>
+                                        <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan0, Mode=TwoWay}"   FontWeight="Bold"/>
+                                    </Canvas>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn  IsReadOnly="True"  >
+                            <data:DataGridTemplateColumn.CellTemplate  >
+                                <DataTemplate >
+                                    <Canvas Height="40" Width="40">
+                                        <HyperlinkButton Background="White"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLavDay1_Click" x:Name="btnLabDay1" Visibility="{Binding Day1, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay1,Mode=TwoWay}">
+                                            <Image  Height="40" Width="40" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="Fill" Source="{Binding Path=Day1Image}"  x:Name="IMgLabDay1"/>
+                                        </HyperlinkButton>
+                                        <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan1, Mode=TwoWay}"   FontWeight="Bold"/>
+                                    </Canvas>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn  IsReadOnly="True"  >
+                            <data:DataGridTemplateColumn.CellTemplate  >
+                                <DataTemplate >
+                                    <Canvas Height="40" Width="40">
+                                    <HyperlinkButton Background="White"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay2_Click"   x:Name="btnLabDay2" Visibility="{Binding Day2, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay2,Mode=TwoWay}">
+                                        <Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day2Image}"  x:Name="IMgLabDay2"/>
+                                    </HyperlinkButton>
+                                    <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan2, Mode=TwoWay}"   FontWeight="Bold"/>
+
+                                    </Canvas>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn  IsReadOnly="True"  >
+                            <data:DataGridTemplateColumn.CellTemplate  >
+                                <DataTemplate >
+                                    <Canvas Height="40" Width="40">
+                                    <HyperlinkButton Background="White"  HorizontalAlignment="Center"   VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay3_Click"   x:Name="btnLabDay3" Visibility="{Binding Day3, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay3,Mode=TwoWay}">
+                                        <Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day3Image}" x:Name="IMgLabDay3"/>
+                                    </HyperlinkButton>
+                                    <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan3, Mode=TwoWay}"   FontWeight="Bold"/>
+
+                                    </Canvas>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn  IsReadOnly="True"  >
+                            <data:DataGridTemplateColumn.CellTemplate  >
+                                <DataTemplate  >
+                                    <Canvas Height="40" Width="40">
+                                    <HyperlinkButton Background="White"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay4_Click"   x:Name="btnLabDay4" Visibility="{Binding Day4, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay4,Mode=TwoWay}">
+                                        <Image Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day4Image}" x:Name="IMgLabDay4"/>
+                                    </HyperlinkButton>
+                                    <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan4, Mode=TwoWay}"   FontWeight="Bold"/>
+                                    </Canvas>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn  IsReadOnly="True"  >
+                            <data:DataGridTemplateColumn.CellTemplate  >
+                                <DataTemplate >
+                                    <Canvas Height="40" Width="40">
+                                    <HyperlinkButton Background="White"   HorizontalAlignment="Center"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay5_Click"   x:Name="btnLabDay5" Visibility="{Binding Day5, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay5,Mode=TwoWay}">
+                                        <Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day5Image}" x:Name="IMgLabDay5"/>
+                                    </HyperlinkButton>
+                                    <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan5, Mode=TwoWay}"   FontWeight="Bold"/>
+                                    </Canvas>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTemplateColumn  IsReadOnly="True"  >
+                            <data:DataGridTemplateColumn.CellTemplate  >
+                                <DataTemplate >
+                                    <Canvas Height="40" Width="40">
+                                    <HyperlinkButton Background="White"   HorizontalAlignment="Center"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnLabDay6_Click"   x:Name="btnLabDay6" Visibility="{Binding Day6, Converter={StaticResource VisiblilityConverter}}" ToolTipService.ToolTip="{Binding ImpressionDay6,Mode=TwoWay}">
+                                        <Image  Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Source="{Binding  Path=Day6Image}" x:Name="IMgLabDay6" />
+                                    </HyperlinkButton>
+                                    <TextBlock Canvas.Left="1" Canvas.Top="1"  FontSize="10"  Foreground="Navy" FontFamily="Verdana" Text="{Binding Plan6, Mode=TwoWay}"   FontWeight="Bold"/>
+                                    </Canvas>
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+
+                        <data:DataGridTextColumn Binding="{Binding SerialOocyteNumber}" Header="SerialOocyteNumber" IsReadOnly="True" Visibility="Collapsed" ></data:DataGridTextColumn>
+
+
+                    </data:DataGrid.Columns>
+                </data:DataGrid>
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+    </Grid>
+
+
+
+</UserControl>

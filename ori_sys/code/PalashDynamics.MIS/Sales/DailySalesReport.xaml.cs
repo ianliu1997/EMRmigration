@@ -1,0 +1,208 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using PalashDynamics.ValueObjects.Master;
+using PalashDynamics.Service.PalashTestServiceReference;
+using PalashDynamics.ValueObjects;
+using CIMS;
+using System.Windows.Browser;
+using System.Reflection;
+using PalashDynamics.Service.DataTemplateHttpsServiceRef;
+
+namespace PalashDynamics.MIS.Sales
+{
+    public partial class DailySalesReport : UserControl
+    {
+        clsUserVO User = ((IApplicationConfiguration)App.Current).CurrentUser;
+        public DailySalesReport()
+        {
+            InitializeComponent();
+        }
+
+        //private void FillClinic()
+        //{
+        //    try
+        //    {
+        //        clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+        //        BizAction.MasterTable = MasterTableNameList.M_UnitMaster;
+        //        BizAction.MasterList = new List<MasterListItem>();
+
+        //        Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy
+        //        PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+
+        //        client.ProcessCompleted += (s, arg) =>
+        //        {
+        //            if (arg.Error == null && arg.Result != null)
+        //            {
+        //                List<MasterListItem> objList = new List<MasterListItem>();
+        //                objList.Add(new MasterListItem(0, "-- Select --"));
+        //                objList.AddRange(((clsGetMasterListBizActionVO)arg.Result).MasterList);
+
+        //                cmbClinic.ItemsSource = null;
+        //                cmbClinic.ItemsSource = objList;
+        //                cmbClinic.SelectedItem = objList[0];
+        //            }
+        //        };
+        //        client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+        //        client.CloseAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+        private void FillClinic()
+        {
+            try
+            {
+
+                clsGetMasterListBizActionVO BizAction = new clsGetMasterListBizActionVO();
+                BizAction.MasterTable = MasterTableNameList.M_UnitMaster;
+                BizAction.MasterList = new List<MasterListItem>();
+
+                Uri address = new Uri(Application.Current.Host.Source, "../PalashTestService.svc"); // this url will work both in dev and after deploy
+                PalashServiceClient client = new PalashServiceClient("BasicHttpBinding_IPalashService", address.AbsoluteUri);
+
+                client.ProcessCompleted += (s, arg) =>
+                {
+                    if (arg.Error == null && arg.Result != null)
+                    {
+                        List<MasterListItem> objList = new List<MasterListItem>();
+                        objList.Add(new MasterListItem(0, "-- Select --"));
+                        objList.AddRange(((clsGetMasterListBizActionVO)arg.Result).MasterList);
+
+                        cmbClinic.ItemsSource = null;
+                        cmbClinic.ItemsSource = objList;
+
+                        if (!((IApplicationConfiguration)App.Current).ApplicationConfigurations.IsHO)
+                        {
+                            //for selecting unitid according to user login unit id
+                            //for selecting unitid according to user login unit id
+                            var res = from r in objList
+                                      where r.ID == User.UserLoginInfo.UnitId
+                                      select r;
+                            cmbClinic.SelectedItem = ((MasterListItem)res.First());
+                            cmbClinic.IsEnabled = false;
+                        }
+                        else
+                            cmbClinic.SelectedItem = objList[0];
+
+                    }
+
+                };
+                client.ProcessAsync(BizAction, ((IApplicationConfiguration)App.Current).CurrentUser);
+                client.CloseAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        private void cmdPrint_Click(object sender, RoutedEventArgs e)
+        {
+            //DateTime? dtpF = null;
+            Nullable<DateTime> dtpF = null;
+
+            bool IsExporttoExcel = false;
+            IsExporttoExcel = (bool)chkExporttoExcel.IsChecked;
+            if (dtpDate.SelectedDate != null)
+            {
+                dtpF = dtpDate.SelectedDate.Value.Date;
+
+            }
+            long clinic = 0;
+            //if (cmbClinic.SelectedItem != null && ((MasterListItem)cmbClinic.SelectedItem).ID != 0)
+            //{
+                clinic = ((MasterListItem)cmbClinic.SelectedItem).ID;
+
+                string URL;
+                if (dtpF != null)
+                {
+                    URL = "../Reports/Sales/DailySalesReport.aspx?Date=" + dtpF.Value.ToString("dd/MMM/yyyy") + "&ClinicID=" + clinic + "&IsExporttoExcel=" + IsExporttoExcel;
+                    HtmlPage.Window.Navigate(new Uri(Application.Current.Host.Source, URL), "_blank");
+                }
+                else
+                {
+                    URL = "../Reports/Sales/DailySalesReport.aspx?ClinicID=" + clinic + "&IsExporttoExcel=" + IsExporttoExcel;
+                    HtmlPage.Window.Navigate(new Uri(Application.Current.Host.Source, URL), "_blank");
+
+                }
+
+            //}
+            //else
+            //{
+            //    MessageBoxControl.MessageBoxChildWindow msgW3 =
+            //                  new MessageBoxControl.MessageBoxChildWindow("Clinic Not Selected!.", "Please Select Clinic!", MessageBoxControl.MessageBoxButtons.Ok, MessageBoxControl.MessageBoxIcon.Error);
+            //    msgW3.Show();
+                
+            //}
+
+        
+
+           // long pharmacyVisitType = ((IApplicationConfiguration)App.Current).ApplicationConfigurations.PharmacyVisitTypeID;
+
+
+           // string URL = "../Reports/Sales/DailySalesReport.aspx?Date=" + dtpF + "&ClinicID=" + clinic + "&pharmacyVisitType=" + pharmacyVisitType;
+          
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            dtpDate.SelectedDate = DateTime.Now;
+            
+            FillClinic();
+        }
+
+        private void cmdCancel_Checked(object sender, RoutedEventArgs e)
+        {
+            UIElement myData = Assembly.GetExecutingAssembly().CreateInstance("PalashDynamics.MIS.Sales.SalesReport") as UIElement;
+            ((IApplicationConfiguration)App.Current).OpenMainContent(myData);
+        }
+
+        private void dtpChanged(object sender, RoutedEventArgs e)
+        {
+            if (dtpDate.SelectedDate == null)
+                cmdPrint.IsEnabled = false;
+            else
+                cmdPrint.IsEnabled = true;
+        }
+                
+        private void cmbClinic_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (((MasterListItem)cmbClinic.SelectedItem).ID == 0)
+            //    cmdPrint.IsEnabled = false;
+            //else
+            //    cmdPrint.IsEnabled = true;
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if((bool)chkExporttoExcel.IsChecked)
+            {
+            Uri address = new Uri(Application.Current.Host.Source, "../EMR/DataTemplateHttpsService.svc"); // this url will work both in dev and after deploy
+            DataTemplateHttpsServiceClient client = new DataTemplateHttpsServiceClient("BasicHttpBinding_DataTemplateHttpsService", address.AbsoluteUri);
+            client.DeleteMISReportFileCompleted += (s1, args1) =>
+            {
+                if (args1.Error == null)
+                {
+
+                }
+            };
+            client.DeleteMISReportFileAsync("/Reports/Sales");
+            }
+        }
+
+    }
+}

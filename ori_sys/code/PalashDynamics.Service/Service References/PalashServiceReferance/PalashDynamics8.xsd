@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Palash_IVF_MAH.WebServer/PalashDynamics.svc?xsd=xsd55" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" />
+  <xs:complexType name="clsDrugAdministrationChartBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DrugAdministrationChart" nillable="true" type="tns:clsDrugAdministrationChartVO" />
+      <xs:element minOccurs="0" name="FeedingDetailsList" nillable="true" type="tns:ArrayOfclsFeedingDetailsVO" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" minOccurs="0" name="PrescriptionMasterList" nillable="true" type="q1:ArrayOfclsPrescriptionMasterVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDrugAdministrationChartBizActionVO" nillable="true" type="tns:clsDrugAdministrationChartBizActionVO" />
+  <xs:complexType name="clsDrugAdministrationChartVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddedWindowsLoginName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdmissionID" type="xs:long" />
+      <xs:element minOccurs="0" name="AdmissionUnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="CreatedUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedUnitId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedWindowsLoginName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsDrugAdministrationChartVO" nillable="true" type="tns:clsDrugAdministrationChartVO" />
+  <xs:complexType name="ArrayOfclsFeedingDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsFeedingDetailsVO" nillable="true" type="tns:clsFeedingDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsFeedingDetailsVO" nillable="true" type="tns:ArrayOfclsFeedingDetailsVO" />
+  <xs:complexType name="clsFeedingDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepartmentID" type="xs:long" />
+      <xs:element minOccurs="0" name="DrugName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:long" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffID" type="xs:long" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFeedingDetailsVO" nillable="true" type="tns:clsFeedingDetailsVO" />
+  <xs:complexType name="clsGetDrugListForDrugChartBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" minOccurs="0" name="DrugList" nillable="true" type="q2:ArrayOfclsPrescriptionDetailsVO" />
+      <xs:element minOccurs="0" name="PrescriptionID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrescriptionUnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetDrugListForDrugChartBizActionVO" nillable="true" type="tns:clsGetDrugListForDrugChartBizActionVO" />
+  <xs:complexType name="clsSaveDrugFeedingDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" minOccurs="0" name="DrugFeedingList" nillable="true" type="q3:ArrayOfclsPrescriptionDetailsVO" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" minOccurs="0" name="DrugFeedingListObserv" nillable="true" type="q4:ArrayOfclsPrescriptionDetailsVO" />
+      <xs:element minOccurs="0" name="OPD_IPD" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrescriptionID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrescriptionUnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsSaveDrugFeedingDetailsBizActionVO" nillable="true" type="tns:clsSaveDrugFeedingDetailsBizActionVO" />
+  <xs:complexType name="clsGetFeedingDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" minOccurs="0" name="DrugFeedingList" nillable="true" type="q5:ArrayOfclsPrescriptionDetailsVO" />
+      <xs:element minOccurs="0" name="OPD_IPD" type="xs:short" />
+      <xs:element minOccurs="0" name="Opd_Ipd_Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Opd_Ipd_UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrescriptionID" type="xs:long" />
+      <xs:element minOccurs="0" name="PrescriptionUnitID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetFeedingDetailsBizActionVO" nillable="true" type="tns:clsGetFeedingDetailsBizActionVO" />
+  <xs:complexType name="clsUpdateFeedingDetailsIsFreezeBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" minOccurs="0" name="DrugFeedingList" nillable="true" type="q6:ArrayOfclsPrescriptionDetailsVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.NursingStation.EMR" minOccurs="0" name="PrescriptionDetails" nillable="true" type="q7:clsPrescriptionDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateFeedingDetailsIsFreezeBizActionVO" nillable="true" type="tns:clsUpdateFeedingDetailsIsFreezeBizActionVO" />
+</xs:schema>

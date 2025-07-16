@@ -1,0 +1,293 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.frmDoctorServiceRateWiseLinkChildWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"           
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+           xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"  
+           xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+           xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+           xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"           
+           Loaded="ChildWindow_Loaded"
+           Width="850" Height="600">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <toolkit:DockPanel x:Name="MainDockPanel11" LastChildFill="True"  >
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom">
+                    <StackPanel x:Name="Footer" Orientation="Horizontal"    Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <TextBlock Visibility="Visible" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Clinic Name" Grid.Column="0" Margin="5,0,0,0" x:Name="lblClinic" Grid.Row="1" />
+                        <inputcombo:AutoCompleteComboBox Visibility="Visible" x:Name="cmbClinic" SelectedValuePath="ID" Width="150" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"  Margin="5,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" SelectionChanged="cmbClinic_SelectionChanged" TabIndex="1"/>
+                        <ToggleButton x:Name="CmdNew"  Content="New" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdNew_Click"/>
+                        <ToggleButton x:Name="CmdSaveServices" Content="Save"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed" Click="CmdSaveServices_Click"/>
+                        <ToggleButton x:Name="CmdModify"  Content="Modify"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdModify_Click"/>
+                        <ToggleButton x:Name="CmdCancel"   Content="Cancel"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="CmdCancel_Click"/>
+                    </StackPanel>
+                </toolkit:DockPanel>
+            </Border>
+            <Grid x:Name="PageContainer" >
+                <Grid  x:Name="FrontPanel" Height="AUTO" Grid.Row="0" Visibility="Visible">
+                    <toolkit:DockPanel x:Name="DockContent" Margin="4" toolkit:DockPanel.Dock="Top">
+                        <Border  toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grp:GroupBox Name="grpSearch"  Header="Search Criteria" Margin="4">
+                                    <toolkit:DockPanel  toolkit:DockPanel.Dock="Top" Grid.Row="0" >
+                                        <Grid toolkit:DockPanel.Dock="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition  Width="Auto"/>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition  Width="Auto"/>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition  Width="Auto"/>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition  Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Text="Doctor Category" Grid.Column="0" Grid.Row="0"   Margin="4" Visibility="Collapsed" VerticalAlignment="Center"></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox TabIndex="0" x:Name="cmbDocCategory" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" Visibility="Collapsed" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                            <TextBlock Text="Service Name" Grid.Column="0" Grid.Row="0"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                            <TextBox x:Name="txtServiceName" MaxLength="500" TabIndex="0" Grid.Column="1" Grid.Row="0" Text="" Margin="4" KeyDown="txtServiceName_KeyDown"/>
+                                            <TextBlock Text="Class Name" Grid.Column="2" Grid.Row="0"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox TabIndex="1" x:Name="cmbClassNameFP" Grid.Row="0" Grid.Column="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                            <TextBlock Text="Clinic Name" Grid.Column="4" Grid.Row="0"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox TabIndex="2" x:Name="cmbUnitFP" Grid.Row="0" Grid.Column="5" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                            <TextBlock Text="Specialization" Visibility="Collapsed" Grid.Column="0" Grid.Row="1"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox Visibility="Collapsed" TabIndex="2" x:Name="cmbSpecialization" Grid.Row="1" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectionChanged="cmbSpecialization_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+                                            <TextBlock Visibility="Collapsed" Text="Sub Specialization" Grid.Column="2" Grid.Row="1"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                            <inputcombo:AutoCompleteComboBox Visibility="Collapsed" TabIndex="2" x:Name="cmbSubSpecialization" Grid.Row="1" Grid.Column="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                            <Button Grid.Column="6" TabIndex="3" x:Name="cmdSearch" Grid.Row="0" Click="cmdSearch_Click"   ToolTipService.ToolTip="Search Service"  HorizontalAlignment="Left" >
+                                                <Image Source="/PalashDynamics;component/Icons/xmag.png" Margin="2" Width="20" ></Image>
+                                            </Button>
+
+                                        </Grid>
+                                    </toolkit:DockPanel>
+                                </Grp:GroupBox>
+                                <toolkit:DockPanel toolkit:DockPanel.Dock="top" Grid.Row="1">
+                                    <Border  Grid.Column="0" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                        <ContentControl VerticalAlignment="Center" Content="List of Services" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                    </Border>
+                                    <!--<data:DataPager x:Name="DataPagerDocFrontPannel" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" />-->
+                                    <data:DataPager x:Name="DataPagerDocFrontPannel" toolkit:DockPanel.Dock="Bottom" Margin="4,-0,4,0" 
+                                                      Source="{Binding}" NumericButtonCount="2" AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+                                    <sdk:DataGrid  x:Name="dgDocCategoryFrontP" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" >
+                                        <data:DataGrid.RowGroupHeaderStyles  >
+                                            <!-- Style for groups at top level -->
+                                            <Style TargetType="data:DataGridRowGroupHeader" >
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="data:DataGridRowGroupHeader" >
+                                                            <StackPanel Orientation="Horizontal" Background="LightGray" >
+                                                                <HyperlinkButton Margin="4" x:Name="hlkView" Content="View" Click="hlkView_Click" Visibility="Visible"  VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" Grid.Column="0"></HyperlinkButton>
+                                                                <TextBlock Text="{Binding Name}" Margin="4" FontWeight="SemiBold"  VerticalAlignment="Center" Grid.Column="1"/>
+                                                            </StackPanel>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Background" Value="#44225566" />
+                                                <Setter Property="Height" Value="20" />
+                                            </Style>
+                                        </data:DataGrid.RowGroupHeaderStyles>
+                                        <sdk:DataGrid.Columns>
+                                            <sdk:DataGridTemplateColumn Header="View" Visibility="Collapsed">
+                                                <sdk:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton Margin="4" x:Name="hlkView" Content="View" Click="hlkView_Click" Cursor="Hand"></HyperlinkButton>
+                                                    </DataTemplate>
+                                                </sdk:DataGridTemplateColumn.CellTemplate>
+                                            </sdk:DataGridTemplateColumn>
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Service Name" Binding="{Binding ServiceName}" />
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Class Name" Binding="{Binding ClassName}" />
+                                            <sdk:DataGridTextColumn IsReadOnly="True" Header="Service Rate" Binding="{Binding Rate}" />
+                                            <sdk:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Header="Specialization"  Binding="{Binding SpecializationString}" />
+                                            <sdk:DataGridTextColumn Visibility="Collapsed" IsReadOnly="True" Header="SubSpecialization" Binding="{Binding SubSpecializationString}" />
+                                        </sdk:DataGrid.Columns>
+                                    </sdk:DataGrid>
+                                </toolkit:DockPanel>
+                            </Grid>
+                        </Border>
+                    </toolkit:DockPanel>
+                </Grid>
+                <Grid x:Name="BackPanel"  Visibility="Collapsed" Grid.Row="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition  ></RowDefinition>
+
+                    </Grid.RowDefinitions>
+
+                    <toolkit:DockPanel  toolkit:DockPanel.Dock="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"    BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+                            <Grid toolkit:DockPanel.Dock="Top" x:Name="grdDocCatCombo">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="Auto"/>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition  Width="Auto"/>
+                                    <ColumnDefinition  />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Doctor Category" Grid.Column="0" Grid.Row="0"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox Width="200" TabIndex="0" x:Name="cmbDocCategoryBP" IsEnabled="False" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Left"></inputcombo:AutoCompleteComboBox>
+                                <TextBlock Visibility="Collapsed" Text="Specialization" Grid.Column="0" Grid.Row="1"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox Visibility="Collapsed" TabIndex="2" x:Name="cmbSpecializationBP" Grid.Row="1" Grid.Column="1" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectionChanged="cmbSpecializationBP_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+                                <TextBlock Visibility="Collapsed" Text="Sub Specialization" Grid.Column="2" Grid.Row="1"   Margin="4" VerticalAlignment="Center"></TextBlock>
+                                <inputcombo:AutoCompleteComboBox Visibility="Collapsed" TabIndex="2" x:Name="cmbSubSpecializationBP" Grid.Row="1" Grid.Column="3" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  Margin="4"  VerticalAlignment="Center" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                            </Grid>
+                        </Border>
+                    </toolkit:DockPanel>
+
+
+                    <toolkit:DockPanel toolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.ColumnSpan="3">
+                        <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"    BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+
+                            <Grid Name="grdX" Height="auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Border  Grid.Column="0" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                    <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" Grid.Column="0" Margin="2" >
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Border  Grid.Column="0" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                <ContentControl VerticalAlignment="Center" Content="List of Services" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                            </Border>
+                                            
+                                            <layoutToolkit:Accordion Grid.Row="1" x:Name="acc" SelectionMode="ZeroOrOne" HorizontalAlignment="Stretch">
+                                                <layoutToolkit:AccordionItem IsSelected="True" Header="Advance Filter" HorizontalAlignment="Stretch" >
+                                                    <Grid Margin="2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition ></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock  Grid.Column="0" Grid.Row="0" Text="Service Name" Margin="0,4,0,4" VerticalAlignment="Center"></TextBlock>
+                                                        <input:AutoCompleteBox Height="25" Width="100" TabIndex="0" Margin="0,4,0,4" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" x:Name="txtServiceNameBP" KeyUp="txtServiceNameBP_KeyDown"></input:AutoCompleteBox>
+
+                                                        <TextBlock Margin="4,4,0,4" Grid.Column="2" Grid.Row="0" Text="Class Name" VerticalAlignment="Center"></TextBlock>
+                                                        <inputcombo:AutoCompleteComboBox Height="25" Width="100" Margin="0,4,0,4" TabIndex="1" Grid.Row="0" x:Name="cmbClassName" Grid.Column="3" HorizontalAlignment="Stretch" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" ></inputcombo:AutoCompleteComboBox>
+
+                                                        <Button x:Name="cmdSearchBP" TabIndex="2" Click="cmdSearchBP_Click" Margin="4,4,0,4" HorizontalAlignment="Right" ToolTipService.ToolTip="Search Service"  Grid.Row="0" Grid.Column="4">
+                                                            <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="18" ></Image>
+                                                        </Button>
+
+                                                    </Grid>
+                                                </layoutToolkit:AccordionItem>
+                                            </layoutToolkit:Accordion>
+
+                                            <!--<data:DataPager Grid.Row="3" x:Name="DataPagerServices" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" />-->
+                                            <data:DataPager Grid.Row="3" x:Name="DataPagerServices" toolkit:DockPanel.Dock="Bottom" 
+                                                      Source="{Binding}" NumericButtonCount="2" AutoEllipsis="False" IsTotalItemCountFixed="True"/>
+                                            <sdk:DataGrid Grid.Row="2" x:Name="dgServices" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False"  VerticalScrollBarVisibility="Visible" >
+                                                <sdk:DataGrid.Columns>
+                                                    <sdk:DataGridTemplateColumn Header="Select">
+                                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox x:Name="chkServices" IsChecked="{Binding SelectService, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding IsSelectedService, Mode=TwoWay}" Click="chkServices_Click"></CheckBox>
+                                                            </DataTemplate>
+                                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                                    </sdk:DataGridTemplateColumn>
+                                                    <sdk:DataGridTextColumn IsReadOnly="True" Header="Service Name" Binding="{Binding ServiceName}" />
+                                                    <sdk:DataGridTextColumn IsReadOnly="True" Header="Class Name"  Binding="{Binding ClassName}" />
+                                                    <sdk:DataGridTextColumn IsReadOnly="True" Header="Service Rate"  Binding="{Binding Rate}" />
+                                                </sdk:DataGrid.Columns>
+                                            </sdk:DataGrid>
+                                        </Grid>
+                                    </toolkit:DockPanel>
+                                </Border>
+                                <Border Grid.Column="1" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                    <toolkit:DockPanel toolkit:DockPanel.Dock="top" Grid.Column="1" Margin="2">
+                                        <Border Grid.Column="1" toolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                            <ContentControl VerticalAlignment="Center" Content="List of Selected Services" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                        </Border>
+
+                                        <!--<data:DataPager x:Name="DataPagerDocCategoryBP" toolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False" />-->
+                                        <sdk:DataGrid  x:Name="dgDocCategoryBP" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False"  VerticalScrollBarVisibility="Visible" >
+                                            <sdk:DataGrid.Columns>
+                                                <sdk:DataGridTemplateColumn Header="Select" Visibility="Collapsed">
+                                                    <sdk:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox x:Name="chkServices" IsChecked="{Binding SelectService, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding IsSelectedDoctor, Mode=TwoWay}" Click="chkServices_Click"></CheckBox>
+                                                        </DataTemplate>
+                                                    </sdk:DataGridTemplateColumn.CellTemplate>
+                                                </sdk:DataGridTemplateColumn>
+                                                <sdk:DataGridTextColumn IsReadOnly="True" Header="Service Name" Binding="{Binding ServiceName}" />
+                                                <sdk:DataGridTextColumn IsReadOnly="True" Header="Class Name" Binding="{Binding ClassName}" />
+                                                <data:DataGridTemplateColumn Header="New Service Rate" IsReadOnly="False">
+                                                    <data:DataGridTemplateColumn.CellTemplate >
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Rate, StringFormat=0.00, ValidatesOnExceptions=True,ValidatesOnDataErrors=True}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Right" />
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                    <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        <DataTemplate>
+                                                            <TextBox x:Name="txtRate" TextChanged="txtRate_TextChanged" KeyDown="txtRate_KeyDown" MaxLength="20" Text="{Binding Rate, StringFormat=0.00, Mode=TwoWay, ValidatesOnExceptions=True,ValidatesOnDataErrors=True}" VerticalAlignment="Center" GotFocus="TextBox_GotFocus"  IsEnabled="True" TextAlignment="Right"/>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                </data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn Header="Delete">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <HyperlinkButton VerticalAlignment="Center" Foreground="Red" HorizontalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click="cmdDeleteService_Click"  x:Name="cmdDeleteService" ToolTipService.ToolTip="Delete Selected Service"></HyperlinkButton>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                            </sdk:DataGrid.Columns>
+                                        </sdk:DataGrid>
+                                    </toolkit:DockPanel>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </toolkit:DockPanel>
+                </Grid>
+            </Grid>
+        </toolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

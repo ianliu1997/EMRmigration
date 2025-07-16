@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM.LoyaltyProgram" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM.LoyaltyProgram" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" />
+  <xs:import schemaLocation="https://localhost/Palash_IVF_Genome_V1.WebServer/PalashTestService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" />
+  <xs:complexType name="clsGetLoyaltyPatientCategoryBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" minOccurs="0" name="CategoryList" nillable="true" type="q1:ArrayOfclsLoyaltyProgramPatientCategoryVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoyaltyPatientCategoryBizActionVO" nillable="true" type="tns:clsGetLoyaltyPatientCategoryBizActionVO" />
+  <xs:complexType name="clsGetLoyaltyProgramFamilyByIdBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" minOccurs="0" name="FamilyDetails" nillable="true" type="q2:clsLoyaltyProgramFamilyDetails" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoyaltyProgramFamilyByIdBizActionVO" nillable="true" type="tns:clsGetLoyaltyProgramFamilyByIdBizActionVO" />
+  <xs:complexType name="clsGetLoyaltyProgramAttachmentByIdBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" minOccurs="0" name="AttachmentDetails" nillable="true" type="q3:clsLoyaltyAttachmentVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoyaltyProgramAttachmentByIdBizActionVO" nillable="true" type="tns:clsGetLoyaltyProgramAttachmentByIdBizActionVO" />
+  <xs:complexType name="clsFillCardTypeComboBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExpiryDate" type="xs:dateTime" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" minOccurs="0" name="MasterList" nillable="true" type="q4:ArrayOfMasterListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFillCardTypeComboBizActionVO" nillable="true" type="tns:clsFillCardTypeComboBizActionVO" />
+  <xs:complexType name="clsGetLoyaltyClinicBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" minOccurs="0" name="ClinicList" nillable="true" type="q5:ArrayOfclsLoyaltyClinicVO" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLoyaltyClinicBizActionVO" nillable="true" type="tns:clsGetLoyaltyClinicBizActionVO" />
+  <xs:complexType name="clsFillFamilyTariffUsingRelationIDBizActionVO">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.CRM" minOccurs="0" name="Details" nillable="true" type="q6:clsLoyaltyProgramFamilyDetails" />
+      <xs:element minOccurs="0" name="LoyaltyProgramID" type="xs:long" />
+      <xs:element minOccurs="0" name="RelationID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsFillFamilyTariffUsingRelationIDBizActionVO" nillable="true" type="tns:clsFillFamilyTariffUsingRelationIDBizActionVO" />
+</xs:schema>

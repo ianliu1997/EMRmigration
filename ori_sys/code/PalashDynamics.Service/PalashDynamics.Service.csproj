@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.Service</RootNamespace>
+    <AssemblyName>PalashDynamics.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\DataTemplateHttpsServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DataTemplateServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EmailServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PalashServiceReferance\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PalashTestServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserInforServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\PalashDynamics.ValueObjects.clsUserVO.datasource" />
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService.wsdl" />
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService1.wsdl" />
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\PalashDynamics.Service.DataTemplateHttpsServiceRef.EMRTemplate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\PalashDynamics.Service.DataTemplateHttpsServiceRef.IntraTemplateRelation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\PalashDynamics.Service.DataTemplateHttpsServiceRef.PatientEMRData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\PalashDynamics.Service.DataTemplateHttpsServiceRef.Variance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService.wsdl" />
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService1.wsdl" />
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\PalashDynamics.Service.DataTemplateServiceRef.EMRTemplate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\PalashDynamics.Service.DataTemplateServiceRef.IntraTemplateRelation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\PalashDynamics.Service.DataTemplateServiceRef.PatientEMRData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\PalashDynamics.Service.DataTemplateServiceRef.Variance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EmailServiceReference\EmailService.wsdl" />
+    <None Include="Service References\EmailServiceReference\EmailService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailServiceReference\EmailService1.wsdl" />
+    <None Include="Service References\EmailServiceReference\EmailService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailServiceReference\EmailService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmailServiceReference\EmailService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics17.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics18.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics25.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics26.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics27.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics28.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics29.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics34.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics35.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics36.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics37.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics38.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics39.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics40.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics43.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics44.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics45.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics46.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics47.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics48.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics49.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics50.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics55.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics56.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics57.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics58.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics59.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics60.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics61.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics62.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics63.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics64.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics65.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics66.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics6710.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics678.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics679.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamicsWeb.wsdl" />
+    <None Include="Service References\PalashTestServiceReference\PalashTestService.wsdl" />
+    <None Include="Service References\PalashTestServiceReference\PalashTestService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService17.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService18.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService25.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService26.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService27.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService28.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService29.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService34.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService35.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService36.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService37.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService38.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService39.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService40.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService43.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService44.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService45.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService46.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService47.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService48.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService49.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService50.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService55.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService56.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService57.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService58.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService59.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService60.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService61.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService62.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService63.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService64.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService65.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService66.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService67.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService68.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService69.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInforServiceRef\PalashDynamics.Service.UserInforServiceRef.GetClientMachineNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserInforServiceRef\PalashDynamics.Service.UserInforServiceRef.GetClientUserNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserInforServiceRef\PalashDynamics.Service.UserInforServiceRef.GetCoordinatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserInforServiceRef\UserInformation.disco" />
+    <None Include="Service References\UserInforServiceRef\configuration91.svcinfo" />
+    <None Include="Service References\UserInforServiceRef\configuration.svcinfo" />
+    <None Include="Service References\UserInforServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EmailServiceReference\EmailService.disco" />
+    <None Include="Service References\EmailServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\EmailServiceReference\configuration.svcinfo" />
+    <None Include="Service References\EmailServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DataTemplateServiceRef\DataTemplateService.disco" />
+    <None Include="Service References\DataTemplateServiceRef\configuration91.svcinfo" />
+    <None Include="Service References\DataTemplateServiceRef\configuration.svcinfo" />
+    <None Include="Service References\DataTemplateServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PalashServiceReferance\PalashDynamics.disco" />
+    <None Include="Service References\PalashServiceReferance\configuration91.svcinfo" />
+    <None Include="Service References\PalashServiceReferance\configuration.svcinfo" />
+    <None Include="Service References\PalashServiceReferance\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DataTemplateHttpsServiceRef\DataTemplateHttpsService.disco" />
+    <None Include="Service References\DataTemplateHttpsServiceRef\configuration91.svcinfo" />
+    <None Include="Service References\DataTemplateHttpsServiceRef\configuration.svcinfo" />
+    <None Include="Service References\DataTemplateHttpsServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PalashTestServiceReference\PalashTestService.disco" />
+    <None Include="Service References\PalashTestServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PalashTestServiceReference\configuration.svcinfo" />
+    <None Include="Service References\PalashTestServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\UserInforServiceRef\UserInformation.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DataTemplateHttpsServiceRef\" />
+    <WCFMetadataStorage Include="Service References\DataTemplateServiceRef\" />
+    <WCFMetadataStorage Include="Service References\EmailServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PalashServiceReferance\" />
+    <WCFMetadataStorage Include="Service References\PalashTestServiceReference\" />
+    <WCFMetadataStorage Include="Service References\UserInforServiceRef\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

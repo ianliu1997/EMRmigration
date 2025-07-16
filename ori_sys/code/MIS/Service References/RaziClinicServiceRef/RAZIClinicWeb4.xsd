@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" />
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" />
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" />
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost/RAZIClinic.Web/RAZIClinicWeb.svc?xsd=xsd22" namespace="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" />
+  <xs:complexType name="clsChangePasswordBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:clsUserVO" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsChangePasswordBizActionVO" nillable="true" type="tns:clsChangePasswordBizActionVO" />
+  <xs:complexType name="clsUserVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration" minOccurs="0" name="PassConfig" nillable="true" type="q1:clsPassConfigurationVO" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserGeneralDetailVO" nillable="true" type="tns:clsUserGeneralDetailVO" />
+      <xs:element minOccurs="0" name="UserLoginInfo" nillable="true" type="tns:clsUserLoginInfoVO" />
+      <xs:element minOccurs="0" name="UserType" type="xs:long" />
+      <xs:element minOccurs="0" name="UserTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserVO" nillable="true" type="tns:clsUserVO" />
+  <xs:complexType name="clsUserGeneralDetailVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="AddedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AddedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DoctorID" type="xs:long" />
+      <xs:element minOccurs="0" name="EmployeeID" type="xs:long" />
+      <xs:element minOccurs="0" name="EnablePasswordExpiration" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FirstPasswordChanged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDoctor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEmployee" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPatient" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Locked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PasswordExpirationInterval" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientID" type="xs:long" />
+      <xs:element minOccurs="0" name="PatientUnitID" type="xs:long" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Master" minOccurs="0" name="RoleDetails" nillable="true" type="q2:clsUserRoleVO" />
+      <xs:element minOccurs="0" name="SecretQtnValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecreteAns" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecreteQtn" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitDetails" nillable="true" type="tns:ArrayOfclsUserUnitDetailsVO" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="UpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedOn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserGeneralDetailVO" nillable="true" type="tns:clsUserGeneralDetailVO" />
+  <xs:complexType name="ArrayOfclsUserUnitDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsUserUnitDetailsVO" nillable="true" type="tns:clsUserUnitDetailsVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsUserUnitDetailsVO" nillable="true" type="tns:ArrayOfclsUserUnitDetailsVO" />
+  <xs:complexType name="clsUserUnitDetailsVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Inventory" minOccurs="0" name="StoreDetails" nillable="true" type="q3:ArrayOfclsItemStoreVO" />
+      <xs:element minOccurs="0" name="StoreEditMode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnitID" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserUnitDetailsVO" nillable="true" type="tns:clsUserUnitDetailsVO" />
+  <xs:complexType name="clsUserLoginInfoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RetunUnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitId" type="xs:long" />
+      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WindowsUserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUserLoginInfoVO" nillable="true" type="tns:clsUserLoginInfoVO" />
+  <xs:complexType name="NotificationModel">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="NotificationModel" nillable="true" type="tns:NotificationModel" />
+  <xs:simpleType name="InventoryStockOperationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Addition" />
+      <xs:enumeration value="Substration" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryStockOperationType" nillable="true" type="tns:InventoryStockOperationType" />
+  <xs:simpleType name="InventoryTransactionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="OpeningBalance" />
+      <xs:enumeration value="Indent" />
+      <xs:enumeration value="Issue" />
+      <xs:enumeration value="ItemReturn" />
+      <xs:enumeration value="GoodsReceivedNote" />
+      <xs:enumeration value="GRNReturn" />
+      <xs:enumeration value="ItemsSale" />
+      <xs:enumeration value="ItemSaleReturn" />
+      <xs:enumeration value="ExpiryItemReturn" />
+      <xs:enumeration value="ReceiveIssue" />
+      <xs:enumeration value="ReceiveItemReturn" />
+      <xs:enumeration value="ReceivedItemAgainstIssue" />
+      <xs:enumeration value="ReceivedItemAgainstReturn" />
+      <xs:enumeration value="StockAdujustment" />
+      <xs:enumeration value="ScrapSale" />
+      <xs:enumeration value="MaterialConsumption" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryTransactionType" nillable="true" type="tns:InventoryTransactionType" />
+  <xs:complexType name="ArrayOfMasterListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MasterListItem" nillable="true" type="tns:MasterListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMasterListItem" nillable="true" type="tns:ArrayOfMasterListItem" />
+  <xs:complexType name="MasterListItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:NotificationModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" type="xs:long" />
+          <xs:element minOccurs="0" name="PrintDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MasterListItem" nillable="true" type="tns:MasterListItem" />
+  <xs:simpleType name="VisitCurrentStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Started" />
+      <xs:enumeration value="Consulation" />
+      <xs:enumeration value="Billing" />
+      <xs:enumeration value="Closed" />
+      <xs:enumeration value="ReOpen" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="VisitCurrentStatus" nillable="true" type="tns:VisitCurrentStatus" />
+  <xs:simpleType name="InventoryIndentStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="New" />
+      <xs:enumeration value="Cancel" />
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Completed" />
+      <xs:enumeration value="ForceFullyCompleted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryIndentStatus" nillable="true" type="tns:InventoryIndentStatus" />
+  <xs:simpleType name="BillTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Clinical_Pharmacy" />
+      <xs:enumeration value="Clinical" />
+      <xs:enumeration value="Pharmacy" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BillTypes" nillable="true" type="tns:BillTypes" />
+  <xs:complexType name="clsSecretQtnVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsSecretQtnVO" nillable="true" type="tns:clsSecretQtnVO" />
+  <xs:simpleType name="InventoryGRNType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Direct" />
+      <xs:enumeration value="AgainstPO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryGRNType" nillable="true" type="tns:InventoryGRNType" />
+  <xs:simpleType name="MaterPayModeList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Cash">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cheque">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DD">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CreditCard">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DebitCard">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StaffFree">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CompanyAdvance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PatientAdvance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Credit">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MaterPayModeList" nillable="true" type="tns:MaterPayModeList" />
+  <xs:simpleType name="MasterTableNameList">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="T_EmailTemplate" />
+      <xs:enumeration value="T_SMSTemplate" />
+      <xs:enumeration value="AppointmentTypeMaster" />
+      <xs:enumeration value="AreaMaster" />
+      <xs:enumeration value="M_BloodGroupMaster" />
+      <xs:enumeration value="M_BankMaster" />
+      <xs:enumeration value="M_CabinMaster" />
+      <xs:enumeration value="M_CampMaster" />
+      <xs:enumeration value="CityMaster" />
+      <xs:enumeration value="M_CompanyAssociateMaster" />
+      <xs:enumeration value="M_CompanyMaster" />
+      <xs:enumeration value="CompanyTypeMaster" />
+      <xs:enumeration value="CountryMaster" />
+      <xs:enumeration value="M_DepartmentMaster" />
+      <xs:enumeration value="M_DepartmentUnitView" />
+      <xs:enumeration value="DependentTypeMaster" />
+      <xs:enumeration value="M_DesignationMaster" />
+      <xs:enumeration value="DoctorMaster" />
+      <xs:enumeration value="M_DoctorDepartmentView" />
+      <xs:enumeration value="M_GenderMaster" />
+      <xs:enumeration value="GroupMaster" />
+      <xs:enumeration value="IncomeCategoryMaster" />
+      <xs:enumeration value="LanguageMaster" />
+      <xs:enumeration value="M_LoyaltyProgramMaster" />
+      <xs:enumeration value="M_MaritalStatusMaster" />
+      <xs:enumeration value="M_DispensingType" />
+      <xs:enumeration value="M_DoctorTypeMaster" />
+      <xs:enumeration value="M_Molecule" />
+      <xs:enumeration value="M_ItemGroup" />
+      <xs:enumeration value="M_ItemCategory" />
+      <xs:enumeration value="M_StoreageType" />
+      <xs:enumeration value="M_Supplier" />
+      <xs:enumeration value="M_PreganancyClass" />
+      <xs:enumeration value="M_AppointmentReasonMaster" />
+      <xs:enumeration value="M_TherapeuticClass" />
+      <xs:enumeration value="M_TariffMaster" />
+      <xs:enumeration value="M_ItemCompany" />
+      <xs:enumeration value="M_Route" />
+      <xs:enumeration value="M_UnitOfMeasure" />
+      <xs:enumeration value="M_TaxMaster" />
+      <xs:enumeration value="NationalityMaster" />
+      <xs:enumeration value="M_OccupationMaster" />
+      <xs:enumeration value="RaceMaster" />
+      <xs:enumeration value="M_ReligionMaster" />
+      <xs:enumeration value="ServiceMaster" />
+      <xs:enumeration value="StateMaster" />
+      <xs:enumeration value="M_UnitMaster" />
+      <xs:enumeration value="M_UnitDepartmentDetails" />
+      <xs:enumeration value="M_VisitTypeMaster" />
+      <xs:enumeration value="M_PatientCategoryMaster" />
+      <xs:enumeration value="M_PatientSourceMaster" />
+      <xs:enumeration value="M_PathAgencyMaster" />
+      <xs:enumeration value="M_AdvanceAgainst" />
+      <xs:enumeration value="M_CodeType" />
+      <xs:enumeration value="M_Specialization" />
+      <xs:enumeration value="M_SubSpecialization" />
+      <xs:enumeration value="M_TaxNature" />
+      <xs:enumeration value="M_TermsofPayment" />
+      <xs:enumeration value="M_ModeOfPayment" />
+      <xs:enumeration value="M_Currency" />
+      <xs:enumeration value="M_Store" />
+      <xs:enumeration value="M_CompanyTypeMaster" />
+      <xs:enumeration value="M_TermAndCondition" />
+      <xs:enumeration value="M_Delivery" />
+      <xs:enumeration value="M_Schedule" />
+      <xs:enumeration value="M_PrimarySymptoms" />
+      <xs:enumeration value="T_UserRoleMaster" />
+      <xs:enumeration value="M_ItemMaster" />
+      <xs:enumeration value="Secret_Qtn" />
+      <xs:enumeration value="M_EMRTemplateConfigurationMaster" />
+      <xs:enumeration value="M_ServiceMaster" />
+      <xs:enumeration value="M_RelationMaster" />
+      <xs:enumeration value="Sys_MISType" />
+      <xs:enumeration value="M_EMR_PCR_SectionMaster" />
+      <xs:enumeration value="M_EMR_PCR_FieldMaster" />
+      <xs:enumeration value="M_EMR_REFERRAL_SectionMaster" />
+      <xs:enumeration value="M_EMR_REFERRAL_FieldMaster" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MasterTableNameList" nillable="true" type="tns:MasterTableNameList" />
+  <xs:simpleType name="PatientSourceTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Loyalty" />
+      <xs:enumeration value="Camp" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PatientSourceTypeType" nillable="true" type="tns:PatientSourceTypeType" />
+  <xs:simpleType name="StaffType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Doctor">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Staff">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StaffType" nillable="true" type="tns:StaffType" />
+  <xs:simpleType name="ReportFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pdf">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Excel">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportFormat" nillable="true" type="tns:ReportFormat" />
+  <xs:simpleType name="ScheduleOn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Daily">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Weekly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Monthly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ScheduleOn" nillable="true" type="tns:ScheduleOn" />
+  <xs:simpleType name="InventoryTaxApplicaleOn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="PurchaseRate" />
+      <xs:enumeration value="MRP" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryTaxApplicaleOn" nillable="true" type="tns:InventoryTaxApplicaleOn" />
+  <xs:simpleType name="InventoryGoodReturnType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Direct" />
+      <xs:enumeration value="AgainstGRN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InventoryGoodReturnType" nillable="true" type="tns:InventoryGoodReturnType" />
+  <xs:complexType name="clsGetLicenseDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DateToStatic" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="K1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="K2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" minOccurs="0" name="UnitDetails" nillable="true" type="q4:clsUnitMasterVO" />
+      <xs:element minOccurs="0" name="sDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsGetLicenseDetailsBizActionVO" nillable="true" type="tns:clsGetLicenseDetailsBizActionVO" />
+  <xs:complexType name="clsAddLicenseToBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="K1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="K2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" minOccurs="0" name="UnitDetails" nillable="true" type="q5:clsUnitMasterVO" />
+      <xs:element minOccurs="0" name="sDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsAddLicenseToBizActionVO" nillable="true" type="tns:clsAddLicenseToBizActionVO" />
+  <xs:complexType name="clsUpdateLicenseToBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="SuccessStatus" type="xs:int" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PalashDynamics.ValueObjects.Administration.UnitMaster" minOccurs="0" name="UnitDetails" nillable="true" type="q6:clsUnitMasterVO" />
+      <xs:element minOccurs="0" name="sDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsUpdateLicenseToBizActionVO" nillable="true" type="tns:clsUpdateLicenseToBizActionVO" />
+  <xs:complexType name="clsdbDetailsBizActionVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="clsdbDetailsBizActionVO" nillable="true" type="tns:clsdbDetailsBizActionVO" />
+  <xs:complexType name="ArrayOfclsSecretQtnVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsSecretQtnVO" nillable="true" type="tns:clsSecretQtnVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsSecretQtnVO" nillable="true" type="tns:ArrayOfclsSecretQtnVO" />
+  <xs:complexType name="ArrayOfclsUserVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="clsUserVO" nillable="true" type="tns:clsUserVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfclsUserVO" nillable="true" type="tns:ArrayOfclsUserVO" />
+</xs:schema>

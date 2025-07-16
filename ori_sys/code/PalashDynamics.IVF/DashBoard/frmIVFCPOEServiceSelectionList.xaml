@@ -1,0 +1,103 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmIVFCPOEServiceSelectionList"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+                      Height="500" Width="600">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="2">
+
+        <controlsToolkit:DockPanel x:Name="Main"  >
+            <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" >
+                <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                    <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                            <ToggleButton  x:Name="cmdAdd"  Grid.Row="4" Content="{Binding btnAdd, Source={StaticResource locResource}}"  Background="#000000" Margin="5,0,10,0" HorizontalAlignment="Stretch"  Visibility="Visible" Style="{StaticResource ToggleButtonStyle}" Click="OKButton_Click" TabIndex="7"  Width="auto"/>
+                            <ToggleButton  x:Name="cmdClose"  Grid.Row="4" Content="{Binding btnCancel, Source={StaticResource locResource}}" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch"  Visibility="Visible"  Style="{StaticResource ToggleButtonStyle}" Click="CancelButton_Click" TabIndex="8" Width="auto"/>
+                        </StackPanel>
+                    </StackPanel>
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+
+            <controlsToolkit:DockPanel x:Name="serviceOrderList1" >
+                <controlsToolkit:DockPanel x:Name="serviceList">
+
+
+                    <controlsToolkit:DockPanel x:Name="DockTop" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                        <Grid x:Name="LayoutRoot2" Background="White" Margin="4" HorizontalAlignment="Stretch"  >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock   HorizontalAlignment="Right" x:Name="lblSpecilization"  VerticalAlignment="Center" Text="Specialization"  Grid.Row="0" Grid.Column="0" Margin="4"  />
+                            <inputcombo:AutoCompleteComboBox x:Name="cmbSpecilization"  Grid.Row="0" SelectedValuePath="ID" SelectedItem="{Binding MasterListItem, Mode=TwoWay}"   Grid.Column="1" Margin="4" TabIndex="1" SelectionChanged="cmbSpecilization_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+
+
+                            <TextBlock   HorizontalAlignment="Right" x:Name="lblSubSpecilization"  VerticalAlignment="Center" Text="Sub Specialization"  Grid.Row="0" Grid.Column="2" Margin="4"  />
+                            <inputcombo:AutoCompleteComboBox x:Name="cmbSubSpecilization"  Grid.Row="0" SelectedValuePath="ID" SelectedItem="{Binding MasterListItem, Mode=TwoWay}"   Grid.Column="3" Margin="4" TabIndex="1"></inputcombo:AutoCompleteComboBox>
+
+
+                            <TextBlock HorizontalAlignment="Right" x:Name="lblServiceName" VerticalAlignment="Center"  Margin="4" Text="{Binding lblServiceName, Source={StaticResource locResource}}"  Grid.Row="1" Grid.Column="2"/>
+                            <TextBox x:Name="txtServiceName" Grid.Row="1" Grid.Column="3" Margin="4" Text="{Binding Description, Mode=TwoWay}" HorizontalAlignment="Stretch"  MaxLength="50" Height="25" TabIndex="1" KeyDown="txtServiceName_KeyDown" ></TextBox>
+
+                            <TextBlock HorizontalAlignment="Right" x:Name="lblServiceCode" VerticalAlignment="Center"  Margin="4" Text="{Binding lblServiceCode, Source={StaticResource locResource}}"  Grid.Row="1" Grid.Column="0"/>
+                            <TextBox x:Name="txtServiceCode"  Grid.Row="1" Grid.Column="1"  Margin="4" Text="{Binding ServiceCode, Mode=TwoWay}" HorizontalAlignment="Stretch"  MaxLength="50" Height="25" TabIndex="2" KeyDown="txtServiceName_KeyDown" ></TextBox>
+
+                            <Button x:Name="cmdSearch" Click="cmdSearch_Click" Margin="4" ToolTipService.ToolTip="{Binding ttpSearchService, Source={StaticResource locResource}}" Grid.Row="1" Grid.Column="4" TabIndex="3">
+                                <Image Source="/PalashDynamics;component/Icons/Search_b.JPG" Margin="4,0,4,4" Width="20" ></Image>
+                            </Button>
+                        </Grid>
+                    </controlsToolkit:DockPanel>
+
+
+                    <StackPanel controlsToolkit:DockPanel.Dock="Top">
+                        <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                            <ContentControl VerticalAlignment="Center" FontSize="12" Content="{Binding lblListOfServices, Source={StaticResource locResource}}" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                        </Border>
+                    </StackPanel>
+                    <data:DataPager x:Name="DataPagerDoc" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="True"   />
+
+                    <data:DataGrid Grid.Row="0" x:Name="dgServiceList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="False" Margin="0,0,0,0" HorizontalAlignment="Stretch" TabIndex="2" Width="Auto">
+                        <data:DataGrid.Columns>
+                            <data:DataGridTemplateColumn>
+                                <data:DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox x:Name="chkMultipleServices" IsChecked="{Binding SelectService, Mode=TwoWay}" Click="chkMultipleServices_Click"></CheckBox>
+                                    </DataTemplate>
+                                </data:DataGridTemplateColumn.CellTemplate>
+                            </data:DataGridTemplateColumn>
+                            <data:DataGridTextColumn IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblServiceCode, Source={StaticResource locResource}}" Width="Auto"  Binding="{Binding ServiceCode, Mode=TwoWay}" />
+                            <data:DataGridTextColumn IsReadOnly="True" Localization:DataGridColumnHelper.HeaderBinding="{Binding lblServiceName, Source={StaticResource locResource}}" Width="Auto"  Binding="{Binding ServiceName, Mode=TwoWay}" />
+                        </data:DataGrid.Columns>
+                    </data:DataGrid>
+                </controlsToolkit:DockPanel>
+
+            </controlsToolkit:DockPanel>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

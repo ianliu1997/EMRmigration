@@ -1,0 +1,91 @@
+﻿<UserControl  x:Class="PalashDynamics.Administration.DoctorRosterMaster"
+     xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+      xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+      xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+      xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     Height="Auto" Width="Auto" Loaded="DoctorRoster_Loaded">
+    
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <controlsToolkit:DockPanel x:Name="MainDock" LastChildFill="True">
+            <!--<controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+                    <ContentControl VerticalAlignment="Center" FontSize="12" Content="Doctor Roster" Margin="2,2,2,2" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                </Border>
+            </controlsToolkit:DockPanel>-->
+
+            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom">
+                <StackPanel x:Name="FooterBackPanel" Orientation="Horizontal"    Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel x:Name="SaveCommandPanelBackPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                        <ToggleButton x:Name="CmdSave"  Content="Save"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"  />
+
+                        <ToggleButton x:Name="CmdClose"  Content="Close"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible"   />
+                    </StackPanel>
+                </StackPanel>
+            </controlsToolkit:DockPanel>
+
+            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4" Background="Transparent" >
+
+                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                            <Grp:GroupBox Header="SearchCriteria" Margin="4">
+                                <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock Text="Date" Grid.Column="0" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                    <controls:DatePicker x:Name="dpgrDt" Grid.Row="0"  Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" ></controls:DatePicker>
+                                <TextBlock Text="Clinic" Grid.Column="2" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                  <inputcombo:AutoCompleteComboBox HorizontalAlignment="Stretch" x:Name="cmbClinic" SelectedValuePath="ID" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" Grid.Row="0" Grid.Column="3"  Margin="4"   />
+                                <TextBlock Text="Department" Grid.Column="4" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" ></TextBlock>
+                                <inputcombo:AutoCompleteComboBox x:Name="cmbDeptName" VerticalAlignment="Center"  Margin="4" Grid.Column="5"  Grid.Row="0" TabIndex="0" HorizontalAlignment="Stretch"></inputcombo:AutoCompleteComboBox>
+                                <ToggleButton x:Name="CmdDisplay"  Content="Search"   Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Grid.Column="6" VerticalAlignment="Center"/>
+
+                            </Grid>
+                            </Grp:GroupBox>
+                        </controlsToolkit:DockPanel>
+                        <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Bottom">
+                        <data:DataGrid x:Name="dgRoster" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" IsReadOnly="True" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <data:DataGrid.Columns>
+                                    <data:DataGridTextColumn Binding="{Binding PA}" Header="P/A" ></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Code}" Header="Code"></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Name}" Header="Doctor Name"></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Schedule}" Header="1st Schedule" HeaderStyle="{StaticResource DataGridHeaderStyle}"></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Schedule}" Header="2nd Schedule" HeaderStyle="{StaticResource DataGridHeaderStyle}"></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Name}" Header="OnCall"></data:DataGridTextColumn>
+                                    <data:DataGridTextColumn Binding="{Binding Name}" Header="Sunday Call"></data:DataGridTextColumn>
+                                </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </controlsToolkit:DockPanel>
+                    </controlsToolkit:DockPanel>
+
+                </Border>
+       
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>

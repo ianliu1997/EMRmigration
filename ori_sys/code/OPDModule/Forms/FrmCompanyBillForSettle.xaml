@@ -1,0 +1,169 @@
+﻿<controls:ChildWindow x:Class="OPDModule.Forms.FrmCompanyBillForSettle"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+       xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+       xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+       xmlns:dtConveter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+       Width="1000" Height="500"
+                      
+       Title="Company Payment Details" Loaded="ChildWindow_Loaded">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <dtConveter:DateTimeToAgePart x:Key="DateTimeToAgePart"></dtConveter:DateTimeToAgePart>
+            <dtConveter:DateTimeConverter x:Key="DateConverter">
+            </dtConveter:DateTimeConverter>
+            <dtConveter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <dtConveter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2"  Background="White">
+        <Grid x:Name="grdBackPanel">
+            <controlsToolkit:DockPanel   Name="docMain" LastChildFill="True" controlsToolkit:DockPanel.Dock= "Top" >
+                <controlsToolkit:DockPanel x:Name="docFooter" controlsToolkit:DockPanel.Dock="Bottom" >
+                    <controlsToolkit:DockPanel Margin="2" controlsToolkit:DockPanel.Dock="Top">
+                        <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                            <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                <TextBlock Margin="4" Text="Total Balance Amount" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                <TextBox Margin="4" x:Name="txTAmount" TextAlignment="Right" HorizontalAlignment="Stretch" Width="170" VerticalAlignment="Center" IsReadOnly="True"></TextBox>
+                                <TextBlock Margin="4" Text="Received Amount"  HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBlock>
+                                <TextBox Margin="4" x:Name="txtReceivedAmount" TextAlignment="Right" HorizontalAlignment="Stretch" Width="170" VerticalAlignment="Center" TextChanged="txtReceivedAmount_TextChanged" KeyDown="txtReceivedAmount_KeyDown"></TextBox>
+                                <TextBlock Margin="4" Text="TDS" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBlock>
+                                <TextBox Margin="4" x:Name="txtTDS" Visibility="Collapsed" HorizontalAlignment="Stretch" Width="170" VerticalAlignment="Center" TextChanged="txtTDS_TextChanged" KeyDown="txtTDS_KeyDown"></TextBox>
+                                <ToggleButton x:Name="btnSave" Click="btnSave_Click" Content="Save" Height="25" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   TabIndex="9"></ToggleButton>
+                                <!--<ToggleButton x:Name="btnOk" Click="btnOk_Click" Content="Ok" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   TabIndex="9"></ToggleButton>-->
+                                <ToggleButton x:Name="btnCancel" Click="CancelButton_Click" Height="25" Content="Cancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   TabIndex="9"></ToggleButton>
+                            </StackPanel>
+                        </StackPanel>
+                    </controlsToolkit:DockPanel>
+                </controlsToolkit:DockPanel>
+
+                <controlsToolkit:DockPanel x:Name="docTop" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                    <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4" Background="Transparent">
+                        <controlsToolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                            <controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock= "Top">
+                                <Grid x:Name="LayoutRoot1"  Margin="0" Background="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+
+
+                                    <TextBlock x:Name="tbFromDate" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Date" Margin="4" FontSize="13" Visibility="Collapsed"></TextBlock>
+                                    <TextBlock x:Name="tbFromDate1" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="From Date" Margin="4" FontSize="13" Visibility="Collapsed"></TextBlock>
+
+                                    <TextBlock  x:Name="tbToDate" Visibility="Collapsed" Grid.Row="0" Grid.Column="2" Text="To Date" VerticalAlignment="Center" Margin="4" FontSize="13"></TextBlock>
+                                    <TextBlock x:Name="tbToDate1" Visibility="Collapsed" Grid.Row="0" Grid.Column="3" Text="To Date" VerticalAlignment="Center" Margin="4" FontSize="13"></TextBlock>
+
+                                    <TextBlock  x:Name="tbCompanyName" Grid.Row="1" Grid.Column="0" Text="Company Name:" VerticalAlignment="Center" Margin="4" FontSize="13"></TextBlock>
+                                    <TextBlock x:Name="tbCompanyName1" Grid.Row="1" Grid.Column="1" Text="Company Name" VerticalAlignment="Center" Margin="4" FontSize="13"></TextBlock>
+
+                                    <TextBlock   Grid.Row="2" Grid.Column="0" Text="Invoice No:" VerticalAlignment="Center" Margin="4" FontSize="13"></TextBlock>
+                                    <TextBlock x:Name="txtInvoice" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Margin="4" FontSize="13"></TextBlock>
+
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                            <controlsToolkit:DockPanel   Name="doc4"  Margin="2">
+                                <CheckBox Margin="4" controlsToolkit:DockPanel.Dock="Top" Content="Select All" x:Name="chkSelectAll" Click="chkSelectAll_Click" ></CheckBox>
+                                <data:DataGrid  x:Name="dgBillList" Margin="0,0,0,1" ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto">
+                                    <data:DataGrid.Columns >
+                                        <data:DataGridTemplateColumn >
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox Margin="4" IsChecked="{Binding Selected,Mode=TwoWay}" IsEnabled="{Binding IsEnable,Mode=TwoWay}" Click="CheckBox_Click"></CheckBox>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+
+                                        </data:DataGridTemplateColumn>
+
+
+
+                                        <data:DataGridTextColumn Binding="{Binding Date,Mode=OneWay}"  Header="Date" IsReadOnly="True" />
+                                        <data:DataGridTextColumn Binding="{Binding BillNo, Mode=OneWay}" Header="Bill No." IsReadOnly="True"/>
+                                        <data:DataGridTextColumn Binding="{Binding MRNo, Mode=OneWay}" Header="MR No." IsReadOnly="True"/>
+                                        <data:DataGridTemplateColumn IsReadOnly="True" Header="Name" Width="150" SortMemberPath="FirstName">
+                                            <data:DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding FirstName}" Margin="4,0,4,0"></TextBlock>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding MiddleName}" Margin="0,0,4,0"></TextBlock>
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+                                        <data:DataGridTextColumn Binding="{Binding TotalAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Amount" IsReadOnly="True">
+                                            <data:DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                </Style>
+                                            </data:DataGridTextColumn.ElementStyle>
+                                        </data:DataGridTextColumn>
+
+                                        <data:DataGridTextColumn Binding="{Binding TotalConcessionAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Concession" IsReadOnly="True">
+                                            <data:DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                </Style>
+                                            </data:DataGridTextColumn.ElementStyle>
+                                        </data:DataGridTextColumn>
+                                        <data:DataGridTextColumn Binding="{Binding NetBillAmount,StringFormat=0.00,Mode=OneWay}"  Header="Net Amount" IsReadOnly="True" >
+                                            <data:DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                </Style>
+                                            </data:DataGridTextColumn.ElementStyle>
+                                        </data:DataGridTextColumn>
+
+                                        <data:DataGridTextColumn Binding="{Binding BalanceAmountSelf,StringFormat=0.00,Mode=OneWay}"  Header="Balance Amount" IsReadOnly="True" >
+                                            <data:DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Right"/>
+                                                </Style>
+                                            </data:DataGridTextColumn.ElementStyle>
+                                        </data:DataGridTextColumn>
+                                        <data:DataGridTemplateColumn Header="Bill Settlement Status" IsReadOnly="True" Visibility="Collapsed">
+                                            <data:DataGridTemplateColumn.CellTemplate >
+                                                <DataTemplate >
+                                                    <!--<HyperlinkButton VerticalAlignment="Center" Padding="5,0,5,0" Margin="4"  IsTabStop="False" Click="btnSettle_Click" x:Name="btnSettle" HorizontalAlignment="Center" Visibility="{Binding BalanceAmountSelf, Converter={StaticResource VisiblilityConverter},ConverterParameter='Amt'}"   Content="Settle Bill" IsEnabled="{Binding IsEnable,Converter={StaticResource NegateValueConverter}}">-->
+                                                    <HyperlinkButton VerticalAlignment="Center" Padding="5,0,5,0" Margin="4"  IsTabStop="False" Click="btnSettle_Click" x:Name="btnSettle" HorizontalAlignment="Center" Visibility="{Binding BalanceAmountSelf, Converter={StaticResource VisiblilityConverter},ConverterParameter='Amt'}"  Content="Settle Bill">
+
+                                                    </HyperlinkButton>
+                                                </DataTemplate>
+                                            </data:DataGridTemplateColumn.CellTemplate>
+                                        </data:DataGridTemplateColumn>
+
+
+
+
+
+
+
+
+
+
+
+                                    </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </controlsToolkit:DockPanel>
+                        </controlsToolkit:DockPanel>
+                    </Border>
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+        </Grid>
+    </Grid>
+</controls:ChildWindow>

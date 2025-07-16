@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B52B56A5-711C-4869-8579-3E2BD83589D8}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.Pharmacy</RootNamespace>
+    <AssemblyName>PalashDynamics.Pharmacy</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.Pharmacy.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.Pharmacy.App</SilverlightAppEntry>
+    <TestPageFileName>TestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/PalashDynamics.Pharmacy/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blacklight.Silverlight.Controls">
+      <HintPath>..\Library\Blacklight.Silverlight.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Groupbox">
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\..\..\Old\YourClinic\PalashDynamics.Pharmacy\Bin\Debug\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <HintPath>..\..\..\Old\YourClinic\PalashDynamics.Pharmacy\Bin\Debug\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\..\..\Old\YourClinic\PalashDynamics.Pharmacy\Bin\Debug\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\OPDModule\DonorCoupleLinkedList.xaml.cs">
+      <Link>DonorCoupleLinkedList.xaml.cs</Link>
+      <DependentUpon>DonorCoupleLinkedList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\Conversion.xaml.cs">
+      <Link>Conversion.xaml.cs</Link>
+      <DependentUpon>Conversion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\OPDModule\Forms\PatientSearch.xaml.cs">
+      <Link>Inventory\PatientSearch.xaml.cs</Link>
+      <DependentUpon>PatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Administration\ItemListWithCategory.xaml.cs">
+      <Link>ItemListWithCategory.xaml.cs</Link>
+      <DependentUpon>ItemListWithCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.Radiology\ItemSearch\AssignBatch.xaml.cs">
+      <Link>ItemSearch\AssignBatch.xaml.cs</Link>
+      <DependentUpon>AssignBatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplyLocationToItem.xaml.cs">
+      <DependentUpon>ApplyLocationToItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovePurchaseOrder.xaml.cs">
+      <DependentUpon>ApprovePurchaseOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovePurchaseOrderAdminAccess.xaml.cs">
+      <DependentUpon>ApprovePurchaseOrderAdminAccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClosePOManually.xaml.cs">
+      <DependentUpon>ClosePOManually.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeForm.xaml.cs">
+      <DependentUpon>BarcodeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Barcode\Barcode.cs" />
+    <Compile Include="Barcode\Code128.cs" />
+    <Compile Include="Barcode\Code39.cs" />
+    <Compile Include="CalculateBillAmount.xaml.cs">
+      <DependentUpon>CalculateBillAmount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompoundItem.xaml.cs">
+      <DependentUpon>CompoundItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagement.xaml.cs">
+      <DependentUpon>ContractManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContraIndicationSideEffects.xaml.cs">
+      <DependentUpon>ContraIndicationSideEffects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyMaster.xaml.cs">
+      <DependentUpon>CurrencyMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridSelectionAdapter.cs" />
+    <Compile Include="Enquiry Search\EnquirySearch.xaml.cs">
+      <DependentUpon>EnquirySearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EnquiryForQuotation.xaml.cs">
+      <DependentUpon>EnquiryForQuotation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpiredItemReturn.xaml.cs">
+      <DependentUpon>ExpiredItemReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpiredItemReturn1.xaml.cs">
+      <DependentUpon>ExpiredItemReturn1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpiredItemReturn1Approval.xaml.cs">
+      <DependentUpon>ExpiredItemReturn1Approval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpiredItemSearch.xaml.cs">
+      <DependentUpon>ExpiredItemSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ForcefullyClosedIndent.xaml.cs">
+      <DependentUpon>ForcefullyClosedIndent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ForcefullyClosedPR.xaml.cs">
+      <DependentUpon>ForcefullyClosedPR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmApproveWO.xaml.cs">
+      <DependentUpon>frmApproveWO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssignBarcode.xaml.cs">
+      <DependentUpon>frmAssignBarcode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmBlockItemSearch.xaml.cs">
+      <DependentUpon>frmBlockItemSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmContractsForItems.xaml.cs">
+      <DependentUpon>frmContractsForItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDirectIndent.xaml.cs">
+      <DependentUpon>FrmDirectIndent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmDrugSelectionList.xaml.cs">
+      <DependentUpon>frmDrugSelectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewBarcodeCode128Form.xaml.cs">
+      <DependentUpon>frmNewBarcodeCode128Form.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewWOGRN.xaml.cs">
+      <DependentUpon>frmNewWOGRN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhysicalItemStock.xaml.cs">
+      <DependentUpon>frmPhysicalItemStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockAdjumentCancellationWindow.xaml.cs">
+      <DependentUpon>frmStockAdjumentCancellationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmStoreLocationLock.xaml.cs">
+      <DependentUpon>frmStoreLocationLock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuspendStockSearchItems.xaml.cs">
+      <DependentUpon>frmSuspendStockSearchItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmWorkorder.xaml.cs">
+      <DependentUpon>frmWorkorder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GRN.xaml.cs">
+      <DependentUpon>GRN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GRNItemToQS.xaml.cs">
+      <DependentUpon>GRNItemToQS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GRNReturn.xaml.cs">
+      <DependentUpon>GRNReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GRNSearchForm.xaml.cs">
+      <DependentUpon>GRNSearchForm.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GRNSearchWindowForQS.xaml.cs">
+      <DependentUpon>GRNSearchWindowForQS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GRNSearch\GRNSearchForCA.xaml.cs">
+      <DependentUpon>GRNSearchForCA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IndentSearchDuplicate.xaml.cs">
+      <DependentUpon>IndentSearchDuplicate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IndnetSearch1.xaml.cs">
+      <DependentUpon>IndnetSearch1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\ExpiredItems.xaml.cs">
+      <DependentUpon>ExpiredItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\HomeInventoryViewModel.cs" />
+    <Compile Include="IndentSearch.xaml.cs">
+      <DependentUpon>IndentSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\InventoryDashBoard.xaml.cs">
+      <DependentUpon>InventoryDashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\InventoryDashBoard_New.xaml.cs">
+      <DependentUpon>InventoryDashBoard_New.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\PendingIndents.xaml.cs">
+      <DependentUpon>PendingIndents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\PendingPO.xaml.cs">
+      <DependentUpon>PendingPO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\PendingPR.xaml.cs">
+      <DependentUpon>PendingPR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory DashBoard\ReorderLevel.xaml.cs">
+      <DependentUpon>ReorderLevel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\clsConversions.cs" />
+    <Compile Include="Inventory\frmApproveNewGRN.xaml.cs">
+      <DependentUpon>frmApproveNewGRN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmApprovePO.xaml.cs">
+      <DependentUpon>frmApprovePO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmMultiBatchChildWinForGRN.xaml.cs">
+      <DependentUpon>frmMultiBatchChildWinForGRN.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inventory\frmNewGRN.xaml.cs">
+      <DependentUpon>frmNewGRN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmOpeningBalance.xaml.cs">
+      <DependentUpon>frmOpeningBalance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\frmPurchaseOrder.xaml.cs">
+      <DependentUpon>frmPurchaseOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\FrmStoreIndent.xaml.cs">
+      <DependentUpon>FrmStoreIndent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\GRNReturnQSSearchWindow.xaml.cs">
+      <DependentUpon>GRNReturnQSSearchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\GRNReturnThroughQS.xaml.cs">
+      <DependentUpon>GRNReturnThroughQS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\ItemSearch.xaml.cs">
+      <DependentUpon>ItemSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\ItemSearchRowForGRN.xaml.cs">
+      <DependentUpon>ItemSearchRowForGRN.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inventory\ItemTaxDetails.xaml.cs">
+      <DependentUpon>ItemTaxDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\QSCancellationWindow.xaml.cs">
+      <DependentUpon>QSCancellationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IssueToClinic.xaml.cs">
+      <DependentUpon>IssueToClinic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IssueToQSDOSE.xaml.cs">
+      <DependentUpon>IssueToQSDOSE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemClinic.xaml.cs">
+      <DependentUpon>ItemClinic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemConversions.xaml.cs">
+      <DependentUpon>ItemConversions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemMaster.xaml.cs">
+      <DependentUpon>ItemMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSalesReturn.xaml.cs">
+      <DependentUpon>ItemSalesReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearchWO.xaml.cs">
+      <DependentUpon>ItemSearchWO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemList.xaml.cs">
+      <DependentUpon>ItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemListNew.xaml.cs">
+      <DependentUpon>ItemListNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemListQS.xaml.cs">
+      <DependentUpon>ItemListQS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemListWO.xaml.cs">
+      <DependentUpon>ItemListWO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSearch\ItemSearchViewModel.cs" />
+    <Compile Include="ItemSearch\PackageItemList.xaml.cs">
+      <DependentUpon>PackageItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsEnquiry.xaml.cs">
+      <DependentUpon>ItemsEnquiry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemStock.xaml.cs">
+      <DependentUpon>ItemStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemStore.xaml.cs">
+      <DependentUpon>ItemStore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemStoreLocationDetails.xaml.cs">
+      <DependentUpon>ItemStoreLocationDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemStore_new.xaml.cs">
+      <DependentUpon>ItemStore_new.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSupplier.xaml.cs">
+      <DependentUpon>ItemSupplier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemTax.xaml.cs">
+      <DependentUpon>ItemTax.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialConsumption.xaml.cs">
+      <DependentUpon>MaterialConsumption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MRPAdjustment.xaml.cs">
+      <DependentUpon>MRPAdjustment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewItemBatchBarCodeForm.xaml.cs">
+      <DependentUpon>NewItemBatchBarCodeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OpeningBalance.xaml.cs">
+      <DependentUpon>OpeningBalance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSearch_Child.xaml.cs">
+      <DependentUpon>PatientSearch_Child.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDetails.xaml.cs">
+      <DependentUpon>PaymentDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POCancellationWindow.xaml.cs">
+      <DependentUpon>POCancellationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POCloseDurationWindow.xaml.cs">
+      <DependentUpon>POCloseDurationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POSearchWindow.xaml.cs">
+      <DependentUpon>POSearchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintGRNItemBarCode.xaml.cs">
+      <DependentUpon>PrintGRNItemBarCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintItemBarCode.xaml.cs">
+      <DependentUpon>PrintItemBarCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintWOGRNItemBarCode.xaml.cs">
+      <DependentUpon>PrintWOGRNItemBarCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseInfo.xaml.cs">
+      <DependentUpon>PurchaseInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder.xaml.cs">
+      <DependentUpon>PurchaseOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderDuplicate.xaml.cs">
+      <DependentUpon>PurchaseOrderDuplicate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder_SearchWindow.xaml.cs">
+      <DependentUpon>PurchaseOrder_SearchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseRequisition.xaml.cs">
+      <DependentUpon>PurchaseRequisition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationAttachment.xaml.cs">
+      <DependentUpon>QuotationAttachment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationDetails.xaml.cs">
+      <DependentUpon>QuotationDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationEnquieryDetail.xaml.cs">
+      <DependentUpon>QuotationEnquieryDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationSearch\QuotaionSearch.xaml.cs">
+      <DependentUpon>QuotaionSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationSearch\QuotationSearch.cs" />
+    <Compile Include="RateContract.xaml.cs">
+      <DependentUpon>RateContract.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedItemAgainstDOSE.xaml.cs">
+      <DependentUpon>ReceivedItemAgainstDOSE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedItemAgainstGRNToQS.xaml.cs">
+      <DependentUpon>ReceivedItemAgainstGRNToQS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedItemAgainstIssue.xaml.cs">
+      <DependentUpon>ReceivedItemAgainstIssue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedItemAgainstReturn.xaml.cs">
+      <DependentUpon>ReceivedItemAgainstReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnFromClinic.xaml.cs">
+      <DependentUpon>ReturnFromClinic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnItem.xaml.cs">
+      <DependentUpon>ReturnItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SalesItemSearch.xaml.cs">
+      <DependentUpon>SalesItemSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScrapSale.xaml.cs">
+      <DependentUpon>ScrapSale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScrapSaleDosApproval.xaml.cs">
+      <DependentUpon>ScrapSaleDosApproval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchIssue.xaml.cs">
+      <DependentUpon>SearchIssue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockAdjustment.xaml.cs">
+      <DependentUpon>StockAdjustment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StoreIndent.xaml.cs">
+      <DependentUpon>StoreIndent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StoreMaster.xaml.cs">
+      <DependentUpon>StoreMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierIndentSearch.xaml.cs">
+      <DependentUpon>SupplierIndentSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierMaster.xaml.cs">
+      <DependentUpon>SupplierMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TermsAndCondition.xaml.cs">
+      <DependentUpon>TermsAndCondition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="WOBarcodeForm.xaml.cs">
+      <DependentUpon>WOBarcodeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrder_SearchWindow.xaml.cs">
+      <DependentUpon>WorkOrder_SearchWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\OPDModule\DonorCoupleLinkedList.xaml">
+      <Link>DonorCoupleLinkedList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\Conversion.xaml">
+      <Link>Conversion.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\OPDModule\Forms\PatientSearch.xaml">
+      <Link>Inventory\PatientSearch.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Administration\ItemListWithCategory.xaml">
+      <Link>ItemListWithCategory.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.Radiology\ItemSearch\AssignBatch.xaml">
+      <Link>ItemSearch\AssignBatch.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ApplyLocationToItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ApprovePurchaseOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ApprovePurchaseOrderAdminAccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClosePOManually.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BarcodeForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CalculateBillAmount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompoundItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ContractManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContraIndicationSideEffects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CurrencyMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Enquiry Search\EnquirySearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnquiryForQuotation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpiredItemReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpiredItemReturn1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpiredItemReturn1Approval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpiredItemSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ForcefullyClosedIndent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ForcefullyClosedPR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmApproveWO.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmAssignBarcode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmBlockItemSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmContractsForItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmDirectIndent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmDrugSelectionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmNewBarcodeCode128Form.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmNewWOGRN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPhysicalItemStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmStockAdjumentCancellationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmStoreLocationLock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmSuspendStockSearchItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmWorkorder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GRN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GRNItemToQS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GRNReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GRNSearchForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GRNSearchWindowForQS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GRNSearch\GRNSearchForCA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IndentSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IndentSearchDuplicate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IndnetSearch1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory DashBoard\ExpiredItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory DashBoard\InventoryDashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory DashBoard\InventoryDashBoard_New.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory DashBoard\PendingIndents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory DashBoard\PendingPO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory DashBoard\PendingPR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory DashBoard\ReorderLevel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmApproveNewGRN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmApprovePO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmMultiBatchChildWinForGRN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmNewGRN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\frmOpeningBalance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\frmPurchaseOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\FrmStoreIndent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventory\GRNReturnQSSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\GRNReturnThroughQS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\ItemSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\ItemSearchRowForGRN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\ItemTaxDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\QSCancellationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IssueToClinic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IssueToQSDOSE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemClinic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemConversions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSalesReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSearchWO.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemSearch\ItemList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemSearch\ItemListNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSearch\ItemListQS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSearch\ItemListWO.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemSearch\PackageItemList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemsEnquiry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemStoreLocationDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemStore_new.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSupplier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemTax.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MaterialConsumption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MRPAdjustment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewItemBatchBarCodeForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OpeningBalance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PatientSearch_Child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaymentDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POCancellationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POCloseDurationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintGRNItemBarCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintItemBarCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintWOGRNItemBarCode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PurchaseInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PurchaseOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PurchaseOrderDuplicate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PurchaseOrder_SearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PurchaseRequisition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuotationAttachment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuotationDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuotationEnquieryDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuotationSearch\QuotaionSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RateContract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReceivedItemAgainstDOSE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReceivedItemAgainstGRNToQS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReceivedItemAgainstIssue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReceivedItemAgainstReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReturnFromClinic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReturnItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SalesItemSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScrapSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScrapSaleDosApproval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchIssue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockAdjustment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StoreIndent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StoreMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SupplierIndentSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SupplierMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TermsAndCondition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WOBarcodeForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WorkOrder_SearchWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\DataSources\PalashDynamics.ValueObjects.clsUserVO.datasource" />
+    <Resource Include="Icons\Search_b1.JPG" />
+    <Resource Include="Icons\1577_2461_128_minus_red_remove_icon.png" />
+    <Resource Include="Icons\plus-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OPDModule\OPDModule.csproj">
+      <Project>{4993806D-1D67-490B-BDD0-D71A25E03245}</Project>
+      <Name>OPDModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamic.Localization\PalashDynamic.Localization.csproj">
+      <Project>{C79BA59E-5157-40A1-BC4A-6335984B92FD}</Project>
+      <Name>PalashDynamic.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.WaterMarkTextBox\PalashDynamics.WaterMarkTextBox.csproj">
+      <Project>{1B114BF8-F1E2-4EC6-AAA2-A69E4FFE24D7}</Project>
+      <Name>PalashDynamics.WaterMarkTextBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

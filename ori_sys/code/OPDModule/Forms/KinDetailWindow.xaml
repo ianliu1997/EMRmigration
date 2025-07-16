@@ -1,0 +1,89 @@
+﻿<controls:ChildWindow x:Class="CIMS.Forms.KinDetailWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           Width="700" 
+                       xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           Title="Kin Detail" KeyDown="ChildWindow_KeyDown" Closed="ChildWindow_Closed">
+    <Grid x:Name="LayoutRoot" Margin="2" Loaded="LayoutRoot_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+          
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Width="90" TextAlignment="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Name" Margin="4" Grid.Row="0" Grid.Column="0"></TextBlock>
+                <TextBox x:Name="txtName" Grid.ColumnSpan="3"  Margin="4" Grid.Row="0" Grid.Column="1"   Text="{Binding Mobile, Mode=TwoWay}" TextChanged="txtName_TextChanged" HorizontalAlignment="Stretch"></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Relation" Margin="4" Grid.Row="1" Grid.Column="0"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox Grid.Row="1" Grid.Column="1"   Margin="4"  VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   SelectedValue="{Binding Address.CityId,Mode=TwoWay}" HorizontalAlignment="Stretch"></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock TextAlignment="Right" Width="80" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Contact No1" Margin="4" Grid.Row="2" Grid.Column="0"></TextBlock>
+                <TextBox  x:Name="txtContact1" Margin="4" Grid.Row="2" Grid.Column="1"   Text="{Binding Mobile, Mode=TwoWay}" HorizontalAlignment="Stretch" ></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Contact No2" Margin="4" Grid.Row="2" Grid.Column="2"></TextBlock>
+                <TextBox x:Name="txtContact2" Margin="4" Grid.Row="2" Grid.Column="3"   Text="{Binding Mobile, Mode=TwoWay}" HorizontalAlignment="Stretch"></TextBox>
+
+                <CheckBox VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Address same as patient" Margin="4" Grid.Row="3" Grid.Column="1" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+                
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Address Line1" Margin="4" Grid.Row="4" Grid.Column="0"></TextBlock>
+                <TextBox TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  x:Name="txtAddLine1" Margin="4" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Address.Address, Mode=TwoWay}" HorizontalAlignment="Stretch"></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Line2" Margin="4" Grid.Row="5" Grid.Column="0"></TextBlock>
+                <TextBox TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  x:Name="txtAddLine2" Margin="4" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Text="{Binding Address.Address, Mode=TwoWay}"></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Line3" Margin="4" Grid.Row="6" Grid.Column="0"></TextBlock>
+                <TextBox TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" x:Name="txtAddLine3" Margin="4" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"   Text="{Binding Address.Address, Mode=TwoWay}" HorizontalAlignment="Stretch"></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Country" Margin="4" Grid.Row="7" Grid.Column="0"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox x:Name="cmbCountry" SelectionChanged="cmbCountry_SelectionChanged" Grid.Row="7" Grid.Column="1"   Margin="4"  VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  SelectedValue="{Binding Address.CountryId,Mode=TwoWay}" HorizontalAlignment="Stretch"  ></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="State" Margin="4" Grid.Row="7" Grid.Column="2"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox x:Name="cmbState" SelectionChanged="cmbState_SelectionChanged" Grid.Row="7" Grid.Column="3"   Margin="4"  VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}"    SelectedValue="{Binding Address.StateId,Mode=TwoWay}" HorizontalAlignment="Stretch" ></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="District" Margin="4" Grid.Row="8" Grid.Column="0"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox Grid.Row="8" Grid.Column="1"   Margin="4"  VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"  SelectedValue="{Binding Address.CountryId,Mode=TwoWay}" HorizontalAlignment="Stretch"  ></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Taluka" Margin="4" Grid.Row="8" Grid.Column="2"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox Grid.Row="8" Grid.Column="3"   Margin="4"  VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   SelectedValue="{Binding Address.StateId,Mode=TwoWay}" HorizontalAlignment="Stretch" ></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="City" Margin="4" Grid.Row="9" Grid.Column="0"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox x:Name="cmbCity" SelectionChanged="cmbCity_SelectionChanged" Grid.Row="9" Grid.Column="1"   Margin="4"  VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   SelectedValue="{Binding Address.CityId,Mode=TwoWay}" HorizontalAlignment="Stretch"></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Area" Margin="4" Grid.Row="9" Grid.Column="2"></TextBlock>
+                <CustomCombo:AutoCompleteComboBox Grid.Row="9" Grid.Column="3"   Margin="4"   VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" SelectedValue="{Binding Address.AreaId,Mode=TwoWay}"  HorizontalAlignment="Stretch"></CustomCombo:AutoCompleteComboBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Pin Code" Margin="4" Grid.Row="10" Grid.Column="0"></TextBlock>
+                <TextBox x:Name="txtPincode" Margin="4" Grid.Row="10" Grid.Column="1" Text="{Binding Address.PinCode, Mode=TwoWay}" HorizontalAlignment="Stretch" ></TextBox>
+            </Grid>
+        </Grid>
+        <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" />
+    </Grid>
+</controls:ChildWindow>

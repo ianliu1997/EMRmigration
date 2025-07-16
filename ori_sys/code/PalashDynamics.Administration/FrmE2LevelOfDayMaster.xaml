@@ -1,0 +1,400 @@
+﻿<UserControl x:Class="PalashDynamics.Administration.FrmE2LevelOfDayMaster"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"  
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+              xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <!--<ScrollViewer Visibility="Visible"  VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" >-->
+        <!--<Grid x:Name="grdMainform" Visibility="Visible" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <controls:TreeView x:Name="TreeView2" Grid.Row="0" Grid.Column="1">
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="ET Pattern Master" x:Name="M_IVF_ETPattern"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Built Master" x:Name="M_IvfBuilt"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Eye Colour " x:Name="M_EyeColor"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Skin Colour " x:Name="M_SkinColor"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Planned Number Of Embroy's " x:Name="M_NoOfPlannedEmbroys"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Hair Colour " x:Name="M_HairColor"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Procedure Performed " x:Name="M_ProcedurePerformed"  Click="HyperlinkButton_Click" Visibility="Visible"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="FHS " x:Name="M_IVFFHS"  Click="HyperlinkButton_Click" Visibility="Visible"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Child Condition " x:Name="M_IVF_Condition"  Click="HyperlinkButton_Click" Visibility="Visible"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Child Death  Post Mortum" x:Name="M_IVF_DealthPastPortMan"  Click="HyperlinkButton_Click" Visibility="Visible"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Child Delivery Method" x:Name="M_IVF_DeliveryMethod"  Click="HyperlinkButton_Click" Visibility="Visible"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Child Died Perinatally On" x:Name="M_IVF_DiedParinatallyOn"  Click="HyperlinkButton_Click" Visibility="Visible"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Catheter Type" x:Name="M_IVF_CatheterTypeMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Difficulty Type" x:Name="M_IVF_DifficultyTypeMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Main Indication" x:Name="M_IVFMainIndication"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Fitness Master" x:Name="M_IVF_BabyFitness"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Baby Type Master" x:Name="M_IVF_BabyType"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Diagnosis Master" x:Name="M_IVF_DiagnosisMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Surrogate Agency Master"  x:Name="M_SurrogateAgencyMaster"  Tag="PalashDynamics.Administration.FrmSurrogateAgencyMaster"   Click="CreatedForm_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+
+                <controls:TreeViewItem Visibility="Collapsed">
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Cleavage Grade"  x:Name="M_CleavageGradeMaster"  Tag="PalashDynamics.Administration.FrmCleavageGradeMaster"   Click="CreatedForm_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+
+            </controls:TreeView>
+
+            <controls:TreeView x:Name="TreeView1" Grid.Column="0" Grid.Row="0">
+
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Fertilization Stage" x:Name="M_IVF_FertilizationStageMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Source Needle" x:Name="M_IVF_SourceNeedleMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Source Oocyte" x:Name="M_IVF_SourceOocyteMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Source Semen" x:Name="M_IVF_SourceSemenMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Planned Treatment" x:Name="M_IVFPlannedTreatment"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Post Thawing Plan" x:Name="M_PostThawingPlan"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Grade" x:Name="M_IVF_GradeMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="MOI" x:Name="M_IVF_MOIMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Cumulus" x:Name="M_IVF_CumulusMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Plan" x:Name="M_IVF_PlanMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="DOS" x:Name="M_IVF_DOSMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="IVF Incubator" x:Name="M_IVF_Incubator"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="IVF Ooctye Quality" x:Name="M_IVF_OocyteQualityMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="E2 Level On Day" x:Name="M_IVF_ELevelOnDayMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="PIC" x:Name="M_IVF_PICMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Denuding Needle" x:Name="M_IVF_SourceDenudingNeedleMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Sperm Preparation" x:Name="M_IVF_MethodOfSpermPreparationMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Tank" x:Name="M_IVFTankMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Cane" x:Name="M_IVFCanMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Canister" x:Name="M_IVFCanisterMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Straw/Vials" x:Name="M_IVFStrawMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Goblet Size" x:Name="M_IVFGobletSizeMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Goblet Shape" x:Name="M_IVFGobletShapeMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="Goblet Colour" x:Name="M_IVFGobletColor"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+                <controls:TreeViewItem>
+                    <controls:TreeViewItem.Header>
+                        <HyperlinkButton Content="OPS" x:Name="M_IVF_OPSTypeMaster"  Click="HyperlinkButton_Click"></HyperlinkButton>
+                    </controls:TreeViewItem.Header>
+                </controls:TreeViewItem>
+
+
+
+            </controls:TreeView>
+
+        </Grid>-->
+        <!--</ScrollViewer>-->
+        <toolkit:DockPanel LastChildFill="True" x:Name="MainDockPanel" Visibility="Visible">
+            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" toolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton  Margin="4"  Content="New" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdAdd" Click="cmdAdd_Click" TabIndex="4"></ToggleButton>
+                        <ToggleButton   Margin="4" Content="Save" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdSave" Click="cmdSave_Click" TabIndex="5"></ToggleButton>
+                        <ToggleButton   Margin="4"  Content="Modify" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdModify" Click="cmdModify_Click" TabIndex="6"></ToggleButton>
+                        <ToggleButton  Margin="4" Content="Cancel" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdCancel" Click="cmdCancel_Click" TabIndex="7"></ToggleButton>
+                        <ToggleButton  Margin="4" Content="Close" Style="{StaticResource ToggleButtonStyle}" x:Name="cmdClose" Visibility="Collapsed" Click="cmdClose_Click" TabIndex="8"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+
+            </Border>
+
+            <Grid x:Name="PageContainer" >
+
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <toolkit:DockPanel x:Name="docList">
+
+                        <toolkit:DockPanel x:Name="DockTop" toolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                            <Grid x:Name="LayoutRoot2" Background="White" Margin="4" HorizontalAlignment="Stretch"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition ></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+
+                            </Grid>
+                        </toolkit:DockPanel>
+
+                        <toolkit:DockPanel LastChildFill="True" toolkit:DockPanel.Dock="Top">
+                            <Grid toolkit:DockPanel.Dock="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto" MinWidth="150" MaxWidth="150"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="txtSearchCriteria" Grid.Column="0" Text="Description" Margin="4,10,4,4" Width="75"/>
+                                <TextBox Grid.Column="1" x:Name="txtSearch" Margin="4" MaxLength="50" TabIndex="0" KeyDown="txtSearch_KeyDown" ToolTipService.ToolTip="Please Enter Code/Description"  ></TextBox>
+                                <Button Grid.Column="2" x:Name="cmdSearch" Click="cmdSearch_Click"  ToolTipService.ToolTip="Search Code/Description"  HorizontalAlignment="Left" TabIndex="1" >
+                                    <Image Source="/PalashDynamics;component/Icons/xmag.png" Margin="2" Width="20" ></Image>
+                                </Button>
+                            </Grid>
+                            <StackPanel toolkit:DockPanel.Dock="Bottom" Margin="0,4,0,0">
+                                <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                    <ContentControl x:Name="ContentControl" VerticalAlignment="Center" FontSize="12"  Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                </Border>
+                            </StackPanel>
+                        </toolkit:DockPanel>
+                        <toolkit:DockPanel LastChildFill="True">
+                            <sdk:DataPager x:Name="dataGrid2Pager" toolkit:DockPanel.Dock="Bottom" 
+                                                      Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True"   />
+
+                            <sdk:DataGrid toolkit:DockPanel.Dock="Top" x:Name="grdMaster" VerticalAlignment="Stretch" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                                <sdk:DataGrid.Columns>
+                                    <sdk:DataGridTemplateColumn Header="View">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <HyperlinkButton Margin="4" x:Name="cmdView" Content="View" Click="cmdView_Click" Cursor="Hand"></HyperlinkButton>
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                    <sdk:DataGridTextColumn IsReadOnly="True" Header="Code" Binding="{Binding Code}" Width="100" />
+                                    <sdk:DataGridTextColumn IsReadOnly="True"  Header="Description"  Binding="{Binding Description}" Width="200"/>
+
+                                    <sdk:DataGridTemplateColumn Header="Status">
+                                        <sdk:DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox HorizontalAlignment="Center" Margin="4" IsChecked="{Binding Path=Status}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                                            </DataTemplate>
+                                        </sdk:DataGridTemplateColumn.CellTemplate>
+                                    </sdk:DataGridTemplateColumn>
+                                </sdk:DataGrid.Columns>
+                            </sdk:DataGrid>
+                        </toolkit:DockPanel>
+                    </toolkit:DockPanel>
+
+                </Grid>
+
+                <Grid  Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1">
+                    <toolkit:DockPanel x:Name="Content" toolkit:DockPanel.Dock="top" LastChildFill="true"  >
+                        <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"    BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+                            <toolkit:DockPanel toolkit:DockPanel.Dock="Top">
+                                <toolkit:DockPanel x:Name="docHeader" toolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                    <Border  BorderBrush="{StaticResource TabControlDarkerBorder}" toolkit:DockPanel.Dock="Top"   Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                        <GroupBox:GroupBox x:Name="grpMasterDetails"  Margin="4" Width="Auto" Height="Auto" Grid.Row="0" HorizontalAlignment="Stretch">
+                                            <Grid x:Name="grdMasterBackPanel">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock  Grid.Row="0" Grid.Column="0" Text="Code" Margin="4"></TextBlock>
+                                                <TextBox   Grid.Row="0" Grid.Column="1" x:Name="txtcode" Text="{Binding Code,Mode=TwoWay}" Margin="4"  MaxLength="10" LostFocus="txtcode_LostFocus" TabIndex="2" ToolTipService.ToolTip="Please Enter Code"></TextBox>
+
+                                                <TextBlock  Grid.Row="1" Grid.Column="0" Text="Description" Margin="4"></TextBlock>
+                                                <TextBox  Grid.Row="1" Grid.Column="1" x:Name="txtDescription" Text="{Binding Description,Mode=TwoWay}" Margin="4"  MaxLength="2" LostFocus="txtcode_LostFocus" TabIndex="3" ToolTipService.ToolTip="Please Enter Description" KeyDown="txtDescription_KeyDown" TextChanged="txtDescription_TextChanged"></TextBox>
+
+                                            </Grid>
+                                        </GroupBox:GroupBox>
+
+
+                                    </Border>
+                                </toolkit:DockPanel>
+
+                            </toolkit:DockPanel>
+                        </Border>
+
+                    </toolkit:DockPanel>
+                </Grid>
+            </Grid>
+
+        </toolkit:DockPanel>
+    </Grid>
+</UserControl>

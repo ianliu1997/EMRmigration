@@ -1,0 +1,274 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.DashBoard.frmSpermiogram"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+            xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+              xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+            xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+               xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+  Width="870" Height="600" Loaded="ChildWindow_Loaded">
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:DateTimeToAgePart x:Key="DateTimeToAgePart"></Converter:DateTimeToAgePart>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl">
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid  Background="White" >
+        <Grid x:Name="DisplayArea">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                    <StackPanel x:Name="FooterBackPanel" Orientation="Horizontal"    Margin="2" HorizontalAlignment="Right" Background="Transparent">
+                        <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                            <ToggleButton x:Name="cmdSave" Content="Save"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdSave_Click" Visibility="Collapsed" >
+                            </ToggleButton>
+                            <ToggleButton x:Name="cmdClose" Content="Close"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdClose_Click" >
+                            </ToggleButton>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+
+
+
+
+
+                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top" >
+                    <controls:TabControl Grid.Row="0" Padding="0"  x:Name="tabControl2" Margin="4" SelectionChanged="tabControl1_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <controls:TabItem  x:Name="Vitrification" Style="{StaticResource TabItemStyle}" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0" Margin="0" TabIndex="1" Header="Vitrification" Visibility="Visible">
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grp:GroupBox Header="Source of Semen " Margin="2" Grid.Row="0"  Width="Auto">
+                                        <Grid  >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+
+
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="Source of Semen " Margin="2" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                                            <TextBox x:Name="txtSourceofSemen"  Margin="2" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+                                            <ToggleButton x:Name="cmdGetSample" Grid.Column="3" HorizontalAlignment="Right" Content="Select Sample"  Background="#000000" Margin="0,4,-1,4" Width="100" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdGetSample_Click" >
+                                            </ToggleButton>
+
+                                        </Grid>
+                                    </Grp:GroupBox>
+
+
+                                    <Grp:GroupBox Header="Freezing Details" Margin="2" Grid.Row="1"  Width="Auto">
+                                        <Grid>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+
+                                            </Grid.RowDefinitions>
+
+
+
+
+
+                                            <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"  Grid.Row="2"  BorderThickness="1" Margin="3" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="Sperm Freezing Details " Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                            </Border>
+
+
+                                            <data:DataGrid  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="0" ItemsSource="{Binding DataList}"  x:Name="dataGrid2"  AutoGenerateColumns="False" LoadingRow="dataGrid2_LoadingRow" >
+                                                <data:DataGrid.Columns>
+                                                    <data:DataGridTemplateColumn Header="Thaw" >
+                                                        <data:DataGridTemplateColumn.CellTemplate  >
+                                                            <DataTemplate >
+                                                                <CheckBox Margin="10,2,10,2" IsChecked="{Binding IsThaw, Mode=TwoWay}" x:Name="chkThaw" IsTabStop="True" Click="chkThaw_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" ></CheckBox >
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTextColumn IsReadOnly="True" Header="Batch" Binding="{Binding BatchCode}" />
+                                                    <data:DataGridTextColumn IsReadOnly="True" Header="Lab" Binding="{Binding Lab}" />
+                                                    <data:DataGridTextColumn IsReadOnly="True" Header="collection No." Binding="{Binding SpremNo}" />
+                                                    <data:DataGridTextColumn Header="Vitrification Date" Binding="{Binding SpremFreezingDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  />
+                                                    <data:DataGridTextColumn Header="Vitrification Time" Binding="{Binding SpremFreezingDate,Converter={StaticResource DateConverter},ConverterParameter='hh:mm tt'}"  />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding GradeA, Mode=TwoWay}" Header="Grade A" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding GradeB, Mode=TwoWay}" Header="Grade B" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding GradeC, Mode=TwoWay}" Header="Grade C" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding Viscosity, Mode=TwoWay}" Header="Viscosity" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding TotalSpremCount, Mode=TwoWay}" Header="Sperm Count (Million)" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding Motility, Mode=TwoWay}" Header="Motility (%)" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding ColorCode, Mode=TwoWay}" Header="Color Code" />
+                                                    <data:DataGridTextColumn Width="100" Binding="{Binding Straw, Mode=TwoWay}" Header="Straw"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding GlobletShape, Mode=TwoWay}" Header="Goblet Shape"/>
+                                                    <data:DataGridTextColumn Width="100" Binding="{Binding GlobletSize, Mode=TwoWay}" Header="Goblet Size"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding Cane, Mode=TwoWay}" Header="Cane"/>
+                                                    <data:DataGridTextColumn Width="100" Binding="{Binding Canister, Mode=TwoWay}" Header="Canister"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding Tank, Mode=TwoWay}" Header="Tank"/>
+                                                    <data:DataGridTextColumn  Width="100" Binding="{Binding Comments, Mode=TwoWay}" Header="Comments"/>
+
+
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+
+                                        </Grid>
+
+
+
+
+                                    </Grp:GroupBox>
+
+
+
+
+
+
+                                </Grid>
+                            </Border>
+                        </controls:TabItem>
+
+                        <controls:TabItem  x:Name="Thawing" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" TabIndex="2" Header="Thawing" >
+                            <Border  BorderBrush="{StaticResource TabControlDarkerBorder}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,-1,0,0" BorderThickness="1" CornerRadius="0,0,3,3" Background="Transparent">
+
+
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+
+
+                                    <controlsToolkit:DockPanel  controlsToolkit:DockPanel.Dock="Top" Grid.Row="1">
+                                        <Border controlsToolkit:DockPanel.Dock="Top"   BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" Margin="0,4,0,0" CornerRadius="3,3,0,0"  Background="Transparent" >
+                                            <ContentControl  VerticalAlignment="Center" FontSize="12" Content="Thawing Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                        </Border>
+
+                                        <controlsToolkit:DockPanel LastChildFill="True"  controlsToolkit:DockPanel.Dock="Bottom">
+                                            <data:DataPager x:Name="ThawingDetilsGridPager" controlsToolkit:DockPanel.Dock="Bottom" DisplayMode="FirstLastPreviousNextNumeric"   Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True" />
+                                            <data:DataGrid  SelectionMode="Single" HorizontalScrollBarVisibility="Auto" x:Name="dgThawingDetilsGrid"  ItemsSource="{Binding}"  IsReadOnly="False"  AutoGenerateColumns="False"  VerticalScrollBarVisibility="Auto" LoadingRow="dgThawingDetilsGrid_LoadingRow">
+                                                <data:DataGrid.Columns>
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding SpremNo,Mode=TwoWay}" Header="Collection No." IsReadOnly="True" />
+                                                    <data:DataGridTextColumn  Width="80" Binding="{Binding Volume,Mode=TwoWay}" Header="Volume (ml)"  IsReadOnly="True" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding TotalSpearmCount,Mode=TwoWay}" Header="Sperm Count (Million)" IsReadOnly="True" />
+                                                    <data:DataGridTextColumn Width="80" Binding="{Binding Motility,Mode=TwoWay}" Header="Motility (%)" IsReadOnly="True" />
+
+                                                    <data:DataGridTemplateColumn Header="Thawing Date" >
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <controls:DatePicker SelectedDate="{Binding ThawingDate,Mode=TwoWay}"  Margin="4"  x:Name="dtDate" IsEnabled="{Binding IsEnabled}" ></controls:DatePicker>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+
+                                                    <data:DataGridTemplateColumn Header="Thawing Time">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <inputToolkit:TimePicker Value="{Binding ThawingTime,Mode=TwoWay}"  Margin="4" x:Name="dtTime" IsEnabled="{Binding IsEnabled}"  ></inputToolkit:TimePicker>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+
+
+                                                    <data:DataGridTemplateColumn Header="Lab Incharge">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <input:AutoCompleteComboBox VerticalAlignment="Center" x:Name="cmbLabIncharge" ItemsSource="{Binding SelectedInchargeList}" SelectedItem="{Binding SelectedIncharge,Mode=TwoWay}"  SelectedValue="{Binding SelectedIncharge.ID}"  Text=""  SelectionChanged="cmbLabIncharge1_SelectionChanged"/>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <!--<data:DataGridTextColumn  Binding="{Binding UsedQuantity, StringFormat=0.00,  Mode=TwoWay}" Header="Used Quantity (ml)">
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>-->
+
+                                                    <data:DataGridTextColumn   Binding="{Binding UsedVolume,Mode=TwoWay,StringFormat=0.00}" Header="Used Quantity (ml)" IsReadOnly="False">
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+                                                    <!--<data:DataGridTemplateColumn  Header="Used Quantity (ml)">
+                                                    <data:DataGridTemplateColumn.CellEditingTemplate>
+                                                        <DataTemplate>
+                                                                <TextBox Text="{Binding UsedQuantity, StringFormat=0.00, Mode=TwoWay}"  Width="100"  Height="28"   TextAlignment="Right"/>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellEditingTemplate>
+                                                    </data:DataGridTemplateColumn>-->
+                                                    <!--<data:DataGridTemplateColumn Header="Used Quantity (ml)">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                    <TextBox Width="100" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True"   VerticalAlignment="Center"  Height="28"   Text="{Binding UsedQuantity, StringFormat=0.00, Mode=TwoWay}" ></TextBox>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>-->
+                                                    <data:DataGridTemplateColumn Header="Comments">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <TextBox Width="100" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsEnabled="{Binding IsEnabled}"  VerticalAlignment="Center"  Height="28"  Text="{Binding Comments,Mode=TwoWay}" ></TextBox>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+
+                                                    <data:DataGridTemplateColumn Header="Freeze">
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsFreezed,Mode=TwoWay}" IsEnabled="{Binding IsEnabled}"  Content="Freeze" Click="CheckBox_Click"></CheckBox>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+                                        </controlsToolkit:DockPanel>
+                                    </controlsToolkit:DockPanel>
+                                </Grid>
+
+                            </Border>
+                        </controls:TabItem>
+
+
+
+                    </controls:TabControl>
+
+                </controlsToolkit:DockPanel>
+            </controlsToolkit:DockPanel>
+        </Grid>
+    </Grid>
+</controls:ChildWindow>

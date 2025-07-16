@@ -1,0 +1,973 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DC112F80-EDDC-4B6F-B1B1-FA313764A20D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics.ValueObjects</RootNamespace>
+    <AssemblyName>PalashDynamics.ValueObjects</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/PalashDynamics.ValueObjects/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\System.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\Agency\clsAgencyClinicLinkBizActionVO.cs" />
+    <Compile Include="Administration\Agency\clsAgencyClinicLinkVO.cs" />
+    <Compile Include="Administration\Agency\clsAgencyMasterBizActionVO.cs" />
+    <Compile Include="Administration\Agency\clsAgencyMasterVO.cs" />
+    <Compile Include="Administration\Agency\clsAgencyServiceLinkingBizActionVO.cs" />
+    <Compile Include="Administration\clsAddTariffItemBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateBAnkBranchDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateCashCounterBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateCityBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateCountryBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateDrugMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateRegionBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateStateBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpadateSubSpecializationBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdateApplyLevelsToServiceBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdateCompanyAssociateBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdateCompanyDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdateDepartmentMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdatePreffixMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdateServiceMasterTariffBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdateSpecializationBizActionVO.cs" />
+    <Compile Include="Administration\clsAddUpdateTariffBizActionVO.cs" />
+    <Compile Include="Administration\clsAutoEmailConfig.cs" />
+    <Compile Include="Administration\clsDoctorShareRangeVO.cs" />
+    <Compile Include="Administration\clsEmailTemplateBizActionVO.cs" />
+    <Compile Include="Administration\clsEmailTemplateVO.cs" />
+    <Compile Include="Administration\clsGetBankBranchDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsgetBdMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsGetBranchMICRNumberBizActionVO.cs" />
+    <Compile Include="Administration\clsGetCompanyAssociateDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsGetCompanyDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsGetDepartmentMasterDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsGetPatientConfigFieldsBizActionVO.cs" />
+    <Compile Include="Administration\clsGetPreffixMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsGetSpecializationDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsGetStateDetailsByCountyIDBizActionVO.cs" />
+    <Compile Include="Administration\clsGetSubSpecializationDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsGetTariffDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsObservationCodeMasterVO.cs" />
+    <Compile Include="Administration\clsPreffixMasterVO.cs" />
+    <Compile Include="Administration\CompoundMaster\clsCompoundMasterBizActionVO.cs" />
+    <Compile Include="Administration\CompoundMaster\clsCompoundMasterVO.cs" />
+    <Compile Include="Administration\DepartmentScheduleMaster\clsDepartmentScheduleBizActionVO.cs" />
+    <Compile Include="Administration\DepartmentScheduleMaster\clsDepartmentScheduleVO.cs" />
+    <Compile Include="Administration\DiagnosisServiceDrugLink\clsAddDiagnosisServiceItemBizActionVO.cs" />
+    <Compile Include="Administration\DiagnosisServiceDrugLink\clsDeleteDiagnosisServiceBizActionVO.cs" />
+    <Compile Include="Administration\DiagnosisServiceDrugLink\clsGetDiagnosisByIDBizActionVO.cs" />
+    <Compile Include="Administration\DiagnosisServiceDrugLink\clsGetDiagnosisListBizActionVO.cs" />
+    <Compile Include="Administration\DiagnosisServiceDrugLink\clsGetMasterDrugListBizActionVO.cs" />
+    <Compile Include="Administration\DischargeTemplateMaster\clsAddDischargeTemplateMasterBizActionVO.cs" />
+    <Compile Include="Administration\DischargeTemplateMaster\clsDischargeTemplateMasterVO.cs" />
+    <Compile Include="Administration\DoctorShareRange\clsAddDoctorShareRangeBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDAddAdmissionTypeServiceListBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDAdmissionTypeMasterBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDAdmissionTypeServiceLinkVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDAdmissionTypeVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDAutoChargesBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDAutoChargesVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDFloorMasterVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDFloorMasterBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDGetAdmissionTypeDetailListForAdmissionTypeMasterByIDBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDGetAdmissionTypeServiceLinkedListDetailsBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDGetAdmissionTypeServiceListBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDPatientVitalsMasterBIzActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDPatientVitalsMasterVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureCheckListBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureSubCategoryBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureTemplateDetailsVO.cs" />
+    <Compile Include="Administration\PackageNew\clsAddPackageSourceRelationsBizActionVO.cs" />
+    <Compile Include="Administration\PackageNew\clsAddServiceMasterNewBizActionVO.cs" />
+    <Compile Include="Administration\PackageNew\clsPackageServiceMasterVO.cs" />
+    <Compile Include="Administration\PackageNew\clsPackageSourceRelationVO.cs" />
+    <Compile Include="Administration\PatientSourceMaster\clsGetPatientSourceListByPatientCategoryIdBizActionVO.cs" />
+    <Compile Include="Administration\StaffMaster\clsAddStaffAddressInfoBizActionVO.cs" />
+    <Compile Include="Administration\StaffMaster\clsAddStaffBankInfoBizActionVO.cs" />
+    <Compile Include="Administration\UnitMaster\clsTaxBuilderVO.cs" />
+    <Compile Include="Administration\UserRights\clsGetUserRightsBizActionVO.cs" />
+    <Compile Include="Administration\UserRights\clsSetCreditLimitBizActionVO.cs" />
+    <Compile Include="Administration\UserRights\clsUserRightsVO.cs" />
+    <Compile Include="ANC\AddUpdateANCDocumentBizActionVO.cs" />
+    <Compile Include="ANC\AddUpdateANCExaminationBizActionVO.cs" />
+    <Compile Include="ANC\AddUpdateANCSuggestionBizActionVO.cs" />
+    <Compile Include="ANC\clsAddUpdateANCHistoryBizActionVO.cs" />
+    <Compile Include="ANC\clsAddUpdateANCInvestigationDetailsBizActionVO.cs" />
+    <Compile Include="ANC\clsAddUpdateUSGdetailsBizActionVO.cs" />
+    <Compile Include="ANC\clsANCGetGeneralDetailsListBizActionVO.cs" />
+    <Compile Include="ANC\clsANCVO.cs" />
+    <Compile Include="ANC\clsDeleteANCDocumentBizActionVO.cs" />
+    <Compile Include="ANC\clsDeleteANCExaminationBizActionVO.cs" />
+    <Compile Include="ANC\clsDeleteANCInvestigationBizActionVO.cs" />
+    <Compile Include="ANC\clsDeleteANCUSGBizActionVO.cs" />
+    <Compile Include="ANC\clsDeleteObstericHistoryBizActionVO.cs" />
+    <Compile Include="ANC\clsGetANCExaminationBizActionVO.cs" />
+    <Compile Include="ANC\clsGetANCGeneralDetailsBizActionVO.cs" />
+    <Compile Include="ANC\clsGetANCInvestigationListBizActionVO.cs" />
+    <Compile Include="ANC\clsGetANCUSGListBizActionVO.cs" />
+    <Compile Include="ANC\GetANCDocumentBizActionVO.cs" />
+    <Compile Include="ANC\GetANCSuggestionBizActionVO.cs" />
+    <Compile Include="Billing\clsAccountingXML.cs" />
+    <Compile Include="Billing\clsAddExpensesBizActionVO.cs" />
+    <Compile Include="Billing\clsAddDoctorProcedureLinkBizActionVO.cs" />
+    <Compile Include="Billing\clsApplyPackageDiscountRateOnServiceBizActionVO.cs" />
+    <Compile Include="Billing\clsApplyPackageDiscountRateToItems.cs" />
+    <Compile Include="Billing\clsDoctorProcedureLinkVO.cs" />
+    <Compile Include="Billing\clsExpensesVO.cs" />
+    <Compile Include="Billing\clsGetPackageTariffBizActionVO.cs" />
+    <Compile Include="Billing\clsPreviousPatientBillsBizActionVO.cs" />
+    <Compile Include="Billing\clsVisitConsultationChargesVO.cs" />
+    <Compile Include="Billing\GetCancellationAndConcessionApprovalBizactionVO.cs" />
+    <Compile Include="CompanyPayment\clsAddCompanyPaymentDetailsBizActionVO.cs" />
+    <Compile Include="CompanyPayment\clsCompanyPaymentDetailsVO.cs" />
+    <Compile Include="CompanyPayment\clsGetCompanyPaymentDetailsBizActionVO.cs" />
+    <Compile Include="CompoundDrug\clsAddCompoundDrugBizActionVO.cs" />
+    <Compile Include="CompoundDrug\clsAddPatientCompoundPrescriptionBizActionVO.cs" />
+    <Compile Include="CompoundDrug\clsCompoundDrugDetailVO.cs" />
+    <Compile Include="CompoundDrug\clsCompoundDrugMasterVO.cs" />
+    <Compile Include="CompoundDrug\clsGetCompoundDrugAndDetailsByIDandUnitIDBizActionVO.cs" />
+    <Compile Include="CompoundDrug\clsGetCompoundDrugBizActionVO.cs" />
+    <Compile Include="CompoundDrug\clsGetCompoundDrugDetailsBizActionVO.cs" />
+    <Compile Include="CompoundDrug\clsGetPatietPrescriptionCompoundDrugBizActionVO.cs" />
+    <Compile Include="CompoundDrug\clsPatientCompoundPrescriptionVO.cs" />
+    <Compile Include="CompoundDrug\clsUpdateCompoundDrugBizActionVO.cs" />
+    <Compile Include="CRM\clsAddPROPatientBizActionVO.cs" />
+    <Compile Include="CRM\clsGetPROPatientListBizActionVO.cs" />
+    <Compile Include="DashboardMIS\cls_DashboardMIS_ReferralReportBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsAddUpdatePGDHistoryBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsGetDetailsOfReceivedOocyteBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddObservationBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddObservationVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddPlanTherapyBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddTherapyDocumentBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay0BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay1BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay2BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay3BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay4BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay5BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay6BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateDay7BizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateEmbryoTansferBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateIUIDetailsBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateLutealPhaseBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateMediaDetailsBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateOPUDetailsBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateOutcomeBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateRecieceOocytesBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateThawingBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddUpdateVitrificationBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_AddBirthDetailsBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_BirthDetailsVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_EmbryoTransferVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_GetFollicularMonitoringSizeDetailsBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_GetTherapyListBizActionVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_IUIVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_LabDaysVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_MediaDetailsVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_OPUVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_OutcomeVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashBoard_ThawingVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashboard_TherapyDocumentVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFDashBoard_VitrificationVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFROSEstimationVO.cs" />
+    <Compile Include="DashBoardVO\clsIVFSpermDefectTestVO.cs" />
+    <Compile Include="DashBoardVO\clsPGDHistoryVO.cs" />
+    <Compile Include="DashBoardVO\clsSemenSampleBatchVO.cs" />
+    <Compile Include="DashBoardVO\cls_GetSemenBatchAndSpermiogramBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_AddSemenBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_AddUpdateSemenWashBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_GetAgencyListOfSurrogateBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_GetVitrificationDetailsForCryoBank.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_GraphicalRepresentationVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_LutualPhaseVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_SemenVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboard_SemenWashVO.cs" />
+    <Compile Include="DashBoardVO\cls_IVFDashboar_AddUpdateGraphicalRepBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_NewAddUpdateDonorDetailsBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_NewAddUpdateSpremFreezingBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_NewGetSpremThawingBizActionVO.cs" />
+    <Compile Include="DashBoardVO\cls_NewSpremFreezingMainVO.cs" />
+    <Compile Include="DashBoardVO\cls_NewThawingVO.cs" />
+    <Compile Include="DashBoardVO\GetCycleCodeForPatientBizActionVO.cs" />
+    <Compile Include="DashBoardVO\GetIVFDashboardOPUDateBizActionVO.cs" />
+    <Compile Include="DashBoardVO\GetPatientListForDashboardBizActionVO.cs" />
+    <Compile Include="EMR\clsEMRReferralLetterVO.cs" />
+    <Compile Include="EMR\clsEMRTemplateFileLinkBizActionVO.cs" />
+    <Compile Include="EMR\EMR_Field_Values\clsFieldValueMasterBizActionVO.cs" />
+    <Compile Include="EMR\EMR_Field_Values\clsFieldValuesMasterVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDBedMasterBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDBedMasterVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDClassMasterBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDClassMasterVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDDietNutritionBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDDietNutritionMasterVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDGetBlockMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsPatientFieldsConfigVO.cs" />
+    <Compile Include="Administration\DoctorScheduleMaster\clsCheckTimeForScheduleExistanceBizActionVO.cs" />
+    <Compile Include="Administration\DoctorScheduleMaster\clsAddDoctorScheduleMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsAddPasswordConfigBizActionVO.cs" />
+    <Compile Include="Administration\clsAddServiceMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsAddServiceTariffBizActionVO.cs" />
+    <Compile Include="Administration\clsAddSMSTemplateBizActionVO.cs" />
+    <Compile Include="Administration\clsAddTariffServiceBizActionVO.cs" />
+    <Compile Include="Administration\clsAppConfig.cs" />
+    <Compile Include="Administration\clsChangeTariffServiceStatusBizActionVO.cs" />
+    <Compile Include="Administration\clsDeleteTariffServiceAndServiceTariffBizActionVO.cs" />
+    <Compile Include="Administration\clsDeletetTriffServiceClassRateDetailsBizActionVO.cs" />
+    <Compile Include="Administration\DoctorScheduleMaster\clsDoctorScheduleVO.cs" />
+    <Compile Include="Administration\DoctorScheduleMaster\clsGetDoctorScheduleMasterBizActionVO.cs" />
+    <Compile Include="Administration\DoctorScheduleMaster\clsGetDoctorScheduleMasterListBizActionVO.cs" />
+    <Compile Include="Administration\clsGetMenuGeneralDetailsBizActionVO.cs" />
+    <Compile Include="Administration\clsGetMenuListBizActionVO.cs" />
+    <Compile Include="Administration\clsGetPassConfigBizActionVO.cs" />
+    <Compile Include="Administration\clsGetServiceBySpecializationBizActionVO.cs" />
+    <Compile Include="Administration\clsGetServiceMasterListBizActionVO.cs" />
+    <Compile Include="Administration\clsGetServiceTariffBizActionVO.cs" />
+    <Compile Include="Administration\clsSMSTemplateBizActionVO.cs" />
+    <Compile Include="Administration\clsGetTariffServiceBizActionVO.cs" />
+    <Compile Include="Administration\clsGetTariffServiceClassRateBizActionVO.cs" />
+    <Compile Include="Administration\clsMenuVO.cs" />
+    <Compile Include="Administration\clsPassConfigurationVO.cs" />
+    <Compile Include="Administration\clsServiceMasterVO.cs" />
+    <Compile Include="Administration\clsSMSTemplateVO.cs" />
+    <Compile Include="Administration\clsUpdateServiceMasterBizActionVO.cs" />
+    <Compile Include="Administration\clsUpdateServiceTariffMasterBizActionVO.cs" />
+    <Compile Include="Administration\DoctorScheduleMaster\GetDoctorScheduleTimeVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDBlockMasterVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDRoomMasterBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDRoomMasterVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDWardMasterBizActionVO.cs" />
+    <Compile Include="Administration\IPD\clsIPDWardMasterVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsAddConfigBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsAddConfig_MISReportBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsAddConfig_MISStaffBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsAddUpdateMISConfigurationBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsConfig_MISReportDetailsVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsConfig_MISStaffVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsGetMISConfigBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsgetMISconfigListBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsGetMISEmailDetails.cs" />
+    <Compile Include="Administration\MISConfiguration\clsGetMISReportDetails.cs" />
+    <Compile Include="Administration\MISConfiguration\clsGetMISReportTypeBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsGetMISStaffBizActionVO.cs" />
+    <Compile Include="Administration\MISConfiguration\clsMISConfigurationVO.cs" />
+    <Compile Include="Administration\MISConfiguration\GetMISDetailsFromCriteriaBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsAddProcedureMasterBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsAddUpdateOTTableDetailsBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsConsentMasterVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsGetOTForProcedureBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsGetPatientUnitIDForOtDetailsBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsInstructionMasterVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOtDetailsAnesthesiaNotesDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTDetailsDocDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTDetailsInstrumentDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTDetailsItemDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTDetailsOTSheetDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOtDetailsProcedureDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTDetailsStaffDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTDetailsSurgeryDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTScheduleVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsOTTableVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcDocScheduleDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcDocScheduleVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcedureChecklistDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcedureScheduleVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcedureVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcOTScheduleDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcStaffDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientWiseConsentPrintingVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureChecklistDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureConsentDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureInstructionDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureItemDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureMasterVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureServiceDetailsVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsProcedureStaffDetailsVO.cs" />
+    <Compile Include="Administration\PackageService\clsPackageServiceBizActionVO.cs" />
+    <Compile Include="Administration\PackageService\clsPackageServiceVO.cs" />
+    <Compile Include="Administration\PatientConsent\clsPatientConsentBizActionVO.cs" />
+    <Compile Include="Administration\PatientConsent\clsPatientConsentVO.cs" />
+    <Compile Include="Administration\PatientSourceMaster\clsAddPatientSourceBizActionVO.cs" />
+    <Compile Include="Administration\PatientSourceMaster\clsGetPatientSourceDetailsByID.cs" />
+    <Compile Include="Administration\PatientSourceMaster\clsGetPatientSourceListBizActionVO.cs" />
+    <Compile Include="Administration\PatientSourceMaster\clsGetTariffDetailsListBizActionVO.cs" />
+    <Compile Include="Administration\PatientSourceMaster\clsPatientSourceVO.cs" />
+    <Compile Include="Administration\StaffMaster\clsAddStaffMasterBizActionVO.cs" />
+    <Compile Include="Administration\StaffMaster\clsGetStaffMasterDetailsBizActionVO.cs" />
+    <Compile Include="Administration\StaffMaster\clsGetStaffMasterDetailsByIDBizActionVO.cs" />
+    <Compile Include="Administration\StaffMaster\clsStaffMasterVO.cs" />
+    <Compile Include="Administration\UnitMaster\clsAddUnitMasterBizActionVO.cs" />
+    <Compile Include="Administration\UnitMaster\clsGetDepartmentListBizActionVO.cs" />
+    <Compile Include="Administration\UnitMaster\clsGetUnitDetailsByIDBizActionVO.cs" />
+    <Compile Include="Administration\UnitMaster\clsGetUnitMasterListBizActionVO.cs" />
+    <Compile Include="Administration\UnitMaster\clsUnitMasterVO.cs" />
+    <Compile Include="Administration\VisitType\clsVisitTypeBizActionVO.cs" />
+    <Compile Include="Billing\clsAccounts.cs" />
+    <Compile Include="Billing\clsAddTariffMasterBizActionVO.cs" />
+    <Compile Include="Billing\clsBillBizActionVO.cs" />
+    <Compile Include="Billing\clsBillVO.cs" />
+    <Compile Include="Billing\clsChargeBizActionVO.cs" />
+    <Compile Include="Billing\clsChargeVO.cs" />
+    <Compile Include="Billing\clsDailyCollectionReportVO.cs" />
+    <Compile Include="Billing\clsTariffMasterBizActionVO.cs" />
+    <Compile Include="ClientDetails\clsClientBizActionVO.cs" />
+    <Compile Include="ClientDetails\clsClientDetailsVO.cs" />
+    <Compile Include="ClientDetails\clsClientModuleDetailsVO.cs" />
+    <Compile Include="ClientDetails\clsClientSubScriptionDetailsVO.cs" />
+    <Compile Include="clsCheckItemSupplierFromGRNBizActionVO.cs" />
+    <Compile Include="Administration\OTConfiguration\clsPatientProcOTScheduleVO.cs" />
+    <Compile Include="clsIPDClassMaster.cs" />
+    <Compile Include="DietPlan\clsPatientDietPlanBizActionVO.cs" />
+    <Compile Include="DietPlan\clsPatientDietPlanVO.cs" />
+    <Compile Include="EMR\GrowthChart\clsGetPatientGrowthChartBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsAddUpdateDeleteDiagnosisDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsAddUpdateDeleteVitalDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsAddUpdatePatientCPOEDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsAddUpdatePatientCurrentMedicationDetailBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsAddUpdatePatientHistoryDataBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsAddUpdatePatientPhysicalExamDataAndDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsAddUpdateReferralDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetEMRMenuBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetItemMoleculeNameBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientCPOEPrescriptionDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientDiagnosisDataBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientEMRDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientNewEMRDiaDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientPatientHistoryDataBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientPhysicalExamDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientPrescriptionandVisitDetailsBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetPatientVisitSummaryListForEMRBizActionVO.cs" />
+    <Compile Include="EMR\NewEMR\clsGetServicesBizActionVO.cs" />
+    <Compile Include="Inventory\AddUpdateStoreLocationLockBizActionVO.cs" />
+    <Compile Include="Inventory\BarCode\clsCounterSaleBarCodeBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddUpdateItemLocationBizActionVO.cs" />
+    <Compile Include="Inventory\clsBlockItemsVO.cs" />
+    <Compile Include="Inventory\clsCAGRNBizActionVO.cs" />
+    <Compile Include="Inventory\clsCAGRNVO.cs" />
+    <Compile Include="Inventory\clsGetBlockItemsListBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemListByMoluculeIdBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemLocationBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemReorderQuantityBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemSalesDetailsForCashSettlementBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemStoreTaxListBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetStoreWithCategoryDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsItemLocationVO.cs" />
+    <Compile Include="Inventory\clsItemReorderDetailVO.cs" />
+    <Compile Include="Inventory\clsItemSalesVO.cs" />
+    <Compile Include="Inventory\clsWOGRNVO.cs" />
+    <Compile Include="Inventory\Conversions\clsConversionsVO.cs" />
+    <Compile Include="Inventory\Conversions\clsGetItemConversionFactorListBizActionVO.cs" />
+    <Compile Include="Inventory\GetItemStoreLocationDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\GetStoreLocationLockBizActionVO.cs" />
+    <Compile Include="Inventory\Indent\clsUpdateRemarkForIndentCancellationBizActionVO.cs" />
+    <Compile Include="Inventory\ItemStoreLocationDetailsBizActionVo.cs" />
+    <Compile Include="Inventory\ItemStoreLocationDetailsVO.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsUpdatePurchaseOrderForApproval.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsUpdateRemarkForCancellationPO.cs" />
+    <Compile Include="Inventory\StoreLocationLockVO.cs" />
+    <Compile Include="Inventory\WorkOrder\clsAddWorkOrderBizActionVO.cs" />
+    <Compile Include="Inventory\WorkOrder\clsFreezWorkOrderBizActionVO.cs" />
+    <Compile Include="Inventory\WorkOrder\clsGetWorkOrderDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\WorkOrder\clsGetWorkOrderBizActionVO.cs" />
+    <Compile Include="Inventory\WorkOrder\clsUpdateRemarkForCancellationWO.cs" />
+    <Compile Include="Inventory\WorkOrder\clsWOGRNBizActionVO.cs" />
+    <Compile Include="Inventory\WorkOrder\clsWorkOrderVO.cs" />
+    <Compile Include="IPD\clsAddUpdateBedReleaseCheckListDetailsBizActionVO.cs" />
+    <Compile Include="IPD\clsChangeReferEntityVO.cs" />
+    <Compile Include="IPD\clsDiischargeApprovedByDepartmentVO.cs" />
+    <Compile Include="IPD\clsGetIPDPatientBizActionVO.cs" />
+    <Compile Include="IPD\clsGetIPDPatientVO.cs" />
+    <Compile Include="IPD\clsGetRefEntityDetailsBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDAdmissionBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDAdmissionVO.cs" />
+    <Compile Include="IPD\clsIPDBedDetailsBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDBedDetailsVO.cs" />
+    <Compile Include="IPD\clsIPDBedReleaseCheckListVO.cs" />
+    <Compile Include="IPD\clsIPDBedReservationBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDBedReservationVO.cs" />
+    <Compile Include="IPD\clsIPDBedStatusBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDBedStatusVO.cs" />
+    <Compile Include="IPD\clsIPDBedTransferBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDBedTransferVO.cs" />
+    <Compile Include="IPD\clsIPDBedUnderMaintenanceVO.cs" />
+    <Compile Include="IPD\clsIPDBedUnderMaintentenanceBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDDischargeBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDDischargeSummaryBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDDischargeSummaryVO.cs" />
+    <Compile Include="IPD\clsIPDDischargeVO.cs" />
+    <Compile Include="IPD\clsIPDGetBedCensusAndNonCensusListBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDIntakeOutputChartBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDIntakeOutputChartVO.cs" />
+    <Compile Include="IPD\clsIPDVitalSDetailsBizActionVO.cs" />
+    <Compile Include="IPD\clsIPDVitalSDetailsVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddClinicalSummaryBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddGeneralExaminationForMaleBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddLabDay6BizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddUpdateDonorBatchBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddUpdateDonorBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddUpdateETDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddUpdateThawingBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddUpdateVitrificationBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsArtCycleSummaryVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsClinicalSummaryVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFamaleHistoryBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleHistoryVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleLabDay6VO.cs" />
+    <Compile Include="clsItembatchSearchVO.cs" />
+    <Compile Include="EMR\clsPCRVO.cs" />
+    <Compile Include="Inventory\Indent\clsCloseIndentFromDashboard.cs" />
+    <Compile Include="CRM\clsAddCampDetailsBizActionVO.cs" />
+    <Compile Include="CRM\clsAddCampMasterBizActionVO.cs" />
+    <Compile Include="CRM\clsAddCampServiceBizActionVO.cs" />
+    <Compile Include="CRM\clsAddEmailSMSSentListVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsAddLoyaltyProgramBizActionVO.cs" />
+    <Compile Include="CRM\clsCampMasterVO.cs" />
+    <Compile Include="CRM\clsCampServiceVO.cs" />
+    <Compile Include="CRM\clsDeleteCampServiceBizActionVO.cs" />
+    <Compile Include="CRM\clsEmailSMSSendingVO.cs" />
+    <Compile Include="CRM\clsGetCampDetailsByIDBizActionVO.cs" />
+    <Compile Include="CRM\clsGetCampDetailsListBizActionVO.cs" />
+    <Compile Include="CRM\clsGetCampFreeAndConServiceListBizActionVO.cs" />
+    <Compile Include="CRM\clsGetCampMasterByIDBizActionVO.cs" />
+    <Compile Include="CRM\clsGetCampMasterListBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsFillCardTypeComboBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsFillFamilyTariffUsingRelationIDBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetLoyaltyClinicBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetLoyaltyPatientCategoryBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetLoyaltyProgramAttachmentByIdBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetLoyaltyProgramByIDBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetLoyaltyProgramFamilyByIdBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetLoyaltyProgramListBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetLoyaltyProgramTariffByIDBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsGetRelationMasterListBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsLoyaltyProgramVO.cs" />
+    <Compile Include="CRM\clsUpdateCampDetailsBizActionVO.cs" />
+    <Compile Include="CRM\clsUpdateCampMasterBizActionVO.cs" />
+    <Compile Include="CRM\LoyaltyProgram\clsUpdateLoyaltyProgramBizActionVO.cs" />
+    <Compile Include="EMR\clsAddEMRTemplateBizActionVO.cs" />
+    <Compile Include="EMR\clsAddPatientEMRDataBizActionVO.cs" />
+    <Compile Include="EMR\clsAddPatientPrescriptionBizActionVO.cs" />
+    <Compile Include="EMR\clsAddVarianceBizActionVO.cs" />
+    <Compile Include="EMR\clsDrugVO.cs" />
+    <Compile Include="EMR\clsEMRTemplateVO.cs" />
+    <Compile Include="EMR\clsGetDrugListBizActionVO.cs" />
+    <Compile Include="EMR\clsGetEMRTemplateBizActionVO.cs" />
+    <Compile Include="EMR\clsGetEMRTemplateListBizActionVO.cs" />
+    <Compile Include="EMR\clsGetPatientEMRDataBizActionVO.cs" />
+    <Compile Include="EMR\clsGetPatientPrescriptionBizActionVO.cs" />
+    <Compile Include="EMR\clsGetPatientPrescriptionDetailByVisitIDBizActionVO.cs" />
+    <Compile Include="EMR\clsPatientEMRDataVO.cs" />
+    <Compile Include="EMR\clsPatientPrescriptionDetailVO.cs" />
+    <Compile Include="EMR\clsPatientPrescriptionVO.cs" />
+    <Compile Include="EMR\clsUpdateEMRTemplateBizActionVO.cs" />
+    <Compile Include="EMR\clsUpdatePatientEMRDataBizActionVO.cs" />
+    <Compile Include="EMR\clsUpdatePatientPrescriptionBizActionVO.cs" />
+    <Compile Include="EMR\clsVarianceVO.cs" />
+    <Compile Include="Inventory\clsAddExpiryItemReturnBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddItemSalesReturnBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddItemsEnquiryBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddScrapSalesDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddStockAdjustmentBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddUpdateStoreDetailsBizActionVO..cs" />
+    <Compile Include="Inventory\clsAddUpdateSupplierBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddItemClinicBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddItemMasterBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddItemSupplierbizActionVO.cs" />
+    <Compile Include="Inventory\clsAddItemTaxBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddOpeningBalanceBizActionVO.cs" />
+    <Compile Include="Inventory\clsAddOpeningBalanceDetailBizActionVO.cs" />
+    <Compile Include="Inventory\clsDeleteItemStoresBizActionVO.cs" />
+    <Compile Include="Inventory\clsExpiredItemReturnDetailVO.cs" />
+    <Compile Include="Inventory\clsExpiredItemReturnVO.cs" />
+    <Compile Include="Inventory\clsGetExpiredItemListBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetExpiryItemForDashBoardBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemSalesBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemSalesDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemSalesReturnBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemClinicBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemEnquiryBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemEnquiryDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemListBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemSalesReturnDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemSupplierBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetItemTaxBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetScrapSalesDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetScrapSalesItemsDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetStockAdustmentListBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetStockDetailsForOpeningBalanceBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetStockDetailsForStockAdjustmentBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetStoreDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetStoresBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetStoreStatusBizActionVO.cs" />
+    <Compile Include="Inventory\ClsGetSupplierDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\clsGetValuesforScrapSalesbyItemIDBizActionVO.cs" />
+    <Compile Include="Inventory\clsGRNBizActionVO.cs" />
+    <Compile Include="Inventory\clsGRNReturnBizActionVO.cs" />
+    <Compile Include="Inventory\clsGRNReturnVO.cs" />
+    <Compile Include="Inventory\clsGRNVO.cs" />
+    <Compile Include="Inventory\clsItemMasterVO.cs" />
+    <Compile Include="Inventory\clsItemSalesBizActionVO.cs" />
+    <Compile Include="Inventory\clsItemStockBizActionVO.cs" />
+    <Compile Include="Inventory\clsItemStockVO.cs" />
+    <Compile Include="Inventory\clsOpeningBalVO.cs" />
+    <Compile Include="Inventory\EnquirySearch\clsEnquirySearchVO.cs" />
+    <Compile Include="Inventory\Indent\clsAddIndentBizActionVO.cs" />
+    <Compile Include="Inventory\Indent\clsGetIndenListBizActionVO.cs" />
+    <Compile Include="Inventory\Indent\clsGetIndenListByStoreIdBizActionVO.cs" />
+    <Compile Include="Inventory\Indent\clsGetIndentDetailListBizActionVO.cs" />
+    <Compile Include="Inventory\Indent\clsGetIndentListForInventorDashBoardBizActionVO.cs" />
+    <Compile Include="Inventory\Indent\clsIndentDetailVO.cs" />
+    <Compile Include="Inventory\Indent\clsIndentMasterVO.cs" />
+    <Compile Include="Inventory\Indent\clsUpdateIndentBizActionVO.cs" />
+    <Compile Include="Inventory\Indent\clsUpdateIndentOnlyForFreezeBizActionVO.cs" />
+    <Compile Include="Inventory\IssueItem\clsAddIssueItemToStoreBizActionVO.cs" />
+    <Compile Include="Inventory\IssueItem\clsGetIssueListBizActionVO.cs" />
+    <Compile Include="Inventory\IssueItem\clsGetItemListByIndentIdSrchBizActionVO.cs" />
+    <Compile Include="Inventory\IssueItem\clsGetItemListByIssueIdBizActionVO.cs" />
+    <Compile Include="Inventory\IssueItem\clsIssueItemVO.cs" />
+    <Compile Include="Inventory\IssueItem\GetItemListByIndentIdForIssueItemBizActionVO.cs" />
+    <Compile Include="Inventory\MaterialConsumption\clsAddMaterialConsumptionBizActionVO.cs" />
+    <Compile Include="Inventory\MaterialConsumption\clsMaterialConsumptionVO.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsAddPurchaseOrderBizActionVO.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsFreezPurchaseOrderBizActionVO.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsGetPendingPurchaseOrderBizActionVO.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsGetPurchaseOrderBizActionVO.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsGetPurchaseOrderDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\PurchaseOrder\clsPurchaseOrderVO.cs" />
+    <Compile Include="Inventory\Quotation\clsAddQuotationBizActionVO.cs" />
+    <Compile Include="Inventory\Quotation\clsGetQuotationBizActionVO.cs" />
+    <Compile Include="Inventory\Quotation\clsGetQuotationDetailsBizActionVO.cs" />
+    <Compile Include="Inventory\Quotation\clsQuotaionVO.cs" />
+    <Compile Include="Inventory\ReceivedItemAgainstReturn\clsAddReceivedItemAgainstReturnBizActionVO.cs" />
+    <Compile Include="Inventory\ReceivedItemAgainstReturn\clsGetItemListByReturnReceivedIdBizActionVO.cs" />
+    <Compile Include="Inventory\ReceivedItemAgainstReturn\clsGetReceivedListAgainstReturnBizActionVO.cs" />
+    <Compile Include="Inventory\ReceivedItemAgainstReturn\clsReceivedItemAgainstReturnVO.cs" />
+    <Compile Include="Inventory\ReceivedItem\clsAddReceivedItemBizActionVO.cs" />
+    <Compile Include="Inventory\ReceivedItem\clsGetItemListByIssueReceivedIdBizActionVO.cs" />
+    <Compile Include="Inventory\ReceivedItem\clsGetReceivedListBizActionVO.cs" />
+    <Compile Include="Inventory\ReceivedItem\clsReceivedItemVO.cs" />
+    <Compile Include="Inventory\ReturnItem\clsAddReturnItemToStoreBizActionVO.cs" />
+    <Compile Include="Inventory\ReturnItem\clsGetItemListByReturnIdBizActionVO.cs" />
+    <Compile Include="Inventory\ReturnItem\clsGetReturnListBizActionVO.cs" />
+    <Compile Include="Inventory\ReturnItem\clsReturnItemVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddLabDay1BizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddLabDay2BizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddLabDay4BizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddLabDay5BizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsAddPlanTherapyBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsEmbryoTransferBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsEmbryoTransferVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleLabDay0BizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleLabDay0VO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleLabDay1VO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleLabDay2VO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleLabDay4VO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleLabDay5VO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleMediaDetailsVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsFemaleSemenDetailsVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGeneralExaminationFemaleBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGeneralExaminationVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetAllCoupleofPatientBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetArtCycleSummaryBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetCoupleDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetEMRDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetETDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetFollicularMonitoringSizeDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetThawingDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsgetTherapyDrugDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetTherapyListBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsGetVitrificationDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsLabDaysSummaryBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsLabDaysSummaryVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsMaleHistoryVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsNewEmbryoTransferVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsSpermFreezingVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsSpermVitrifiactionDetailsBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsUpdateFollicularMonitoringBizActionVO.cs" />
+    <Compile Include="IVFPlanTherapy\clsUpdateTherapyExecutionBizActionVO.cs" />
+    <Compile Include="Log\ErrorLog.cs" />
+    <Compile Include="Log\LogInfo.cs" />
+    <Compile Include="Log\LogInfoBizActionVO.cs" />
+    <Compile Include="MachineParameter\clsGetPathoParameterMasterBizActionVO.cs" />
+    <Compile Include="MachineParameter\clsMachineParameterMasterVO.cs" />
+    <Compile Include="Master\clsAddDoctorShareDetailsBizActionVO.cs" />
+    <Compile Include="Master\clsAddUpdateBulkRateChangeDetailsBizActionVO.cs" />
+    <Compile Include="Master\clsAddUpdateCurrencyMasterListBizActionVO.cs" />
+    <Compile Include="Master\clsAddUpdateMasterListBizActionVO.cs" />
+    <Compile Include="Master\clsAddUpdateSurrogactAgencyMasterBizActionVO.cs" />
+    <Compile Include="Master\clsCheckDuplicasyBizActionVO.cs" />
+    <Compile Include="Master\clsCheckDuplicasyVO.cs" />
+    <Compile Include="Master\clsCounterVO.cs" />
+    <Compile Include="Master\clsDoctorShareServicesDetailsVO.cs" />
+    <Compile Include="Master\clsGetCompanyMasterVO.cs" />
+    <Compile Include="Master\clsGetCounterDetailsBizActionVO.cs" />
+    <Compile Include="Master\clsGetCurrencyMasterListDetailsBizActionVO.cs" />
+    <Compile Include="Master\clsGetDepartmentListForDoctorMasterBizActionVO.cs" />
+    <Compile Include="Master\clsGetDoctorDepartmentDetailsBizActionVO.cs" />
+    <Compile Include="Master\clsGetExistingDoctorShareDetails.cs" />
+    <Compile Include="Master\clsGetMasterListDetailsBizActionVO.cs" />
+    <Compile Include="Master\clsGetPackageMasterVO.cs" />
+    <Compile Include="Master\clsGetPatientCategoryMasterVO.cs" />
+    <Compile Include="Master\clsGetTariffMasterVO.cs" />
+    <Compile Include="Master\clsGetUnitContactNoBizActionVO.cs" />
+    <Compile Include="Master\clsPrintMasterVO.cs" />
+    <Compile Include="Master\clsSurrogateAgencyMasterVO.cs" />
+    <Compile Include="Master\clsUpdateStatusMasterBizActionVO.cs" />
+    <Compile Include="Master\clsVisitTypeVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsAddDoctorAddressInfoBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsAddDoctorBankInfoBizActionVO.cs" />
+    <Compile Include="Master\clsAddMasterBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsAddDoctorDepartmentDetailsBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsAddDoctorMasterBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsAddDoctorWaiverDetailsBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsBankVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsComboMasterBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsDeleteDoctorDepartmentDetailsBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetBankDetailsVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetClassificationListForDoctorMasterBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDepartmentListForDoctorMasterByDoctorIDBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorAddressInfoBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorAddressInfoByIdVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorAppointmentSlotVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorBankInfoBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorBankInfoByIdVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorDetailListForDoctorMasterBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorDetailListForDoctorMasterByIDBizActionVO.cs" />
+    <Compile Include="Master\clsGetPatientMasterListBizActionVO.cs" />
+    <Compile Include="Master\clsGetRoleListBizActionVO.cs" />
+    <Compile Include="Master\clsUpdateRoleStatusBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorListBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorMasterListBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorScheduleBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorServiceLinkingByCategoryBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorTariffServiceListBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorWaiverDetailListBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetDoctorWaiverDetailListByIDBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsGetRefernceDoctorBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsUpdateDoctorAddressInfoVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsUpdateDoctorBankInfoVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsUpdateDoctorShareServiceBizActionVO.cs" />
+    <Compile Include="Master\DoctorMaster\clsUpdateDoctorWaiverDetailsBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsAddDoctorBillPaymentDetailsBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsAddDoctorPaymentDetailsBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsDoctorPaymentVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetDoctorBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetDoctorPaymentAllBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetDoctorPaymentBillsListBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetDoctorPaymentBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetDoctorPaymentDetailListByBillIDBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetDoctorPaymentListBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetDoctorShareAmountBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsGetPaidDoctorPaymentDetailsBizActionVO.cs" />
+    <Compile Include="Master\DoctorPayment\clsSaveDoctorPaymentDetailsBizActionVO.cs" />
+    <Compile Include="Master\Location\clsAddAddressLocation6BizActionVO.cs" />
+    <Compile Include="Master\Location\clsAddAreaBizActionVO.cs" />
+    <Compile Include="Master\Location\clsAddCityBizActionVO.cs" />
+    <Compile Include="Master\Location\clsAddCountryBizActionVO.cs" />
+    <Compile Include="Master\Location\clsAddDistBizActionVO.cs" />
+    <Compile Include="Master\Location\clsAddressLocation6VO.cs" />
+    <Compile Include="Master\Location\clsAddStateBizActionVO.cs" />
+    <Compile Include="Master\Location\clsAreaVO.cs" />
+    <Compile Include="Master\Location\clsCityVO.cs" />
+    <Compile Include="Master\Location\clsCountryVO.cs" />
+    <Compile Include="Master\Location\clsDistVO.cs" />
+    <Compile Include="Master\Location\clsGetAddressLocation6BizActionVO.cs" />
+    <Compile Include="Master\Location\clsGetAddressLocation6ListByZoneIdBizActionVO.cs" />
+    <Compile Include="Master\Location\clsGetAreaListBizActionVO.cs" />
+    <Compile Include="Master\Location\clsGetCityListBizActionVO.cs" />
+    <Compile Include="Master\Location\clsGetCountryListBizActionVO.cs" />
+    <Compile Include="Master\Location\clsGetDistListBizActionVO.cs" />
+    <Compile Include="Master\Location\clsGetStateListBizActionVO.cs" />
+    <Compile Include="Master\Location\clsStateVO.cs" />
+    <Compile Include="Master\Location\clsUpdateAddressLocation6BizActionVO.cs" />
+    <Compile Include="Master\Location\clsUpdateAreaMasterDetailsBizActionVO.cs" />
+    <Compile Include="Master\Location\clsUpdateCityMasterDetailsBizActionVO.cs" />
+    <Compile Include="Master\Location\clsUpdateCountryMasterDetails.cs" />
+    <Compile Include="Master\Location\clsUpdateDistMasterDetailsBizActionVO.cs" />
+    <Compile Include="Master\Location\clsUpdateStateMasterDetailsBizActionVO.cs" />
+    <Compile Include="NursingStation\clsDrugAdministrationChartBizActionVO.cs" />
+    <Compile Include="NursingStation\clsDrugAdministrationChartVO.cs" />
+    <Compile Include="NursingStation\EMR\clsPrescriptionMasterVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsAddCancelAppReasonBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsAddMarkVisitInAppointmenBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsCheckAppointmentTimeBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsCheckMarkVisitBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsCheckMRnoBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsGetAppointmentDetailsByMrNoBizAction.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsGetDoctorTimeBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsGetAppointmentByDoctorAndAppointmentDateBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsGetFutureAppointmentBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsGetPastAppointmentBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\QueueManagement\clsAddQueueListBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\QueueManagement\clsGetQueueByIDBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\QueueManagement\clsGetQueueListBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\QueueManagement\clsQueueVO.cs" />
+    <Compile Include="OutPatientDepartment\QueueManagement\clsUpdatePatientSortOrderBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsAdvanceBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsAdvanceVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsGetPatientPastVisitBizActionVO .cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsGetSecondLastVisitBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsPaymentBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsPaymentVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsRefundBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsRefundVO.cs" />
+    <Compile Include="Pathology\clsAddPathOrderBookingBizActionVO.cs" />
+    <Compile Include="Pathology\clsAddPathPatientReportBizActionVO.cs" />
+    <Compile Include="Pathology\clsGetPathoOutSourceTestListBizActionVO.cs" />
+    <Compile Include="Pathology\clsGetPathOrderBookingDetailListBizActionVO.cs" />
+    <Compile Include="Pathology\clsGetPathOrderBookingListBizActionVO.cs" />
+    <Compile Include="Pathology\clsGetPathTestDetailsBizActionVO.cs" />
+    <Compile Include="Pathology\clsPathoANC_ExaminationVO.cs" />
+    <Compile Include="Pathology\clsPathoCheckBillingStatusVO.cs" />
+    <Compile Include="Pathology\clsPathOrderBookingDetailVO.cs" />
+    <Compile Include="Pathology\clsPathOrderBookingVO.cs" />
+    <Compile Include="Pathology\clsPathoResultEntryPrintDetailsBizActionVO.cs" />
+    <Compile Include="Pathology\clsPathoResultEntryVO.cs" />
+    <Compile Include="Pathology\clsPathoTestOutSourceDetailsVO.cs" />
+    <Compile Include="Pathology\clsPathoTestResultEntryBizActionVO.cs" />
+    <Compile Include="Pathology\clsPathoUploadReportBizActionVO.cs" />
+    <Compile Include="Pathology\clsPathPatientReportVO.cs" />
+    <Compile Include="Pathology\clsRemarkHistoryBizActionVO.cs" />
+    <Compile Include="Pathology\clsRemarkHistoryVO.cs" />
+    <Compile Include="Pathology\clsUpdatePathOrderBookingDetailBizActionVO.cs" />
+    <Compile Include="Pathology\clsUpdatePathOrderBookingDetailListBizActionVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsAddPathoProfileMasterBizActionVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsAddPathoTestMasterBizActionVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsAddUpdatePathoParameterBizActionVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsGetPathoAgencyApplicableUnitListBizActionVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsGetPathoParameterMasterBizActionVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoAgencyMasterVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoParameterMasterVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoParameterUnitMaterVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoProfileMasterVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoProfileTestDetailsVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoTestItemDetailsVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoTestMasterVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoTestParameterVO.cs" />
+    <Compile Include="Pathology\PathologyMasters\clsPathoTestSampleVO.cs" />
+    <Compile Include="Patient\AddBarcodeImageBizActionVO.cs" />
+    <Compile Include="Patient\AddBarcodeImageVO.cs" />
+    <Compile Include="Patient\clsAddPatientPhotoToServerBizActionVO.cs" />
+    <Compile Include="Patient\clsAddPatientServiceDetailsVO.cs" />
+    <Compile Include="Patient\clsAddPrintedPatientConscentBizActionVO.cs" />
+    <Compile Include="Patient\clsAddUpdateHSGBizActionVO.cs" />
+    <Compile Include="Patient\clsAddUpdatePatientScanDocument.cs" />
+    <Compile Include="Patient\clsGetPatientBillBalanceAmountBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientConsoleHeaderDeailsBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientPackageListBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientPenPusherDetailByIDBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientPenPusherDetailListBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientReportDataBizActionVO.cs" />
+    <Compile Include="Patient\clsGetTariffAndRelationFromApplicationConfigurationBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientDetailsForCounterSaleBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientDetailsForCRMBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientFamilyDetailsBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientForLoyaltyCardIssueBizActionVO.cs" />
+    <Compile Include="Patient\clsHSGVO.cs" />
+    <Compile Include="Patient\clsKinInformationVO.cs" />
+    <Compile Include="Patient\clsPatientFamilyDetailsVO.cs" />
+    <Compile Include="Patient\clsPatientOtherDetailsVO.cs" />
+    <Compile Include="Patient\clsAddUpdateTESEBizActionVO.cs" />
+    <Compile Include="Patient\clsTESEVO.cs" />
+    <Compile Include="Patient\clsUpdatePatientForIssueBizActionVO.cs" />
+    <Compile Include="Radiology\clsAddModalityMasterBizActionVO.cs" />
+    <Compile Include="Radiology\clsAddRadOrderBookingBizActionVO.cs" />
+    <Compile Include="Radiology\clsAddRadTemplateMasterBizActionVO.cs" />
+    <Compile Include="Radiology\clsAddRadTestMasterBizActionVO.cs" />
+    <Compile Include="Radiology\clsGetAddUpdateRadiologyNewBizActionVO.cs" />
+    <Compile Include="Radiology\ClsGetDataonDashboardVO.cs" />
+    <Compile Include="Radiology\clsGetModalityMasterBizActionVO.cs" />
+    <Compile Include="Radiology\clsGetOrderBookingListBizActionVO.cs" />
+    <Compile Include="Radiology\clsGetRadologyPringHeaderFooterImageBizActionVO.cs" />
+    <Compile Include="Radiology\clsGetRadTemplateBizActionVO.cs" />
+    <Compile Include="Radiology\clsGetRadTemplateDetailsBizActionVO.cs" />
+    <Compile Include="Radiology\clsGetRadTestDetailsBizActionVO.cs" />
+    <Compile Include="Radiology\clsModalityMasterVO.cs" />
+    <Compile Include="Radiology\clsRadioTestItemDetailsVO.cs" />
+    <Compile Include="Radiology\clsRadiologyVO.cs" />
+    <Compile Include="Radiology\clsRadMailReportVO.cs" />
+    <Compile Include="Radiology\clsRadPatientReportVO.cs" />
+    <Compile Include="Radiology\clsRadUploadReportBizActionVO.cs" />
+    <Compile Include="Radiology\clsUpdateRadOrderBookingDetailListBizActionVO.cs" />
+    <Compile Include="Radiology\clsVitalDetailsForRadiologyBizActionVO.cs" />
+    <Compile Include="Radiology\clsVitalDetailsForRadiologyVO.cs" />
+    <Compile Include="RateContract\clsGetRateContractAgainstSupplierAndItemBizActionVO.cs" />
+    <Compile Include="RateContract\clsRateContractMasterVO.cs" />
+    <Compile Include="RSIJ\GetMastersListBizActionVO.cs" />
+    <Compile Include="TokenDisplay\clsAddUpdateTokenDisplayBizActionVO.cs" />
+    <Compile Include="TokenDisplay\clsGetTokenDisplayPatirntDetailsBizActionVO.cs" />
+    <Compile Include="User\clsAcknowledgeAlertBizActionVO.cs" />
+    <Compile Include="User\clsAddUserCategoryLinkBizActionVO.cs" />
+    <Compile Include="User\clsChangePasswordFirstTimeBizActionVO.cs" />
+    <Compile Include="User\clsGetLoginNamePasswordBizActionVO.cs" />
+    <Compile Include="User\clsGetRoleGeneralDetailsBizActionVO.cs" />
+    <Compile Include="User\clsGetSelectedRoleMenuIdBizActionVO.cs" />
+    <Compile Include="User\clsGetUserGeneralDetailsBizActionVO.cs" />
+    <Compile Include="User\clsUpdateDashboardBizActionVO.cs" />
+    <Compile Include="User\clsUserBizActionVO.cs" />
+    <Compile Include="User\clsUserCategoryLinkVO.cs" />
+    <Compile Include="User\clsUserVO.cs" />
+    <Compile Include="Common\MasterListItem.cs" />
+    <Compile Include="IBizActionValueObject.cs" />
+    <Compile Include="IValueObject.cs" />
+    <Compile Include="Master\DoctorMaster\clsDoctorVO.cs" />
+    <Compile Include="Master\clsGetMasterListBizActionVO.cs" />
+    <Compile Include="Master\clsMasterVO.cs" />
+    <Compile Include="NotificationModel.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsAddAppointmentBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsAppointmentVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsCancelAppointmentBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsGetAppointmentBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Appointment\clsGetAppointmentByIdBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsAddPatientKinDetailsBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsAddPatientSponsorBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsAddVisitBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsGetPatientSponsorBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsGetPatientSponsorListBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsGetVisitListBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsGetVisitBizActionVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsPatientKinDetailsVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsPatientSponsorVO.cs" />
+    <Compile Include="OutPatientDepartment\Registration\clsVisitVO.cs" />
+    <Compile Include="Patient\clsAddPatientBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientBizActionVO.cs" />
+    <Compile Include="Patient\clsGetPatientGeneralDetailsListBizActionVO.cs" />
+    <Compile Include="Patient\clsPatientGeneralDetailsVO.cs" />
+    <Compile Include="Patient\clsPatientVO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceContract.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Agency\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

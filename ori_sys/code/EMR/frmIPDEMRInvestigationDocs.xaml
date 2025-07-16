@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="EMR.frmIPDEMRInvestigationDocs"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+xmlns:Localization="clr-namespace:PalashDynamic.Localization;assembly=PalashDynamic.Localization"
+Width="auto" Height="auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <Localization:Localized x:Key="locResource"></Localization:Localized>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="ImageTree" Grid.Column="0" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Border x:Name="image_Border" Grid.Row="0" BorderThickness="1,1,1,1" Grid.Column="0" CornerRadius="2.5" BorderBrush="Black">
+            </Border>
+        </Grid>
+
+        <Grid x:Name="mainGrid" Grid.Column="1" Grid.Row="0" SizeChanged="mainGrid_SizeChanged">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button VerticalAlignment="Center"  x:Name="cmbRotation" Margin="4" ToolTipService.ToolTip="Rotation" Click="cmbRotation_Click">
+                    <Button.Content>
+                        <Image Height="18" Source="/PalashDynamics;component/Icons/Rotation.png"></Image>
+                    </Button.Content>
+                </Button>
+
+                <Button  HorizontalAlignment="Left"   x:Name="CmdZoomPlus" Margin="4" ToolTipService.ToolTip="Zoom +" Click="CmdZoomPlus_Click" >
+                    <Button.Content>
+                        <Image Height="18" Source="/PalashDynamics;component/Icons/ZoomIN.png" ></Image>
+                    </Button.Content>
+                </Button>
+
+                <Button VerticalAlignment="Center"  x:Name="cmbZoomMinus" Margin="4" ToolTipService.ToolTip="Zoom -" Click="cmbZoomMinus_Click">
+                    <Button.Content>
+                        <Image Height="18" Source="/PalashDynamics;component/Icons/ZoomOut.png"></Image>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+
+            <Grid x:Name="imageGrid" Grid.Column="0" Grid.Row="1">
+                <ScrollViewer x:Name="scrollViewer_1" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                    <Viewbox x:Name="viewBox_Image">
+                        <Image x:Name="DisplayImg" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform x:Name="Rotator"/>
+                                    <ScaleTransform x:Name="Scale" />
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Viewbox>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

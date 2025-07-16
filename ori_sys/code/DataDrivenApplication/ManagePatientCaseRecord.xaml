@@ -1,0 +1,142 @@
+﻿<controls:ChildWindow x:Class="DataDrivenApplication.ManagePatientCaseRecord"
+        xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+        xmlns:local="clr-namespace:DataDrivenApplication" Style="{StaticResource ChildWindowDefault}"
+        Title="Manage Patient Case Record"  xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+        xmlns:Common="clr-namespace:DataDrivenApplication" Height="300"  Width="800"                                                      
+>
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <local:Window x:Name="Window"  OnCloseButtonClick="Window_OnCloseButtonClick" Margin="5">
+        <Grid>
+            <Grid x:Name="ListView">
+                <Border x:Name="Container1" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,8,0,0" >
+                    <Grid Margin="0,1,0,1">
+                        <Grid x:Name="LayoutRoot1" Background="White">
+                            <StackPanel  Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0">
+                                <Button x:Name="DeleteRelation" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="DeleteRelation_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                                        <TextBlock Text="Delete" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="AddRelation" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,0,0" Padding="10,3,10,3" TabIndex="1" Click="AddRelation_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Common:XamlCross Width="9" Height="9" Margin="0,0,5,0" RenderTransformOrigin="0.5,0.5">
+                                            <Common:XamlCross.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform Angle="45"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </Common:XamlCross.RenderTransform>
+                                        </Common:XamlCross>
+                                        <TextBlock Text="Add" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                            <Border  BorderThickness="1,1,1,1" Margin="0,27,0,0" BorderBrush="{StaticResource BorderDefault}" CornerRadius="5,5,5,5" Background="{StaticResource BackgroundDefault}">
+                                <Grid Margin="2">
+                                    <data:DataGrid x:Name="dgTemplateList" Margin="0,10,0,0" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding}" SelectionChanged="dgTemplateList_SelectionChanged">
+                                        <data:DataGrid.Columns>
+                                            <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton VerticalAlignment="Center" Content="View" Padding="5,0,5,0" IsTabStop="False" Click="PreviewHyperlinkButton_Click"></HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <!--<data:DataGridTextColumn  Binding="{Binding RelationTitle}" Header="Relation Title" />-->
+                                            <data:DataGridTextColumn  Binding="{Binding Description}" Header="Description" />
+                                            <data:DataGridTextColumn  Binding="{Binding SourceSection}" Header="Source Section" />
+                                            <data:DataGridTextColumn  Binding="{Binding SourceField.Description}" Header="Source Field" />
+                                            <data:DataGridTextColumn  Binding="{Binding TargetSection}" Header="Target Section" />
+                                            <data:DataGridTextColumn  Binding="{Binding TargetField.Title}" Header="Target Field" />
+                                        </data:DataGrid.Columns>
+                                    </data:DataGrid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border HorizontalAlignment="Left" Margin="8,0,0,0"  VerticalAlignment="Top" Background="{StaticResource BackgroundDefault}" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="0.994"/>
+                            <SkewTransform AngleX="-20"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="3.627" Y="0.063"/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <TextBlock Text="Form Details" FontFamily="Portable User Interface" Margin="10,1,10,1" Foreground="{StaticResource Heading}" FontWeight="Bold"/>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="FormView" Visibility="Collapsed">
+                <Border x:Name="Container" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" Padding="5,5,5,5" Margin="0,8,0,0" >
+                    <Grid Margin="0,1,0,1">
+                        <Grid x:Name="LayoutRoot" Background="White">
+                            <StackPanel  Orientation="Horizontal" x:Name="ItemListToolbar" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0">
+                                <Button x:Name="CancelItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,5,0" Padding="10,3,10,3" TabIndex="3" Click="CancelItemButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Common:XamlCross Width="10" Height="10" Margin="0,0,5,0"/>
+                                        <TextBlock Text="Cancel" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="SaveItemButton" x:FieldModifier="public" Style="{StaticResource ButtonDefault}" Foreground="{StaticResource Heading}" FontFamily="Portable User Interface" FontWeight="Bold" Margin="0,0,0,0" Padding="10,3,10,3" TabIndex="1" Click="SaveItemButton_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Common:XamlCheckmark Width="13" Height="13" Margin="0,0,5,0" RenderTransformOrigin="0.5,0.5">
+                                        </Common:XamlCheckmark>
+                                        <TextBlock Text="Save" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                            <Border  BorderThickness="1,1,1,1" Margin="0,27,0,0" BorderBrush="{StaticResource BorderDefault}" CornerRadius="5,5,5,5" Background="{StaticResource BackgroundDefault}">
+                                <Grid Margin="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Source Section:" TextWrapping="Wrap" Margin="2"/>
+                                    <ComboBox Grid.Column="1" Grid.Row="0"  x:Name="cmbSourceSection" Margin="2" Style="{StaticResource ComboBoxDefault}" BorderBrush="{StaticResource BorderDefault}" DisplayMemberPath="Description" TabIndex="1" SelectionChanged="cmbSourceSection_SelectionChanged"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Source Field:" TextWrapping="Wrap" Margin="2"/>
+                                    <ComboBox Grid.Column="1" Grid.Row="1" x:Name="cmbSourceField" Margin="2"   Style="{StaticResource ComboBoxDefault}" BorderBrush="{StaticResource BorderDefault}" DisplayMemberPath="Description" TabIndex="2"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Target Section:" TextWrapping="Wrap" Margin="2"/>
+                                    <ComboBox Grid.Column="1" Grid.Row="3"  x:Name="cmbTargetSection" Margin="2" Style="{StaticResource ComboBoxDefault}" BorderBrush="{StaticResource BorderDefault}" DisplayMemberPath="Title" SelectionChanged="cmbTargetSection_SelectionChanged"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Target Field:" TextWrapping="Wrap" Margin="2"/>
+                                    <ComboBox Grid.Column="1" Grid.Row="4" x:Name="cmbTargetField" Margin="2"   Style="{StaticResource ComboBoxDefault}" BorderBrush="{StaticResource BorderDefault}" DisplayMemberPath="Title"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border HorizontalAlignment="Left" Margin="8,0,0,0" x:Name="ContainerTitle" VerticalAlignment="Top" Background="{StaticResource BackgroundDefault}" BorderBrush="{StaticResource BorderDefault}" BorderThickness="1,1,1,1" CornerRadius="5,5,5,5" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="0.994"/>
+                            <SkewTransform AngleX="-20"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="3.627" Y="0.063"/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <TextBlock x:Name="FormTitle" Text="Patient Case Record Details" FontFamily="Portable User Interface" Margin="10,1,10,1" Foreground="{StaticResource Heading}" FontWeight="Bold"/>
+                </Border>
+            </Grid>
+        </Grid>
+    </local:Window>
+</controls:ChildWindow>

@@ -1,0 +1,497 @@
+﻿<UserControl x:Class="OPDModule.DashBoard.BillingDashBoard"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+        xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+        xmlns:my1="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+        xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+        xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data" 
+        xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"  
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:blacklight="clr-namespace:Blacklight.Silverlight.Controls;assembly=Blacklight.Silverlight.Controls"
+        xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"
+        xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+         xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"    
+        xmlns:Grp="clr-namespace:Groupbox;assembly=Groupbox" 
+        Loaded="Home_Loaded"   >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converter:DateTimeToAgePart x:Key="DateTimeToAgePart"></Converter:DateTimeToAgePart>
+            <Converter:DateTimeConverter x:Key="DateConverter"></Converter:DateTimeConverter>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+            <Converter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+            <ControlTemplate x:Key="FilledContentControlTemplate" TargetType="ContentControl" >
+                <Grid>
+                    <ContentPresenter />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer x:Name="BillingDashScroll" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+        <Grid x:Name="Root" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+        <Grid ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Grid.RowDefinitions>              
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Height="100">
+                <Grp:GroupBox Header=" Search " BorderThickness="2" >
+                    <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition  Width="Auto"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition  Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="MR NO" Grid.Row="0" Grid.Column="4" Margin="4" ></TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="5" Margin="4" Text="{Binding MRNo, Mode=TwoWay}" x:Name="txtMRNO"  MaxLength="50"  TabIndex="2" KeyDown="txtLastName_KeyDown"></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="First Name" Grid.Row="0" Grid.Column="0" Margin="4" ></TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="1"  Margin="4" x:Name="txtFirstName"  HorizontalAlignment="Stretch"   MaxLength="50" TabIndex="0" LostFocus="txtFirstName_LostFocus" KeyDown="txtLastName_KeyDown"></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Surname" Grid.Row="0" Grid.Column="2" Margin="4" ></TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="3" Margin="4" Text="{Binding LastName, Mode=TwoWay}" TabIndex="1" x:Name="txtLastName"  MaxLength="50" LostFocus="txtLastName_LostFocus"  KeyDown="txtLastName_KeyDown"></TextBox>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="From Date" Grid.Row="1" Grid.Column="2" Margin="4" ></TextBlock>
+                <controls:DatePicker x:Name="dtpDate"  Grid.Row="1" Grid.Column="3"  Margin="4" Style="{StaticResource DatePickerStyle}" TabIndex="5"/>
+                
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="To Date" Grid.Row="1" Grid.Column="4" Margin="4" ></TextBlock>
+                <controls:DatePicker x:Name="dtpToDate"  Grid.Row="1" Grid.Column="5" TabIndex="6"  Margin="4" Style="{StaticResource DatePickerStyle}" />
+                
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Clinic" Grid.Row="1" Grid.Column="0" Margin="4" ></TextBlock>
+                <inputcombo:AutoCompleteComboBox  x:Name="cmbClinic" Background="Red" Grid.Row="1" Grid.Column="1"   Margin="4" VerticalAlignment="Center" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" TabIndex="3" SelectionChanged="cmbClinic_SelectionChanged"></inputcombo:AutoCompleteComboBox>
+
+                  <StackPanel Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Bottom"  my:DockPanel.Dock="Top" x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="2"  >
+                    <Button  TabIndex="7" x:Name="SearchButton"  MinWidth="45"  Background="#000000" Margin="2,0,0,0"  Visibility="Visible" Click="PatientSearchButton_Click"  HorizontalAlignment="Right">
+                        <Button.Content>
+                                        <Image Source="/PalashDynamics;component/Icons/xmag.png" Margin="2" Width="20" ></Image>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grp:GroupBox>
+      </Grid>
+
+                <Grid x:Name="LayoutRoot" Background="WhiteSmoke"  Grid.Row="1" Height="650" Width="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+              
+                    <blacklight:DragDockPanelHost x:Name="DragPanelContainer" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                     
+                 <blacklight:DragDockPanel x:Name="DashBoardPharamacyBill" Margin="5" Style="{StaticResource DragDockPanelStyle}" Maximized="ScheduleForETOPU_Maximized" Minimized="ScheduleForETOPU_Minimized">
+             
+                    <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <!--<StackPanel Orientation="Horizontal">-->
+                        <TextBlock FontSize="12" Foreground="Black" Margin="5, 2, 0, 0" IsHitTestVisible="False">Pharmacy Bill List :</TextBlock>
+                        <toolkit:DockPanel Grid.Row="1">
+                            <sdk:DataPager x:Name="DataPagerPharamcy"  toolkit:DockPanel.Dock="Bottom"
+                                            NumericButtonCount="10" AutoEllipsis="False" 
+                                             PageSize="{Binding PageSize}"
+                                            DisplayMode="FirstLastPreviousNext"
+                                            IsEnabled="True"
+                                            IsTotalItemCountFixed="True"
+                                            Source="{Binding DataList}"
+                                             />
+                                    <data:DataGrid x:Name="grdPharmcyBill" IsReadOnly="True" SelectionMode="Single"  ItemsSource="{Binding TherapyList}"  AutoGenerateColumns="False" SelectionChanged="grdPharmcyBill_SelectionChanged">
+                                        <data:DataGrid.Columns>
+                                            <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton Background="White"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnPrint_Phrmcy_Click"   x:Name="btnPrint" >
+                                                            <Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/Print_32.png"  Visibility="{Binding IsFreezed, Converter={StaticResource VisiblilityConverter}}"  />
+                                                        </HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn Header="" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate  >
+                                                    <DataTemplate >
+                                                        <HyperlinkButton ToolTipService.ToolTip="Please Settle Bill." VerticalAlignment="Center" Padding="5,0,5,0" Margin="4"  IsTabStop="False" Click="btnSettle_pharmcy_Click" x:Name="btnSettle" HorizontalAlignment="Center"  Visibility="{Binding BalanceAmountSelf, Converter={StaticResource VisiblilityConverter},ConverterParameter='Amt'}" Content="Settle Bill">
+
+                                                        </HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnReceipt_pharamcy_Click"   x:Name="btnReceipt" Content="Receipts">
+                                                            <!--<Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/Print_32.png"  Visibility="{Binding IsFreezed, Converter={StaticResource VisiblilityConverter}}"/>-->
+                                                        </HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTextColumn Binding="{Binding Date,Mode=OneWay,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  Header="Date" IsReadOnly="True" />
+                                            <data:DataGridTextColumn Binding="{Binding BillNo, Mode=OneWay}" Header="Bill No." IsReadOnly="True"/>
+                                            <data:DataGridTextColumn Binding="{Binding MRNO, Mode=OneWay}" Header="MR No." IsReadOnly="True"/>
+                                            <data:DataGridTextColumn Binding="{Binding Opd_Ipd_External_No,Mode=OneWay}"  Header="OPD No" IsReadOnly="True" />
+                                            <data:DataGridTemplateColumn IsReadOnly="True" Header="Name" Width="150" SortMemberPath="FirstName">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding FirstName}" Margin="4,0,4,0"></TextBlock>
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding MiddleName}" Margin="0,0,4,0"></TextBlock>
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTextColumn Binding="{Binding TotalBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Amount" IsReadOnly="True">
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding TotalConcessionAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Concession" IsReadOnly="True">
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+                                            <data:DataGridTextColumn Binding="{Binding NetBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Net Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding PaidAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Paid Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding BalanceAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Balance Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                        </data:DataGrid.Columns>
+                                    </data:DataGrid>
+                        </toolkit:DockPanel>               
+                    </Grid>
+                    
+                </blacklight:DragDockPanel>
+
+                <blacklight:DragDockPanel x:Name="ClinicalBill" Visibility="Visible" Margin="5" Style="{StaticResource DragDockPanelStyle}" Maximized="ClinicalBill_Maximized" Minimized="ClinicalBill_Minimized">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="12" Foreground="Black" Margin="5, 2, 0, 0" IsHitTestVisible="False">Clinical Bill List</TextBlock>
+                        <toolkit:DockPanel  Grid.Row="1">
+
+                            <data:DataPager x:Name="DataPagerClinicalBill"  toolkit:DockPanel.Dock="Bottom"
+                                            NumericButtonCount="10" AutoEllipsis="False" 
+                                             PageSize="{Binding PageSize}"
+                                            DisplayMode="FirstLastPreviousNext"
+                                            IsEnabled="True"
+                                            IsTotalItemCountFixed="True"
+                                            Source="{Binding DataList}"/>
+                            
+                            <data:DataGrid  x:Name="grdClinicalBill"  IsReadOnly="True"  SelectionMode="Single" ItemsSource="{Binding AppointmentList}"  AutoGenerateColumns="False" SelectionChanged="grdClinicalBill_SelectionChanged" >
+                                <data:DataGrid.Columns>
+                                            <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton Background="White"  VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnPrint_Click"   x:Name="btnPrint" >
+                                                            <Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/Print_32.png"  Visibility="{Binding IsFreezed, Converter={StaticResource VisiblilityConverter}}"  />
+                                                        </HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>                                               
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTemplateColumn Header="" IsReadOnly="True" >
+                                                <data:DataGridTemplateColumn.CellTemplate  >
+                                                    <DataTemplate >
+                                                        <HyperlinkButton ToolTipService.ToolTip="Please Settle Bill." VerticalAlignment="Center" Padding="5,0,5,0" Margin="4"  IsTabStop="False" Click="btnSettle_Click" x:Name="btnSettle" HorizontalAlignment="Center"  Visibility="{Binding BalanceAmountSelf, Converter={StaticResource VisiblilityConverter},ConverterParameter='Amt'}" Content="Settle Bill">
+
+                                                        </HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+
+                                            <data:DataGridTemplateColumn>
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <HyperlinkButton VerticalAlignment="Center" Padding="5,0,5,0" IsTabStop="False" Click="btnReceipt_Click"   x:Name="btnReceipt" Content="Receipts">
+                                                            <!--<Image  Height="16" Stretch="Fill" Source="/PalashDynamics;component/Icons/Print_32.png"  Visibility="{Binding IsFreezed, Converter={StaticResource VisiblilityConverter}}"/>-->
+                                                        </HyperlinkButton>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTextColumn Binding="{Binding Date,Mode=OneWay,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  Header="Date" IsReadOnly="True" />
+                                            <data:DataGridTextColumn Binding="{Binding BillNo, Mode=OneWay}" Header="Bill No." IsReadOnly="True"/>
+                                            <data:DataGridTextColumn Binding="{Binding MRNO, Mode=OneWay}" Header="MR No." IsReadOnly="True"/>
+                                            <data:DataGridTextColumn Binding="{Binding Opd_Ipd_External_No,Mode=OneWay}"  Header="OPD No" IsReadOnly="True" />
+                                            <data:DataGridTemplateColumn IsReadOnly="True" Header="Name" Width="150" SortMemberPath="FirstName">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding FirstName}" Margin="4,0,4,0"></TextBlock>
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding MiddleName}" Margin="0,0,4,0"></TextBlock>
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTextColumn Binding="{Binding TotalBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Amount" IsReadOnly="True">
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding TotalConcessionAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Concession" IsReadOnly="True">
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+                                            <data:DataGridTextColumn Binding="{Binding NetBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Net Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+                                    
+                                            <data:DataGridTextColumn Binding="{Binding PaidAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Paid Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding BalanceAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Balance Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+                                           
+                                        </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </toolkit:DockPanel >
+                    </Grid>
+                </blacklight:DragDockPanel>
+
+                <blacklight:DragDockPanel x:Name="Ivf" Visibility="Visible" Margin="5" Style="{StaticResource DragDockPanelStyle}" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="12" x:Name="lblIvf" Foreground="Black" Margin="5, 2, 0, 0" IsHitTestVisible="False">IVF Bill List :</TextBlock>
+                        <toolkit:DockPanel  Grid.Row="1">
+                        <data:DataPager x:Name="grdPgrIvf"  toolkit:DockPanel.Dock="Bottom" Source="{Binding}" NumericButtonCount="10" AutoEllipsis="False" IsTotalItemCountFixed="True" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal" Grid.Row="0" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <TextBlock x:Name="lblVisit" Text="Some previous days visits are open. Click here to"   Margin="4" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="Red"></TextBlock>
+                                    <HyperlinkButton Margin="4" Grid.Row="0" Grid.Column="1" Visibility="Collapsed" Content="Close Visits"  VerticalAlignment="Center" x:Name="hlCloseVisit" Click="hlCloseVisit_Click"  HorizontalAlignment="Left" TabIndex="5"></HyperlinkButton>
+                                </StackPanel>
+                               
+                                <data:DataGrid Grid.Row="1" Grid.ColumnSpan="2" x:Name="grdIvf"  IsReadOnly="True" SelectionMode="Single"  ItemsSource="{Binding QueueList}"  AutoGenerateColumns="False" >
+                                    <data:DataGrid.Columns>
+                                                <data:DataGridTextColumn Binding="{Binding Date,Mode=OneWay,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  Header="Date" IsReadOnly="True" />
+                                                <data:DataGridTextColumn Binding="{Binding BillNo, Mode=OneWay}" Header="Bill No." IsReadOnly="True"/>
+                                                <data:DataGridTextColumn Binding="{Binding MRNO, Mode=OneWay}" Header="MR No." IsReadOnly="True"/>
+                                                <data:DataGridTextColumn Binding="{Binding Opd_Ipd_External_No,Mode=OneWay}"  Header="OPD No" IsReadOnly="True" />
+                                                <data:DataGridTemplateColumn IsReadOnly="True" Header="Name" Width="150" SortMemberPath="FirstName">
+                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                                <TextBlock VerticalAlignment="Center" Text="{Binding FirstName}" Margin="4,0,4,0"></TextBlock>
+                                                                <TextBlock VerticalAlignment="Center" Text="{Binding MiddleName}" Margin="0,0,4,0"></TextBlock>
+                                                                <TextBlock VerticalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                </data:DataGridTemplateColumn>
+                                                <data:DataGridTextColumn Binding="{Binding Rate, StringFormat=0.00,Mode=OneWay}"  Header="Service Rate" IsReadOnly="True">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn Binding="{Binding TotalBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Amount" IsReadOnly="True">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn Binding="{Binding TotalConcessionAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Concession" IsReadOnly="True">
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+                                                <data:DataGridTextColumn Binding="{Binding NetBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Net Amount" IsReadOnly="True" >
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn Binding="{Binding PaidAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Paid Amount" IsReadOnly="True" >
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                                <data:DataGridTextColumn Binding="{Binding BalanceAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Balance Amount" IsReadOnly="True" >
+                                                    <data:DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="TextAlignment" Value="Right"/>
+                                                        </Style>
+                                                    </data:DataGridTextColumn.ElementStyle>
+                                                </data:DataGridTextColumn>
+
+                                            </data:DataGrid.Columns>
+                                </data:DataGrid>
+                            </Grid>
+                        </toolkit:DockPanel >
+                    </Grid>
+                </blacklight:DragDockPanel>
+                
+                <blacklight:DragDockPanel x:Name="UltraSoundBill" Visibility="Visible" Margin="5" Style="{StaticResource DragDockPanelStyle}" Maximized="Appointments_Maximized" Minimized="DragDockPanel_Minimized">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="12" Foreground="Black" Margin="5, 2, 0, 0" IsHitTestVisible="False">Ultra Sound Bill List : </TextBlock>
+                        <toolkit:DockPanel  Grid.Row="1">
+
+                            <data:DataPager x:Name="DataPagerUltraSoundBill"  toolkit:DockPanel.Dock="Bottom"
+                                            NumericButtonCount="10" AutoEllipsis="False" 
+                                             PageSize="{Binding PageSize}"
+                                            DisplayMode="FirstLastPreviousNext"
+                                            IsEnabled="True"
+                                            IsTotalItemCountFixed="True"
+                                            Source="{Binding DataList}"
+                                             />
+                            <data:DataGrid  x:Name="grdUltraSoundBill"  IsReadOnly="True"  SelectionMode="Single" ItemsSource="{Binding AppointmentList}"  AutoGenerateColumns="False"  >
+                                    <data:DataGrid.Columns>
+                                            <data:DataGridTextColumn Binding="{Binding Date,Mode=OneWay,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}"  Header="Date" IsReadOnly="True" />
+                                            <data:DataGridTextColumn Binding="{Binding BillNo, Mode=OneWay}" Header="Bill No." IsReadOnly="True"/>
+                                            <data:DataGridTextColumn Binding="{Binding MRNO, Mode=OneWay}" Header="MR No." IsReadOnly="True"/>
+                                            <data:DataGridTextColumn Binding="{Binding Opd_Ipd_External_No,Mode=OneWay}"  Header="OPD No" IsReadOnly="True" />
+                                            <data:DataGridTemplateColumn IsReadOnly="True" Header="Name" Width="150" SortMemberPath="FirstName">
+                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding FirstName}" Margin="4,0,4,0"></TextBlock>
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding MiddleName}" Margin="0,0,4,0"></TextBlock>
+                                                            <TextBlock VerticalAlignment="Center" Text="{Binding LastName}"></TextBlock>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </data:DataGridTemplateColumn.CellTemplate>
+                                            </data:DataGridTemplateColumn>
+                                            <data:DataGridTextColumn Binding="{Binding Rate, StringFormat=0.00,Mode=OneWay}"  Header="Service Rate" IsReadOnly="True">
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding TotalBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Amount" IsReadOnly="True">
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding TotalConcessionAmount, StringFormat=0.00,Mode=OneWay}"  Header="Total Concession" IsReadOnly="True">
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+                                            <data:DataGridTextColumn Binding="{Binding NetBillAmount, StringFormat=0.00,Mode=OneWay}"  Header="Net Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding PaidAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Paid Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                            <data:DataGridTextColumn Binding="{Binding BalanceAmountSelf, StringFormat=0.00,Mode=OneWay}"  Header="Balance Amount" IsReadOnly="True" >
+                                                <data:DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                    </Style>
+                                                </data:DataGridTextColumn.ElementStyle>
+                                            </data:DataGridTextColumn>
+
+                                        </data:DataGrid.Columns>
+                            </data:DataGrid>
+                        </toolkit:DockPanel >
+                        
+                    </Grid>
+                </blacklight:DragDockPanel>
+                    
+                    </blacklight:DragDockPanelHost>
+             
+            </Grid>
+        </Grid>
+    </Grid>
+
+    </ScrollViewer>
+</UserControl>

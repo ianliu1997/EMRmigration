@@ -1,0 +1,74 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.Administration.ApplyStores"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:CustomCombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+                      xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           Width="500" Height="400"
+           Title="ApplyStores"
+           Loaded="ChildWindow_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <controlsToolkit:DockPanel Margin="4" LastChildFill="True">
+            <toolkit:DockPanel toolkit:DockPanel.Dock="Bottom" >
+                <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                    <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+                        <ToggleButton x:Name="cmdSetStore" Content="Set Store" Grid.Row="1" Background="#000000" Margin="4" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Click="cmdSetStore_Click"></ToggleButton>
+                       <ToggleButton x:Name="cmdCancel" Content="Cancel" Grid.Row="1"  Background="#000000" Margin="4" HorizontalAlignment="Right" Style="{StaticResource ToggleButtonStyle}" Click="cmdCancel_Click"></ToggleButton>
+                    </StackPanel>
+                </StackPanel>
+            </toolkit:DockPanel>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition  />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition  />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Store" Grid.Column="0" VerticalAlignment="Center" Margin="4"></TextBlock>
+                    <CustomCombo:AutoCompleteComboBox Width ="auto" Grid.Row="0" Grid.Column="1" Margin="4" x:Name="cmbStore" VerticalAlignment="Center" SelectedItemBinding="{Binding clsUserUnitDetailsVO, Mode=TwoWay}" ValueMemberPath="UnitName" SelectedValuePath="UnitID" SelectionChanged="cmbStore_SelectionChanged" ></CustomCombo:AutoCompleteComboBox>
+            </Grid>
+                
+            <Grid x:Name="grdStore" Grid.Row="2" Grid.Column="1" Margin="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <data:DataGrid x:Name="dgUnitStoreList" Margin="0,0,0,1" Grid.Row="0" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                    <data:DataGrid.Columns>
+                        <data:DataGridTemplateColumn IsReadOnly="True" Header="Select">
+                            <data:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                        <CheckBox Margin="4" x:Name="chkStoreStatus"   IsChecked="{Binding StoreStatus,Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" Click="chkStoreStatus_Click" ></CheckBox >
+                                    
+                                </DataTemplate>
+                            </data:DataGridTemplateColumn.CellTemplate>
+                        </data:DataGridTemplateColumn>
+                        <data:DataGridTextColumn Binding="{Binding StoreName,Mode=TwoWay}"  Header="Store" IsReadOnly="True"/>
+                    </data:DataGrid.Columns>
+                </data:DataGrid>
+            </Grid>
+            </Grid>
+        </controlsToolkit:DockPanel>
+    </Grid>
+</controls:ChildWindow>

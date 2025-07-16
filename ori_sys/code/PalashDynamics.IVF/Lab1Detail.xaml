@@ -1,0 +1,86 @@
+﻿<controls:ChildWindow x:Class="PalashDynamics.IVF.Lab1Detail"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                  xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           xmlns:input="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+           xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+           xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters"   
+           Width="425" Height="400" Title="Details" Loaded="ChildWindow_Loaded">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <Grid x:Name="Root" Background="Black">
+        <Border  Margin="0" Padding="1,1,1,1" BorderThickness="1" BorderBrush="#FF885A2C" CornerRadius="3,3,3,3" Opacity="1" Background="White">
+            <Grid x:Name="DisplayArea">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+
+                <Border BorderBrush="PaleGreen" Grid.Row="0" BorderThickness="0" Background="Transparent">
+
+                    <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+                            <StackPanel Grid.Row="3" x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                <StackPanel x:Name="SaveCommandPanel" Orientation="Horizontal"  Margin="0,0,0,0">
+                                    <ToggleButton x:Name="cmdCalculate"  Grid.Row="4" Content="CalCulate" MinWidth="50"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCalculate_Click" TabIndex="5" />
+                                    <ToggleButton x:Name="cmdCancel"  Grid.Row="4" Content="Cancel" MinWidth="50" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Visible" Click="cmdCancel_Click" TabIndex="6"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent">
+
+                            <controlsToolkit:DockPanel LastChildFill="True" Margin="4">
+                                <TextBlock x:Name="lblError" HorizontalAlignment="Center" Foreground="Red" VerticalAlignment="Center" Text=""  Margin="4" controlsToolkit:DockPanel.Dock="Top"/>
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>                                       
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="1." Grid.Row="0" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <RadioButton x:Name="chkPNClosed" GroupName="First Group" IsChecked="{Binding TwoPNClosed,Mode=TwoWay}" Content="2PN Closed / Aligned" Margin="4" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                    <RadioButton x:Name="chkPNSeparated" GroupName="First Group" IsChecked="{Binding TwoPNSeparated,Mode=TwoWay}" Content="2PN Separated / Very Unequal in Size" Margin="4" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+
+                                    <TextBlock Text="2." Grid.Row="2" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <RadioButton x:Name="chkNucleouAligned" GroupName="Second Group"  IsChecked="{Binding NucleoliAlign,Mode=TwoWay}" Content="Nucleou Aligned at PN Junction" Margin="4" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                    <RadioButton x:Name="chkBegining" GroupName="Second Group" IsChecked="{Binding BeginningAlign,Mode=TwoWay}" Content="Begining to Aligned  at PN Junction" Margin="4" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                    <RadioButton x:Name="chkScattered" GroupName="Second Group" IsChecked="{Binding Scattered,Mode=TwoWay}" Content="Scattered" Margin="4" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+
+                                    <TextBlock Text="3." Grid.Row="5" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <RadioButton x:Name="ChkHetero" IsChecked="{Binding CytoplasmHetero,Mode=TwoWay}" Content="Cytoplasm heterogeneous with clear halo" Margin="4" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+                                    <RadioButton x:Name="chkHomo" IsChecked="{Binding CytoplasmHomo,Mode=TwoWay}" Content="Clear homogeneous cytoplasm ,pitted or dark cytoplasm" Margin="4" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" TabIndex="1"></RadioButton>
+
+
+                                    <TextBlock Text="4." Grid.Row="7" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                    <CheckBox x:Name="chkNuclear" IsChecked="{Binding NuclearMembrane,Mode=TwoWay}" Content="Nuclear Membrane breakdown/Cleavage to 2 Cell" Grid.Row="7" Grid.Column="1" Margin="4"  VerticalAlignment="Center"></CheckBox>
+
+
+                                </Grid>
+                            </controlsToolkit:DockPanel>
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:ChildWindow>

@@ -1,0 +1,801 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F07BDF15-682C-4C83-86FA-75960D32B662}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PalashDynamics</RootNamespace>
+    <AssemblyName>PalashDynamics</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>PalashDynamics.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>PalashDynamics.App</SilverlightAppEntry>
+    <TestPageFileName>TestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/RAZIClinic/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blacklight.Silverlight.Controls">
+      <HintPath>..\Library\Blacklight.Silverlight.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Schedule">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.SpellChecker, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Toolbar, Version=4.0.20122.264, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Toolbar.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Silverlight.Zip">
+      <HintPath>..\Library\ComponentOne\C1.Silverlight.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Editor">
+      <HintPath>..\Library\Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="FJ.Core">
+      <HintPath>..\Library\FJ.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FreeHtmlHost">
+      <HintPath>..\Library\FreeHtmlHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Groupbox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Groupbox.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZLib.Silverlight">
+      <HintPath>..\Library\ICSharpCode.SharpZLib.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools">
+      <HintPath>..\Library\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Controls">
+      <HintPath>..\Library\ImageTools.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Bmp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fb8ec453a8e30e6c, processorArchitecture=MSIL" />
+    <Reference Include="ImageTools.IO.Png">
+      <HintPath>..\Library\ImageTools.IO.Png.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Utils">
+      <HintPath>..\Library\ImageTools.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Liquid, Version=5.2.7.15946, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Composite, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Microsoft.Practices.Composite.dll</HintPath>
+    </Reference>
+    <Reference Include="PalashDynamic.Localization">
+      <HintPath>..\PalashDynamic.Localization\Bin\Debug\PalashDynamic.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.DataForm.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\RAZIClinic\Bin\Debug\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\RAZIClinic\Bin\Debug\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Theming.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\..\LatestRazi\RAZIClinic\RAZIClinic\Bin\Debug\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\PalashDynamics.IVF\BarcodeForm.xaml.cs">
+      <Link>BarcodeForm.xaml.cs</Link>
+      <DependentUpon>BarcodeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.IVF\Barcode\Barcode.cs">
+      <Link>Barcode.cs</Link>
+    </Compile>
+    <Compile Include="..\PalashDynamics.IVF\Barcode\Code39.cs">
+      <Link>Code39.cs</Link>
+    </Compile>
+    <Compile Include="..\PalashDynamics.IVF\DashBoard\CryoBankForDashboard.xaml.cs">
+      <Link>CryoBankForDashboard.xaml.cs</Link>
+      <DependentUpon>CryoBankForDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.IVF\DashBoard\FrmCryoRenewal.xaml.cs">
+      <Link>FrmCryoRenewal.xaml.cs</Link>
+      <DependentUpon>FrmCryoRenewal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.IVF\DashBoard\FrmPatientListForDonate.xaml.cs">
+      <Link>FrmPatientListForDonate.xaml.cs</Link>
+      <DependentUpon>FrmPatientListForDonate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\PalashDynamics.IVF\DashBoard\FrmPatientSpermDiscard.xaml.cs">
+      <Link>FrmPatientSpermDiscard.xaml.cs</Link>
+      <DependentUpon>FrmPatientSpermDiscard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddSOPFile.xaml.cs">
+      <DependentUpon>AddSOPFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisDashBoard.xaml.cs">
+      <DependentUpon>AnalysisDashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarCodeDoctor.xaml.cs">
+      <DependentUpon>BarCodeDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeFormNew.xaml.cs">
+      <DependentUpon>BarcodeFormNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Code128.cs" />
+    <Compile Include="Forms\Code128_REG\Code128_REG.cs" />
+    <Compile Include="Forms\ConfigureDashboard.xaml.cs">
+      <DependentUpon>ConfigureDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\frmDischargeApproval.xaml.cs">
+      <DependentUpon>frmDischargeApproval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\HomeAppointment.xaml.cs">
+      <DependentUpon>HomeAppointment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\HomeCryoBank.xaml.cs">
+      <DependentUpon>HomeCryoBank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\HomeFinance.xaml.cs">
+      <DependentUpon>HomeFinance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\HomeFollowUp.xaml.cs">
+      <DependentUpon>HomeFollowUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\HomeOPUET.xaml.cs">
+      <DependentUpon>HomeOPUET.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\HomePatientsViewModel.cs" />
+    <Compile Include="Forms\Home\HomeQueue.xaml.cs">
+      <DependentUpon>HomeQueue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\Home_New.xaml.cs">
+      <DependentUpon>Home_New.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\DoctorList.xaml.cs">
+      <DependentUpon>DoctorList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\FrmDonarLinking.xaml.cs">
+      <DependentUpon>FrmDonarLinking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\frmPatientScanDocument.xaml.xaml.cs">
+      <DependentUpon>frmPatientScanDocument.xaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\PatientBillTransactionHistoryReport.xaml.cs">
+      <DependentUpon>PatientBillTransactionHistoryReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\PatientList.xaml.cs">
+      <DependentUpon>PatientList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\PatientListForSurrogacy.xaml.cs">
+      <DependentUpon>PatientListForSurrogacy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\SurrogateSearchViewModel.cs" />
+    <Compile Include="frmFirstChangePassword.xaml.cs">
+      <DependentUpon>frmFirstChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizationManager.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PatientView\PatientSearchViewModel.cs" />
+    <Compile Include="ObservableResources.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScriptableClass.cs" />
+    <Compile Include="ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="..\PalashDynamics.IVF\BarcodeForm.xaml">
+      <Link>BarcodeForm.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.IVF\DashBoard\CryoBankForDashboard.xaml">
+      <Link>CryoBankForDashboard.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.IVF\DashBoard\FrmCryoRenewal.xaml">
+      <Link>FrmCryoRenewal.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.IVF\DashBoard\FrmPatientListForDonate.xaml">
+      <Link>FrmPatientListForDonate.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\PalashDynamics.IVF\DashBoard\FrmPatientSpermDiscard.xaml">
+      <Link>FrmPatientSpermDiscard.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddSOPFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AnalysisDashBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarCodeDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BarcodeFormNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\ConfigureDashboard.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Home\frmDischargeApproval.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Home\Home.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Home\HomeAppointment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Home\HomeCryoBank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Home\HomeFinance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Home\HomeFollowUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Home\HomeOPUET.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Home\HomeQueue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\Home\Home_New.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PatientView\DoctorList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PatientView\FrmDonarLinking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PatientView\frmPatientScanDocument.xaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PatientView\PatientBillTransactionHistoryReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PatientView\PatientList.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\PatientView\PatientListForSurrogacy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmFirstChangePassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Generic.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\PalashDynamics.Service\ServiceReferences.ClientConfig">
+      <Link>ServiceReferences.ClientConfig</Link>
+    </Content>
+    <Resource Include="Icons\yes.jpg" />
+    <Resource Include="Icons\yellow.png" />
+    <Resource Include="Icons\WritedocumentIcon.jpg" />
+    <Resource Include="Icons\XCell1.png" />
+    <Resource Include="Icons\XCell2.png" />
+    <Resource Include="Icons\XCell3.png" />
+    <Resource Include="Icons\XCell4.png" />
+    <Resource Include="Icons\XCell5.png" />
+    <Resource Include="Icons\XCell6.png" />
+    <Resource Include="Icons\XCell7.png" />
+    <Resource Include="Icons\XCell8.png" />
+    <Resource Include="Icons\XCell9.png" />
+    <Resource Include="Icons\Exam_icon_female.png" />
+    <Resource Include="Icons\Exam_icon_male.png" />
+    <Resource Include="Icons\histerscopy.png" />
+    <Resource Include="Icons\History_icon_female.png" />
+    <Resource Include="Icons\History_icon_male.png" />
+    <Resource Include="Icons\hsg.png" />
+    <Resource Include="Icons\IUI.png" />
+    <Resource Include="Icons\Laproscopy.png" />
+    <Resource Include="Icons\Ovem_pick_up.png" />
+    <Resource Include="Icons\Semen_culture.png" />
+    <Resource Include="Icons\Semen_exam.png" />
+    <Resource Include="Icons\Semen_wash.png" />
+    <Resource Include="Icons\sonography_icon.png" />
+    <Resource Include="Icons\TESE _procedure.png" />
+    <Resource Include="Icons\Historyiconfemale.png" />
+    <Resource Include="Icons\Historyiconmale.png" />
+    <Resource Include="Icons\Spermfreezing.png" />
+    <Resource Include="Icons\Spermthrowing.png" />
+    <Resource Include="Icons\female_finding.png" />
+    <Resource Include="Icons\male_finding.png" />
+    <Resource Include="Icons\lab_diagnostic.png" />
+    <Resource Include="Icons\laparoscopynew.png" />
+    <Resource Include="Icons\category.gif" />
+    <Resource Include="Icons\category.png" />
+    <Resource Include="Icons\content-iconfemale.png" />
+    <Resource Include="Icons\content-iconmale.png" />
+    <Resource Include="Icons\Culture0PN.png" />
+    <Resource Include="Icons\Culture1PN.png" />
+    <Resource Include="Icons\Culture2PN.png" />
+    <Resource Include="Icons\Culture3PN.png" />
+    <Resource Include="Icons\Culture4PN.png" />
+    <Resource Include="Icons\CultureBEarly.png" />
+    <Resource Include="Icons\CultureBExpand.png" />
+    <Resource Include="Icons\CultureBFully.png" />
+    <Resource Include="Icons\CultureBSleep.png" />
+    <Resource Include="Icons\CultureDegenerate.png" />
+    <Resource Include="Icons\CultureGV.png" />
+    <Resource Include="Icons\CultureLost.png" />
+    <Resource Include="Icons\CultureMI.png" />
+    <Resource Include="Icons\CultureMII.png" />
+    <Resource Include="Icons\CultureMorula.png" />
+    <Resource Include="Icons\CultureXCell1.png" />
+    <Resource Include="Icons\CultureXCell2.png" />
+    <Resource Include="Icons\CultureXCell3.png" />
+    <Resource Include="Icons\CultureXCell4.png" />
+    <Resource Include="Icons\CultureXCell5.png" />
+    <Resource Include="Icons\CultureXCell6.png" />
+    <Resource Include="Icons\CultureXCell7.png" />
+    <Resource Include="Icons\CultureXCell8.png" />
+    <Resource Include="Icons\CultureXCell9.png" />
+    <Resource Include="Icons\Grade3.png" />
+    <Resource Include="Icons\camera.png" />
+    <Resource Include="Icons\CryoBank.png" />
+    <Resource Include="Icons\cryo_store.png" />
+    <Resource Include="Icons\EmbryoBank.png" />
+    <Resource Include="Icons\bedmaintenance.jpg" />
+    <Resource Include="Icons\10cell.png" />
+    <Resource Include="Icons\11cell.png" />
+    <Resource Include="Icons\12cell.png" />
+    <Resource Include="Icons\1PB1PN.png" />
+    <Resource Include="Icons\1PB2PN.png" />
+    <Resource Include="Icons\1PB.png" />
+    <Resource Include="Icons\2PB1PN.png" />
+    <Resource Include="Icons\2PB.png" />
+    <Resource Include="Icons\2PN2PB.png" />
+    <Resource Include="Icons\compaction.png" />
+    <Resource Include="Icons\add.png" />
+    <Resource Include="Icons\Attachment-milann-color.png" />
+    <Resource Include="Icons\Attachment-white.png" />
+    <Resource Include="Icons\black.png" />
+    <Resource Include="Icons\blue.png" />
+    <Resource Include="Icons\brown.png" />
+    <Content Include="Icons\Consultation.ico" />
+    <Resource Include="Icons\discharge.jpg" />
+    <Resource Include="Icons\HatchingBlastocyst.png" />
+    <Resource Include="Icons\Blastocyst.png" />
+    <Resource Include="Icons\gray.png" />
+    <Resource Include="Icons\green.png" />
+    <Content Include="Icons\Inventory.png" />
+    <Resource Include="Icons\Isreflex.jpg" />
+    <Content Include="Icons\IVF.ico" />
+    <Resource Include="Icons\PCT.png" />
+    <Resource Include="Icons\PN0.png" />
+    <Resource Include="Icons\PN1.png" />
+    <Resource Include="Icons\PN2.png" />
+    <Resource Include="Icons\PN3.png" />
+    <Resource Include="Icons\q_4lines.png" />
+    <Resource Include="Icons\q_cross.png" />
+    <Resource Include="Icons\q_knife.png" />
+    <Resource Include="Icons\q_mark.png" />
+    <Resource Include="Icons\q_stop.png" />
+    <Resource Include="Icons\SpermBank.png" />
+    <Resource Include="Icons\QueueManagement.jpg" />
+    <Resource Include="Icons\Occupied.jpg" />
+    <Resource Include="Icons\released.jpg" />
+    <Resource Include="Icons\previous_ patient_ search.jpg" />
+    <Resource Include="Icons\previous_ patient_search.jpg" />
+    <Resource Include="Icons\previous_patient_search.jpg" />
+    <Resource Include="Icons\RelativeBed.jpg" />
+    <Resource Include="Icons\Reserev bed.jpg" />
+    <Resource Include="Icons\patient_details.jpg" />
+    <Resource Include="Icons\patient_past_details.jpg" />
+    <Resource Include="Icons\IVFNewLogo.png" />
+    <Resource Include="Icons\Listofvisits.png" />
+    <Resource Include="Icons\patient_List.png" />
+    <Resource Include="Icons\Printprescription.png" />
+    <Resource Include="Icons\Printsummary.png" />
+    <Resource Include="Icons\remove.png" />
+    <Resource Include="Icons\Palash_IVF_Logo_Vector-1.png" />
+    <Resource Include="Icons\photocap-white.png" />
+    <Resource Include="Icons\ReflexFlag.gif" />
+    <Resource Include="Icons\red_flag.png" />
+    <Resource Include="Icons\orange.png" />
+    <Resource Include="Icons\purple.png" />
+    <Resource Include="Icons\minus.jpg" />
+    <Resource Include="Icons\plus.png" />
+    <Resource Include="Icons\negative.png" />
+    <Resource Include="Icons\positive.png" />
+    <Resource Include="Icons\no.jpg" />
+    <Resource Include="Icons\Palash_IVF_Logo_Vector-2.png" />
+    <Resource Include="Icons\SOPIcon.png" />
+    <Content Include="Icons\therapy_details.ico" />
+    <Resource Include="Icons\Blank.png" />
+    <Resource Include="Icons\HealthberriesLogo1.jpg" />
+    <Resource Include="Icons\HealthberriesLogo.jpg" />
+    <None Include="Properties\DataSources\PalashDynamics.ValueObjects.clsUserVO.datasource" />
+    <Resource Include="Icons\xmag.png" />
+    <Resource Include="Icons\Edit.png" />
+    <Resource Include="Icons\edit_new.png" />
+    <Resource Include="Icons\Edit_Text.png" />
+    <Resource Include="Icons\admin_edit16.gif" />
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\SamplesBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\palash_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Home-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Refresh-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\admintitlegraphic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\colorize-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Back Button.png" />
+    <Resource Include="Icons\Next-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIMS.IConfigurationSettings\CIMS.IConfigurationSettings.csproj">
+      <Project>{DDA34127-FB33-44DE-BF26-2D6CF3B47C5D}</Project>
+      <Name>CIMS.IConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataDrivenApplication\DataDrivenApplication.csproj">
+      <Project>{D4C15416-161D-4A6F-9BF9-BC19CBB3CB50}</Project>
+      <Name>DataDrivenApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Administration\PalashDynamics.Administration.csproj">
+      <Project>{5BBF7708-7343-4373-88B8-60F339BA97D0}</Project>
+      <Name>PalashDynamics.Administration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Animations.Swivel\PalashDynamics.Animations.Swivel.csproj">
+      <Project>{FC1E990A-B67E-45D9-AAB5-01D4E4A61DB4}</Project>
+      <Name>PalashDynamics.Animations.Swivel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Collections.PagedSortableCollectionView\PalashDynamics.Collections.PagedSortableCollectionView.csproj">
+      <Project>{63D0041D-2109-43E9-BC7E-0C0B82BDBEA0}</Project>
+      <Name>PalashDynamics.Collections.PagedSortableCollectionView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Controls.AutoCompleteComboBox\PalashDynamics.Controls.AutoCompleteComboBox.csproj">
+      <Project>{F0509F45-4915-4824-9709-9F957E5528CE}</Project>
+      <Name>PalashDynamics.Controls.AutoCompleteComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Converters\PalashDynamics.Converters.csproj">
+      <Project>{EBF1EF95-D295-4CC7-A48D-584D62FEE806}</Project>
+      <Name>PalashDynamics.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Extension\PalashDynamics.Extension.csproj">
+      <Project>{DFF09A36-18A4-43D5-B852-CF6DB0D5A148}</Project>
+      <Name>PalashDynamics.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.MessageBoxControl\MessageBoxControl\MessageBoxControl.csproj">
+      <Project>{78B9F420-8B2A-4AEC-A9C8-2A24F8E03FD7}</Project>
+      <Name>MessageBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Pathology\PalashDynamics.Pathology.csproj">
+      <Project>{85A8DB2F-D545-4738-971C-32C1311FC730}</Project>
+      <Name>PalashDynamics.Pathology</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.Service\PalashDynamics.Service.csproj">
+      <Project>{76CF4EF0-257A-4D90-96B2-FAF9AFE0751C}</Project>
+      <Name>PalashDynamics.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.SilverLight.ValueObjects\PalashDynamics.SilverLight.ValueObjects.csproj">
+      <Project>{32811E3E-20E6-4CEA-92FA-06169FA302D5}</Project>
+      <Name>PalashDynamics.SilverLight.ValueObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.UserControls.WaitIndicator\PalashDynamics.UserControls.WaitIndicator.csproj">
+      <Project>{CF96832F-1124-4049-8094-E2F11B912637}</Project>
+      <Name>PalashDynamics.UserControls.WaitIndicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PalashDynamics.WaterMarkTextBox\PalashDynamics.WaterMarkTextBox.csproj">
+      <Project>{1B114BF8-F1E2-4EC6-AAA2-A69E4FFE24D7}</Project>
+      <Name>PalashDynamics.WaterMarkTextBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\1day-32.png" />
+    <Resource Include="Icons\actionssettings.gif" />
+    <Resource Include="Icons\actionssettings.png" />
+    <Resource Include="Icons\Add-Male-User-icon.png" />
+    <Resource Include="Icons\admintitlegraphic.gif" />
+    <Resource Include="Icons\Applic-Notepad-icon.png" />
+    <Resource Include="Icons\appointment_new.png" />
+    <Resource Include="Icons\Artist.png" />
+    <Resource Include="Icons\attachment.JPG" />
+    <Resource Include="Icons\Buddy_32.png" />
+    <Resource Include="Icons\button_cancel-32.png" />
+    <Resource Include="Icons\Calendar-icon.png" />
+    <Resource Include="Icons\Calendar.png" />
+    <Resource Include="Icons\cash-register-icon.png" />
+    <Resource Include="Icons\configure-32.png" />
+    <Resource Include="Icons\Credit-Card-icon.png" />
+    <Resource Include="Icons\credit-card-icon1.png" />
+    <Resource Include="Icons\Credit-icon.png" />
+    <Resource Include="Icons\Dashboard-icon.png" />
+    <Resource Include="Icons\distributor-report-icon.png" />
+    <Resource Include="Icons\Document Edit_32.png" />
+    <Resource Include="Icons\Edit-Male-User-icon.png" />
+    <Resource Include="Icons\edit_user_32.png" />
+    <Resource Include="Icons\File-Pictures-icon.png" />
+    <Resource Include="Icons\graph-icon.png" />
+    <Resource Include="Icons\home-icon.png" />
+    <Resource Include="Icons\import-icon.png" />
+    <Resource Include="Icons\Imp_30.png" />
+    <Resource Include="Icons\insurance-icon.png" />
+    <Resource Include="Icons\keynote-on-icon.png" />
+    <Resource Include="Icons\Male-User-Warning-icon.png" />
+    <Resource Include="Icons\money-icon.png" />
+    <Resource Include="Icons\nurse-icon.png" />
+    <Resource Include="Icons\Package-Accept-icon.png" />
+    <Resource Include="Icons\Patient.png" />
+    <Resource Include="Icons\Pill.png" />
+    <Resource Include="Icons\Print_32.png" />
+    <Resource Include="Icons\Properties-icon.png" />
+    <Resource Include="Icons\Purse-icon.png" />
+    <Resource Include="Icons\receptionist-icon.png" />
+    <Resource Include="Icons\Redcross.png" />
+    <Resource Include="Icons\Refresh-icon.png" />
+    <Resource Include="Icons\reports-icon.png" />
+    <Resource Include="Icons\searchdoc.JPG" />
+    <Resource Include="Icons\Search_b.JPG" />
+    <Resource Include="Icons\Sign-Info-icon.png" />
+    <Resource Include="Icons\Sponsor32.png" />
+    <Resource Include="Icons\surgeon_icon.png" />
+    <Resource Include="Icons\syringeicon.png" />
+    <Resource Include="Icons\Task-List-icon.png" />
+    <Resource Include="Icons\tools-icon.png" />
+    <Resource Include="Icons\users-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Leave.gif" />
+    <Resource Include="Icons\expired_order_return.gif" />
+    <Resource Include="Icons\grn.gif" />
+    <Resource Include="Icons\grn_return.gif" />
+    <Resource Include="Icons\issue_to_department.gif" />
+    <Resource Include="Icons\opening_balance.gif" />
+    <Resource Include="Icons\return_from_department.gif" />
+    <Resource Include="Icons\stock_adjustment.gif" />
+    <Resource Include="Icons\store_indent.gif" />
+    <Resource Include="Icons\grn.PNG" />
+    <Resource Include="Icons\grn_return.PNG" />
+    <Resource Include="Icons\opening_balance.PNG" />
+    <Resource Include="Icons\store_indent.PNG" />
+    <Resource Include="Icons\return_from_department.PNG" />
+    <Resource Include="Icons\stock_adjustment.PNG" />
+    <Resource Include="Icons\expired_order_return.PNG" />
+    <Resource Include="Icons\issue_to_department.PNG" />
+    <Resource Include="Icons\Od_appd.png" />
+    <Resource Include="Icons\purchase_order.PNG" />
+    <Resource Include="Icons\help.png" />
+    <Resource Include="Icons\Lock.png" />
+    <Resource Include="Icons\1577_2461_128_minus_red_remove_icon.png" />
+    <Resource Include="Icons\plus-icon.png" />
+    <Resource Include="Icons\razi logo.png" />
+    <Resource Include="Icons\calculator1-icon.png" />
+    <Resource Include="Icons\calculator-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Administration\" />
+    <Folder Include="Forms\Inventory\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

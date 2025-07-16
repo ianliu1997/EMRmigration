@@ -1,0 +1,439 @@
+﻿<UserControl x:Class="PalashDynamics.Pathology.PathoResultEntry"
+    xmlns:GroupBox="clr-namespace:Groupbox;assembly=Groupbox"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"  
+    xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit" 
+    xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"   
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input"
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+    xmlns:inputcombo="clr-namespace:PalashDynamics.Controls;assembly=PalashDynamics.Controls.AutoCompleteComboBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+    xmlns:local="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+    xmlns:inputToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    xmlns:Converter="clr-namespace:PalashDynamics.Converters;assembly=PalashDynamics.Converters" 
+    Height="Auto" Width="Auto" Loaded="ResultEntry_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PalashDynamics;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:DateTimeConverter x:Key="DateConverter" />
+            <Converter:VisiblilityConverter x:Key="VisiblilityConverter"/>
+            <Converter:ToggleBooleanValueConverter x:Key="NegateValueConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White"  Margin="2">
+
+        <controlsToolkit:DockPanel LastChildFill="True">
+            
+
+
+            <Grid x:Name="PageContainer" >
+
+                <Grid Height="AUTO" Visibility="Visible" Width="auto" x:Name="FrontPanel" Grid.Row="0">
+                    <controlsToolkit:DockPanel x:Name="docSample"  LastChildFill="True"  controlsToolkit:DockPanel.Dock="Top">
+                        <controlsToolkit:DockPanel x:Name="docContent" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                            <Border BorderBrush="{StaticResource TabControlDarkerBorder}" BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4" Background="Transparent">
+                                <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top">
+                                    <!--<controlsToolkit:DockPanel x:Name="docHeader" controlsToolkit:DockPanel.Dock="Top">
+                                        <Grid Width="Auto"  Margin="0" controlsToolkit:DockPanel.Dock="Top" DataContext="{Binding BizActionObject}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock  HorizontalAlignment="Right" VerticalAlignment="Center" Text="From Date" Grid.Row="0" Grid.Column="0"  Margin="4,10,4,4" />
+                                            <controls:DatePicker SelectedDate="{Binding FromDate,Mode=TwoWay}"  x:Name="dtpFromDate" Margin="4,10,4,4" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="To Date" Grid.Row="0" Grid.Column="2"  Margin="4,10,4,4" />
+                                            <controls:DatePicker SelectedDate="{Binding ToDate,Mode=TwoWay}"  x:Name="dtpToDate" Margin="4,10,4,4" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                            <GroupBox:GroupBox Grid.Column="4" Height="Auto" Width="Auto" Margin="4,4,4,4" Header="Sample Type" Grid.RowSpan="2">
+                                                <StackPanel Orientation="Horizontal" Margin="5,-11,0,0">
+                                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbSampleType" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" Width="100" Margin="2,5,2,2" TabIndex="0"></inputcombo:AutoCompleteComboBox>
+                                                </StackPanel>
+                                            </GroupBox:GroupBox>
+                                                <GroupBox:GroupBox Grid.Column="5" Height="Auto" Width="Auto" Margin="4,4,4,4" Header="Upload Status" Grid.RowSpan="2">
+                                                <StackPanel Orientation="Horizontal" Margin="5,-11,0,0">
+                                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbUploadStatus" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" Width="100" Margin="2,5,2,2" TabIndex="0"></inputcombo:AutoCompleteComboBox>
+                                                </StackPanel>
+                                            </GroupBox:GroupBox>
+                                            <GroupBox:GroupBox Grid.Column="6" Height="Auto" Width="Auto" Margin="4,4,4,4" Header="Delivery Status" Grid.RowSpan="2">
+                                                <StackPanel Orientation="Horizontal" Margin="5,-11,0,0">
+                                                    <inputcombo:AutoCompleteComboBox  x:Name="cmbDeliveryStatus" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID" VerticalAlignment="Center" Width="100" Margin="2,5,2,2" TabIndex="0"></inputcombo:AutoCompleteComboBox>
+                                                </StackPanel>
+                                            </GroupBox:GroupBox>
+                                            <StackPanel x:Name="SaveCommandPanel2" Grid.Column="7" Grid.RowSpan="2" Orientation="Horizontal"  Margin="1">
+                                                <ToggleButton x:Name="SearchButton" Height="30" Background="#000000" Margin="0,0,5,0" HorizontalAlignment="Stretch" Visibility="Visible" Click="SearchButton_Click" >
+                                                    <Image Source="Icons/Search_b.JPG" ToolTipService.ToolTip="Search Order" />
+                                                </ToggleButton>
+                                               
+                                            </StackPanel>
+                                        </Grid >
+                                    </controlsToolkit:DockPanel>-->
+
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <controlsToolkit:DockPanel x:Name="docOrderList" controlsToolkit:DockPanel.Dock="Top" Grid.Row="0">
+                                            <Border controlsToolkit:DockPanel.Dock="Top"  BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0"  Background="Transparent">
+                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="List Of Orders" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                            </Border>
+                                            <data:DataPager x:Name="DataPager" controlsToolkit:DockPanel.Dock="Bottom" 
+                                                        DisplayMode="FirstLastPreviousNext"  IsEnabled="True"                       
+                                                        Source="{Binding}" 
+                                                        AutoEllipsis="False" IsTotalItemCountFixed="False"  />
+                                            <data:DataGrid x:Name="dgOrdertList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Margin="2" HorizontalAlignment="Stretch"  CanUserSortColumns="False" SelectionChanged="dgOrdertList_SelectionChanged" >
+                                                <data:DataGrid.Columns>
+                                                    <data:DataGridTextColumn Binding="{Binding OrderDate,Converter={StaticResource DateConverter},ConverterParameter={StaticResource GridDateDisplayFormat}}" Header="Order Date" IsReadOnly="False"></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding UnitName}" Header="Clinic" IsReadOnly="True" ></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding MRNo}" Header="MR No." IsReadOnly="True" ></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding PatientName}" Header="Patient Name" IsReadOnly="True" ></data:DataGridTextColumn>
+                                                   
+                                                    <data:DataGridTextColumn Binding="{Binding BillNo }" Header="Bill No." IsReadOnly="False"></data:DataGridTextColumn>
+                                                    <data:DataGridCheckBoxColumn Binding="{Binding SampleType}" Header="Sample Collected" IsReadOnly="True"></data:DataGridCheckBoxColumn>
+
+
+                                                    <data:DataGridTextColumn Binding="{Binding TotalAmount,StringFormat=0.00,Mode=OneWay}" Header="Total Bill Amount" >
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+
+                                                    <data:DataGridTextColumn Binding="{Binding PaidAmount,StringFormat=0.00,Mode=OneWay}" Header="Paid Bill Amount" >
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+
+                                                    <data:DataGridTextColumn Binding="{Binding Balance,StringFormat=0.00,Mode=OneWay}" Header="Balance Amount" >
+                                                        <data:DataGridTextColumn.ElementStyle>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="TextAlignment" Value="Right"/>
+                                                            </Style>
+                                                        </data:DataGridTextColumn.ElementStyle>
+                                                    </data:DataGridTextColumn>
+
+                                                    
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+                                        </controlsToolkit:DockPanel>
+
+                                        <controlsToolkit:DockPanel x:Name="docTest" Grid.Row="1">
+                                            <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                <ContentControl VerticalAlignment="Center" FontSize="12" Content="Test" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                            </Border>
+
+
+                                            <data:DataGrid  x:Name="dgTest" Margin="2" ItemsSource="{Binding}" IsReadOnly="True"  AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" CanUserSortColumns="False">
+                                                <data:DataGrid.Columns>
+                                                    <data:DataGridTemplateColumn>
+                                                        <data:DataGridTemplateColumn.CellTemplate>
+
+                                                            <DataTemplate>
+                                                                <HyperlinkButton VerticalAlignment="Center"  Content="Edit"  Padding="5,0,5,0" Click="Edit_Click"></HyperlinkButton>
+                                                            </DataTemplate>
+                                                        </data:DataGridTemplateColumn.CellTemplate>
+                                                    </data:DataGridTemplateColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding SampleNo }" Header="Sample No." ></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding TestCode }" Header="Test/Profile Code" ></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding TestName }" Header="Test/Profile Name" ></data:DataGridTextColumn>
+                                                    <data:DataGridTextColumn Binding="{Binding ServiceName }" Header="Service" ></data:DataGridTextColumn>
+                                                    <!--<data:DataGridTextColumn Binding="{Binding LongDescription }" Header="Long Description" ></data:DataGridTextColumn>-->
+                                                    <data:DataGridCheckBoxColumn Binding="{Binding IsSampleCollected}" Header="Sample Collected" ></data:DataGridCheckBoxColumn>
+                                                    <data:DataGridCheckBoxColumn Binding="{Binding IsResultEntry}" Header="Result Entry" IsReadOnly="True"></data:DataGridCheckBoxColumn>
+                                                    <data:DataGridCheckBoxColumn Binding="{Binding IsFinalized}" Header="Finalized" IsReadOnly="True"></data:DataGridCheckBoxColumn>
+
+                                                  
+                                                </data:DataGrid.Columns>
+                                            </data:DataGrid>
+                                        </controlsToolkit:DockPanel>
+                                    </Grid>
+                                </controlsToolkit:DockPanel>
+                            </Border>
+                        </controlsToolkit:DockPanel>
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+                <Grid  Height="AUTO" Width="auto" x:Name="BackPanel" Visibility="Collapsed" Grid.Row="1">
+                    <controlsToolkit:DockPanel x:Name="Content" controlsToolkit:DockPanel.Dock="top" LastChildFill="true"  >
+                        <Border BorderBrush="{StaticResource TabControlDarkerBorder}"   BorderThickness="1" CornerRadius="3,3,0,0" Margin="4,4,4,4"  Background="Transparent">
+                            <controlsToolkit:DockPanel controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                <Grid controlsToolkit:DockPanel.Dock="Bottom">
+                                    <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition ></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <CheckBox controlsToolkit:DockPanel.Dock="Top" Content="IsFinalized" IsChecked="{Binding IsFinalized,Mode=TwoWay}"  Grid.Row="0" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Left" ></CheckBox>
+                                <Border  Grid.Row="1" BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="4" controlsToolkit:DockPanel.Dock="Bottom" BorderThickness="1" CornerRadius="3,3,3,3" Background="Transparent" >
+                                    <StackPanel x:Name="Footer" Orientation="Horizontal" VerticalAlignment="Center"   Margin="0,3,5,3" HorizontalAlignment="Right" Background="Transparent">
+                                        <StackPanel Orientation="Horizontal"  Margin="1" HorizontalAlignment="Right"  >
+
+                                            <ToggleButton x:Name="cmdNew" Content="New"  Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}" Visibility="Collapsed"  TabIndex="4"></ToggleButton>
+                                            <ToggleButton x:Name="cmdSave" Content="Save" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"   TabIndex="12" Click="cmdSave_Click"></ToggleButton>
+                                            <!--<ToggleButton Content="Modify" x:Name="cmdModify" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  TabIndex="14"></ToggleButton>-->
+                                            <ToggleButton Content="Cancel" x:Name="cmdCancel" Background="#000000" Margin="5,0,0,0" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  TabIndex="13" Click="cmdCancel_Click"></ToggleButton>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                                </Grid>
+
+
+                                <controlsToolkit:DockPanel x:Name="docHeader2" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                           
+                                        </Grid.RowDefinitions>
+                                        
+                                        <TextBlock Text="Sample No." Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                        <TextBox x:Name="txtSampleNo" Text="{Binding SampleNo, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Margin="4,10,4,4" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="True"></TextBox>
+
+                                        <TextBlock Text="Reffered By" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                        <input:AutoCompleteBox Grid.Row="0" Grid.Column="3"  x:Name="txtReferenceDoctor" Text="{Binding ReferredBy, Mode=TwoWay}" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" TabIndex="10" GotFocus="txtReferenceDoctor_GotFocus"/>
+
+                                        <TextBlock Text="Sample Collection Time" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                        <inputToolkit:TimePicker x:Name="tpCollectionTime" Value="{Binding SampleCollectionTime, Mode=TwoWay}" Grid.Row="0" Grid.Column="5" Margin="4" TabIndex="25" IsEnabled="False"  />
+
+                                        <TextBlock Text="Pathologist" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbPathologist1"  ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" TabIndex="6"></inputcombo:AutoCompleteComboBox>
+
+                                        <TextBlock Text="Pathologist 2" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4" Visibility="Collapsed"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbPathologist2"  Grid.Row="1" Grid.Column="3" ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" TabIndex="6"  Visibility="Collapsed"></inputcombo:AutoCompleteComboBox>
+
+                                        <TextBlock Text="Pathologist 3" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4"  Visibility="Collapsed"></TextBlock>
+                                        <inputcombo:AutoCompleteComboBox x:Name="cmbPathologist3"  ItemsSource="{Binding}"  Grid.Row="1" Grid.Column="5" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" TabIndex="6"  Visibility="Collapsed"></inputcombo:AutoCompleteComboBox>
+                                 
+
+                                    </Grid>
+                                </controlsToolkit:DockPanel>
+                                <controlsToolkit:DockPanel x:Name="docHeader1" controlsToolkit:DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                                    <controls:TabControl Padding="0"  BorderBrush="{StaticResource TabControlDarkerBorder}"  x:Name="TabControlMain" Margin="4,-4,4,4">
+
+                                        <controls:TabItem x:Name="TabTestDetails" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Test Details" >
+
+                                           
+                                            <controlsToolkit:DockPanel x:Name="DocMain3" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                                <controlsToolkit:DockPanel x:Name="docContet8" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="Parament Category" Margin="4"></TextBlock>
+                                                        <inputcombo:AutoCompleteComboBox x:Name="cmbCategory"  Grid.Column="1" ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4" ></inputcombo:AutoCompleteComboBox>
+
+                                                        <ToggleButton x:Name="cmdGetTest" Grid.Row="0" Grid.Column="2"  Content="Get Test"  Background="#000000" Margin="2,4" HorizontalAlignment="Stretch" Style="{StaticResource ToggleButtonStyle}"  Click="cmdGetTest_Click" Width="Auto" />
+                                                    </Grid>
+                                                </controlsToolkit:DockPanel>
+
+                                                <controlsToolkit:DockPanel x:Name="docContet7" controlsToolkit:DockPanel.Dock="Bottom">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions >
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition ></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock Text="Suggestion/Note"  HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Grid.Row="0" Grid.Column="0"/>
+                                                        <TextBox x:Name="txtSuggestion" Text="{Binding Note, Mode=TwoWay}"  Grid.Row="0"  Grid.Column="1" Margin="4"    VerticalAlignment="Center"  HorizontalAlignment="Stretch" MaxLength="255" TabIndex="9"   AcceptsReturn="True" TextWrapping="Wrap" Height="50" VerticalScrollBarVisibility="Auto"></TextBox>
+
+                                                        <TextBlock Text="Foot Note"  HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="4" Grid.Row="0" Grid.Column="2"/>
+                                                        <TextBox x:Name="txtFootNote" Text="{Binding FootNote, Mode=TwoWay}"  Grid.Row="0"  Grid.Column="3" Margin="4"    VerticalAlignment="Center"  HorizontalAlignment="Stretch" MaxLength="255" TabIndex="9" AcceptsReturn="True" TextWrapping="Wrap" Height="50" VerticalScrollBarVisibility="Auto"></TextBox>
+                                                    </Grid>
+                                                </controlsToolkit:DockPanel>
+
+                                                <controlsToolkit:DockPanel x:Name="docContet3" >
+                                                    <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="-1,10,-1,-1" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="Test Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                    <Grid>
+                                                        <data:DataGrid x:Name="dgTestList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  TabIndex="12" CanUserSortColumns="False" >
+                                                            <data:DataGrid.Columns>
+                                                                <!--<data:DataGridTextColumn Binding="{Binding PathoTestName}"  Header="Test"   IsReadOnly="True"></data:DataGridTextColumn>-->
+                                                                <!--<data:DataGridTextColumn Binding="{Binding PathoSubTestName}"  Header="Sub Test"  IsReadOnly="True"></data:DataGridTextColumn>-->
+                                                                <data:DataGridTextColumn Binding="{Binding ParameterName}"  Header="Parameter"  IsReadOnly="True"></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding Category}"  Header="Category"  IsReadOnly="True"></data:DataGridTextColumn>
+
+                                                                <data:DataGridTextColumn Binding="{Binding ResultValue}"  Header="Result Value"  ></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding DefaultValue}"  Header="DefaultValue"  IsReadOnly="True"></data:DataGridTextColumn>
+                                                                <data:DataGridTextColumn Binding="{Binding NormalRange}"  Header="Normal Range"  IsReadOnly="True"></data:DataGridTextColumn>
+                                                                <data:DataGridTemplateColumn>
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+
+                                                                        <DataTemplate>
+                                                                            <HyperlinkButton VerticalAlignment="Center" x:Name="HelpValueDetails"  Content="Help Value Details" Click="HelpValueDetails_Click"  Padding="5,0,5,0" IsEnabled="{Binding IsNumeric,Converter={StaticResource NegateValueConverter}}"></HyperlinkButton>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+                                                                </data:DataGridTemplateColumn>
+
+
+                                                                <data:DataGridTemplateColumn  >
+                                                                    <data:DataGridTemplateColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <TextBox  IsReadOnly="True"  Background="{Binding ApColor,Mode=TwoWay}"  VerticalAlignment="Center" Width="150"/>
+                                                                        </DataTemplate>
+                                                                    </data:DataGridTemplateColumn.CellTemplate>
+
+                                                                </data:DataGridTemplateColumn>
+                                                            </data:DataGrid.Columns>
+                                                        </data:DataGrid>
+
+                                                    </Grid>
+
+
+
+                                                </controlsToolkit:DockPanel>
+                                            </controlsToolkit:DockPanel>
+                                        </controls:TabItem>
+
+                                        <controls:TabItem x:Name="TabItemDetails" Style="{StaticResource TabItemStyle}"  Padding="0" Margin="0" Header="Item Consumption" >
+                                            <controlsToolkit:DockPanel x:Name="DocMain2" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+
+                                                <controlsToolkit:DockPanel x:Name="docContet4" controlsToolkit:DockPanel.Dock="Top" LastChildFill="True">
+                                                    <controlsToolkit:DockPanel x:Name="docContet5" controlsToolkit:DockPanel.Dock="Top">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                <ColumnDefinition ></ColumnDefinition>
+                                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                <ColumnDefinition ></ColumnDefinition>
+                                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"></RowDefinition>
+
+                                                            </Grid.RowDefinitions>
+
+                                                            <TextBlock Text="Store" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,10,4,4"></TextBlock>
+                                                            <inputcombo:AutoCompleteComboBox x:Name="cmbStore"  ItemsSource="{Binding}" SelectedItemBinding="{Binding MasterListItem, Mode=OneWay}" SelectedValuePath="ID"   Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="4,10,4,4" TabIndex="6" IsEnabled="False"></inputcombo:AutoCompleteComboBox>
+
+                                                          
+                                                            <ToggleButton Content="Add" x:Name="cmdAddItem" Background="#000000" Margin="4,10,4,4" HorizontalAlignment="Left" Style="{StaticResource ToggleButtonStyle}" TabIndex="8"  Grid.Column="2" Click="cmdAddItem_Click"></ToggleButton>
+
+                                                        </Grid>
+                                                    </controlsToolkit:DockPanel>
+                                                </controlsToolkit:DockPanel>
+
+                                                <controlsToolkit:DockPanel x:Name="docContet6" controlsToolkit:DockPanel.Dock="Bottom">
+                                                    <Border  controlsToolkit:DockPanel.Dock="Top" BorderBrush="{StaticResource TabControlDarkerBorder}"  Margin="-1,10,-1,-1" BorderThickness="1" CornerRadius="3,3,0,0" Background="Transparent">
+                                                        <ContentControl VerticalAlignment="Center" FontSize="12" Content="Item Details" Margin="-1" Style="{StaticResource Header}"     HorizontalAlignment="Stretch" />
+                                                    </Border>
+                                                    <data:DataGrid x:Name="dgItemDetailsList" AutoGenerateColumns="False" ItemsSource="{Binding}" VerticalScrollBarVisibility="Visible" Margin="0" HorizontalAlignment="Stretch"  TabIndex="12" CanUserSortColumns="False">
+                                                        <data:DataGrid.Columns>
+                                                            <!--<data:DataGridTextColumn Binding="{Binding ItemCode}"  Header="Item Code"  IsReadOnly="True"></data:DataGridTextColumn>-->
+                                                            <data:DataGridTextColumn Binding="{Binding ItemName}"  Header="Item Name"   IsReadOnly="True"></data:DataGridTextColumn>
+                                                            <data:DataGridTextColumn Binding="{Binding BatchCode}"  Header="Batch Code"  IsReadOnly="True"></data:DataGridTextColumn>
+
+
+
+                                                            <data:DataGridTemplateColumn Header="Expiry Date" IsReadOnly="True">
+                                                                <data:DataGridTemplateColumn.CellTemplate >
+                                                                    <DataTemplate>
+                                                                        <TextBlock 
+                                                                        Text="{Binding ExpiryDate, 
+                                                                        Converter={StaticResource DateConverter},ConverterParameter={StaticResource ExpiryDateDisplayFormat}}" 
+                                                                        Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTextColumn Binding="{Binding Quantity,StringFormat=0.00,Mode=OneWay}" Header="Ideal Qty" IsReadOnly="True" >
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                            </data:DataGridTextColumn>
+
+                                                            <data:DataGridTextColumn Binding="{Binding ActualQantity,StringFormat=0.00,Mode=OneWay}" Header="Actual Qty" >
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                            </data:DataGridTextColumn>
+                                                            
+                                                            
+                                                            <data:DataGridTemplateColumn>
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton VerticalAlignment="Center" x:Name="AddBatch"  Content="Asign Batch"  Padding="5,0,5,0"  Click="AddBatch_Click"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+                                                            <data:DataGridTemplateColumn>
+                                                                <data:DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <HyperlinkButton VerticalAlignment="Center" FontFamily="Webdings" Content="r"  Padding="5,0,5,0" IsTabStop="False" Click="cmdDelete_Click"  x:Name="cmdDelete" ToolTipService.ToolTip="Delete"></HyperlinkButton>
+                                                                    </DataTemplate>
+                                                                </data:DataGridTemplateColumn.CellTemplate>
+                                                            </data:DataGridTemplateColumn>
+
+
+                                                            <data:DataGridTextColumn Binding="{Binding BalanceQuantity,StringFormat=0.00,Mode=OneWay}" Header="Bal. Qty" IsReadOnly="True">
+                                                                <data:DataGridTextColumn.ElementStyle>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="TextAlignment" Value="Right"/>
+                                                                    </Style>
+                                                                </data:DataGridTextColumn.ElementStyle>
+                                                            </data:DataGridTextColumn>
+
+                                                        </data:DataGrid.Columns>
+                                                    </data:DataGrid>
+                                                </controlsToolkit:DockPanel>
+                                            </controlsToolkit:DockPanel>
+                                        </controls:TabItem>
+                                    </controls:TabControl>
+                                    
+                                    
+                                </controlsToolkit:DockPanel>
+                            </controlsToolkit:DockPanel>
+                            
+                            
+                        </Border>
+                    </controlsToolkit:DockPanel>
+                </Grid>
+
+            </Grid>
+
+
+        </controlsToolkit:DockPanel>
+    </Grid>
+</UserControl>
